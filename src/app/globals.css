@@ -2457,6 +2457,37 @@ button {
   margin-bottom: 24px;
 }
 
+/* ---------- Mobile drawer (hidden on desktop) ---------- */
+.drawer-head {
+  display: none;
+}
+.drawer-close {
+  display: none;
+}
+.nav-overlay {
+  display: none;
+}
+
+/* ---------- Mobile-only UI (hidden on desktop) ---------- */
+.title-mobile {
+  display: none;
+}
+.view-all-link {
+  display: none;
+}
+.view-all-wrap {
+  display: none;
+}
+.cat-all {
+  display: none;
+}
+.social-row {
+  display: none;
+}
+.testi-scroll {
+  display: none;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .hero-slide {
@@ -2609,5 +2640,669 @@ button {
 
   .shop-controls select {
     flex: 1;
+  }
+}
+
+/* ============================================================
+   MOBILE REDESIGN (<=767px)
+   Applied to mobile screens only; desktop is untouched.
+   ============================================================ */
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: min(1200px, 94%);
+  }
+
+  /* ---------- Header / drawer ---------- */
+  .menu-toggle.open {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .drawer-title {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--dark);
+  }
+
+  .drawer-close {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: var(--bg-soft);
+    color: var(--dark);
+    font-size: 1.1rem;
+  }
+
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 210;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    list-style: none;
+    background: #fff;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.18);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2px;
+    padding: 18px 16px 30px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 220;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links li:not(.drawer-head) {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: var(--text);
+    padding: 12px 12px;
+    border-radius: 10px;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .nav-links a:hover {
+    background: var(--bg-soft);
+    color: var(--primary);
+  }
+
+  .nav-links a.active {
+    color: var(--accent-dark);
+    font-weight: 700;
+    background: rgba(255, 107, 53, 0.1);
+  }
+
+  /* ---------- Hero banner: horizontal + compact ---------- */
+  .hero {
+    padding: 14px 0 10px;
+  }
+
+  .hero-slide {
+    grid-template-columns: 1.05fr 0.95fr;
+    padding: 16px 14px;
+    min-height: 150px;
+    gap: 12px;
+    border-radius: 16px;
+    text-align: left;
+  }
+
+  .hero-content .badge {
+    font-size: 0.62rem;
+    padding: 4px 9px;
+    margin-bottom: 8px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.02rem;
+    line-height: 1.22;
+    margin-bottom: 6px;
+  }
+
+  .hero-content h1 span {
+    display: block;
+  }
+
+  .hero-content p {
+    font-size: 0.72rem;
+    line-height: 1.4;
+    max-width: none;
+    margin: 0 0 10px;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .hero-actions .btn {
+    padding: 9px 13px;
+    font-size: 0.72rem;
+    border-radius: 9px;
+  }
+
+  .hero-emoji {
+    font-size: 3.2rem;
+    order: 2;
+  }
+
+  .hero-dots {
+    margin-top: 10px;
+  }
+
+  .hero-arrow {
+    display: none;
+  }
+
+  /* ---------- Brands strip hidden on mobile ---------- */
+  .brands {
+    display: none;
+  }
+
+  /* ---------- Shop by Category: horizontal chips ---------- */
+  .categories {
+    padding: 26px 0;
+  }
+
+  .categories .section-head {
+    text-align: left;
+    margin-bottom: 14px;
+  }
+
+  .categories .section-head h2 {
+    font-size: 1.25rem;
+  }
+
+  .categories .section-head p {
+    font-size: 0.8rem;
+  }
+
+  .cat-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cat-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cat-card {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .cat-card:hover {
+    transform: none;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .cat-card .cat-icon {
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .cat-card h3 {
+    font-size: 0.85rem;
+    margin: 0;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .cat-card p {
+    display: none;
+  }
+
+  .cat-card.cat-all {
+    display: flex;
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .cat-card.cat-all h3 {
+    color: #fff;
+  }
+
+  /* ---------- Flash Sale ---------- */
+  .flash-sale {
+    padding: 30px 0;
+  }
+
+  .flash-sale .section-head {
+    margin-bottom: 16px;
+  }
+
+  .flash-sale .section-head h2 {
+    font-size: 1.25rem;
+  }
+
+  .flash-sale .section-head p {
+    font-size: 0.8rem;
+  }
+
+  .countdown-timer {
+    margin-top: 12px;
+    gap: 6px;
+  }
+
+  .cd-box {
+    min-width: 52px;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+
+  .cd-box strong {
+    font-size: 1.05rem;
+  }
+
+  .cd-box span {
+    font-size: 0.6rem;
+  }
+
+  .cd-sep {
+    font-size: 1.2rem;
+  }
+
+  .flash-sale .product-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 14px;
+    padding: 4px 2px 14px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .flash-sale .product-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .flash-sale .product-grid .product-card {
+    flex: 0 0 72%;
+    max-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  .flash-sale .product-img {
+    height: 150px;
+  }
+
+  .flash-sale .section-more {
+    margin-top: 18px;
+  }
+
+  .flash-sale .section-more .btn {
+    padding: 12px 22px;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- New Arrivals carousel ---------- */
+  .new-arrivals {
+    padding: 30px 0;
+  }
+
+  .new-arrivals .section-head {
+    text-align: left;
+    margin-bottom: 16px;
+  }
+
+  .new-arrivals .section-head h2 {
+    font-size: 1.25rem;
+  }
+
+  .new-arrivals .section-head p {
+    font-size: 0.8rem;
+  }
+
+  .section-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .view-all-link {
+    display: inline-flex;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    white-space: nowrap;
+  }
+
+  .new-arrivals .product-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 14px;
+    padding: 4px 2px 14px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .new-arrivals .product-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .new-arrivals .product-grid .product-card {
+    flex: 0 0 72%;
+    max-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  .new-arrivals .section-more {
+    display: none;
+  }
+
+  /* ---------- Best Selling (Featured) 2-col grid ---------- */
+  .products {
+    padding: 30px 0;
+  }
+
+  .products .section-head {
+    margin-bottom: 16px;
+  }
+
+  .products .section-head h2 {
+    font-size: 1.25rem;
+  }
+
+  .products .section-head p {
+    font-size: 0.8rem;
+  }
+
+  .title-desktop {
+    display: none;
+  }
+
+  .title-mobile {
+    display: inline;
+  }
+
+  .products .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .products .product-grid .product-card:nth-child(n + 5) {
+    display: none;
+  }
+
+  .view-all-wrap {
+    display: block;
+    text-align: center;
+    margin-top: 22px;
+  }
+
+  .view-all-products {
+    width: 85%;
+    max-width: 420px;
+  }
+
+  /* ---------- Compact product cards ---------- */
+  .product-img {
+    height: 130px;
+  }
+
+  .product-info {
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .product-name {
+    font-size: 0.85rem;
+  }
+
+  .product-cat {
+    font-size: 0.66rem;
+  }
+
+  .product-price strong {
+    font-size: 0.95rem;
+  }
+
+  .product-price .old {
+    font-size: 0.75rem;
+  }
+
+  .rating {
+    font-size: 0.78rem;
+  }
+
+  .product-actions .add-cart,
+  .product-actions .buy-now {
+    padding: 10px 6px;
+    font-size: 0.75rem;
+  }
+
+  /* ---------- Why Choose Us: 2x2 grid ---------- */
+  .why-us {
+    padding: 30px 0;
+  }
+
+  .why-us .section-head {
+    margin-bottom: 16px;
+  }
+
+  .why-us .section-head h2 {
+    font-size: 1.25rem;
+  }
+
+  .why-us .section-head p {
+    font-size: 0.8rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .feature {
+    padding: 16px 10px;
+  }
+
+  .feature-icon {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+  }
+
+  .feature h4 {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  .feature p {
+    font-size: 0.74rem;
+  }
+
+  /* ---------- Testimonials: horizontal carousel ---------- */
+  .testimonials {
+    padding: 30px 0;
+  }
+
+  .testimonials .section-head {
+    margin-bottom: 16px;
+  }
+
+  .testimonials .section-head h2 {
+    font-size: 1.25rem;
+  }
+
+  .testimonials .section-head p {
+    font-size: 0.8rem;
+  }
+
+  .testi-track {
+    display: none;
+  }
+
+  .testi-dots {
+    display: none;
+  }
+
+  .testi-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 14px;
+    padding: 4px 2px 14px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .testi-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testi-scroll .testi-card {
+    flex: 0 0 78%;
+    max-width: 280px;
+    scroll-snap-align: center;
+    padding: 20px 18px;
+  }
+
+  .testi-scroll .testi-card > p {
+    font-size: 0.88rem;
+  }
+
+  /* ---------- Newsletter ---------- */
+  .newsletter {
+    padding: 30px 0;
+  }
+
+  .newsletter-card {
+    padding: 30px 18px;
+    border-radius: 16px;
+  }
+
+  .newsletter-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .newsletter-form input {
+    min-width: 0;
+    width: 100%;
+    padding: 13px 16px;
+  }
+
+  .newsletter-form .btn {
+    width: 100%;
+  }
+
+  /* ---------- Social icons row ---------- */
+  .social-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 0 26px;
+    background: var(--bg-soft);
+  }
+
+  .social-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: background 0.2s;
+  }
+
+  .social-btn:hover {
+    background: var(--accent);
+  }
+
+  /* ---------- Footer: Shop | Support | Account on one row ---------- */
+  .footer {
+    padding-top: 40px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-bottom: 30px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-brand .logo {
+    margin-bottom: 10px;
+  }
+
+  .footer-brand p {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+
+  .footer-col ul li {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .footer-bottom {
+    padding: 14px 0;
+    font-size: 0.75rem;
+    text-align: center;
   }
 }

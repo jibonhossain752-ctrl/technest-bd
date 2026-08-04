@@ -10,6 +10,13 @@ export default function CategoryGrid() {
           <p>Everything you need, all in one place</p>
         </div>
         <div className="cat-grid">
+          <Link href="/shop" className="cat-card cat-all">
+            <span className="cat-icon" aria-hidden="true">
+              ✨
+            </span>
+            <h3>All Products</h3>
+            <p>All items</p>
+          </Link>
           {CATEGORIES.map((cat) => (
             <Link
               key={cat.slug}

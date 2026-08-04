@@ -11,8 +11,15 @@ export default function NewArrivals() {
     <section className="new-arrivals">
       <div className="container">
         <div className="section-head">
-          <h2>New Arrivals</h2>
-          <p>Fresh off the shelf — be the first to own them</p>
+          <div className="section-title-row">
+            <div>
+              <h2>New Arrivals</h2>
+              <p>Fresh off the shelf — be the first to own them</p>
+            </div>
+            <Link href="/shop/new-arrivals" className="view-all-link">
+              View All →
+            </Link>
+          </div>
         </div>
         <ProductGrid products={newProducts} />
         <div className="section-more">

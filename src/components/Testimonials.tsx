@@ -88,6 +88,24 @@ export default function Testimonials() {
             </div>
           ))}
         </div>
+        <div className="testi-scroll" aria-hidden="true">
+          {TESTIMONIALS.map((t) => (
+            <div className="testi-card" key={`scroll-${t.name}`}>
+              <div className="rating" aria-label={`${t.rating} stars`}>
+                {'★'.repeat(t.rating)}
+                {'☆'.repeat(5 - t.rating)}
+              </div>
+              <p>{t.text}</p>
+              <div className="testi-user">
+                <span className="avatar">{t.initials}</span>
+                <div>
+                  <strong>{t.name}</strong>
+                  <small>{t.city}</small>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
         <div className="testi-dots" aria-label="Testimonial navigation">
           {Array.from({ length: TESTIMONIALS.length - perView + 1 }).map((_, i) => (
             <button

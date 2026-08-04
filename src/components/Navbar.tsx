@@ -53,6 +53,17 @@ export default function Navbar() {
           </Link>
 
           <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+            <li className="drawer-head">
+              <span className="drawer-title">Menu</span>
+              <button
+                type="button"
+                className="drawer-close"
+                aria-label="Close menu"
+                onClick={closeMenu}
+              >
+                ✕
+              </button>
+            </li>
             {NAV_LINKS.map((link) => {
               const active = pathname === link.href
               return (
@@ -68,6 +79,12 @@ export default function Navbar() {
               )
             })}
           </ul>
+
+          <div
+            className={`nav-overlay ${menuOpen ? 'open' : ''}`}
+            aria-hidden="true"
+            onClick={closeMenu}
+          />
 
           <div className="nav-actions">
             {user ? (
