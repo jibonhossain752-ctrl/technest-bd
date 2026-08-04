@@ -88,7 +88,7 @@ export default function Testimonials() {
             </div>
           ))}
         </div>
-        <div className="testi-scroll" aria-hidden="true">
+        <div className="testi-scroll">
           {TESTIMONIALS.map((t) => (
             <div className="testi-card" key={`scroll-${t.name}`}>
               <div className="rating" aria-label={`${t.rating} stars`}>

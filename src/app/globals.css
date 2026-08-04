@@ -2716,6 +2716,12 @@ button {
   }
 
   /* ---------- Header / drawer ---------- */
+  .menu-toggle {
+    display: flex;
+    position: relative;
+    z-index: 300;
+  }
+
   .menu-toggle.open {
     opacity: 0;
     pointer-events: none;
