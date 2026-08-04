@@ -2,17 +2,27 @@
 
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useAuth } from '@/context/useAuth'
 import PageHeader from '@/components/ui/PageHeader'
 
 export default function LoginPage() {
+  const { login } = useAuth()
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email || !password) return
-    window.location.href = '/account'
+    const result = login(email, password)
+    if (!result.ok) {
+      setError(result.error ?? 'Could not sign you in.')
+      return
+    }
+    router.push('/account')
   }
 
   return (
@@ -44,6 +54,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            {error && <p className="form-error">{error}</p>}
             <div className="auth-row">
               <label className="checkbox-option">
                 <input type="checkbox" /> Remember me

@@ -2175,6 +2175,101 @@ button {
   flex-wrap: wrap;
 }
 
+.account-email {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.account-phone,
+.account-since {
+  margin-top: 4px;
+}
+
+.account-section {
+  margin-bottom: 28px;
+}
+
+.account-section h3 {
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+
+.account-empty {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  background: var(--bg-soft);
+  flex-wrap: wrap;
+}
+
+.order-row div {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-row strong {
+  color: var(--dark);
+}
+
+.order-row small,
+.order-items {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+/* ---------- User chip (navbar) ---------- */
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px 5px 5px;
+  transition: border-color 0.2s;
+}
+
+.user-chip:hover {
+  border-color: var(--accent);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark);
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ---------- Footer ---------- */
 .footer {
   background: var(--primary);
@@ -2434,23 +2529,27 @@ button {
 @media (max-width: 700px) {
   .menu-toggle {
     display: flex;
+    position: relative;
+    z-index: 300;
   }
 
   .nav-links {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 70%;
-    max-width: 300px;
-    height: 100%;
-    background: #fff;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    margin: 0;
+    list-style: none;
+    background: linear-gradient(160deg, #0b1f3a 0%, #122c52 100%);
     flex-direction: column;
-    padding: 80px 30px 30px;
-    gap: 22px;
-    box-shadow: var(--shadow-lg);
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    padding: 90px 30px 40px;
+    overflow-y: auto;
     transform: translateX(-100%);
-    transition: transform 0.3s;
-    z-index: 150;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 200;
   }
 
   .nav-links.open {
@@ -2458,7 +2557,23 @@ button {
   }
 
   .nav-links a {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 6px 14px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+  }
+
+  .nav-links a.active::after {
+    background: var(--accent);
+    bottom: 0;
+  }
+
+  .nav-links a::after {
+    background: var(--accent);
   }
 
   .brand-logo {

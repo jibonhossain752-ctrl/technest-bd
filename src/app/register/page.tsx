@@ -2,11 +2,14 @@
 
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { registerUser } from '@/lib/orders'
+import { useAuth } from '@/context/useAuth'
 import PageHeader from '@/components/ui/PageHeader'
 
 export default function RegisterPage() {
+  const { register } = useAuth()
+  const router = useRouter()
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -24,13 +27,18 @@ export default function RegisterPage() {
       setError('Passwords do not match.')
       return
     }
-    registerUser({
+    const result = register({
       name: form.name,
       email: form.email,
       phone: form.phone,
+      password: form.password,
       subscribed: form.subscribed,
     })
-    window.location.href = '/account'
+    if (!result.ok) {
+      setError(result.error ?? 'Could not create your account.')
+      return
+    }
+    router.push('/account')
   }
 
   const update =

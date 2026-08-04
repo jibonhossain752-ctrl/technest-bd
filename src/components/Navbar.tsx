@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/context/useCart'
+import { useAuth } from '@/context/useAuth'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -18,8 +19,23 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const { count } = useCart()
+  const { user } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = prevOverflow
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [menuOpen])
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -54,19 +70,34 @@ export default function Navbar() {
           </ul>
 
           <div className="nav-actions">
-            <Link href="/account" className="icon-btn" aria-label="Account">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                aria-hidden="true"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </Link>
+            {user ? (
+              <Link href="/account" className="user-chip" aria-label="Account">
+                <span className="user-avatar">
+                  {user.name
+                    .trim()
+                    .split(/\s+/)
+                    .slice(0, 2)
+                    .map((p) => p[0])
+                    .join('')
+                    .toUpperCase()}
+                </span>
+                <span className="user-name">{user.name.split(' ')[0]}</span>
+              </Link>
+            ) : (
+              <Link href="/account" className="icon-btn" aria-label="Account">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </Link>
+            )}
             <Link href="/cart" className="icon-btn cart-btn" aria-label="Cart">
               <svg
                 viewBox="0 0 24 24"

@@ -17,7 +17,6 @@ export interface OrderRecord {
 
 const ORDERS_KEY = 'technest-orders'
 const SUBSCRIPTIONS_KEY = 'technest-subscriptions'
-const USERS_KEY = 'technest-users'
 
 function read<T>(key: string): T[] {
   if (typeof window === 'undefined') return []
@@ -82,17 +81,11 @@ export function placeOrder(
   return order
 }
 
-export function registerUser(data: {
-  name: string
-  email: string
-  phone: string
-  subscribed: boolean
-}) {
-  const users = read<Record<string, unknown> & { subscribed: boolean }>(
-    USERS_KEY,
+export function getOrdersByEmail(email: string): OrderRecord[] {
+  if (!email) return []
+  return read<OrderRecord>(ORDERS_KEY).filter(
+    (order) =>
+      order.contact.email &&
+      order.contact.email.toLowerCase() === email.toLowerCase(),
   )
-  users.push({ ...data, createdAt: new Date().toISOString() })
-  write(USERS_KEY, users)
-  saveSubscriptionPreference(data.phone || data.email, data.subscribed)
-  return data
 }
