@@ -583,6 +583,26 @@ button {
   color: var(--muted);
 }
 
+/* ---------- Home desktop vertical category panel ---------- */
+.cat-panel {
+  background: var(--bg-soft);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  max-width: 320px;
+}
+
+.cat-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
 /* ---------- Product grid & cards ---------- */
 .products,
 .new-arrivals {
@@ -2670,6 +2690,14 @@ button {
     z-index: 1000;
   }
 
+  /* ---------- Free delivery announcement: keep on ONE line ---------- */
+  .topbar {
+    white-space: nowrap;
+    font-size: 0.65rem;
+    padding: 7px 4px;
+    overflow: hidden;
+  }
+
   /* ---------- Mobile home order ----------
      Hero -> Categories -> Flash Sale -> New Arrivals -> Best Selling
      (View All inside) -> Why Choose -> Testimonials -> Subscribe
@@ -2912,7 +2940,8 @@ button {
     font-size: 0.8rem;
   }
 
-  .categories .cat-grid {
+  .categories .cat-grid,
+  .categories .cat-panel {
     display: none;
   }
 

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { CATEGORIES } from '@/data/categories'
+import { PRODUCTS } from '@/data/products'
 import CategoryChips from './CategoryChips'
 
 export default function CategoryGrid() {
@@ -11,27 +12,30 @@ export default function CategoryGrid() {
           <p>Everything you need, all in one place</p>
         </div>
         <CategoryChips />
-        <div className="cat-grid">
-          <Link href="/shop" className="cat-card cat-all">
-            <span className="cat-icon" aria-hidden="true">
-              ✨
-            </span>
-            <h3>All Products</h3>
-            <p>All items</p>
-          </Link>
-          {CATEGORIES.map((cat) => (
-            <Link
-              key={cat.slug}
-              href={`/shop/${cat.slug}`}
-              className="cat-card"
-            >
-              <span className="cat-icon" aria-hidden="true">
-                {cat.icon}
-              </span>
-              <h3>{cat.name}</h3>
-              <p>{cat.count} products</p>
-            </Link>
-          ))}
+        <div className="cat-panel">
+          <h3 className="cat-panel-title">📁 Categories</h3>
+          <ul className="sidebar-links">
+            <li>
+              <Link href="/shop" className="active">
+                <span className="cat-dot" aria-hidden="true">
+                  ✨
+                </span>
+                All Products
+                <span className="count">{PRODUCTS.length}</span>
+              </Link>
+            </li>
+            {CATEGORIES.map((cat) => (
+              <li key={cat.slug}>
+                <Link href={`/shop/${cat.slug}`}>
+                  <span className="cat-dot" aria-hidden="true">
+                    {cat.icon}
+                  </span>
+                  {cat.name}
+                  <span className="count">{cat.count}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
