@@ -1,0 +1,90 @@
+'use client'
+
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import type { Product } from '@/data/products'
+import { formatBDT } from '@/data/products'
+import RatingStars from './RatingStars'
+import { useCart } from '@/context/useCart'
+
+interface ProductCardProps {
+  product: Product
+  onAddToCart?: (product: Product) => void
+}
+
+const BADGE_LABEL: Record<string, string> = {
+  hot: '🔥 Hot',
+  new: 'NEW',
+  sale: 'SALE',
+}
+
+export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
+  const { buyNow } = useCart()
+  const router = useRouter()
+
+  const discount = product.oldPrice
+    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+    : 0
+
+  const handleBuyNow = () => {
+    buyNow(product, 1)
+    router.push('/checkout')
+  }
+
+  return (
+    <article className="product-card">
+      <Link
+        href={`/product/${product.slug}`}
+        className="product-img"
+        aria-label={product.name}
+      >
+        <span className="product-emoji" aria-hidden="true">
+          {product.image}
+        </span>
+        {product.badge && (
+          <span className={`product-badge ${product.badge}`}>
+            {BADGE_LABEL[product.badge]}
+          </span>
+        )}
+        {discount > 0 && (
+          <span className="product-badge discount">-{discount}%</span>
+        )}
+      </Link>
+
+      <div className="product-info">
+        <Link
+          href={`/shop/${product.categorySlug}`}
+          className="product-cat"
+        >
+          {product.category}
+        </Link>
+        <Link href={`/product/${product.slug}`} className="product-name">
+          {product.name}
+        </Link>
+        <RatingStars rating={product.rating} reviews={product.reviews} />
+        <div className="product-price">
+          <strong>{formatBDT(product.price)}</strong>
+          {product.oldPrice && (
+            <span className="old">{formatBDT(product.oldPrice)}</span>
+          )}
+        </div>
+        <div className="product-actions">
+          <button
+            type="button"
+            className="add-cart"
+            onClick={() => onAddToCart?.(product)}
+          >
+            Add to Cart
+          </button>
+          <button
+            type="button"
+            className="buy-now"
+            onClick={handleBuyNow}
+          >
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </article>
+  )
+}
