@@ -1,32 +1,46 @@
-# React + TypeScript + Vite
+# TechNest BD
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+An e-commerce store for tech products in Bangladesh, built with **Next.js**.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Next.js 16** (App Router, Turbopack) — React framework & build tool
+- **React 19**
+- **TypeScript 6**
+- **framer-motion** — animations
+- **Plain CSS** — single global stylesheet (`src/app/globals.css`), CSS custom properties for theming
+- **oxlint** — linting
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Open [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Command         | Description                          |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the Next.js dev server         |
+| `npm run build` | Production build (`next build`)      |
+| `npm run start` | Serve the production build           |
+| `npm run lint`  | Run oxlint                           |
+
+## Project Structure
+
+- `src/app/` — Next.js App Router pages (routes for shop, product, cart, checkout, blog, auth, etc.)
+- `src/components/` — React components (Navbar, Footer, ProductCard, HeroCarousel, ShopCatalog, ...)
+- `src/data/` — typed data modules (products, categories, posts, faqs)
+- `src/context/` — React context (cart with localStorage persistence)
+- `src/lib/` — helpers (orders, localStorage persistence)
+
+## Data
+
+All product/category/blog data is hardcoded in typed modules under `src/data/` — there is no database or API.
+
+## Deploying
+
+Optimized for **Vercel** — the framework is auto-detected as Next.js.
