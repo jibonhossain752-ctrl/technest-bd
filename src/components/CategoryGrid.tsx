@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { CATEGORIES } from '@/data/categories'
+import CategoryChips from './CategoryChips'
 
 export default function CategoryGrid() {
   return (
@@ -9,6 +10,7 @@ export default function CategoryGrid() {
           <h2>Shop by Category</h2>
           <p>Everything you need, all in one place</p>
         </div>
+        <CategoryChips />
         <div className="cat-grid">
           <Link href="/shop" className="cat-card cat-all">
             <span className="cat-icon" aria-hidden="true">

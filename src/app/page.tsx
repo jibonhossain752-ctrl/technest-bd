@@ -19,31 +19,31 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <>
+    <div className="home">
       <HeroCarousel />
       <BrandStrip />
-      <Reveal>
+      <Reveal className="reveal-categories" delay={0.05}>
         <CategoryGrid />
       </Reveal>
-      <Reveal>
+      <Reveal className="reveal-flash" delay={0.1}>
         <FlashSale />
       </Reveal>
-      <Reveal>
+      <Reveal className="reveal-featured" delay={0.05}>
         <FeaturedProducts />
       </Reveal>
-      <Reveal>
+      <Reveal className="reveal-new-arrivals" delay={0.1}>
         <NewArrivals />
       </Reveal>
-      <Reveal>
+      <Reveal className="reveal-why" delay={0.05}>
         <WhyChooseUs />
       </Reveal>
-      <Reveal>
+      <Reveal className="reveal-testimonials" delay={0.1}>
         <Testimonials />
       </Reveal>
-      <Reveal>
+      <Reveal className="reveal-newsletter" delay={0.05}>
         <Newsletter />
       </Reveal>
       <SocialRow />
-    </>
+    </div>
   )
 }
