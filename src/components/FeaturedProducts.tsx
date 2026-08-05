@@ -9,10 +9,7 @@ export default function FeaturedProducts() {
     <section className="products" id="products">
       <div className="container">
         <div className="section-head">
-          <h2>
-            <span className="title-desktop">Featured Products</span>
-            <span className="title-mobile">Best Selling Products</span>
-          </h2>
+          <h2>Best Selling Products</h2>
           <p>Best-sellers our customers love</p>
         </div>
         <div className="bs-grid">
