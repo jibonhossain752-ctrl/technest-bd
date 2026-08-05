@@ -41,7 +41,11 @@ const STATS = [
 export default function AboutPage() {
   return (
     <>
-      <PageHeader title="About TechNest BD" subtitle="Your trusted tech destination since day one" />
+      <PageHeader
+        title="About TechNest BD"
+        subtitle="Your trusted tech destination since day one"
+        showHomeCrumb={false}
+      />
 
       <section className="about-intro container">
         <div className="about-text">

@@ -28,11 +28,11 @@ export default function HomePage() {
       <Reveal className="reveal-flash" delay={0.1}>
         <FlashSale />
       </Reveal>
-      <Reveal className="reveal-featured" delay={0.05}>
-        <FeaturedProducts />
-      </Reveal>
       <Reveal className="reveal-new-arrivals" delay={0.1}>
         <NewArrivals />
+      </Reveal>
+      <Reveal className="reveal-featured" delay={0.05}>
+        <FeaturedProducts />
       </Reveal>
       <Reveal className="reveal-why" delay={0.05}>
         <WhyChooseUs />

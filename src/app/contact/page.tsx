@@ -18,7 +18,11 @@ const CHANNELS = [
 export default function ContactPage() {
   return (
     <>
-      <PageHeader title="Contact Us" subtitle="We're here to help — reach out anytime" />
+      <PageHeader
+        title="Contact Us"
+        subtitle="We're here to help — reach out anytime"
+        showHomeCrumb={false}
+      />
 
       <section className="contact container">
         <div className="contact-channels">

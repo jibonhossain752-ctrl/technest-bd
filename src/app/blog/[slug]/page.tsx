@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { POSTS, getPostBySlug } from '@/data/posts'
-import PageHeader from '@/components/ui/PageHeader'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -38,11 +37,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <PageHeader
-        title=""
-        crumbs={[{ label: 'Blog', href: '/blog' }, { label: post.title }]}
-      />
-
       <article className="blog-post container">
         <header className="blog-post-header">
           <span className="blog-cat">{post.category}</span>

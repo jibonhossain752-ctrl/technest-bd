@@ -22,7 +22,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <PageHeader title="TechNest Blog" subtitle="Guides, tips and tech news" />
+      <PageHeader title="TechNest Blog" subtitle="Guides, tips and tech news" showHomeCrumb={false} />
 
       <section className="blog container">
         {featured && (
