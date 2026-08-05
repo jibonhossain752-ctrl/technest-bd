@@ -8,7 +8,6 @@ import NewArrivals from '@/components/NewArrivals'
 import WhyChooseUs from '@/components/WhyChooseUs'
 import Testimonials from '@/components/Testimonials'
 import Newsletter from '@/components/Newsletter'
-import SocialRow from '@/components/SocialRow'
 import Reveal from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
@@ -43,7 +42,6 @@ export default function HomePage() {
       <Reveal className="reveal-newsletter" delay={0.05}>
         <Newsletter />
       </Reveal>
-      <SocialRow />
     </div>
   )
 }
