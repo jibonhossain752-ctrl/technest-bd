@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -21,23 +22,77 @@ export default function Navbar() {
   const { count } = useCart()
   const { user } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    if (!isMobile) setMenuOpen(false)
+  }, [isMobile])
+
+  useEffect(() => {
     if (!menuOpen) return
-    const prevOverflow = document.body.style.overflow
+    const prevBodyOverflow = document.body.style.overflow
+    const prevHtmlOverflow = document.documentElement.style.overflow
     document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMenuOpen(false)
     }
     window.addEventListener('keydown', onKey)
     return () => {
-      document.body.style.overflow = prevOverflow
+      document.body.style.overflow = prevBodyOverflow
+      document.documentElement.style.overflow = prevHtmlOverflow
       window.removeEventListener('keydown', onKey)
     }
   }, [menuOpen])
 
   const closeMenu = () => setMenuOpen(false)
+
+  const navList = (
+    <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+      <li className="drawer-head">
+        <span className="drawer-title">Menu</span>
+        <button
+          type="button"
+          className="drawer-close"
+          aria-label="Close menu"
+          onClick={closeMenu}
+        >
+          ✕
+        </button>
+      </li>
+      {NAV_LINKS.map((link) => {
+        const active = pathname === link.href
+        return (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className={active ? 'active' : ''}
+              onClick={closeMenu}
+            >
+              {link.label}
+            </Link>
+          </li>
+        )
+      })}
+    </ul>
+  )
+
+  const overlay = (
+    <div
+      className={`nav-overlay ${menuOpen ? 'open' : ''}`}
+      aria-hidden="true"
+      onClick={closeMenu}
+    />
+  )
 
   return (
     <header className="header">
@@ -52,39 +107,17 @@ export default function Navbar() {
             TechNest<span>BD</span>
           </Link>
 
-          <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-            <li className="drawer-head">
-              <span className="drawer-title">Menu</span>
-              <button
-                type="button"
-                className="drawer-close"
-                aria-label="Close menu"
-                onClick={closeMenu}
-              >
-                ✕
-              </button>
-            </li>
-            {NAV_LINKS.map((link) => {
-              const active = pathname === link.href
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={active ? 'active' : ''}
-                    onClick={closeMenu}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
+          {!isMobile && navList}
 
-          <div
-            className={`nav-overlay ${menuOpen ? 'open' : ''}`}
-            aria-hidden="true"
-            onClick={closeMenu}
-          />
+          {typeof document !== 'undefined' &&
+            isMobile &&
+            createPortal(
+              <>
+                {navList}
+                {overlay}
+              </>,
+              document.body,
+            )}
 
           <div className="nav-actions">
             {user ? (

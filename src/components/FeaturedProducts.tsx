@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { PRODUCTS } from '@/data/products'
-import ProductGrid from './ProductGrid'
+import BestSellingCard from './BestSellingCard'
+
+const BEST_SELLING_LIMIT = 12
 
 export default function FeaturedProducts() {
   return (
@@ -13,7 +15,11 @@ export default function FeaturedProducts() {
           </h2>
           <p>Best-sellers our customers love</p>
         </div>
-        <ProductGrid products={PRODUCTS} />
+        <div className="bs-grid">
+          {PRODUCTS.slice(0, BEST_SELLING_LIMIT).map((product) => (
+            <BestSellingCard key={product.id} product={product} />
+          ))}
+        </div>
         <div className="view-all-wrap">
           <Link href="/shop" className="btn btn-primary view-all-products">
             View All Products
