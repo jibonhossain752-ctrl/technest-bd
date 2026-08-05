@@ -1315,6 +1315,7 @@ button {
 
 .shop-cat-strip-wrap {
   display: none;
+  min-width: 0;
 }
 
 .shop-cat-strip-heading {
@@ -1326,6 +1327,7 @@ button {
 
 .shop-cat-strip-holder {
   position: relative;
+  min-width: 0;
 }
 
 .shop-cat-strip {
@@ -1339,6 +1341,7 @@ button {
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-bottom: 6px;
+  width: 100%;
 }
 
 .shop-cat-strip::-webkit-scrollbar {
