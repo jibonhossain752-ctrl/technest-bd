@@ -3180,8 +3180,8 @@ button {
     top: 0;
     right: 0;
     left: auto;
-    width: 74%;
-    max-width: 280px;
+    width: fit-content;
+    max-width: min(74%, 280px);
     height: 100vh;
     height: 100dvh;
     margin: 0;
@@ -3950,20 +3950,21 @@ button {
 /* ---------- Mobile: compact shop category pills (3 visible) ---------- */
 @media (max-width: 640px) {
   .shop-cat-strip-wrap {
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .shop-cat-strip {
-    gap: 6px;
-    padding-left: calc(50vw - 50% + 11px);
-    padding-right: calc(50vw - 50% + 11px);
+    gap: 8px;
+    padding-bottom: 4px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .shop-cat-chip {
-    padding: 7px 7px;
-    font-size: 0.72rem;
-    gap: 5px;
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    gap: 8px;
   }
 
   .shop-cat-chip .count {
