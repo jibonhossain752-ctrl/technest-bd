@@ -47,6 +47,9 @@ export default function Footer() {
             <a href="https://wa.me" target="_blank" rel="noreferrer" aria-label="WhatsApp">
               WA
             </a>
+            <a href="https://pinterest.com" target="_blank" rel="noreferrer" aria-label="Pinterest">
+              P
+            </a>
           </div>
         </div>
         <div className="footer-col">
