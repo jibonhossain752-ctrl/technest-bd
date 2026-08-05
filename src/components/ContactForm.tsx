@@ -3,13 +3,42 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 
-export default function ContactForm() {
-  const [sent, setSent] = useState(false)
+type Status = 'idle' | 'sending' | 'sent' | 'error'
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+export default function ContactForm() {
+  const [status, setStatus] = useState<Status>('idle')
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSent(true)
-    e.currentTarget.reset()
+    const data = new FormData(e.currentTarget)
+    const payload = {
+      name: String(data.get('name') ?? '').trim(),
+      email: String(data.get('email') ?? '').trim(),
+      subject: String(data.get('subject') ?? '').trim(),
+      message: String(data.get('message') ?? '').trim(),
+    }
+
+    setStatus('sending')
+    setError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const json = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(json.error ?? 'Something went wrong.')
+      setStatus('sent')
+      e.currentTarget.reset()
+    } catch (err) {
+      setStatus('error')
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Could not send your message. Please try again.',
+      )
+    }
   }
 
   return (
@@ -18,14 +47,28 @@ export default function ContactForm() {
       <p>Fill out the form and our team will get back to you shortly.</p>
       <form className="checkout-form" onSubmit={handleSubmit}>
         <div className="form-row">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
         </div>
-        <input type="text" placeholder="Subject" required />
-        <textarea placeholder="Your message..." rows={5} required />
-        {sent && <p className="newsletter-msg success">Thanks! We&apos;ll get back to you soon. 📩</p>}
-        <button type="submit" className="btn btn-primary">
-          Send Message
+        <input type="text" name="subject" placeholder="Subject" required />
+        <textarea
+          name="message"
+          placeholder="Your message..."
+          rows={5}
+          required
+        />
+        {status === 'sent' && (
+          <p className="newsletter-msg success">
+            Thanks! We&apos;ll get back to you soon. 📩
+          </p>
+        )}
+        {status === 'error' && <p className="form-error">{error}</p>}
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={status === 'sending'}
+        >
+          {status === 'sending' ? 'Sending…' : 'Send Message'}
         </button>
       </form>
     </div>

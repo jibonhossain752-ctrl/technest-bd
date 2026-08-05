@@ -32,3 +32,13 @@ create table if not exists public.subscriptions (
   subscribed boolean not null,
   at timestamptz not null default now()
 );
+
+-- Contact form submissions
+create table if not exists public.contact_messages (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  email text not null,
+  subject text not null default '',
+  message text not null,
+  created_at timestamptz not null default now()
+);

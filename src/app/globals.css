@@ -3834,7 +3834,7 @@ button {
 .admin-sub { color: #5b6b7f; margin: 4px 0 0; }
 .admin-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 32px;
 }
@@ -3881,6 +3881,7 @@ button {
 }
 .admin-table tr:last-child td { border-bottom: none; }
 .admin-table td small { color: #5b6b7f; }
+.admin-msg-cell { max-width: 380px; white-space: pre-wrap; word-break: break-word; }
 .admin-status {
   padding: 6px 10px;
   border: 1px solid #cbd5e1;

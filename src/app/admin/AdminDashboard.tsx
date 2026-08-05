@@ -22,6 +22,15 @@ interface AdminOrder {
   placedAt: string
 }
 
+interface AdminMessage {
+  id: string
+  name: string
+  email: string
+  subject: string
+  message: string
+  createdAt: string
+}
+
 const STATUSES = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']
 
 function fmtDate(iso: string) {
@@ -38,22 +47,29 @@ export default function AdminDashboard() {
   const router = useRouter()
   const [users, setUsers] = useState<AdminUser[]>([])
   const [orders, setOrders] = useState<AdminOrder[]>([])
+  const [messages, setMessages] = useState<AdminMessage[]>([])
   const [error, setError] = useState('')
 
   const load = useCallback(async () => {
     try {
-      const [uRes, oRes] = await Promise.all([
+      const [uRes, oRes, mRes] = await Promise.all([
         fetch('/api/admin/users'),
         fetch('/api/admin/orders'),
+        fetch('/api/admin/messages'),
       ])
-      if (uRes.status === 401 || oRes.status === 401) {
+      if (uRes.status === 401 || oRes.status === 401 || mRes.status === 401) {
         router.push('/admin/login')
         return
       }
-      const [uJson, oJson] = await Promise.all([uRes.json(), oRes.json()])
-      if (!uRes.ok || !oRes.ok) throw new Error()
+      const [uJson, oJson, mJson] = await Promise.all([
+        uRes.json(),
+        oRes.json(),
+        mRes.json(),
+      ])
+      if (!uRes.ok || !oRes.ok || !mRes.ok) throw new Error()
       setUsers(uJson.users ?? [])
       setOrders(oJson.orders ?? [])
+      setMessages(mJson.messages ?? [])
     } catch {
       setError('Could not load dashboard data.')
     }
@@ -95,7 +111,8 @@ export default function AdminDashboard() {
           <h1 className="admin-title">Admin Dashboard</h1>
           <p className="admin-sub">
             {users.length} registered user{users.length === 1 ? '' : 's'} ·{' '}
-            {orders.length} order{orders.length === 1 ? '' : 's'}
+            {orders.length} order{orders.length === 1 ? '' : 's'} ·{' '}
+            {messages.length} message{messages.length === 1 ? '' : 's'}
           </p>
         </div>
         <button type="button" className="btn btn-outline" onClick={handleLogout}>
@@ -113,6 +130,10 @@ export default function AdminDashboard() {
         <div className="admin-card">
           <strong>{orders.length}</strong>
           <span>Total Orders</span>
+        </div>
+        <div className="admin-card">
+          <strong>{messages.length}</strong>
+          <span>Contact Messages</span>
         </div>
         <div className="admin-card">
           <strong>
@@ -210,6 +231,37 @@ export default function AdminDashboard() {
                         ))}
                       </select>
                     </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+      <div className="admin-section">
+        <h2>Contact Messages</h2>
+        {messages.length === 0 ? (
+          <p className="admin-empty">No messages yet.</p>
+        ) : (
+          <div className="admin-table-wrap">
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Received</th>
+                </tr>
+              </thead>
+              <tbody>
+                {messages.map((m) => (
+                  <tr key={m.id}>
+                    <td>{m.name}</td>
+                    <td>{m.email}</td>
+                    <td>{m.subject}</td>
+                    <td className="admin-msg-cell">{m.message}</td>
+                    <td>{fmtDate(m.createdAt)}</td>
                   </tr>
                 ))}
               </tbody>
