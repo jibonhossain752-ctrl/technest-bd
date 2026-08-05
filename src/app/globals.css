@@ -3180,8 +3180,8 @@ button {
     top: 0;
     right: 0;
     left: auto;
-    width: 80%;
-    max-width: 320px;
+    width: 74%;
+    max-width: 280px;
     height: 100vh;
     height: 100dvh;
     margin: 0;
@@ -3944,5 +3944,34 @@ button {
   .shop-grid .product-actions .buy-now {
     padding: 8px 4px;
     font-size: 0.7rem;
+  }
+}
+
+/* ---------- Mobile: compact shop category pills (3 visible) ---------- */
+@media (max-width: 640px) {
+  .shop-cat-strip-wrap {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .shop-cat-strip {
+    gap: 6px;
+    padding-left: calc(50vw - 50% + 11px);
+    padding-right: calc(50vw - 50% + 11px);
+  }
+
+  .shop-cat-chip {
+    padding: 7px 7px;
+    font-size: 0.72rem;
+    gap: 5px;
+  }
+
+  .shop-cat-chip .count {
+    display: none;
+  }
+
+  .shop-cat-chip .cat-dot {
+    width: 14px;
+    font-size: 0.85rem;
   }
 }
