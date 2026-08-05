@@ -11,7 +11,8 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const data = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const data = new FormData(form)
     const payload = {
       name: String(data.get('name') ?? '').trim(),
       email: String(data.get('email') ?? '').trim(),
@@ -30,7 +31,7 @@ export default function ContactForm() {
       const json = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(json.error ?? 'Something went wrong.')
       setStatus('sent')
-      e.currentTarget.reset()
+      form.reset()
     } catch (err) {
       setStatus('error')
       setError(
