@@ -586,6 +586,7 @@ button {
 /* ---------- Home desktop vertical category panel ---------- */
 .categories .section-head {
   text-align: left;
+  max-width: 320px;
   margin-bottom: 20px;
 }
 
@@ -593,7 +594,7 @@ button {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 28px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .cat-panel {
@@ -619,6 +620,8 @@ button {
   background: var(--bg-soft);
   border-radius: var(--radius);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .cat-preview-head {
@@ -647,8 +650,10 @@ button {
 }
 
 .cat-preview-grid {
+  flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
   gap: 14px;
 }
 
@@ -661,7 +666,9 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+  min-width: 0;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -1294,6 +1301,33 @@ button {
   padding: 40px 0 70px;
 }
 
+.shop-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.shop-sidebar {
+  position: sticky;
+  top: 96px;
+}
+
+.shop-cat-strip-wrap {
+  display: none;
+}
+
+.shop-cat-strip-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+
+.shop-cat-strip-holder {
+  position: relative;
+}
+
 .shop-cat-strip {
   display: flex;
   flex-wrap: nowrap;
@@ -1305,7 +1339,6 @@ button {
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-bottom: 6px;
-  margin-bottom: 28px;
 }
 
 .shop-cat-strip::-webkit-scrollbar {
@@ -1355,6 +1388,57 @@ button {
   width: 18px;
   text-align: center;
   flex-shrink: 0;
+}
+
+/* ---------- Category row scroll hint (shared, Tasks 1 & 4) ---------- */
+.category-chips-holder,
+.shop-cat-strip-holder {
+  position: relative;
+}
+
+.cat-scroll-hint {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(11, 31, 58, 0.18);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.cat-scroll-hint.visible {
+  opacity: 1;
+  visibility: visible;
+  animation: catHintSwipe 1.6s ease-in-out infinite;
+}
+
+.cat-scroll-hint-icon {
+  display: block;
+}
+
+@keyframes catHintSwipe {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-50%) translateX(6px);
+    opacity: 1;
+  }
 }
 
 /* ---------- Collapsible ---------- */
@@ -3182,6 +3266,7 @@ button {
 
   .categories .section-head {
     text-align: left;
+    max-width: none;
     margin-bottom: 14px;
   }
 
@@ -3195,6 +3280,25 @@ button {
 
   .categories .cat-grid,
   .categories .categories-layout {
+    display: none;
+  }
+
+  /* ---------- Shop: vertical sidebar -> horizontal strip ---------- */
+  .shop-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .shop-sidebar {
+    display: none;
+  }
+
+  .shop-cat-strip-wrap {
+    display: block;
+    margin-bottom: 26px;
+  }
+
+  .shop-hide-cats-mobile .shop-cat-strip-wrap {
     display: none;
   }
 

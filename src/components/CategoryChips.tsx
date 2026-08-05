@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { CATEGORIES } from '@/data/categories'
+import CategoryScrollHint from './CategoryScrollHint'
 
 interface CategoryChipsProps {
   activeSlug?: string
@@ -16,23 +17,26 @@ export default function CategoryChips({
   return (
     <div className="category-chips-wrap">
       {heading && <h3 className="category-chips-heading">{heading}</h3>}
-      <nav className="category-chips" aria-label="Browse categories">
-        <Link
-          href="/shop"
-          className={`category-chip${isActive('all') ? ' active' : ''}`}
-        >
-          All Products
-        </Link>
-        {CATEGORIES.map((cat) => (
+      <div className="category-chips-holder">
+        <nav className="category-chips" aria-label="Browse categories">
           <Link
-            key={cat.slug}
-            href={`/shop/${cat.slug}`}
-            className={`category-chip${isActive(cat.slug) ? ' active' : ''}`}
+            href="/shop"
+            className={`category-chip${isActive('all') ? ' active' : ''}`}
           >
-            {cat.name}
+            All Products
           </Link>
-        ))}
-      </nav>
+          {CATEGORIES.map((cat) => (
+            <Link
+              key={cat.slug}
+              href={`/shop/${cat.slug}`}
+              className={`category-chip${isActive(cat.slug) ? ' active' : ''}`}
+            >
+              {cat.name}
+            </Link>
+          ))}
+        </nav>
+        <CategoryScrollHint />
+      </div>
     </div>
   )
 }

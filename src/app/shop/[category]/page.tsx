@@ -62,8 +62,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         activeSlug={category}
         viewTitle={title}
         viewDescription={description}
-        showCategories={
-          view ? !['new-arrivals', 'flash-sale'].includes(view.slug) : true
+        hideCategoriesMobile={
+          view ? ['new-arrivals', 'flash-sale'].includes(view.slug) : false
         }
       />
     </Reveal>
