@@ -20,8 +20,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (session) setUser(session)
   }, [])
 
-  const login = useCallback((email: string, password: string) => {
-    const result = loginUser(email, password)
+  const login = useCallback(async (email: string, password: string) => {
+    const result = await loginUser(email, password)
     if (result.ok && result.user) {
       setUser(result.user)
       saveSession(result.user)
@@ -30,14 +30,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const register = useCallback(
-    (data: {
+    async (data: {
       name: string
       email: string
       phone: string
       password: string
       subscribed: boolean
     }) => {
-      const result = registerUser(data)
+      const result = await registerUser(data)
       if (result.ok && result.user) {
         setUser(result.user)
         saveSession(result.user)

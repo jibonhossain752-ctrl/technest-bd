@@ -1,12 +1,13 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import PageHeader from '@/components/ui/PageHeader'
 import { useAuth } from '@/context/useAuth'
 import { getOrdersByEmail } from '@/lib/orders'
 import { formatBDT } from '@/data/products'
+import type { OrderRecord } from '@/lib/orders'
 
 const MENU = [
   { href: '/cart', label: '🛒 My Cart' },
@@ -28,10 +29,21 @@ export default function AccountPage() {
     return (first + last).toUpperCase()
   }, [user])
 
-  const orders = useMemo(
-    () => (user ? getOrdersByEmail(user.email) : []),
-    [user],
-  )
+  const [orders, setOrders] = useState<OrderRecord[]>([])
+
+  useEffect(() => {
+    let cancelled = false
+    if (!user) {
+      setOrders([])
+      return
+    }
+    getOrdersByEmail(user.email).then((list) => {
+      if (!cancelled) setOrders(list)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [user])
 
   const handleLogout = () => {
     logout()

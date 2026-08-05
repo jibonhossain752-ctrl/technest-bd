@@ -3,12 +3,9 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { useAuth } from '@/context/useAuth'
 import PageHeader from '@/components/ui/PageHeader'
 
-export default function LoginPage() {
-  const { login } = useAuth()
+export default function AdminLoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -20,60 +17,62 @@ export default function LoginPage() {
     if (!email || !password || busy) return
     setBusy(true)
     setError('')
-    const result = await login(email, password)
-    if (!result.ok) {
-      setError(result.error ?? 'Could not sign you in.')
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
+      if (!res.ok) {
+        const json = await res.json().catch(() => null)
+        setError(json?.error ?? 'Invalid credentials.')
+        return
+      }
+      router.push('/admin')
+      router.refresh()
+    } catch {
+      setError('Network error. Please try again.')
+    } finally {
       setBusy(false)
-      return
     }
-    router.push('/account')
   }
 
   return (
     <>
-      <PageHeader title="Login" subtitle="Welcome back to TechNest BD" />
+      <PageHeader title="Admin Login" subtitle="Restricted area — owners only" />
 
       <section className="auth container">
         <div className="auth-card">
           <form className="checkout-form" onSubmit={handleSubmit}>
-            <label className="field-label" htmlFor="email">
-              Email Address
+            <label className="field-label" htmlFor="admin-email">
+              Admin Email
             </label>
             <input
-              id="email"
+              id="admin-email"
               type="email"
-              placeholder="you@example.com"
+              placeholder="admin@…"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete="username"
             />
-            <label className="field-label" htmlFor="password">
+            <label className="field-label" htmlFor="admin-password">
               Password
             </label>
             <input
-              id="password"
+              id="admin-password"
               type="password"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete="current-password"
             />
             {error && <p className="form-error">{error}</p>}
-            <div className="auth-row">
-              <label className="checkbox-option">
-                <input type="checkbox" /> Remember me
-              </label>
-              <Link href="/register" className="link">
-                Forgot password?
-              </Link>
-            </div>
-            <button type="submit" className="btn btn-primary block">
-              Login
+            <button type="submit" className="btn btn-primary block" disabled={busy}>
+              {busy ? 'Signing in…' : 'Sign In'}
             </button>
           </form>
-          <p className="auth-switch">
-            New to TechNest BD? <Link href="/register">Create an account</Link>
-          </p>
         </div>
       </section>
     </>

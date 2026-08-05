@@ -12,9 +12,12 @@ export default function CheckoutPage() {
   const { items, total, clearCart } = useCart()
   const [placed, setPlaced] = useState(false)
   const [orderId, setOrderId] = useState('')
+  const [error, setError] = useState('')
+  const [busy, setBusy] = useState(false)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (busy) return
     const form = e.currentTarget
     const data = new FormData(form)
 
@@ -23,10 +26,18 @@ export default function CheckoutPage() {
     const phone = String(data.get('phone') ?? '')
     const email = String(data.get('email') ?? '')
 
-    const order = placeOrder({ name, phone, email }, items, subscribed)
-    setOrderId(order.id)
-    setPlaced(true)
-    clearCart()
+    setBusy(true)
+    setError('')
+    try {
+      const order = await placeOrder({ name, phone, email }, items, subscribed)
+      setOrderId(order.id)
+      setPlaced(true)
+      clearCart()
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Order could not be placed.')
+    } finally {
+      setBusy(false)
+    }
   }
 
   if (placed) {
@@ -135,8 +146,10 @@ export default function CheckoutPage() {
             </p>
           </div>
 
-          <button type="submit" className="btn btn-accent block">
-            Place Order · {formatBDT(total)}
+          {error && <p className="form-error">{error}</p>}
+
+          <button type="submit" className="btn btn-accent block" disabled={busy}>
+            {busy ? 'Placing Order…' : `Place Order · ${formatBDT(total)}`}
           </button>
         </form>
 

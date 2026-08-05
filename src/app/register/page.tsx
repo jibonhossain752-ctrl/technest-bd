@@ -20,14 +20,18 @@ export default function RegisterPage() {
   })
 
   const [error, setError] = useState('')
+  const [busy, setBusy] = useState(false)
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (form.password !== form.confirm) {
       setError('Passwords do not match.')
       return
     }
-    const result = register({
+    if (busy) return
+    setBusy(true)
+    setError('')
+    const result = await register({
       name: form.name,
       email: form.email,
       phone: form.phone,
@@ -36,6 +40,7 @@ export default function RegisterPage() {
     })
     if (!result.ok) {
       setError(result.error ?? 'Could not create your account.')
+      setBusy(false)
       return
     }
     router.push('/account')

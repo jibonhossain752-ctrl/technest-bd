@@ -13,79 +13,29 @@ export interface OrderRecord {
   total: number
   subscribed: boolean
   placedAt: string
+  status: string
 }
 
-const ORDERS_KEY = 'technest-orders'
-const SUBSCRIPTIONS_KEY = 'technest-subscriptions'
-
-function read<T>(key: string): T[] {
-  if (typeof window === 'undefined') return []
-  try {
-    const raw = window.localStorage.getItem(key)
-    return raw ? (JSON.parse(raw) as T[]) : []
-  } catch {
-    return []
-  }
-}
-
-function write<T>(key: string, value: T[]) {
-  if (typeof window === 'undefined') return
-  window.localStorage.setItem(key, JSON.stringify(value))
-}
-
-/**
- * Persists the marketing preference (the same `subscribed` field used on
- * user records from the register page and on order records from checkout).
- */
-export function saveSubscriptionPreference(contact: string, subscribed: boolean) {
-  const subs = read<{ contact: string; subscribed: boolean; at: string }>(
-    SUBSCRIPTIONS_KEY,
-  )
-  const next = subs.filter((s) => s.contact !== contact)
-  next.push({ contact, subscribed, at: new Date().toISOString() })
-  write(SUBSCRIPTIONS_KEY, next)
-  return subscribed
-}
-
-export function placeOrder(
+export async function placeOrder(
   contact: ContactInfo,
   items: CartItem[],
   subscribed: boolean,
-): OrderRecord {
-  const total = items.reduce(
-    (sum, item) => sum + item.product.price * item.qty,
-    0,
-  )
-  const order: OrderRecord = {
-    id: `TN-${Date.now()}`,
-    contact,
-    items: items.map((i) => ({
-      name: i.product.name,
-      qty: i.qty,
-      price: i.product.price,
-    })),
-    total,
-    subscribed,
-    placedAt: new Date().toISOString(),
+): Promise<OrderRecord> {
+  const res = await fetch('/api/orders', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ contact, items, subscribed }),
+  })
+  if (!res.ok) {
+    throw new Error('Order could not be placed. Please try again.')
   }
-  const orders = read<OrderRecord>(ORDERS_KEY)
-  orders.unshift(order)
-  write(ORDERS_KEY, orders)
-
-  if (contact.phone) {
-    saveSubscriptionPreference(contact.phone, subscribed)
-  } else if (contact.email) {
-    saveSubscriptionPreference(contact.email, subscribed)
-  }
-
-  return order
+  const json = await res.json()
+  return json.order as OrderRecord
 }
 
-export function getOrdersByEmail(email: string): OrderRecord[] {
-  if (!email) return []
-  return read<OrderRecord>(ORDERS_KEY).filter(
-    (order) =>
-      order.contact.email &&
-      order.contact.email.toLowerCase() === email.toLowerCase(),
-  )
+export async function getOrdersByEmail(email: string): Promise<OrderRecord[]> {
+  const res = await fetch(`/api/orders?email=${encodeURIComponent(email)}`)
+  if (!res.ok) return []
+  const json = await res.json()
+  return (json.orders as OrderRecord[]) ?? []
 }
