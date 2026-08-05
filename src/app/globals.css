@@ -590,6 +590,11 @@ button {
   margin-bottom: 20px;
 }
 
+.categories .section-head h2 {
+  white-space: nowrap;
+  font-size: clamp(1.35rem, 2.1vw, 2.05rem);
+}
+
 .categories-layout {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -1311,6 +1316,14 @@ button {
 .shop-sidebar {
   position: sticky;
   top: 96px;
+}
+
+.shop-sidebar-heading {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--dark);
+  text-align: left;
+  margin-bottom: 12px;
 }
 
 .shop-cat-strip-wrap {

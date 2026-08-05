@@ -127,6 +127,7 @@ export default function ShopCatalog({
         className={`container shop-layout${hideCategoriesMobile ? ' shop-hide-cats-mobile' : ''}`}
       >
         <aside className="shop-sidebar">
+          <h3 className="shop-sidebar-heading">Categories</h3>
           <div className="cat-panel">{sidebarLinks}</div>
         </aside>
 
