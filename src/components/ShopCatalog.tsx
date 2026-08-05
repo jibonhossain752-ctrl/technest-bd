@@ -148,7 +148,6 @@ export default function ShopCatalog({
             <Collapsible
               title="Filters"
               icon="🔍"
-              defaultOpen
               className="filters-collapsible"
             >
               <div className="shop-controls">
@@ -181,7 +180,7 @@ export default function ShopCatalog({
               <p>Try a different search term or browse another category.</p>
             </div>
           ) : (
-            <div className="product-grid">
+            <div className="product-grid shop-grid">
               {filtered.map((product) => (
                 <ProductCard
                   key={product.id}

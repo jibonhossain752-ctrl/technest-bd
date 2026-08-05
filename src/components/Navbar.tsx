@@ -23,7 +23,14 @@ export default function Navbar() {
   const { user } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [avatar, setAvatar] = useState<string | null>(null)
   const pathname = usePathname()
+
+  useEffect(() => {
+    if (!user) return
+    const stored = window.localStorage.getItem('technest-avatar')
+    if (stored) setAvatar(stored)
+  }, [user])
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 767px)')
@@ -121,17 +128,19 @@ export default function Navbar() {
 
           <div className="nav-actions">
             {user ? (
-              <Link href="/account" className="user-chip" aria-label="Account">
-                <span className="user-avatar">
-                  {user.name
-                    .trim()
-                    .split(/\s+/)
-                    .slice(0, 2)
-                    .map((p) => p[0])
-                    .join('')
-                    .toUpperCase()}
-                </span>
-                <span className="user-name">{user.name.split(' ')[0]}</span>
+              <Link
+                href="/account"
+                className={`user-chip${avatar ? ' has-avatar' : ' avatar-only'}`}
+                aria-label="Account"
+              >
+                {avatar ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={avatar} alt="" className="user-avatar-img" />
+                ) : (
+                  <span className="user-avatar">
+                    {user.name.trim().charAt(0).toUpperCase()}
+                  </span>
+                )}
               </Link>
             ) : (
               <Link href="/account" className="icon-btn" aria-label="Account">

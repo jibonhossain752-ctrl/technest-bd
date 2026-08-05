@@ -14,7 +14,7 @@ interface CollapsibleProps {
 export default function Collapsible({
   title,
   icon,
-  defaultOpen = true,
+  defaultOpen = false,
   children,
   className,
 }: CollapsibleProps) {
