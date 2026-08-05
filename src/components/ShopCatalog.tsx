@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import type { Product } from '@/data/products'
+import { PRODUCTS } from '@/data/products'
 import { CATEGORIES } from '@/data/categories'
 import ProductCard from './ProductCard'
 import { useCart } from '@/context/useCart'
@@ -13,6 +14,7 @@ interface ShopCatalogProps {
   activeSlug: string
   viewTitle: string
   viewDescription: string
+  showCategories?: boolean
 }
 
 type SortKey = 'popular' | 'price-asc' | 'price-desc' | 'rating'
@@ -29,6 +31,7 @@ export default function ShopCatalog({
   activeSlug,
   viewTitle,
   viewDescription,
+  showCategories = true,
 }: ShopCatalogProps) {
   const { addToCart } = useCart()
   const [query, setQuery] = useState('')
@@ -60,38 +63,34 @@ export default function ShopCatalog({
 
   return (
     <section className="shop">
-      <div className="container shop-layout">
-        <aside className="shop-sidebar">
-          <Collapsible title="Categories" icon="🗂️" defaultOpen>
-            <ul className="sidebar-links">
-              <li>
-                <Link
-                  href="/shop"
-                  className={activeSlug === 'all' ? 'active' : ''}
-                >
-                  <span className="cat-dot" aria-hidden="true">
-                    ✦
-                  </span>
-                  All Products
-                </Link>
-              </li>
-              {CATEGORIES.map((cat) => (
-                <li key={cat.slug}>
-                  <Link
-                    href={`/shop/${cat.slug}`}
-                    className={activeSlug === cat.slug ? 'active' : ''}
-                  >
-                    <span className="cat-dot" aria-hidden="true">
-                      {cat.icon}
-                    </span>
-                    {cat.name}
-                    <span className="count">{cat.count}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Collapsible>
-        </aside>
+      <div className="container">
+        {showCategories && (
+          <nav className="shop-cat-strip" aria-label="Browse categories">
+            <Link
+              href="/shop"
+              className={`shop-cat-chip${activeSlug === 'all' ? ' active' : ''}`}
+            >
+              <span className="cat-dot" aria-hidden="true">
+                ✦
+              </span>
+              All Products
+              <span className="count">{PRODUCTS.length}</span>
+            </Link>
+            {CATEGORIES.map((cat) => (
+              <Link
+                key={cat.slug}
+                href={`/shop/${cat.slug}`}
+                className={`shop-cat-chip${activeSlug === cat.slug ? ' active' : ''}`}
+              >
+                <span className="cat-dot" aria-hidden="true">
+                  {cat.icon}
+                </span>
+                {cat.name}
+                <span className="count">{cat.count}</span>
+              </Link>
+            ))}
+          </nav>
+        )}
 
         <div className="shop-main">
           <div className="shop-toolbar">
