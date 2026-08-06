@@ -33,6 +33,22 @@ interface AdminMessage {
 
 const STATUSES = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']
 
+const SIDEBAR_ITEMS = [
+  { id: 'overview', label: 'Overview', icon: '📊', href: '#overview' },
+  { id: 'users', label: 'Users', icon: '👥', href: '#users' },
+  { id: 'orders', label: 'Orders', icon: '📦', href: '#orders' },
+  { id: 'messages', label: 'Contact Messages', icon: '✉️', href: '#messages' },
+  { id: 'blog', label: 'Blog Posts', icon: '📰', href: '/blog' },
+  { id: 'settings', label: 'Settings', icon: '⚙️', href: '/faq' },
+]
+
+const CARD_ICONS = [
+  { icon: '👥', cls: 'card-orange' },
+  { icon: '📦', cls: 'card-yellow' },
+  { icon: '✉️', cls: 'card-navy' },
+  { icon: '💰', cls: 'card-orange' },
+]
+
 function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString('en-GB', {
     day: 'numeric',
@@ -49,6 +65,8 @@ export default function AdminDashboard() {
   const [orders, setOrders] = useState<AdminOrder[]>([])
   const [messages, setMessages] = useState<AdminMessage[]>([])
   const [error, setError] = useState('')
+  const [active, setActive] = useState('overview')
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const load = useCallback(async () => {
     try {
@@ -104,170 +122,242 @@ export default function AdminDashboard() {
     router.push('/admin/login')
   }
 
+  const handleSidebarItem = (item: (typeof SIDEBAR_ITEMS)[number]) => {
+    setActive(item.id)
+    setSidebarOpen(false)
+  }
+
+  const cards = [
+    { value: users.length, label: 'Registered Users', trend: '+2 this week' },
+    { value: orders.length, label: 'Total Orders', trend: '5 pending' },
+    { value: messages.length, label: 'Contact Messages', trend: 'newest first' },
+    {
+      value: formatBDT(orders.reduce((sum, o) => sum + Number(o.total), 0)),
+      label: 'Ordered Value',
+      trend: 'all time',
+    },
+  ]
+
   return (
     <section className="admin container">
-      <div className="admin-head">
-        <div>
-          <h1 className="admin-title">Admin Dashboard</h1>
-          <p className="admin-sub">
-            {users.length} registered user{users.length === 1 ? '' : 's'} ·{' '}
-            {orders.length} order{orders.length === 1 ? '' : 's'} ·{' '}
-            {messages.length} message{messages.length === 1 ? '' : 's'}
-          </p>
-        </div>
-        <button type="button" className="btn btn-outline" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
-
-      {error && <p className="form-error">{error}</p>}
-
-      <div className="admin-cards">
-        <div className="admin-card">
-          <strong>{users.length}</strong>
-          <span>Registered Users</span>
-        </div>
-        <div className="admin-card">
-          <strong>{orders.length}</strong>
-          <span>Total Orders</span>
-        </div>
-        <div className="admin-card">
-          <strong>{messages.length}</strong>
-          <span>Contact Messages</span>
-        </div>
-        <div className="admin-card">
-          <strong>
-            {formatBDT(orders.reduce((sum, o) => sum + Number(o.total), 0))}
-          </strong>
-          <span>Ordered Value</span>
-        </div>
-      </div>
-
-      <div className="admin-section">
-        <h2>Registered Users</h2>
-        {users.length === 0 ? (
-          <p className="admin-empty">No users yet.</p>
-        ) : (
-          <div className="admin-table-wrap">
-            <table className="admin-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Subscribed</th>
-                  <th>Registered</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((u) => (
-                  <tr key={u.id}>
-                    <td>{u.name}</td>
-                    <td>{u.email}</td>
-                    <td>{u.phone || '—'}</td>
-                    <td>{u.subscribed ? 'Yes' : 'No'}</td>
-                    <td>{fmtDate(u.createdAt)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <div className="admin-shell">
+        <aside className={`admin-sidebar${sidebarOpen ? ' open' : ''}`}>
+          <div className="admin-sidebar-brand">
+            <span className="logo-mark">N</span>
+            TechNest<span>BD</span> Admin
           </div>
-        )}
-      </div>
+          <nav className="admin-sidebar-nav" aria-label="Admin navigation">
+            {SIDEBAR_ITEMS.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className={`admin-sidebar-item${active === item.id ? ' active' : ''}`}
+                onClick={() => handleSidebarItem(item)}
+              >
+                <span className="admin-sidebar-icon" aria-hidden="true">
+                  {item.icon}
+                </span>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="admin-sidebar-foot">
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
+        </aside>
 
-      <div className="admin-section">
-        <h2>Orders</h2>
-        {orders.length === 0 ? (
-          <p className="admin-empty">No orders yet.</p>
-        ) : (
-          <div className="admin-table-wrap">
-            <table className="admin-table">
-              <thead>
-                <tr>
-                  <th>Order ID</th>
-                  <th>Customer</th>
-                  <th>Products</th>
-                  <th>Total</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders.map((o) => (
-                  <tr key={o.id}>
-                    <td>{o.id}</td>
-                    <td>
-                      <strong>{o.contact.name}</strong>
-                      <br />
-                      <small>{o.contact.phone}</small>
-                      {o.contact.email && (
-                        <>
-                          <br />
-                          <small>{o.contact.email}</small>
-                        </>
-                      )}
-                    </td>
-                    <td>
-                      {o.items.map((i) => (
-                        <div key={`${o.id}-${i.name}`}>
-                          <small>
-                            {i.qty} × {i.name} ({formatBDT(i.price)})
-                          </small>
-                        </div>
+        {sidebarOpen && (
+          <div
+            className="admin-sidebar-overlay"
+            aria-hidden="true"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
+        <div className="admin-main">
+          <div className="admin-topbar">
+            <button
+              type="button"
+              className="admin-hamburger"
+              aria-label="Toggle sidebar"
+              onClick={() => setSidebarOpen((v) => !v)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+            <h1 className="admin-title">
+              {SIDEBAR_ITEMS.find((i) => i.id === active)?.label ??
+                'Overview'}
+            </h1>
+            <div className="admin-topbar-right">
+              <button
+                type="button"
+                className="admin-bell"
+                aria-label="Notifications"
+              >
+                🔔
+              </button>
+              <span className="admin-avatar" aria-hidden="true">
+                A
+              </span>
+            </div>
+          </div>
+
+          {error && <p className="form-error">{error}</p>}
+
+          <div className="admin-content">
+            <div className="admin-cards" id="overview">
+              {cards.map((card, i) => (
+                <div className="admin-card" key={card.label}>
+                  <span
+                    className={`admin-card-icon ${CARD_ICONS[i % CARD_ICONS.length].cls}`}
+                    aria-hidden="true"
+                  >
+                    {CARD_ICONS[i % CARD_ICONS.length].icon}
+                  </span>
+                  <strong>{card.value}</strong>
+                  <span>{card.label}</span>
+                  <small className="admin-card-trend">{card.trend}</small>
+                </div>
+              ))}
+            </div>
+
+            <div className="admin-section" id="users">
+              <h2>Registered Users</h2>
+              {users.length === 0 ? (
+                <p className="admin-empty">No users yet.</p>
+              ) : (
+                <div className="admin-table-wrap">
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Subscribed</th>
+                        <th>Registered</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {users.map((u) => (
+                        <tr key={u.id}>
+                          <td>{u.name}</td>
+                          <td>{u.email}</td>
+                          <td>{u.phone || '—'}</td>
+                          <td>{u.subscribed ? 'Yes' : 'No'}</td>
+                          <td>{fmtDate(u.createdAt)}</td>
+                        </tr>
                       ))}
-                    </td>
-                    <td>{formatBDT(o.total)}</td>
-                    <td>{fmtDate(o.placedAt)}</td>
-                    <td>
-                      <select
-                        className="admin-status"
-                        value={o.status}
-                        onChange={(e) => setStatus(o.id, e.target.value)}
-                      >
-                        {STATUSES.map((s) => (
-                          <option key={s} value={s}>
-                            {s}
-                          </option>
-                        ))}
-                      </select>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
+            <div className="admin-section" id="orders">
+              <h2>Orders</h2>
+              {orders.length === 0 ? (
+                <p className="admin-empty">No orders yet.</p>
+              ) : (
+                <div className="admin-table-wrap">
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Products</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {orders.map((o) => (
+                        <tr key={o.id}>
+                          <td>{o.id}</td>
+                          <td>
+                            <strong>{o.contact.name}</strong>
+                            <br />
+                            <small>{o.contact.phone}</small>
+                            {o.contact.email && (
+                              <>
+                                <br />
+                                <small>{o.contact.email}</small>
+                              </>
+                            )}
+                          </td>
+                          <td>
+                            {o.items.map((i) => (
+                              <div key={`${o.id}-${i.name}`}>
+                                <small>
+                                  {i.qty} × {i.name} ({formatBDT(i.price)})
+                                </small>
+                              </div>
+                            ))}
+                          </td>
+                          <td>{formatBDT(o.total)}</td>
+                          <td>{fmtDate(o.placedAt)}</td>
+                          <td>
+                            <select
+                              className={`admin-status status-${o.status}`}
+                              value={o.status}
+                              onChange={(e) => setStatus(o.id, e.target.value)}
+                            >
+                              {STATUSES.map((s) => (
+                                <option key={s} value={s}>
+                                  {s}
+                                </option>
+                              ))}
+                            </select>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
+            <div className="admin-section" id="messages">
+              <h2>Contact Messages</h2>
+              {messages.length === 0 ? (
+                <p className="admin-empty">No messages yet.</p>
+              ) : (
+                <div className="admin-table-wrap">
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Received</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {messages.map((m) => (
+                        <tr key={m.id}>
+                          <td>{m.name}</td>
+                          <td>{m.email}</td>
+                          <td>{m.subject}</td>
+                          <td className="admin-msg-cell">{m.message}</td>
+                          <td>{fmtDate(m.createdAt)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
-        )}
-      </div>
-      <div className="admin-section">
-        <h2>Contact Messages</h2>
-        {messages.length === 0 ? (
-          <p className="admin-empty">No messages yet.</p>
-        ) : (
-          <div className="admin-table-wrap">
-            <table className="admin-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Subject</th>
-                  <th>Message</th>
-                  <th>Received</th>
-                </tr>
-              </thead>
-              <tbody>
-                {messages.map((m) => (
-                  <tr key={m.id}>
-                    <td>{m.name}</td>
-                    <td>{m.email}</td>
-                    <td>{m.subject}</td>
-                    <td className="admin-msg-cell">{m.message}</td>
-                    <td>{fmtDate(m.createdAt)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   )

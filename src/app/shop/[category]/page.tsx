@@ -65,6 +65,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         hideCategoriesMobile={
           view ? ['new-arrivals', 'flash-sale'].includes(view.slug) : false
         }
+        showCountdown={view?.slug === 'flash-sale'}
       />
     </Reveal>
   )

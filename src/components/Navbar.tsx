@@ -10,12 +10,33 @@ import { useAuth } from '@/context/useAuth'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Shop', href: '/shop' },
-  { label: 'New Arrivals', href: '/shop/new-arrivals' },
-  { label: 'Flash Sale', href: '/shop/flash-sale' },
+  { label: 'Deals', href: '/shop/flash-sale' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Blog', href: '/blog' },
+]
+
+const MENU_LINKS = [
+  { icon: '🏠', label: 'Home', href: '/' },
+  { icon: '🛍️', label: 'Shop', href: '/shop' },
+  { icon: '📰', label: 'Blog', href: '/blog' },
+  { icon: '🔥', label: 'Deals', href: '/shop/flash-sale' },
+  { icon: '🆕', label: 'New Arrivals', href: '/shop/new-arrivals' },
+  { icon: '⚡', label: 'Flash Sale', href: '/shop/flash-sale' },
+]
+
+const COMPANY_LINKS = [
+  { icon: 'ℹ️', label: 'About', href: '/about' },
+  { icon: '📞', label: 'Contact', href: '/contact' },
+]
+
+const SIDEBAR_SOCIALS = [
+  { label: 'f', name: 'Facebook', href: 'https://facebook.com' },
+  { label: 'IG', name: 'Instagram', href: 'https://instagram.com' },
+  { label: 'WA', name: 'WhatsApp', href: 'https://wa.me' },
+  { label: 'YT', name: 'YouTube', href: 'https://youtube.com' },
+  { label: 'P', name: 'Pinterest', href: 'https://pinterest.com' },
 ]
 
 export default function Navbar() {
@@ -63,34 +84,108 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false)
 
-  const navList = (
-    <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-      <li className="drawer-head">
-        <span className="drawer-title">Menu</span>
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
+
+  const desktopNavList = (
+    <ul className="nav-links nav-inline">
+      {NAV_LINKS.map((link) => (
+        <li key={link.href}>
+          <Link
+            href={link.href}
+            className={isActive(link.href) ? 'active' : ''}
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+
+  const sidePanel = (
+    <aside
+      className={`side-panel ${menuOpen ? 'open' : ''}`}
+      aria-label="Site navigation"
+      aria-hidden={!menuOpen}
+    >
+      <div className="side-panel-top">
+        <Link href="/" className="side-logo" onClick={closeMenu}>
+          <span className="logo-mark">N</span>
+          TechNest<span>BD</span>
+        </Link>
         <button
           type="button"
-          className="drawer-close"
+          className="side-close"
           aria-label="Close menu"
           onClick={closeMenu}
         >
           ✕
         </button>
-      </li>
-      {NAV_LINKS.map((link) => {
-        const active = pathname === link.href
-        return (
+      </div>
+      <div className="side-divider" />
+
+      <span className="side-label">Menu</span>
+      <ul className="side-links">
+        {MENU_LINKS.map((link) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className={active ? 'active' : ''}
+              className={isActive(link.href) ? 'active' : ''}
               onClick={closeMenu}
             >
+              <span className="side-icon" aria-hidden="true">
+                {link.icon}
+              </span>
               {link.label}
             </Link>
           </li>
-        )
-      })}
-    </ul>
+        ))}
+      </ul>
+
+      <div className="side-divider" />
+      <span className="side-label">Company</span>
+      <ul className="side-links">
+        {COMPANY_LINKS.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className={isActive(link.href) ? 'active' : ''}
+              onClick={closeMenu}
+            >
+              <span className="side-icon" aria-hidden="true">
+                {link.icon}
+              </span>
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="side-foot">
+        <div className="side-socials">
+          {SIDEBAR_SOCIALS.map((s) => (
+            <a
+              key={s.name}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={s.name}
+              className="side-social"
+            >
+              {s.label}
+            </a>
+          ))}
+        </div>
+        <Link
+          href={user ? '/account' : '/login'}
+          className="side-account"
+          onClick={closeMenu}
+        >
+          <span aria-hidden="true">👤</span>
+          {user ? 'My Account' : 'Login / Register'}
+        </Link>
+      </div>
+    </aside>
   )
 
   const overlay = (
@@ -114,13 +209,13 @@ export default function Navbar() {
             TechNest<span>BD</span>
           </Link>
 
-          {!isMobile && navList}
+          {!isMobile && desktopNavList}
 
           {typeof document !== 'undefined' &&
-            isMobile &&
+            menuOpen &&
             createPortal(
               <>
-                {navList}
+                {sidePanel}
                 {overlay}
               </>,
               document.body,
@@ -150,6 +245,7 @@ export default function Navbar() {
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
+                  strokeLinejoin="round"
                   aria-hidden="true"
                 >
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -193,7 +289,8 @@ export default function Navbar() {
             <button
               type="button"
               className={`menu-toggle ${menuOpen ? 'open' : ''}`}
-              aria-label="Menu"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
               onClick={() => setMenuOpen((open) => !open)}
             >
               <span />

@@ -9,6 +9,8 @@ import ProductCard from './ProductCard'
 import { useCart } from '@/context/useCart'
 import Collapsible from './ui/Collapsible'
 import CategoryScrollHint from './CategoryScrollHint'
+import CountdownTimer from './ui/CountdownTimer'
+import { useEffect } from 'react'
 
 interface ShopCatalogProps {
   products: Product[]
@@ -16,6 +18,7 @@ interface ShopCatalogProps {
   viewTitle: string
   viewDescription: string
   hideCategoriesMobile?: boolean
+  showCountdown?: boolean
 }
 
 type SortKey = 'popular' | 'price-asc' | 'price-desc' | 'rating'
@@ -27,16 +30,20 @@ const SORT_OPTIONS: { value: SortKey; label: string }[] = [
   { value: 'rating', label: 'Top Rated' },
 ]
 
+const PER_PAGE = 8
+
 export default function ShopCatalog({
   products,
   activeSlug,
   viewTitle,
   viewDescription,
   hideCategoriesMobile = false,
+  showCountdown = false,
 }: ShopCatalogProps) {
   const { addToCart } = useCart()
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState<SortKey>('popular')
+  const [page, setPage] = useState(1)
 
   const filtered = useMemo(() => {
     let list = products
@@ -61,6 +68,17 @@ export default function ShopCatalog({
       }
     })
   }, [products, query, sort])
+
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PER_PAGE))
+  const safePage = Math.min(page, pageCount)
+  const currentPage = filtered.slice(
+    (safePage - 1) * PER_PAGE,
+    safePage * PER_PAGE,
+  )
+
+  useEffect(() => {
+    setPage(1)
+  }, [query, sort, products])
 
   const sidebarLinks = (
     <ul className="sidebar-links">
@@ -123,6 +141,14 @@ export default function ShopCatalog({
 
   return (
     <section className="shop">
+      {showCountdown && (
+        <div className="flash-countdown-bar">
+          <div className="container flash-countdown-inner">
+            <span className="flash-countdown-label">⚡ Flash Sale ends in</span>
+            <CountdownTimer />
+          </div>
+        </div>
+      )}
       <div
         className={`container shop-layout${hideCategoriesMobile ? ' shop-hide-cats-mobile' : ''}`}
       >
@@ -180,15 +206,52 @@ export default function ShopCatalog({
               <p>Try a different search term or browse another category.</p>
             </div>
           ) : (
-            <div className="product-grid shop-grid">
-              {filtered.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onAddToCart={addToCart}
-                />
-              ))}
-            </div>
+            <>
+              <div className="product-grid shop-grid">
+                {currentPage.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    onAddToCart={addToCart}
+                  />
+                ))}
+              </div>
+
+              {pageCount > 1 && (
+                <nav className="pagination" aria-label="Pagination">
+                  <button
+                    type="button"
+                    className="pagination-arrow"
+                    disabled={safePage === 1}
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    aria-label="Previous page"
+                  >
+                    ‹
+                  </button>
+                  {Array.from({ length: pageCount }).map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      className={`pagination-num${i + 1 === safePage ? ' active' : ''}`}
+                      onClick={() => setPage(i + 1)}
+                      aria-label={`Page ${i + 1}`}
+                      aria-current={i + 1 === safePage ? 'page' : undefined}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                  <button
+                    type="button"
+                    className="pagination-arrow"
+                    disabled={safePage === pageCount}
+                    onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
+                    aria-label="Next page"
+                  >
+                    ›
+                  </button>
+                </nav>
+              )}
+            </>
           )}
 
           <p className="result-count">

@@ -25,18 +25,32 @@ export default function ContactPage() {
       />
 
       <section className="contact container">
-        <div className="contact-channels">
-          {CHANNELS.map((channel) => (
-            <div className="channel-card" key={channel.title}>
-              <span className="feature-icon">{channel.icon}</span>
-              <h3>{channel.title}</h3>
-              <p className="channel-detail">{channel.detail}</p>
-              <small>{channel.note}</small>
-            </div>
-          ))}
-        </div>
+        <div className="contact-layout">
+          <ContactForm />
 
-        <ContactForm />
+          <aside className="contact-info">
+            <h3>Get in Touch</h3>
+            <div className="contact-channels">
+              {CHANNELS.map((channel) => (
+                <div className="channel-card" key={channel.title}>
+                  <span className="feature-icon">{channel.icon}</span>
+                  <div>
+                    <h4>{channel.title}</h4>
+                    <p className="channel-detail">{channel.detail}</p>
+                    <small>{channel.note}</small>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="contact-socials" aria-label="Social media">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">f</a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>
+              <a href="https://wa.me" target="_blank" rel="noreferrer" aria-label="WhatsApp">WA</a>
+              <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>
+              <a href="https://pinterest.com" target="_blank" rel="noreferrer" aria-label="Pinterest">P</a>
+            </div>
+          </aside>
+        </div>
       </section>
     </>
   )

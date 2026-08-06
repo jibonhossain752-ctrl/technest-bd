@@ -17,9 +17,16 @@ const MENU = [
   { href: '/blog', label: '📰 Blog' },
 ]
 
+const TABS = [
+  { id: 'profile', label: 'Profile' },
+  { id: 'orders', label: 'Orders' },
+  { id: 'settings', label: 'Settings' },
+]
+
 export default function AccountPage() {
   const { user, logout } = useAuth()
   const router = useRouter()
+  const [tab, setTab] = useState('profile')
 
   const initials = useMemo(() => {
     if (!user) return 'TN'
@@ -56,55 +63,88 @@ export default function AccountPage() {
 
       <section className="account container">
         <div className="account-card">
+          <div className="account-tabs" role="tablist" aria-label="Account sections">
+            {TABS.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                role="tab"
+                aria-selected={tab === t.id}
+                className={`account-tab${tab === t.id ? ' active' : ''}`}
+                onClick={() => setTab(t.id)}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+
           {user ? (
             <>
-              <div className="account-user">
-                <span className="avatar avatar-lg">{initials}</span>
-                <div>
-                  <h2>{user.name}</h2>
-                  <p className="account-email">{user.email}</p>
-                  {user.phone && <p className="account-phone">📞 {user.phone}</p>}
-                  <p className="account-since">
-                    Member since{' '}
-                    {new Date(user.createdAt).toLocaleDateString('en-GB', {
-                      day: 'numeric',
-                      month: 'short',
-                      year: 'numeric',
-                    })}
+              {tab === 'profile' && (
+                <div className="account-user">
+                  <span className="avatar avatar-lg">{initials}</span>
+                  <div>
+                    <h2>{user.name}</h2>
+                    <p className="account-email">{user.email}</p>
+                    {user.phone && <p className="account-phone">📞 {user.phone}</p>}
+                    <p className="account-since">
+                      Member since{' '}
+                      {new Date(user.createdAt).toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric',
+                      })}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {tab === 'orders' && (
+                <div className="account-section">
+                  <h3>My Orders</h3>
+                  {orders.length === 0 ? (
+                    <p className="account-empty">
+                      You have no orders yet.{' '}
+                      <Link href="/shop">Start shopping</Link>
+                    </p>
+                  ) : (
+                    <div className="order-list">
+                      {orders.map((order) => (
+                        <div className="order-row" key={order.id}>
+                          <div>
+                            <strong>{order.id}</strong>
+                            <small>
+                              {new Date(order.placedAt).toLocaleDateString('en-GB', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric',
+                              })}
+                            </small>
+                          </div>
+                          <span className="order-items">
+                            {order.items.reduce((sum, i) => sum + i.qty, 0)} item(s)
+                          </span>
+                          <span className={`status-badge status-${order.status}`}>
+                            {order.status}
+                          </span>
+                          <strong>{formatBDT(order.total)}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {tab === 'settings' && (
+                <div className="account-section">
+                  <h3>Settings</h3>
+                  <p className="account-empty">
+                    Account preferences are managed from your profile. For
+                    password or data changes,{' '}
+                    <Link href="/contact">contact support</Link>.
                   </p>
                 </div>
-              </div>
-
-              <div className="account-section">
-                <h3>My Orders</h3>
-                {orders.length === 0 ? (
-                  <p className="account-empty">
-                    You have no orders yet.{' '}
-                    <Link href="/shop">Start shopping</Link>
-                  </p>
-                ) : (
-                  <div className="order-list">
-                    {orders.map((order) => (
-                      <div className="order-row" key={order.id}>
-                        <div>
-                          <strong>{order.id}</strong>
-                          <small>
-                            {new Date(order.placedAt).toLocaleDateString('en-GB', {
-                              day: 'numeric',
-                              month: 'short',
-                              year: 'numeric',
-                            })}
-                          </small>
-                        </div>
-                        <span className="order-items">
-                          {order.items.reduce((sum, i) => sum + i.qty, 0)} item(s)
-                        </span>
-                        <strong>{formatBDT(order.total)}</strong>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              )}
 
               <div className="account-grid">
                 {MENU.map((item) => (

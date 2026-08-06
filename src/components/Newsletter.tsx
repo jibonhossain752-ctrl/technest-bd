@@ -17,7 +17,7 @@ export default function Newsletter() {
   return (
     <section className="newsletter">
       <div className="container newsletter-card">
-        <h2>Stay Updated</h2>
+        <h2>Get Weekly Gadget Deals 🔥</h2>
         <p>Subscribe for exclusive deals, new arrivals and tech tips.</p>
         <form className="newsletter-form" onSubmit={handleSubmit}>
           <input
@@ -26,10 +26,13 @@ export default function Newsletter() {
             placeholder="Enter your email"
             required
           />
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-accent">
             Subscribe
           </button>
         </form>
+        <small className="newsletter-note">
+          We respect your privacy. Unsubscribe anytime.
+        </small>
         {status === 'success' && (
           <p className="newsletter-msg success">
             Thanks for subscribing! Stay tuned for deals. 🎉

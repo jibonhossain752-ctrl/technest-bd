@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { POSTS, getPostBySlug } from '@/data/posts'
+import BlogCard from '@/components/BlogCard'
+import { categoryBadgeClass } from '@/data/blogCategories'
+import ShareButtons from '@/components/ShareButtons'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -28,24 +31,66 @@ function formatDate(date: string) {
   })
 }
 
+interface Deal {
+  product: string
+  emoji: string
+  price: string
+  href: string
+}
+
+const DEAL_POSTS: Record<string, Deal[]> = {
+  'how-to-choose-the-perfect-laptop-in-2026': [
+    {
+      product: 'Apple MacBook Air M2',
+      emoji: '💻',
+      price: '৳1,29,000',
+      href: '/product/apple-macbook-air-m2',
+    },
+  ],
+  'top-5-budget-smartphones-this-month': [
+    {
+      product: 'Xiaomi Redmi Note 13 Pro',
+      emoji: '📱',
+      price: '৳32,999',
+      href: '/shop/smartphones',
+    },
+  ],
+  'buying-guide-gaming-gear-in-bangladesh': [
+    {
+      product: 'Mechanical Gaming Keyboard',
+      emoji: '⌨️',
+      price: '৳6,499',
+      href: '/shop/gaming',
+    },
+  ],
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
   const related = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3)
+  const deals = DEAL_POSTS[post.slug] ?? []
 
   return (
     <>
       <article className="blog-post container">
         <header className="blog-post-header">
-          <span className="blog-cat">{post.category}</span>
+          <span className={`blog-card-badge ${categoryBadgeClass(post.category)}`}>
+            {post.category}
+          </span>
           <h1>{post.title}</h1>
           <p className="blog-post-excerpt">{post.excerpt}</p>
           <div className="blog-meta">
-            <span>✍️ {post.author}</span>
-            <span>📅 {formatDate(post.date)}</span>
-            <span>⏱ {post.readTime}</span>
+            <span className="blog-meta-avatar" aria-hidden="true">
+              {post.author.charAt(0)}
+            </span>
+            <span>{post.author}</span>
+            <span aria-hidden="true">•</span>
+            <span>{formatDate(post.date)}</span>
+            <span aria-hidden="true">•</span>
+            <span>{post.readTime}</span>
           </div>
         </header>
 
@@ -57,30 +102,47 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {post.content.map((paragraph, i) => (
             <p key={i}>{paragraph}</p>
           ))}
+
+          {deals.length > 0 && (
+            <>
+              <p className="affiliate-disclosure">
+                As an Amazon Associate, I earn from qualifying purchases.
+              </p>
+              {deals.map((deal) => (
+                <div className="deal-card-inline" key={deal.product}>
+                  <span className="deal-card-inline-img" aria-hidden="true">
+                    {deal.emoji}
+                  </span>
+                  <div className="deal-card-inline-info">
+                    <strong>{deal.product}</strong>
+                    <span className="deal-card-inline-price">{deal.price}</span>
+                  </div>
+                  <Link
+                    href={deal.href}
+                    className="btn btn-accent deal-card-inline-cta"
+                  >
+                    Check Price on Amazon
+                  </Link>
+                </div>
+              ))}
+            </>
+          )}
         </div>
 
         <div className="blog-share">
-          <Link href="/blog" className="btn btn-outline">
-            ← Back to Blog
-          </Link>
+          <span className="blog-share-label">Share this post:</span>
+          <ShareButtons title={post.title} slug={post.slug} />
         </div>
       </article>
 
       <section className="related-posts">
         <div className="container">
           <div className="section-head">
-            <h2>More From the Blog</h2>
+            <h2>Related Posts</h2>
           </div>
           <div className="blog-grid">
             {related.map((p) => (
-              <Link href={`/blog/${p.slug}`} className="blog-card" key={p.slug}>
-                <div className="blog-card-emoji">{p.emoji}</div>
-                <div className="blog-card-body">
-                  <span className="blog-cat">{p.category}</span>
-                  <h3>{p.title}</h3>
-                  <p>{p.excerpt}</p>
-                </div>
-              </Link>
+              <BlogCard key={p.slug} post={p} />
             ))}
           </div>
         </div>

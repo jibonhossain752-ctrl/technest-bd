@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import HeroCarousel from '@/components/HeroCarousel'
-import BrandStrip from '@/components/BrandStrip'
-import CategoryGrid from '@/components/CategoryGrid'
-import FlashSale from '@/components/FlashSale'
+import StaticHero from '@/components/StaticHero'
+import QuickPills from '@/components/QuickPills'
+import LatestBlogPosts from '@/components/LatestBlogPosts'
+import DealSpotlight from '@/components/DealSpotlight'
 import FeaturedProducts from '@/components/FeaturedProducts'
-import NewArrivals from '@/components/NewArrivals'
+import Newsletter from '@/components/Newsletter'
+import HomeCategoryStrip from '@/components/HomeCategoryStrip'
 import WhyChooseUs from '@/components/WhyChooseUs'
 import Testimonials from '@/components/Testimonials'
-import Newsletter from '@/components/Newsletter'
 import Reveal from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
@@ -19,28 +19,28 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="home">
-      <HeroCarousel />
-      <BrandStrip />
-      <Reveal className="reveal-categories" delay={0.05}>
-        <CategoryGrid />
+      <StaticHero />
+      <QuickPills />
+      <Reveal className="reveal-blog-posts" delay={0.05}>
+        <LatestBlogPosts />
       </Reveal>
-      <Reveal className="reveal-flash" delay={0.1}>
-        <FlashSale />
-      </Reveal>
-      <Reveal className="reveal-new-arrivals" delay={0.1}>
-        <NewArrivals />
+      <Reveal className="reveal-deal-spotlight" delay={0.05}>
+        <DealSpotlight />
       </Reveal>
       <Reveal className="reveal-featured" delay={0.05}>
         <FeaturedProducts />
+      </Reveal>
+      <Reveal className="reveal-newsletter" delay={0.05}>
+        <Newsletter />
+      </Reveal>
+      <Reveal className="reveal-categories" delay={0.05}>
+        <HomeCategoryStrip />
       </Reveal>
       <Reveal className="reveal-why" delay={0.05}>
         <WhyChooseUs />
       </Reveal>
       <Reveal className="reveal-testimonials" delay={0.1}>
         <Testimonials />
-      </Reveal>
-      <Reveal className="reveal-newsletter" delay={0.05}>
-        <Newsletter />
       </Reveal>
     </div>
   )

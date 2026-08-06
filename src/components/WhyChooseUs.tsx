@@ -6,24 +6,24 @@ interface Feature {
 
 const FEATURES: Feature[] = [
   {
+    icon: '⭐',
+    title: 'Genuine Reviews',
+    desc: 'Real, tested opinions from our team — never paid placements.',
+  },
+  {
+    icon: '✅',
+    title: 'Verified Deals',
+    desc: 'Every price checked against the market before we publish it.',
+  },
+  {
     icon: '🚚',
     title: 'Fast Delivery',
     desc: 'Nationwide delivery within 24-72 hours.',
   },
   {
-    icon: '✅',
-    title: 'Genuine Products',
-    desc: '100% authentic, sourced from official distributors.',
-  },
-  {
     icon: '💬',
     title: '24/7 Support',
     desc: 'Our team is always here to help you.',
-  },
-  {
-    icon: '🔁',
-    title: 'Easy Return',
-    desc: 'Hassle-free 7-day exchange and returns.',
   },
 ]
 
@@ -32,8 +32,8 @@ export default function WhyChooseUs() {
     <section className="why-us" id="why-us">
       <div className="container">
         <div className="section-head">
-          <h2>Why Choose TechNest BD</h2>
-          <p>We make shopping smarter, safer and faster</p>
+          <h2>Why Trust Us</h2>
+          <p>Honest reviews, real deals and support that never sleeps</p>
         </div>
         <div className="feature-grid">
           {FEATURES.map((feature) => (
