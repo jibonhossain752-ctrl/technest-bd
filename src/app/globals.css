@@ -6115,7 +6115,7 @@ button {
     padding: 20px 0 4px;
   }
 
-  .home-blog-grid {
+  .blog-grid.home-blog-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
