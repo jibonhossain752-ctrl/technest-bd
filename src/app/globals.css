@@ -4538,7 +4538,7 @@ button {
   font-weight: 800;
 }
 
-.home-blog-grid {
+.blog-grid.home-blog-grid {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
