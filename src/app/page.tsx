@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import StaticHero from '@/components/StaticHero'
 import QuickPills from '@/components/QuickPills'
 import LatestBlogPosts from '@/components/LatestBlogPosts'
-import DealSpotlight from '@/components/DealSpotlight'
+import WatchAndShop from '@/components/WatchAndShop'
 import FeaturedProducts from '@/components/FeaturedProducts'
 import Newsletter from '@/components/Newsletter'
 import HomeCategoryStrip from '@/components/HomeCategoryStrip'
@@ -24,8 +24,8 @@ export default function HomePage() {
       <Reveal className="reveal-blog-posts" delay={0.05}>
         <LatestBlogPosts />
       </Reveal>
-      <Reveal className="reveal-deal-spotlight" delay={0.05}>
-        <DealSpotlight />
+      <Reveal className="reveal-watch-shop" delay={0.05}>
+        <WatchAndShop />
       </Reveal>
       <Reveal className="reveal-featured" delay={0.05}>
         <FeaturedProducts />

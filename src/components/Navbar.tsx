@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Blog', href: '/blog' },
   { label: 'Shop', href: '/shop' },
-  { label: 'Deals', href: '/shop/flash-sale' },
+  { label: 'Deals', href: '/deals' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -21,7 +21,7 @@ const MENU_LINKS = [
   { icon: '🏠', label: 'Home', href: '/' },
   { icon: '🛍️', label: 'Shop', href: '/shop' },
   { icon: '📰', label: 'Blog', href: '/blog' },
-  { icon: '🔥', label: 'Deals', href: '/shop/flash-sale' },
+  { icon: '🔥', label: 'Deals', href: '/deals' },
   { icon: '🆕', label: 'New Arrivals', href: '/shop/new-arrivals' },
   { icon: '⚡', label: 'Flash Sale', href: '/shop/flash-sale' },
 ]
@@ -43,6 +43,7 @@ export default function Navbar() {
   const { count } = useCart()
   const { user } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [deskSidebarOpen, setDeskSidebarOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [avatar, setAvatar] = useState<string | null>(null)
   const pathname = usePathname()
@@ -196,6 +197,130 @@ export default function Navbar() {
     />
   )
 
+  const deskOverlay = (
+    <div
+      className={`desk-overlay ${deskSidebarOpen ? 'open' : ''}`}
+      aria-hidden="true"
+      onClick={() => setDeskSidebarOpen(false)}
+    />
+  )
+
+  const deskPanel = (
+    <aside
+      className={`desk-panel ${deskSidebarOpen ? 'open' : ''}`}
+      aria-label="Community & links"
+    >
+      <div className="desk-panel-head">
+        <span className="desk-panel-title">Explore</span>
+        <button
+          type="button"
+          className="desk-panel-close"
+          aria-label="Close panel"
+          onClick={() => setDeskSidebarOpen(false)}
+        >
+          ✕
+        </button>
+      </div>
+
+      <span className="side-label">Menu</span>
+      <ul className="side-links">
+        {[
+          { icon: '🏠', label: 'Home', href: '/' },
+          { icon: '🆕', label: 'New Arrivals', href: '/shop/new-arrivals' },
+          { icon: '⚡', label: 'Flash Sale', href: '/shop/flash-sale' },
+        ].map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className={isActive(link.href) ? 'active' : ''}
+              onClick={() => setDeskSidebarOpen(false)}
+            >
+              <span className="side-icon" aria-hidden="true">
+                {link.icon}
+              </span>
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="side-divider" />
+      <span className="side-label desk-community-label">Community</span>
+      <a
+        href="https://wa.me"
+        target="_blank"
+        rel="noreferrer"
+        className="desk-community-link"
+      >
+        <span className="desk-community-icon" aria-hidden="true">
+          💬
+        </span>
+        Join WhatsApp Community
+      </a>
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        rel="noreferrer"
+        className="desk-community-link"
+      >
+        <span className="desk-community-icon" aria-hidden="true">
+          👍
+        </span>
+        Join Facebook Community
+      </a>
+
+      <div className="desk-newsletter-mini">
+        <h4>Newsletter Quick Subscribe</h4>
+        <div className="desk-nl-form">
+          <input
+            type="email"
+            placeholder="Your email"
+            aria-label="Email for newsletter"
+          />
+          <button type="submit" className="btn btn-accent desk-nl-btn">
+            Subscribe
+          </button>
+        </div>
+      </div>
+
+      <div className="side-divider" />
+      <span className="side-label">Company</span>
+      <ul className="side-links">
+        {COMPANY_LINKS.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className={isActive(link.href) ? 'active' : ''}
+              onClick={() => setDeskSidebarOpen(false)}
+            >
+              <span className="side-icon" aria-hidden="true">
+                {link.icon}
+              </span>
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="desk-panel-foot">
+        <div className="side-socials">
+          {SIDEBAR_SOCIALS.map((s) => (
+            <a
+              key={s.name}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={s.name}
+              className="side-social"
+            >
+              {s.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </aside>
+  )
+
   return (
     <header className="header">
       <div className="topbar">
@@ -212,11 +337,23 @@ export default function Navbar() {
           {!isMobile && desktopNavList}
 
           {typeof document !== 'undefined' &&
+            isMobile &&
             menuOpen &&
             createPortal(
               <>
                 {sidePanel}
                 {overlay}
+              </>,
+              document.body,
+            )}
+
+          {typeof document !== 'undefined' &&
+            !isMobile &&
+            deskSidebarOpen &&
+            createPortal(
+              <>
+                {deskPanel}
+                {deskOverlay}
               </>,
               document.body,
             )}
@@ -286,17 +423,31 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </Link>
-            <button
-              type="button"
-              className={`menu-toggle ${menuOpen ? 'open' : ''}`}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((open) => !open)}
-            >
-              <span />
-              <span />
-              <span />
-            </button>
+            {!isMobile && (
+              <button
+                type="button"
+                className={`desk-more-btn ${deskSidebarOpen ? 'open' : ''}`}
+                aria-label="More"
+                onClick={() => setDeskSidebarOpen((open) => !open)}
+              >
+                <span />
+                <span />
+                <span />
+              </button>
+            )}
+            {isMobile && (
+              <button
+                type="button"
+                className={`menu-toggle ${menuOpen ? 'open' : ''}`}
+                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen((open) => !open)}
+              >
+                <span />
+                <span />
+                <span />
+              </button>
+            )}
           </div>
         </div>
       </nav>
