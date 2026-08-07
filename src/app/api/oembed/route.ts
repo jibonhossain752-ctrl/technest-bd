@@ -18,6 +18,9 @@ const FACEBOOK_POST_ENDPOINT = 'https://graph.facebook.com/v25.0/oembed_post?url
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
 
+const BOT_UA =
+  'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+
 function decodeEntities(s: string): string {
   return s
     .replace(/&amp;/g, '&')
@@ -30,9 +33,9 @@ function decodeEntities(s: string): string {
     .replace(/\\\//g, '/')
 }
 
-async function fetchText(url: string): Promise<{ ok: boolean; status: number; text: string }> {
+async function fetchText(url: string, ua: string = UA): Promise<{ ok: boolean; status: number; text: string }> {
   const res = await fetch(url, {
-    headers: { 'User-Agent': UA },
+    headers: { 'User-Agent': ua },
     signal: AbortSignal.timeout(12000),
     next: { revalidate: CACHE_SECONDS },
   })
@@ -52,8 +55,8 @@ function extractOg(html: string): { title: string | null; image: string | null }
 }
 
 function facebookVideoId(url: string): string | null {
-  const m = url.match(/(?:reel|watch|videos)\/?[\w/=]*(?:v=)?(\d{10,})/)
-  return m ? m[1] : null
+  const m = url.match(/(?:reel|videos)\/(\d{10,})|watch\?v=(\d{10,})/)
+  return m ? (m[1] ?? m[2]) : null
 }
 
 function normalizeSlashes(s: string): string {
@@ -65,6 +68,11 @@ function extractCoverImage(html: string): string | null {
   return m ? normalizeSlashes(m[0]) : null
 }
 
+function cleanInstagramTitle(title: string): string {
+  const t = title.replace(/^.*?on Instagram:\s*"?/, '').replace(/"+$/, '').trim()
+  return t || title
+}
+
 async function scrapeInstagram(
   url: string,
   debug?: string[],
@@ -73,25 +81,35 @@ async function scrapeInstagram(
   const code = url.match(/instagram\.com\/(?:reel|p|tv|stories)\/([A-Za-z0-9_-]+)/)?.[1] ?? ''
   if (!code) return { title: null, thumbnail: null }
   const variants = [
-    `https://www.instagram.com/${type}/${code}/embed/captioned/`,
-    `https://www.instagram.com/${type}/${code}/embed/`,
-    `https://www.instagram.com/p/${code}/embed/captioned/`,
+    { url: `https://www.instagram.com/${type}/${code}/`, kind: 'og' as const },
+    { url: `https://www.instagram.com/${type}/${code}/embed/captioned/`, kind: 'thumb' as const },
+    { url: `https://www.instagram.com/p/${code}/embed/captioned/`, kind: 'thumb' as const },
   ]
-  for (const target of variants) {
+  let title: string | null = null
+  let thumbnail: string | null = null
+  for (const variant of variants) {
     try {
-      const { ok, status, text } = await fetchText(target)
-      debug?.push(`ig ${status} ${target} len=${text.length}`)
+      const { ok, status, text } = await fetchText(variant.url, BOT_UA)
+      debug?.push(`ig ${status} ${variant.url} len=${text.length}`)
       if (!ok) continue
-      const thumb =
-        text.match(/src="(https:\/\/[^"]*scontent[^"]*\.(?:jpg|png)[^"]*)"/i)?.[1] ?? null
-      if (thumb) return { title: null, thumbnail: normalizeSlashes(thumb) }
+      if (variant.kind === 'og') {
+        const og = extractOg(text)
+        if (og.title) title = cleanInstagramTitle(og.title)
+        if (og.image) thumbnail = og.image
+      } else {
+        const thumb =
+          text.match(/src="(https:\/\/[^"]*scontent[^"]*\.(?:jpg|png)[^"]*)"/i)?.[1] ?? null
+        if (thumb) thumbnail = normalizeSlashes(thumb)
+      }
+      if (title && thumbnail) break
     } catch (err) {
-      debug?.push(`ig ERR ${target}: ${String(err).slice(0, 120)}`)
+      debug?.push(`ig ERR ${variant.url}: ${String(err).slice(0, 120)}`)
     }
   }
-  debug?.push('ig: no thumbnail from any surface')
-  console.error(`[oembed] instagram: no media obtainable token-free for ${url}`)
-  return { title: null, thumbnail: null }
+  if (!title && !thumbnail) {
+    console.error(`[oembed] instagram: no media obtainable token-free for ${url}`)
+  }
+  return { title, thumbnail }
 }
 
 async function scrapeFacebook(
@@ -99,20 +117,20 @@ async function scrapeFacebook(
   debug?: string[],
 ): Promise<{ title: string | null; thumbnail: string | null }> {
   const videoId = facebookVideoId(url)
-  const surfaces: { url: string; kind: 'og' | 'cover' }[] = videoId
+  const surfaces: { url: string; kind: 'og' | 'cover'; ua: string }[] = videoId
     ? [
-        { url: `https://www.facebook.com/watch?v=${videoId}`, kind: 'og' },
-        { url: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}`, kind: 'cover' },
+        { url: `https://www.facebook.com/watch?v=${videoId}`, kind: 'og', ua: BOT_UA },
+        { url: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}`, kind: 'cover', ua: UA },
       ]
     : [
-        { url, kind: 'og' },
-        { url: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}`, kind: 'cover' },
+        { url, kind: 'og', ua: BOT_UA },
+        { url: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}`, kind: 'cover', ua: UA },
       ]
   let title: string | null = null
   let thumbnail: string | null = null
   for (const surface of surfaces) {
     try {
-      const { ok, status, text } = await fetchText(surface.url)
+      const { ok, status, text } = await fetchText(surface.url, surface.ua)
       debug?.push(`fb ${status} ${surface.url} len=${text.length}`)
       if (!ok) continue
       if (surface.kind === 'og') {
