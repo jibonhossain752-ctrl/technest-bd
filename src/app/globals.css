@@ -6885,6 +6885,9 @@ button {
     flex-direction: column;
     align-items: flex-start;
   }
+  .deals-cta-text {
+    flex: 0 0 auto;
+  }
   .deals-cta-btn {
     width: 100%;
     text-align: center;
