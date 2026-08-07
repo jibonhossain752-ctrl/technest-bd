@@ -69,7 +69,7 @@ function extractCoverImage(html: string): string | null {
 }
 
 function cleanInstagramTitle(title: string): string {
-  const t = title.replace(/^.*?on Instagram:\s*"?/, '').replace(/"+$/, '').trim()
+  const t = title.replace(/^.*?on Instagram:\s*"?/, '').split('\n')[0].replace(/"+$/, '').trim()
   return t || title
 }
 
