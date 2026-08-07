@@ -33,15 +33,6 @@ interface AdminMessage {
 
 const STATUSES = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']
 
-const SIDEBAR_ITEMS = [
-  { id: 'overview', label: 'Overview', icon: '📊', href: '#overview' },
-  { id: 'users', label: 'Users', icon: '👥', href: '#users' },
-  { id: 'orders', label: 'Orders', icon: '📦', href: '#orders' },
-  { id: 'messages', label: 'Contact Messages', icon: '✉️', href: '#messages' },
-  { id: 'blog', label: 'Blog Posts', icon: '📰', href: '/blog' },
-  { id: 'settings', label: 'Settings', icon: '⚙️', href: '/faq' },
-]
-
 const CARD_ICONS = [
   { icon: '👥', cls: 'card-orange' },
   { icon: '📦', cls: 'card-yellow' },
@@ -65,8 +56,6 @@ export default function AdminDashboard() {
   const [orders, setOrders] = useState<AdminOrder[]>([])
   const [messages, setMessages] = useState<AdminMessage[]>([])
   const [error, setError] = useState('')
-  const [active, setActive] = useState('overview')
-  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const load = useCallback(async () => {
     try {
@@ -122,11 +111,6 @@ export default function AdminDashboard() {
     router.push('/admin/login')
   }
 
-  const handleSidebarItem = (item: (typeof SIDEBAR_ITEMS)[number]) => {
-    setActive(item.id)
-    setSidebarOpen(false)
-  }
-
   const cards = [
     { value: users.length, label: 'Registered Users', trend: '+2 this week' },
     { value: orders.length, label: 'Total Orders', trend: '5 pending' },
@@ -141,61 +125,9 @@ export default function AdminDashboard() {
   return (
     <section className="admin container">
       <div className="admin-shell">
-        <aside className={`admin-sidebar${sidebarOpen ? ' open' : ''}`}>
-          <div className="admin-sidebar-brand">
-            <span className="logo-mark">N</span>
-            TechNest<span>BD</span> Admin
-          </div>
-          <nav className="admin-sidebar-nav" aria-label="Admin navigation">
-            {SIDEBAR_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className={`admin-sidebar-item${active === item.id ? ' active' : ''}`}
-                onClick={() => handleSidebarItem(item)}
-              >
-                <span className="admin-sidebar-icon" aria-hidden="true">
-                  {item.icon}
-                </span>
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <div className="admin-sidebar-foot">
-            <button
-              type="button"
-              className="btn btn-outline"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          </div>
-        </aside>
-
-        {sidebarOpen && (
-          <div
-            className="admin-sidebar-overlay"
-            aria-hidden="true"
-            onClick={() => setSidebarOpen(false)}
-          />
-        )}
-
         <div className="admin-main">
           <div className="admin-topbar">
-            <button
-              type="button"
-              className="admin-hamburger"
-              aria-label="Toggle sidebar"
-              onClick={() => setSidebarOpen((v) => !v)}
-            >
-              <span />
-              <span />
-              <span />
-            </button>
-            <h1 className="admin-title">
-              {SIDEBAR_ITEMS.find((i) => i.id === active)?.label ??
-                'Overview'}
-            </h1>
+            <h1 className="admin-title">Overview</h1>
             <div className="admin-topbar-right">
               <button
                 type="button"
@@ -207,6 +139,13 @@ export default function AdminDashboard() {
               <span className="admin-avatar" aria-hidden="true">
                 A
               </span>
+              <button
+                type="button"
+                className="btn btn-outline"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
             </div>
           </div>
 

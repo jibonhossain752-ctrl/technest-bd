@@ -5657,6 +5657,16 @@ button {
   width: 100%;
 }
 
+.checkout-form .checkbox-option input,
+.checkout-form .radio-option input {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
 .contact-form-wrap .btn-primary {
   background: var(--accent);
   border: none;
@@ -5913,79 +5923,7 @@ button {
 
 /* ---------- Admin ---------- */
 .admin-shell {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-}
-
-.admin-sidebar {
-  width: 235px;
-  background: var(--primary);
-  border-radius: 14px;
-  padding: 20px 12px 16px;
-  position: sticky;
-  top: 126px;
-  flex-shrink: 0;
-}
-
-.admin-sidebar-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #fff;
-  font-weight: 800;
-  font-size: 0.95rem;
-  padding: 0 10px 18px;
-}
-
-.admin-sidebar-nav {
-  display: flex;
-  flex-direction: column;
-}
-
-.admin-sidebar-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: rgba(255, 255, 255, 0.8);
-  padding: 11px 12px;
-  border-radius: 10px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  border-left: 3px solid transparent;
-  margin-bottom: 2px;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.admin-sidebar-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-.admin-sidebar-item.active {
-  background: rgba(255, 107, 53, 0.18);
-  color: #fff;
-  border-left-color: var(--accent);
-  font-weight: 700;
-}
-
-.admin-sidebar-icon {
-  width: 22px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.admin-sidebar-foot {
-  padding: 14px 10px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  margin-top: 12px;
-}
-
-.admin-sidebar-foot .btn-outline {
-  width: 100%;
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.35);
-  color: #fff;
+  display: block;
 }
 
 .admin-main {
@@ -6003,26 +5941,6 @@ button {
   padding: 12px 18px;
   margin-bottom: 20px;
   box-shadow: var(--shadow);
-}
-
-.admin-hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  width: 38px;
-  height: 38px;
-  background: var(--bg-soft);
-  border: none;
-  border-radius: 8px;
-}
-
-.admin-hamburger span {
-  width: 18px;
-  height: 2px;
-  background: var(--primary);
-  border-radius: 2px;
 }
 
 .admin-topbar .admin-title {
@@ -6371,38 +6289,6 @@ button {
   .order-row {
     flex-wrap: wrap;
     gap: 10px;
-  }
-
-  .admin-shell {
-    flex-direction: column;
-  }
-
-  .admin-sidebar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100dvh;
-    border-radius: 0;
-    z-index: 1040;
-    width: 250px;
-    overflow-y: auto;
-  }
-
-  .admin-sidebar.open {
-    display: block;
-  }
-
-  .admin-sidebar-overlay {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1030;
-  }
-
-  .admin-hamburger {
-    display: flex;
   }
 
   .admin-cards {

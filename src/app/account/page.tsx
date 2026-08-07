@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import PageHeader from '@/components/ui/PageHeader'
 import { useAuth } from '@/context/useAuth'
 import { getOrdersByEmail } from '@/lib/orders'
 import { formatBDT } from '@/data/products'
@@ -59,8 +58,6 @@ export default function AccountPage() {
 
   return (
     <>
-      <PageHeader title="My Account" subtitle="Manage your profile, orders and preferences" />
-
       <section className="account container">
         <div className="account-card">
           <div className="account-tabs" role="tablist" aria-label="Account sections">

@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { FAQS, FAQ_CATEGORIES } from '@/data/faqs'
-import PageHeader from '@/components/ui/PageHeader'
 
 export default function FaqPage() {
   const [open, setOpen] = useState<string | null>(FAQS[0]?.id ?? null)
@@ -14,11 +13,6 @@ export default function FaqPage() {
 
   return (
     <>
-      <PageHeader
-        title="Frequently Asked Questions"
-        subtitle="Answers to the questions we hear most"
-      />
-
       <section className="faq container">
         <div className="faq-filters">
           {['All', ...FAQ_CATEGORIES].map((cat) => (
