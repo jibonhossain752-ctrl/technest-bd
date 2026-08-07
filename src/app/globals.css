@@ -6274,6 +6274,7 @@ button {
     scroll-snap-type: x proximity;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    max-width: 340px;
     padding: 4px 28px 6px 0;
     mask-image: linear-gradient(90deg, #000 74%, transparent 100%);
     -webkit-mask-image: linear-gradient(90deg, #000 74%, transparent 100%);
