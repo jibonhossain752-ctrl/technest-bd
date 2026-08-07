@@ -20,6 +20,7 @@ export default function CategoryScrollHint({
       const canScroll = row.scrollWidth > row.clientWidth + 4
       const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4
       setVisible(canScroll && !atEnd)
+      row.classList.toggle('scroll-end', !canScroll || atEnd)
     }
     update()
     row.addEventListener('scroll', update, { passive: true })

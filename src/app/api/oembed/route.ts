@@ -33,11 +33,16 @@ function decodeEntities(s: string): string {
     .replace(/\\\//g, '/')
 }
 
-async function fetchText(url: string, ua: string = UA): Promise<{ ok: boolean; status: number; text: string }> {
+async function fetchText(
+  url: string,
+  ua: string = UA,
+  cache: RequestCache = 'force-cache',
+): Promise<{ ok: boolean; status: number; text: string }> {
   const res = await fetch(url, {
     headers: { 'User-Agent': ua },
     signal: AbortSignal.timeout(12000),
-    next: { revalidate: CACHE_SECONDS },
+    cache,
+    next: { revalidate: cache === 'no-store' ? 0 : CACHE_SECONDS },
   })
   const text = await res.text()
   return { ok: res.ok, status: res.status, text }
@@ -167,7 +172,12 @@ export async function GET(request: Request) {
 
   try {
     // 1) Meta/YouTube/Pinterest/TikTok public oEmbed
-    let res = await fetchText(`${endpoint}${encodeURIComponent(url)}`)
+    // YouTube is fetched uncached so thumbnail/title changes appear immediately.
+    let res = await fetchText(
+      `${endpoint}${encodeURIComponent(url)}`,
+      UA,
+      platform === 'youtube' ? 'no-store' : 'force-cache',
+    )
     if (platform === 'facebook' && !res.ok) {
       res = await fetchText(`${FACEBOOK_POST_ENDPOINT}${encodeURIComponent(url)}`)
     }
@@ -188,7 +198,13 @@ export async function GET(request: Request) {
       /* non-JSON body — fall through to scrape */
     }
     const title = typeof data.title === 'string' ? data.title : null
-    const thumbnail = typeof data.thumbnail_url === 'string' ? data.thumbnail_url : null
+    const rawThumb = typeof data.thumbnail_url === 'string' ? data.thumbnail_url : null
+    // YouTube thumbnails are CDN-cached by URL; version by date so a changed
+    // video thumbnail is picked up within a day.
+    const thumbnail =
+      rawThumb && platform === 'youtube' && /i\.ytimg\.com\//.test(rawThumb)
+        ? `${rawThumb}?v=${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`
+        : rawThumb
 
     if (title || thumbnail) {
       return NextResponse.json({ title, thumbnail })

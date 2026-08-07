@@ -6783,6 +6783,17 @@ button {
 .watch-shop {
   padding: 14px 0 44px;
 }
+.watch-shop-wrap {
+  position: relative;
+}
+.watch-shop-strip {
+  mask-image: linear-gradient(to right, #000 87%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 87%, transparent 100%);
+}
+.watch-shop-strip.scroll-end {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
 /* --- Deals page --- */
 .deals {
   padding: 32px 0 56px;
@@ -7105,5 +7116,11 @@ button {
   }
   .watch-card-body h3 {
     -webkit-line-clamp: 5;
+  }
+  .watch-shop-wrap .cat-scroll-hint {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    right: 2px;
   }
 }
