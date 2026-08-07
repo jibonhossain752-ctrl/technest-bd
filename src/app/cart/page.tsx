@@ -3,15 +3,12 @@
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
-import PageHeader from '@/components/ui/PageHeader'
 
 export default function CartPage() {
   const { items, total, updateQty, removeFromCart, clearCart } = useCart()
 
   return (
     <>
-      <PageHeader title="Your Cart" subtitle="Review your items before checkout" />
-
       <section className="cart-page container">
         {items.length === 0 ? (
           <div className="empty-state">

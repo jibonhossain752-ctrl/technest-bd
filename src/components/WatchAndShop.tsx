@@ -163,7 +163,6 @@ export default function WatchAndShop() {
                         ? `Watch on ${PLATFORM_LABEL[v.platform]} — opens in new tab`
                         : `Watch on ${PLATFORM_LABEL[v.platform]}`}
                     </p>
-                    <span className="watch-card-source">{PLATFORM_LABEL[v.platform]}</span>
                   </div>
                 </Link>
               )

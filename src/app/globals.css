@@ -2580,15 +2580,6 @@ button {
   margin-top: 4px;
 }
 
-.account-section {
-  margin-bottom: 28px;
-}
-
-.account-section h3 {
-  color: var(--dark);
-  margin-bottom: 12px;
-}
-
 .account-empty {
   color: var(--muted);
   font-size: 0.92rem;
@@ -6971,16 +6962,6 @@ button {
   font-size: 0.72rem;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
-}
-.watch-card-source {
-  display: inline-block;
-  font-size: 0.62rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  margin-top: 6px;
 }
 .watch-shop-wrap .cat-scroll-hint {
   width: 48px;
