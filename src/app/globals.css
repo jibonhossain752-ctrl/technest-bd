@@ -6786,14 +6786,6 @@ button {
 .watch-shop-wrap {
   position: relative;
 }
-.watch-shop-strip {
-  mask-image: linear-gradient(to right, #000 87%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, #000 87%, transparent 100%);
-}
-.watch-shop-strip.scroll-end {
-  mask-image: none;
-  -webkit-mask-image: none;
-}
 /* --- Deals page --- */
 .deals {
   padding: 32px 0 56px;
@@ -7104,6 +7096,20 @@ button {
   color: #fff;
   margin-top: 6px;
 }
+.watch-shop-wrap .cat-scroll-hint {
+  width: 46px;
+  height: 46px;
+  font-size: 1.6rem;
+  right: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.5);
+}
+.watch-shop-wrap .cat-scroll-hint.clickable {
+  pointer-events: auto;
+  cursor: pointer;
+}
 
 @media (max-width: 767px) {
   .watch-shop {
@@ -7118,9 +7124,9 @@ button {
     -webkit-line-clamp: 5;
   }
   .watch-shop-wrap .cat-scroll-hint {
-    width: 28px;
-    height: 28px;
-    font-size: 1rem;
-    right: 2px;
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+    right: 4px;
   }
 }

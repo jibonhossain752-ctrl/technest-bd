@@ -82,6 +82,15 @@ function fetchOEmbed(video: Video): Promise<OEmbedData> {
 
 export default function WatchAndShop() {
   const [meta, setMeta] = useState<Record<string, OEmbedData>>({})
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    const update = () => setIsDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
     let cancelled = false
@@ -160,7 +169,7 @@ export default function WatchAndShop() {
               )
             })}
           </div>
-          <CategoryScrollHint targetSelector=".watch-shop-strip" />
+          <CategoryScrollHint targetSelector=".watch-shop-strip" clickable={isDesktop} />
         </div>
       </div>
     </section>

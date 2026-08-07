@@ -157,6 +157,66 @@ async function scrapeFacebook(
   return { title, thumbnail }
 }
 
+async function extractYouTubeId(url: string): Promise<string | null> {
+  const m = url.match(/(?:youtu\.be\/|shorts\/|embed\/|v=|v\/)([A-Za-z0-9_-]{11})/)
+  return m ? m[1] : null
+}
+
+async function fetchHead(url: string): Promise<boolean> {
+  try {
+    const res = await fetch(url, {
+      method: 'HEAD',
+      signal: AbortSignal.timeout(8000),
+      next: { revalidate: CACHE_SECONDS },
+    })
+    return res.ok
+  } catch {
+    return false
+  }
+}
+
+async function youtubeMedia(
+  url: string,
+  debug?: string[],
+): Promise<{ title: string | null; thumbnail: string | null }> {
+  const id = await extractYouTubeId(url)
+  if (!id) {
+    console.error(`[oembed] youtube: no video id in ${url}`)
+    return { title: null, thumbnail: null }
+  }
+  // Title via the public oEmbed endpoint (cached 24h to avoid rate limits).
+  let title: string | null = null
+  try {
+    const { ok, text } = await fetchText(`${ENDPOINTS.youtube}${encodeURIComponent(url)}`)
+    debug?.push(`yt oembed ${ok} len=${text.length}`)
+    if (ok) {
+      try {
+        title = (JSON.parse(text) as { title?: unknown }).title as string | null ?? null
+      } catch {
+        /* non-JSON — fall through to og scrape */
+      }
+    }
+  } catch (err) {
+    debug?.push(`yt oembed ERR ${String(err).slice(0, 80)}`)
+  }
+  if (!title) {
+    const { ok, text } = await fetchText(`https://www.youtube.com/watch?v=${id}`, BOT_UA)
+    debug?.push(`yt og ${ok} len=${text.length}`)
+    if (ok) {
+      const og = extractOg(text)
+      if (og.title) title = og.title
+    }
+  }
+  // Thumbnail: prefer maxresdefault, fall back to hqdefault (both key-less).
+  let thumbnail = `https://img.youtube.com/vi/${id}/hqdefault.jpg`
+  const maxres = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`
+  if (await fetchHead(maxres)) {
+    thumbnail = maxres
+  }
+  debug?.push(`yt thumb ${thumbnail}`)
+  return { title, thumbnail }
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const platform = searchParams.get('platform') ?? ''
@@ -171,13 +231,15 @@ export async function GET(request: Request) {
   }
 
   try {
-    // 1) Meta/YouTube/Pinterest/TikTok public oEmbed
-    // YouTube is fetched uncached so thumbnail/title changes appear immediately.
-    let res = await fetchText(
-      `${endpoint}${encodeURIComponent(url)}`,
-      UA,
-      platform === 'youtube' ? 'no-store' : 'force-cache',
-    )
+    // 0) YouTube: dedicated key-less path — img.youtube.com thumbnails
+    // (maxresdefault → hqdefault) + oEmbed title, no cache-busting params.
+    if (platform === 'youtube') {
+      const yt = await youtubeMedia(url, searchParams.get('debug') === '1' ? [] : undefined)
+      return NextResponse.json({ title: yt.title, thumbnail: yt.thumbnail })
+    }
+
+    // 1) Meta/Pinterest/TikTok public oEmbed
+    let res = await fetchText(`${endpoint}${encodeURIComponent(url)}`)
     if (platform === 'facebook' && !res.ok) {
       res = await fetchText(`${FACEBOOK_POST_ENDPOINT}${encodeURIComponent(url)}`)
     }
@@ -198,13 +260,7 @@ export async function GET(request: Request) {
       /* non-JSON body — fall through to scrape */
     }
     const title = typeof data.title === 'string' ? data.title : null
-    const rawThumb = typeof data.thumbnail_url === 'string' ? data.thumbnail_url : null
-    // YouTube thumbnails are CDN-cached by URL; version by date so a changed
-    // video thumbnail is picked up within a day.
-    const thumbnail =
-      rawThumb && platform === 'youtube' && /i\.ytimg\.com\//.test(rawThumb)
-        ? `${rawThumb}?v=${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`
-        : rawThumb
+    const thumbnail = typeof data.thumbnail_url === 'string' ? data.thumbnail_url : null
 
     if (title || thumbnail) {
       return NextResponse.json({ title, thumbnail })
