@@ -6896,6 +6896,7 @@ button {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 8px;
+  padding-right: max(16px, 4vw);
 }
 .watch-shop-strip::-webkit-scrollbar {
   height: 6px;
