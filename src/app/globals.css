@@ -5137,6 +5137,13 @@ button {
   margin-bottom: 26px;
 }
 
+.blog-tabs-wrap {
+  position: relative;
+  min-width: 0;
+}
+.blog-tabs-more {
+  display: none;
+}
 .blog-tabs {
   display: flex;
   gap: 8px;
@@ -6117,25 +6124,56 @@ button {
   }
 
   .hero-static {
-    padding: 34px 0 40px;
+    padding: 20px 0 26px;
   }
 
   .hero-static-inner {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    text-align: center;
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: 10px;
+    text-align: left;
+    align-items: center;
   }
 
   .hero-static-img {
-    order: -1;
+    order: 0;
   }
 
   .hero-static-emoji {
-    font-size: 6rem;
+    font-size: 4rem;
+  }
+
+  .hero-static-tag {
+    font-size: 0.58rem;
+    padding: 4px 9px;
+    right: 0;
+    bottom: -4px;
+  }
+
+  .hero-static-badge {
+    font-size: 0.6rem;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+  }
+
+  .hero-static h1 {
+    font-size: 1.02rem;
+    line-height: 1.25;
   }
 
   .hero-static-sub {
-    margin: 12px auto 20px;
+    margin: 6px 0 10px;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    max-width: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hero-static-cta {
+    padding: 8px 14px;
+    font-size: 0.72rem;
   }
 
   .quick-pills-section {
@@ -6223,6 +6261,51 @@ button {
   .blog-toolbar {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .blog-tabs-wrap {
+    position: relative;
+    flex: 1 1 auto;
+  }
+
+  .blog-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 30px 6px 0;
+    mask-image: linear-gradient(90deg, #000 76%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, #000 76%, transparent 100%);
+  }
+
+  .blog-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .blog-tab {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  .blog-tabs-more {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 2px 10px rgba(15, 27, 46, 0.45);
+    pointer-events: none;
+    z-index: 1;
   }
 
   .blog-search {
@@ -6635,10 +6718,45 @@ button {
 
 @media (max-width: 767px) {
   .hero-static {
-    padding: 48px 0;
+    padding: 20px 0 26px;
   }
-  .hero-static-text h1 {
-    font-size: 1.5rem;
+  .hero-static-inner {
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: 10px;
+    text-align: left;
+    align-items: center;
+  }
+  .hero-static-badge {
+    font-size: 0.6rem;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+  }
+  .hero-static h1 {
+    font-size: 1.02rem;
+    line-height: 1.25;
+  }
+  .hero-static-sub {
+    margin: 6px 0 10px;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    max-width: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .hero-static-cta {
+    padding: 8px 14px;
+    font-size: 0.72rem;
+  }
+  .hero-static-emoji {
+    font-size: 4rem;
+  }
+  .hero-static-tag {
+    font-size: 0.58rem;
+    padding: 4px 9px;
+    right: 0;
+    bottom: -4px;
   }
 }
 
@@ -6675,6 +6793,79 @@ button {
   margin: 0;
   font-size: 0.88rem;
   color: var(--text);
+}
+.deals-cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 36px;
+  padding: 34px 38px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0f1b2e, #1b3a63, #2a4a7a);
+  color: #fff;
+  box-shadow: 0 0 44px rgba(11, 31, 58, 0.45), 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.deals-cta-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 100%, rgba(255, 107, 53, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 0%, rgba(255, 200, 69, 0.16) 0%, transparent 50%);
+}
+.deals-cta-text {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 320px;
+}
+.deals-cta-badge {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.72rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+.deals-cta-text h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  line-height: 1.2;
+  color: #fff;
+}
+.deals-cta-text p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 480px;
+}
+.deals-cta-btn {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.45);
+}
+.deals-cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(255, 107, 53, 0.6);
+}
+@media (max-width: 767px) {
+  .deals-cta {
+    padding: 26px 22px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .deals-cta-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 .deals-tag a {
   color: var(--accent);
@@ -6714,8 +6905,9 @@ button {
   border-radius: 4px;
 }
 .watch-card {
-  min-width: 220px;
-  max-width: 280px;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
   flex-shrink: 0;
   scroll-snap-align: start;
   border-radius: 14px;
@@ -6756,20 +6948,39 @@ button {
 .thumb-tiktok {
   background: linear-gradient(135deg, #010101, #25f4ee);
 }
+.watch-platform-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.watch-platform-mark svg {
+  width: 88px;
+  height: 88px;
+  opacity: 0.14;
+}
 .watch-platform-badge {
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.04em;
-  padding: 3px 8px;
+  padding: 4px 9px;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.55);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(4px);
+}
+.watch-platform-badge svg {
+  width: 12px;
+  height: 12px;
 }
 .watch-play-btn {
   position: absolute;
@@ -6803,6 +7014,11 @@ button {
 .watch-card-body {
   padding: 12px 14px;
   color: #fff;
+  min-height: 84px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 .watch-card-body h3 {
   font-size: 0.9rem;
@@ -6831,6 +7047,8 @@ button {
     padding: 6px 0 32px;
   }
   .watch-card {
-    min-width: 175px;
+    width: 168px;
+    min-width: 168px;
+    max-width: 168px;
   }
 }

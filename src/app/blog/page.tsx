@@ -58,22 +58,27 @@ export default function BlogPage() {
 
       <section className="blog container">
         <div className="blog-toolbar">
-          <div className="blog-tabs" role="tablist" aria-label="Filter posts">
-            {TABS.map((t) => (
-              <button
-                key={t.label}
-                type="button"
-                role="tab"
-                aria-selected={tab === t.label}
-                className={`blog-tab${tab === t.label ? ' active' : ''}`}
-                onClick={() => {
-                  setTab(t.label)
-                  setVisible(INITIAL_VISIBLE)
-                }}
-              >
-                {t.label}
-              </button>
-            ))}
+          <div className="blog-tabs-wrap">
+            <div className="blog-tabs" role="tablist" aria-label="Filter posts">
+              {TABS.map((t) => (
+                <button
+                  key={t.label}
+                  type="button"
+                  role="tab"
+                  aria-selected={tab === t.label}
+                  className={`blog-tab${tab === t.label ? ' active' : ''}`}
+                  onClick={() => {
+                    setTab(t.label)
+                    setVisible(INITIAL_VISIBLE)
+                  }}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+            <span className="blog-tabs-more" aria-hidden="true">
+              ›
+            </span>
           </div>
           <div className="blog-search">
             <span className="blog-search-icon" aria-hidden="true">
