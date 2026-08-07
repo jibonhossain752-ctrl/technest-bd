@@ -67,26 +67,25 @@ export default function Navbar() {
   }, [isMobile])
 
   useEffect(() => {
-    if (!menuOpen) return
+    const anyOpen = menuOpen || deskSidebarOpen
+    if (!anyOpen) return
+    const prevBodyOverflow = document.body.style.overflow
+    const prevHtmlOverflow = document.documentElement.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMenuOpen(false)
+      if (e.key === 'Escape') {
+        setMenuOpen(false)
+        setDeskSidebarOpen(false)
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => {
+      document.body.style.overflow = prevBodyOverflow
+      document.documentElement.style.overflow = prevHtmlOverflow
       window.removeEventListener('keydown', onKey)
     }
-  }, [menuOpen])
-
-  useEffect(() => {
-    if (!deskSidebarOpen) return
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDeskSidebarOpen(false)
-    }
-    window.addEventListener('keydown', onKey)
-    return () => {
-      window.removeEventListener('keydown', onKey)
-    }
-  }, [deskSidebarOpen])
+  }, [menuOpen, deskSidebarOpen])
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -327,7 +326,9 @@ export default function Navbar() {
   )
 
   return (
-    <header className="header">
+    <header
+      className={`header${menuOpen || deskSidebarOpen ? ' menu-locked' : ''}`}
+    >
       <div className="topbar">
         <p>Free delivery on orders over BDT 5,000 across Bangladesh</p>
       </div>
@@ -428,31 +429,31 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </Link>
-            {!isMobile && (
-              <button
-                type="button"
-                className={`desk-more-btn ${deskSidebarOpen ? 'open' : ''}`}
-                aria-label="More"
-                onClick={() => setDeskSidebarOpen((open) => !open)}
-              >
-                <span />
-                <span />
-                <span />
-              </button>
-            )}
-            {isMobile && (
-              <button
-                type="button"
-                className={`menu-toggle ${menuOpen ? 'open' : ''}`}
-                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={menuOpen}
-                onClick={() => setMenuOpen((open) => !open)}
-              >
-                <span />
-                <span />
-                <span />
-              </button>
-            )}
+            <button
+              type="button"
+              className={`menu-toggle ${
+                (isMobile ? menuOpen : deskSidebarOpen) ? 'open' : ''
+              }`}
+              aria-label={
+                isMobile
+                  ? menuOpen
+                    ? 'Close menu'
+                    : 'Open menu'
+                  : deskSidebarOpen
+                    ? 'Close panel'
+                    : 'Open panel'
+              }
+              aria-expanded={isMobile ? menuOpen : deskSidebarOpen}
+              onClick={() =>
+                isMobile
+                  ? setMenuOpen((open) => !open)
+                  : setDeskSidebarOpen((open) => !open)
+              }
+            >
+              <span />
+              <span />
+              <span />
+            </button>
           </div>
         </div>
       </nav>

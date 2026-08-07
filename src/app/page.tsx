@@ -5,7 +5,6 @@ import LatestBlogPosts from '@/components/LatestBlogPosts'
 import WatchAndShop from '@/components/WatchAndShop'
 import FeaturedProducts from '@/components/FeaturedProducts'
 import Newsletter from '@/components/Newsletter'
-import HomeCategoryStrip from '@/components/HomeCategoryStrip'
 import WhyChooseUs from '@/components/WhyChooseUs'
 import Testimonials from '@/components/Testimonials'
 import Reveal from '@/components/ui/Reveal'
@@ -32,9 +31,6 @@ export default function HomePage() {
       </Reveal>
       <Reveal className="reveal-newsletter" delay={0.05}>
         <Newsletter />
-      </Reveal>
-      <Reveal className="reveal-categories" delay={0.05}>
-        <HomeCategoryStrip />
       </Reveal>
       <Reveal className="reveal-why" delay={0.05}>
         <WhyChooseUs />

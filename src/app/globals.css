@@ -3988,7 +3988,7 @@ button {
   background: var(--primary);
   backdrop-filter: none;
   z-index: 1020;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(11, 31, 58, 0.4), 0 4px 16px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .nav-container {
@@ -4070,12 +4070,13 @@ button {
 
 .nav-actions .icon-btn {
   color: #fff;
+  background: rgba(255, 255, 255, 0.12);
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
 .nav-actions .icon-btn:hover {
   color: #fff;
-  background: rgba(255, 107, 53, 0.25);
+  background: rgba(255, 107, 53, 0.3);
   transform: scale(1.12);
   box-shadow: 0 0 16px rgba(255, 107, 53, 0.35);
 }
@@ -4084,14 +4085,22 @@ button {
   transform: scale(0.95);
 } 
 
-.user-chip {
+.nav-actions .user-chip {
   color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.user-chip:hover {
+.nav-actions .user-chip:hover {
   transform: scale(1.08);
+  background: rgba(255, 107, 53, 0.3);
+  border-color: var(--accent);
   box-shadow: 0 0 14px rgba(255, 107, 53, 0.3);
+}
+
+.user-chip {
+  color: #fff;
 }
 
 /* ---------- Hamburger: asymmetric lines, orange flash, morph to X ---------- */
@@ -4168,6 +4177,7 @@ button {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding-bottom: 20px;
 }
 
@@ -6352,44 +6362,18 @@ button {
   }
 }
 
-/* --- Menu toggle mobile only --- */
-@media (min-width: 768px) {
-  .menu-toggle { display: none; }
+/* --- Menu toggle visible on all viewports (opens mobile sidebar / desktop community panel) --- */
+.menu-toggle {
+  display: flex;
 }
 
-/* --- Desktop more-trigger (3 dots → community panel) --- */
-.desk-more-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3px;
-  width: 42px;
-  height: 42px;
-  border: none;
-  border-radius: 12px;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.2s ease;
-}
-.desk-more-btn span {
-  display: block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #fff;
-  transition: background 0.2s ease;
-}
-.desk-more-btn:hover {
-  background: rgba(255, 107, 53, 0.18);
-}
-.desk-more-btn:hover span,
-.desk-more-btn.open span {
-  background: var(--accent);
-}
-@media (min-width: 768px) {
-  .desk-more-btn { display: flex; }
+/* --- Scroll lock: header pinned while a panel is open --- */
+.header.menu-locked {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 /* --- Desktop community panel (right slide-in) --- */
@@ -6409,6 +6393,7 @@ button {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 0 0 24px;
 }
 .desk-panel.open {
@@ -6589,6 +6574,7 @@ button {
   background-size: 300% 300%;
   animation: heroGlow 8s ease infinite;
   position: relative;
+  box-shadow: 0 0 44px rgba(11, 31, 58, 0.45), 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 .hero-static::before {
   content: '';
