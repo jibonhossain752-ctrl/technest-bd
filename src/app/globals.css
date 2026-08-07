@@ -5661,6 +5661,7 @@ button {
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 10px;
+  text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -6740,6 +6741,36 @@ button {
   font-size: 3rem;
   opacity: 0.85;
 }
+.thumb-instagram {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+.thumb-youtube {
+  background: linear-gradient(135deg, #ff0000, #990000);
+}
+.thumb-facebook {
+  background: linear-gradient(135deg, #1877f2, #0b4fb3);
+}
+.thumb-pinterest {
+  background: linear-gradient(135deg, #e60023, #a00019);
+}
+.thumb-tiktok {
+  background: linear-gradient(135deg, #010101, #25f4ee);
+}
+.watch-platform-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(4px);
+}
 .watch-play-btn {
   position: absolute;
   inset: 0;
@@ -6751,6 +6782,12 @@ button {
 }
 .watch-card:hover .watch-play-btn {
   opacity: 1;
+}
+@media (hover: none) {
+  .watch-play-btn {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
+  }
 }
 .watch-play-icon {
   width: 52px;

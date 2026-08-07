@@ -32,11 +32,11 @@ const COMPANY_LINKS = [
 ]
 
 const SIDEBAR_SOCIALS = [
-  { label: 'f', name: 'Facebook', href: 'https://facebook.com' },
-  { label: 'IG', name: 'Instagram', href: 'https://instagram.com' },
-  { label: 'WA', name: 'WhatsApp', href: 'https://wa.me' },
-  { label: 'YT', name: 'YouTube', href: 'https://youtube.com' },
-  { label: 'P', name: 'Pinterest', href: 'https://pinterest.com' },
+  { label: 'f', name: 'Facebook', href: 'https://www.facebook.com/amazonfindsgadget.shop' },
+  { label: 'IG', name: 'Instagram', href: 'https://www.instagram.com/amazonfindsgadget.shop/' },
+  { label: 'WA', name: 'WhatsApp', href: 'https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0' },
+  { label: 'YT', name: 'YouTube', href: 'https://www.youtube.com/@amazonfindsgagdet' },
+  { label: 'P', name: 'Pinterest', href: 'https://www.pinterest.com/amazonfinds_gadget/' },
 ]
 
 export default function Navbar() {
@@ -251,7 +251,7 @@ export default function Navbar() {
       <div className="side-divider" />
       <span className="side-label desk-community-label">Community</span>
       <a
-        href="https://wa.me"
+        href="https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0"
         target="_blank"
         rel="noreferrer"
         className="desk-community-link"
@@ -262,7 +262,7 @@ export default function Navbar() {
         Join WhatsApp Community
       </a>
       <a
-        href="https://facebook.com"
+        href="https://www.facebook.com/amazonfindsgadget.shop"
         target="_blank"
         rel="noreferrer"
         className="desk-community-link"

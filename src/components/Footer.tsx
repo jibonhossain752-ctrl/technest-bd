@@ -21,6 +21,14 @@ const ACCOUNT_LINKS = [
   { label: 'Cart', href: '/cart' },
 ]
 
+const SOCIAL_LINKS = [
+  { label: 'f', name: 'Facebook', href: 'https://www.facebook.com/amazonfindsgadget.shop' },
+  { label: 'IG', name: 'Instagram', href: 'https://www.instagram.com/amazonfindsgadget.shop/' },
+  { label: 'WA', name: 'WhatsApp', href: 'https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0' },
+  { label: 'YT', name: 'YouTube', href: 'https://www.youtube.com/@amazonfindsgagdet' },
+  { label: 'P', name: 'Pinterest', href: 'https://www.pinterest.com/amazonfinds_gadget/' },
+]
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -35,21 +43,17 @@ export default function Footer() {
             prices, and service you can rely on.
           </p>
           <div className="socials">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
-              f
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
-              IG
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
-              YT
-            </a>
-            <a href="https://wa.me" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-              WA
-            </a>
-            <a href="https://pinterest.com" target="_blank" rel="noreferrer" aria-label="Pinterest">
-              P
-            </a>
+            {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.name}
+              >
+                {s.label}
+              </a>
+            ))}
           </div>
         </div>
         <div className="footer-col">

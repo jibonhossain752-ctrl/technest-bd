@@ -1,70 +1,64 @@
 import Link from 'next/link'
 
+type Platform = 'Instagram' | 'YouTube' | 'Facebook' | 'Pinterest' | 'TikTok'
+
 interface Video {
   id: string
   title: string
   desc: string
   emoji: string
-  source: 'Instagram' | 'Facebook'
+  platform: Platform
   href: string
+}
+
+const PLATFORM_BADGE: Record<Platform, string> = {
+  Instagram: 'IG',
+  YouTube: 'YT',
+  Facebook: 'FB',
+  Pinterest: 'PIN',
+  TikTok: 'TT',
 }
 
 const VIDEOS: Video[] = [
   {
     id: 'v1',
-    title: 'Top 5 Budget Smartphones',
-    desc: 'Best picks under BDT 25,000',
+    title: 'Instagram Reel',
+    desc: 'Latest tech find — watch on Instagram',
     emoji: '📱',
-    source: 'Instagram',
-    href: 'https://instagram.com/technest.bd',
+    platform: 'Instagram',
+    href: 'https://www.instagram.com/reel/DbqkqRJCSXz/',
   },
   {
     id: 'v2',
-    title: 'MacBook Air M2 First Look',
-    desc: 'Is it worth the price?',
-    emoji: '💻',
-    source: 'Facebook',
-    href: 'https://facebook.com/technestbd',
+    title: 'YouTube Short',
+    desc: 'Quick demo — watch on YouTube',
+    emoji: '▶️',
+    platform: 'YouTube',
+    href: 'https://www.youtube.com/shorts/svEfyu9bUCs',
   },
   {
     id: 'v3',
-    title: 'Best Gaming Gear Under BDT 30K',
-    desc: 'Budget rig walkthrough',
-    emoji: '🎮',
-    source: 'Instagram',
-    href: 'https://instagram.com/technest.bd',
+    title: 'Facebook Reel',
+    desc: 'Live demo — watch on Facebook',
+    emoji: '📸',
+    platform: 'Facebook',
+    href: 'https://www.facebook.com/reel/1826212645426031',
   },
   {
     id: 'v4',
-    title: 'Smart Home Tour 2026',
-    desc: 'Full home setup reveal',
-    emoji: '🏠',
-    source: 'Facebook',
-    href: 'https://facebook.com/technestbd',
+    title: 'Pinterest Pin',
+    desc: 'Product gallery — view on Pinterest',
+    emoji: '📌',
+    platform: 'Pinterest',
+    href: 'https://www.pinterest.com/pin/1051168369298012793/',
   },
   {
     id: 'v5',
-    title: 'iPhone Tips You Missed',
-    desc: 'Hidden features exposed',
-    emoji: '📱',
-    source: 'Instagram',
-    href: 'https://instagram.com/technest.bd',
-  },
-  {
-    id: 'v6',
-    title: 'Laptop Buying Guide',
-    desc: "Don't waste your money",
-    emoji: '💡',
-    source: 'Facebook',
-    href: 'https://facebook.com/technestbd',
-  },
-  {
-    id: 'v7',
-    title: 'Headphones Showdown',
-    desc: 'Top 3 picks tested',
-    emoji: '🎧',
-    source: 'Instagram',
-    href: 'https://instagram.com/technest.bd',
+    title: 'TikTok Video',
+    desc: 'Short clip — watch on TikTok',
+    emoji: '🎵',
+    platform: 'TikTok',
+    href: 'https://vm.tiktok.com/ZS4447xqV/',
   },
 ]
 
@@ -83,12 +77,15 @@ export default function WatchAndShop() {
               key={v.id}
               className="watch-card"
               target="_blank"
-              rel="noreferrer"
-              aria-label={`Watch ${v.title} on ${v.source}`}
+              rel="noopener noreferrer"
+              aria-label={`Watch ${v.title} on ${v.platform}`}
             >
-              <div className="watch-card-thumb">
+              <div className={`watch-card-thumb thumb-${v.platform.toLowerCase()}`}>
                 <span className="watch-card-emoji" aria-hidden="true">
                   {v.emoji}
+                </span>
+                <span className="watch-platform-badge" aria-hidden="true">
+                  {PLATFORM_BADGE[v.platform]}
                 </span>
                 <span className="watch-play-btn" aria-hidden="true">
                   <span className="watch-play-icon">▶</span>
@@ -97,7 +94,7 @@ export default function WatchAndShop() {
               <div className="watch-card-body">
                 <h3>{v.title}</h3>
                 <p>{v.desc}</p>
-                <span className="watch-card-source">{v.source}</span>
+                <span className="watch-card-source">{v.platform}</span>
               </div>
             </Link>
           ))}
