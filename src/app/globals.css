@@ -3979,6 +3979,7 @@ button {
     padding: 8px 12px;
     font-size: 0.78rem;
     gap: 7px;
+    line-height: 1.25;
   }
 
   .shop-cat-chip .count {
