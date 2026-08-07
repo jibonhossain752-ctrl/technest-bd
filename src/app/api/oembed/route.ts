@@ -56,44 +56,82 @@ function facebookVideoId(url: string): string | null {
   return m ? m[1] : null
 }
 
-async function scrapeInstagram(url: string): Promise<{ title: string | null; thumbnail: string | null }> {
+function normalizeSlashes(s: string): string {
+  return s.replace(/\\\//g, '/').replace(/&amp;/g, '&')
+}
+
+function extractCoverImage(html: string): string | null {
+  const m = html.match(/https?:\\?\/\\?\/[^"'\\\s]*t15\.5256[^"'\\\s]*\.jpg/i)
+  return m ? normalizeSlashes(m[0]) : null
+}
+
+async function scrapeInstagram(
+  url: string,
+  debug?: string[],
+): Promise<{ title: string | null; thumbnail: string | null }> {
   const type = url.match(/instagram\.com\/(reel|p|tv|stories)\//)?.[1] ?? 'p'
   const code = url.match(/instagram\.com\/(?:reel|p|tv|stories)\/([A-Za-z0-9_-]+)/)?.[1] ?? ''
   if (!code) return { title: null, thumbnail: null }
-  const { ok, status, text } = await fetchText(`https://www.instagram.com/${type}/${code}/embed/captioned/`)
-  if (!ok) {
-    console.error(`[oembed] instagram embed scrape HTTP ${status} for ${url}`)
-    return { title: null, thumbnail: null }
-  }
-  const thumb = text.match(/src="(https:\/\/[^"]*scontent[^"]*\.(?:jpg|png)[^"]*)"/i)?.[1] ?? null
-  if (!thumb) {
-    console.error(`[oembed] instagram embed scrape found no thumbnail for ${url} (page len ${text.length})`)
-  }
-  return { title: null, thumbnail: thumb }
-}
-
-async function scrapeFacebook(url: string): Promise<{ title: string | null; thumbnail: string | null }> {
-  const videoId = facebookVideoId(url)
-  const targets = videoId
-    ? [`https://www.facebook.com/watch?v=${videoId}`]
-    : [url]
-  for (const target of targets) {
+  const variants = [
+    `https://www.instagram.com/${type}/${code}/embed/captioned/`,
+    `https://www.instagram.com/${type}/${code}/embed/`,
+    `https://www.instagram.com/p/${code}/embed/captioned/`,
+  ]
+  for (const target of variants) {
     try {
       const { ok, status, text } = await fetchText(target)
-      if (!ok) {
-        console.error(`[oembed] facebook scrape HTTP ${status} for ${target}`)
-        continue
-      }
-      const og = extractOg(text)
-      if (og.title || og.image) {
-        return { title: og.title, thumbnail: og.image }
-      }
-      console.error(`[oembed] facebook scrape found no og data for ${target} (page len ${text.length})`)
+      debug?.push(`ig ${status} ${target} len=${text.length}`)
+      if (!ok) continue
+      const thumb =
+        text.match(/src="(https:\/\/[^"]*scontent[^"]*\.(?:jpg|png)[^"]*)"/i)?.[1] ?? null
+      if (thumb) return { title: null, thumbnail: normalizeSlashes(thumb) }
     } catch (err) {
-      console.error(`[oembed] facebook scrape failed for ${target}:`, err)
+      debug?.push(`ig ERR ${target}: ${String(err).slice(0, 120)}`)
     }
   }
+  debug?.push('ig: no thumbnail from any surface')
+  console.error(`[oembed] instagram: no media obtainable token-free for ${url}`)
   return { title: null, thumbnail: null }
+}
+
+async function scrapeFacebook(
+  url: string,
+  debug?: string[],
+): Promise<{ title: string | null; thumbnail: string | null }> {
+  const videoId = facebookVideoId(url)
+  const surfaces: { url: string; kind: 'og' | 'cover' }[] = videoId
+    ? [
+        { url: `https://www.facebook.com/watch?v=${videoId}`, kind: 'og' },
+        { url: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}`, kind: 'cover' },
+      ]
+    : [
+        { url, kind: 'og' },
+        { url: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}`, kind: 'cover' },
+      ]
+  let title: string | null = null
+  let thumbnail: string | null = null
+  for (const surface of surfaces) {
+    try {
+      const { ok, status, text } = await fetchText(surface.url)
+      debug?.push(`fb ${status} ${surface.url} len=${text.length}`)
+      if (!ok) continue
+      if (surface.kind === 'og') {
+        const og = extractOg(text)
+        if (og.title) title = og.title
+        if (og.image) thumbnail = og.image
+      } else {
+        const cover = extractCoverImage(text)
+        if (cover) thumbnail = cover
+      }
+      if (title && thumbnail) break
+    } catch (err) {
+      debug?.push(`fb ERR ${surface.url}: ${String(err).slice(0, 120)}`)
+    }
+  }
+  if (!title && !thumbnail) {
+    console.error(`[oembed] facebook: no media obtainable for ${url}`)
+  }
+  return { title, thumbnail }
 }
 
 export async function GET(request: Request) {
@@ -142,19 +180,20 @@ export async function GET(request: Request) {
     console.error(
       `[oembed] ${platform} oEmbed returned no title/thumbnail for ${url}, scraping media…`,
     )
+    const debug = searchParams.get('debug') === '1' ? [] : null
     if (platform === 'instagram') {
-      const ig = await scrapeInstagram(url)
-      if (!ig.thumbnail) {
-        console.error(`[oembed] instagram: no media obtainable token-free for ${url}`)
-      }
-      return NextResponse.json({ title: ig.title, thumbnail: ig.thumbnail })
+      const ig = await scrapeInstagram(url, debug ?? undefined)
+      return NextResponse.json(
+        { title: ig.title, thumbnail: ig.thumbnail },
+        debug ? { headers: { 'x-debug': debug.join(' | ') } } : undefined,
+      )
     }
     if (platform === 'facebook') {
-      const fb = await scrapeFacebook(url)
-      if (!fb.title && !fb.thumbnail) {
-        console.error(`[oembed] facebook: no media obtainable for ${url}`)
-      }
-      return NextResponse.json({ title: fb.title, thumbnail: fb.thumbnail })
+      const fb = await scrapeFacebook(url, debug ?? undefined)
+      return NextResponse.json(
+        { title: fb.title, thumbnail: fb.thumbnail },
+        debug ? { headers: { 'x-debug': debug.join(' | ') } } : undefined,
+      )
     }
     return NextResponse.json({ title: null, thumbnail: null })
   } catch (err) {
