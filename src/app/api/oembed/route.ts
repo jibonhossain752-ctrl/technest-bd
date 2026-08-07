@@ -37,10 +37,16 @@ export async function GET(request: Request) {
       )
     }
     const data = await res.json()
-    return NextResponse.json({
-      title: typeof data.title === 'string' ? data.title : null,
-      thumbnail: typeof data.thumbnail_url === 'string' ? data.thumbnail_url : null,
-    })
+    const title = typeof data.title === 'string' ? data.title : null
+    const thumbnail = typeof data.thumbnail_url === 'string' ? data.thumbnail_url : null
+    if (!title && !thumbnail) {
+      console.error(`[oembed] ${platform} returned no title/thumbnail for ${url}:`, JSON.stringify(data).slice(0, 200))
+      return NextResponse.json(
+        { title: null, thumbnail: null, error: 'oEmbed returned no media data' },
+        { status: 502 },
+      )
+    }
+    return NextResponse.json({ title, thumbnail })
   } catch (err) {
     console.error(`[oembed] ${platform} fetch failed for ${url}:`, err)
     return NextResponse.json(
