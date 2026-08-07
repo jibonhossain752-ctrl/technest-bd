@@ -85,6 +85,14 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false)
 
+  const goHomeFresh = (e: React.MouseEvent) => {
+    closeMenu()
+    e.preventDefault()
+    // Full page navigation (always reloads) so widgets/data fetch fresh,
+    // even when already on the Home page.
+    window.location.href = '/'
+  }
+
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href)
 
@@ -110,7 +118,7 @@ export default function Navbar() {
       aria-hidden={!menuOpen}
     >
       <div className="side-panel-top">
-        <Link href="/" className="side-logo" onClick={closeMenu}>
+        <Link href="/" className="side-logo" onClick={goHomeFresh}>
           <span className="logo-mark">N</span>
           TechNest<span>BD</span>
         </Link>
@@ -313,7 +321,7 @@ export default function Navbar() {
 
       <nav className="navbar">
         <div className="container nav-container">
-          <Link href="/" className="logo" onClick={closeMenu}>
+          <Link href="/" className="logo" onClick={goHomeFresh}>
             <span className="logo-mark">N</span>
             TechNest<span>BD</span>
           </Link>

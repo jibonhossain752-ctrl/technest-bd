@@ -51,7 +51,7 @@ const VIDEOS: Video[] = [
     fallbackTitle: 'TikTok Video',
     emoji: '🎵',
     platform: 'tiktok',
-    href: 'https://vm.tiktok.com/ZS4447xqV/',
+    href: 'https://www.tiktok.com/@amazonfindsgadget.shop/video/7662305439891180821',
   },
 ]
 

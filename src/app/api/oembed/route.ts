@@ -213,6 +213,9 @@ export async function GET(request: Request) {
         debug ? { headers: { 'x-debug': debug.join(' | ') } } : undefined,
       )
     }
+    console.error(
+      `[oembed] ${platform} returned no title/thumbnail (HTTP ${res.status}) for ${url} — body: ${res.text.slice(0, 300)}`,
+    )
     return NextResponse.json({ title: null, thumbnail: null })
   } catch (err) {
     console.error(`[oembed] ${platform} fetch failed for ${url}:`, err)
