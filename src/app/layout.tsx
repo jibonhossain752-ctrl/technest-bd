@@ -6,6 +6,7 @@ import { AuthProvider } from '@/context/AuthProvider'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Toast from '@/components/Toast'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export const metadata: Metadata = {
   title: {
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <AuthProvider>
           <CartProvider>
             <Navbar />
+            <ScrollToTop />
             <main>{children}</main>
             <Footer />
             <Toast />

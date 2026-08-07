@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import PageHeader from '@/components/ui/PageHeader'
 import CountdownTimer from '@/components/ui/CountdownTimer'
 import { PRODUCTS } from '@/data/products'
 import ProductCard from '@/components/ProductCard'
@@ -16,12 +15,6 @@ export default function DealsPage() {
 
   return (
     <>
-      <PageHeader
-        title="Deals"
-        subtitle="Hand-picked gadget deals — updated weekly"
-        showHomeCrumb={false}
-      />
-
       <section className="deals container">
         {deals.length === 0 ? (
           <div className="empty-state">
