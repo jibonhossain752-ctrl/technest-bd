@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHeader from '@/components/ui/PageHeader'
+import CountdownTimer from '@/components/ui/CountdownTimer'
 import { PRODUCTS } from '@/data/products'
 import ProductCard from '@/components/ProductCard'
 
@@ -51,6 +52,7 @@ export default function DealsPage() {
                   Time-limited flash discounts on top gadgets — when it&apos;s
                   gone, it&apos;s gone.
                 </p>
+                <CountdownTimer />
               </div>
               <Link href="/shop/flash-sale" className="btn btn-accent deals-cta-btn">
                 View Flash Sale →

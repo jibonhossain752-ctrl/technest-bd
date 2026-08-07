@@ -6191,6 +6191,25 @@ button {
     padding: 20px 0 4px;
   }
 
+  .quick-pills-wrap {
+    position: relative;
+  }
+
+  .quick-pills {
+    scroll-snap-type: x mandatory;
+    mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+    padding-right: 28px;
+  }
+
+  .quick-pill {
+    scroll-snap-align: start;
+  }
+
+  .quick-pills-wrap .cat-scroll-hint {
+    right: 2px;
+  }
+
   .blog-grid.home-blog-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -6846,6 +6865,10 @@ button {
   line-height: 1.55;
   max-width: 480px;
 }
+.deals-cta-text .countdown-timer {
+  justify-content: flex-start;
+  margin-top: 18px;
+}
 .deals-cta-btn {
   position: relative;
   z-index: 1;
@@ -6865,6 +6888,21 @@ button {
   .deals-cta-btn {
     width: 100%;
     text-align: center;
+  }
+  .deals-cta-text .countdown-timer {
+    gap: 6px;
+    width: 100%;
+  }
+  .deals-cta-text .cd-box {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+  }
+  .deals-cta-text .cd-box strong {
+    font-size: 1.1rem;
+  }
+  .deals-cta-text .cd-sep {
+    font-size: 1.2rem;
   }
 }
 .deals-tag a {

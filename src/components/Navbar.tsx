@@ -21,8 +21,8 @@ const NAV_LINKS = [
 
 const MENU_LINKS = [
   { icon: '🏠', label: 'Home', href: '/' },
-  { icon: '🛍️', label: 'Shop', href: '/shop' },
   { icon: '📰', label: 'Blog', href: '/blog' },
+  { icon: '🛍️', label: 'Shop', href: '/shop' },
   { icon: '🔥', label: 'Deals', href: '/deals' },
   { icon: '🆕', label: 'New Arrivals', href: '/shop/new-arrivals' },
   { icon: '⚡', label: 'Flash Sale', href: '/shop/flash-sale' },
