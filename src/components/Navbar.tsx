@@ -7,6 +7,8 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/context/useCart'
 import { useAuth } from '@/context/useAuth'
+import SocialIcon from './SocialIcon'
+import type { PlatformKey } from '@/lib/socials'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -31,13 +33,7 @@ const COMPANY_LINKS = [
   { icon: '📞', label: 'Contact', href: '/contact' },
 ]
 
-const SIDEBAR_SOCIALS = [
-  { label: 'f', name: 'Facebook', href: 'https://www.facebook.com/amazonfindsgadget.shop' },
-  { label: 'IG', name: 'Instagram', href: 'https://www.instagram.com/amazonfindsgadget.shop/' },
-  { label: 'WA', name: 'WhatsApp', href: 'https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0' },
-  { label: 'YT', name: 'YouTube', href: 'https://www.youtube.com/@amazonfindsgagdet' },
-  { label: 'P', name: 'Pinterest', href: 'https://www.pinterest.com/amazonfinds_gadget/' },
-]
+const SIDEBAR_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'youtube', 'pinterest']
 
 export default function Navbar() {
   const { count } = useCart()
@@ -168,17 +164,8 @@ export default function Navbar() {
 
       <div className="side-foot">
         <div className="side-socials">
-          {SIDEBAR_SOCIALS.map((s) => (
-            <a
-              key={s.name}
-              href={s.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={s.name}
-              className="side-social"
-            >
-              {s.label}
-            </a>
+          {SIDEBAR_SOCIALS.map((platform) => (
+            <SocialIcon key={platform} platform={platform} className="side-social" />
           ))}
         </div>
         <Link
@@ -308,17 +295,8 @@ export default function Navbar() {
 
       <div className="desk-panel-foot">
         <div className="side-socials">
-          {SIDEBAR_SOCIALS.map((s) => (
-            <a
-              key={s.name}
-              href={s.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={s.name}
-              className="side-social"
-            >
-              {s.label}
-            </a>
+          {SIDEBAR_SOCIALS.map((platform) => (
+            <SocialIcon key={platform} platform={platform} className="side-social" />
           ))}
         </div>
       </div>

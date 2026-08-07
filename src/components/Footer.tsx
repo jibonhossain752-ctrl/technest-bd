@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import SocialIcon from './SocialIcon'
+import type { PlatformKey } from '@/lib/socials'
 
 const SHOP_LINKS = [
   { label: 'Laptops', href: '/shop/laptops' },
@@ -21,13 +23,7 @@ const ACCOUNT_LINKS = [
   { label: 'Cart', href: '/cart' },
 ]
 
-const SOCIAL_LINKS = [
-  { label: 'f', name: 'Facebook', href: 'https://www.facebook.com/amazonfindsgadget.shop' },
-  { label: 'IG', name: 'Instagram', href: 'https://www.instagram.com/amazonfindsgadget.shop/' },
-  { label: 'WA', name: 'WhatsApp', href: 'https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0' },
-  { label: 'YT', name: 'YouTube', href: 'https://www.youtube.com/@amazonfindsgagdet' },
-  { label: 'P', name: 'Pinterest', href: 'https://www.pinterest.com/amazonfinds_gadget/' },
-]
+const FOOTER_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'youtube', 'pinterest']
 
 export default function Footer() {
   return (
@@ -43,16 +39,8 @@ export default function Footer() {
             prices, and service you can rely on.
           </p>
           <div className="socials">
-            {SOCIAL_LINKS.map((s) => (
-              <a
-                key={s.name}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.name}
-              >
-                {s.label}
-              </a>
+            {FOOTER_SOCIALS.map((platform) => (
+              <SocialIcon key={platform} platform={platform} />
             ))}
           </div>
         </div>

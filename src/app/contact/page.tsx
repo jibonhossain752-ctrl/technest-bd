@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import PageHeader from '@/components/ui/PageHeader'
 import ContactForm from '@/components/ContactForm'
+import SocialIcon from '@/components/SocialIcon'
+import type { PlatformKey } from '@/lib/socials'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -21,23 +22,11 @@ const CHANNELS = [
   { icon: '📍', title: 'Store Address', detail: 'Level 3, Tech Plaza, Elephant Road, Dhaka', note: 'Visit us in person' },
 ]
 
-const CONTACT_SOCIALS = [
-  { label: 'f', name: 'Facebook', href: 'https://www.facebook.com/amazonfindsgadget.shop' },
-  { label: 'IG', name: 'Instagram', href: 'https://www.instagram.com/amazonfindsgadget.shop/' },
-  { label: 'WA', name: 'WhatsApp', href: 'https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0' },
-  { label: 'YT', name: 'YouTube', href: 'https://www.youtube.com/@amazonfindsgagdet' },
-  { label: 'P', name: 'Pinterest', href: 'https://www.pinterest.com/amazonfinds_gadget/' },
-]
+const CONTACT_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'youtube', 'pinterest']
 
 export default function ContactPage() {
   return (
     <>
-      <PageHeader
-        title="Contact Us"
-        subtitle="We're here to help — reach out anytime"
-        showHomeCrumb={false}
-      />
-
       <section className="contact container">
         <div className="contact-layout">
           <ContactForm />
@@ -74,10 +63,8 @@ export default function ContactPage() {
               })}
             </div>
             <div className="contact-socials" aria-label="Social media">
-              {CONTACT_SOCIALS.map((s) => (
-                <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}>
-                  {s.label}
-                </a>
+              {CONTACT_SOCIALS.map((platform) => (
+                <SocialIcon key={platform} platform={platform} />
               ))}
             </div>
           </aside>

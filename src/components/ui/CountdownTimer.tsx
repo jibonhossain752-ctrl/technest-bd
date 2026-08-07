@@ -54,7 +54,17 @@ export default function CountdownTimer() {
 
   useEffect(() => {
     const tick = () => {
-      const remaining = getDeadline() - Date.now()
+      let deadline = getDeadline()
+      let remaining = deadline - Date.now()
+      if (remaining <= 0) {
+        deadline = Date.now() + CYCLE_MS
+        try {
+          window.localStorage.setItem(DEADLINE_KEY, String(deadline))
+        } catch {
+          /* ignore storage errors */
+        }
+        remaining = CYCLE_MS
+      }
       setParts(format(remaining))
     }
     tick()

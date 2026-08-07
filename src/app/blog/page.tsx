@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react'
 import { POSTS } from '@/data/posts'
-import PageHeader from '@/components/ui/PageHeader'
 import BlogCard from '@/components/BlogCard'
 import NewsletterWidget from '@/components/NewsletterWidget'
+import CategoryScrollHint from '@/components/CategoryScrollHint'
 
 const TABS = [
   { label: 'All', match: null as string | null },
@@ -50,12 +50,6 @@ export default function BlogPage() {
 
   return (
     <>
-      <PageHeader
-        title="Blog"
-        subtitle="Latest gadget reviews, buying guides and deals"
-        showHomeCrumb={false}
-      />
-
       <section className="blog container">
         <div className="blog-toolbar">
           <div className="blog-tabs-wrap">
@@ -76,9 +70,7 @@ export default function BlogPage() {
                 </button>
               ))}
             </div>
-            <span className="blog-tabs-more" aria-hidden="true">
-              ›
-            </span>
+            <CategoryScrollHint targetSelector=".blog-tabs" />
           </div>
           <div className="blog-search">
             <span className="blog-search-icon" aria-hidden="true">

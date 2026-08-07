@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import PageHeader from '@/components/ui/PageHeader'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -41,12 +40,6 @@ const STATS = [
 export default function AboutPage() {
   return (
     <>
-      <PageHeader
-        title="About TechNest BD"
-        subtitle="Your trusted tech destination since day one"
-        showHomeCrumb={false}
-      />
-
       <section className="about-intro container">
         <div className="about-text">
           <h2>Who We Are</h2>
