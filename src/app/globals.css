@@ -6274,9 +6274,9 @@ button {
     scroll-snap-type: x proximity;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding: 4px 30px 6px 0;
-    mask-image: linear-gradient(90deg, #000 76%, transparent 100%);
-    -webkit-mask-image: linear-gradient(90deg, #000 76%, transparent 100%);
+    padding: 4px 28px 6px 0;
+    mask-image: linear-gradient(90deg, #000 74%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, #000 74%, transparent 100%);
   }
 
   .blog-tabs::-webkit-scrollbar {
@@ -6286,6 +6286,8 @@ button {
   .blog-tab {
     flex-shrink: 0;
     scroll-snap-align: start;
+    padding: 8px 12px;
+    font-size: 0.78rem;
   }
 
   .blog-tabs-more {
