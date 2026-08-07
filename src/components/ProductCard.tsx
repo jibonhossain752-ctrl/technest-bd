@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { Product } from '@/data/products'
-import { formatBDT } from '@/data/products'
+import { formatUSD } from '@/data/products'
 import RatingStars from './RatingStars'
 import { useCart } from '@/context/useCart'
 
@@ -63,9 +63,9 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         </Link>
         <RatingStars rating={product.rating} reviews={product.reviews} />
         <div className="product-price">
-          <strong>{formatBDT(product.price)}</strong>
+          <strong>{formatUSD(product.price)}</strong>
           {product.oldPrice && (
-            <span className="old">{formatBDT(product.oldPrice)}</span>
+            <span className="old">{formatUSD(product.oldPrice)}</span>
           )}
         </div>
         <div className="product-actions">

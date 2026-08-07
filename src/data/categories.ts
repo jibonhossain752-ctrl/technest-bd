@@ -22,7 +22,7 @@ const CATEGORY_META = [
 export const CATEGORIES: Category[] = CATEGORY_META.map((meta) => ({
   ...meta,
   count: PRODUCTS.filter((p) => p.categorySlug === meta.slug).length,
-  description: `Shop the best ${meta.name.toLowerCase()} at unbeatable prices with genuine warranty and fast delivery across Bangladesh.`,
+  description: `Shop the best ${meta.name.toLowerCase()} at unbeatable prices with genuine warranty and fast delivery across the USA.`,
 }))
 
 export const getCategoryBySlug = (slug: string): Category | undefined =>

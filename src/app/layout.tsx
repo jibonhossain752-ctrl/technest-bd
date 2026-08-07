@@ -10,11 +10,11 @@ import ScrollToTop from '@/components/ScrollToTop'
 
 export const metadata: Metadata = {
   title: {
-    default: 'TechNest BD | Your Trusted Tech Store in Bangladesh',
-    template: '%s | TechNest BD',
+    default: 'TechNest US | Your Trusted Tech Store in the USA',
+    template: '%s | TechNest US',
   },
   description:
-    'TechNest BD - Shop the latest gadgets, laptops, and accessories in Bangladesh. Genuine products, fast delivery, best prices.',
+    'TechNest US - Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

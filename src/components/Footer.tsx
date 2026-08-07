@@ -32,10 +32,10 @@ export default function Footer() {
         <div className="footer-brand">
           <Link href="/" className="logo">
             <span className="logo-mark">N</span>
-            TechNest<span>BD</span>
+            TechNest<span>US</span>
           </Link>
           <p>
-            Your trusted tech destination in Bangladesh. Genuine products, fair
+            Your trusted tech destination in the USA. Genuine products, fair
             prices, and service you can rely on.
           </p>
           <div className="socials">
@@ -77,7 +77,7 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; 2026 TechNest BD. All rights reserved.</p>
+          <p>&copy; 2026 TechNest US. All rights reserved.</p>
         </div>
       </div>
     </footer>

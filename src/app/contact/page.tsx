@@ -6,20 +6,20 @@ import type { PlatformKey } from '@/lib/socials'
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:
-    'Get in touch with TechNest BD — support, sales, warranty and partnership inquiries.',
+    'Get in touch with TechNest US — support, sales, warranty and partnership inquiries.',
 }
 
 const CHANNELS = [
-  { icon: '📞', title: 'Phone', detail: '+880 1XXX-XXXXXX', note: 'Sat - Thu, 9AM - 9PM' },
+  { icon: '📞', title: 'Phone', detail: '(555) 010-1234', note: 'Mon - Fri, 9AM - 9PM' },
   {
     icon: '💬',
     title: 'WhatsApp',
-    detail: '+880 1XXX-XXXXXX',
+    detail: '+1 (555) 010-1234',
     note: 'Fastest response',
     href: 'https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0',
   },
-  { icon: '✉️', title: 'Email', detail: 'support@technestbd.com', note: 'Replies within 24 hours' },
-  { icon: '📍', title: 'Store Address', detail: 'Level 3, Tech Plaza, Elephant Road, Dhaka', note: 'Visit us in person' },
+  { icon: '✉️', title: 'Email', detail: 'support@technestus.com', note: 'Replies within 24 hours' },
+  { icon: '📍', title: 'Store Address', detail: '1200 Tech Plaza, Suite 300, New York, NY 10001', note: 'Visit us in person' },
 ]
 
 const CONTACT_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'youtube', 'pinterest']

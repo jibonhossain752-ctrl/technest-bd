@@ -15,10 +15,10 @@ export const POSTS: BlogPost[] = [
     slug: 'how-to-choose-the-perfect-laptop-in-2026',
     title: 'How to Choose the Perfect Laptop in 2026',
     excerpt:
-      'From processors to displays, here is everything you need to know before buying your next laptop in Bangladesh.',
+      'From processors to displays, here is everything you need to know before buying your next laptop in the USA.',
     category: 'Buying Guide',
     date: '2026-07-28',
-    author: 'TechNest BD Team',
+    author: 'TechNest US Team',
     emoji: '💻',
     readTime: '6 min read',
     content: [
@@ -34,14 +34,14 @@ export const POSTS: BlogPost[] = [
     slug: 'top-5-budget-smartphones-this-month',
     title: 'Top 5 Budget Smartphones This Month',
     excerpt:
-      'Great camera, big battery and smooth display — all without breaking the bank. Our monthly picks under BDT 40,000.',
+      'Great camera, big battery and smooth display — all without breaking the bank. Our monthly picks under $400.',
     category: 'Roundup',
     date: '2026-07-15',
-    author: 'Sadia Nahar',
+    author: 'Sofia Martinez',
     emoji: '📱',
     readTime: '4 min read',
     content: [
-      'Budget smartphones have come a long way. This month, we picked the five best phones under BDT 40,000 that offer the most value for everyday users.',
+      'Budget smartphones have come a long way. This month, we picked the five best phones under $400 that offer the most value for everyday users.',
       'The Xiaomi Redmi Note 13 Pro tops our list with a 200MP camera, AMOLED display and 67W fast charging. It is hard to beat at this price point.',
       'For those who prefer a cleaner software experience, the Samsung Galaxy A-series remains a solid choice with long software support and reliable performance.',
       'Gamers on a budget will appreciate phones with 120Hz displays and capable mid-range chips, which are now widely available from brands like Poco and Realme.',
@@ -56,7 +56,7 @@ export const POSTS: BlogPost[] = [
       'Simple settings changes and habits that can make your phone last noticeably longer on a single charge.',
     category: 'Tips & Tricks',
     date: '2026-07-02',
-    author: 'Mahir Islam',
+    author: 'Mike Harrison',
     emoji: '🔋',
     readTime: '5 min read',
     content: [
@@ -75,7 +75,7 @@ export const POSTS: BlogPost[] = [
       'Faster speeds, lower latency and better support for many devices — here is why Wi-Fi 6 routers are worth the upgrade.',
     category: 'Explainer',
     date: '2026-06-20',
-    author: 'TechNest BD Team',
+    author: 'TechNest US Team',
     emoji: '📡',
     readTime: '5 min read',
     content: [
@@ -91,10 +91,10 @@ export const POSTS: BlogPost[] = [
     slug: 'buying-guide-gaming-gear-in-bangladesh',
     title: 'Gaming Gear Buying Guide for Beginners',
     excerpt:
-      'Keyboards, mice, headsets and more — how to build your first gaming setup on a budget in Bangladesh.',
+      'Keyboards, mice, headsets and more — how to build your first gaming setup on a budget in the USA.',
     category: 'Buying Guide',
     date: '2026-06-05',
-    author: 'Rakib Ahmed',
+    author: 'Ryan Anderson',
     emoji: '🎮',
     readTime: '7 min read',
     content: [

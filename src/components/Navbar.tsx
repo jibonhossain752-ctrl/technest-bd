@@ -120,7 +120,7 @@ export default function Navbar() {
       <div className="side-panel-top">
         <Link href="/" className="side-logo" onClick={goHomeFresh}>
           <span className="logo-mark">N</span>
-          TechNest<span>BD</span>
+          TechNest<span>US</span>
         </Link>
         <button
           type="button"
@@ -316,14 +316,14 @@ export default function Navbar() {
       className={`header${menuOpen || deskSidebarOpen ? ' menu-locked' : ''}`}
     >
       <div className="topbar">
-        <p>Free delivery on orders over BDT 5,000 across Bangladesh</p>
+        <p>Free delivery on orders over $50 across the USA</p>
       </div>
 
       <nav className="navbar">
         <div className="container nav-container">
           <Link href="/" className="logo" onClick={goHomeFresh}>
             <span className="logo-mark">N</span>
-            TechNest<span>BD</span>
+            TechNest<span>US</span>
           </Link>
 
           {!isMobile && desktopNavList}

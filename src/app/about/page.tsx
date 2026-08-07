@@ -4,14 +4,14 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about TechNest BD — our story, mission, and why thousands of customers across Bangladesh trust us.',
+    'Learn about TechNest US — our story, mission, and why thousands of customers across the USA trust us.',
 }
 
 const VALUES = [
   {
     icon: '🎯',
     title: 'Our Mission',
-    desc: 'To make genuine, high-quality tech products accessible and affordable for everyone in Bangladesh.',
+    desc: 'To make genuine, high-quality tech products accessible and affordable for everyone in the USA.',
   },
   {
     icon: '🤝',
@@ -21,7 +21,7 @@ const VALUES = [
   {
     icon: '🚀',
     title: 'Fast & Reliable',
-    desc: 'With nationwide delivery in 24-72 hours, your orders reach you quickly and safely anywhere in the country.',
+    desc: 'With fast, reliable delivery across all 50 states, your orders reach you quickly and safely anywhere in the country.',
   },
   {
     icon: '💡',
@@ -33,7 +33,7 @@ const VALUES = [
 const STATS = [
   { value: '50K+', label: 'Happy Customers' },
   { value: '10K+', label: 'Products Sold' },
-  { value: '64', label: 'Districts Covered' },
+  { value: '50', label: 'States Covered' },
   { value: '4.8/5', label: 'Average Rating' },
 ]
 
@@ -44,10 +44,10 @@ export default function AboutPage() {
         <div className="about-text">
           <h2>Who We Are</h2>
           <p>
-            TechNest BD started with a simple idea: shopping for technology in
-            Bangladesh should be easy, safe and affordable. Today, we are one of
-            the country&apos;s most trusted online tech stores, serving thousands
-            of customers across all 64 districts.
+            TechNest US started with a simple idea: shopping for technology in
+            the United States should be easy, safe and affordable. Today, we are
+            one of the country&apos;s most trusted online tech stores, serving
+            thousands of customers across all 50 states.
           </p>
           <p>
             From laptops and smartphones to gaming gear and smart home devices,
@@ -87,7 +87,7 @@ export default function AboutPage() {
 
       <section className="about-cta container">
         <h2>Ready to upgrade your tech?</h2>
-        <p>Browse thousands of genuine products at the best prices in Bangladesh.</p>
+        <p>Browse thousands of genuine products at the best prices in the USA.</p>
         <Link href="/shop" className="btn btn-primary">
           Shop Now
         </Link>

@@ -5,7 +5,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Product } from '@/data/products'
-import { formatBDT } from '@/data/products'
+import { formatUSD } from '@/data/products'
 import RatingStars from './RatingStars'
 import { useCart } from '@/context/useCart'
 
@@ -92,16 +92,16 @@ export function ProductDetailHero({ product }: { product: Product }) {
         </div>
         <RatingStars rating={product.rating} reviews={product.reviews} />
         <div className="pd-price">
-          <strong>{formatBDT(product.price)}</strong>
+          <strong>{formatUSD(product.price)}</strong>
           {product.oldPrice && (
-            <span className="old">{formatBDT(product.oldPrice)}</span>
+            <span className="old">{formatUSD(product.oldPrice)}</span>
           )}
           {discount > 0 && <span className="save">Save {discount}%</span>}
         </div>
         <p className="pd-desc">{product.description}</p>
         <AddToCartButton product={product} />
         <ul className="pd-perks">
-          <li>🚚 Fast delivery across Bangladesh</li>
+          <li>🚚 Fast delivery across the USA</li>
           <li>✅ 100% genuine with official warranty</li>
           <li>🔁 7-day easy returns</li>
         </ul>

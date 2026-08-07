@@ -18,7 +18,7 @@ const FEATURES: Feature[] = [
   {
     icon: '🚚',
     title: 'Fast Delivery',
-    desc: 'Nationwide delivery within 24-72 hours.',
+    desc: 'Fast delivery across all 50 states.',
   },
   {
     icon: '💬',

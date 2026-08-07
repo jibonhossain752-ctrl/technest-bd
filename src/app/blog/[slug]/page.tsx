@@ -43,7 +43,7 @@ const DEAL_POSTS: Record<string, Deal[]> = {
     {
       product: 'Apple MacBook Air M2',
       emoji: '💻',
-      price: '৳1,29,000',
+      price: '$999',
       href: '/product/apple-macbook-air-m2',
     },
   ],
@@ -51,7 +51,7 @@ const DEAL_POSTS: Record<string, Deal[]> = {
     {
       product: 'Xiaomi Redmi Note 13 Pro',
       emoji: '📱',
-      price: '৳32,999',
+      price: '$299',
       href: '/shop/smartphones',
     },
   ],
@@ -59,7 +59,7 @@ const DEAL_POSTS: Record<string, Deal[]> = {
     {
       product: 'Mechanical Gaming Keyboard',
       emoji: '⌨️',
-      price: '৳6,499',
+      price: '$89',
       href: '/shop/gaming',
     },
   ],

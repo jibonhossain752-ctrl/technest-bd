@@ -12,39 +12,39 @@ interface Testimonial {
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    name: 'Rakib Ahmed',
-    city: 'Chittagong',
-    text: 'Bought a laptop for my brother. Genuine product, sealed box, and delivered in just 2 days to Chittagong. Highly recommended!',
+    name: 'Michael Johnson',
+    city: 'Austin, TX',
+    text: 'Bought a laptop for my brother. Genuine product, sealed box, and it arrived in just 2 days. Highly recommended!',
     rating: 5,
-    initials: 'RA',
+    initials: 'MJ',
   },
   {
-    name: 'Sadia Nahar',
-    city: 'Dhaka',
-    text: 'Best prices I could find online in BD. The warranty registration was super easy. TechNest is now my go-to store.',
+    name: 'Emily Davis',
+    city: 'Chicago, IL',
+    text: 'Best prices I could find online. The warranty registration was super easy. TechNest is now my go-to store.',
     rating: 5,
-    initials: 'SN',
+    initials: 'ED',
   },
   {
-    name: 'Mahir Islam',
-    city: 'Sylhet',
+    name: 'James Wilson',
+    city: 'Seattle, WA',
     text: 'Fast delivery and great support team. They helped me choose the right gaming keyboard. 10/10 experience!',
     rating: 5,
-    initials: 'MI',
+    initials: 'JW',
   },
   {
-    name: 'Tasnim Rahman',
-    city: 'Rajshahi',
+    name: 'Sarah Miller',
+    city: 'Miami, FL',
     text: 'Excellent service and genuine products. The cash on delivery option made me feel safe. Will shop again!',
     rating: 4,
-    initials: 'TR',
+    initials: 'SM',
   },
   {
-    name: 'Nafis Hasan',
-    city: 'Khulna',
+    name: 'David Brown',
+    city: 'Denver, CO',
     text: 'Ordered a PS5 and it arrived within 3 days, well packed. The team even called to confirm delivery. Great experience.',
     rating: 5,
-    initials: 'NH',
+    initials: 'DB',
   },
 ]
 
@@ -68,7 +68,7 @@ export default function Testimonials() {
       <div className="container">
         <div className="section-head">
           <h2>What Our Customers Say</h2>
-          <p>Trusted by thousands across Bangladesh</p>
+          <p>Trusted by thousands across the USA</p>
         </div>
         <div className="testi-track">
           {visible.map((t) => (

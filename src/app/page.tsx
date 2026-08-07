@@ -10,9 +10,9 @@ import Testimonials from '@/components/Testimonials'
 import Reveal from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
-  title: 'TechNest BD',
+  title: 'TechNest US',
   description:
-    'Shop the latest gadgets, laptops, and accessories in Bangladesh. Genuine products, fast delivery, best prices.',
+    'Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
 }
 
 export default function HomePage() {

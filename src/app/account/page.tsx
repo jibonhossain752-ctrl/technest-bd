@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/context/useAuth'
 import { getOrdersByEmail } from '@/lib/orders'
-import { formatBDT } from '@/data/products'
+import { formatUSD } from '@/data/products'
 import type { OrderRecord } from '@/lib/orders'
 
 const MENU = [
@@ -99,7 +99,7 @@ export default function AccountPage() {
                         <span className={`status-badge status-${order.status}`}>
                           {order.status}
                         </span>
-                        <strong>{formatBDT(order.total)}</strong>
+                        <strong>{formatUSD(order.total)}</strong>
                       </div>
                     ))}
                   </div>
@@ -139,7 +139,7 @@ export default function AccountPage() {
               <div className="account-user">
                 <span className="avatar avatar-lg">TN</span>
                 <div>
-                  <h2>Welcome to TechNest BD</h2>
+                  <h2>Welcome to TechNest US</h2>
                   <p>
                     Sign in to view your profile, orders and preferences.
                   </p>

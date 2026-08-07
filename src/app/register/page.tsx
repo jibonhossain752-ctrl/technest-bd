@@ -57,7 +57,7 @@ export default function RegisterPage() {
 
   return (
     <>
-      <PageHeader title="Create Account" subtitle="Join TechNest BD today" />
+      <PageHeader title="Create Account" subtitle="Join TechNest US today" />
 
       <section className="auth container">
         <div className="auth-card">
@@ -90,7 +90,7 @@ export default function RegisterPage() {
             <input
               id="phone"
               type="tel"
-              placeholder="01XXXXXXXXX"
+              placeholder="(XXX) XXX-XXXX"
               value={form.phone}
               onChange={update('phone')}
               required

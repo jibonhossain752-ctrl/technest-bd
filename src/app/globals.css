@@ -6983,18 +6983,34 @@ button {
   margin-top: 6px;
 }
 .watch-shop-wrap .cat-scroll-hint {
-  width: 46px;
-  height: 46px;
-  font-size: 1.6rem;
+  width: 48px;
+  height: 48px;
+  font-size: 1.8rem;
+  font-weight: 700;
   right: 10px;
   background: var(--accent);
   color: #fff;
   border: none;
   box-shadow: 0 4px 16px rgba(255, 107, 53, 0.5);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease,
+    background 0.2s ease, box-shadow 0.2s ease;
 }
 .watch-shop-wrap .cat-scroll-hint.clickable {
   pointer-events: auto;
   cursor: pointer;
+  animation: none;
+}
+.watch-shop-wrap .cat-scroll-hint.clickable:hover {
+  transform: translateY(-50%) scale(1.08);
+  background: #e65017;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.65);
+}
+.watch-shop-wrap .cat-scroll-hint.clickable:active {
+  transform: translateY(-50%) scale(0.94);
+}
+.watch-shop-wrap .cat-scroll-hint.clickable:focus-visible {
+  outline: 3px solid rgba(255, 107, 53, 0.45);
+  outline-offset: 3px;
 }
 
 @media (max-width: 767px) {

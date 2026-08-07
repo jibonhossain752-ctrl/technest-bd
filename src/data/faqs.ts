@@ -10,14 +10,14 @@ export const FAQS: Faq[] = [
     id: 'f1',
     question: 'Is the cash on delivery option available?',
     answer:
-      'Yes, cash on delivery (COD) is available in all 64 districts across Bangladesh. You can pay in cash when your order arrives.',
+      'Yes, cash on delivery (COD) is available across the United States. You can pay in cash when your order arrives.',
     category: 'Payment',
   },
   {
     id: 'f2',
     question: 'How long does delivery take?',
     answer:
-      'Deliveries typically arrive within 24-72 hours depending on your location. Dhaka orders usually arrive within 24 hours, and outside Dhaka within 2-3 working days.',
+      'Deliveries typically arrive within 2-5 business days depending on your location. Orders to major cities like New York, Los Angeles and Chicago usually arrive within 2-3 business days.',
     category: 'Delivery',
   },
   {
@@ -38,7 +38,7 @@ export const FAQS: Faq[] = [
     id: 'f5',
     question: 'Which payment methods do you accept?',
     answer:
-      'We accept cash on delivery, bKash, Nagad, Rocket, and all major credit/debit cards. Online payments are processed securely.',
+      'We accept all major credit/debit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, Google Pay, and cash on delivery. Online payments are processed securely.',
     category: 'Payment',
   },
   {

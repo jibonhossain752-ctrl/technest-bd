@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { CATEGORIES } from '@/data/categories'
-import { PRODUCTS, formatBDT } from '@/data/products'
+import { PRODUCTS, formatUSD } from '@/data/products'
 import CategoryChips from './CategoryChips'
 
 export default function CategoryGrid() {
@@ -83,7 +83,7 @@ export default function CategoryGrid() {
                   </span>
                   <span className="cat-preview-name">{p.name}</span>
                   <strong className="cat-preview-price">
-                    {formatBDT(p.price)}
+                    {formatUSD(p.price)}
                   </strong>
                 </Link>
               ))}

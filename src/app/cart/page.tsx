@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
-import { formatBDT } from '@/data/products'
+import { formatUSD } from '@/data/products'
 import PageHeader from '@/components/ui/PageHeader'
 
 export default function CartPage() {
@@ -35,7 +35,7 @@ export default function CartPage() {
                       {product.name}
                     </Link>
                     <span className="cart-row-cat">{product.category}</span>
-                    <strong>{formatBDT(product.price)}</strong>
+                    <strong>{formatUSD(product.price)}</strong>
                   </div>
                   <div className="qty-selector">
                     <button
@@ -55,7 +55,7 @@ export default function CartPage() {
                     </button>
                   </div>
                   <strong className="cart-row-total">
-                    {formatBDT(product.price * qty)}
+                    {formatUSD(product.price * qty)}
                   </strong>
                   <button
                     type="button"
@@ -76,7 +76,7 @@ export default function CartPage() {
               <h3>Order Summary</h3>
               <div className="summary-row">
                 <span>Subtotal</span>
-                <strong>{formatBDT(total)}</strong>
+                <strong>{formatUSD(total)}</strong>
               </div>
               <div className="summary-row">
                 <span>Delivery</span>
@@ -84,7 +84,7 @@ export default function CartPage() {
               </div>
               <div className="summary-row total">
                 <span>Total</span>
-                <strong>{formatBDT(total)}</strong>
+                <strong>{formatUSD(total)}</strong>
               </div>
               <Link href="/checkout" className="btn btn-accent block">
                 Proceed to Checkout

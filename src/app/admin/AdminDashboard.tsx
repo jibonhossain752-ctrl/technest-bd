@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { formatBDT } from '@/data/products'
+import { formatUSD } from '@/data/products'
 
 interface AdminUser {
   id: string
@@ -116,7 +116,7 @@ export default function AdminDashboard() {
     { value: orders.length, label: 'Total Orders', trend: '5 pending' },
     { value: messages.length, label: 'Contact Messages', trend: 'newest first' },
     {
-      value: formatBDT(orders.reduce((sum, o) => sum + Number(o.total), 0)),
+      value: formatUSD(orders.reduce((sum, o) => sum + Number(o.total), 0)),
       label: 'Ordered Value',
       trend: 'all time',
     },
@@ -236,12 +236,12 @@ export default function AdminDashboard() {
                             {o.items.map((i) => (
                               <div key={`${o.id}-${i.name}`}>
                                 <small>
-                                  {i.qty} × {i.name} ({formatBDT(i.price)})
+                                  {i.qty} × {i.name} ({formatUSD(i.price)})
                                 </small>
                               </div>
                             ))}
                           </td>
-                          <td>{formatBDT(o.total)}</td>
+                          <td>{formatUSD(o.total)}</td>
                           <td>{fmtDate(o.placedAt)}</td>
                           <td>
                             <select

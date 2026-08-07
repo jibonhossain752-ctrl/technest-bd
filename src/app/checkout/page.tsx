@@ -4,7 +4,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
-import { formatBDT } from '@/data/products'
+import { formatUSD } from '@/data/products'
 import { placeOrder } from '@/lib/orders'
 import PageHeader from '@/components/ui/PageHeader'
 
@@ -49,8 +49,8 @@ export default function CheckoutPage() {
             <span className="empty-emoji">🎉</span>
             <h2>Thank you for your order!</h2>
             <p>
-              Order <strong>{orderId}</strong> has been placed successfully. Our
-              team will call you shortly to confirm delivery details.
+              Order <strong>{orderId}</strong> has been placed successfully. A
+              confirmation email with your order details is on its way.
             </p>
             <Link href="/shop" className="btn btn-primary">
               Continue Shopping
@@ -108,7 +108,7 @@ export default function CheckoutPage() {
             <input type="text" name="address" placeholder="Street / Area" required />
             <div className="form-row">
               <input type="text" name="city" placeholder="City" required />
-              <input type="text" name="district" placeholder="District" required />
+              <input type="text" name="district" placeholder="State" required />
             </div>
             <textarea
               name="note"
@@ -125,7 +125,7 @@ export default function CheckoutPage() {
             </label>
             <label className="radio-option">
               <input type="radio" name="payment" />
-              <span>📱 bKash / Nagad</span>
+              <span>📱 Apple Pay / Google Pay</span>
             </label>
             <label className="radio-option">
               <input type="radio" name="payment" />
@@ -149,7 +149,7 @@ export default function CheckoutPage() {
           {error && <p className="form-error">{error}</p>}
 
           <button type="submit" className="btn btn-accent block" disabled={busy}>
-            {busy ? 'Placing Order…' : `Place Order · ${formatBDT(total)}`}
+            {busy ? 'Placing Order…' : `Place Order · ${formatUSD(total)}`}
           </button>
         </form>
 
@@ -161,15 +161,15 @@ export default function CheckoutPage() {
               <div>
                 <strong>{product.name}</strong>
                 <small>
-                  {qty} × {formatBDT(product.price)}
+                  {qty} × {formatUSD(product.price)}
                 </small>
               </div>
-              <span>{formatBDT(product.price * qty)}</span>
+              <span>{formatUSD(product.price * qty)}</span>
             </div>
           ))}
           <div className="summary-row">
             <span>Subtotal</span>
-            <strong>{formatBDT(total)}</strong>
+            <strong>{formatUSD(total)}</strong>
           </div>
           <div className="summary-row">
             <span>Delivery</span>
@@ -177,7 +177,7 @@ export default function CheckoutPage() {
           </div>
           <div className="summary-row total">
             <span>Total</span>
-            <strong>{formatBDT(total)}</strong>
+            <strong>{formatUSD(total)}</strong>
           </div>
         </aside>
       </section>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Product } from '@/data/products'
-import { formatBDT } from '@/data/products'
+import { formatUSD } from '@/data/products'
 import RatingStars from './RatingStars'
 
 interface BestSellingCardProps {
@@ -39,9 +39,9 @@ export default function BestSellingCard({ product }: BestSellingCardProps) {
         </Link>
         <RatingStars rating={product.rating} reviews={product.reviews} />
         <div className="bs-card-price">
-          <strong>{formatBDT(product.price)}</strong>
+          <strong>{formatUSD(product.price)}</strong>
           {product.oldPrice && (
-            <span className="old">{formatBDT(product.oldPrice)}</span>
+            <span className="old">{formatUSD(product.oldPrice)}</span>
           )}
         </div>
       </div>
