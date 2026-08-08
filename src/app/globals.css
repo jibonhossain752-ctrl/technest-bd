@@ -5703,6 +5703,66 @@ button {
   padding: 10px 16px;
 }
 
+.blog-faq {
+  margin-top: 34px;
+  border-top: 1px solid var(--border);
+  padding-top: 26px;
+}
+
+.blog-faq h2 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.blog-faq-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.blog-faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 15px 18px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.blog-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.blog-faq-item summary::after {
+  content: '+';
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--accent-dark);
+  flex-shrink: 0;
+}
+
+.blog-faq-item[open] summary::after {
+  content: '\2212';
+}
+
+.blog-faq-item[open] summary {
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-faq-item p {
+  margin: 0;
+  padding: 14px 18px 16px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
 .blog-share {
   display: flex;
   align-items: center;

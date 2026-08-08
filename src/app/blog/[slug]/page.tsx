@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import { POSTS, getPostBySlug } from '@/data/posts'
+import { PRODUCTS } from '@/data/products'
 import BlogCard from '@/components/BlogCard'
 import { categoryBadgeClass } from '@/data/blogCategories'
 import ShareButtons from '@/components/ShareButtons'
@@ -21,7 +21,20 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) return { title: 'Post Not Found' }
-  return { title: post.title, description: post.excerpt }
+  return {
+    title: post.metaTitle ?? post.title,
+    description: post.metaDescription ?? post.excerpt,
+    keywords: [post.primaryKeyword, ...(post.secondaryKeywords ?? [])].filter(
+      (k): k is string => Boolean(k),
+    ),
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.metaTitle ?? post.title,
+      description: post.metaDescription ?? post.excerpt,
+      type: 'article',
+      url: `/blog/${post.slug}`,
+    },
+  }
 }
 
 function formatDate(date: string) {
@@ -32,47 +45,16 @@ function formatDate(date: string) {
   })
 }
 
-interface Deal {
-  product: string
-  emoji: string
-  price: string
-  href: string
-}
-
-const DEAL_POSTS: Record<string, Deal[]> = {
-  'how-to-choose-the-perfect-laptop-in-2026': [
-    {
-      product: 'Apple MacBook Air M2',
-      emoji: '💻',
-      price: '$999',
-      href: '/product/apple-macbook-air-m2',
-    },
-  ],
-  'top-5-budget-smartphones-this-month': [
-    {
-      product: 'Xiaomi Redmi Note 13 Pro',
-      emoji: '📱',
-      price: '$299',
-      href: '/shop/smartphones',
-    },
-  ],
-  'buying-guide-gaming-gear-in-bangladesh': [
-    {
-      product: 'Mechanical Gaming Keyboard',
-      emoji: '⌨️',
-      price: '$89',
-      href: '/shop/gaming',
-    },
-  ],
-}
-
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
   const related = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3)
-  const deals = DEAL_POSTS[post.slug] ?? []
+  const deal = post.dealCard
+  const product = deal
+    ? PRODUCTS.find((p) => p.slug === deal.productSlug)
+    : undefined
 
   return (
     <>
@@ -92,6 +74,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>{formatDate(post.date)}</span>
             <span aria-hidden="true">•</span>
             <span>{post.readTime}</span>
+            {post.lastUpdated && (
+              <>
+                <span aria-hidden="true">•</span>
+                <span>Updated {formatDate(post.lastUpdated)}</span>
+              </>
+            )}
           </div>
         </header>
 
@@ -104,31 +92,49 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p key={i}>{paragraph}</p>
           ))}
 
-          {deals.length > 0 && (
+          {deal && (
             <>
               <p className="affiliate-disclosure">
                 As an Amazon Associate, I earn from qualifying purchases.
               </p>
-              {deals.map((deal) => (
-                <div className="deal-card-inline" key={deal.product}>
-                  <span className="deal-card-inline-img" aria-hidden="true">
-                    {deal.emoji}
-                  </span>
-                  <div className="deal-card-inline-info">
-                    <strong>{deal.product}</strong>
-                    <span className="deal-card-inline-price">{deal.price}</span>
-                  </div>
-                  <Link
-                    href={deal.href}
-                    className="btn btn-accent deal-card-inline-cta"
-                  >
-                    Check Price on Amazon
-                  </Link>
+              <div className="deal-card-inline">
+                <span
+                  className="deal-card-inline-img"
+                  role="img"
+                  aria-label={
+                    product?.altText ?? product?.name ?? deal.productSlug
+                  }
+                >
+                  {product?.image ?? '🛒'}
+                </span>
+                <div className="deal-card-inline-info">
+                  <strong>{product?.name ?? deal.productSlug}</strong>
+                  <span className="deal-card-inline-price">{deal.price}</span>
                 </div>
-              ))}
+                <a
+                  href={deal.affiliateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="btn btn-accent deal-card-inline-cta"
+                >
+                  Check Price on Amazon
+                </a>
+              </div>
             </>
           )}
         </div>
+
+        {post.faq && post.faq.length > 0 && (
+          <section className="blog-faq" aria-label="Frequently asked questions">
+            <h2>FAQ</h2>
+            {post.faq.map((f) => (
+              <details className="blog-faq-item" key={f.question}>
+                <summary>{f.question}</summary>
+                <p>{f.answer}</p>
+              </details>
+            ))}
+          </section>
+        )}
 
         <div className="blog-share">
           <span className="blog-share-label">Share this post:</span>
