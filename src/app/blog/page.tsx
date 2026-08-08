@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import { POSTS } from '@/data/posts'
 import BlogCard from '@/components/BlogCard'
 import NewsletterWidget from '@/components/NewsletterWidget'
+import NewsletterPopup from '@/components/NewsletterPopup'
 import CategoryScrollHint from '@/components/CategoryScrollHint'
 
 const TABS = [
@@ -137,6 +138,7 @@ export default function BlogPage() {
           </aside>
         </div>
       </section>
+      <NewsletterPopup />
     </>
   )
 }

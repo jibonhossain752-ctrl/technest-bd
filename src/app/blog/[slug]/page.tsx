@@ -5,6 +5,7 @@ import { POSTS, getPostBySlug } from '@/data/posts'
 import BlogCard from '@/components/BlogCard'
 import { categoryBadgeClass } from '@/data/blogCategories'
 import ShareButtons from '@/components/ShareButtons'
+import NewsletterPopup from '@/components/NewsletterPopup'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -147,6 +148,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
       </section>
+      <NewsletterPopup />
     </>
   )
 }

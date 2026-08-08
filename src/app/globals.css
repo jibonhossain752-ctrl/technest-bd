@@ -5379,6 +5379,127 @@ button {
   color: #fff;
 }
 
+/* ---------- Newsletter popup (blog pages) ---------- */
+.newsletter-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(10, 18, 30, 0.62);
+  backdrop-filter: blur(6px);
+  animation: np-fade 0.25s ease;
+}
+@keyframes np-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.newsletter-popup {
+  position: relative;
+  width: min(440px, 100%);
+  background: #fff;
+  border-radius: 18px;
+  padding: 34px 30px 28px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  animation: np-pop 0.3s ease;
+}
+@keyframes np-pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.newsletter-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.newsletter-popup-close:hover {
+  background: var(--border);
+  color: var(--dark);
+}
+.newsletter-popup-emoji {
+  display: block;
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+.newsletter-popup h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  color: var(--dark);
+}
+.newsletter-popup p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.newsletter-popup-form {
+  display: grid;
+  gap: 10px;
+}
+.newsletter-popup-form input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  font-family: inherit;
+  background: var(--bg);
+}
+.newsletter-popup-form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+.newsletter-popup-form .btn {
+  padding: 13px;
+  border-radius: 10px;
+}
+.newsletter-popup .newsletter-msg {
+  margin: 6px 0 0;
+  font-weight: 700;
+}
+.newsletter-popup .newsletter-msg.success {
+  color: #16a34a;
+}
+.newsletter-popup .newsletter-msg.error {
+  color: #dc2626;
+}
+.newsletter-popup-later {
+  margin-top: 16px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.newsletter-popup-later:hover {
+  color: var(--dark);
+}
+
 .popular-posts {
   background: #fff;
   border: 1px solid var(--border);
