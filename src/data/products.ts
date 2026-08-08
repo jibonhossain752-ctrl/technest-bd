@@ -14,6 +14,7 @@ export interface Product {
   isNew?: boolean
   description: string
   features: string[]
+  buyUrl?: string
 }
 
 export const PRODUCTS: Product[] = [
@@ -358,6 +359,29 @@ export const PRODUCTS: Product[] = [
       'Sleep sensing',
       'Video calling support',
     ],
+  },
+  {
+    id: 'p17',
+    slug: 'rayneo-air-4-pro-batman-justice',
+    name: 'RayNeo Air 4 Pro × Batman Justice Edition AR Glasses',
+    category: 'Audio & Wearables',
+    categorySlug: 'audio-wearables',
+    price: 319,
+    image: '🥽',
+    badge: 'new',
+    rating: 4.0,
+    reviews: 272,
+    isNew: true,
+    description:
+      'Collector-grade Batman-themed AR/XR glasses with HDR10, Bang & Olufsen quad-speaker audio, 201" virtual display and the Vision 4000 chip with AI SDR-to-HDR conversion.',
+    features: [
+      'HDR10 with 1200 nits brightness and AI SDR-to-HDR conversion',
+      '201" virtual display powered by the Vision 4000 chip',
+      'Bang & Olufsen quad-speaker 360° audio system',
+      'USB-C plug & play for iPhone 17/16/15, Android, Switch 2, PS5, Steam Deck',
+      'Limited Justice Edition with matte Bat Shade collector lens shade',
+    ],
+    buyUrl: 'https://amzn.to/4hhLNwI',
   },
 ]
 

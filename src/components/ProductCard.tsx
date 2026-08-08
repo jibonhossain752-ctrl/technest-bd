@@ -31,10 +31,12 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
     router.push('/checkout')
   }
 
+  const buyNowLabel = product.buyUrl ? 'Buy Now ↗' : 'Buy Now'
+
   return (
     <article className="product-card">
       <Link
-        href={`/product/${product.slug}`}
+        href={product.buyUrl ?? `/product/${product.slug}`}
         className="product-img"
         aria-label={product.name}
       >
@@ -58,7 +60,10 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         >
           {product.category}
         </Link>
-        <Link href={`/product/${product.slug}`} className="product-name">
+        <Link
+          href={product.buyUrl ?? `/product/${product.slug}`}
+          className="product-name"
+        >
           {product.name}
         </Link>
         <RatingStars rating={product.rating} reviews={product.reviews} />
@@ -76,13 +81,24 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           >
             Add to Cart
           </button>
-          <button
-            type="button"
-            className="buy-now"
-            onClick={handleBuyNow}
-          >
-            Buy Now
-          </button>
+          {product.buyUrl ? (
+            <a
+              href={product.buyUrl}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="buy-now"
+            >
+              {buyNowLabel}
+            </a>
+          ) : (
+            <button
+              type="button"
+              className="buy-now"
+              onClick={handleBuyNow}
+            >
+              {buyNowLabel}
+            </button>
+          )}
         </div>
       </div>
     </article>

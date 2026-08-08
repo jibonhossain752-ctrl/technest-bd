@@ -1,7 +1,5 @@
 'use client'
 
-'use client'
-
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Product } from '@/data/products'
@@ -25,6 +23,25 @@ export default function AddToCartButton({ product }: { product: Product }) {
     router.push('/checkout')
   }
 
+  const buyNowButton = product.buyUrl ? (
+    <a
+      href={product.buyUrl}
+      target="_blank"
+      rel="noopener noreferrer sponsored"
+      className="btn btn-accent buy-now"
+    >
+      Buy Now ↗
+    </a>
+  ) : (
+    <button
+      type="button"
+      className="btn btn-accent buy-now"
+      onClick={handleBuyNow}
+    >
+      Buy Now
+    </button>
+  )
+
   return (
     <div className="buy-actions">
       <div className="qty-selector">
@@ -44,13 +61,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
           +
         </button>
       </div>
-      <button
-        type="button"
-        className="btn btn-accent buy-now"
-        onClick={handleBuyNow}
-      >
-        Buy Now
-      </button>
+      {buyNowButton}
       <button
         type="button"
         className="btn btn-outline add-cart-btn"
