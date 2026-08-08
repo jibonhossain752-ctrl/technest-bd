@@ -868,24 +868,33 @@ button {
 }
 
 .product-img-el {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
 .pd-image-el {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: 16px;
 }
 
 .bs-card-img-el {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -897,9 +906,12 @@ button {
 }
 
 .blog-card-thumb-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -5764,9 +5776,11 @@ button {
 .blog-post-hero img {
   display: block;
   width: 100%;
+  aspect-ratio: 16 / 9;
   height: auto;
-  max-height: 480px;
+  max-height: 620px;
   object-fit: cover;
+  object-position: center;
 }
 
 .blog-post-body {
