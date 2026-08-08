@@ -12,7 +12,11 @@ export default function FeaturedProducts() {
           <h2>Best Selling Products</h2>
           <p>Best-sellers our customers love</p>
         </div>
-        <ProductGrid products={PRODUCTS.slice(0, BEST_SELLING_LIMIT)} />
+        <ProductGrid
+          products={[...PRODUCTS]
+            .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
+            .slice(0, BEST_SELLING_LIMIT)}
+        />
         <div className="view-all-wrap">
           <Link href="/shop" className="btn btn-primary view-all-products">
             View All Products

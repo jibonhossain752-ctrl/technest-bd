@@ -1,73 +1,22 @@
 'use client'
 
-import { useState } from 'react'
-import type { FormEvent } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
-import { placeOrder } from '@/lib/orders'
 import PageHeader from '@/components/ui/PageHeader'
 
 export default function CheckoutPage() {
-  const { items, total, clearCart } = useCart()
-  const [placed, setPlaced] = useState(false)
-  const [orderId, setOrderId] = useState('')
-  const [error, setError] = useState('')
-  const [busy, setBusy] = useState(false)
+  const { items, total } = useCart()
 
   const buyableCount = items.filter((item) => item.product.buyUrl).length
   const hasUnpriced = items.some((item) => item.product.price == null)
 
   const handleBuyAll = () => {
     items.forEach(({ product }) => {
-      if (product.buyUrl) window.open(product.buyUrl, '_blank', 'noopener,noreferrer')
+      if (product.buyUrl) {
+        window.open(product.buyUrl, '_blank', 'noopener,noreferrer')
+      }
     })
-  }
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (busy) return
-    const form = e.currentTarget
-    const data = new FormData(form)
-
-    const subscribed = data.get('subscribe') === 'on'
-    const name = String(data.get('name') ?? '')
-    const phone = String(data.get('phone') ?? '')
-    const email = String(data.get('email') ?? '')
-
-    setBusy(true)
-    setError('')
-    try {
-      const order = await placeOrder({ name, phone, email }, items, subscribed)
-      setOrderId(order.id)
-      setPlaced(true)
-      clearCart()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Order could not be placed.')
-    } finally {
-      setBusy(false)
-    }
-  }
-
-  if (placed) {
-    return (
-      <>
-        <PageHeader title="Order Placed" />
-        <section className="container">
-          <div className="empty-state">
-            <span className="empty-emoji">🎉</span>
-            <h2>Thank you for your order!</h2>
-            <p>
-              Order <strong>{orderId}</strong> has been placed successfully. A
-              confirmation email with your order details is on its way.
-            </p>
-            <Link href="/shop" className="btn btn-primary">
-              Continue Shopping
-            </Link>
-          </div>
-        </section>
-      </>
-    )
   }
 
   if (items.length === 0) {
@@ -92,89 +41,56 @@ export default function CheckoutPage() {
     <>
       <section className="checkout-head container">
         <span className="checkout-eyebrow">Final step</span>
-        <h1>Complete your order</h1>
+        <h1>Complete your purchase on Amazon</h1>
         <p>
-          Fill in your details below. Every product is genuine and covered by
-          its official warranty.
+          Every item is bought directly on Amazon — the safest, fastest way.
+          Review your cart below, tap &ldquo;Buy on Amazon&rdquo; for each item,
+          and Amazon handles payment, delivery, returns and support.
         </p>
       </section>
 
       <section className="checkout container">
-        <form className="checkout-form" onSubmit={handleSubmit}>
-          <div className="form-section">
-            <h3>Contact Information</h3>
-            <div className="form-row">
-              <input type="text" name="name" placeholder="Full Name" required />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                required
-              />
+        <div className="checkout-main">
+          <div className="checkout-steps">
+            <div className="checkout-step">
+              <span>1</span>
+              <p>
+                <strong>Review your items</strong>
+                <small>Check the product, price and quantity below.</small>
+              </p>
             </div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address (optional)"
-            />
-          </div>
-
-          <div className="form-section">
-            <h3>Delivery Address</h3>
-            <input type="text" name="address" placeholder="Street / Area" required />
-            <div className="form-row">
-              <input type="text" name="city" placeholder="City" required />
-              <input type="text" name="district" placeholder="State" required />
+            <div className="checkout-step">
+              <span>2</span>
+              <p>
+                <strong>Click &ldquo;Buy on Amazon&rdquo;</strong>
+                <small>
+                  Each button opens that exact product on Amazon in a new tab.
+                </small>
+              </p>
             </div>
-            <textarea
-              name="note"
-              placeholder="Delivery note (optional)"
-              rows={3}
-            />
+            <div className="checkout-step">
+              <span>3</span>
+              <p>
+                <strong>Finish securely on Amazon</strong>
+                <small>
+                  Amazon processes payment and ships straight to your door.
+                </small>
+              </p>
+            </div>
           </div>
 
-          <div className="form-section">
-            <h3>Payment Method</h3>
-            <label className="radio-option">
-              <input type="radio" name="payment" defaultChecked />
-              <span>💵 Cash on Delivery</span>
-            </label>
-            <label className="radio-option">
-              <input type="radio" name="payment" />
-              <span>📱 Apple Pay / Google Pay</span>
-            </label>
-            <label className="radio-option">
-              <input type="radio" name="payment" />
-              <span>💳 Credit / Debit Card</span>
-            </label>
-          </div>
-
-          <div className="form-section opt-in">
-            <label className="checkbox-option">
-              <input type="checkbox" name="subscribe" />
-              <span>
-                Send me updates about deals and new arrivals via SMS/Email
-              </span>
-            </label>
-            <p className="opt-in-note">
-              We&apos;ll use the phone number or email you entered above. No
-              spam, unsubscribe anytime.
-            </p>
-          </div>
-
-          {error && <p className="form-error">{error}</p>}
-
-          <button type="submit" className="btn btn-accent block" disabled={busy}>
-            {busy ? 'Placing Order…' : `Place Order · ${formatUSD(total)}`}
-          </button>
-        </form>
+          <p className="checkout-local-note">
+            No payment details are collected on this site. Your order is placed
+            entirely on Amazon with its full buyer protection.
+          </p>
+        </div>
 
         <aside className="cart-summary">
-          <h3>Order Summary</h3>
+          <h3>Your Items ({items.length})</h3>
           {buyableCount > 0 && (
             <button
               type="button"
-              className="btn btn-outline buy-all"
+              className="btn btn-accent buy-all"
               onClick={handleBuyAll}
             >
               Buy All on Amazon ({buyableCount})
@@ -188,24 +104,21 @@ export default function CheckoutPage() {
                 <small>
                   {qty} × {formatUSD(product.price)}
                 </small>
-                {product.buyUrl ? (
-                  <a
-                    href={product.buyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
-                    className="summary-buy-link"
-                  >
-                    Buy on Amazon →
-                  </a>
-                ) : (
-                  <small className="summary-local-note">
-                    Purchased through TechNest
-                  </small>
-                )}
               </div>
-              <span>
-                {formatUSD(product.price == null ? null : product.price * qty)}
-              </span>
+              {product.buyUrl ? (
+                <a
+                  href={product.buyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="btn btn-accent summary-buy-link"
+                >
+                  Buy on Amazon →
+                </a>
+              ) : (
+                <small className="summary-local-note">
+                  Purchased through TechNest
+                </small>
+              )}
             </div>
           ))}
           <div className="summary-row">
@@ -214,11 +127,7 @@ export default function CheckoutPage() {
           </div>
           <div className="summary-row">
             <span>Delivery</span>
-            <strong className="free">FREE</strong>
-          </div>
-          <div className="summary-row total">
-            <span>Total</span>
-            <strong>{formatUSD(total)}</strong>
+            <strong className="free">FREE on Amazon</strong>
           </div>
           {hasUnpriced && (
             <p className="summary-note">
@@ -227,10 +136,13 @@ export default function CheckoutPage() {
             </p>
           )}
           <ul className="summary-trust">
-            <li>🔒 Secure checkout</li>
+            <li>🔒 Secure checkout on Amazon</li>
             <li>✅ 100% genuine products</li>
-            <li>🔁 7-day easy returns</li>
+            <li>🔁 Easy returns via Amazon</li>
           </ul>
+          <p className="affiliate-disclosure">
+            As an Amazon Associate, I earn from qualifying purchases.
+          </p>
         </aside>
       </section>
     </>

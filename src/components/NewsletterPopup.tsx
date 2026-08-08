@@ -2,32 +2,28 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
+import { getSession } from '@/lib/auth'
 
-const STORAGE_KEY = 'technest-newsletter-dismissed'
-const DELAY_MS = 60_000
+const SUBSCRIBED_KEY = 'technest-newsletter-subscribed'
+const DELAY_MS = 30_000
 
 export default function NewsletterPopup() {
   const [open, setOpen] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const dismiss = useCallback(() => {
-    try {
-      window.sessionStorage.setItem(STORAGE_KEY, '1')
-    } catch {
-      /* storage unavailable */
-    }
-    setOpen(false)
-  }, [])
+  const dismiss = useCallback(() => setOpen(false), [])
 
   useEffect(() => {
-    let dismissed = false
+    let suppress = false
     try {
-      dismissed = window.sessionStorage.getItem(STORAGE_KEY) === '1'
+      const subscribed = window.localStorage.getItem(SUBSCRIBED_KEY) === '1'
+      const user = getSession()
+      suppress = subscribed || user !== null
     } catch {
-      /* storage unavailable */
+      suppress = true
     }
-    if (dismissed) return
+    if (suppress) return
 
     timerRef.current = setTimeout(() => setOpen(true), DELAY_MS)
     return () => {
@@ -58,7 +54,7 @@ export default function NewsletterPopup() {
     }
     setStatus('success')
     try {
-      window.sessionStorage.setItem(STORAGE_KEY, '1')
+      window.localStorage.setItem(SUBSCRIBED_KEY, '1')
     } catch {
       /* storage unavailable */
     }
