@@ -168,7 +168,8 @@ export default function WatchAndShop() {
               )
             })}
           </div>
-          <CategoryScrollHint targetSelector=".watch-shop-strip" clickable={isDesktop} />
+          <CategoryScrollHint targetSelector=".watch-shop-strip" clickable={isDesktop} direction="left" />
+          <CategoryScrollHint targetSelector=".watch-shop-strip" clickable={isDesktop} direction="right" />
         </div>
       </div>
     </section>

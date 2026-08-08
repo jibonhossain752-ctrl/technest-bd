@@ -2,17 +2,17 @@ import Link from 'next/link'
 import { getPostBySlug } from '@/data/posts'
 import { categoryBadgeClass } from '@/data/blogCategories'
 
-const DEALS = [
-  { slug: 'how-to-choose-the-perfect-laptop-in-2026', price: '$799.99' },
-  { slug: 'top-5-budget-smartphones-this-month', price: '$199.99' },
-  { slug: 'buying-guide-gaming-gear-in-bangladesh', price: '$49.99' },
+const DEAL_SLUGS = [
+  { slug: 'amazon-echo-dot-kids-review', price: '$34.08' },
 ]
 
 export default function DealSpotlight() {
-  const deals = DEALS.map((d) => ({
+  const deals = DEAL_SLUGS.map((d) => ({
     ...d,
     post: getPostBySlug(d.slug),
   })).filter((d) => d.post !== undefined)
+
+  if (deals.length === 0) return null
 
   return (
     <section className="deal-spotlight">

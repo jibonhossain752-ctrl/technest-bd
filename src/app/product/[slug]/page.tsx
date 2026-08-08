@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getProductBySlug, getRelatedProducts, PRODUCTS } from '@/data/products'
-import PageHeader from '@/components/ui/PageHeader'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductGrid from '@/components/ProductGrid'
 import { ProductDetailHero } from '@/components/ProductDetail'
 import Reveal from '@/components/ui/Reveal'
@@ -35,8 +35,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <>
-      <PageHeader
-        title=""
+      <Breadcrumb
         crumbs={[
           { label: 'Shop', href: '/shop' },
           { label: product.category, href: `/shop/${product.categorySlug}` },

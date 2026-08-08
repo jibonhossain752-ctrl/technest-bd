@@ -5,11 +5,13 @@ import { useEffect, useRef, useState } from 'react'
 interface CategoryScrollHintProps {
   targetSelector?: string
   clickable?: boolean
+  direction?: 'left' | 'right'
 }
 
 export default function CategoryScrollHint({
   targetSelector = '.category-chips',
   clickable = false,
+  direction = 'right',
 }: CategoryScrollHintProps) {
   const hintRef = useRef<HTMLSpanElement>(null)
   const rowRef = useRef<HTMLElement | null>(null)
@@ -22,9 +24,12 @@ export default function CategoryScrollHint({
     rowRef.current = row
     const update = () => {
       const canScroll = row.scrollWidth > row.clientWidth + 4
+      const atStart = row.scrollLeft <= 4
       const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4
-      setVisible(canScroll && !atEnd)
+      const show = direction === 'left' ? canScroll && !atStart : canScroll && !atEnd
+      setVisible(show)
       row.classList.toggle('scroll-end', !canScroll || atEnd)
+      row.classList.toggle('scroll-start', !canScroll || atStart)
     }
     update()
     row.addEventListener('scroll', update, { passive: true })
@@ -33,12 +38,13 @@ export default function CategoryScrollHint({
       row.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
-  }, [targetSelector])
+  }, [targetSelector, direction])
 
   const handleClick = () => {
     const row = rowRef.current
     if (!row) return
-    row.scrollBy({ left: row.clientWidth * 0.85, behavior: 'smooth' })
+    const distance = row.clientWidth * 0.85 * (direction === 'left' ? -1 : 1)
+    row.scrollBy({ left: distance, behavior: 'smooth' })
   }
 
   const handleKey = (e: React.KeyboardEvent) => {
@@ -48,18 +54,23 @@ export default function CategoryScrollHint({
     }
   }
 
+  const cls = `cat-scroll-hint${visible ? ' visible' : ''}${clickable ? ' clickable' : ''} dir-${direction}`
+  const icon = direction === 'left' ? '‹' : '›'
+  const label =
+    direction === 'left' ? 'Scroll videos to the left' : 'Scroll videos to the right'
+
   return (
     <span
       ref={hintRef}
-      className={`cat-scroll-hint${visible ? ' visible' : ''}${clickable ? ' clickable' : ''}`}
+      className={cls}
       aria-hidden={clickable ? undefined : 'true'}
       role={clickable ? 'button' : undefined}
       tabIndex={clickable ? 0 : undefined}
-      aria-label={clickable ? 'Scroll videos to the right' : undefined}
+      aria-label={clickable ? label : undefined}
       onClick={clickable ? handleClick : undefined}
       onKeyDown={clickable ? handleKey : undefined}
     >
-      <span className="cat-scroll-hint-icon">›</span>
+      <span className="cat-scroll-hint-icon">{icon}</span>
     </span>
   )
 }

@@ -1291,6 +1291,41 @@ button {
   font-weight: 500;
 }
 
+.page-breadcrumb {
+  background: var(--bg-soft);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.page-breadcrumb > .container,
+.page-breadcrumb .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.page-breadcrumb a {
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.page-breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.page-breadcrumb .crumb-sep {
+  margin: 0 6px;
+  color: #94a3b8;
+}
+
+.page-breadcrumb .crumb-current {
+  color: var(--dark);
+  font-weight: 600;
+}
+
 .page-header h1 {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 800;
@@ -6976,6 +7011,10 @@ button {
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease,
     background 0.2s ease, box-shadow 0.2s ease;
 }
+.watch-shop-wrap .cat-scroll-hint.dir-left {
+  right: auto;
+  left: 10px;
+}
 .watch-shop-wrap .cat-scroll-hint.clickable {
   pointer-events: auto;
   cursor: pointer;
@@ -7011,5 +7050,9 @@ button {
     height: 38px;
     font-size: 1.3rem;
     right: 4px;
+  }
+  .watch-shop-wrap .cat-scroll-hint.dir-left {
+    right: auto;
+    left: 4px;
   }
 }
