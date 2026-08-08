@@ -74,18 +74,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>{formatDate(post.date)}</span>
             <span aria-hidden="true">•</span>
             <span>{post.readTime}</span>
-            {post.lastUpdated && (
-              <>
-                <span aria-hidden="true">•</span>
-                <span>Updated {formatDate(post.lastUpdated)}</span>
-              </>
-            )}
           </div>
         </header>
 
-        <div className="blog-post-emoji" aria-hidden="true">
-          {post.emoji}
-        </div>
+        {post.heroImage ? (
+          <figure className="blog-post-hero">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={post.heroImage}
+              alt={post.altText ?? `${post.title} — featured image`}
+              width={1200}
+              height={675}
+              loading="eager"
+            />
+          </figure>
+        ) : (
+          <div className="blog-post-emoji" aria-hidden="true">
+            {post.emoji}
+          </div>
+        )}
 
         <div className="blog-post-body">
           {post.content.map((paragraph, i) => (
@@ -123,18 +130,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </>
           )}
         </div>
-
-        {post.faq && post.faq.length > 0 && (
-          <section className="blog-faq" aria-label="Frequently asked questions">
-            <h2>FAQ</h2>
-            {post.faq.map((f) => (
-              <details className="blog-faq-item" key={f.question}>
-                <summary>{f.question}</summary>
-                <p>{f.answer}</p>
-              </details>
-            ))}
-          </section>
-        )}
 
         <div className="blog-share">
           <span className="blog-share-label">Share this post:</span>

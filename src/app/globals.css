@@ -5690,6 +5690,21 @@ button {
   min-height: 230px;
 }
 
+.blog-post-hero {
+  margin: 26px 0 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eef2f7;
+}
+
+.blog-post-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+}
+
 .blog-post-body {
   max-width: 700px;
   margin: 0 auto;
