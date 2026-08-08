@@ -15,6 +15,15 @@ export default function CheckoutPage() {
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
 
+  const buyableCount = items.filter((item) => item.product.buyUrl).length
+  const hasUnpriced = items.some((item) => item.product.price == null)
+
+  const handleBuyAll = () => {
+    items.forEach(({ product }) => {
+      if (product.buyUrl) window.open(product.buyUrl, '_blank', 'noopener,noreferrer')
+    })
+  }
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (busy) return
@@ -81,7 +90,14 @@ export default function CheckoutPage() {
 
   return (
     <>
-      <PageHeader title="Checkout" subtitle="Complete your purchase" />
+      <section className="checkout-head container">
+        <span className="checkout-eyebrow">Final step</span>
+        <h1>Complete your order</h1>
+        <p>
+          Fill in your details below. Every product is genuine and covered by
+          its official warranty.
+        </p>
+      </section>
 
       <section className="checkout container">
         <form className="checkout-form" onSubmit={handleSubmit}>
@@ -155,16 +171,41 @@ export default function CheckoutPage() {
 
         <aside className="cart-summary">
           <h3>Order Summary</h3>
+          {buyableCount > 0 && (
+            <button
+              type="button"
+              className="btn btn-outline buy-all"
+              onClick={handleBuyAll}
+            >
+              Buy All on Amazon ({buyableCount})
+            </button>
+          )}
           {items.map(({ product, qty }) => (
             <div className="summary-item" key={product.id}>
               <span className="summary-emoji">{product.image}</span>
-              <div>
+              <div className="summary-item-info">
                 <strong>{product.name}</strong>
                 <small>
                   {qty} × {formatUSD(product.price)}
                 </small>
+                {product.buyUrl ? (
+                  <a
+                    href={product.buyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    className="summary-buy-link"
+                  >
+                    Buy on Amazon →
+                  </a>
+                ) : (
+                  <small className="summary-local-note">
+                    Purchased through TechNest
+                  </small>
+                )}
               </div>
-              <span>{formatUSD(product.price * qty)}</span>
+              <span>
+                {formatUSD(product.price == null ? null : product.price * qty)}
+              </span>
             </div>
           ))}
           <div className="summary-row">
@@ -179,6 +220,17 @@ export default function CheckoutPage() {
             <span>Total</span>
             <strong>{formatUSD(total)}</strong>
           </div>
+          {hasUnpriced && (
+            <p className="summary-note">
+              ℹ️ Some items show &ldquo;Price unavailable&rdquo; — the final
+              price is confirmed on Amazon.
+            </p>
+          )}
+          <ul className="summary-trust">
+            <li>🔒 Secure checkout</li>
+            <li>✅ 100% genuine products</li>
+            <li>🔁 7-day easy returns</li>
+          </ul>
         </aside>
       </section>
     </>

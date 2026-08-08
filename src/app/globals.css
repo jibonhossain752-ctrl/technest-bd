@@ -2102,6 +2102,77 @@ button {
   color: var(--muted);
 }
 
+.checkout-head {
+  padding: 44px 0 0;
+}
+.checkout-eyebrow {
+  display: inline-block;
+  background: rgba(255, 107, 53, 0.12);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.checkout-head h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--dark);
+}
+.checkout-head p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 560px;
+}
+.buy-all {
+  width: 100%;
+  margin-bottom: 14px;
+}
+.summary-item-info {
+  min-width: 0;
+}
+.summary-buy-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+.summary-buy-link:hover {
+  text-decoration: underline;
+}
+.summary-local-note {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.summary-note {
+  margin: 12px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.summary-trust {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px dashed var(--border);
+  display: grid;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+.summary-trust li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
 /* ---------- About ---------- */
 .about-intro {
   padding: 50px 0;
