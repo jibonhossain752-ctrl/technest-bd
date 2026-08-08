@@ -5261,7 +5261,13 @@ button {
   background: var(--primary);
   color: #fff;
   padding: 14px 0;
-  margin-bottom: 0;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+  .flash-countdown-bar {
+    margin-bottom: 18px;
+  }
 }
 
 .flash-countdown-inner {

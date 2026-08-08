@@ -1,9 +1,9 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import type { MouseEvent } from 'react'
 import Link from 'next/link'
 import type { Product } from '@/data/products'
-import { PRODUCTS } from '@/data/products'
 import { CATEGORIES } from '@/data/categories'
 import ProductCard from './ProductCard'
 import { useCart } from '@/context/useCart'
@@ -19,6 +19,8 @@ interface ShopCatalogProps {
   viewDescription: string
   hideCategoriesMobile?: boolean
   showCountdown?: boolean
+  onCategorySelect?: (slug: string) => void
+  countProducts?: Product[]
 }
 
 type SortKey = 'popular' | 'price-asc' | 'price-desc' | 'rating'
@@ -39,6 +41,8 @@ export default function ShopCatalog({
   viewDescription,
   hideCategoriesMobile = false,
   showCountdown = false,
+  onCategorySelect,
+  countProducts,
 }: ShopCatalogProps) {
   const { addToCart } = useCart()
   const [query, setQuery] = useState('')
@@ -80,31 +84,48 @@ export default function ShopCatalog({
     setPage(1)
   }, [query, sort, products])
 
+  const totalCount = countProducts?.length ?? products.length
+  const categoryCount = (slug: string) =>
+    countProducts
+      ? countProducts.filter((p) => p.categorySlug === slug).length
+      : CATEGORIES.find((c) => c.slug === slug)?.count ?? 0
+
+  const handleCategory = (
+    e: MouseEvent<HTMLAnchorElement>,
+    slug: string,
+  ) => {
+    if (!onCategorySelect) return
+    e.preventDefault()
+    onCategorySelect(slug)
+  }
+
   const sidebarLinks = (
     <ul className="sidebar-links">
       <li>
         <Link
           href="/shop"
+          onClick={(e) => handleCategory(e, 'all')}
           className={activeSlug === 'all' ? 'active' : ''}
         >
           <span className="cat-dot" aria-hidden="true">
             ✦
           </span>
           All Products
-          <span className="count">{PRODUCTS.length}</span>
+          <span className="count">{totalCount}</span>
         </Link>
       </li>
       {CATEGORIES.map((cat) => (
         <li key={cat.slug}>
           <Link
             href={`/shop/${cat.slug}`}
+            onClick={(e) => handleCategory(e, cat.slug)}
             className={activeSlug === cat.slug ? 'active' : ''}
           >
             <span className="cat-dot" aria-hidden="true">
               {cat.icon}
             </span>
             {cat.name}
-            <span className="count">{cat.count}</span>
+            <span className="count">{categoryCount(cat.slug)}</span>
           </Link>
         </li>
       ))}
@@ -115,25 +136,27 @@ export default function ShopCatalog({
     <nav className="shop-cat-strip" aria-label="Browse categories">
       <Link
         href="/shop"
+        onClick={(e) => handleCategory(e, 'all')}
         className={`shop-cat-chip${activeSlug === 'all' ? ' active' : ''}`}
       >
         <span className="cat-dot" aria-hidden="true">
           ✦
         </span>
         All Products
-        <span className="count">{PRODUCTS.length}</span>
+        <span className="count">{totalCount}</span>
       </Link>
       {CATEGORIES.map((cat) => (
         <Link
           key={cat.slug}
           href={`/shop/${cat.slug}`}
+          onClick={(e) => handleCategory(e, cat.slug)}
           className={`shop-cat-chip${activeSlug === cat.slug ? ' active' : ''}`}
         >
           <span className="cat-dot" aria-hidden="true">
             {cat.icon}
           </span>
           {cat.name}
-          <span className="count">{cat.count}</span>
+          <span className="count">{categoryCount(cat.slug)}</span>
         </Link>
       ))}
     </nav>
@@ -255,7 +278,7 @@ export default function ShopCatalog({
           )}
 
           <p className="result-count">
-            Showing {filtered.length} of {products.length} products
+            Showing {filtered.length} of {totalCount} products
           </p>
         </div>
       </div>
