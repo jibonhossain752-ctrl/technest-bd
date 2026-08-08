@@ -20,9 +20,25 @@ export async function generateMetadata({
   const { slug } = await params
   const product = getProductBySlug(slug)
   if (!product) return { title: 'Product Not Found' }
+
+  const title = product.metaTitle ?? product.name
+  const description = product.metaDescription ?? product.description
+  const keywords = product.primaryKeyword
+    ? [product.primaryKeyword, ...(product.secondaryKeywords ?? [])]
+    : undefined
+
   return {
-    title: product.name,
-    description: product.description,
+    title,
+    description,
+    keywords,
+    alternates: { canonical: `/product/${product.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url: `/product/${product.slug}`,
+      siteName: 'TechNest US',
+    },
   }
 }
 
@@ -33,8 +49,36 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const related = getRelatedProducts(product)
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    sku: product.id,
+    ...(product.rating != null
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: product.rating,
+            reviewCount: product.reviews,
+          },
+        }
+      : {}),
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      ...(product.price != null ? { price: product.price } : {}),
+      availability: 'https://schema.org/InStock',
+      ...(product.buyUrl ? { url: product.buyUrl } : {}),
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Breadcrumb
         crumbs={[
           { label: 'Shop', href: '/shop' },

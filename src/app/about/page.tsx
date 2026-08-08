@@ -4,7 +4,8 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about TechNest US — our story, mission, and why thousands of customers across the USA trust us.',
+    'Learn about TechNest US — our story, mission, and why thousands of customers across the USA trust us for genuine tech with fast delivery.',
+  alternates: { canonical: '/about' },
 }
 
 const VALUES = [

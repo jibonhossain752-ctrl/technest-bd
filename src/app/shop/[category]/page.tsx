@@ -25,7 +25,7 @@ export async function generateMetadata({
   const title = view?.name ?? cat?.name ?? category
   const description =
     view?.description ?? cat?.description ?? `Shop ${category} at TechNest US.`
-  return { title, description }
+  return { title, description, alternates: { canonical: `/shop/${category}` } }
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {

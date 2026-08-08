@@ -83,7 +83,11 @@ export function ProductDetailHero({ product }: { product: Product }) {
   return (
     <div className="product-detail-hero">
       <div className="pd-image">
-        <span className="pd-emoji" aria-hidden="true">
+        <span
+          className="pd-emoji"
+          role="img"
+          aria-label={product.altText ?? product.name}
+        >
           {product.image}
         </span>
         {discount > 0 && (

@@ -40,7 +40,11 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         className="product-img"
         aria-label={product.name}
       >
-        <span className="product-emoji" aria-hidden="true">
+        <span
+          className="product-emoji"
+          role="img"
+          aria-label={product.altText ?? product.name}
+        >
           {product.image}
         </span>
         {product.badge && (

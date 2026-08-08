@@ -6,9 +6,10 @@ import { CATEGORIES } from '@/data/categories'
 import ProductCard from '@/components/ProductCard'
 
 export const metadata: Metadata = {
-  title: 'Deals',
+  title: 'Deals & Discounts on Tech – Laptops, Phones, Accessories',
   description:
-    'Browse the best discounted gadgets, laptops, smartphones and accessories — hand-picked deals updated regularly at TechNest US.',
+    'Hand-picked tech deals at TechNest US — discounted laptops, smartphones, headphones, luggage, webcams and accessories, verified and updated every week.',
+  alternates: { canonical: '/deals' },
 }
 
 export default function DealsPage() {

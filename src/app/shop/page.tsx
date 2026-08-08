@@ -4,9 +4,10 @@ import ShopCatalog from '@/components/ShopCatalog'
 import Reveal from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
-  title: 'Shop All Products',
+  title: 'Shop All Products – Laptops, Phones, Audio & More',
   description:
-    'Browse all tech products at TechNest US — laptops, smartphones, gaming gear, accessories and more.',
+    'Browse every product at TechNest US — laptops, smartphones, gaming gear, audio, cameras, smart home and accessories. Genuine products with official warranty and fast US delivery.',
+  alternates: { canonical: '/shop' },
 }
 
 export default function ShopPage() {

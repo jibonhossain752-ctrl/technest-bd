@@ -10,9 +10,9 @@ import Testimonials from '@/components/Testimonials'
 import Reveal from '@/components/ui/Reveal'
 
 export const metadata: Metadata = {
-  title: 'TechNest US',
+  title: 'TechNest US | Shop Laptops, Smartphones, Gadgets & Accessories Online',
   description:
-    'Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
+    'TechNest US — buy genuine laptops, smartphones, gaming gear, headphones, webcams and accessories with the best prices, fast delivery and official warranty across the USA.',
 }
 
 export default function HomePage() {
