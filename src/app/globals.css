@@ -6834,6 +6834,32 @@ button {
 .deals-grid {
   grid-template-columns: repeat(4, 1fr);
 }
+.deals-group {
+  margin-top: 28px;
+}
+.deals-group-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.deals-group-icon {
+  font-size: 1.25rem;
+}
+.deals-group-head h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.deals-group-link {
+  margin-left: auto;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+.deals-group-link:hover {
+  text-decoration: underline;
+}
 @media (max-width: 1024px) {
   .deals-grid {
     grid-template-columns: repeat(3, 1fr);

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import CountdownTimer from '@/components/ui/CountdownTimer'
 import { PRODUCTS } from '@/data/products'
+import { CATEGORIES } from '@/data/categories'
 import ProductCard from '@/components/ProductCard'
 
 export const metadata: Metadata = {
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
 
 export default function DealsPage() {
   const deals = PRODUCTS.filter((p) => p.oldPrice && p.oldPrice > p.price)
+  const grouped = CATEGORIES.map((category) => ({
+    category,
+    products: deals.filter((p) => p.categorySlug === category.slug),
+  })).filter((group) => group.products.length > 0)
 
   return (
     <>
@@ -30,11 +35,24 @@ export default function DealsPage() {
               </p>
               <p className="deals-tag">🛡️ Genuine products — prices verified every week</p>
             </div>
-            <div className="product-grid deals-grid">
-              {deals.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
+            {grouped.map(({ category, products }) => (
+              <section key={category.slug} className="deals-group">
+                <div className="deals-group-head">
+                  <span className="deals-group-icon" aria-hidden="true">
+                    {category.icon}
+                  </span>
+                  <h2>{category.name}</h2>
+                  <Link href={`/shop/${category.slug}`} className="deals-group-link">
+                    View all →
+                  </Link>
+                </div>
+                <div className="product-grid deals-grid">
+                  {products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </section>
+            ))}
 
             <section className="deals-cta">
               <div className="deals-cta-glow" aria-hidden="true" />
