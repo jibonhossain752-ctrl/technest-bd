@@ -18,9 +18,21 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="blog-card">
       <div className="blog-card-thumb">
-        <span className="blog-card-emoji" aria-hidden="true">
-          {post.emoji}
-        </span>
+        {post.heroImage ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={post.heroImage}
+            alt={post.altText ?? `${post.title} — featured image`}
+            className="blog-card-thumb-img"
+            loading="lazy"
+            width={400}
+            height={225}
+          />
+        ) : (
+          <span className="blog-card-emoji" aria-hidden="true">
+            {post.emoji}
+          </span>
+        )}
         <span className={`blog-card-badge ${categoryBadgeClass(post.category)}`}>
           {post.category}
         </span>

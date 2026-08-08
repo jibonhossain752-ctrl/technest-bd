@@ -78,9 +78,21 @@ export default function CategoryGrid() {
                   href={`/product/${p.slug}`}
                   className="cat-preview-item"
                 >
-                  <span className="cat-preview-icon" aria-hidden="true">
-                    {p.image}
-                  </span>
+                  {p.imageUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={p.imageUrl}
+                      alt={p.altText ?? p.name}
+                      className="cat-preview-icon-img"
+                      loading="lazy"
+                      width={120}
+                      height={120}
+                    />
+                  ) : (
+                    <span className="cat-preview-icon" aria-hidden="true">
+                      {p.image}
+                    </span>
+                  )}
                   <span className="cat-preview-name">{p.name}</span>
                   <strong className="cat-preview-price">
                     {formatUSD(p.price)}

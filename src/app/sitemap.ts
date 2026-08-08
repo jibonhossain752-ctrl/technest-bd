@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: 'weekly',
     priority: 0.8,
+    images: p.imageUrl ? [`${SITE}${p.imageUrl}`] : undefined,
   }))
 
   const blogRoutes: MetadataRoute.Sitemap = POSTS.map((p) => ({
@@ -29,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: p.lastUpdated ? new Date(p.lastUpdated) : now,
     changeFrequency: 'monthly',
     priority: 0.7,
+    images: p.heroImage ? [`${SITE}${p.heroImage}`] : undefined,
   }))
 
   return [...staticRoutes, ...productRoutes, ...blogRoutes]

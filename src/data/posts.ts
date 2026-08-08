@@ -33,6 +33,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-05',
     author: 'Alex Morgan',
+        heroImage: '/images/blog/usb-c-accessories-under-50.jpg',
     emoji: '🔌',
     readTime: '6 min read',
     content: [
@@ -82,6 +83,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-03',
     author: 'Jordan Lee',
+        heroImage: '/images/blog/best-noise-canceling-headphones.jpg',
     emoji: '🎧',
     readTime: '7 min read',
     content: [
@@ -130,6 +132,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-01',
     author: 'Sam Carter',
+        heroImage: '/images/blog/best-4k-webcams-2026.jpg',
     emoji: '📹',
     readTime: '6 min read',
     content: [
@@ -178,6 +181,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-28',
     author: 'Riley Thompson',
+        heroImage: '/images/blog/best-carry-on-luggage-2026.jpg',
     emoji: '🧳',
     readTime: '7 min read',
     content: [
@@ -226,6 +230,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-25',
     author: 'Alex Morgan',
+        heroImage: '/images/blog/best-mechanical-keyboards-2026.jpg',
     emoji: '⌨️',
     readTime: '6 min read',
     content: [
@@ -274,6 +279,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-22',
     author: 'Casey Nguyen',
+        heroImage: '/images/blog/ergonomic-desk-upgrades-under-100.jpg',
     emoji: '🖱️',
     readTime: '5 min read',
     content: [
@@ -322,6 +328,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-18',
     author: 'Jordan Lee',
+        heroImage: '/images/blog/best-smart-speakers-2026.jpg',
     emoji: '🔊',
     readTime: '6 min read',
     content: [
@@ -371,6 +378,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-15',
     author: 'Riley Thompson',
+        heroImage: '/images/blog/best-3-in-1-wireless-chargers.jpg',
     emoji: '🔋',
     readTime: '5 min read',
     content: [
@@ -419,6 +427,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-10',
     author: 'Sam Carter',
+        heroImage: '/images/blog/best-tech-gifts-under-50.jpg',
     emoji: '🎁',
     readTime: '6 min read',
     content: [
@@ -468,6 +477,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-06',
     author: 'Casey Nguyen',
+        heroImage: '/images/blog/best-gadgets-remote-workers.jpg',
     emoji: '💻',
     readTime: '7 min read',
     content: [
@@ -517,6 +527,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-07-02',
     author: 'Alex Morgan',
+        heroImage: '/images/blog/how-to-choose-usb-c-hub.jpg',
     emoji: '🔌',
     readTime: '8 min read',
     content: [
@@ -567,6 +578,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-28',
     author: 'Riley Thompson',
+        heroImage: '/images/blog/how-to-buy-carry-on-luggage.jpg',
     emoji: '🧳',
     readTime: '7 min read',
     content: [
@@ -616,6 +628,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-24',
     author: 'Casey Nguyen',
+        heroImage: '/images/blog/ergonomic-office-chair-buying-guide.jpg',
     emoji: '🪑',
     readTime: '8 min read',
     content: [
@@ -666,6 +679,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-20',
     author: 'Sam Carter',
+        heroImage: '/images/blog/how-to-choose-4k-webcam.jpg',
     emoji: '📹',
     readTime: '7 min read',
     content: [
@@ -715,6 +729,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-16',
     author: 'Jordan Lee',
+        heroImage: '/images/blog/noise-canceling-headphones-buying-guide.jpg',
     emoji: '🎧',
     readTime: '7 min read',
     content: [
@@ -765,6 +780,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-12',
     author: 'Alex Morgan',
+        heroImage: '/images/blog/ups-battery-backup-buying-guide.jpg',
     emoji: '🔋',
     readTime: '8 min read',
     content: [
@@ -816,6 +832,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-08',
     author: 'Riley Thompson',
+        heroImage: '/images/blog/steam-iron-vs-steam-press.jpg',
     emoji: '👔',
     readTime: '6 min read',
     content: [
@@ -866,6 +883,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-04',
     author: 'Casey Nguyen',
+        heroImage: '/images/blog/magsafe-power-bank-buying-guide.jpg',
     emoji: '🔋',
     readTime: '6 min read',
     content: [
@@ -915,6 +933,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-05-30',
     author: 'Jordan Lee',
+        heroImage: '/images/blog/kids-smart-speaker-guide.jpg',
     emoji: '🦉',
     readTime: '6 min read',
     content: [
@@ -965,6 +984,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-05-26',
     author: 'Sam Carter',
+        heroImage: '/images/blog/heated-lunch-box-buying-guide.jpg',
     emoji: '🍱',
     readTime: '6 min read',
     content: [
@@ -1014,6 +1034,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-22',
     author: 'Casey Nguyen',
+        heroImage: '/images/blog/keep-iphone-17-pro-case-new.jpg',
     emoji: '📱',
     readTime: '5 min read',
     content: [
@@ -1063,6 +1084,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-18',
     author: 'Riley Thompson',
+        heroImage: '/images/blog/flying-with-carry-on-only.jpg',
     emoji: '✈️',
     readTime: '5 min read',
     content: [
@@ -1112,6 +1134,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-14',
     author: 'Alex Morgan',
+        heroImage: '/images/blog/fix-messy-desk-cables.jpg',
     emoji: '🧰',
     readTime: '5 min read',
     content: [
@@ -1162,6 +1185,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-10',
     author: 'Casey Nguyen',
+        heroImage: '/images/blog/reduce-eye-strain-monitor-lamp.jpg',
     emoji: '💡',
     readTime: '5 min read',
     content: [
@@ -1211,6 +1235,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-06',
     author: 'Alex Morgan',
+        heroImage: '/images/blog/extend-laptop-battery-life.jpg',
     emoji: '🔋',
     readTime: '6 min read',
     content: [
@@ -1261,6 +1286,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-05-02',
     author: 'Sam Carter',
+        heroImage: '/images/blog/gan-charging-explained.jpg',
     emoji: '⚡',
     readTime: '5 min read',
     content: [
@@ -1310,6 +1336,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-04-28',
     author: 'Jordan Lee',
+        heroImage: '/images/blog/bluetooth-6-explained.jpg',
     emoji: '🎧',
     readTime: '5 min read',
     content: [
@@ -1359,6 +1386,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-04-24',
     author: 'Alex Morgan',
+        heroImage: '/images/blog/sinewave-ups-explained.jpg',
     emoji: '⚡',
     readTime: '6 min read',
     content: [
@@ -1410,6 +1438,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-04-20',
     author: 'Jordan Lee',
+        heroImage: '/images/blog/foldable-phones-2026.jpg',
     emoji: '📱',
     readTime: '6 min read',
     content: [
@@ -1460,6 +1489,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-04-16',
     author: 'Sam Carter',
+        heroImage: '/images/blog/ai-tracking-webcam-explained.jpg',
     emoji: '🎥',
     readTime: '5 min read',
     content: [

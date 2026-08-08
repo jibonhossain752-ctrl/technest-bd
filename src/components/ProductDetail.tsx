@@ -84,13 +84,24 @@ export function ProductDetailHero({ product }: { product: Product }) {
   return (
     <div className="product-detail-hero">
       <div className="pd-image">
-        <span
-          className="pd-emoji"
-          role="img"
-          aria-label={product.altText ?? product.name}
-        >
-          {product.image}
-        </span>
+        {product.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={product.imageUrl}
+            alt={product.altText ?? product.name}
+            className="pd-image-el"
+            width={640}
+            height={640}
+          />
+        ) : (
+          <span
+            className="pd-emoji"
+            role="img"
+            aria-label={product.altText ?? product.name}
+          >
+            {product.image}
+          </span>
+        )}
         {discount > 0 && (
           <span className="product-badge discount pd-discount">
             -{discount}%

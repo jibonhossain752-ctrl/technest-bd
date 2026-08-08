@@ -8,6 +8,7 @@ import Newsletter from '@/components/Newsletter'
 import WhyChooseUs from '@/components/WhyChooseUs'
 import Testimonials from '@/components/Testimonials'
 import Reveal from '@/components/ui/Reveal'
+import VideoSchema from '@/components/VideoSchema'
 
 export const metadata: Metadata = {
   title: 'TechNest US | Shop Laptops, Smartphones, Gadgets & Accessories Online',
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="home">
+      <VideoSchema />
       <StaticHero />
       <QuickPills />
       <Reveal className="reveal-blog-posts" delay={0.05}>

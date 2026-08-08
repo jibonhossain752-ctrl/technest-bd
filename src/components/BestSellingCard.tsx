@@ -22,9 +22,21 @@ export default function BestSellingCard({ product }: BestSellingCardProps) {
   return (
     <article className="bs-card">
       <Link href={`/product/${product.slug}`} className="bs-card-img">
-        <span className="bs-card-emoji" aria-hidden="true">
-          {product.image}
-        </span>
+        {product.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={product.imageUrl}
+            alt={product.altText ?? product.name}
+            className="bs-card-img-el"
+            loading="lazy"
+            width={300}
+            height={300}
+          />
+        ) : (
+          <span className="bs-card-emoji" aria-hidden="true">
+            {product.image}
+          </span>
+        )}
         {discount > 0 && (
           <span className="bs-card-badge discount">-{discount}%</span>
         )}

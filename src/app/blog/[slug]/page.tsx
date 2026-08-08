@@ -105,15 +105,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 As an Amazon Associate, I earn from qualifying purchases.
               </p>
               <div className="deal-card-inline">
-                <span
-                  className="deal-card-inline-img"
-                  role="img"
-                  aria-label={
-                    product?.altText ?? product?.name ?? deal.productSlug
-                  }
-                >
-                  {product?.image ?? '🛒'}
-                </span>
+                {product?.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={product.imageUrl}
+                    alt={product.altText ?? product.name}
+                    className="deal-card-inline-img-el"
+                    width={58}
+                    height={58}
+                  />
+                ) : (
+                  <span
+                    className="deal-card-inline-img"
+                    role="img"
+                    aria-label={
+                      product?.altText ?? product?.name ?? deal.productSlug
+                    }
+                  >
+                    {product?.image ?? '🛒'}
+                  </span>
+                )}
                 <div className="deal-card-inline-info">
                   <strong>{product?.name ?? deal.productSlug}</strong>
                   <span className="deal-card-inline-price">{deal.price}</span>

@@ -1,8 +1,10 @@
 import Link from 'next/link'
-import { getProductById } from '@/data/products'
+import { PRODUCTS } from '@/data/products'
 
 export default function StaticHero() {
-  const product = getProductById('p1')
+  const product = [...PRODUCTS]
+    .filter((p) => p.imageUrl)
+    .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))[0]
 
   if (!product) return null
 
@@ -20,8 +22,15 @@ export default function StaticHero() {
             Read the Review
           </Link>
         </div>
-        <div className="hero-static-img" aria-hidden="true">
-          <span className="hero-static-emoji">{product.image}</span>
+        <div className="hero-static-img">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={product.imageUrl}
+            alt={product.altText ?? product.name}
+            className="hero-static-img-el"
+            width={520}
+            height={520}
+          />
           <span className="hero-static-tag">Deal of the Week</span>
         </div>
       </div>

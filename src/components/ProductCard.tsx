@@ -41,13 +41,25 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         className="product-img"
         aria-label={product.name}
       >
-        <span
-          className="product-emoji"
-          role="img"
-          aria-label={product.altText ?? product.name}
-        >
-          {product.image}
-        </span>
+        {product.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={product.imageUrl}
+            alt={product.altText ?? product.name}
+            className="product-img-el"
+            loading="lazy"
+            width={400}
+            height={400}
+          />
+        ) : (
+          <span
+            className="product-emoji"
+            role="img"
+            aria-label={product.altText ?? product.name}
+          >
+            {product.image}
+          </span>
+        )}
         {product.badge && (
           <span className={`product-badge ${product.badge}`}>
             {BADGE_LABEL[product.badge]}

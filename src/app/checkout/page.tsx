@@ -98,7 +98,19 @@ export default function CheckoutPage() {
           )}
           {items.map(({ product, qty }) => (
             <div className="summary-item" key={product.id}>
-              <span className="summary-emoji">{product.image}</span>
+              {product.imageUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={product.imageUrl}
+                  alt={product.altText ?? product.name}
+                  className="summary-item-img"
+                  loading="lazy"
+                  width={36}
+                  height={36}
+                />
+              ) : (
+                <span className="summary-emoji">{product.image}</span>
+              )}
               <div className="summary-item-info">
                 <strong>{product.name}</strong>
                 <small>
