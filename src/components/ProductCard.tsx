@@ -22,9 +22,10 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
   const { buyNow } = useCart()
   const router = useRouter()
 
-  const discount = product.oldPrice
-    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
-    : 0
+  const discount =
+    product.oldPrice && product.price != null
+      ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+      : 0
 
   const handleBuyNow = () => {
     buyNow(product, 1)

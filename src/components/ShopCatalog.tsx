@@ -58,11 +58,11 @@ export default function ShopCatalog({
     return [...list].sort((a, b) => {
       switch (sort) {
         case 'price-asc':
-          return a.price - b.price
+          return (a.price ?? Infinity) - (b.price ?? Infinity)
         case 'price-desc':
-          return b.price - a.price
+          return (b.price ?? -Infinity) - (a.price ?? -Infinity)
         case 'rating':
-          return b.rating - a.rating
+          return (b.rating ?? -Infinity) - (a.rating ?? -Infinity)
         default:
           return b.reviews - a.reviews
       }

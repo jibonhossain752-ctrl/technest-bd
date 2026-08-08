@@ -13,7 +13,9 @@ export const metadata: Metadata = {
 }
 
 export default function DealsPage() {
-  const deals = PRODUCTS.filter((p) => p.oldPrice && p.oldPrice > p.price)
+  const deals = PRODUCTS.filter(
+    (p) => p.price != null && p.oldPrice && p.oldPrice > p.price,
+  )
   const grouped = CATEGORIES.map((category) => ({
     category,
     products: deals.filter((p) => p.categorySlug === category.slug),

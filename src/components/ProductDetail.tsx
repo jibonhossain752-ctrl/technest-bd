@@ -76,9 +76,10 @@ export default function AddToCartButton({ product }: { product: Product }) {
 }
 
 export function ProductDetailHero({ product }: { product: Product }) {
-  const discount = product.oldPrice
-    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
-    : 0
+  const discount =
+    product.oldPrice && product.price != null
+      ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+      : 0
 
   return (
     <div className="product-detail-hero">

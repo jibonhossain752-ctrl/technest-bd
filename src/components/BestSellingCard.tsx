@@ -14,9 +14,10 @@ const BADGE_LABEL: Record<string, string> = {
 }
 
 export default function BestSellingCard({ product }: BestSellingCardProps) {
-  const discount = product.oldPrice
-    ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
-    : 0
+  const discount =
+    product.oldPrice && product.price != null
+      ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
+      : 0
 
   return (
     <article className="bs-card">

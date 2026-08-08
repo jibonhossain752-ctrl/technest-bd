@@ -52,7 +52,7 @@ export default function CartPage() {
                     </button>
                   </div>
                   <strong className="cart-row-total">
-                    {formatUSD(product.price * qty)}
+                    {formatUSD(product.price == null ? null : product.price * qty)}
                   </strong>
                   <button
                     type="button"
