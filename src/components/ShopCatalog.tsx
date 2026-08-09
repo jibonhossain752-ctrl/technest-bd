@@ -99,6 +99,11 @@ export default function ShopCatalog({
     onCategorySelect(slug)
   }
 
+  const goToPage = (nextPage: number) => {
+    setPage(nextPage)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const sidebarLinks = (
     <ul className="sidebar-links">
       <li>
@@ -246,7 +251,7 @@ export default function ShopCatalog({
                     type="button"
                     className="pagination-arrow"
                     disabled={safePage === 1}
-                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    onClick={() => goToPage(Math.max(1, safePage - 1))}
                     aria-label="Previous page"
                   >
                     ‹
@@ -256,7 +261,7 @@ export default function ShopCatalog({
                       key={i}
                       type="button"
                       className={`pagination-num${i + 1 === safePage ? ' active' : ''}`}
-                      onClick={() => setPage(i + 1)}
+                      onClick={() => goToPage(i + 1)}
                       aria-label={`Page ${i + 1}`}
                       aria-current={i + 1 === safePage ? 'page' : undefined}
                     >
@@ -267,7 +272,7 @@ export default function ShopCatalog({
                     type="button"
                     className="pagination-arrow"
                     disabled={safePage === pageCount}
-                    onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
+                    onClick={() => goToPage(Math.min(pageCount, safePage + 1))}
                     aria-label="Next page"
                   >
                     ›
