@@ -492,7 +492,7 @@ export const POSTS: BlogPost[] = [
     metaTitle: 'Best Gadgets for Remote Workers (2026)',
     metaDescription:
       'The best gadgets for remote workers in 2026 — 4K webcams, UPS battery backups, USB-C hubs, monitor lamps and ergonomic mice. Real prices.',
-    altText: 'Home office desk setup with webcam, monitor lamp and mouse',
+    altText: 'Home office desk setup for remote work',
     dealCard: {
       productSlug: 'quntis-computer-monitor-lamp',
       price: '$39.95',
@@ -1251,7 +1251,7 @@ export const POSTS: BlogPost[] = [
     metaTitle: '10 Ways to Extend Your Laptop Battery Life (2026)',
     metaDescription:
       'Laptop battery tips — 20-80% charging, heat management and power settings explained. Best fast charger companion pick.',
-    altText: 'Laptop charging with USB C fast charger on a desk',
+    altText: 'Laptop computer on a desk',
     dealCard: {
       productSlug: '140w-smart-auto-stop-charger',
       price: '$19.99',
