@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { PLATFORM_PATHS, type PlatformKey } from '@/lib/socials'
 import { VIDEOS } from '@/data/videos'
 import CategoryScrollHint from './CategoryScrollHint'
+import { track } from '@/lib/tracking'
 
 const PLATFORM_LABEL: Record<PlatformKey, string> = {
   instagram: 'IG',
@@ -17,6 +18,7 @@ const PLATFORM_LABEL: Record<PlatformKey, string> = {
 
 export default function WatchAndShop() {
   const [isDesktop, setIsDesktop] = useState(false)
+  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([])
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)')
@@ -24,6 +26,28 @@ export default function WatchAndShop() {
     update()
     mq.addEventListener('change', update)
     return () => mq.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    const seen = new Set<string>()
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const el = entry.target as HTMLAnchorElement
+          if (!entry.isIntersecting || seen.has(el.dataset.videoId ?? '')) continue
+          const videoId = el.dataset.videoId
+          if (!videoId) continue
+          seen.add(videoId)
+          const platform = el.dataset.videoPlatform ?? ''
+          track('video_card_impression', undefined, { video_id: videoId, platform })
+        }
+      },
+      { rootMargin: '150px' },
+    )
+    cardRefs.current.forEach((el) => {
+      if (el) io.observe(el)
+    })
+    return () => io.disconnect()
   }, [])
 
   return (
@@ -43,6 +67,18 @@ export default function WatchAndShop() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Watch ${v.title} on ${PLATFORM_LABEL[v.platform]}`}
+                ref={(el) => {
+                  cardRefs.current[VIDEOS.findIndex((x) => x.id === v.id)] = el
+                }}
+                data-video-id={v.id}
+                data-video-platform={v.platform}
+                onClick={() =>
+                  track('video_card_click', undefined, {
+                    video_id: v.id,
+                    platform: v.platform,
+                    title: v.title.slice(0, 200),
+                  })
+                }
               >
                 <div className={`watch-card-thumb thumb-${v.platform}`}>
                   {v.thumbnail ? (
@@ -82,8 +118,22 @@ export default function WatchAndShop() {
               </Link>
             ))}
           </div>
-          <CategoryScrollHint targetSelector=".watch-shop-strip" clickable={isDesktop} direction="left" />
-          <CategoryScrollHint targetSelector=".watch-shop-strip" clickable={isDesktop} direction="right" />
+          <CategoryScrollHint
+            targetSelector=".watch-shop-strip"
+            clickable={isDesktop}
+            direction="left"
+            onArrowClick={(direction) =>
+              track('video_scroll', undefined, { direction })
+            }
+          />
+          <CategoryScrollHint
+            targetSelector=".watch-shop-strip"
+            clickable={isDesktop}
+            direction="right"
+            onArrowClick={(direction) =>
+              track('video_scroll', undefined, { direction })
+            }
+          />
         </div>
       </div>
     </section>

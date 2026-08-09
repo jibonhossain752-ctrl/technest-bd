@@ -6,6 +6,8 @@ import BlogCard from '@/components/BlogCard'
 import { categoryBadgeClass } from '@/data/blogCategories'
 import ShareButtons from '@/components/ShareButtons'
 import NewsletterPopup from '@/components/NewsletterPopup'
+import TrackedAffiliateLink from '@/components/TrackedAffiliateLink'
+import PostFaq from '@/components/PostFaq'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -128,16 +130,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <div className="deal-card-inline-info">
                   <strong>{product?.name ?? deal.productSlug}</strong>
                 </div>
-                <a
+                <TrackedAffiliateLink
                   href={deal.affiliateUrl}
-                  target="_blank"
-                  rel="noopener noreferrer sponsored"
                   className="btn btn-accent deal-card-inline-cta"
+                  meta={{
+                    product_slug: deal.productSlug,
+                    location: 'blog-post',
+                  }}
                 >
                   Check Price on Amazon
-                </a>
+                </TrackedAffiliateLink>
               </div>
             </>
+          )}
+
+          {post.faq && post.faq.length > 0 && (
+            <PostFaq faq={post.faq} postSlug={post.slug} />
           )}
         </div>
 
@@ -154,7 +162,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
           <div className="blog-grid">
             {related.map((p) => (
-              <BlogCard key={p.slug} post={p} />
+              <BlogCard
+                key={p.slug}
+                post={p}
+                trackLocation="related"
+                fromSlug={post.slug}
+              />
             ))}
           </div>
         </div>

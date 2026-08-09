@@ -1,11 +1,13 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { Product } from '@/data/products'
 import { formatUSD } from '@/data/products'
 import RatingStars from './RatingStars'
 import { useCart } from '@/context/useCart'
+import { track, pixelFor } from '@/lib/tracking'
 
 interface ProductCardProps {
   product: Product
@@ -21,6 +23,36 @@ const BADGE_LABEL: Record<string, string> = {
 export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const { buyNow } = useCart()
   const router = useRouter()
+  const cardRef = useRef<HTMLElement>(null)
+  const seen = useRef(false)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el || seen.current) return
+    let done = false
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (done) return
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            done = true
+            seen.current = true
+            track('product_impression', undefined, {
+              product_slug: product.slug,
+              product_name: product.name.slice(0, 200),
+            })
+            io.disconnect()
+            return
+          }
+        }
+      },
+      { rootMargin: '100px' },
+    )
+    io.observe(el)
+    return () => {
+      io.disconnect()
+    }
+  }, [product.slug, product.name])
 
   const discount =
     product.oldPrice && product.price != null
@@ -34,12 +66,27 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
 
   const buyNowLabel = product.buyUrl ? 'Buy Now ↗' : 'Buy Now'
 
+  const trackAffiliate = () => {
+    track('affiliate_click', undefined, {
+      product_slug: product.slug,
+      product_name: product.name.slice(0, 200),
+      location: 'product-card',
+    })
+    pixelFor('affiliate_click', { product_slug: product.slug })
+  }
+
   return (
-    <article className="product-card">
+    <article className="product-card" ref={cardRef}>
       <Link
         href={product.buyUrl ?? `/product/${product.slug}`}
         className="product-img"
         aria-label={product.name}
+        onClick={() => {
+          track('product_card_click', product.buyUrl ?? `/product/${product.slug}`, {
+            product_slug: product.slug,
+          })
+          if (product.buyUrl) trackAffiliate()
+        }}
       >
         {product.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -104,6 +151,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
               target="_blank"
               rel="noopener noreferrer sponsored"
               className="buy-now"
+              onClick={trackAffiliate}
             >
               {buyNowLabel}
             </a>

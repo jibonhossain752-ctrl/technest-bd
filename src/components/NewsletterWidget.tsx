@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { track, pixelFor } from '@/lib/tracking'
 
 export default function NewsletterWidget() {
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -11,7 +12,11 @@ export default function NewsletterWidget() {
     const input = new FormData(e.currentTarget).get('email') as string
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input ?? '')
     setStatus(valid ? 'success' : 'error')
-    if (valid) e.currentTarget.reset()
+    if (valid) {
+      e.currentTarget.reset()
+      track('newsletter_subscribe', undefined, { location: 'widget' })
+      pixelFor('newsletter_subscribe')
+    }
   }
 
   return (
@@ -25,7 +30,11 @@ export default function NewsletterWidget() {
           placeholder="Enter your email"
           required
         />
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={() => track('newsletter_widget_subscribe_click')}
+        >
           Subscribe
         </button>
       </form>

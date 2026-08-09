@@ -11,6 +11,7 @@ import Collapsible from './ui/Collapsible'
 import CategoryScrollHint from './CategoryScrollHint'
 import CountdownTimer from './ui/CountdownTimer'
 import { useEffect } from 'react'
+import { track } from '@/lib/tracking'
 
 interface ShopCatalogProps {
   products: Product[]
@@ -94,6 +95,7 @@ export default function ShopCatalog({
     e: MouseEvent<HTMLAnchorElement>,
     slug: string,
   ) => {
+    track('category_select', undefined, { slug })
     if (!onCategorySelect) return
     e.preventDefault()
     onCategorySelect(slug)
@@ -101,7 +103,13 @@ export default function ShopCatalog({
 
   const goToPage = (nextPage: number) => {
     setPage(nextPage)
+    track('shop_pagination', undefined, { page: nextPage })
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const trackSearch = (query: string) => {
+    const q = query.trim()
+    if (q) track('shop_search', undefined, { query: q.slice(0, 100) })
   }
 
   const sidebarLinks = (
@@ -203,6 +211,7 @@ export default function ShopCatalog({
               title="Filters"
               icon="🔍"
               className="filters-collapsible"
+              onToggle={(open) => track('shop_filters_toggle', undefined, { open })}
             >
               <div className="shop-controls">
                 <input
@@ -210,11 +219,18 @@ export default function ShopCatalog({
                   placeholder="Search products..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  onBlur={(e) => trackSearch(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') trackSearch((e.target as HTMLInputElement).value)
+                  }}
                   aria-label="Search products"
                 />
                 <select
                   value={sort}
-                  onChange={(e) => setSort(e.target.value as SortKey)}
+                  onChange={(e) => {
+                    setSort(e.target.value as SortKey)
+                    track('shop_sort', undefined, { sort: e.target.value })
+                  }}
                   aria-label="Sort products"
                 >
                   {SORT_OPTIONS.map((opt) => (

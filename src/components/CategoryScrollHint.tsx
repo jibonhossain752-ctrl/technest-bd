@@ -6,12 +6,14 @@ interface CategoryScrollHintProps {
   targetSelector?: string
   clickable?: boolean
   direction?: 'left' | 'right'
+  onArrowClick?: (direction: 'left' | 'right') => void
 }
 
 export default function CategoryScrollHint({
   targetSelector = '.category-chips',
   clickable = false,
   direction = 'right',
+  onArrowClick,
 }: CategoryScrollHintProps) {
   const hintRef = useRef<HTMLSpanElement>(null)
   const rowRef = useRef<HTMLElement | null>(null)
@@ -41,6 +43,7 @@ export default function CategoryScrollHint({
   }, [targetSelector, direction])
 
   const handleClick = () => {
+    onArrowClick?.(direction)
     const row = rowRef.current
     if (!row) return
     const distance = row.clientWidth * 0.85 * (direction === 'left' ? -1 : 1)

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef } from 'react'
 import { PLATFORMS, PLATFORM_PATHS, type PlatformKey } from '@/lib/socials'
+import { track } from '@/lib/tracking'
 
 const FALLBACK_MS = 1800
 
@@ -19,12 +20,14 @@ interface SocialIconProps {
   platform: PlatformKey
   className?: string
   ariaLabel?: string
+  trackLocation?: string
 }
 
 export default function SocialIcon({
   platform,
   className,
   ariaLabel,
+  trackLocation = 'unknown',
 }: SocialIconProps) {
   const config = PLATFORMS[platform]
   const fallbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -37,6 +40,10 @@ export default function SocialIcon({
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
+      track('social_link_click', undefined, {
+        platform,
+        location: trackLocation,
+      })
       if (!isMobileDevice() || !config.scheme) return
       e.preventDefault()
       let opened = false
@@ -62,7 +69,7 @@ export default function SocialIcon({
         window.location.href = config.scheme
       }
     },
-    [config],
+    [config, platform, trackLocation],
   )
 
   return (

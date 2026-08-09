@@ -6,6 +6,7 @@ import type { Product } from '../data/products'
 import { getProductBySlug } from '../data/products'
 import { CartContext } from './cart-context'
 import type { CartItem, CartContextValue } from './cart-context'
+import { track, pixelFor } from '@/lib/tracking'
 
 const STORAGE_KEY = 'technest-cart'
 
@@ -56,14 +57,35 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prev, { product, qty: 1 }]
     })
+    track('add_to_cart', undefined, {
+      product_slug: product.slug,
+      product_name: product.name.slice(0, 200),
+      qty: 1,
+    })
+    pixelFor('add_to_cart', { product_slug: product.slug })
   }, [])
 
   const buyNow = useCallback((product: Product, qty: number) => {
     setItems([{ product, qty }])
+    track('buy_now', undefined, {
+      product_slug: product.slug,
+      product_name: product.name.slice(0, 200),
+      qty,
+    })
+    pixelFor('buy_now', { product_slug: product.slug })
   }, [])
 
   const removeFromCart = useCallback((productId: string) => {
-    setItems((prev) => prev.filter((item) => item.product.id !== productId))
+    setItems((prev) => {
+      const removed = prev.find((item) => item.product.id === productId)
+      if (removed) {
+        track('remove_from_cart', undefined, {
+          product_slug: removed.product.slug,
+          qty: removed.qty,
+        })
+      }
+      return prev.filter((item) => item.product.id !== productId)
+    })
   }, [])
 
   const updateQty = useCallback((productId: string, qty: number) => {
@@ -76,7 +98,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     )
   }, [])
 
-  const clearCart = useCallback(() => setItems([]), [])
+  const clearCart = useCallback(() => {
+    setItems([])
+    track('clear_cart')
+  }, [])
 
   const value = useMemo<CartContextValue>(() => {
     const count = items.reduce((sum, item) => sum + item.qty, 0)

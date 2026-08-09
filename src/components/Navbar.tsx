@@ -9,6 +9,7 @@ import { useCart } from '@/context/useCart'
 import { useAuth } from '@/context/useAuth'
 import SocialIcon from './SocialIcon'
 import type { PlatformKey } from '@/lib/socials'
+import { track, pixelFor } from '@/lib/tracking'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -88,6 +89,7 @@ export default function Navbar() {
   const goHomeFresh = (e: React.MouseEvent) => {
     closeMenu()
     e.preventDefault()
+    track('nav_logo_click')
     // Full page navigation (always reloads) so widgets/data fetch fresh,
     // even when already on the Home page.
     window.location.href = '/'
@@ -126,7 +128,10 @@ export default function Navbar() {
           type="button"
           className="side-close"
           aria-label="Close menu"
-          onClick={closeMenu}
+          onClick={() => {
+            track('nav_menu_close')
+            closeMenu()
+          }}
         >
           ✕
         </button>
@@ -140,7 +145,10 @@ export default function Navbar() {
             <Link
               href={link.href}
               className={isActive(link.href) ? 'active' : ''}
-              onClick={closeMenu}
+              onClick={() => {
+                track('nav_menu_click', link.href, { label: link.label })
+                closeMenu()
+              }}
             >
               <span className="side-icon" aria-hidden="true">
                 {link.icon}
@@ -159,7 +167,10 @@ export default function Navbar() {
             <Link
               href={link.href}
               className={isActive(link.href) ? 'active' : ''}
-              onClick={closeMenu}
+              onClick={() => {
+                track('nav_menu_click', link.href, { label: link.label })
+                closeMenu()
+              }}
             >
               <span className="side-icon" aria-hidden="true">
                 {link.icon}
@@ -173,13 +184,16 @@ export default function Navbar() {
       <div className="side-foot">
         <div className="side-socials">
           {SIDEBAR_SOCIALS.map((platform) => (
-            <SocialIcon key={platform} platform={platform} className="side-social" />
+            <SocialIcon key={platform} platform={platform} className="side-social" trackLocation="navbar" />
           ))}
         </div>
         <Link
           href={user ? '/account' : '/login'}
           className="side-account"
-          onClick={closeMenu}
+          onClick={() => {
+            track('nav_account_click')
+            closeMenu()
+          }}
         >
           <span aria-hidden="true">👤</span>
           {user ? 'My Account' : 'Login / Register'}
@@ -215,7 +229,10 @@ export default function Navbar() {
           type="button"
           className="desk-panel-close"
           aria-label="Close panel"
-          onClick={() => setDeskSidebarOpen(false)}
+          onClick={() => {
+            track('nav_menu_close')
+            setDeskSidebarOpen(false)
+          }}
         >
           ✕
         </button>
@@ -232,7 +249,10 @@ export default function Navbar() {
             <Link
               href={link.href}
               className={isActive(link.href) ? 'active' : ''}
-              onClick={() => setDeskSidebarOpen(false)}
+              onClick={() => {
+                track('nav_menu_click', link.href, { label: link.label })
+                setDeskSidebarOpen(false)
+              }}
             >
               <span className="side-icon" aria-hidden="true">
                 {link.icon}
@@ -250,6 +270,7 @@ export default function Navbar() {
         target="_blank"
         rel="noreferrer"
         className="desk-community-link"
+        onClick={() => track('community_link_click', undefined, { platform: 'whatsapp' })}
       >
         <span className="desk-community-icon" aria-hidden="true">
           💬
@@ -261,6 +282,7 @@ export default function Navbar() {
         target="_blank"
         rel="noreferrer"
         className="desk-community-link"
+        onClick={() => track('community_link_click', undefined, { platform: 'facebook' })}
       >
         <span className="desk-community-icon" aria-hidden="true">
           👍
@@ -270,16 +292,33 @@ export default function Navbar() {
 
       <div className="desk-newsletter-mini">
         <h4>Newsletter Quick Subscribe</h4>
-        <div className="desk-nl-form">
+        <form
+          className="desk-nl-form"
+          onSubmit={(e) => {
+            e.preventDefault()
+            const email = String(
+              new FormData(e.currentTarget).get('email') ?? '',
+            ).trim()
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return
+            e.currentTarget.reset()
+            track('newsletter_subscribe', undefined, { location: 'quick' })
+            pixelFor('newsletter_subscribe')
+          }}
+        >
           <input
             type="email"
+            name="email"
             placeholder="Your email"
             aria-label="Email for newsletter"
           />
-          <button type="submit" className="btn btn-accent desk-nl-btn">
+          <button
+            type="submit"
+            className="btn btn-accent desk-nl-btn"
+            onClick={() => track('newsletter_quick_subscribe_click')}
+          >
             Subscribe
           </button>
-        </div>
+        </form>
       </div>
 
       <div className="side-divider" />
@@ -290,7 +329,10 @@ export default function Navbar() {
             <Link
               href={link.href}
               className={isActive(link.href) ? 'active' : ''}
-              onClick={() => setDeskSidebarOpen(false)}
+              onClick={() => {
+                track('nav_menu_click', link.href, { label: link.label })
+                setDeskSidebarOpen(false)
+              }}
             >
               <span className="side-icon" aria-hidden="true">
                 {link.icon}
@@ -304,7 +346,7 @@ export default function Navbar() {
       <div className="desk-panel-foot">
         <div className="side-socials">
           {SIDEBAR_SOCIALS.map((platform) => (
-            <SocialIcon key={platform} platform={platform} className="side-social" />
+            <SocialIcon key={platform} platform={platform} className="side-social" trackLocation="navbar" />
           ))}
         </div>
       </div>
@@ -430,11 +472,21 @@ export default function Navbar() {
                     : 'Open panel'
               }
               aria-expanded={isMobile ? menuOpen : deskSidebarOpen}
-              onClick={() =>
-                isMobile
-                  ? setMenuOpen((open) => !open)
-                  : setDeskSidebarOpen((open) => !open)
-              }
+              onClick={() => {
+                const opening = isMobile ? !menuOpen : !deskSidebarOpen
+                if (opening) {
+                  track('nav_hamburger_click', undefined, {
+                    panel: isMobile ? 'mobile' : 'desktop',
+                  })
+                } else {
+                  track('nav_menu_close')
+                }
+                if (isMobile) {
+                  setMenuOpen((open) => !open)
+                } else {
+                  setDeskSidebarOpen((open) => !open)
+                }
+              }}
             >
               <span />
               <span />

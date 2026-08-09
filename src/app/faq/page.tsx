@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { FAQS, FAQ_CATEGORIES } from '@/data/faqs'
+import { track } from '@/lib/tracking'
 
 export default function FaqPage() {
   const [open, setOpen] = useState<string | null>(FAQS[0]?.id ?? null)
@@ -20,7 +21,10 @@ export default function FaqPage() {
               key={cat}
               type="button"
               className={`chip ${category === cat ? 'active' : ''}`}
-              onClick={() => setCategory(cat)}
+              onClick={() => {
+                setCategory(cat)
+                track('faq_category_select', undefined, { category: cat })
+              }}
             >
               {cat}
             </button>
@@ -36,7 +40,14 @@ export default function FaqPage() {
               <button
                 type="button"
                 className="faq-question"
-                onClick={() => setOpen(open === faq.id ? null : faq.id)}
+                onClick={() => {
+                  const next = open === faq.id ? null : faq.id
+                  setOpen(next)
+                  track('faq_expand', undefined, {
+                    question: faq.question.slice(0, 200),
+                    location: 'faq-page',
+                  })
+                }}
                 aria-expanded={open === faq.id}
               >
                 <span>{faq.question}</span>

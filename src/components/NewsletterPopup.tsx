@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { getSession } from '@/lib/auth'
+import { track, pixelFor } from '@/lib/tracking'
 
 const SUBSCRIBED_KEY = 'technest-newsletter-subscribed'
 const DELAY_MS = 30_000
@@ -11,8 +12,19 @@ export default function NewsletterPopup() {
   const [open, setOpen] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const shownRef = useRef(false)
+  const interactedRef = useRef(false)
 
-  const dismiss = useCallback(() => setOpen(false), [])
+  const dismiss = useCallback(
+    (method: string) => {
+      interactedRef.current = true
+      if (shownRef.current) {
+        track('newsletter_popup_dismissed', undefined, { method })
+      }
+      setOpen(false)
+    },
+    [],
+  )
 
   useEffect(() => {
     let suppress = false
@@ -25,7 +37,11 @@ export default function NewsletterPopup() {
     }
     if (suppress) return
 
-    timerRef.current = setTimeout(() => setOpen(true), DELAY_MS)
+    timerRef.current = setTimeout(() => {
+      shownRef.current = true
+      track('newsletter_popup_shown')
+      setOpen(true)
+    }, DELAY_MS)
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current)
     }
@@ -35,7 +51,7 @@ export default function NewsletterPopup() {
     document.body.style.overflow = open ? 'hidden' : ''
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') dismiss()
+      if (e.key === 'Escape') dismiss('escape')
     }
     window.addEventListener('keydown', onKey)
     return () => {
@@ -43,6 +59,16 @@ export default function NewsletterPopup() {
       document.body.style.overflow = ''
     }
   }, [open, dismiss])
+
+  useEffect(() => {
+    const onHide = () => {
+      if (shownRef.current && !interactedRef.current) {
+        track('newsletter_popup_no_interaction')
+      }
+    }
+    window.addEventListener('pagehide', onHide)
+    return () => window.removeEventListener('pagehide', onHide)
+  }, [])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -52,7 +78,10 @@ export default function NewsletterPopup() {
       setStatus('error')
       return
     }
+    interactedRef.current = true
     setStatus('success')
+    track('newsletter_subscribe', undefined, { location: 'popup' })
+    pixelFor('newsletter_subscribe')
     try {
       window.localStorage.setItem(SUBSCRIBED_KEY, '1')
     } catch {
@@ -63,7 +92,7 @@ export default function NewsletterPopup() {
   if (!open) return null
 
   return (
-    <div className="newsletter-popup-overlay" onClick={dismiss}>
+    <div className="newsletter-popup-overlay" onClick={() => dismiss('backdrop')}>
       <div
         className="newsletter-popup"
         role="dialog"
@@ -74,7 +103,7 @@ export default function NewsletterPopup() {
         <button
           type="button"
           className="newsletter-popup-close"
-          onClick={dismiss}
+          onClick={() => dismiss('close-btn')}
           aria-label="Close"
         >
           ✕
@@ -97,7 +126,11 @@ export default function NewsletterPopup() {
               placeholder="Enter your email"
               required
             />
-            <button type="submit" className="btn btn-accent">
+            <button
+              type="submit"
+              className="btn btn-accent"
+              onClick={() => track('newsletter_popup_subscribe_click')}
+            >
               Subscribe
             </button>
           </form>
@@ -108,7 +141,7 @@ export default function NewsletterPopup() {
         <button
           type="button"
           className="newsletter-popup-later"
-          onClick={dismiss}
+          onClick={() => dismiss('no-thanks')}
         >
           No thanks — don&apos;t ask again this visit
         </button>

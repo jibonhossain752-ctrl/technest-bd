@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Product } from '@/data/products'
 import { formatUSD } from '@/data/products'
 import RatingStars from './RatingStars'
 import { useCart } from '@/context/useCart'
+import { track, pixelFor } from '@/lib/tracking'
 
 const BADGE_LABEL: Record<string, string> = {
   hot: '🔥 Hot',
@@ -29,6 +30,14 @@ export default function AddToCartButton({ product }: { product: Product }) {
       target="_blank"
       rel="noopener noreferrer sponsored"
       className="btn btn-accent buy-now"
+      onClick={() => {
+        track('affiliate_click', undefined, {
+          product_slug: product.slug,
+          product_name: product.name.slice(0, 200),
+          location: 'product-detail',
+        })
+        pixelFor('affiliate_click', { product_slug: product.slug })
+      }}
     >
       Buy Now ↗
     </a>
@@ -80,6 +89,14 @@ export function ProductDetailHero({ product }: { product: Product }) {
     product.oldPrice && product.price != null
       ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
       : 0
+
+  useEffect(() => {
+    track('product_view', `/product/${product.slug}`, {
+      product_slug: product.slug,
+      product_name: product.name.slice(0, 200),
+    })
+    pixelFor('product_view', { product_slug: product.slug })
+  }, [product.slug, product.name])
 
   return (
     <div className="product-detail-hero">

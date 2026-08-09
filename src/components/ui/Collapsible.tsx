@@ -9,6 +9,7 @@ interface CollapsibleProps {
   defaultOpen?: boolean
   children: ReactNode
   className?: string
+  onToggle?: (open: boolean) => void
 }
 
 export default function Collapsible({
@@ -17,15 +18,23 @@ export default function Collapsible({
   defaultOpen = false,
   children,
   className,
+  onToggle,
 }: CollapsibleProps) {
   const [open, setOpen] = useState(defaultOpen)
+
+  const handleToggle = () => {
+    setOpen((value) => {
+      onToggle?.(!value)
+      return !value
+    })
+  }
 
   return (
     <div className={`collapsible ${className ?? ''}`}>
       <button
         type="button"
         className="collapsible-header"
-        onClick={() => setOpen((value) => !value)}
+        onClick={handleToggle}
         aria-expanded={open}
         aria-controls={`collapsible-${title}`}
       >

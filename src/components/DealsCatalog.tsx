@@ -5,6 +5,7 @@ import Link from 'next/link'
 import CountdownTimer from '@/components/ui/CountdownTimer'
 import { PRODUCTS } from '@/data/products'
 import ShopCatalog from './ShopCatalog'
+import { track } from '@/lib/tracking'
 
 export default function DealsCatalog() {
   const [activeSlug, setActiveSlug] = useState('all')
@@ -62,6 +63,7 @@ export default function DealsCatalog() {
           <Link
             href="/shop/flash-sale"
             className="btn btn-accent deals-cta-btn"
+            onClick={() => track('flash_sale_cta_click')}
           >
             View Flash Sale →
           </Link>

@@ -40,7 +40,7 @@ export default function Footer() {
           </p>
           <div className="socials">
             {FOOTER_SOCIALS.map((platform) => (
-              <SocialIcon key={platform} platform={platform} />
+              <SocialIcon key={platform} platform={platform} trackLocation="footer" />
             ))}
           </div>
         </div>

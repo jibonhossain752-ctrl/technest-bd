@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import type { BlogPost } from '@/data/posts'
 import { categoryBadgeClass } from '@/data/blogCategories'
+import { track } from '@/lib/tracking'
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-GB', {
@@ -12,11 +15,27 @@ function formatDate(date: string) {
 
 interface BlogCardProps {
   post: BlogPost
+  trackLocation?: string
+  fromSlug?: string
 }
 
-export default function BlogCard({ post }: BlogCardProps) {
+export default function BlogCard({
+  post,
+  trackLocation = 'listing',
+  fromSlug,
+}: BlogCardProps) {
   return (
-    <Link href={`/blog/${post.slug}`} className="blog-card">
+    <Link
+      href={`/blog/${post.slug}`}
+      className="blog-card"
+      onClick={() =>
+        track('blog_card_click', `/blog/${post.slug}`, {
+          slug: post.slug,
+          location: trackLocation,
+          from: fromSlug,
+        })
+      }
+    >
       <div className="blog-card-thumb">
         {post.heroImage ? (
           // eslint-disable-next-line @next/next/no-img-element

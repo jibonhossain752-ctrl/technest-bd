@@ -6,6 +6,7 @@ import BlogCard from '@/components/BlogCard'
 import NewsletterWidget from '@/components/NewsletterWidget'
 import NewsletterPopup from '@/components/NewsletterPopup'
 import CategoryScrollHint from '@/components/CategoryScrollHint'
+import { track } from '@/lib/tracking'
 
 const TABS = [
   { label: 'All', match: null as string | null },
@@ -65,6 +66,7 @@ export default function BlogPage() {
                   onClick={() => {
                     setTab(t.label)
                     setVisible(INITIAL_VISIBLE)
+                    track('blog_tab_click', undefined, { tab: t.label })
                   }}
                 >
                   {t.label}
@@ -84,6 +86,16 @@ export default function BlogPage() {
               onChange={(e) => {
                 setQuery(e.target.value)
                 setVisible(INITIAL_VISIBLE)
+              }}
+              onBlur={(e) => {
+                const q = e.target.value.trim()
+                if (q) track('blog_search', undefined, { query: q.slice(0, 100) })
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const q = (e.target as HTMLInputElement).value.trim()
+                  if (q) track('blog_search', undefined, { query: q.slice(0, 100) })
+                }
               }}
               aria-label="Search posts"
             />
@@ -111,7 +123,10 @@ export default function BlogPage() {
                 <button
                   type="button"
                   className="btn btn-accent"
-                  onClick={() => setVisible((v) => v + LOAD_MORE)}
+                  onClick={() => {
+                    setVisible((v) => v + LOAD_MORE)
+                    track('blog_load_more')
+                  }}
                 >
                   Load More
                 </button>
@@ -124,7 +139,16 @@ export default function BlogPage() {
             <div className="popular-posts">
               <h3>Popular Posts</h3>
               {popular.slice(0, 4).map((post) => (
-                <a href={`/blog/${post.slug}`} className="popular-post" key={post.slug}>
+                <a
+                  href={`/blog/${post.slug}`}
+                  className="popular-post"
+                  key={post.slug}
+                  onClick={() =>
+                    track('blog_popular_post_click', `/blog/${post.slug}`, {
+                      slug: post.slug,
+                    })
+                  }
+                >
                   <span className="popular-post-thumb" aria-hidden="true">
                     {post.heroImage ? (
                       // eslint-disable-next-line @next/next/no-img-element

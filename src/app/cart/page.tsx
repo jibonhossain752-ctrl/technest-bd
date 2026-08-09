@@ -1,11 +1,17 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
+import { track } from '@/lib/tracking'
 
 export default function CartPage() {
   const { items, total, updateQty, removeFromCart, clearCart } = useCart()
+
+  useEffect(() => {
+    track('cart_view', '/cart', { item_count: items.length })
+  }, [items.length])
 
   return (
     <>

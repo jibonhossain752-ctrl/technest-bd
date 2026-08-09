@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import { getPostBySlug } from '@/data/posts'
 import { categoryBadgeClass } from '@/data/blogCategories'
+import { track } from '@/lib/tracking'
 
 const DEAL_SLUGS = [
   { slug: 'amazon-echo-dot-kids-review', price: '$34.08' },
@@ -24,7 +27,15 @@ export default function DealSpotlight() {
         <div className="deal-spotlight-grid">
           {deals.map(({ post, price }) => (
             <article className="deal-card" key={post!.slug}>
-              <Link href={`/blog/${post!.slug}`} className="deal-card-thumb">
+              <Link
+                href={`/blog/${post!.slug}`}
+                className="deal-card-thumb"
+                onClick={() =>
+                  track('deal_spotlight_click', `/blog/${post!.slug}`, {
+                    post_slug: post!.slug,
+                  })
+                }
+              >
                 <span className="deal-card-emoji" aria-hidden="true">
                   {post!.emoji}
                 </span>

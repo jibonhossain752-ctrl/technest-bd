@@ -1,9 +1,11 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
 import PageHeader from '@/components/ui/PageHeader'
+import { track, pixelFor } from '@/lib/tracking'
 
 export default function CheckoutPage() {
   const { items, total } = useCart()
@@ -11,12 +13,18 @@ export default function CheckoutPage() {
   const buyableCount = items.filter((item) => item.product.buyUrl).length
   const hasUnpriced = items.some((item) => item.product.price == null)
 
+  useEffect(() => {
+    track('checkout_view', '/checkout', { item_count: items.length })
+  }, [items.length])
+
   const handleBuyAll = () => {
     items.forEach(({ product }) => {
       if (product.buyUrl) {
         window.open(product.buyUrl, '_blank', 'noopener,noreferrer')
       }
     })
+    track('buy_all_amazon', undefined, { count: buyableCount })
+    pixelFor('buy_now')
   }
 
   if (items.length === 0) {
@@ -123,6 +131,14 @@ export default function CheckoutPage() {
                   target="_blank"
                   rel="noopener noreferrer sponsored"
                   className="btn btn-accent summary-buy-link"
+                  onClick={() => {
+                    track('affiliate_click', undefined, {
+                      product_slug: product.slug,
+                      product_name: product.name.slice(0, 200),
+                      location: 'checkout',
+                    })
+                    pixelFor('affiliate_click', { product_slug: product.slug })
+                  }}
                 >
                   Buy on Amazon →
                 </a>
