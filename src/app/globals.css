@@ -860,7 +860,8 @@ button {
 }
 
 .product-img {
-  height: 180px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   background: var(--bg-soft);
   display: grid;
   place-items: center;
@@ -1793,7 +1794,7 @@ button {
   border-radius: var(--radius);
   display: grid;
   place-items: center;
-  min-height: 380px;
+  aspect-ratio: 1 / 1;
   position: relative;
   font-size: 8rem;
 }
@@ -4708,7 +4709,8 @@ button {
 
 .blog-card-thumb {
   position: relative;
-  height: 160px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   background: linear-gradient(135deg, #eef2f7, #dfe7f0);
   display: grid;
   place-items: center;
@@ -4832,7 +4834,8 @@ button {
 
 .deal-card-thumb {
   position: relative;
-  height: 190px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   background: linear-gradient(135deg, #eef2f7, #dfe7f0);
   display: grid;
   place-items: center;
@@ -4921,10 +4924,6 @@ button {
 
 .product-card:hover {
   transform: translateY(-5px) scale(1.01);
-}
-
-.product-img {
-  height: 170px;
 }
 
 .product-badge.discount {
@@ -5672,6 +5671,16 @@ button {
   place-items: center;
   font-size: 1.3rem;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.popular-post-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 10px;
 }
 
 .popular-post-info strong {
@@ -5778,7 +5787,6 @@ button {
   width: 100%;
   aspect-ratio: 16 / 9;
   height: auto;
-  max-height: 620px;
   object-fit: cover;
   object-position: center;
 }
@@ -5835,14 +5843,6 @@ button {
   display: block;
   color: var(--primary);
   font-size: 0.95rem;
-}
-
-.deal-card-inline-price {
-  display: block;
-  color: var(--accent-dark);
-  font-weight: 800;
-  font-size: 0.95rem;
-  margin-top: 2px;
 }
 
 .deal-card-inline-cta {
@@ -6564,10 +6564,6 @@ button {
     gap: 10px;
   }
 
-  .blog-card-thumb {
-    height: 110px;
-  }
-
   .blog-card-emoji {
     font-size: 2.6rem;
   }
@@ -6577,17 +6573,9 @@ button {
     gap: 12px;
   }
 
-  .deal-card-thumb {
-    height: 150px;
-  }
-
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-  }
-
-  .product-img {
-    height: 130px;
   }
 
   .product-emoji {

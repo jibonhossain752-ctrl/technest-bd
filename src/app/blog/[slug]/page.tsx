@@ -127,7 +127,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 )}
                 <div className="deal-card-inline-info">
                   <strong>{product?.name ?? deal.productSlug}</strong>
-                  <span className="deal-card-inline-price">{deal.price}</span>
                 </div>
                 <a
                   href={deal.affiliateUrl}

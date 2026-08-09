@@ -126,7 +126,12 @@ export default function BlogPage() {
               {popular.slice(0, 4).map((post) => (
                 <a href={`/blog/${post.slug}`} className="popular-post" key={post.slug}>
                   <span className="popular-post-thumb" aria-hidden="true">
-                    {post.emoji}
+                    {post.heroImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={post.heroImage} alt="" width={46} height={46} loading="lazy" />
+                    ) : (
+                      post.emoji
+                    )}
                   </span>
                   <span className="popular-post-info">
                     <strong>{post.title}</strong>
