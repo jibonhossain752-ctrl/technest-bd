@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Toast from '@/components/Toast'
 import ScrollToTop from '@/components/ScrollToTop'
+import AnalyticsBootstrap from '@/components/AnalyticsBootstrap'
 
 export const metadata: Metadata = {
   title: {
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <main>{children}</main>
             <Footer />
             <Toast />
+            <AnalyticsBootstrap />
           </CartProvider>
         </AuthProvider>
       </body>
