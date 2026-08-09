@@ -21,7 +21,9 @@ export async function GET(req: Request) {
     if (latest) await storeDailyReport(latest.date)
     return NextResponse.json({ ok: true, results })
   } catch (err) {
-    console.error('cron aggregate error', err)
-    return NextResponse.json({ ok: false }, { status: 500 })
+    // Tables may not exist yet (schema not applied) — log and stay green so
+    // the cron doesn't page anyone while the site is mid-migration.
+    console.error('cron aggregate error (schema applied?)', err)
+    return NextResponse.json({ ok: false, reason: 'aggregation failed' }, { status: 500 })
   }
 }

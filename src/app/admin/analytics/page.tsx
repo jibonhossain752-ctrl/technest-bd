@@ -97,15 +97,24 @@ export default async function AdminAnalyticsPage({
     | 30
     | 90
 
+  const safe = async <T,>(fn: () => Promise<T>): Promise<T> => {
+    try {
+      return await fn()
+    } catch (err) {
+      console.error('analytics section failed', err)
+      return [] as unknown as T
+    }
+  }
+
   const [products, categories, blogPosts, sources, funnel, trend, topPages, reports] =
     await Promise.all([
-      getTopProducts(range),
-      getTopCategories(range),
-      getTopBlogPosts(range),
-      getSourceRankings(range),
-      getFunnel(range),
-      getDailyTrend(range),
-      getTopPages(range),
+      safe(() => getTopProducts(range)),
+      safe(() => getTopCategories(range)),
+      safe(() => getTopBlogPosts(range)),
+      safe(() => getSourceRankings(range)),
+      safe(() => getFunnel(range)),
+      safe(() => getDailyTrend(range)),
+      safe(() => getTopPages(range)),
       getReports(),
     ])
 
