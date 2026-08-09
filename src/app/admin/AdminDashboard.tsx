@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { formatUSD } from '@/data/products'
 
 interface AdminUser {
@@ -139,6 +140,13 @@ export default function AdminDashboard() {
               <span className="admin-avatar" aria-hidden="true">
                 A
               </span>
+              <Link
+                href="/admin/analytics"
+                className="btn btn-primary"
+                style={{ marginRight: 8 }}
+              >
+                📊 Analytics
+              </Link>
               <button
                 type="button"
                 className="btn btn-outline"
