@@ -16,6 +16,12 @@ import {
 } from '@/lib/analytics-queries'
 import * as XLSX from 'xlsx'
 import PDFDocument from 'pdfkit'
+import { installStandardFontsPatch } from '@/lib/pdfkit-afm'
+
+// Serverless lambdas don't ship pdfkit's AFM files; serve metrics from the bundle.
+// Must patch the shared fs singleton before any PDF is created.
+const fsMod = require('fs') as typeof import('fs')
+installStandardFontsPatch(fsMod)
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
