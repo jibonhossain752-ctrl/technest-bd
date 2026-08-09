@@ -2054,10 +2054,12 @@ button {
   justify-content: space-between;
 }
 
-.checkout .cart-summary {
-  position: sticky;
-  top: 24px;
-  align-self: start;
+@media (min-width: 901px) {
+  .checkout .cart-summary {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
 }
 
 .checkout-form {
