@@ -728,9 +728,24 @@ export async function getDeviceAnalytics(days: number): Promise<{
   const db = getDb()
   const { data: sessions, error } = await db
     .from('analytics_sessions')
-    .select('session_id, device, os, browser, page_views')
+    .select('session_id, device, page_views')
     .gte('started_at', daysAgo(days))
   if (error) throw new Error('device query failed: ' + error.message)
+
+  // sessions table has no os/browser columns; derive them from session_start events
+  const { data: starts, error: startsError } = await db
+    .from('analytics_events')
+    .select('session_id, os, browser')
+    .eq('event', 'session_start')
+    .gte('created_at', daysAgo(days))
+  if (startsError) throw new Error('device start query failed: ' + startsError.message)
+  const sessionOs = new Map<string, string>()
+  const sessionBrowser = new Map<string, string>()
+  for (const s of starts ?? []) {
+    const sid = String(s.session_id ?? '')
+    if (!sessionOs.has(sid) && s.os) sessionOs.set(sid, String(s.os))
+    if (!sessionBrowser.has(sid) && s.browser) sessionBrowser.set(sid, String(s.browser))
+  }
 
   const events = await fetchEvents(days, ['add_to_cart', 'buy_now', 'affiliate_click', 'deal_price_click'])
   const convSessions = new Set<string>()
@@ -746,8 +761,8 @@ export async function getDeviceAnalytics(days: number): Promise<{
     const conv = convSessions.has(sid) ? 1 : 0
     for (const [kind, key] of [
       ['devices', String(s.device ?? 'unknown')],
-      ['os', String(s.os ?? 'unknown')],
-      ['browsers', String(s.browser ?? 'unknown')],
+      ['os', sessionOs.get(sid) ?? 'unknown'],
+      ['browsers', sessionBrowser.get(sid) ?? 'unknown'],
     ] as const) {
       const agg = by[kind].get(key) ?? { sessions: 0, pageViews: 0, conversions: 0 }
       agg.sessions++
