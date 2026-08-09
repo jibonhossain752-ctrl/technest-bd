@@ -17,7 +17,10 @@ export async function GET(req: Request) {
 
   try {
     const results = await aggregateRange(3)
-    const latest = results.find((r) => r.events >= 0)
+    const withEvents = results.filter((r) => r.events > 0)
+    const latest = withEvents.length > 0
+      ? withEvents[withEvents.length - 1]
+      : results[results.length - 1]
     if (latest) await storeDailyReport(latest.date)
     return NextResponse.json({ ok: true, results })
   } catch (err) {

@@ -177,11 +177,12 @@ export async function storeDailyReport(dateStr: string): Promise<boolean> {
       page_views: sum('page_views'),
       visitors: sum('visitors'),
       unique_visitors: sum('unique_visitors'),
+      sessions: sum('sessions'),
       affiliate_clicks: sum('affiliate_clicks'),
       add_to_cart: sum('add_to_cart'),
       newsletter_subscribes: sum('newsletter_subscribes'),
       newsletter_shown: sum('newsletter_shown'),
-      bounce_rate: sum('page_views') > 0 ? Math.round((sum('bounces') / Math.max(1, sum('sessions')) * 100) * 10) / 10 : 0,
+      bounce_rate: sum('sessions') > 0 ? Math.round((sum('bounces') / sum('sessions') * 100) * 10) / 10 : 0,
       top_pages: topPages,
       by_source: bySource,
     }
