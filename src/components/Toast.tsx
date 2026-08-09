@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 
 export default function Toast() {
@@ -13,7 +14,7 @@ export default function Toast() {
     if (count > previous.current) {
       setVisible(true)
       if (timer.current) clearTimeout(timer.current)
-      timer.current = setTimeout(() => setVisible(false), 2000)
+      timer.current = setTimeout(() => setVisible(false), 3000)
     }
     previous.current = count
   }, [count])
@@ -25,8 +26,13 @@ export default function Toast() {
   }, [])
 
   return (
-    <div className={`toast ${visible ? 'show' : ''}`} role="status">
-      Added to cart 🛒
-    </div>
+    <Link
+      href="/cart"
+      className={`toast ${visible ? 'show' : ''}`}
+      role="status"
+      aria-label="Added to cart. Go to cart."
+    >
+      Added to cart 🛒 — View cart
+    </Link>
   )
 }

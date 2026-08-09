@@ -2045,7 +2045,19 @@ button {
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 32px;
-  align-items: start;
+  align-items: stretch;
+}
+
+.checkout-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.checkout .cart-summary {
+  position: sticky;
+  top: 24px;
+  align-self: start;
 }
 
 .checkout-form {
@@ -2265,7 +2277,7 @@ button {
   display: inline-block;
   padding: 8px 14px;
   margin-top: 0 !important;
-  color: var(--accent);
+  color: #fff;
   font-weight: 700;
   font-size: 0.78rem;
   white-space: nowrap;
@@ -2999,11 +3011,18 @@ button {
   opacity: 0;
   transition: 0.3s;
   z-index: 300;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .toast.show {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* ---------- Skeleton shimmer ---------- */
@@ -7062,29 +7081,30 @@ button {
     padding: 20px 0 26px;
   }
   .hero-static-inner {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 12px;
     text-align: left;
     align-items: center;
   }
   .hero-static-img {
     justify-self: center;
+    animation: none;
   }
   .hero-static-img-el {
-    width: min(36vw, 140px);
+    width: min(34vw, 130px);
   }
   .hero-static-badge {
-    font-size: 0.6rem;
-    padding: 4px 10px;
-    margin-bottom: 8px;
+    font-size: 0.58rem;
+    padding: 4px 9px;
+    margin-bottom: 7px;
   }
   .hero-static h1 {
-    font-size: 1.02rem;
+    font-size: 0.95rem;
     line-height: 1.25;
   }
   .hero-static-sub {
-    margin: 6px 0 10px;
-    font-size: 0.72rem;
+    margin: 5px 0 8px;
+    font-size: 0.68rem;
     line-height: 1.45;
     max-width: none;
     display: -webkit-box;
@@ -7093,15 +7113,15 @@ button {
     overflow: hidden;
   }
   .hero-static-cta {
-    padding: 8px 14px;
-    font-size: 0.72rem;
+    padding: 7px 12px;
+    font-size: 0.68rem;
   }
   .hero-static-emoji {
     font-size: 4rem;
   }
   .hero-static-tag {
-    font-size: 0.58rem;
-    padding: 4px 9px;
+    font-size: 0.52rem;
+    padding: 3px 8px;
     right: 0;
     bottom: -4px;
   }
