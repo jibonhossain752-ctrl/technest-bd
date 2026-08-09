@@ -95,7 +95,7 @@ export default function ShopCatalog({
     e: MouseEvent<HTMLAnchorElement>,
     slug: string,
   ) => {
-    track('category_select', undefined, { slug })
+    track('category_select', undefined, { slug, _dedupKey: slug })
     if (!onCategorySelect) return
     e.preventDefault()
     onCategorySelect(slug)
@@ -103,13 +103,18 @@ export default function ShopCatalog({
 
   const goToPage = (nextPage: number) => {
     setPage(nextPage)
-    track('shop_pagination', undefined, { page: nextPage })
+    track('shop_pagination', undefined, { page: nextPage, _dedupKey: 'page-' + nextPage })
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const trackSearch = (query: string) => {
     const q = query.trim()
-    if (q) track('shop_search', undefined, { query: q.slice(0, 100) })
+    if (q)
+      track('shop_search', undefined, {
+        query: q.slice(0, 100),
+        results: filtered.length,
+        _dedupKey: 'q-' + q.slice(0, 100),
+      })
   }
 
   const sidebarLinks = (
@@ -211,7 +216,7 @@ export default function ShopCatalog({
               title="Filters"
               icon="🔍"
               className="filters-collapsible"
-              onToggle={(open) => track('shop_filters_toggle', undefined, { open })}
+              onToggle={(open) => track('shop_filters_toggle', undefined, { open, _dedupKey: 'open-' + String(open) })}
             >
               <div className="shop-controls">
                 <input
@@ -229,7 +234,7 @@ export default function ShopCatalog({
                   value={sort}
                   onChange={(e) => {
                     setSort(e.target.value as SortKey)
-                    track('shop_sort', undefined, { sort: e.target.value })
+                    track('shop_sort', undefined, { sort: e.target.value, _dedupKey: e.target.value })
                   }}
                   aria-label="Sort products"
                 >

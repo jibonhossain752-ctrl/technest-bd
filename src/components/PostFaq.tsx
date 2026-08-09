@@ -31,6 +31,7 @@ export default function PostFaq({ faq, postSlug }: PostFaqProps) {
               track('faq_expand', `/blog/${postSlug}`, {
                 question: item.question.slice(0, 200),
                 location: 'post',
+                _dedupKey: 'q-' + item.question.slice(0, 200),
               })
             }}
           >

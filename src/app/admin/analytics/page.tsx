@@ -12,9 +12,13 @@ import {
   getFunnel,
   getDailyTrend,
   getTopPages,
+  getSearchRankings,
+  getFaqExpandRanking,
 } from '@/lib/analytics-queries'
 import RealtimePanel from './RealtimePanel'
 import ReaggregateButton from './ReaggregateButton'
+import AnalyticsNav from './AnalyticsNav'
+import ExportButtons from './ExportButtons'
 
 export const runtime = 'nodejs'
 export const metadata: Metadata = { title: 'Analytics — TechNest Admin' }
@@ -106,7 +110,7 @@ export default async function AdminAnalyticsPage({
     }
   }
 
-  const [products, categories, blogPosts, sources, funnel, trend, topPages, reports] =
+  const [products, categories, blogPosts, sources, funnel, trend, topPages, reports, searchRanks, faqExpands] =
     await Promise.all([
       safe(() => getTopProducts(range)),
       safe(() => getTopCategories(range)),
@@ -116,6 +120,8 @@ export default async function AdminAnalyticsPage({
       safe(() => getDailyTrend(range)),
       safe(() => getTopPages(range)),
       getReports(),
+      safe(() => getSearchRankings(range)),
+      safe(() => getFaqExpandRanking(range)),
     ])
 
   const totalViews = trend.reduce((s, t) => s + t.pageViews, 0)
@@ -138,6 +144,8 @@ export default async function AdminAnalyticsPage({
               </Link>
             </div>
           </div>
+
+          <AnalyticsNav active="overview" />
 
           <div className="an-range-tabs">
             {RANGES.map((r) => (
@@ -180,19 +188,8 @@ export default async function AdminAnalyticsPage({
 
           <div className="an-section">
             <h2>Exports & Reports (F)</h2>
-            <div className="an-export-bar">
-              <a
-                className="btn btn-accent"
-                href={`/api/admin/analytics/export?range=${range}&format=csv`}
-              >
-                ⬇ Export CSV ({range}d)
-              </a>
-              <a
-                className="btn btn-outline"
-                href={`/api/admin/analytics/export?range=${range}&format=json`}
-              >
-                ⬇ Export JSON ({range}d)
-              </a>
+            <ExportButtons range={range} scope="daily" />
+            <div className="an-export-bar an-export-bar-secondary">
               <ReaggregateButton />
             </div>
             {reports.length === 0 ? (
@@ -395,6 +392,49 @@ export default async function AdminAnalyticsPage({
                   ))}
                 </div>
               )}
+            </div>
+
+            <div className="an-section">
+              <h2>Search & FAQ Rankings (C3)</h2>
+              <div className="an-half-grid">
+                <div className="an-panel">
+                  <h3>Top Product Searches</h3>
+                  {searchRanks.product.length === 0 ? (
+                    <p className="an-empty">No product searches yet.</p>
+                  ) : (
+                    <div className="an-rows">
+                      {searchRanks.product.slice(0, 5).map((t) => (
+                        <div className="an-row" key={t.term}>
+                          <span className="an-row-name">{t.term}</span>
+                          <span className="an-row-value">
+                            {fmtNum(t.searches)}
+                            <small> {t.clickRate}% clicked</small>
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="an-panel">
+                  <h3>Top FAQ Expands</h3>
+                  {faqExpands.length === 0 ? (
+                    <p className="an-empty">No FAQ expands yet.</p>
+                  ) : (
+                    <div className="an-rows">
+                      {faqExpands.slice(0, 5).map((f) => (
+                        <div className="an-row" key={f.question}>
+                          <span className="an-row-name">{f.question}</span>
+                          <span className="an-row-value">{fmtNum(f.count)}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <p className="an-note">
+                Full search-to-click, blog-search, FAQ and Google-traffic rankings live on the{' '}
+                <Link href="/admin/analytics/search">Search &amp; FAQ page</Link>.
+              </p>
             </div>
 
             <div className="an-section">

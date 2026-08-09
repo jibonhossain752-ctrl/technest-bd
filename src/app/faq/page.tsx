@@ -23,7 +23,7 @@ export default function FaqPage() {
               className={`chip ${category === cat ? 'active' : ''}`}
               onClick={() => {
                 setCategory(cat)
-                track('faq_category_select', undefined, { category: cat })
+                track('faq_category_select', undefined, { category: cat, _dedupKey: cat })
               }}
             >
               {cat}
@@ -46,6 +46,7 @@ export default function FaqPage() {
                   track('faq_expand', undefined, {
                     question: faq.question.slice(0, 200),
                     location: 'faq-page',
+                    _dedupKey: 'q-' + faq.question.slice(0, 200),
                   })
                 }}
                 aria-expanded={open === faq.id}

@@ -493,3 +493,375 @@ export async function getTopPages(days: number): Promise<{ page: string; count: 
     .sort((a, b) => b.count - a.count)
     .slice(0, 15)
 }
+
+/* --------------------------- C3: search rankings --------------------------- */
+
+export interface SearchTermRow {
+  term: string
+  searches: number
+  noResults: number
+  clickThrough: number
+  clickRate: number
+}
+
+export interface SearchResultRow {
+  slug: string
+  name: string
+  clicks: number
+}
+
+const SEARCH_LOOKAHEAD_MS = 60 * 1000
+
+interface SessionEvent {
+  t: number
+  e: string
+  meta: Record<string, unknown>
+  page: string
+}
+
+async function fetchSearchEvents(days: number): Promise<Map<string, SessionEvent[]>> {
+  const events = await fetchEvents(days, [
+    'shop_search',
+    'blog_search',
+    'product_view',
+    'blog_card_click',
+    'blog_popular_post_click',
+    'page_view',
+  ])
+  const bySession = new Map<string, SessionEvent[]>()
+  for (const e of events) {
+    const sid = e.session_id ?? ''
+    if (!sid) continue
+    const arr = bySession.get(sid) ?? []
+    arr.push({
+      t: new Date(e.created_at).getTime(),
+      e: e.event,
+      meta: e.meta ?? {},
+      page: e.page ?? '',
+    })
+    bySession.set(sid, arr)
+  }
+  for (const arr of bySession.values()) arr.sort((a, b) => a.t - b.t)
+  return bySession
+}
+
+function searchTerm(e: SessionEvent): string {
+  return typeof e.meta.query === 'string' ? e.meta.query.trim().slice(0, 100) : ''
+}
+
+export async function getSearchRankings(
+  days: number,
+): Promise<{ product: SearchTermRow[]; blog: SearchTermRow[] }> {
+  const bySession = await fetchSearchEvents(days)
+  const buckets = {
+    product: new Map<string, { searches: number; noResults: number; clickThrough: number }>(),
+    blog: new Map<string, { searches: number; noResults: number; clickThrough: number }>(),
+  }
+  for (const arr of bySession.values()) {
+    for (let i = 0; i < arr.length; i++) {
+      const s = arr[i]
+      if (s.e !== 'shop_search' && s.e !== 'blog_search') continue
+      const term = searchTerm(s)
+      if (!term) continue
+      const bucket = buckets[s.e === 'shop_search' ? 'product' : 'blog']
+      const agg = bucket.get(term) ?? { searches: 0, noResults: 0, clickThrough: 0 }
+      agg.searches++
+      if (Number(s.meta.results ?? -1) === 0) agg.noResults++
+      for (let j = i + 1; j < arr.length; j++) {
+        const n = arr[j]
+        if (n.t - s.t > SEARCH_LOOKAHEAD_MS) break
+        if (n.e === 'shop_search' || n.e === 'blog_search') break
+        const clicked =
+          s.e === 'shop_search'
+            ? n.e === 'product_view'
+            : n.e === 'blog_card_click' ||
+              n.e === 'blog_popular_post_click' ||
+              (n.e === 'page_view' && /^\/blog\//.test(n.page))
+        if (clicked) {
+          agg.clickThrough++
+          break
+        }
+      }
+      bucket.set(term, agg)
+    }
+  }
+  const rank = (
+    map: Map<string, { searches: number; noResults: number; clickThrough: number }>,
+  ): SearchTermRow[] =>
+    [...map.entries()]
+      .map(([term, a]) => ({
+        term,
+        searches: a.searches,
+        noResults: a.noResults,
+        clickThrough: a.clickThrough,
+        clickRate: a.searches ? Math.round((a.clickThrough / a.searches) * 100) : 0,
+      }))
+      .sort((a, b) => b.searches - a.searches)
+      .slice(0, 20)
+  return { product: rank(buckets.product), blog: rank(buckets.blog) }
+}
+
+export async function getSearchClickRank(
+  days: number,
+): Promise<{ product: SearchResultRow[]; blog: SearchResultRow[] }> {
+  const bySession = await fetchSearchEvents(days)
+  const productClicks = new Map<string, number>()
+  const blogClicks = new Map<string, number>()
+  for (const arr of bySession.values()) {
+    for (let i = 0; i < arr.length; i++) {
+      const s = arr[i]
+      if (s.e !== 'shop_search' && s.e !== 'blog_search') continue
+      for (let j = i + 1; j < arr.length; j++) {
+        const n = arr[j]
+        if (n.t - s.t > SEARCH_LOOKAHEAD_MS) break
+        if (n.e === 'shop_search' || n.e === 'blog_search') break
+        if (s.e === 'shop_search' && n.e === 'product_view') {
+          const slug =
+            typeof n.meta.product_slug === 'string'
+              ? n.meta.product_slug
+              : typeof n.meta.slug === 'string'
+                ? n.meta.slug
+                : ''
+          if (slug) productClicks.set(slug, (productClicks.get(slug) ?? 0) + 1)
+          break
+        }
+        if (s.e === 'blog_search') {
+          let slug = ''
+          if (n.e === 'blog_card_click' || n.e === 'blog_popular_post_click') {
+            slug =
+              typeof n.meta.post_slug === 'string'
+                ? n.meta.post_slug
+                : typeof n.meta.slug === 'string'
+                  ? n.meta.slug
+                  : ''
+          } else if (n.e === 'page_view' && /^\/blog\//.test(n.page)) {
+            slug = n.page.replace(/^\/blog\//, '').split(/[/?#]/)[0]
+          }
+          if (slug) blogClicks.set(slug, (blogClicks.get(slug) ?? 0) + 1)
+          if (n.e === 'blog_card_click' || n.e === 'blog_popular_post_click') break
+        }
+      }
+    }
+  }
+  const product: SearchResultRow[] = [...productClicks.entries()]
+    .map(([slug, clicks]) => ({
+      slug,
+      name: PRODUCTS.find((p) => p.slug === slug)?.name ?? slug,
+      clicks,
+    }))
+    .sort((a, b) => b.clicks - a.clicks)
+    .slice(0, 20)
+  const blog: SearchResultRow[] = [...blogClicks.entries()]
+    .map(([slug, clicks]) => ({
+      slug,
+      name: POSTS.find((p) => p.slug === slug)?.title ?? slug,
+      clicks,
+    }))
+    .sort((a, b) => b.clicks - a.clicks)
+    .slice(0, 20)
+  return { product, blog }
+}
+
+/* ---------------------------- C3: FAQ rankings ---------------------------- */
+
+export interface FaqExpandRow {
+  question: string
+  count: number
+  location: string
+}
+
+export async function getFaqExpandRanking(days: number): Promise<FaqExpandRow[]> {
+  const events = await fetchEvents(days, ['faq_expand'])
+  const byQuestion = new Map<string, { count: number; location: string }>()
+  for (const e of events) {
+    const q = typeof e.meta?.question === 'string' ? e.meta.question.trim() : ''
+    if (!q) continue
+    const loc = typeof e.meta?.location === 'string' ? e.meta.location : 'unknown'
+    const agg = byQuestion.get(q) ?? { count: 0, location: loc }
+    agg.count++
+    byQuestion.set(q, agg)
+  }
+  return [...byQuestion.entries()]
+    .map(([question, a]) => ({ question, count: a.count, location: a.location }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 20)
+}
+
+export interface FaqGoogleRow {
+  page: string
+  views: number
+  sessions: number
+}
+
+export async function getFaqGoogleTraffic(days: number): Promise<FaqGoogleRow[]> {
+  const events = await fetchEvents(days, ['page_view'])
+  const byPage = new Map<string, { views: number; sessions: Set<string> }>()
+  for (const e of events) {
+    const page = e.page ?? ''
+    if (!page.startsWith('/faq')) continue
+    if ((e.source ?? '') !== 'google') continue
+    const agg = byPage.get(page) ?? { views: 0, sessions: new Set<string>() }
+    agg.views++
+    if (e.session_id) agg.sessions.add(e.session_id)
+    byPage.set(page, agg)
+  }
+  return [...byPage.entries()]
+    .map(([page, a]) => ({ page, views: a.views, sessions: a.sessions.size }))
+    .sort((a, b) => b.views - a.views)
+}
+
+/* ---------------------------- E: device analytics ---------------------------- */
+
+export interface DeviceAnalyticsRow {
+  key: string
+  sessions: number
+  pageViews: number
+  conversions: number
+  conversionRate: number
+}
+
+export async function getDeviceAnalytics(days: number): Promise<{
+  devices: DeviceAnalyticsRow[]
+  os: DeviceAnalyticsRow[]
+  browsers: DeviceAnalyticsRow[]
+}> {
+  const db = getDb()
+  const { data: sessions, error } = await db
+    .from('analytics_sessions')
+    .select('session_id, device, os, browser, page_views')
+    .gte('started_at', daysAgo(days))
+  if (error) throw new Error('device query failed: ' + error.message)
+
+  const events = await fetchEvents(days, ['add_to_cart', 'buy_now', 'affiliate_click', 'deal_price_click'])
+  const convSessions = new Set<string>()
+  for (const e of events) if (e.session_id) convSessions.add(e.session_id)
+
+  const by = {
+    devices: new Map<string, { sessions: number; pageViews: number; conversions: number }>(),
+    os: new Map<string, { sessions: number; pageViews: number; conversions: number }>(),
+    browsers: new Map<string, { sessions: number; pageViews: number; conversions: number }>(),
+  }
+  for (const s of sessions ?? []) {
+    const sid = String(s.session_id ?? '')
+    const conv = convSessions.has(sid) ? 1 : 0
+    for (const [kind, key] of [
+      ['devices', String(s.device ?? 'unknown')],
+      ['os', String(s.os ?? 'unknown')],
+      ['browsers', String(s.browser ?? 'unknown')],
+    ] as const) {
+      const agg = by[kind].get(key) ?? { sessions: 0, pageViews: 0, conversions: 0 }
+      agg.sessions++
+      agg.pageViews += Number(s.page_views ?? 1)
+      agg.conversions += conv
+      by[kind].set(key, agg)
+    }
+  }
+  const map = (m: Map<string, { sessions: number; pageViews: number; conversions: number }>): DeviceAnalyticsRow[] =>
+    [...m.entries()]
+      .map(([key, a]) => ({
+        key,
+        sessions: a.sessions,
+        pageViews: a.pageViews,
+        conversions: a.conversions,
+        conversionRate: a.sessions ? Math.round((a.conversions / a.sessions) * 1000) / 10 : 0,
+      }))
+      .sort((a, b) => b.sessions - a.sessions)
+  return { devices: map(by.devices), os: map(by.os), browsers: map(by.browsers) }
+}
+
+/* --------------------------- E: location analytics --------------------------- */
+
+export interface LocationRow {
+  country: string
+  countryName: string
+  sessions: number
+  pageViews: number
+  conversions: number
+  conversionRate: number
+  cities: { city: string; sessions: number; pageViews: number; conversions: number }[]
+}
+
+const COUNTRY_NAMES: Record<string, string> = {
+  US: 'United States',
+  CA: 'Canada',
+  GB: 'United Kingdom',
+  DE: 'Germany',
+  FR: 'France',
+  IN: 'India',
+  BD: 'Bangladesh',
+  AE: 'UAE',
+  AU: 'Australia',
+  JP: 'Japan',
+  SG: 'Singapore',
+  NL: 'Netherlands',
+  SE: 'Sweden',
+  NO: 'Norway',
+  DK: 'Denmark',
+  IE: 'Ireland',
+  NZ: 'New Zealand',
+  PH: 'Philippines',
+  PK: 'Pakistan',
+  MY: 'Malaysia',
+  TH: 'Thailand',
+  ID: 'Indonesia',
+  SA: 'Saudi Arabia',
+  QA: 'Qatar',
+  KW: 'Kuwait',
+  BH: 'Bahrain',
+  OM: 'Oman',
+  EG: 'Egypt',
+  TR: 'Turkey',
+  ES: 'Spain',
+  IT: 'Italy',
+  PT: 'Portugal',
+  PL: 'Poland',
+}
+
+export async function getLocationAnalytics(days: number): Promise<LocationRow[]> {
+  const db = getDb()
+  const { data: sessions, error } = await db
+    .from('analytics_sessions')
+    .select('session_id, country, city, page_views')
+    .gte('started_at', daysAgo(days))
+  if (error) throw new Error('location query failed: ' + error.message)
+
+  const events = await fetchEvents(days, ['add_to_cart', 'buy_now', 'affiliate_click', 'deal_price_click'])
+  const convSessions = new Set<string>()
+  for (const e of events) if (e.session_id) convSessions.add(e.session_id)
+
+  const byCountry = new Map<string, LocationRow>()
+  for (const s of sessions ?? []) {
+    const country = String(s.country ?? 'unknown')
+    const city = String(s.city ?? 'unknown')
+    const row =
+      byCountry.get(country) ?? {
+        country,
+        countryName: COUNTRY_NAMES[country] ?? country,
+        sessions: 0,
+        pageViews: 0,
+        conversions: 0,
+        conversionRate: 0,
+        cities: [],
+      }
+    row.sessions++
+    row.pageViews += Number(s.page_views ?? 1)
+    if (convSessions.has(String(s.session_id ?? ''))) row.conversions++
+    let c = row.cities.find((x) => x.city === city)
+    if (!c) {
+      c = { city, sessions: 0, pageViews: 0, conversions: 0 }
+      row.cities.push(c)
+    }
+    c.sessions++
+    c.pageViews += Number(s.page_views ?? 1)
+    if (convSessions.has(String(s.session_id ?? ''))) c.conversions++
+    byCountry.set(country, row)
+  }
+  const rows = [...byCountry.values()]
+  for (const r of rows) {
+    r.conversionRate = r.sessions ? Math.round((r.conversions / r.sessions) * 1000) / 10 : 0
+    r.cities.sort((a, b) => b.sessions - a.sessions)
+    r.cities = r.cities.slice(0, 5)
+  }
+  rows.sort((a, b) => b.sessions - a.sessions)
+  return rows.slice(0, 20)
+}

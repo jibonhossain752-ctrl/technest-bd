@@ -156,36 +156,42 @@ export async function aggregateRange(days: number): Promise<{ date: string; even
   return out
 }
 
+/** Build the daily summary report payload for a date. */
+export async function buildDailyReportPayload(dateStr: string): Promise<Record<string, unknown>> {
+  const db = getDb()
+  const { data: daily } = await db.from('analytics_daily').select('*').eq('date', dateStr)
+  const rows = daily ?? []
+  const sum = (f: string) => rows.reduce((a, r) => a + Number(r[f] ?? 0), 0)
+  const { data: pages } = await db.from('analytics_pages_daily').select('*').eq('date', dateStr)
+  const topPages = (pages ?? [])
+    .sort((a, b) => Number(b.views ?? 0) - Number(a.views ?? 0))
+    .slice(0, 10)
+    .map((p) => ({ page: p.page, views: p.views }))
+  const bySource: Record<string, number> = {}
+  rows.forEach((r) => {
+    bySource[r.source] = (bySource[r.source] ?? 0) + Number(r.page_views ?? 0)
+  })
+  return {
+    date: dateStr,
+    page_views: sum('page_views'),
+    visitors: sum('visitors'),
+    unique_visitors: sum('unique_visitors'),
+    sessions: sum('sessions'),
+    affiliate_clicks: sum('affiliate_clicks'),
+    add_to_cart: sum('add_to_cart'),
+    newsletter_subscribes: sum('newsletter_subscribes'),
+    newsletter_shown: sum('newsletter_shown'),
+    bounce_rate: sum('sessions') > 0 ? Math.round((sum('bounces') / sum('sessions') * 100) * 10) / 10 : 0,
+    top_pages: topPages,
+    by_source: bySource,
+  }
+}
+
 /** Build and store the daily summary report for the latest aggregated date. */
 export async function storeDailyReport(dateStr: string): Promise<boolean> {
   try {
     const db = getDb()
-    const { data: daily } = await db.from('analytics_daily').select('*').eq('date', dateStr)
-    const rows = daily ?? []
-    const sum = (f: string) => rows.reduce((a, r) => a + Number(r[f] ?? 0), 0)
-    const { data: pages } = await db.from('analytics_pages_daily').select('*').eq('date', dateStr)
-    const topPages = (pages ?? [])
-      .sort((a, b) => Number(b.views ?? 0) - Number(a.views ?? 0))
-      .slice(0, 10)
-      .map((p) => ({ page: p.page, views: p.views }))
-    const bySource: Record<string, number> = {}
-    rows.forEach((r) => {
-      bySource[r.source] = (bySource[r.source] ?? 0) + Number(r.page_views ?? 0)
-    })
-    const payload = {
-      date: dateStr,
-      page_views: sum('page_views'),
-      visitors: sum('visitors'),
-      unique_visitors: sum('unique_visitors'),
-      sessions: sum('sessions'),
-      affiliate_clicks: sum('affiliate_clicks'),
-      add_to_cart: sum('add_to_cart'),
-      newsletter_subscribes: sum('newsletter_subscribes'),
-      newsletter_shown: sum('newsletter_shown'),
-      bounce_rate: sum('sessions') > 0 ? Math.round((sum('bounces') / sum('sessions') * 100) * 10) / 10 : 0,
-      top_pages: topPages,
-      by_source: bySource,
-    }
+    const payload = await buildDailyReportPayload(dateStr)
     const { error } = await db.from('analytics_reports').insert({ date: dateStr, payload })
     if (error) throw error
     return true

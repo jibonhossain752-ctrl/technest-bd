@@ -7576,6 +7576,82 @@ button {
 
 /* ---------------- Admin Analytics ---------------- */
 
+.an-subnav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.an-subnav-tab {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.an-subnav-tab:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.an-subnav-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.an-half-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.an-panel {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.an-panel h3 {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.an-mini-bar {
+  position: relative;
+  height: 6px;
+  width: 90px;
+  background: var(--bg);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.an-mini-bar .an-bar-fill {
+  height: 100%;
+}
+
+.an-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+
+.an-export-bar-secondary {
+  margin-top: 8px;
+}
+
 .an-range-tabs {
   display: flex;
   gap: 8px;

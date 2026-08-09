@@ -39,8 +39,9 @@ export async function POST(req: Request) {
   const city = ipCity ? String(ipCity).slice(0, 100) : 'unknown'
 
   const meta = body.meta && typeof body.meta === 'object' ? body.meta : {}
+  const { _dedupKey: _stripDedup, ...metaClean } = meta
   const metaSafe =
-    JSON.stringify(meta).length > 2000 ? { _truncated: true, key: String(meta._dedupKey ?? '') } : meta
+    JSON.stringify(metaClean).length > 2000 ? { _truncated: true, key: String(_stripDedup ?? '') } : metaClean
 
   try {
     await recordEvent({

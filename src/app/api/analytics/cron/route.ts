@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server'
-import { aggregateRange, storeDailyReport } from '@/lib/analytics-aggregate'
+import {
+  aggregateRange,
+  buildDailyReportPayload,
+  storeDailyReport,
+} from '@/lib/analytics-aggregate'
+import { sendDailyReportEmail } from '@/lib/analytics-email'
 
 export const runtime = 'nodejs'
 export const maxDuration = 60
@@ -15,14 +20,22 @@ export async function GET(req: Request) {
     }
   }
 
+  const forceTest =
+    new URL(req.url).searchParams.get('testEmail') === '1'
+
   try {
     const results = await aggregateRange(3)
     const withEvents = results.filter((r) => r.events > 0)
     const latest = withEvents.length > 0
       ? withEvents[withEvents.length - 1]
       : results[results.length - 1]
-    if (latest) await storeDailyReport(latest.date)
-    return NextResponse.json({ ok: true, results })
+    let email = null
+    if (latest && latest.events > 0) {
+      await storeDailyReport(latest.date)
+      const payload = await buildDailyReportPayload(latest.date)
+      email = await sendDailyReportEmail(payload, { forceTest })
+    }
+    return NextResponse.json({ ok: true, results, email })
   } catch (err) {
     // Tables may not exist yet (schema not applied) — log and stay green so
     // the cron doesn't page anyone while the site is mid-migration.

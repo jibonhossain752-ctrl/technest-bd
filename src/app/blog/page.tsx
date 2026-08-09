@@ -66,7 +66,7 @@ export default function BlogPage() {
                   onClick={() => {
                     setTab(t.label)
                     setVisible(INITIAL_VISIBLE)
-                    track('blog_tab_click', undefined, { tab: t.label })
+                    track('blog_tab_click', undefined, { tab: t.label, _dedupKey: t.label })
                   }}
                 >
                   {t.label}
@@ -89,12 +89,12 @@ export default function BlogPage() {
               }}
               onBlur={(e) => {
                 const q = e.target.value.trim()
-                if (q) track('blog_search', undefined, { query: q.slice(0, 100) })
+                if (q) track('blog_search', undefined, { query: q.slice(0, 100), results: filtered.length, _dedupKey: 'q-' + q.slice(0, 100) })
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   const q = (e.target as HTMLInputElement).value.trim()
-                  if (q) track('blog_search', undefined, { query: q.slice(0, 100) })
+                  if (q) track('blog_search', undefined, { query: q.slice(0, 100), results: filtered.length, _dedupKey: 'q-' + q.slice(0, 100) })
                 }
               }}
               aria-label="Search posts"
