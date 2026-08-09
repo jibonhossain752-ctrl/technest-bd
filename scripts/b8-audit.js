@@ -150,9 +150,16 @@ async function main() {
   console.log('clicking deals chips...')
   await send(ws, 'Page.navigate', { url: SITE + '/deals' })
   await waitFor(ws, "document.querySelector('.shop-cat-chip')")
+  await sleep(2500) // let React hydrate; pre-hydration clicks navigate instead of filtering
   for (const c of DEAL_CHIPS) {
-    await evaluate(ws, `(function(){ const b = [...document.querySelectorAll('.shop-cat-chip')].find((x) => x.textContent.trim().toLowerCase().includes(${JSON.stringify(c.toLowerCase())})); if (b) b.click(); return !!b })()`)
-    await sleep(800)
+    await evaluate(ws, `(function(){ const b = [...document.querySelectorAll('.shop-cat-chip')].find((x) => x.textContent.trim().toLowerCase().includes(${JSON.stringify(c.toLowerCase())})); if (b) { b.click(); return true } return false })()`)
+    await sleep(900)
+    const loc = await evaluate(ws, 'location.pathname')
+    if (!String(loc).startsWith('/deals')) {
+      await send(ws, 'Page.navigate', { url: SITE + '/deals' })
+      await waitFor(ws, "document.querySelector('.shop-cat-chip')")
+      await sleep(2500)
+    }
   }
   ws.close()
 
