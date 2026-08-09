@@ -44,6 +44,7 @@ function detectSource(): { source: string; refHost: string } {
     const ref = document.referrer
     if (!ref) return { source: 'direct', refHost: '' }
     const h = new URL(ref).hostname.toLowerCase().replace(/^www\./, '')
+    if (h === window.location.hostname) return { source: 'direct', refHost: '' }
     let source = 'referral'
     if (h.includes('facebook') || h.includes('fb.com')) source = 'facebook'
     else if (h.includes('instagram')) source = 'instagram'
