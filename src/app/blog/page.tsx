@@ -15,7 +15,7 @@ const TABS = [
   { label: 'Explainer', match: 'Explainer' },
 ]
 
-const INITIAL_VISIBLE = 6
+const INITIAL_VISIBLE = POSTS.length
 const LOAD_MORE = 3
 
 export default function BlogPage() {
