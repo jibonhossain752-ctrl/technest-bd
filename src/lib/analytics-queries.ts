@@ -407,12 +407,18 @@ export async function getDailyTrend(days: number): Promise<TrendPoint[]> {
     .gte('date', daysAgo(days).slice(0, 10))
     .order('date', { ascending: true })
   if (!error && data && data.length > 0) {
-    return (data as unknown as TrendPoint[]).map((r) => ({
+    return (data as unknown as Array<{
+      date: string
+      visitors: number
+      page_views: number
+      sessions: number
+      affiliate_clicks: number
+    }>).map((r) => ({
       date: String(r.date).slice(0, 10),
       visitors: r.visitors,
-      pageViews: r.pageViews,
+      pageViews: r.page_views,
       sessions: r.sessions,
-      affiliateClicks: r.affiliateClicks,
+      affiliateClicks: r.affiliate_clicks,
     }))
   }
   // Fallback: raw events when aggregation hasn't run yet.
