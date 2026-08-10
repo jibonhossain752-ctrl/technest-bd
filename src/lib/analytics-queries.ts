@@ -45,7 +45,7 @@ async function fetchEvents(
   for (;;) {
     const { data, error } = await db
       .from('analytics_events')
-      .select('event, page, source, session_id, meta, created_at')
+      .select('event, page, source, session_id, meta, ref_host, created_at')
       .in('event', events)
       .gte('created_at', daysAgo(days))
       .order('created_at', { ascending: false })
