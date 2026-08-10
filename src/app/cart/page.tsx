@@ -1,17 +1,55 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
-import { track } from '@/lib/tracking'
+import { track, pixelFor } from '@/lib/tracking'
+
+const POPUP_PREVIEW = 5
 
 export default function CartPage() {
   const { items, total, updateQty, removeFromCart, clearCart } = useCart()
+  const [isDesktop, setIsDesktop] = useState(false)
+  const [popupOpen, setPopupOpen] = useState(false)
+  const [viewAll, setViewAll] = useState(false)
 
   useEffect(() => {
     track('cart_view', '/cart', { item_count: items.length })
   }, [items.length])
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 901px)')
+    const update = () => setIsDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    if (!popupOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setPopupOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [popupOpen])
+
+  const previewItems = useMemo(
+    () => (viewAll ? items : items.slice(0, POPUP_PREVIEW)),
+    [items, viewAll],
+  )
+
+  const openPopup = () => {
+    setViewAll(false)
+    setPopupOpen(true)
+    track('checkout_view', '/checkout-popup', { item_count: items.length })
+    pixelFor('begin_checkout', { item_count: items.length })
+  }
 
   return (
     <>
@@ -30,8 +68,23 @@ export default function CartPage() {
             <div className="cart-items-list">
               {items.map(({ product, qty }) => (
                 <div className="cart-row" key={product.id}>
-                  <Link href={`/product/${product.slug}`} className="cart-row-img">
-                    <span aria-hidden="true">{product.image}</span>
+                  <Link
+                    href={`/product/${product.slug}`}
+                    className="cart-row-img"
+                    aria-label={product.name}
+                  >
+                    {product.imageUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={product.imageUrl}
+                        alt={product.altText ?? product.name}
+                        loading="lazy"
+                        width={72}
+                        height={72}
+                      />
+                    ) : (
+                      <span aria-hidden="true">{product.image}</span>
+                    )}
                   </Link>
                   <div className="cart-row-info">
                     <Link href={`/product/${product.slug}`} className="cart-row-name">
@@ -89,9 +142,19 @@ export default function CartPage() {
                 <span>Total</span>
                 <strong>{formatUSD(total)}</strong>
               </div>
-              <Link href="/checkout" className="btn btn-accent block">
-                Proceed to Checkout
-              </Link>
+              {isDesktop ? (
+                <button
+                  type="button"
+                  className="btn btn-accent block checkout-popup-trigger"
+                  onClick={openPopup}
+                >
+                  Proceed to Checkout
+                </button>
+              ) : (
+                <Link href="/checkout" className="btn btn-accent block">
+                  Proceed to Checkout
+                </Link>
+              )}
               <Link href="/shop" className="btn btn-outline block">
                 Continue Shopping
               </Link>
@@ -99,6 +162,101 @@ export default function CartPage() {
           </div>
         )}
       </section>
+
+      {isDesktop && popupOpen && (
+        <div
+          className="checkout-popup-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Complete your purchase on Amazon"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setPopupOpen(false)
+          }}
+        >
+          <div className="checkout-popup">
+            <div className="checkout-popup-head">
+              <div>
+                <h3>Complete your purchase on Amazon</h3>
+                <p>Every item is bought directly on Amazon with its full buyer protection.</p>
+              </div>
+              <button
+                type="button"
+                className="checkout-popup-close"
+                aria-label="Close"
+                onClick={() => setPopupOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+            <div className="checkout-popup-list">
+              {previewItems.map(({ product, qty }, idx) => (
+                <div className="checkout-popup-row" key={product.id}>
+                  <span className="checkout-popup-index">{idx + 1}</span>
+                  <div className="checkout-popup-img">
+                    {product.imageUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={product.imageUrl}
+                        alt={product.altText ?? product.name}
+                        loading="lazy"
+                        width={48}
+                        height={48}
+                      />
+                    ) : (
+                      <span aria-hidden="true">{product.image}</span>
+                    )}
+                  </div>
+                  <div className="checkout-popup-info">
+                    <strong>{product.name}</strong>
+                    <small>
+                      {qty} ×{' '}
+                      {product.price == null
+                        ? 'Price unavailable'
+                        : formatUSD(product.price)}
+                    </small>
+                  </div>
+                  {product.buyUrl ? (
+                    <a
+                      href={product.buyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className="btn btn-accent checkout-popup-buy"
+                      onClick={() => {
+                        track('affiliate_click', undefined, {
+                          product_slug: product.slug,
+                          product_name: product.name.slice(0, 200),
+                          location: 'checkout-popup',
+                        })
+                        pixelFor('affiliate_click', { product_slug: product.slug })
+                      }}
+                    >
+                      Buy on Amazon
+                    </a>
+                  ) : (
+                    <small className="summary-local-note">
+                      Purchased through TechNest
+                    </small>
+                  )}
+                </div>
+              ))}
+              {!viewAll && items.length > POPUP_PREVIEW && (
+                <button
+                  type="button"
+                  className="btn btn-outline checkout-popup-viewall"
+                  onClick={() => {
+                    track('checkout_view_all_click', undefined, {
+                      count: items.length,
+                    })
+                    setViewAll(true)
+                  }}
+                >
+                  View All ({items.length})
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

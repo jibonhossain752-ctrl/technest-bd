@@ -12,14 +12,24 @@ const VISIBLE_ITEMS = 3
 export default function CheckoutPage() {
   const { items, total } = useCart()
 
-  const buyableCount = items.filter((item) => item.product.buyUrl).length
   const hasUnpriced = items.some((item) => item.product.price == null)
-  const overflow = items.length > VISIBLE_ITEMS
   const [seeAllOpen, setSeeAllOpen] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
     track('checkout_view', '/checkout', { item_count: items.length })
   }, [items.length])
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 901px)')
+    const update = () => setIsDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  const overflow = isDesktop && items.length > VISIBLE_ITEMS
+  const visibleItems = overflow ? items.slice(0, VISIBLE_ITEMS) : items
 
   useEffect(() => {
     if (!seeAllOpen) return
@@ -51,8 +61,6 @@ export default function CheckoutPage() {
       </>
     )
   }
-
-  const visibleItems = overflow ? items.slice(0, VISIBLE_ITEMS) : items
 
   return (
     <>
