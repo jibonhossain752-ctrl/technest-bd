@@ -48,31 +48,19 @@ async function evaluate(ws, expression) {
   return msg.result ? msg.result.value : undefined
 }
 
-async function loginCookie() {
-  const tab = await getJson(`${CDP}/json/new?${encodeURIComponent('about:blank')}`, 'PUT')
-  const ws = await connect(tab.webSocketDebuggerUrl)
-  ws.onmessage = (ev) => {
-    const msg = JSON.parse(ev.data)
-    if (msg.id && pending.has(msg.id)) { pending.get(msg.id)(msg.result); pending.delete(msg.id) }
-  }
-  await send(ws, 'Page.enable')
-  await send(ws, 'Runtime.enable')
-  await send(ws, 'Page.navigate', { url: SITE + '/admin/login' })
-  await sleep(3500)
-  await evaluate(ws, `(function(){
-    const set = (sel, v) => { const i = document.querySelector(sel); if (i) { const s = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set; s.call(i, v); i.dispatchEvent(new Event('input', { bubbles: true })) } }
-    set('input[type=email], input[name=email], input[type=text]', ${JSON.stringify(env.ADMIN_EMAIL)})
-    set('input[type=password]', ${JSON.stringify(env.ADMIN_PASSWORD)})
-    return true
-  })()`)
-  await sleep(600)
-  await evaluate(ws, `(function(){ const b = document.querySelector('form button[type=submit], button.btn'); if (b) b.click(); return !!b })()`)
-  await sleep(2500)
-  const cookie = await send(ws, 'Network.getCookies', { urls: [SITE] })
-  const cookies = (cookie.cookies || []).map((c) => c.name + '=' + c.value)
-  const admin = cookies.find((c) => c.startsWith('tn_admin_session='))
-  ws.close()
-  return admin ? admin : (cookies.length ? cookies[0] : null)
+// Signs a valid admin session token locally (ADMIN_COOKIE_SECRET) — the UI
+// login path can't work in fresh headless profiles (.env.local stores only
+// ADMIN_PASSWORD_HASH, no plaintext password).
+const crypto = require('crypto')
+function signSessionToken() {
+  const payload = { sub: 'admin', exp: Math.floor(Date.now() / 1000) + 7 * 24 * 3600 }
+  const body = Buffer.from(JSON.stringify(payload)).toString('base64url')
+  const sig = crypto.createHmac('sha256', env.ADMIN_COOKIE_SECRET).update(body).digest('base64url')
+  return `${body}.${sig}`
+}
+
+function loginCookie() {
+  return Promise.resolve('tn_admin_session=' + signSessionToken())
 }
 
 async function checkPages(cookie) {
@@ -86,18 +74,31 @@ async function checkPages(cookie) {
     await send(ws, 'Page.enable')
     await send(ws, 'Runtime.enable')
     await send(ws, 'Network.enable')
-    await send(ws, 'Network.setCookie', { url: SITE, name: 'technest_admin', value: cookie.split('=').slice(1).join('='), path: '/' })
+    await send(ws, 'Network.setCookie', { url: SITE, name: 'tn_admin_session', value: signSessionToken(), path: '/' })
     await send(ws, 'Page.navigate', { url: SITE + route })
-    await sleep(5000)
-    const info = await evaluate(ws, `(function(){
-      const out = { path: location.pathname, title: document.title }
-      out.sections = [...document.querySelectorAll('.an-section h2')].map((h) => h.textContent.trim())
-      out.emptyMsgs = [...document.querySelectorAll('.an-empty')].map((e) => e.textContent.trim().slice(0, 60))
-      out.tableRows = document.querySelectorAll('.admin-table tbody tr').length
-      out.exportButtons = [...document.querySelectorAll('.an-export-bar a')].map((a) => a.textContent.trim())
-      out.subnav = [...document.querySelectorAll('.an-subnav-tab')].map((a) => a.textContent.trim())
-      return out
-    })()`)
+    let info = null
+    for (let i = 0; i < 30 && !info; i++) {
+      await sleep(2000)
+      const probe = await evaluate(ws, `(function(){
+        const out = { path: location.pathname, title: document.title }
+        out.sections = [...document.querySelectorAll('.an-section h2')].map((h) => h.textContent.trim())
+        out.emptyMsgs = [...document.querySelectorAll('.an-empty')].map((e) => e.textContent.trim().slice(0, 60))
+        out.tableRows = document.querySelectorAll('.admin-table tbody tr').length
+        out.exportButtons = [...document.querySelectorAll('.an-export-bar a')].map((a) => a.textContent.trim())
+        out.subnav = [...document.querySelectorAll('.an-subnav-tab')].map((a) => a.textContent.trim())
+        return out
+      })()`)
+      if (probe && (probe.sections.length > 0 || probe.path !== route)) info = probe
+    }
+    if (!info) {
+      info = await evaluate(ws, `(function(){
+        const out = { path: location.pathname, title: document.title }
+        out.sections = [...document.querySelectorAll('.an-section h2')].map((h) => h.textContent.trim())
+        out.emptyMsgs = [...document.querySelectorAll('.an-empty')].map((e) => e.textContent.trim().slice(0, 60))
+        out.tableRows = document.querySelectorAll('.admin-table tbody tr').length
+        return out
+      })()`)
+    }
     ws.close()
     const nonEmpty = info && info.sections && info.sections.length > 0
     check('page renders: ' + route, !!info && String(info.title).includes('TechNest'), JSON.stringify(info && info.sections))
