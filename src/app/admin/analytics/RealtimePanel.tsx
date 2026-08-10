@@ -11,11 +11,22 @@ interface RecentEvent {
   created_at: string
 }
 
+interface AffiliateFeedItem {
+  id: number
+  event: string
+  page: string | null
+  source: string | null
+  productSlug: string | null
+  postSlug: string | null
+  created_at: string
+}
+
 interface Snapshot {
   onlineNow: number
   recent: RecentEvent[]
   last24hClicks: number
   last24hViews: number
+  affiliateFeed: AffiliateFeedItem[]
 }
 
 function fmtTime(iso: string) {
@@ -55,27 +66,55 @@ export default function RealtimePanel() {
       {!snap ? (
         <p className="an-empty">Loading live data…</p>
       ) : (
-        <div className="an-realtime">
-          <div className="an-realtime-stats">
-            <span className="an-live-dot" />
-            <strong>{snap.onlineNow}</strong> online now · {snap.last24hViews} views
-            · {snap.last24hClicks} affiliate clicks (24h)
+        <>
+          <div className="an-realtime">
+            <div className="an-realtime-stats">
+              <span className="an-live-dot" />
+              <strong>{snap.onlineNow}</strong> online now · {snap.last24hViews} views
+              · {snap.last24hClicks} affiliate clicks (24h)
+            </div>
+            <div className="an-realtime-feed">
+              {snap.recent.length === 0 ? (
+                <p className="an-empty">No events in the last 24 hours.</p>
+              ) : (
+                snap.recent.slice(0, 12).map((e, i) => (
+                  <div className="an-realtime-row" key={`${e.session_id}-${e.created_at}-${i}`}>
+                    <span className="an-realtime-time">{fmtTime(e.created_at)}</span>
+                    <span className="an-realtime-event">{e.event}</span>
+                    <span className="an-realtime-page">{e.page ?? '/'}</span>
+                    <span className="an-realtime-source">{e.source ?? 'direct'}</span>
+                  </div>
+                ))
+              )}
+            </div>
           </div>
-          <div className="an-realtime-feed">
-            {snap.recent.length === 0 ? (
-              <p className="an-empty">No events in the last 24 hours.</p>
+          <div className="an-realtime-affiliate">
+            <h3>
+              <span className="an-live-dot" /> Live Affiliate Clicks Feed
+            </h3>
+            {snap.affiliateFeed.length === 0 ? (
+              <p className="an-empty">
+                No affiliate clicks in the last 24 hours.
+              </p>
             ) : (
-              snap.recent.slice(0, 12).map((e, i) => (
-                <div className="an-realtime-row" key={`${e.session_id}-${e.created_at}-${i}`}>
-                  <span className="an-realtime-time">{fmtTime(e.created_at)}</span>
-                  <span className="an-realtime-event">{e.event}</span>
-                  <span className="an-realtime-page">{e.page ?? '/'}</span>
-                  <span className="an-realtime-source">{e.source ?? 'direct'}</span>
-                </div>
-              ))
+              <div className="an-realtime-feed">
+                {snap.affiliateFeed.map((f) => (
+                  <div className="an-realtime-row" key={f.id || `${f.created_at}`}>
+                    <span className="an-realtime-time">{fmtTime(f.created_at)}</span>
+                    <span className="an-realtime-event">{f.event}</span>
+                    <span className="an-realtime-page">
+                      {f.productSlug
+                        ? '🏷️ ' + f.productSlug
+                        : f.page ?? '/'}
+                      {f.postSlug ? ` (${f.postSlug})` : ''}
+                    </span>
+                    <span className="an-realtime-source">{f.source ?? 'direct'}</span>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
-        </div>
+        </>
       )}
     </div>
   )

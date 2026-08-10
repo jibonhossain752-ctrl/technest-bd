@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import type { MouseEvent } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import type { Product } from '@/data/products'
 import { CATEGORIES } from '@/data/categories'
 import ProductCard from './ProductCard'
@@ -49,6 +50,12 @@ export default function ShopCatalog({
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState<SortKey>('popular')
   const [page, setPage] = useState(1)
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const q = searchParams.get('q')
+    if (typeof q === 'string' && q.trim()) setQuery(q.trim().slice(0, 100))
+  }, [searchParams])
 
   const filtered = useMemo(() => {
     let list = products

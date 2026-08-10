@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 import type { Product } from '@/data/products'
 import { PRODUCTS, SHOP_VIEWS, getShopViewBySlug } from '@/data/products'
@@ -57,16 +58,18 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <Reveal>
-      <ShopCatalog
-        products={products}
-        activeSlug={category}
-        viewTitle={title}
-        viewDescription={description}
-        hideCategoriesMobile={
-          view ? ['new-arrivals', 'flash-sale'].includes(view.slug) : false
-        }
-        showCountdown={view?.slug === 'flash-sale'}
-      />
+      <Suspense fallback={null}>
+        <ShopCatalog
+          products={products}
+          activeSlug={category}
+          viewTitle={title}
+          viewDescription={description}
+          hideCategoriesMobile={
+            view ? ['new-arrivals', 'flash-sale'].includes(view.slug) : false
+          }
+          showCountdown={view?.slug === 'flash-sale'}
+        />
+      </Suspense>
     </Reveal>
   )
 }

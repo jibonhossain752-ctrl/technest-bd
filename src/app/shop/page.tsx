@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { PRODUCTS } from '@/data/products'
 import ShopCatalog from '@/components/ShopCatalog'
 import Reveal from '@/components/ui/Reveal'
@@ -13,12 +14,14 @@ export const metadata: Metadata = {
 export default function ShopPage() {
   return (
     <Reveal>
-      <ShopCatalog
-        products={PRODUCTS}
-        activeSlug="all"
-        viewTitle="All Products"
-        viewDescription="Everything we stock, in one place"
-      />
+      <Suspense fallback={null}>
+        <ShopCatalog
+          products={PRODUCTS}
+          activeSlug="all"
+          viewTitle="All Products"
+          viewDescription="Everything we stock, in one place"
+        />
+      </Suspense>
     </Reveal>
   )
 }

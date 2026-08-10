@@ -4286,6 +4286,97 @@ button {
   overflow: visible;
 }
 
+/* ---------- Header search bar ---------- */
+.header-search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 320px;
+  margin: 0 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.header-search:focus-within {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--accent);
+}
+
+.header-search input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 9px 6px 9px 16px;
+}
+
+.header-search input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.header-search input::-webkit-search-cancel-button {
+  cursor: pointer;
+  filter: invert(1);
+  opacity: 0.6;
+}
+
+.header-search button {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 9px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.header-search button svg {
+  width: 17px;
+  height: 17px;
+}
+
+.header-search button:hover {
+  color: var(--accent);
+}
+
+.side-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  background: rgba(11, 31, 58, 0.06);
+  border: 1px solid rgba(11, 31, 58, 0.12);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.side-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.side-search button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.side-search button:hover {
+  transform: scale(1.08);
+}
+
 .nav-links.nav-inline li:not(.drawer-head) {
   width: auto;
 }
@@ -7890,6 +7981,22 @@ button {
   color: var(--muted);
   min-width: 70px;
   text-align: right;
+}
+
+.an-realtime-affiliate {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.an-realtime-affiliate h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: var(--accent);
 }
 
 @media (max-width: 767px) {

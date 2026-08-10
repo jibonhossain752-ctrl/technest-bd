@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/context/useCart'
 import { useAuth } from '@/context/useAuth'
@@ -43,7 +43,9 @@ export default function Navbar() {
   const [deskSidebarOpen, setDeskSidebarOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [avatar, setAvatar] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     if (!user) return
@@ -98,6 +100,20 @@ export default function Navbar() {
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href)
 
+  const submitSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const q = searchQuery.trim()
+    if (!q) return
+    track('header_search', undefined, {
+      query: q.slice(0, 100),
+      destination: '/shop',
+    })
+    closeMenu()
+    setDeskSidebarOpen(false)
+    setSearchQuery('')
+    router.push('/shop?q=' + encodeURIComponent(q))
+  }
+
   const desktopNavList = (
     <ul className="nav-links nav-inline">
       {NAV_LINKS.map((link) => (
@@ -137,6 +153,19 @@ export default function Navbar() {
         </button>
       </div>
       <div className="side-divider" />
+
+      <form className="side-search" role="search" onSubmit={submitSearch}>
+        <input
+          type="search"
+          placeholder="Search products…"
+          aria-label="Search products"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button type="submit" aria-label="Search">
+          🔍
+        </button>
+      </form>
 
       <span className="side-label">Menu</span>
       <ul className="side-links">
@@ -370,6 +399,32 @@ export default function Navbar() {
 
           {!isMobile && desktopNavList}
 
+          {!isMobile && (
+            <form className="header-search" role="search" onSubmit={submitSearch}>
+              <input
+                type="search"
+                placeholder="Search products…"
+                aria-label="Search products"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button type="submit" aria-label="Search">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </button>
+            </form>
+          )}
+
           {typeof document !== 'undefined' &&
             isMobile &&
             menuOpen &&
@@ -478,6 +533,10 @@ export default function Navbar() {
                   track('nav_hamburger_click', undefined, {
                     panel: isMobile ? 'mobile' : 'desktop',
                   })
+                  if (!isMobile) {
+                    // desktop panel contains the quick-subscribe newsletter box
+                    track('newsletter_shown', undefined, { location: 'quick' })
+                  }
                 } else {
                   track('nav_menu_close')
                 }

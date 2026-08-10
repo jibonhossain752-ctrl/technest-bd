@@ -301,6 +301,7 @@ export function initAnalytics() {
     let lcp = 0
     let cls = 0
     let fcp = 0
+    let inp = 0
     let done = false
     const sendCwv = () => {
       if (done) return
@@ -312,6 +313,7 @@ export function initAnalytics() {
           lcp_ms: Math.round(lcp),
           cls: Math.round(cls * 1000) / 1000,
           fcp_ms: Math.round(fcp),
+          inp_ms: Math.round(inp),
           nav_ms: Math.round(performance.now()),
         },
         { force: true },
@@ -331,6 +333,16 @@ export function initAnalytics() {
       }
     })
     poCls.observe({ type: 'layout-shift', buffered: true })
+    const poInp = new PerformanceObserver((list) => {
+      for (const e of list.getEntries() as PerformanceEventTiming[]) {
+        inp = Math.max(inp, e.duration || 0)
+      }
+    })
+    try {
+      poInp.observe({ type: 'event', buffered: true })
+    } catch {
+      /* INP unsupported in this browser */
+    }
     const paints = performance.getEntriesByType('paint')
     const f = paints.find((p) => p.name === 'first-contentful-paint')
     if (f) fcp = f.startTime

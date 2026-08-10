@@ -14,6 +14,7 @@ import {
   getTopPages,
   getSearchRankings,
   getFaqExpandRanking,
+  getNewsletterStats,
 } from '@/lib/analytics-queries'
 import RealtimePanel from './RealtimePanel'
 import ReaggregateButton from './ReaggregateButton'
@@ -110,7 +111,7 @@ export default async function AdminAnalyticsPage({
     }
   }
 
-  const [products, categories, blogPosts, sources, funnel, trend, topPages, reports, searchRanks, faqExpands] =
+  const [products, categories, blogPosts, sources, funnel, trend, topPages, reports, searchRanks, faqExpands, newsletter] =
     await Promise.all([
       safe(() => getTopProducts(range)),
       safe(() => getTopCategories(range)),
@@ -122,15 +123,24 @@ export default async function AdminAnalyticsPage({
       getReports(),
       safe(() => getSearchRankings(range)),
       safe(() => getFaqExpandRanking(range)),
+      safe(() => getNewsletterStats(range)),
     ])
 
   const totalViews = trend.reduce((s, t) => s + t.pageViews, 0)
   const totalVisitors = trend.reduce((s, t) => s + t.visitors, 0)
   const totalClicks = trend.reduce((s, t) => s + t.affiliateClicks, 0)
+  const totalSessions = trend.reduce((s, t) => s + t.sessions, 0)
+  const totalBounces = trend.reduce((s, t) => s + t.bounces, 0)
+  const bounceRate = totalSessions ? Math.round((totalBounces / totalSessions) * 100) : 0
   const maxViews = Math.max(1, ...trend.map((t) => t.pageViews))
   const maxSourcePerf = Math.max(1, ...sources.map((s) => s.performance))
   const maxCatViews = Math.max(1, ...categories.map((c) => c.views))
   const maxPageViews = Math.max(1, ...topPages.map((p) => p.count))
+
+  const newsletterStats =
+    newsletter && typeof newsletter.subscribeRate === 'number'
+      ? newsletter
+      : { subscribes: 0, impressions: 0, subscribeRate: 0, byLocation: [] }
 
   return (
     <section className="admin container">
@@ -176,6 +186,13 @@ export default async function AdminAnalyticsPage({
               <small className="admin-card-trend">last {range} days</small>
             </div>
             <div className="admin-card">
+              <strong>{bounceRate}%</strong>
+              <span>Bounce Rate</span>
+              <small className="admin-card-trend">
+                {totalBounces}/{totalSessions} bounced sessions
+              </small>
+            </div>
+            <div className="admin-card">
               <strong>{fmtNum(sources.length ? sources[0].sessions : 0)}</strong>
               <span>Top Source Sessions</span>
               <small className="admin-card-trend">
@@ -185,6 +202,63 @@ export default async function AdminAnalyticsPage({
           </div>
 
           <RealtimePanel />
+
+          <div className="an-section">
+            <h2>Newsletter (D)</h2>
+            <div className="an-half-grid">
+              <div className="admin-card">
+                <strong>
+                  {newsletterStats.subscribeRate}%
+                </strong>
+                <span>Subscribe Rate</span>
+                <small className="admin-card-trend">
+                  {newsletterStats.subscribes} subscribes / {newsletterStats.impressions}{' '}
+                  impressions
+                </small>
+              </div>
+              <div className="admin-card">
+                <strong>{fmtNum(newsletterStats.subscribes)}</strong>
+                <span>Subscribes</span>
+                <small className="admin-card-trend">
+                  last {range} days
+                </small>
+              </div>
+            </div>
+            {newsletterStats.byLocation.length === 0 ? (
+              <p className="an-empty">
+                No newsletter data in this range — the popup and the
+                hamburger-menu quick-subscribe box count as impressions.
+              </p>
+            ) : (
+              <div className="admin-table-wrap">
+                <table className="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Location</th>
+                      <th>Subscribes</th>
+                      <th>Impressions</th>
+                      <th>Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {newsletterStats.byLocation.map((l) => (
+                      <tr key={l.location}>
+                        <td>{l.location}</td>
+                        <td>{l.subscribes}</td>
+                        <td>{l.impressions}</td>
+                        <td>
+                          {l.impressions
+                            ? Math.round((l.subscribes / l.impressions) * 100) +
+                              '%'
+                            : '—'}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
 
           <div className="an-section">
             <h2>Exports & Reports (F)</h2>

@@ -24,6 +24,7 @@ interface RawEvent {
   source: string | null
   session_id: string | null
   meta: Record<string, unknown> | null
+  ref_host?: string | null
   created_at: string
 }
 
@@ -397,13 +398,14 @@ export interface TrendPoint {
   pageViews: number
   sessions: number
   affiliateClicks: number
+  bounces: number
 }
 
 export async function getDailyTrend(days: number): Promise<TrendPoint[]> {
   const db = getDb()
   const { data, error } = await db
     .from('analytics_daily')
-    .select('date, visitors, page_views, sessions, affiliate_clicks')
+    .select('date, visitors, page_views, sessions, affiliate_clicks, bounces')
     .gte('date', daysAgo(days).slice(0, 10))
     .order('date', { ascending: true })
   if (!error && data && data.length > 0) {
@@ -413,12 +415,14 @@ export async function getDailyTrend(days: number): Promise<TrendPoint[]> {
       page_views: number
       sessions: number
       affiliate_clicks: number
+      bounces: number
     }>).map((r) => ({
       date: String(r.date).slice(0, 10),
       visitors: r.visitors,
       pageViews: r.page_views,
       sessions: r.sessions,
       affiliateClicks: r.affiliate_clicks,
+      bounces: r.bounces,
     }))
   }
   // Fallback: raw events when aggregation hasn't run yet.
@@ -432,6 +436,7 @@ export async function getDailyTrend(days: number): Promise<TrendPoint[]> {
       pageViews: 0,
       sessions: 0,
       affiliateClicks: 0,
+      bounces: 0,
     }
     if (e.event === 'page_view') {
       p.pageViews++
@@ -452,6 +457,17 @@ export interface RealtimeSnapshot {
   recent: RawEvent[]
   last24hClicks: number
   last24hViews: number
+  affiliateFeed: AffiliateFeedItem[]
+}
+
+export interface AffiliateFeedItem {
+  id: number
+  event: string
+  page: string | null
+  source: string | null
+  productSlug: string | null
+  postSlug: string | null
+  created_at: string
 }
 
 export async function getRealtimeSnapshot(): Promise<RealtimeSnapshot> {
@@ -466,18 +482,35 @@ export async function getRealtimeSnapshot(): Promise<RealtimeSnapshot> {
   const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
   const { data: recent } = await db
     .from('analytics_events')
-    .select('event, page, source, session_id, meta, created_at')
+    .select('id, event, page, source, session_id, meta, created_at')
     .gte('created_at', dayAgo)
     .order('created_at', { ascending: false })
     .limit(60)
-  const clickEvents = (recent ?? []).filter((r) =>
+  const events = (recent ?? []) as (RawEvent & { id?: number })[]
+  const clickEvents = events.filter((r) =>
     CLICK_EVENTS.includes(r.event as (typeof CLICK_EVENTS)[number]),
   )
+  const affiliateFeed: AffiliateFeedItem[] = clickEvents
+    .slice(0, 10)
+    .map((r) => {
+      const m = (r.meta ?? {}) as Record<string, unknown>
+      return {
+        id: Number(r.id ?? 0),
+        event: r.event,
+        page: r.page ?? null,
+        source: r.source ?? null,
+        productSlug:
+          typeof m.product_slug === 'string' ? m.product_slug : null,
+        postSlug: typeof m.post_slug === 'string' ? m.post_slug : null,
+        created_at: r.created_at,
+      }
+    })
   return {
     onlineNow,
-    recent: (recent ?? []) as RawEvent[],
+    recent: events as RawEvent[],
     last24hClicks: clickEvents.length,
-    last24hViews: (recent ?? []).filter((r) => r.event === 'page_view').length,
+    last24hViews: events.filter((r) => r.event === 'page_view').length,
+    affiliateFeed,
   }
 }
 
@@ -879,4 +912,93 @@ export async function getLocationAnalytics(days: number): Promise<LocationRow[]>
   }
   rows.sort((a, b) => b.sessions - a.sessions)
   return rows.slice(0, 20)
+}
+
+/* --------------------- B7: search engine traffic per page --------------------- */
+
+export interface SearchEngineTrafficRow {
+  page: string
+  googleViews: number
+  googleSessions: number
+}
+
+/**
+ * Organic search traffic per page, derived from referral headers
+ * (source=google / google ref_host) — Search Console is not connected.
+ */
+export async function getSearchEngineTraffic(
+  days: number,
+): Promise<SearchEngineTrafficRow[]> {
+  const events = await fetchEvents(days, ['page_view', 'session_start'])
+  const google = (r: RawEvent) =>
+    r.source === 'google' ||
+    String(r.ref_host ?? '').includes('google') ||
+    String(r.ref_host ?? '').includes('bing') ||
+    String(r.ref_host ?? '').includes('duckduckgo')
+  const byPage = new Map<string, { views: number; sessions: Set<string> }>()
+  for (const e of events) {
+    if (!google(e)) continue
+    const page = e.page ?? '/'
+    const row = byPage.get(page) ?? { views: 0, sessions: new Set<string>() }
+    if (e.event === 'page_view') row.views++
+    if (e.session_id) row.sessions.add(String(e.session_id))
+    byPage.set(page, row)
+  }
+  return [...byPage.entries()]
+    .map(([page, r]) => ({
+      page,
+      googleViews: r.views,
+      googleSessions: r.sessions.size,
+    }))
+    .sort((a, b) => b.googleViews - a.googleViews)
+    .slice(0, 20)
+}
+
+/* ------------------------- D: newsletter subscribe rate ------------------------ */
+
+export interface NewsletterStats {
+  subscribes: number
+  impressions: number
+  subscribeRate: number
+  byLocation: { location: string; subscribes: number; impressions: number }[]
+}
+
+/**
+ * Rate = subscribes / impressions (popup + hamburger quick-subscribe box).
+ */
+export async function getNewsletterStats(days: number): Promise<NewsletterStats> {
+  const events = await fetchEvents(days, [
+    'newsletter_subscribe',
+    'newsletter_popup_shown',
+    'newsletter_shown',
+  ])
+  const subCounts = new Map<string, number>()
+  const shownCounts = new Map<string, number>()
+  let subscribes = 0
+  let impressions = 0
+  for (const e of events) {
+    const loc = String(((e.meta ?? {}) as Record<string, unknown>).location ?? 'unknown')
+    if (e.event === 'newsletter_subscribe') {
+      subscribes++
+      subCounts.set(loc, (subCounts.get(loc) ?? 0) + 1)
+    } else {
+      impressions++
+      shownCounts.set(loc, (shownCounts.get(loc) ?? 0) + 1)
+    }
+  }
+  const locations = new Set([...subCounts.keys(), ...shownCounts.keys()])
+  return {
+    subscribes,
+    impressions,
+    subscribeRate: impressions
+      ? Math.round((subscribes / impressions) * 10000) / 100
+      : 0,
+    byLocation: [...locations]
+      .map((location) => ({
+        location,
+        subscribes: subCounts.get(location) ?? 0,
+        impressions: shownCounts.get(location) ?? 0,
+      }))
+      .sort((a, b) => b.impressions - a.impressions),
+  }
 }

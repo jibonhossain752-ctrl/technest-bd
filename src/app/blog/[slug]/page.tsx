@@ -135,6 +135,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   className="btn btn-accent deal-card-inline-cta"
                   meta={{
                     product_slug: deal.productSlug,
+                    post_slug: post.slug,
                     location: 'blog-post',
                   }}
                 >

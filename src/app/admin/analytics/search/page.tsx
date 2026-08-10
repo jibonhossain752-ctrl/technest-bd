@@ -8,6 +8,7 @@ import {
   getSearchClickRank,
   getFaqExpandRanking,
   getFaqGoogleTraffic,
+  getSearchEngineTraffic,
 } from '@/lib/analytics-queries'
 import AnalyticsNav from '../AnalyticsNav'
 import ExportButtons from '../ExportButtons'
@@ -41,13 +42,16 @@ export default async function SearchPage({
   let clickRank: Awaited<ReturnType<typeof getSearchClickRank>> | null = null
   let faqExpands: Awaited<ReturnType<typeof getFaqExpandRanking>> | null = null
   let faqGoogle: Awaited<ReturnType<typeof getFaqGoogleTraffic>> | null = null
+  let engineTraffic: Awaited<ReturnType<typeof getSearchEngineTraffic>> | null = null
   try {
-    ;[searchRanks, clickRank, faqExpands, faqGoogle] = await Promise.all([
-      getSearchRankings(range),
-      getSearchClickRank(range),
-      getFaqExpandRanking(range),
-      getFaqGoogleTraffic(range),
-    ])
+    ;[searchRanks, clickRank, faqExpands, faqGoogle, engineTraffic] =
+      await Promise.all([
+        getSearchRankings(range),
+        getSearchClickRank(range),
+        getFaqExpandRanking(range),
+        getFaqGoogleTraffic(range),
+        getSearchEngineTraffic(range),
+      ])
   } catch (err) {
     console.error('search analytics failed', err)
   }
@@ -242,6 +246,39 @@ export default async function SearchPage({
                             <td>{f.question}</td>
                             <td>{f.count}</td>
                             <td>{f.location}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+
+              <div className="an-section">
+                <h2>Search Engine Traffic per Page</h2>
+                <p className="an-note">
+                  Method: Search Console is not connected — organic traffic is
+                  approximated from referral headers (<code>source=google</code> /
+                  Google, Bing, DuckDuckGo referrers).
+                </p>
+                {!engineTraffic || engineTraffic.length === 0 ? (
+                  <p className="an-empty">No search-engine traffic in this range.</p>
+                ) : (
+                  <div className="admin-table-wrap">
+                    <table className="admin-table">
+                      <thead>
+                        <tr>
+                          <th>Page</th>
+                          <th>Views</th>
+                          <th>Sessions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {engineTraffic.map((g) => (
+                          <tr key={g.page}>
+                            <td>{g.page}</td>
+                            <td>{g.googleViews}</td>
+                            <td>{g.googleSessions}</td>
                           </tr>
                         ))}
                       </tbody>

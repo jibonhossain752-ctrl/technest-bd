@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { POSTS } from '@/data/posts'
 import BlogCard from '@/components/BlogCard'
 import NewsletterWidget from '@/components/NewsletterWidget'
@@ -23,6 +23,27 @@ export default function BlogPage() {
   const [tab, setTab] = useState('All')
   const [query, setQuery] = useState('')
   const [visible, setVisible] = useState(INITIAL_VISIBLE)
+  const tabsRow = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const row = tabsRow.current
+    if (!row) return
+    let lastLeft = row.scrollLeft
+    let lastSent = 0
+    const onScroll = () => {
+      const delta = row.scrollLeft - lastLeft
+      lastLeft = row.scrollLeft
+      const now = Date.now()
+      if (Math.abs(delta) < 8 || now - lastSent < 1500) return
+      lastSent = now
+      track('blog_tabs_scroll', undefined, {
+        direction: delta > 0 ? 'right' : 'left',
+        _dedupKey: 'dir-' + (delta > 0 ? 'right' : 'left') + '-' + Math.floor(now / 15000),
+      })
+    }
+    row.addEventListener('scroll', onScroll, { passive: true })
+    return () => row.removeEventListener('scroll', onScroll)
+  }, [])
 
   const filtered = useMemo(() => {
     const active = TABS.find((t) => t.label === tab)
@@ -55,7 +76,7 @@ export default function BlogPage() {
       <section className="blog container">
         <div className="blog-toolbar">
           <div className="blog-tabs-wrap">
-            <div className="blog-tabs" role="tablist" aria-label="Filter posts">
+            <div className="blog-tabs" ref={tabsRow} role="tablist" aria-label="Filter posts">
               {TABS.map((t) => (
                 <button
                   key={t.label}
