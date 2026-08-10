@@ -1,0 +1,55 @@
+TECHNEST ANALYTICS EXPORT - last 7 days
+
+DAILY
+date,source,device,country,visitors,unique_visitors,sessions,page_views,bounces,session_seconds,affiliate_clicks,add_to_cart,checkouts,newsletter_subscribes
+2026-08-09,referral,desktop,BD,0,1,0,4,0,0,0,0,0,0
+2026-08-09,google,desktop,BD,0,3,0,4,0,0,0,0,0,0
+2026-08-09,direct,mobile,BD,1,1,1,14,0,1164,0,0,2,0
+2026-08-09,direct,desktop,US,1,1,1,2,0,5,0,0,0,0
+2026-08-09,direct,desktop,BD,7,7,7,284,0,11442,1,9,20,0
+
+TOP PRODUCTS
+slug,name,views,addToCart,clicks,conversions
+kids-echo-dot-5th-gen-owl,2022 Kids Echo Dot 5th Gen | Owl Design,7,5,0,5
+sony-wh-1000xm5-headphones,"Sony WH-1000XM5 Wireless Noise Canceling Headphones, Black",2,1,0,1
+rayneo-air-4-pro-batman-justice,RayNeo Air 4 Pro × Batman Justice Edition AR Glasses,2,0,0,0
+logitech-lift-vertical-mouse,"Logitech Lift Vertical Ergonomic Wireless Mouse, Graphite",1,0,0,0
+ueq-foldable-3-in-1-charging-station,"UEQ Foldable 3 in 1 Wireless Charging Station, Pure Black",1,0,0,0
+quntis-computer-monitor-lamp,"Quntis Computer Monitor Lamp, ScreenLinear Pro Gray",1,0,0,0
+obsbot-tiny-2-lite-webcam,OBSBOT Tiny 2 Lite 4K Webcam with AI Tracking PTZ,1,0,0,0
+scanfield-under-desk-cable-tray,"Scanfield Under Desk Cable Management Tray, 17-Inch, 2-Pack Black",1,0,0,0
+cyberpower-cp1500pfclcd-ups,"CyberPower CP1500PFCLCD PFC Sinewave UPS, 1500VA/1000W, 12 Outlets",1,0,0,0
+aula-f75-pro-wireless-keyboard,"AULA F75 Pro Wireless Mechanical Keyboard, 75%",1,0,0,0
+emeet-c960-4k-webcam,EMEET C960 4K Webcam with PDAF Auto Focus,1,0,0,0
+ugreen-usb-c-hub-5-in-1,"UGREEN USB C Hub 5 in 1, 4K HDMI, 100W Power Delivery",1,0,0,0
+echo-dot-5th-gen-charcoal,"2022 Echo Dot 5th Gen Smart Speaker, Charcoal",1,2,1,3
+forward-x-ovis-auto-follow-suitcase,"FORWARD X OVIS Auto-follow Suitcase, 20 Inch, Red Dot Blue",1,0,0,0
+playstation-5-disc-console-slim,PlayStation 5 Disc Edition Console (Slim),1,1,0,1
+xvolt-electric-heated-lunch-box,Xvolt Rechargeable Electric Heated Lunch Box,1,0,0,0
+singer-intelligent-steam-press,"SINGER Intelligent 2.0 Steam Press, 1600W, 20 Inch",1,0,0,0
+samsung-galaxy-z-flip8-256gb,"Samsung Galaxy Z Flip8 Unlocked Cell Phone + $200 Gift Card, 256GB, Pink",1,0,0,0
+samsung-galaxy-z-fold7-256gb,"Samsung Galaxy Z Fold7 Cell Phone, 256GB Unlocked, Blue Shadow",1,0,0,0
+goldjoy-7-in-1-speaker-charging-station,GoldJoy 7 in 1 Bluetooth Speaker Wireless Charging Station,1,0,0,0
+
+TOP BLOG POSTS
+slug,title,views,cardClicks,deepReads,avgSeconds,engagement
+best-noise-canceling-headphones,7 Best Noise-Canceling Headphones for Every Budget (2026),2,2,0,6,3
+ai-tracking-webcam-explained,AI Tracking Webcams: 5 Features That Matter (2026),1,0,0,5,2
+foldable-phones-2026,Z Fold7 vs Z Flip8: 5 Key Differences (2026),1,0,0,6,3
+sinewave-ups-explained,Sinewave UPS Explained: 5 Reasons Your PC Needs One,1,0,0,6,3
+bluetooth-6-explained,Bluetooth 6.0: 4 Things It Means for Your Headphones (2026),1,0,0,6,3
+gan-charging-explained,5 Things to Know About GaN Chargers Before You Buy (2026),1,0,0,6,3
+extend-laptop-battery-life,10 Ways to Extend Your Laptop Battery Life (2026),1,0,0,6,3
+reduce-eye-strain-monitor-lamp,5 Monitor Lamp Tips to Reduce Eye Strain at Night,1,0,0,6,3
+fix-messy-desk-cables,10-Minute Cable Fix: 6 Steps to a Mess-Free Desk,1,0,0,6,3
+flying-with-carry-on-only,5 Tips for Flying with Carry-On Only (2026),1,0,0,6,3
+keep-iphone-17-pro-case-new,7 Ways to Keep Your iPhone 17 Pro Case Looking New (2026),1,0,0,6,3
+heated-lunch-box-buying-guide,5 Features That Make a Heated Lunch Box Worth Buying,1,0,0,6,3
+kids-smart-speaker-guide,4 Safety Checks for Buying a Smart Speaker for Kids,1,0,0,6,3
+magsafe-power-bank-buying-guide,5 Things to Look For in a MagSafe Power Bank,1,0,0,6,3
+steam-iron-vs-steam-press,Steam Iron vs Steam Press: 5 Differences to Help You Choose,1,0,0,6,3
+ups-battery-backup-buying-guide,4 Key Specs to Check When Buying a UPS for Your PC,1,0,0,6,3
+noise-canceling-headphones-buying-guide,5 Steps to Choosing the Right Noise-Canceling Headphones,1,0,0,6,3
+how-to-choose-4k-webcam,6 Things to Check Before Buying a 4K Webcam,1,0,0,6,3
+ergonomic-office-chair-buying-guide,7 Features to Look For in an Ergonomic Office Chair,1,0,0,6,3
+how-to-buy-carry-on-luggage,5 Rules for Buying a Carry-On That Fits Every Airline,1,0,0,6,3

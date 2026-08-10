@@ -404,6 +404,7 @@ export default function Navbar() {
             <form className="header-search" role="search" onSubmit={submitSearch}>
               <input
                 type="search"
+                name="q"
                 placeholder="Search products…"
                 aria-label="Search products"
                 value={searchQuery}

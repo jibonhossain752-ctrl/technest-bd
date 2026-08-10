@@ -1,0 +1,10 @@
+kind,term,searches,no_results,click_through,rate,name,clicks,question,count,location,page,views,sessions
+product-search,sony,1,0,0,0%,,,,,,,,
+product-search,zzzz-nonsense-xyz,1,1,0,0%,,,,,,,,
+product-search,webcam,1,0,0,0%,,,,,,,,
+blog-search,headphones,1,0,1,100%,,,,,,,,
+blog-search,usb-c,1,0,1,100%,,,,,,,,
+blog-click,,,,,,7 Best Noise-Canceling Headphones for Every Budget (2026),1,,,,,,
+blog-click,,,,,,10 Best USB-C Accessories Under $50 (2026),1,,,,,,
+faq-expand,,,,,,,,What is your return and exchange policy?,1,faq-page,,,
+faq-google,,,,,,,,,,,/faq,2,1
