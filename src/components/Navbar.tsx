@@ -102,7 +102,8 @@ export default function Navbar() {
 
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    const q = searchQuery.trim()
+    const input = e.currentTarget.querySelector('input')
+    const q = ((input as HTMLInputElement | null)?.value ?? searchQuery).trim()
     if (!q) return
     track('header_search', undefined, {
       query: q.slice(0, 100),
