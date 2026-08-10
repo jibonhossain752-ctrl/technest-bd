@@ -2043,7 +2043,7 @@ button {
 .checkout {
   padding: 40px 0 70px;
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 360px;
   gap: 32px;
   align-items: stretch;
 }
@@ -2052,13 +2052,113 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 0;
+}
+
+.cart-summary-count {
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+.cart-summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.see-all-btn {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.see-all-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.see-all-modal {
+  background: #fff;
+  border-radius: var(--radius);
+  width: min(640px, 100%);
+  max-height: min(720px, 90vh);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.3);
+}
+
+.see-all-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.see-all-modal-head h3 {
+  margin: 0;
+  color: var(--dark);
+  font-size: 1.15rem;
+}
+
+.see-all-close {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--muted);
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.see-all-close:hover {
+  background: var(--bg-soft);
+  color: var(--dark);
+}
+
+.see-all-list {
+  overflow-y: auto;
+  padding: 16px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 @media (min-width: 901px) {
-  .checkout .cart-summary {
-    position: sticky;
-    top: 24px;
-    align-self: start;
+  .checkout {
+    min-height: calc(100vh - 120px);
+    align-items: stretch;
+  }
+  .checkout-main,
+  .cart-summary {
+    height: 100%;
+  }
+  .checkout-main {
+    justify-content: center;
+  }
+  .cart-summary {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .cart-summary-items {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+}
+
+@media (max-width: 900px) {
+  .see-all-overlay {
+    display: none !important;
   }
 }
 

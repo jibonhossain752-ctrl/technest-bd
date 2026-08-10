@@ -1,31 +1,38 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
 import PageHeader from '@/components/ui/PageHeader'
 import { track, pixelFor } from '@/lib/tracking'
 
+const VISIBLE_ITEMS = 3
+
 export default function CheckoutPage() {
   const { items, total } = useCart()
 
   const buyableCount = items.filter((item) => item.product.buyUrl).length
   const hasUnpriced = items.some((item) => item.product.price == null)
+  const overflow = items.length > VISIBLE_ITEMS
+  const [seeAllOpen, setSeeAllOpen] = useState(false)
 
   useEffect(() => {
     track('checkout_view', '/checkout', { item_count: items.length })
   }, [items.length])
 
-  const handleBuyAll = () => {
-    items.forEach(({ product }) => {
-      if (product.buyUrl) {
-        window.open(product.buyUrl, '_blank', 'noopener,noreferrer')
-      }
-    })
-    track('buy_all_amazon', undefined, { count: buyableCount })
-    pixelFor('buy_now')
-  }
+  useEffect(() => {
+    if (!seeAllOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSeeAllOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [seeAllOpen])
 
   if (items.length === 0) {
     return (
@@ -33,7 +40,7 @@ export default function CheckoutPage() {
         <PageHeader title="Checkout" />
         <section className="container">
           <div className="empty-state">
-            <span className="empty-emoji">🛒</span>
+            <span className="empty-emoji">{'🛒'}</span>
             <h2>Your cart is empty</h2>
             <p>Add some products before checking out.</p>
             <Link href="/shop" className="btn btn-primary">
@@ -45,13 +52,15 @@ export default function CheckoutPage() {
     )
   }
 
+  const visibleItems = overflow ? items.slice(0, VISIBLE_ITEMS) : items
+
   return (
     <>
       <section className="checkout-head container">
         <span className="checkout-eyebrow">Final step</span>
         <h1>Complete your purchase on Amazon</h1>
         <p>
-          Every item is bought directly on Amazon — the safest, fastest way.
+          Every item is bought directly on Amazon �?" the safest, fastest way.
           Review your cart below, tap &ldquo;Buy on Amazon&rdquo; for each item,
           and Amazon handles payment, delivery, returns and support.
         </p>
@@ -94,61 +103,69 @@ export default function CheckoutPage() {
         </div>
 
         <aside className="cart-summary">
-          <h3>Your Items ({items.length})</h3>
-          {buyableCount > 0 && (
+          <h3>
+            Your Items
+            <span className="cart-summary-count">({items.length})</span>
+          </h3>
+          <div className="cart-summary-items">
+            {visibleItems.map(({ product, qty }) => (
+              <div className="summary-item" key={product.id}>
+                {product.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={product.imageUrl}
+                    alt={product.altText ?? product.name}
+                    className="summary-item-img"
+                    loading="lazy"
+                    width={36}
+                    height={36}
+                  />
+                ) : (
+                  <span className="summary-emoji">{product.image}</span>
+                )}
+                <div className="summary-item-info">
+                  <strong>{product.name}</strong>
+                  <small>
+                    {qty} A- {formatUSD(product.price)}
+                  </small>
+                </div>
+                {product.buyUrl ? (
+                  <a
+                    href={product.buyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    className="btn btn-accent summary-buy-link"
+                    onClick={() => {
+                      track('affiliate_click', undefined, {
+                        product_slug: product.slug,
+                        product_name: product.name.slice(0, 200),
+                        location: 'checkout',
+                      })
+                      pixelFor('affiliate_click', { product_slug: product.slug })
+                    }}
+                  >
+                    Buy on Amazon
+                  </a>
+                ) : (
+                  <small className="summary-local-note">
+                    Purchased through TechNest
+                  </small>
+                )}
+              </div>
+            ))}
+          </div>
+          {overflow && (
             <button
               type="button"
-              className="btn btn-accent buy-all"
-              onClick={handleBuyAll}
+              className="btn btn-outline see-all-btn"
+              onClick={() => {
+                track('checkout_see_all_click', undefined, { count: items.length })
+                setSeeAllOpen(true)
+              }}
             >
-              Buy All on Amazon ({buyableCount})
+              See All Products ({items.length})
             </button>
           )}
-          {items.map(({ product, qty }) => (
-            <div className="summary-item" key={product.id}>
-              {product.imageUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={product.imageUrl}
-                  alt={product.altText ?? product.name}
-                  className="summary-item-img"
-                  loading="lazy"
-                  width={36}
-                  height={36}
-                />
-              ) : (
-                <span className="summary-emoji">{product.image}</span>
-              )}
-              <div className="summary-item-info">
-                <strong>{product.name}</strong>
-                <small>
-                  {qty} × {formatUSD(product.price)}
-                </small>
-              </div>
-              {product.buyUrl ? (
-                <a
-                  href={product.buyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer sponsored"
-                  className="btn btn-accent summary-buy-link"
-                  onClick={() => {
-                    track('affiliate_click', undefined, {
-                      product_slug: product.slug,
-                      product_name: product.name.slice(0, 200),
-                      location: 'checkout',
-                    })
-                    pixelFor('affiliate_click', { product_slug: product.slug })
-                  }}
-                >
-                  Buy on Amazon →
-                </a>
-              ) : (
-                <small className="summary-local-note">
-                  Purchased through TechNest
-                </small>
-              )}
-            </div>
-          ))}
           <div className="summary-row">
             <span>Subtotal</span>
             <strong>{formatUSD(total)}</strong>
@@ -159,20 +176,94 @@ export default function CheckoutPage() {
           </div>
           {hasUnpriced && (
             <p className="summary-note">
-              ℹ️ Some items show &ldquo;Price unavailable&rdquo; — the final
+              �,1�,? Some items show &ldquo;Price unavailable&rdquo; �?" the final
               price is confirmed on Amazon.
             </p>
           )}
           <ul className="summary-trust">
-            <li>🔒 Secure checkout on Amazon</li>
-            <li>✅ 100% genuine products</li>
-            <li>🔁 Easy returns via Amazon</li>
+            <li>dY"' Secure checkout on Amazon</li>
+            <li>�o. 100% genuine products</li>
+            <li>dY"? Easy returns via Amazon</li>
           </ul>
           <p className="affiliate-disclosure">
             As an Amazon Associate, I earn from qualifying purchases.
           </p>
         </aside>
       </section>
+
+      {seeAllOpen && (
+        <div
+          className="see-all-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="All cart products"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setSeeAllOpen(false)
+          }}
+        >
+          <div className="see-all-modal">
+            <div className="see-all-modal-head">
+              <h3>All Products ({items.length})</h3>
+              <button
+                type="button"
+                className="see-all-close"
+                aria-label="Close"
+                onClick={() => setSeeAllOpen(false)}
+              >
+                �-×
+              </button>
+            </div>
+            <div className="see-all-list">
+              {items.map(({ product, qty }) => (
+                <div className="summary-item" key={'modal-' + product.id}>
+                  {product.imageUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={product.imageUrl}
+                      alt={product.altText ?? product.name}
+                      className="summary-item-img"
+                      loading="lazy"
+                      width={36}
+                      height={36}
+                    />
+                  ) : (
+                    <span className="summary-emoji">{product.image}</span>
+                  )}
+                  <div className="summary-item-info">
+                    <strong>{product.name}</strong>
+                    <small>
+                      {qty} A-{' '}
+                      {product.price == null ? 'Price unavailable' : formatUSD(product.price)}
+                    </small>
+                  </div>
+                  {product.buyUrl ? (
+                    <a
+                      href={product.buyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      className="btn btn-accent summary-buy-link"
+                      onClick={() => {
+                        track('affiliate_click', undefined, {
+                          product_slug: product.slug,
+                          product_name: product.name.slice(0, 200),
+                          location: 'checkout-modal',
+                        })
+                        pixelFor('affiliate_click', { product_slug: product.slug })
+                      }}
+                    >
+                      Buy on Amazon
+                    </a>
+                  ) : (
+                    <small className="summary-local-note">
+                      Purchased through TechNest
+                    </small>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
