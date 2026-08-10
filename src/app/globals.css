@@ -56,14 +56,6 @@ button {
 }
 
 /* ---------- Topbar ---------- */
-.topbar {
-  background: var(--dark);
-  color: #e2e8f0;
-  text-align: center;
-  font-size: 0.85rem;
-  padding: 8px 16px;
-}
-
 /* ---------- Navbar ---------- */
 .header {
   position: sticky;
@@ -2079,7 +2071,7 @@ button {
   background: rgba(15, 23, 42, 0.55);
   display: grid;
   place-items: center;
-  z-index: 1000;
+  z-index: 1100;
   padding: 24px;
 }
 
@@ -2176,7 +2168,7 @@ button {
   background: rgba(15, 23, 42, 0.55);
   display: grid;
   place-items: center;
-  z-index: 1000;
+  z-index: 1100;
   padding: 24px;
 }
 
@@ -2309,9 +2301,11 @@ button {
   text-decoration: underline;
 }
 
-.checkout-popup-viewall {
-  width: 100%;
-  margin-top: 4px;
+.summary-trust li svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: #16a34a;
 }
 
 .checkout-form {
@@ -3576,14 +3570,6 @@ button {
     position: sticky;
     top: 0;
     z-index: 1000;
-  }
-
-  /* ---------- Free delivery announcement: keep on ONE line ---------- */
-  .topbar {
-    white-space: nowrap;
-    font-size: 0.65rem;
-    padding: 7px 4px;
-    overflow: hidden;
   }
 
   /* ---------- Mobile home order ----------

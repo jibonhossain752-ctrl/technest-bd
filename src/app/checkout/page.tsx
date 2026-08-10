@@ -9,6 +9,22 @@ import { track, pixelFor } from '@/lib/tracking'
 
 const VISIBLE_ITEMS = 3
 
+function CheckIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  )
+}
+
 export default function CheckoutPage() {
   const { items, total } = useCart()
 
@@ -68,7 +84,7 @@ export default function CheckoutPage() {
         <span className="checkout-eyebrow">Final step</span>
         <h1>Complete your purchase on Amazon</h1>
         <p>
-          Every item is bought directly on Amazon �?" the safest, fastest way.
+          Every item is bought directly on Amazon — the safest, fastest way.
           Review your cart below, tap &ldquo;Buy on Amazon&rdquo; for each item,
           and Amazon handles payment, delivery, returns and support.
         </p>
@@ -134,7 +150,7 @@ export default function CheckoutPage() {
                 <div className="summary-item-info">
                   <strong>{product.name}</strong>
                   <small>
-                    {qty} A- {formatUSD(product.price)}
+                    {qty} × {formatUSD(product.price)}
                   </small>
                 </div>
                 {product.buyUrl ? (
@@ -178,20 +194,25 @@ export default function CheckoutPage() {
             <span>Subtotal</span>
             <strong>{formatUSD(total)}</strong>
           </div>
-          <div className="summary-row">
-            <span>Delivery</span>
-            <strong className="free">FREE on Amazon</strong>
-          </div>
           {hasUnpriced && (
             <p className="summary-note">
-              �,1�,? Some items show &ldquo;Price unavailable&rdquo; �?" the final
+              Note: some items show &ldquo;Price unavailable&rdquo; — the final
               price is confirmed on Amazon.
             </p>
           )}
           <ul className="summary-trust">
-            <li>dY"' Secure checkout on Amazon</li>
-            <li>�o. 100% genuine products</li>
-            <li>dY"? Easy returns via Amazon</li>
+            <li>
+              <CheckIcon />
+              Secure checkout on Amazon
+            </li>
+            <li>
+              <CheckIcon />
+              100% genuine products
+            </li>
+            <li>
+              <CheckIcon />
+              Easy returns via Amazon
+            </li>
           </ul>
           <p className="affiliate-disclosure">
             As an Amazon Associate, I earn from qualifying purchases.
@@ -218,7 +239,7 @@ export default function CheckoutPage() {
                 aria-label="Close"
                 onClick={() => setSeeAllOpen(false)}
               >
-                �-×
+                ✕
               </button>
             </div>
             <div className="see-all-list">
@@ -240,7 +261,7 @@ export default function CheckoutPage() {
                   <div className="summary-item-info">
                     <strong>{product.name}</strong>
                     <small>
-                      {qty} A-{' '}
+                      {qty} ×{' '}
                       {product.price == null ? 'Price unavailable' : formatUSD(product.price)}
                     </small>
                   </div>

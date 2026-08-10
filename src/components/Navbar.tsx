@@ -387,10 +387,6 @@ export default function Navbar() {
     <header
       className={`header${menuOpen || deskSidebarOpen ? ' menu-locked' : ''}`}
     >
-      <div className="topbar">
-        <p>Free delivery on orders over $50 across the USA</p>
-      </div>
-
       <nav className="navbar">
         <div className="container nav-container">
           <Link href="/" className="logo" onClick={goHomeFresh}>

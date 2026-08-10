@@ -1,18 +1,15 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
 import { track, pixelFor } from '@/lib/tracking'
 
-const POPUP_PREVIEW = 5
-
 export default function CartPage() {
   const { items, total, updateQty, removeFromCart, clearCart } = useCart()
   const [isDesktop, setIsDesktop] = useState(false)
   const [popupOpen, setPopupOpen] = useState(false)
-  const [viewAll, setViewAll] = useState(false)
 
   useEffect(() => {
     track('cart_view', '/cart', { item_count: items.length })
@@ -39,13 +36,7 @@ export default function CartPage() {
     }
   }, [popupOpen])
 
-  const previewItems = useMemo(
-    () => (viewAll ? items : items.slice(0, POPUP_PREVIEW)),
-    [items, viewAll],
-  )
-
   const openPopup = () => {
-    setViewAll(false)
     setPopupOpen(true)
     track('checkout_view', '/checkout-popup', { item_count: items.length })
     pixelFor('begin_checkout', { item_count: items.length })
@@ -134,10 +125,6 @@ export default function CartPage() {
                 <span>Subtotal</span>
                 <strong>{formatUSD(total)}</strong>
               </div>
-              <div className="summary-row">
-                <span>Delivery</span>
-                <strong className="free">FREE</strong>
-              </div>
               <div className="summary-row total">
                 <span>Total</span>
                 <strong>{formatUSD(total)}</strong>
@@ -189,7 +176,7 @@ export default function CartPage() {
               </button>
             </div>
             <div className="checkout-popup-list">
-              {previewItems.map(({ product, qty }, idx) => (
+              {items.map(({ product, qty }, idx) => (
                 <div className="checkout-popup-row" key={product.id}>
                   <span className="checkout-popup-index">{idx + 1}</span>
                   <div className="checkout-popup-img">
@@ -239,20 +226,6 @@ export default function CartPage() {
                   )}
                 </div>
               ))}
-              {!viewAll && items.length > POPUP_PREVIEW && (
-                <button
-                  type="button"
-                  className="btn btn-outline checkout-popup-viewall"
-                  onClick={() => {
-                    track('checkout_view_all_click', undefined, {
-                      count: items.length,
-                    })
-                    setViewAll(true)
-                  }}
-                >
-                  View All ({items.length})
-                </button>
-              )}
             </div>
           </div>
         </div>
