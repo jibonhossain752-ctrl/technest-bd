@@ -14,7 +14,7 @@ import AnalyticsNav from '../AnalyticsNav'
 import ExportButtons from '../ExportButtons'
 
 export const runtime = 'nodejs'
-export const metadata: Metadata = { title: 'Search & FAQ Analytics — TechNest Admin' }
+export const metadata: Metadata = { title: 'Search & FAQ Analytics — GadgetErea Admin' }
 
 const RANGES = [7, 30, 90] as const
 

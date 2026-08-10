@@ -57,7 +57,7 @@ export default function RegisterPage() {
 
   return (
     <>
-      <PageHeader title="Create Account" subtitle="Join TechNest US today" />
+      <PageHeader title="Create Account" subtitle="Join GadgetErea today" />
 
       <section className="auth container">
         <div className="auth-card">

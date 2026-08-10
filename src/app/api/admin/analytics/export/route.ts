@@ -144,7 +144,7 @@ export async function GET(request: Request) {
       generated_at: new Date().toISOString(),
     }
 
-    const filename = `technest-${scope}-${range}d`
+    const filename = `gadgeterea-${scope}-${range}d`
 
     if (format === 'json') return NextResponse.json(summary)
 
@@ -202,7 +202,7 @@ export async function GET(request: Request) {
       const done = new Promise<Buffer>((resolve) => {
         doc.on('end', () => resolve(Buffer.concat(chunks)))
       })
-      doc.font('Helvetica-Bold').fontSize(14).text('TechNest Analytics — ' + scope + ' (last ' + range + ' days)', { align: 'left' })
+      doc.font('Helvetica-Bold').fontSize(14).text('GadgetErea Analytics — ' + scope + ' (last ' + range + ' days)', { align: 'left' })
       doc.font('Helvetica').fontSize(9).text('Generated ' + new Date().toISOString())
       doc.moveDown()
 
@@ -334,7 +334,7 @@ export async function GET(request: Request) {
       ['slug', 'name', 'views', 'addToCart', 'clicks', 'conversions'],
     )
     const combined =
-      'TECHNEST ANALYTICS EXPORT - last ' + range + ' days\n\nDAILY\n' + csv +
+      'GADGETEREA ANALYTICS EXPORT - last ' + range + ' days\n\nDAILY\n' + csv +
       '\n\nTOP PRODUCTS\n' + productCsv +
       '\n\nTOP BLOG POSTS\n' +
       toCsv(

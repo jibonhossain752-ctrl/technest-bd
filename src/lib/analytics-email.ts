@@ -30,7 +30,7 @@ function renderEmailHtml(payload: Record<string, unknown>): string {
     .map(([s, v]) => `<tr><td>${s}</td><td>${v}</td></tr>`)
     .join('')
   return `
-<h2>TechNest Daily Analytics Report — ${String(payload.date ?? '')}</h2>
+<h2>GadgetErea Daily Analytics Report — ${String(payload.date ?? '')}</h2>
 <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse">
 ${rows.map(([k, v]) => `<tr><th align="left">${k}</th><td>${v}</td></tr>`).join('')}
 </table>
@@ -50,7 +50,7 @@ function renderEmailText(payload: Record<string, unknown>): string {
   const topPages = (payload.top_pages as { page: string; views: number }[] | undefined) ?? []
   const bySource = (payload.by_source as Record<string, number> | undefined) ?? {}
   return [
-    `TechNest Daily Analytics Report — ${String(payload.date ?? '')}`,
+    `GadgetErea Daily Analytics Report — ${String(payload.date ?? '')}`,
     '',
     `Visitors: ${n(payload.visitors)}`,
     `Unique Visitors: ${n(payload.unique_visitors)}`,
@@ -109,9 +109,9 @@ export async function sendDailyReportEmail(
 
   const dateStr = String(payload.date ?? '')
   const info = await transporter.sendMail({
-    from: process.env.SMTP_FROM || 'TechNest Analytics <no-reply@technest-bd.com>',
+    from: process.env.SMTP_FROM || 'GadgetErea Analytics <no-reply@technest-bd.com>',
     to,
-    subject: `TechNest Daily Analytics Report — ${dateStr}`,
+    subject: `GadgetErea Daily Analytics Report — ${dateStr}`,
     text: renderEmailText(payload),
     html: renderEmailHtml(payload),
   })

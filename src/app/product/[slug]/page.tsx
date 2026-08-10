@@ -37,7 +37,7 @@ export async function generateMetadata({
       description,
       type: 'website',
       url: `/product/${product.slug}`,
-      siteName: 'TechNest US',
+      siteName: 'GadgetErea',
     },
   }
 }

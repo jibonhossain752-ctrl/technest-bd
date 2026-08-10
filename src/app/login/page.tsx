@@ -31,7 +31,7 @@ export default function LoginPage() {
 
   return (
     <>
-      <PageHeader title="Login" subtitle="Welcome back to TechNest US" />
+      <PageHeader title="Login" subtitle="Welcome back to GadgetErea" />
 
       <section className="auth container">
         <div className="auth-card">
@@ -72,7 +72,7 @@ export default function LoginPage() {
             </button>
           </form>
           <p className="auth-switch">
-            New to TechNest US? <Link href="/register">Create an account</Link>
+            New to GadgetErea? <Link href="/register">Create an account</Link>
           </p>
         </div>
       </section>

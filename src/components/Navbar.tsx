@@ -138,8 +138,8 @@ export default function Navbar() {
     >
       <div className="side-panel-top">
         <Link href="/" className="side-logo" onClick={goHomeFresh}>
-          <span className="logo-mark">N</span>
-          TechNest<span>US</span>
+          <span className="logo-mark">G</span>
+          GadgetErea
         </Link>
         <button
           type="button"
@@ -390,8 +390,8 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="container nav-container">
           <Link href="/" className="logo" onClick={goHomeFresh}>
-            <span className="logo-mark">N</span>
-            TechNest<span>US</span>
+            <span className="logo-mark">G</span>
+            GadgetErea
           </Link>
 
           {!isMobile && desktopNavList}

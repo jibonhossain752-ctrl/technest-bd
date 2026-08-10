@@ -1,6 +1,6 @@
 import { VIDEOS } from '@/data/videos'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://technest-bd.vercel.app'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gadgeterea.com'
 
 export default function VideoSchema() {
   const schema = VIDEOS.map((v) => ({
@@ -13,7 +13,7 @@ export default function VideoSchema() {
     url: v.href,
     publisher: {
       '@type': 'Organization',
-      name: 'TechNest US',
+      name: 'GadgetErea',
     },
     inLanguage: 'en',
   }))

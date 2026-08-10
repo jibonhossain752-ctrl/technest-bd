@@ -25,7 +25,7 @@ export async function generateMetadata({
   const cat = getCategoryBySlug(category)
   const title = view?.name ?? cat?.name ?? category
   const description =
-    view?.description ?? cat?.description ?? `Shop ${category} at TechNest US.`
+    view?.description ?? cat?.description ?? `Shop ${category} at GadgetErea.`
   return { title, description, alternates: { canonical: `/shop/${category}` } }
 }
 

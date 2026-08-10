@@ -75,9 +75,9 @@ export default function AccountPage() {
           ) : (
             <>
               <div className="account-user">
-                <span className="avatar avatar-lg">TN</span>
+                <span className="avatar avatar-lg">GE</span>
                 <div>
-                  <h2>Welcome to TechNest US</h2>
+                  <h2>Welcome to GadgetErea</h2>
                   <p>
                     Sign in to view your profile and saved preferences.
                   </p>

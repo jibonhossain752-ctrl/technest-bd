@@ -21,7 +21,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: 'Emily Davis',
     city: 'Chicago, IL',
-    text: 'Best prices I could find online. The warranty registration was super easy. TechNest is now my go-to store.',
+    text: 'Best prices I could find online. The warranty registration was super easy. GadgetErea is now my go-to store.',
     rating: 5,
     initials: 'ED',
   },

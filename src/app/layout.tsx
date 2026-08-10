@@ -11,11 +11,11 @@ import AnalyticsBootstrap from '@/components/AnalyticsBootstrap'
 
 export const metadata: Metadata = {
   title: {
-    default: 'TechNest US | Your Trusted Tech Store in the USA',
-    template: '%s | TechNest US',
+    default: 'GadgetErea | Your Trusted Tech Store in the USA',
+    template: '%s | GadgetErea',
   },
   description:
-    'TechNest US - Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
+    'GadgetErea - Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

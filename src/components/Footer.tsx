@@ -31,8 +31,8 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-brand">
           <Link href="/" className="logo">
-            <span className="logo-mark">N</span>
-            TechNest<span>US</span>
+            <span className="logo-mark">G</span>
+            GadgetErea
           </Link>
           <p>
             Your trusted tech destination in the USA. Genuine products, fair
@@ -77,7 +77,7 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; 2026 TechNest US. All rights reserved.</p>
+          <p>&copy; 2026 GadgetErea. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -6,7 +6,7 @@ import type { PlatformKey } from '@/lib/socials'
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:
-    'Get in touch with TechNest US — support, sales, warranty and partnership inquiries. Phone, email and store in New York, USA.',
+    'Get in touch with GadgetErea — support, sales, warranty and partnership inquiries. Phone, email and store in New York, USA.',
   alternates: { canonical: '/contact' },
 }
 

@@ -540,7 +540,7 @@ export const PRODUCTS: Product[] = [
       'Backward compatible',
     ],
     metaTitle: 'PlayStation 5 Disc Edition Console (Slim) – PS5 with Disc Drive',
-    metaDescription: 'PS5 slim Disc Edition console for 4K gaming with an ultra-fast SSD, ray tracing and backward compatibility. In stock at TechNest US.',
+    metaDescription: 'PS5 slim Disc Edition console for 4K gaming with an ultra-fast SSD, ray tracing and backward compatibility. In stock at GadgetErea.',
     altText: 'PlayStation 5 slim disc edition console',
     primaryKeyword: 'playstation 5 console',
     secondaryKeywords: ['ps5 slim disc edition', 'ps5 with disc drive', 'sony ps5 console', 'ps5 4k gaming console'],

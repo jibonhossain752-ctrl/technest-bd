@@ -11,9 +11,9 @@ import Reveal from '@/components/ui/Reveal'
 import VideoSchema from '@/components/VideoSchema'
 
 export const metadata: Metadata = {
-  title: 'TechNest US | Shop Laptops, Smartphones, Gadgets & Accessories Online',
+  title: 'GadgetErea | Shop Laptops, Smartphones, Gadgets & Accessories Online',
   description:
-    'TechNest US — buy genuine laptops, smartphones, gaming gear, headphones, webcams and accessories with the best prices, fast delivery and official warranty across the USA.',
+    'GadgetErea — buy genuine laptops, smartphones, gaming gear, headphones, webcams and accessories with the best prices, fast delivery and official warranty across the USA.',
 }
 
 export default function HomePage() {

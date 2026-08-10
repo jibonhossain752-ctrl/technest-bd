@@ -1,4 +1,4 @@
-# TechNest BD
+# GadgetErea
 
 An e-commerce store for tech products in Bangladesh, built with **Next.js**.
 

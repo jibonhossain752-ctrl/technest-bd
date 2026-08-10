@@ -172,7 +172,7 @@ export default function CheckoutPage() {
                   </a>
                 ) : (
                   <small className="summary-local-note">
-                    Purchased through TechNest
+                    Purchased through GadgetErea
                   </small>
                 )}
               </div>
@@ -284,7 +284,7 @@ export default function CheckoutPage() {
                     </a>
                   ) : (
                     <small className="summary-local-note">
-                      Purchased through TechNest
+                      Purchased through GadgetErea
                     </small>
                   )}
                 </div>

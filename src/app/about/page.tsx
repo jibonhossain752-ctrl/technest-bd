@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about TechNest US — our story, mission, and why thousands of customers across the USA trust us for genuine tech with fast delivery.',
+    'Learn about GadgetErea — our story, mission, and why thousands of customers across the USA trust us for genuine tech with fast delivery.',
   alternates: { canonical: '/about' },
 }
 
@@ -45,7 +45,7 @@ export default function AboutPage() {
         <div className="about-text">
           <h2>Who We Are</h2>
           <p>
-            TechNest US started with a simple idea: shopping for technology in
+            GadgetErea started with a simple idea: shopping for technology in
             the United States should be easy, safe and affordable. Today, we are
             one of the country&apos;s most trusted online tech stores, serving
             thousands of customers across all 50 states.

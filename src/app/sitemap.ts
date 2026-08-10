@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { PRODUCTS } from '@/data/products'
 import { POSTS } from '@/data/posts'
 
-const SITE = 'https://technest-bd.vercel.app'
+const SITE = 'https://gadgeterea.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
