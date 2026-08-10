@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
-import { PRODUCTS } from '@/data/products'
+import { PRODUCTS, SHOP_VIEWS } from '@/data/products'
 import { POSTS } from '@/data/posts'
+import { CATEGORIES } from '@/data/categories'
 
 const SITE = 'https://gadgeterea.com'
 
@@ -15,6 +16,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+  ]
+
+  const categoryRoutes: MetadataRoute.Sitemap = [
+    ...CATEGORIES.map((c) => ({
+      url: `${SITE}/shop/${c.slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+    ...SHOP_VIEWS.map((v) => ({
+      url: `${SITE}/shop/${v.slug}`,
+      lastModified: now,
+      changeFrequency: 'daily' as const,
+      priority: 0.7,
+    })),
   ]
 
   const productRoutes: MetadataRoute.Sitemap = PRODUCTS.map((p) => ({
@@ -33,5 +49,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: p.heroImage ? [`${SITE}${p.heroImage}`] : undefined,
   }))
 
-  return [...staticRoutes, ...productRoutes, ...blogRoutes]
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes]
 }

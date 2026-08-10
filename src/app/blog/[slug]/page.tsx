@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { POSTS, getPostBySlug } from '@/data/posts'
 import { PRODUCTS } from '@/data/products'
@@ -23,18 +24,42 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) return { title: 'Post Not Found' }
+  const metaTitle = post.metaTitle ?? post.title
+  const metaDescription = post.metaDescription ?? post.excerpt
+  const heroImage = post.heroImage
+    ? `https://gadgeterea.com${post.heroImage}`
+    : undefined
   return {
-    title: post.metaTitle ?? post.title,
-    description: post.metaDescription ?? post.excerpt,
+    title: metaTitle,
+    description: metaDescription,
     keywords: [post.primaryKeyword, ...(post.secondaryKeywords ?? [])].filter(
       (k): k is string => Boolean(k),
     ),
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
-      title: post.metaTitle ?? post.title,
-      description: post.metaDescription ?? post.excerpt,
+      title: metaTitle,
+      description: metaDescription,
       type: 'article',
       url: `/blog/${post.slug}`,
+      siteName: 'GadgetErea',
+      ...(heroImage
+        ? {
+            images: [
+              {
+                url: heroImage,
+                width: 1200,
+                height: 675,
+                alt: post.altText ?? post.title,
+              },
+            ],
+          }
+        : {}),
+    },
+    twitter: {
+      card: heroImage ? 'summary_large_image' : 'summary',
+      title: metaTitle,
+      description: metaDescription,
+      ...(heroImage ? { images: [heroImage] } : {}),
     },
   }
 }
@@ -58,8 +83,38 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ? PRODUCTS.find((p) => p.slug === deal.productSlug)
     : undefined
 
+  const blogPostingJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.metaDescription ?? post.excerpt,
+    image: post.heroImage ? `https://gadgeterea.com${post.heroImage}` : undefined,
+    datePublished: post.date,
+    dateModified: post.lastUpdated ?? post.date,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'GadgetErea',
+      url: 'https://gadgeterea.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://gadgeterea.com/favicon.svg',
+      },
+    },
+    mainEntityOfPage: `https://gadgeterea.com/blog/${post.slug}`,
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostingJsonLd),
+        }}
+      />
       <article className="blog-post container">
         <header className="blog-post-header">
           <span className={`blog-card-badge ${categoryBadgeClass(post.category)}`}>
@@ -148,6 +203,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {post.faq && post.faq.length > 0 && (
             <PostFaq faq={post.faq} postSlug={post.slug} />
           )}
+
+          <nav className="blog-post-links" aria-label="Related shopping links">
+            <h2>Keep Browsing</h2>
+            <ul>
+              <li>
+                <Link href="/deals">Gadget deals online — see this week&apos;s discounts</Link>
+              </li>
+              <li>
+                <Link href="/shop/accessories">Cool tech gadgets under $50 in Accessories</Link>
+              </li>
+              <li>
+                <Link href="/shop/audio-wearables">Trending gadgets — audio &amp; wearables</Link>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         <div className="blog-share">

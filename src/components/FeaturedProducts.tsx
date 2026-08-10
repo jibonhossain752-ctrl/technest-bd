@@ -9,8 +9,8 @@ export default function FeaturedProducts() {
     <section className="products" id="products">
       <div className="container">
         <div className="section-head">
-          <h2>Best Selling Products</h2>
-          <p>Best-sellers our customers love</p>
+          <h2>Best Amazon Finds This Week</h2>
+          <p>Top-rated trending gadgets our customers love</p>
         </div>
         <ProductGrid
           products={[...PRODUCTS]

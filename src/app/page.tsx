@@ -11,14 +11,67 @@ import Reveal from '@/components/ui/Reveal'
 import VideoSchema from '@/components/VideoSchema'
 
 export const metadata: Metadata = {
-  title: 'GadgetErea | Shop Laptops, Smartphones, Gadgets & Accessories Online',
+  title: 'Trending Gadgets & Amazon Finds',
   description:
-    'GadgetErea — buy genuine laptops, smartphones, gaming gear, headphones, webcams and accessories with the best prices, fast delivery and official warranty across the USA.',
+    'Shop trending gadgets and the best Amazon finds — cool tech gadgets under $50, useful gadgets for home, viral TikTok gadgets and more.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    siteName: 'GadgetErea',
+    type: 'website',
+    url: 'https://gadgeterea.com/',
+    title: 'Trending Gadgets & Amazon Finds | GadgetErea',
+    description:
+      'Shop trending gadgets and the best Amazon finds — cool tech gadgets under $50, useful gadgets for home and more.',
+    images: [
+      {
+        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        width: 1200,
+        height: 675,
+        alt: 'GadgetErea - trending gadgets and the best Amazon finds',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Trending Gadgets & Amazon Finds | GadgetErea',
+    description:
+      'Shop trending gadgets and the best Amazon finds — cool tech gadgets under $50, useful gadgets for home and more.',
+    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+  },
+}
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'OnlineStore',
+  name: 'GadgetErea',
+  url: 'https://gadgeterea.com',
+  logo: 'https://gadgeterea.com/images/logo.png',
+  sameAs: [
+    'https://www.facebook.com/profile.php?id=61554811563391',
+    'https://www.instagram.com/gadgeterea/',
+    'https://www.tiktok.com/@gadgeterea',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+1-844-292-0061',
+    contactType: 'customer service',
+    email: 'support@gadgeterea.com',
+    availableLanguage: ['English'],
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://gadgeterea.com/shop?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
 }
 
 export default function HomePage() {
   return (
     <div className="home">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <VideoSchema />
       <StaticHero />
       <QuickPills />

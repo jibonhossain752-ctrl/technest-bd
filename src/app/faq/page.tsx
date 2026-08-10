@@ -15,6 +15,12 @@ export default function FaqPage() {
   return (
     <>
       <section className="faq container">
+        <div className="blog-head">
+          <h1>FAQ – Gadget Deals, Delivery &amp; Returns</h1>
+          <p>
+            Quick answers on orders, shipping, warranty and gadget deals online
+          </p>
+        </div>
         <div className="faq-filters">
           {['All', ...FAQ_CATEGORIES].map((cat) => (
             <button

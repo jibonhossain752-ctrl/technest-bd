@@ -1,11 +1,42 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeader from '@/components/ui/PageHeader'
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About GadgetErea – Your Trusted Gadget Store',
   description:
-    'Learn about GadgetErea — our story, mission, and why thousands of customers across the USA trust us for genuine tech with fast delivery.',
+    'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech gadgets under $50 to useful gadgets for home. Learn our story.',
   alternates: { canonical: '/about' },
+  keywords: [
+    'gadget store usa',
+    'best amazon finds',
+    'trending gadgets',
+    'gadget deals online',
+    'useful gadgets for home',
+  ],
+  openGraph: {
+    siteName: 'GadgetErea',
+    type: 'website',
+    url: 'https://gadgeterea.com/about',
+    title: 'About GadgetErea – Your Trusted Gadget Store',
+    description:
+      'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech gadgets under $50 to useful gadgets for home.',
+    images: [
+      {
+        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        width: 1200,
+        height: 675,
+        alt: 'GadgetErea - trending gadgets and the best Amazon finds',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About GadgetErea – Your Trusted Gadget Store',
+    description:
+      'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech gadgets under $50 to useful gadgets for home.',
+    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+  },
 }
 
 const VALUES = [
@@ -41,6 +72,10 @@ const STATS = [
 export default function AboutPage() {
   return (
     <>
+      <PageHeader
+        title="About GadgetErea"
+        subtitle="Where trending gadgets and the best Amazon finds come from."
+      />
       <section className="about-intro container">
         <div className="about-text">
           <h2>Who We Are</h2>

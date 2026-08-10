@@ -74,6 +74,12 @@ export default function BlogPage() {
   return (
     <>
       <section className="blog container">
+        <div className="blog-head">
+          <h1>Gadget Reviews &amp; Amazon Finds</h1>
+          <p>
+            Best Amazon finds this week, trending gadget reviews and buying guides
+          </p>
+        </div>
         <div className="blog-toolbar">
           <div className="blog-tabs-wrap">
             <div className="blog-tabs" ref={tabsRow} role="tablist" aria-label="Filter posts">

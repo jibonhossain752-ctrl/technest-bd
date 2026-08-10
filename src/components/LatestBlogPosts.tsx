@@ -8,8 +8,8 @@ export default function LatestBlogPosts() {
     <section className="latest-blog-posts">
       <div className="container">
         <div className="section-head">
-          <h2>Latest Blog Posts</h2>
-          <p>Reviews, buying guides and deals — fresh every week</p>
+          <h2>Gadget Reviews & Amazon Finds</h2>
+          <p>Trending gadgets, best Amazon finds this week and buying guides</p>
         </div>
         <div className="blog-grid home-blog-grid">
           {posts.map((post) => (

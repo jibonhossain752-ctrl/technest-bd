@@ -215,10 +215,6 @@ export default function ShopCatalog({
 
         <div className="shop-main">
           <div className="shop-toolbar">
-            <div>
-              <h2>{viewTitle}</h2>
-              <p>{viewDescription}</p>
-            </div>
             <Collapsible
               title="Filters"
               icon="🔍"

@@ -1,13 +1,37 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
 import SocialIcon from '@/components/SocialIcon'
+import PageHeader from '@/components/ui/PageHeader'
 import type { PlatformKey } from '@/lib/socials'
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact GadgetErea – Support & Inquiries',
   description:
-    'Get in touch with GadgetErea — support, sales, warranty and partnership inquiries. Phone, email and store in New York, USA.',
+    'Contact GadgetErea for order support, warranty and partnership inquiries. Phone, WhatsApp, email and store in New York, USA. We reply within 24 hours.',
   alternates: { canonical: '/contact' },
+  openGraph: {
+    siteName: 'GadgetErea',
+    type: 'website',
+    url: 'https://gadgeterea.com/contact',
+    title: 'Contact GadgetErea – Support & Inquiries',
+    description:
+      'Contact GadgetErea for order support, warranty and partnership inquiries. We reply within 24 hours.',
+    images: [
+      {
+        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        width: 1200,
+        height: 675,
+        alt: 'GadgetErea - trending gadgets and the best Amazon finds',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact GadgetErea – Support & Inquiries',
+    description:
+      'Contact GadgetErea for order support, warranty and partnership inquiries. We reply within 24 hours.',
+    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+  },
 }
 
 const CHANNELS = [
@@ -28,6 +52,10 @@ const CONTACT_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'yo
 export default function ContactPage() {
   return (
     <>
+      <PageHeader
+        title="Contact GadgetErea"
+        subtitle="Questions about an order, warranty or a gadget find? We reply within 24 hours."
+      />
       <section className="contact container">
         <div className="contact-layout">
           <ContactForm />

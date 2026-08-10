@@ -10,12 +10,37 @@ import ScrollToTop from '@/components/ScrollToTop'
 import AnalyticsBootstrap from '@/components/AnalyticsBootstrap'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://gadgeterea.com'),
   title: {
     default: 'GadgetErea | Your Trusted Tech Store in the USA',
     template: '%s | GadgetErea',
   },
   description:
     'GadgetErea - Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
+  openGraph: {
+    type: 'website',
+    siteName: 'GadgetErea',
+    locale: 'en_US',
+    url: 'https://gadgeterea.com',
+    title: 'GadgetErea | Your Trusted Tech Store in the USA',
+    description:
+      'GadgetErea - Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
+    images: [
+      {
+        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        width: 1200,
+        height: 675,
+        alt: 'GadgetErea - trending gadgets and the best Amazon finds',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GadgetErea | Your Trusted Tech Store in the USA',
+    description:
+      'GadgetErea - Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
+    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

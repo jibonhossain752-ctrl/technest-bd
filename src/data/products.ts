@@ -40,6 +40,7 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     description:
       'Collector-grade Batman-themed AR/XR glasses with HDR10, Bang & Olufsen quad-speaker audio, 201" virtual display and the Vision 4000 chip with AI SDR-to-HDR conversion.',
+    altText: 'RayNeo Air 4 Pro Batman Justice Edition AR glasses - trending gadget find',
     features: [
       'HDR10 with 1200 nits brightness and AI SDR-to-HDR conversion',
       '201" virtual display powered by the Vision 4000 chip',
@@ -50,8 +51,7 @@ export const PRODUCTS: Product[] = [
     buyUrl: 'https://amzn.to/4hhLNwI',
   },
   {
-    id: 'p18',
-    slug: 'kids-echo-dot-5th-gen-owl',
+    id: 'p18',    slug: 'kids-echo-dot-5th-gen-owl',
     name: '2022 Kids Echo Dot 5th Gen | Owl Design',
     category: 'Smart Home',
     categorySlug: 'smart-home',

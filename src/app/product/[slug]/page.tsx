@@ -38,6 +38,26 @@ export async function generateMetadata({
       type: 'website',
       url: `/product/${product.slug}`,
       siteName: 'GadgetErea',
+      ...(product.imageUrl
+        ? {
+            images: [
+              {
+                url: `https://gadgeterea.com${product.imageUrl}`,
+                width: 1200,
+                height: 1200,
+                alt: product.altText ?? product.name,
+              },
+            ],
+          }
+        : {}),
+    },
+    twitter: {
+      card: product.imageUrl ? 'summary_large_image' : 'summary',
+      title,
+      description,
+      ...(product.imageUrl
+        ? { images: [`https://gadgeterea.com${product.imageUrl}`] }
+        : {}),
     },
   }
 }
@@ -55,6 +75,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
     name: product.name,
     description: product.description,
     sku: product.id,
+    ...(product.imageUrl
+      ? {
+          image: [
+            `https://gadgeterea.com${product.imageUrl}`,
+          ],
+        }
+      : {}),
     ...(product.rating != null
       ? {
           aggregateRating: {

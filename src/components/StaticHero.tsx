@@ -14,7 +14,7 @@ export default function StaticHero() {
         <div className="hero-static-text">
           <span className="hero-static-badge">🔥 Trending This Week</span>
           <h1>
-            Trending Find of the Week:{' '}
+            Trending Gadgets & Amazon Finds:{' '}
             <span className="hero-static-name">{product.name}</span>
           </h1>
           <p className="hero-static-sub">{product.description}</p>
