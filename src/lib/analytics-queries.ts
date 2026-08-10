@@ -1,11 +1,20 @@
 /**
  * Analytics ranking/query helpers (server-side only).
- * Computes C1–C4 rankings, B6 funnel/performance estimates and B7 realtime
- * snapshots from the raw `analytics_events` table (plus `analytics_daily`
- * for trend charts when aggregates exist).
+ *
+ * All dashboard display data is read from aggregated tables ONLY:
+ *   - analytics_reports (per-day summary payload with every breakdown)
+ *   - analytics_daily (trend chart)
+ * The raw `analytics_events` table is never queried for dashboard display.
+ * The single intentional exception is getRealtimeSnapshot() (live monitor):
+ * it is bounded (24h window, LIMIT 60) and by definition cannot be served
+ * from pre-aggregated data.
+ *
+ * Missing/stale aggregate dates are regenerated on demand via
+ * aggregateDay() (idempotent delete+recompute), single-flight + 60s TTL.
  */
 
 import { getDb } from '@/lib/supabase'
+import { aggregateDay, REPORT_VERSION, lastNDates } from '@/lib/analytics-aggregate'
 import { PRODUCTS } from '@/data/products'
 import { POSTS } from '@/data/posts'
 import { CATEGORIES } from '@/data/categories'
@@ -16,53 +25,76 @@ export const CLICK_EVENTS = [
   'deal_price_click',
 ] as const
 
-const VIEW_EVENTS = ['product_view', 'add_to_cart', 'buy_now', 'affiliate_click']
-
-interface RawEvent {
-  event: string
-  page: string | null
-  source: string | null
-  session_id: string | null
-  meta: Record<string, unknown> | null
-  ref_host?: string | null
-  created_at: string
-}
-
 function daysAgo(days: number): string {
   const d = new Date()
   d.setUTCDate(d.getUTCDate() - days)
-  return d.toISOString()
+  return d.toISOString().slice(0, 10)
 }
 
-async function fetchEvents(
-  days: number,
-  events: string[],
-): Promise<RawEvent[]> {
+/* --------------------- aggregate freshness (single-flight) --------------------- */
+
+let aggregateInflight: Promise<void> | null = null
+let lastAggregateCheck = 0
+
+async function ensureAggregates(days: number): Promise<void> {
+  const now = Date.now()
+  if (!aggregateInflight && now - lastAggregateCheck < 60_000) return
+  const dates = lastNDates(days)
   const db = getDb()
-  const out: RawEvent[] = []
-  let from = 0
-  const pageSize = 1000
-  for (;;) {
-    const { data, error } = await db
-      .from('analytics_events')
-      .select('event, page, source, session_id, meta, ref_host, created_at')
-      .in('event', events)
-      .gte('created_at', daysAgo(days))
-      .order('created_at', { ascending: false })
-      .range(from, from + pageSize - 1)
-    if (error) throw new Error('analytics query failed: ' + error.message)
-    if (!data || data.length === 0) break
-    out.push(...(data as RawEvent[]))
-    from += pageSize
-    if (data.length < pageSize) break
+  const { data } = await db
+    .from('analytics_reports')
+    .select('date, payload')
+    .gte('date', dates[dates.length - 1])
+  const have = new Set<string>()
+  for (const r of data ?? []) {
+    const p = (r as { payload: Record<string, unknown> | null }).payload
+    if (p && p.version === REPORT_VERSION) {
+      have.add(String((r as { date: string }).date).slice(0, 10))
+    }
+  }
+  const missing = dates.filter((d) => !have.has(d))
+  if (missing.length === 0) {
+    lastAggregateCheck = now
+    return
+  }
+  if (!aggregateInflight) {
+    aggregateInflight = (async () => {
+      for (const d of missing) {
+        try {
+          await aggregateDay(d)
+        } catch (err) {
+          console.error('ensureAggregates failed for', d, err)
+        }
+      }
+    })().finally(() => {
+      aggregateInflight = null
+    })
+  }
+  await aggregateInflight
+  lastAggregateCheck = now
+}
+
+type Payload = Record<string, unknown>
+
+async function loadReports(days: number): Promise<Payload[]> {
+  await ensureAggregates(days)
+  const db = getDb()
+  const { data, error } = await db
+    .from('analytics_reports')
+    .select('date, payload')
+    .gte('date', daysAgo(days))
+    .order('date', { ascending: true })
+  if (error) throw new Error('report query failed: ' + error.message)
+  const out: Payload[] = []
+  for (const r of data ?? []) {
+    const p = (r as { payload: Payload | null }).payload
+    if (p && p.version === REPORT_VERSION) out.push(p)
   }
   return out
 }
 
-function metaSlug(meta: Record<string, unknown> | null): string | null {
-  const s = meta?.product_slug ?? meta?.slug ?? meta?.post_slug
-  return typeof s === 'string' && s ? s : null
-}
+const arr = <T>(p: Payload, key: string): T[] => (p[key] as T[]) ?? []
+const num = (v: unknown): number => Number(v ?? 0)
 
 /* ---------------------------------- C1 ---------------------------------- */
 
@@ -78,16 +110,16 @@ export interface TopProductRow {
 }
 
 export async function getTopProducts(days: number): Promise<TopProductRow[]> {
-  const events = await fetchEvents(days, VIEW_EVENTS)
+  const reports = await loadReports(days)
   const counts = new Map<string, { views: number; add: number; clicks: number }>()
-  for (const e of events) {
-    const slug = metaSlug(e.meta)
-    if (!slug) continue
-    const c = counts.get(slug) ?? { views: 0, add: 0, clicks: 0 }
-    if (e.event === 'product_view') c.views++
-    else if (e.event === 'add_to_cart') c.add++
-    else c.clicks++
-    counts.set(slug, c)
+  for (const p of reports) {
+    for (const c of arr<{ slug: string; views: number; add: number; clicks: number }>(p, 'products')) {
+      const agg = counts.get(c.slug) ?? { views: 0, add: 0, clicks: 0 }
+      agg.views += num(c.views)
+      agg.add += num(c.add)
+      agg.clicks += num(c.clicks)
+      counts.set(c.slug, agg)
+    }
   }
   const rows: TopProductRow[] = []
   for (const [slug, c] of counts) {
@@ -119,36 +151,18 @@ export interface TopCategoryRow {
 }
 
 export async function getTopCategories(days: number): Promise<TopCategoryRow[]> {
-  const events = await fetchEvents(days, VIEW_EVENTS)
-  const bySlug = new Map<string, { views: number; clicks: number }>()
-  const bump = (slug: string | null, kind: 'views' | 'clicks') => {
-    if (!slug) return
-    const c = bySlug.get(slug) ?? { views: 0, clicks: 0 }
-    c[kind]++
-    bySlug.set(slug, c)
-  }
-  for (const e of events) {
-    const slug = metaSlug(e.meta)
-    if (!slug) continue
-    const product = PRODUCTS.find((p) => p.slug === slug)
-    const cat = product?.categorySlug ?? null
-    if (e.event === 'product_view') bump(cat, 'views')
-    else if (e.event === 'add_to_cart') bump(cat, 'views')
-    else bump(cat, 'clicks')
-  }
-  const catEvents = await fetchEvents(days, ['category_select', 'page_view'])
-  for (const e of catEvents) {
-    if (e.event === 'category_select') {
-      const slug = metaSlug(e.meta)
-      bump(slug, 'views')
-      continue
+  const reports = await loadReports(days)
+  const counts = new Map<string, { views: number; clicks: number }>()
+  for (const p of reports) {
+    for (const c of arr<{ slug: string; views: number; clicks: number }>(p, 'categories')) {
+      const agg = counts.get(c.slug) ?? { views: 0, clicks: 0 }
+      agg.views += num(c.views)
+      agg.clicks += num(c.clicks)
+      counts.set(c.slug, agg)
     }
-    const page = e.page ?? ''
-    const m = page.match(/^\/shop\/([^/]+)/)
-    if (m) bump(m[1], 'views')
   }
   const rows: TopCategoryRow[] = []
-  for (const [slug, c] of bySlug) {
+  for (const [slug, c] of counts) {
     const cat = CATEGORIES.find((x) => x.slug === slug)
     if (!cat) continue
     rows.push({ slug, name: cat.name, icon: cat.icon, views: c.views, clicks: c.clicks })
@@ -170,63 +184,43 @@ export interface TopBlogRow {
 }
 
 export async function getTopBlogPosts(days: number): Promise<TopBlogRow[]> {
-  const events = await fetchEvents(days, [
-    'page_view',
-    'blog_card_click',
-    'scroll_depth',
-    'time_on_page',
-  ])
-  const views = new Map<string, number>()
-  const cardClicks = new Map<string, number>()
-  const deepReads = new Map<string, number>()
-  const timeSums = new Map<string, { total: number; count: number }>()
-
-  const postSlug = (e: RawEvent): string | null => {
-    const page = e.page ?? ''
-    const m = page.match(/^\/blog\/([^/]+)/)
-    return m ? m[1] : null
-  }
-
-  for (const e of events) {
-    if (e.event === 'page_view') {
-      const s = postSlug(e)
-      if (s) views.set(s, (views.get(s) ?? 0) + 1)
-    } else if (e.event === 'blog_card_click') {
-      const s = metaSlug(e.meta)
-      if (s) cardClicks.set(s, (cardClicks.get(s) ?? 0) + 1)
-    } else if (e.event === 'scroll_depth' && e.meta?.percent === 100) {
-      const s = postSlug(e)
-      if (s) deepReads.set(s, (deepReads.get(s) ?? 0) + 1)
-    } else if (e.event === 'time_on_page') {
-      const s = postSlug(e)
-      if (!s) continue
-      const secs = Number(e.meta?.seconds ?? 0)
-      if (secs > 0) {
-        const t = timeSums.get(s) ?? { total: 0, count: 0 }
-        t.total += secs
-        t.count++
-        timeSums.set(s, t)
-      }
+  const reports = await loadReports(days)
+  const aggMap = new Map<
+    string,
+    { views: number; cardClicks: number; deepReads: number; timeSeconds: number; timeCount: number }
+  >()
+  for (const p of reports) {
+    for (const b of arr<{
+      slug: string
+      views: number
+      cardClicks: number
+      deepReads: number
+      timeSeconds: number
+      timeCount: number
+    }>(p, 'blogPosts')) {
+      const agg = aggMap.get(b.slug) ?? { views: 0, cardClicks: 0, deepReads: 0, timeSeconds: 0, timeCount: 0 }
+      agg.views += num(b.views)
+      agg.cardClicks += num(b.cardClicks)
+      agg.deepReads += num(b.deepReads)
+      agg.timeSeconds += num(b.timeSeconds)
+      agg.timeCount += num(b.timeCount)
+      aggMap.set(b.slug, agg)
     }
   }
-
   const rows: TopBlogRow[] = []
-  for (const [slug, count] of views) {
+  for (const [slug, b] of aggMap) {
     const post = POSTS.find((p) => p.slug === slug)
     if (!post) continue
-    const reads = deepReads.get(slug) ?? 0
-    const clicks = cardClicks.get(slug) ?? 0
-    const t = timeSums.get(slug)
-    const avgSeconds = t && t.count ? Math.round(t.total / t.count) : 0
+    const avgSeconds = b.timeCount ? Math.round(b.timeSeconds / b.timeCount) : 0
     const engagement = Math.round(
-      ((reads / count) * 100 + Math.min(avgSeconds / 120, 1) * 100) / 2,
+      ((b.deepReads / b.views) * 100 + Math.min(avgSeconds / 120, 1) * 100) / 2,
     )
     rows.push({
       slug,
       title: post.title,
-      views: count,
-      cardClicks: clicks,
-      deepReads: reads,
+      views: b.views,
+      cardClicks: b.cardClicks,
+      deepReads: b.deepReads,
       avgSeconds,
       engagement,
     })
@@ -264,78 +258,42 @@ const KNOWN_SOURCES = [
 ]
 
 export async function getSourceRankings(days: number): Promise<SourceRankRow[]> {
-  const events = await fetchEvents(days, [
-    'page_view',
-    'time_on_page',
-    'add_to_cart',
-    'affiliate_click',
-    'buy_now',
-    'newsletter_subscribe',
-  ])
-  const bySource = new Map<
+  const reports = await loadReports(days)
+  const aggMap = new Map<
     string,
-    {
-      sessions: Set<string>
-      views: number
-      timeSum: number
-      timeCount: number
-      pageSet: Map<string, Set<string>>
+    { sessions: number; pageViews: number; bounces: number; timeSeconds: number; adds: number; clicks: number; subs: number }
+  >()
+  for (const p of reports) {
+    for (const s of arr<{
+      source: string
+      sessions: number
+      pageViews: number
+      bounces: number
+      timeSeconds: number
       adds: number
       clicks: number
       subs: number
+    }>(p, 'sources')) {
+      const agg = aggMap.get(s.source) ?? { sessions: 0, pageViews: 0, bounces: 0, timeSeconds: 0, adds: 0, clicks: 0, subs: 0 }
+      agg.sessions += num(s.sessions)
+      agg.pageViews += num(s.pageViews)
+      agg.bounces += num(s.bounces)
+      agg.timeSeconds += num(s.timeSeconds)
+      agg.adds += num(s.adds)
+      agg.clicks += num(s.clicks)
+      agg.subs += num(s.subs)
+      aggMap.set(s.source, agg)
     }
-  >()
-  const ensure = (source: string) => {
-    let s = bySource.get(source)
-    if (!s) {
-      s = {
-        sessions: new Set(),
-        views: 0,
-        timeSum: 0,
-        timeCount: 0,
-        pageSet: new Map(),
-        adds: 0,
-        clicks: 0,
-        subs: 0,
-      }
-      bySource.set(source, s)
-    }
-    return s
-  }
-  for (const e of events) {
-    const source = e.source ?? 'direct'
-    const s = ensure(source)
-    const sid = e.session_id ?? ''
-    if (e.event === 'page_view') {
-      s.views++
-      s.sessions.add(sid)
-      const pageSet = s.pageSet.get(sid) ?? new Set<string>()
-      pageSet.add(e.page ?? '')
-      s.pageSet.set(sid, pageSet)
-    } else if (e.event === 'time_on_page') {
-      const secs = Number(e.meta?.seconds ?? 0)
-      if (secs > 0) {
-        s.timeSum += secs
-        s.timeCount++
-      }
-    } else if (e.event === 'add_to_cart') s.adds++
-    else if (CLICK_EVENTS.includes(e.event as (typeof CLICK_EVENTS)[number])) s.clicks++
-    else if (e.event === 'newsletter_subscribe') s.subs++
   }
 
   const rows: SourceRankRow[] = []
   for (const source of KNOWN_SOURCES) {
-    const s = bySource.get(source)
-    if (!s) continue
-    const sessions = s.sessions.size
-    let bounces = 0
-    for (const pages of s.pageSet.values()) {
-      if (pages.size <= 1) bounces++
-    }
-    const bounceRate = sessions ? Math.round((bounces / sessions) * 100) : 0
-    const avgSeconds = s.timeCount ? Math.round(s.timeSum / s.timeCount) : 0
-    const viewsPerSession = sessions ? Math.round((s.views / sessions) * 100) / 100 : 0
-    const convRate = s.views ? ((s.adds + s.clicks) / s.views) * 100 : 0
+    const s = aggMap.get(source)
+    if (!s || s.sessions === 0) continue
+    const viewsPerSession = Math.round((s.pageViews / s.sessions) * 100) / 100
+    const avgSeconds = s.sessions ? Math.round(s.timeSeconds / s.sessions) : 0
+    const bounceRate = s.sessions ? Math.round((s.bounces / s.sessions) * 100) : 0
+    const convRate = s.pageViews ? ((s.adds + s.clicks) / s.pageViews) * 100 : 0
     const engagement =
       viewsPerSession >= 2 && avgSeconds >= 60 && bounceRate <= 50 ? 1 : 0
     const performance = Math.round(
@@ -343,8 +301,8 @@ export async function getSourceRankings(days: number): Promise<SourceRankRow[]> 
     )
     rows.push({
       source,
-      sessions,
-      pageViews: s.views,
+      sessions: s.sessions,
+      pageViews: s.pageViews,
       viewsPerSession,
       avgSeconds,
       bounceRate,
@@ -367,28 +325,21 @@ export interface FunnelRow {
 }
 
 export async function getFunnel(days: number): Promise<FunnelRow[]> {
-  const events = await fetchEvents(days, [
-    'session_start',
-    'page_view',
-    'add_to_cart',
-    'buy_now',
-    'affiliate_click',
-    'newsletter_subscribe',
-  ])
-  const count = (eventsToCount: string[]) => {
-    const set = new Set<string>()
-    for (const e of events) {
-      if (!eventsToCount.includes(e.event)) continue
-      if (e.session_id) set.add(e.session_id)
-    }
-    return set.size
+  const reports = await loadReports(days)
+  const totals = { sessions: 0, views: 0, adds: 0, clicks: 0, subs: 0 }
+  for (const p of reports) {
+    totals.sessions += num(p.sessions)
+    totals.views += num(p.page_views)
+    totals.adds += num(p.add_to_cart)
+    totals.clicks += num(p.affiliate_clicks)
+    totals.subs += num(p.newsletter_subscribes)
   }
   return [
-    { label: 'Sessions', count: count(['session_start']) },
-    { label: 'Page Views', count: count(['page_view']) },
-    { label: 'Add to Cart', count: count(['add_to_cart']) },
-    { label: 'Buy / Affiliate', count: count(['buy_now', 'affiliate_click']) },
-    { label: 'Newsletter Signups', count: count(['newsletter_subscribe']) },
+    { label: 'Sessions', count: totals.sessions },
+    { label: 'Page Views', count: totals.views },
+    { label: 'Add to Cart', count: totals.adds },
+    { label: 'Buy / Affiliate', count: totals.clicks },
+    { label: 'Newsletter Signups', count: totals.subs },
   ]
 }
 
@@ -402,52 +353,32 @@ export interface TrendPoint {
 }
 
 export async function getDailyTrend(days: number): Promise<TrendPoint[]> {
+  await ensureAggregates(days)
   const db = getDb()
   const { data, error } = await db
     .from('analytics_daily')
     .select('date, visitors, page_views, sessions, affiliate_clicks, bounces')
-    .gte('date', daysAgo(days).slice(0, 10))
+    .gte('date', daysAgo(days))
     .order('date', { ascending: true })
-  if (!error && data && data.length > 0) {
-    return (data as unknown as Array<{
-      date: string
-      visitors: number
-      page_views: number
-      sessions: number
-      affiliate_clicks: number
-      bounces: number
-    }>).map((r) => ({
-      date: String(r.date).slice(0, 10),
-      visitors: r.visitors,
-      pageViews: r.page_views,
-      sessions: r.sessions,
-      affiliateClicks: r.affiliate_clicks,
-      bounces: r.bounces,
-    }))
+  if (error) throw new Error('trend query failed: ' + error.message)
+  const byDate = new Map<
+    string,
+    { visitors: number; pageViews: number; sessions: number; affiliateClicks: number; bounces: number }
+  >()
+  for (const r of data ?? []) {
+    const date = String(r.date).slice(0, 10)
+    const agg =
+      byDate.get(date) ?? { visitors: 0, pageViews: 0, sessions: 0, affiliateClicks: 0, bounces: 0 }
+    agg.visitors += num(r.visitors)
+    agg.pageViews += num(r.page_views)
+    agg.sessions += num(r.sessions)
+    agg.affiliateClicks += num(r.affiliate_clicks)
+    agg.bounces += num(r.bounces)
+    byDate.set(date, agg)
   }
-  // Fallback: raw events when aggregation hasn't run yet.
-  const events = await fetchEvents(days, ['page_view', 'affiliate_click', 'buy_now'])
-  const map = new Map<string, TrendPoint>()
-  for (const e of events) {
-    const date = e.created_at.slice(0, 10)
-    const p = map.get(date) ?? {
-      date,
-      visitors: 0,
-      pageViews: 0,
-      sessions: 0,
-      affiliateClicks: 0,
-      bounces: 0,
-    }
-    if (e.event === 'page_view') {
-      p.pageViews++
-      p.visitors++
-      p.sessions++
-    } else {
-      p.affiliateClicks++
-    }
-    map.set(date, p)
-  }
-  return [...map.values()].sort((a, b) => a.date.localeCompare(b.date))
+  return [...byDate.entries()]
+    .map(([date, v]) => ({ date, ...v }))
+    .sort((a, b) => a.date.localeCompare(b.date))
 }
 
 /* ------------------------------- B7 realtime ------------------------------ */
@@ -470,6 +401,11 @@ export interface AffiliateFeedItem {
   created_at: string
 }
 
+/**
+ * Live monitor — intentionally reads recent raw events (bounded: 24h window,
+ * LIMIT 60, ordered by created_at). Cannot be pre-aggregated; this is the
+ * single documented exception to the aggregates-only dashboard rule.
+ */
 export async function getRealtimeSnapshot(): Promise<RealtimeSnapshot> {
   const db = getDb()
   const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString()
@@ -507,19 +443,30 @@ export async function getRealtimeSnapshot(): Promise<RealtimeSnapshot> {
     })
   return {
     onlineNow,
-    recent: events as RawEvent[],
+    recent: events,
     last24hClicks: clickEvents.length,
     last24hViews: events.filter((r) => r.event === 'page_view').length,
     affiliateFeed,
   }
 }
 
+interface RawEvent {
+  event: string
+  page: string | null
+  source: string | null
+  session_id: string | null
+  meta: Record<string, unknown> | null
+  ref_host?: string | null
+  created_at: string
+}
+
 export async function getTopPages(days: number): Promise<{ page: string; count: number }[]> {
-  const events = await fetchEvents(days, ['page_view'])
+  const reports = await loadReports(days)
   const counts = new Map<string, number>()
-  for (const e of events) {
-    const page = e.page ?? '/'
-    counts.set(page, (counts.get(page) ?? 0) + 1)
+  for (const p of reports) {
+    for (const t of arr<{ page: string; views: number }>(p, 'top_pages')) {
+      counts.set(t.page, (counts.get(t.page) ?? 0) + num(t.views))
+    }
   }
   return [...counts.entries()]
     .map(([page, count]) => ({ page, count }))
@@ -543,156 +490,74 @@ export interface SearchResultRow {
   clicks: number
 }
 
-const SEARCH_LOOKAHEAD_MS = 60 * 1000
-
-interface SessionEvent {
-  t: number
-  e: string
-  meta: Record<string, unknown>
-  page: string
-}
-
-async function fetchSearchEvents(days: number): Promise<Map<string, SessionEvent[]>> {
-  const events = await fetchEvents(days, [
-    'shop_search',
-    'blog_search',
-    'product_view',
-    'blog_card_click',
-    'blog_popular_post_click',
-    'page_view',
-  ])
-  const bySession = new Map<string, SessionEvent[]>()
-  for (const e of events) {
-    const sid = e.session_id ?? ''
-    if (!sid) continue
-    const arr = bySession.get(sid) ?? []
-    arr.push({
-      t: new Date(e.created_at).getTime(),
-      e: e.event,
-      meta: e.meta ?? {},
-      page: e.page ?? '',
-    })
-    bySession.set(sid, arr)
-  }
-  for (const arr of bySession.values()) arr.sort((a, b) => a.t - b.t)
-  return bySession
-}
-
-function searchTerm(e: SessionEvent): string {
-  return typeof e.meta.query === 'string' ? e.meta.query.trim().slice(0, 100) : ''
-}
-
 export async function getSearchRankings(
   days: number,
 ): Promise<{ product: SearchTermRow[]; blog: SearchTermRow[] }> {
-  const bySession = await fetchSearchEvents(days)
-  const buckets = {
-    product: new Map<string, { searches: number; noResults: number; clickThrough: number }>(),
-    blog: new Map<string, { searches: number; noResults: number; clickThrough: number }>(),
-  }
-  for (const arr of bySession.values()) {
-    for (let i = 0; i < arr.length; i++) {
-      const s = arr[i]
-      if (s.e !== 'shop_search' && s.e !== 'blog_search') continue
-      const term = searchTerm(s)
-      if (!term) continue
-      const bucket = buckets[s.e === 'shop_search' ? 'product' : 'blog']
-      const agg = bucket.get(term) ?? { searches: 0, noResults: 0, clickThrough: 0 }
-      agg.searches++
-      if (Number(s.meta.results ?? -1) === 0) agg.noResults++
-      for (let j = i + 1; j < arr.length; j++) {
-        const n = arr[j]
-        if (n.t - s.t > SEARCH_LOOKAHEAD_MS) break
-        if (n.e === 'shop_search' || n.e === 'blog_search') break
-        const clicked =
-          s.e === 'shop_search'
-            ? n.e === 'product_view'
-            : n.e === 'blog_card_click' ||
-              n.e === 'blog_popular_post_click' ||
-              (n.e === 'page_view' && /^\/blog\//.test(n.page))
-        if (clicked) {
-          agg.clickThrough++
-          break
-        }
-      }
-      bucket.set(term, agg)
+  const reports = await loadReports(days)
+  const productTerms: { term: string; searches: number; noResults: number; clickThroughs: number }[] = []
+  const blogTerms: { term: string; searches: number; noResults: number; clickThroughs: number }[] = []
+  for (const p of reports) {
+    const s = (p.search ?? {}) as {
+      product?: { term: string; searches: number; noResults: number; clickThroughs: number }[]
+      blog?: { term: string; searches: number; noResults: number; clickThroughs: number }[]
     }
+    productTerms.push(...(s.product ?? []))
+    blogTerms.push(...(s.blog ?? []))
   }
   const rank = (
-    map: Map<string, { searches: number; noResults: number; clickThrough: number }>,
-  ): SearchTermRow[] =>
-    [...map.entries()]
+    list: { term: string; searches: number; noResults: number; clickThroughs: number }[],
+  ): SearchTermRow[] => {
+    const merged = new Map<string, { searches: number; noResults: number; clickThroughs: number }>()
+    for (const t of list) {
+      const agg = merged.get(t.term) ?? { searches: 0, noResults: 0, clickThroughs: 0 }
+      agg.searches += num(t.searches)
+      agg.noResults += num(t.noResults)
+      agg.clickThroughs += num(t.clickThroughs)
+      merged.set(t.term, agg)
+    }
+    return [...merged.entries()]
       .map(([term, a]) => ({
         term,
         searches: a.searches,
         noResults: a.noResults,
-        clickThrough: a.clickThrough,
-        clickRate: a.searches ? Math.round((a.clickThrough / a.searches) * 100) : 0,
+        clickThrough: a.clickThroughs,
+        clickRate: a.searches ? Math.round((a.clickThroughs / a.searches) * 100) : 0,
       }))
       .sort((a, b) => b.searches - a.searches)
       .slice(0, 20)
-  return { product: rank(buckets.product), blog: rank(buckets.blog) }
+  }
+  return { product: rank(productTerms), blog: rank(blogTerms) }
 }
 
 export async function getSearchClickRank(
   days: number,
 ): Promise<{ product: SearchResultRow[]; blog: SearchResultRow[] }> {
-  const bySession = await fetchSearchEvents(days)
-  const productClicks = new Map<string, number>()
-  const blogClicks = new Map<string, number>()
-  for (const arr of bySession.values()) {
-    for (let i = 0; i < arr.length; i++) {
-      const s = arr[i]
-      if (s.e !== 'shop_search' && s.e !== 'blog_search') continue
-      for (let j = i + 1; j < arr.length; j++) {
-        const n = arr[j]
-        if (n.t - s.t > SEARCH_LOOKAHEAD_MS) break
-        if (n.e === 'shop_search' || n.e === 'blog_search') break
-        if (s.e === 'shop_search' && n.e === 'product_view') {
-          const slug =
-            typeof n.meta.product_slug === 'string'
-              ? n.meta.product_slug
-              : typeof n.meta.slug === 'string'
-                ? n.meta.slug
-                : ''
-          if (slug) productClicks.set(slug, (productClicks.get(slug) ?? 0) + 1)
-          break
-        }
-        if (s.e === 'blog_search') {
-          let slug = ''
-          if (n.e === 'blog_card_click' || n.e === 'blog_popular_post_click') {
-            slug =
-              typeof n.meta.post_slug === 'string'
-                ? n.meta.post_slug
-                : typeof n.meta.slug === 'string'
-                  ? n.meta.slug
-                  : ''
-          } else if (n.e === 'page_view' && /^\/blog\//.test(n.page)) {
-            slug = n.page.replace(/^\/blog\//, '').split(/[/?#]/)[0]
-          }
-          if (slug) blogClicks.set(slug, (blogClicks.get(slug) ?? 0) + 1)
-          if (n.e === 'blog_card_click' || n.e === 'blog_popular_post_click') break
-        }
-      }
-    }
+  const reports = await loadReports(days)
+  const rank = (
+    list: { slug: string; clicks: number }[],
+    nameOf: (slug: string) => string,
+  ): SearchResultRow[] => {
+    const merged = new Map<string, number>()
+    for (const c of list) merged.set(c.slug, (merged.get(c.slug) ?? 0) + num(c.clicks))
+    return [...merged.entries()]
+      .map(([slug, clicks]) => ({ slug, name: nameOf(slug), clicks }))
+      .sort((a, b) => b.clicks - a.clicks)
+      .slice(0, 20)
   }
-  const product: SearchResultRow[] = [...productClicks.entries()]
-    .map(([slug, clicks]) => ({
-      slug,
-      name: PRODUCTS.find((p) => p.slug === slug)?.name ?? slug,
-      clicks,
-    }))
-    .sort((a, b) => b.clicks - a.clicks)
-    .slice(0, 20)
-  const blog: SearchResultRow[] = [...blogClicks.entries()]
-    .map(([slug, clicks]) => ({
-      slug,
-      name: POSTS.find((p) => p.slug === slug)?.title ?? slug,
-      clicks,
-    }))
-    .sort((a, b) => b.clicks - a.clicks)
-    .slice(0, 20)
-  return { product, blog }
+  const productList: { slug: string; clicks: number }[] = []
+  const blogList: { slug: string; clicks: number }[] = []
+  for (const p of reports) {
+    const s = (p.search ?? {}) as {
+      productClicks?: { slug: string; clicks: number }[]
+      blogClicks?: { slug: string; clicks: number }[]
+    }
+    productList.push(...(s.productClicks ?? []))
+    blogList.push(...(s.blogClicks ?? []))
+  }
+  return {
+    product: rank(productList, (slug) => PRODUCTS.find((p) => p.slug === slug)?.name ?? slug),
+    blog: rank(blogList, (slug) => POSTS.find((p) => p.slug === slug)?.title ?? slug),
+  }
 }
 
 /* ---------------------------- C3: FAQ rankings ---------------------------- */
@@ -704,17 +569,16 @@ export interface FaqExpandRow {
 }
 
 export async function getFaqExpandRanking(days: number): Promise<FaqExpandRow[]> {
-  const events = await fetchEvents(days, ['faq_expand'])
-  const byQuestion = new Map<string, { count: number; location: string }>()
-  for (const e of events) {
-    const q = typeof e.meta?.question === 'string' ? e.meta.question.trim() : ''
-    if (!q) continue
-    const loc = typeof e.meta?.location === 'string' ? e.meta.location : 'unknown'
-    const agg = byQuestion.get(q) ?? { count: 0, location: loc }
-    agg.count++
-    byQuestion.set(q, agg)
+  const reports = await loadReports(days)
+  const merged = new Map<string, { count: number; location: string }>()
+  for (const p of reports) {
+    for (const f of arr<{ question: string; count: number; location: string }>(p, 'faq')) {
+      const agg = merged.get(f.question) ?? { count: 0, location: f.location }
+      agg.count += num(f.count)
+      merged.set(f.question, agg)
+    }
   }
-  return [...byQuestion.entries()]
+  return [...merged.entries()]
     .map(([question, a]) => ({ question, count: a.count, location: a.location }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 20)
@@ -727,19 +591,19 @@ export interface FaqGoogleRow {
 }
 
 export async function getFaqGoogleTraffic(days: number): Promise<FaqGoogleRow[]> {
-  const events = await fetchEvents(days, ['page_view'])
-  const byPage = new Map<string, { views: number; sessions: Set<string> }>()
-  for (const e of events) {
-    const page = e.page ?? ''
-    if (!page.startsWith('/faq')) continue
-    if ((e.source ?? '') !== 'google') continue
-    const agg = byPage.get(page) ?? { views: 0, sessions: new Set<string>() }
-    agg.views++
-    if (e.session_id) agg.sessions.add(e.session_id)
-    byPage.set(page, agg)
+  const reports = await loadReports(days)
+  const merged = new Map<string, { views: number; sessions: number }>()
+  for (const p of reports) {
+    for (const s of arr<{ page: string; googleViews: number; googleSessions: number }>(p, 'sePages')) {
+      if (!s.page.startsWith('/faq')) continue
+      const agg = merged.get(s.page) ?? { views: 0, sessions: 0 }
+      agg.views += num(s.googleViews)
+      agg.sessions += num(s.googleSessions)
+      merged.set(s.page, agg)
+    }
   }
-  return [...byPage.entries()]
-    .map(([page, a]) => ({ page, views: a.views, sessions: a.sessions.size }))
+  return [...merged.entries()]
+    .map(([page, a]) => ({ page, views: a.views, sessions: a.sessions }))
     .sort((a, b) => b.views - a.views)
 }
 
@@ -758,50 +622,22 @@ export async function getDeviceAnalytics(days: number): Promise<{
   os: DeviceAnalyticsRow[]
   browsers: DeviceAnalyticsRow[]
 }> {
-  const db = getDb()
-  const { data: sessions, error } = await db
-    .from('analytics_sessions')
-    .select('session_id, device, page_views')
-    .gte('started_at', daysAgo(days))
-  if (error) throw new Error('device query failed: ' + error.message)
-
-  // sessions table has no os/browser columns; derive them from session_start events
-  const { data: starts, error: startsError } = await db
-    .from('analytics_events')
-    .select('session_id, os, browser')
-    .eq('event', 'session_start')
-    .gte('created_at', daysAgo(days))
-  if (startsError) throw new Error('device start query failed: ' + startsError.message)
-  const sessionOs = new Map<string, string>()
-  const sessionBrowser = new Map<string, string>()
-  for (const s of starts ?? []) {
-    const sid = String(s.session_id ?? '')
-    if (!sessionOs.has(sid) && s.os) sessionOs.set(sid, String(s.os))
-    if (!sessionBrowser.has(sid) && s.browser) sessionBrowser.set(sid, String(s.browser))
+  const reports = await loadReports(days)
+  const merged: Record<string, Map<string, { sessions: number; pageViews: number; conversions: number }>> = {
+    devices: new Map(),
+    os: new Map(),
+    browsers: new Map(),
   }
-
-  const events = await fetchEvents(days, ['add_to_cart', 'buy_now', 'affiliate_click', 'deal_price_click'])
-  const convSessions = new Set<string>()
-  for (const e of events) if (e.session_id) convSessions.add(e.session_id)
-
-  const by = {
-    devices: new Map<string, { sessions: number; pageViews: number; conversions: number }>(),
-    os: new Map<string, { sessions: number; pageViews: number; conversions: number }>(),
-    browsers: new Map<string, { sessions: number; pageViews: number; conversions: number }>(),
-  }
-  for (const s of sessions ?? []) {
-    const sid = String(s.session_id ?? '')
-    const conv = convSessions.has(sid) ? 1 : 0
-    for (const [kind, key] of [
-      ['devices', String(s.device ?? 'unknown')],
-      ['os', sessionOs.get(sid) ?? 'unknown'],
-      ['browsers', sessionBrowser.get(sid) ?? 'unknown'],
-    ] as const) {
-      const agg = by[kind].get(key) ?? { sessions: 0, pageViews: 0, conversions: 0 }
-      agg.sessions++
-      agg.pageViews += Number(s.page_views ?? 1)
-      agg.conversions += conv
-      by[kind].set(key, agg)
+  for (const p of reports) {
+    const d = (p.devices ?? {}) as Record<string, unknown>
+    for (const kind of ['devices', 'os', 'browsers'] as const) {
+      for (const row of (d[kind] as { key: string; sessions: number; pageViews: number; conversions: number }[]) ?? []) {
+        const agg = merged[kind].get(row.key) ?? { sessions: 0, pageViews: 0, conversions: 0 }
+        agg.sessions += num(row.sessions)
+        agg.pageViews += num(row.pageViews)
+        agg.conversions += num(row.conversions)
+        merged[kind].set(row.key, agg)
+      }
     }
   }
   const map = (m: Map<string, { sessions: number; pageViews: number; conversions: number }>): DeviceAnalyticsRow[] =>
@@ -814,10 +650,15 @@ export async function getDeviceAnalytics(days: number): Promise<{
         conversionRate: a.sessions ? Math.round((a.conversions / a.sessions) * 1000) / 10 : 0,
       }))
       .sort((a, b) => b.sessions - a.sessions)
-  return { devices: map(by.devices), os: map(by.os), browsers: map(by.browsers) }
+      .slice(0, 20)
+  return {
+    devices: map(merged.devices),
+    os: map(merged.os),
+    browsers: map(merged.browsers),
+  }
 }
 
-/* --------------------------- E: location analytics --------------------------- */
+/* ---------------------------- E: location analytics ---------------------------- */
 
 export interface LocationRow {
   country: string
@@ -830,28 +671,21 @@ export interface LocationRow {
 }
 
 const COUNTRY_NAMES: Record<string, string> = {
+  BD: 'Bangladesh',
   US: 'United States',
-  CA: 'Canada',
   GB: 'United Kingdom',
+  CA: 'Canada',
+  AU: 'Australia',
   DE: 'Germany',
   FR: 'France',
-  IN: 'India',
-  BD: 'Bangladesh',
-  AE: 'UAE',
-  AU: 'Australia',
-  JP: 'Japan',
-  SG: 'Singapore',
   NL: 'Netherlands',
   SE: 'Sweden',
   NO: 'Norway',
   DK: 'Denmark',
-  IE: 'Ireland',
-  NZ: 'New Zealand',
-  PH: 'Philippines',
+  FI: 'Finland',
+  IN: 'India',
   PK: 'Pakistan',
-  MY: 'Malaysia',
-  TH: 'Thailand',
-  ID: 'Indonesia',
+  AE: 'United Arab Emirates',
   SA: 'Saudi Arabia',
   QA: 'Qatar',
   KW: 'Kuwait',
@@ -866,49 +700,50 @@ const COUNTRY_NAMES: Record<string, string> = {
 }
 
 export async function getLocationAnalytics(days: number): Promise<LocationRow[]> {
-  const db = getDb()
-  const { data: sessions, error } = await db
-    .from('analytics_sessions')
-    .select('session_id, country, city, page_views')
-    .gte('started_at', daysAgo(days))
-  if (error) throw new Error('location query failed: ' + error.message)
-
-  const events = await fetchEvents(days, ['add_to_cart', 'buy_now', 'affiliate_click', 'deal_price_click'])
-  const convSessions = new Set<string>()
-  for (const e of events) if (e.session_id) convSessions.add(e.session_id)
-
-  const byCountry = new Map<string, LocationRow>()
-  for (const s of sessions ?? []) {
-    const country = String(s.country ?? 'unknown')
-    const city = String(s.city ?? 'unknown')
-    const row =
-      byCountry.get(country) ?? {
-        country,
-        countryName: COUNTRY_NAMES[country] ?? country,
-        sessions: 0,
-        pageViews: 0,
-        conversions: 0,
-        conversionRate: 0,
-        cities: [],
+  const reports = await loadReports(days)
+  const merged = new Map<
+    string,
+    { sessions: number; pageViews: number; conversions: number; cities: Map<string, { sessions: number; pageViews: number; conversions: number }> }
+  >()
+  for (const p of reports) {
+    for (const loc of arr<{
+      country: string
+      sessions: number
+      pageViews: number
+      conversions: number
+      cities: { city: string; sessions: number; pageViews: number; conversions: number }[]
+    }>(p, 'locations')) {
+      const row =
+        merged.get(loc.country) ??
+        { sessions: 0, pageViews: 0, conversions: 0, cities: new Map<string, { sessions: number; pageViews: number; conversions: number }>() }
+      row.sessions += num(loc.sessions)
+      row.pageViews += num(loc.pageViews)
+      row.conversions += num(loc.conversions)
+      for (const c of loc.cities ?? []) {
+        const city = row.cities.get(c.city) ?? { sessions: 0, pageViews: 0, conversions: 0 }
+        city.sessions += num(c.sessions)
+        city.pageViews += num(c.pageViews)
+        city.conversions += num(c.conversions)
+        row.cities.set(c.city, city)
       }
-    row.sessions++
-    row.pageViews += Number(s.page_views ?? 1)
-    if (convSessions.has(String(s.session_id ?? ''))) row.conversions++
-    let c = row.cities.find((x) => x.city === city)
-    if (!c) {
-      c = { city, sessions: 0, pageViews: 0, conversions: 0 }
-      row.cities.push(c)
+      merged.set(loc.country, row)
     }
-    c.sessions++
-    c.pageViews += Number(s.page_views ?? 1)
-    if (convSessions.has(String(s.session_id ?? ''))) c.conversions++
-    byCountry.set(country, row)
   }
-  const rows = [...byCountry.values()]
-  for (const r of rows) {
-    r.conversionRate = r.sessions ? Math.round((r.conversions / r.sessions) * 1000) / 10 : 0
-    r.cities.sort((a, b) => b.sessions - a.sessions)
-    r.cities = r.cities.slice(0, 5)
+  const rows: LocationRow[] = []
+  for (const [country, r] of merged) {
+    const cities = [...r.cities.entries()]
+      .map(([city, c]) => ({ city, ...c }))
+      .sort((a, b) => b.sessions - a.sessions)
+      .slice(0, 5)
+    rows.push({
+      country,
+      countryName: COUNTRY_NAMES[country] ?? country,
+      sessions: r.sessions,
+      pageViews: r.pageViews,
+      conversions: r.conversions,
+      conversionRate: r.sessions ? Math.round((r.conversions / r.sessions) * 1000) / 10 : 0,
+      cities,
+    })
   }
   rows.sort((a, b) => b.sessions - a.sessions)
   return rows.slice(0, 20)
@@ -923,33 +758,32 @@ export interface SearchEngineTrafficRow {
 }
 
 /**
- * Organic search traffic per page, derived from referral headers
- * (source=google / google ref_host) — Search Console is not connected.
+ * Organic search traffic per page from referral headers (any search engine:
+ * google/bing/duckduckgo summed — Search Console is not connected).
  */
 export async function getSearchEngineTraffic(
   days: number,
 ): Promise<SearchEngineTrafficRow[]> {
-  const events = await fetchEvents(days, ['page_view', 'session_start'])
-  const google = (r: RawEvent) =>
-    r.source === 'google' ||
-    String(r.ref_host ?? '').includes('google') ||
-    String(r.ref_host ?? '').includes('bing') ||
-    String(r.ref_host ?? '').includes('duckduckgo')
-  const byPage = new Map<string, { views: number; sessions: Set<string> }>()
-  for (const e of events) {
-    if (!google(e)) continue
-    const page = e.page ?? '/'
-    const row = byPage.get(page) ?? { views: 0, sessions: new Set<string>() }
-    if (e.event === 'page_view') row.views++
-    if (e.session_id) row.sessions.add(String(e.session_id))
-    byPage.set(page, row)
+  const reports = await loadReports(days)
+  const merged = new Map<string, { views: number; sessions: number }>()
+  for (const p of reports) {
+    for (const s of arr<{
+      page: string
+      googleViews: number
+      bingViews: number
+      ddgViews: number
+      googleSessions: number
+      bingSessions: number
+      ddgSessions: number
+    }>(p, 'sePages')) {
+      const agg = merged.get(s.page) ?? { views: 0, sessions: 0 }
+      agg.views += num(s.googleViews) + num(s.bingViews) + num(s.ddgViews)
+      agg.sessions += num(s.googleSessions) + num(s.bingSessions) + num(s.ddgSessions)
+      merged.set(s.page, agg)
+    }
   }
-  return [...byPage.entries()]
-    .map(([page, r]) => ({
-      page,
-      googleViews: r.views,
-      googleSessions: r.sessions.size,
-    }))
+  return [...merged.entries()]
+    .map(([page, r]) => ({ page, googleViews: r.views, googleSessions: r.sessions }))
     .sort((a, b) => b.googleViews - a.googleViews)
     .slice(0, 20)
 }
@@ -967,37 +801,31 @@ export interface NewsletterStats {
  * Rate = subscribes / impressions (popup + hamburger quick-subscribe box).
  */
 export async function getNewsletterStats(days: number): Promise<NewsletterStats> {
-  const events = await fetchEvents(days, [
-    'newsletter_subscribe',
-    'newsletter_popup_shown',
-    'newsletter_shown',
-  ])
-  const subCounts = new Map<string, number>()
-  const shownCounts = new Map<string, number>()
+  const reports = await loadReports(days)
+  const merged = new Map<string, { shown: number; subscribes: number }>()
   let subscribes = 0
   let impressions = 0
-  for (const e of events) {
-    const loc = String(((e.meta ?? {}) as Record<string, unknown>).location ?? 'unknown')
-    if (e.event === 'newsletter_subscribe') {
-      subscribes++
-      subCounts.set(loc, (subCounts.get(loc) ?? 0) + 1)
-    } else {
-      impressions++
-      shownCounts.set(loc, (shownCounts.get(loc) ?? 0) + 1)
+  for (const p of reports) {
+    for (const n of arr<{ location: string; shown: number; subscribes: number }>(p, 'newsletter')) {
+      const agg = merged.get(n.location) ?? { shown: 0, subscribes: 0 }
+      agg.shown += num(n.shown)
+      agg.subscribes += num(n.subscribes)
+      merged.set(n.location, agg)
+      impressions += num(n.shown)
+      subscribes += num(n.subscribes)
     }
   }
-  const locations = new Set([...subCounts.keys(), ...shownCounts.keys()])
   return {
     subscribes,
     impressions,
     subscribeRate: impressions
       ? Math.round((subscribes / impressions) * 10000) / 100
       : 0,
-    byLocation: [...locations]
-      .map((location) => ({
+    byLocation: [...merged.entries()]
+      .map(([location, a]) => ({
         location,
-        subscribes: subCounts.get(location) ?? 0,
-        impressions: shownCounts.get(location) ?? 0,
+        subscribes: a.subscribes,
+        impressions: a.shown,
       }))
       .sort((a, b) => b.impressions - a.impressions),
   }

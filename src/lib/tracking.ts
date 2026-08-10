@@ -287,7 +287,8 @@ export function initAnalytics() {
   const sendTime = () => {
     const seconds = Math.round((Date.now() - now) / 1000)
     if (seconds >= 2) {
-      track('time_on_page', page, { seconds }, { force: true })
+      // no force: dedupe keeps pagehide + visibilitychange from double-sending
+      track('time_on_page', page, { seconds })
     }
   }
   const onVisibility = () => {
@@ -369,7 +370,7 @@ export function initAnalytics() {
       const t = e.target as HTMLElement | null
       if (t && t.tagName === 'IMG') {
         const src = (t as HTMLImageElement).src || ''
-        if (src) track('image_error', page, { src: src.slice(0, 300), _dedupKey: src }, { force: true })
+        if (src) track('image_error', page, { src: src.slice(0, 300), _dedupKey: src })
       }
     },
     true,

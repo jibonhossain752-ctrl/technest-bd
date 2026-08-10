@@ -1,9 +1,5 @@
 import { NextResponse } from 'next/server'
-import {
-  aggregateRange,
-  buildDailyReportPayload,
-  storeDailyReport,
-} from '@/lib/analytics-aggregate'
+import { aggregateRange, aggregateDay } from '@/lib/analytics-aggregate'
 import { sendDailyReportEmail } from '@/lib/analytics-email'
 
 export const runtime = 'nodejs'
@@ -24,6 +20,8 @@ export async function GET(req: Request) {
     new URL(req.url).searchParams.get('testEmail') === '1'
 
   try {
+    // Idempotent: aggregateDay deletes + recomputes each date, so overlapping
+    // ranges never double-count. Reports are stored per date inside aggregateDay.
     const results = await aggregateRange(3)
     const withEvents = results.filter((r) => r.events > 0)
     const latest = withEvents.length > 0
@@ -31,9 +29,8 @@ export async function GET(req: Request) {
       : results[results.length - 1]
     let email = null
     if (latest && latest.events > 0) {
-      await storeDailyReport(latest.date)
-      const payload = await buildDailyReportPayload(latest.date)
-      email = await sendDailyReportEmail(payload, { forceTest })
+      const res = await aggregateDay(latest.date)
+      email = await sendDailyReportEmail(res.payload, { forceTest })
     }
     return NextResponse.json({ ok: true, results, email })
   } catch (err) {
