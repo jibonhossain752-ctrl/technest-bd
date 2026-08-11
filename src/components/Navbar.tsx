@@ -142,7 +142,7 @@ export default function Navbar() {
           <img
             src="/gadgeterea-logo.png"
             alt="GadgetErea"
-            width={58}
+            width={94}
             height={32}
             className="logo-img"
           />
@@ -400,7 +400,7 @@ export default function Navbar() {
             <img
               src="/gadgeterea-logo.png"
               alt="GadgetErea"
-              width={80}
+              width={129}
               height={44}
               className="logo-img"
             />

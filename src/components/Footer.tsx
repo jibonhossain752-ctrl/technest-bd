@@ -35,7 +35,7 @@ export default function Footer() {
             <img
               src="/gadgeterea-logo.png"
               alt="GadgetErea"
-              width={66}
+              width={106}
               height={36}
               className="logo-img"
             />
