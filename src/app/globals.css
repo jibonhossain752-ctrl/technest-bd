@@ -1322,40 +1322,7 @@ button {
   color: #fecaca;
 }
 
-/* ---------- Page header ---------- */
-.page-header {
-  background: linear-gradient(135deg, #0b1f3a 0%, #1b3a63 100%);
-  padding: 34px 0 34px;
-}
-
-.breadcrumbs {
-  font-size: 0.85rem;
-  color: #cbd5e1;
-  margin-bottom: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.breadcrumbs a {
-  color: #cbd5e1;
-  transition: color 0.2s;
-}
-
-.breadcrumbs a:hover {
-  color: var(--accent);
-}
-
-.crumb-sep {
-  margin: 0 4px;
-  color: #64748b;
-}
-
-.crumb-current {
-  color: #fff;
-  font-weight: 500;
-}
-
+/* ---------- Page heading ---------- */
 .page-breadcrumb {
   background: var(--bg-soft);
   padding: 12px 0;
@@ -1366,18 +1333,18 @@ button {
 
 .category-seo-head {
   text-align: center;
-  padding: 28px 1rem 4px;
+  padding: 36px 1rem 8px;
 }
 
 .category-seo-head h1 {
-  font-size: 1.9rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 800;
   color: var(--dark);
   margin-bottom: 10px;
 }
 
 .category-seo-intro {
-  max-width: 720px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 0;
   font-size: 0.95rem;
@@ -1415,17 +1382,6 @@ button {
 .page-breadcrumb .crumb-current {
   color: var(--dark);
   font-weight: 600;
-}
-
-.page-header h1 {
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 800;
-  color: #fff;
-}
-
-.page-header p {
-  color: #cbd5e1;
-  margin-top: 6px;
 }
 
 /* ---------- Shop ---------- */
@@ -5754,7 +5710,7 @@ button {
 }
 
 .blog-head h1 {
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 800;
   color: var(--dark);
   margin-bottom: 8px;
@@ -7373,33 +7329,6 @@ button {
   display: block;
   opacity: 1;
   visibility: visible;
-}
-
-/* --- Page-header right-side decorative glow --- */
-.page-header .container {
-  position: relative;
-}
-.page-header .container::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 65%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-@media (max-width: 767px) {
-  .page-header .container::after {
-    width: 120px;
-    height: 120px;
-    right: -20px;
-  }
-  .page-header {
-    padding: 28px 0;
-  }
 }
 
 /* --- Hero animated gradient + floating + pulse + staggered text + CTA glow --- */

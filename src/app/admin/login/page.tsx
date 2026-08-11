@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import PageHeader from '@/components/ui/PageHeader'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export default function AdminLoginPage() {
   const router = useRouter()
@@ -39,7 +39,11 @@ export default function AdminLoginPage() {
 
   return (
     <>
-      <PageHeader title="Admin Login" subtitle="Restricted area — owners only" />
+      <Breadcrumb crumbs={[{ label: 'Admin Login' }]} />
+      <div className="category-seo-head">
+        <h1>Admin Login</h1>
+        <p className="category-seo-intro">Restricted area — owners only</p>
+      </div>
 
       <section className="auth container">
         <div className="auth-card">

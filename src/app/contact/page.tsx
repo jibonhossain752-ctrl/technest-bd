@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
 import SocialIcon from '@/components/SocialIcon'
-import PageHeader from '@/components/ui/PageHeader'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 import type { PlatformKey } from '@/lib/socials'
 
 export const metadata: Metadata = {
@@ -52,10 +52,14 @@ const CONTACT_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'yo
 export default function ContactPage() {
   return (
     <>
-      <PageHeader
-        title="Contact GadgetErea"
-        subtitle="Questions about an order, warranty or a gadget find? We reply within 24 hours."
-      />
+      <Breadcrumb crumbs={[{ label: 'Contact' }]} />
+      <div className="category-seo-head">
+        <h1>Contact GadgetErea</h1>
+        <p className="category-seo-intro">
+          Questions about an order, warranty or a gadget find? We reply within
+          24 hours.
+        </p>
+      </div>
       <section className="contact container">
         <div className="contact-layout">
           <ContactForm />

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import PageHeader from '@/components/ui/PageHeader'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export const metadata: Metadata = {
   title: 'About GadgetErea – Your Trusted Gadget Store',
@@ -72,10 +72,13 @@ const STATS = [
 export default function AboutPage() {
   return (
     <>
-      <PageHeader
-        title="About GadgetErea"
-        subtitle="Where trending gadgets and the best Amazon finds come from."
-      />
+      <Breadcrumb crumbs={[{ label: 'About' }]} />
+      <div className="category-seo-head">
+        <h1>About GadgetErea</h1>
+        <p className="category-seo-intro">
+          Where trending gadgets and the best Amazon finds come from.
+        </p>
+      </div>
       <section className="about-intro container">
         <div className="about-text">
           <h2>Who We Are</h2>

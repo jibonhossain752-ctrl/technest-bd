@@ -5,7 +5,7 @@ import type { FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/context/useAuth'
-import PageHeader from '@/components/ui/PageHeader'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export default function LoginPage() {
   const { login } = useAuth()
@@ -31,7 +31,11 @@ export default function LoginPage() {
 
   return (
     <>
-      <PageHeader title="Login" subtitle="Welcome back to GadgetErea" />
+      <Breadcrumb crumbs={[{ label: 'Login' }]} />
+      <div className="category-seo-head">
+        <h1>Login</h1>
+        <p className="category-seo-intro">Welcome back to GadgetErea</p>
+      </div>
 
       <section className="auth container">
         <div className="auth-card">

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
-import PageHeader from '@/components/ui/PageHeader'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 import { track, pixelFor } from '@/lib/tracking'
 
 const VISIBLE_ITEMS = 3
@@ -63,7 +63,10 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <>
-        <PageHeader title="Checkout" />
+        <Breadcrumb crumbs={[{ label: 'Checkout' }]} />
+        <div className="category-seo-head">
+          <h1>Checkout</h1>
+        </div>
         <section className="container">
           <div className="empty-state">
             <span className="empty-emoji">{'🛒'}</span>

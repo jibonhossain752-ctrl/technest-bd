@@ -5,7 +5,7 @@ import type { FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/context/useAuth'
-import PageHeader from '@/components/ui/PageHeader'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export default function RegisterPage() {
   const { register } = useAuth()
@@ -57,7 +57,11 @@ export default function RegisterPage() {
 
   return (
     <>
-      <PageHeader title="Create Account" subtitle="Join GadgetErea today" />
+      <Breadcrumb crumbs={[{ label: 'Create Account' }]} />
+      <div className="category-seo-head">
+        <h1>Create Account</h1>
+        <p className="category-seo-intro">Join GadgetErea today</p>
+      </div>
 
       <section className="auth container">
         <div className="auth-card">

@@ -25,6 +25,16 @@ post, product, page, section, or anything else). Do not wait to be asked.
 7. Use `gadgeterea.com` for canonical URLs, sitemap URLs, and any hardcoded
    domain references — never `technest-bd.vercel.app` (unless explicitly told
    otherwise).
+8. SEO correctness must NEVER come at the cost of visual quality. Implement
+   SEO requirements (H1, meta, keywords, alt text, schema) with the site's
+   existing design language — subtle, well-integrated elements only: a light
+   breadcrumb bar (`Breadcrumb` component) + a plain, properly styled H1 block
+   (`.category-seo-head` / `.blog-head` styles). Whenever a requirement can be
+   satisfied multiple ways, choose the option that best preserves or enhances
+   the page's design. NEVER introduce heavy or disruptive elements (dark
+   banners, oversized headers) just to satisfy a checklist item. The old
+   dark-blue `.page-header` hero banner (deleted `PageHeader.tsx`) is retired
+   site-wide — do not reintroduce it.
 
 ## 2. Analytics — every new addition
 
@@ -62,6 +72,9 @@ tracking active and verified.
   in paths.
 - Build/verify: `npm.cmd run build`. Verify SEO output on the built HTML in
   `.next/server/app/` (see `C:\Users\User\AppData\Local\Temp\opencode\verify-seo.js`).
+- Dark-blue `.page-header` hero banners are retired site-wide (old
+  `src/components/ui/PageHeader.tsx` deleted). Page headers = light
+  `Breadcrumb` bar + `.category-seo-head` H1 block.
 - Commit + push to `main`; Vercel auto-deploys gadgeterea.com.
 - Live site 308-redirects to `www.gadgeterea.com`; keep canonical/sitemap URLs
   on `gadgeterea.com` (non-www) per the SEO prompt unless told otherwise.
