@@ -14,6 +14,21 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 
+const DEFAULT_KEEP_BROWSING = [
+  {
+    href: '/deals',
+    label: 'Gadget deals online — see this week\u2019s discounts',
+  },
+  {
+    href: '/shop/accessories',
+    label: 'Cool tech gadgets under $50 in Accessories',
+  },
+  {
+    href: '/shop/audio-wearables',
+    label: 'Trending gadgets — audio & wearables',
+  },
+]
+
 export function generateStaticParams() {
   return POSTS.map((post) => ({ slug: post.slug }))
 }
@@ -207,15 +222,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <nav className="blog-post-links" aria-label="Related shopping links">
             <h2>Keep Browsing</h2>
             <ul>
-              <li>
-                <Link href="/deals">Gadget deals online — see this week&apos;s discounts</Link>
-              </li>
-              <li>
-                <Link href="/shop/accessories">Cool tech gadgets under $50 in Accessories</Link>
-              </li>
-              <li>
-                <Link href="/shop/audio-wearables">Trending gadgets — audio &amp; wearables</Link>
-              </li>
+              {(post.keepBrowsing ?? DEFAULT_KEEP_BROWSING).map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
