@@ -5,6 +5,7 @@ import { CartProvider } from '@/context/CartProvider'
 import { AuthProvider } from '@/context/AuthProvider'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import MobileBottomNav from '@/components/MobileBottomNav'
 import Toast from '@/components/Toast'
 import ScrollToTop from '@/components/ScrollToTop'
 import AnalyticsBootstrap from '@/components/AnalyticsBootstrap'
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <ScrollToTop />
             <main>{children}</main>
             <Footer />
+            <MobileBottomNav />
             <Toast />
             <AnalyticsBootstrap />
           </CartProvider>

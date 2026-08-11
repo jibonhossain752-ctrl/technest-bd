@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -44,6 +44,9 @@ export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false)
   const [avatar, setAvatar] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
+  const mobileSearchRef = useRef<HTMLDivElement>(null)
+  const mobileSearchInputRef = useRef<HTMLInputElement>(null)
   const pathname = usePathname()
   const router = useRouter()
 
@@ -66,7 +69,34 @@ export default function Navbar() {
   }, [isMobile])
 
   useEffect(() => {
-    const anyOpen = menuOpen || deskSidebarOpen
+    setMobileSearchOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    if (!mobileSearchOpen) return
+    const onDown = (e: PointerEvent) => {
+      if (
+        mobileSearchRef.current &&
+        !mobileSearchRef.current.contains(e.target as Node)
+      ) {
+        track('header_search', undefined, { action: 'close_outside' })
+        setMobileSearchOpen(false)
+      }
+    }
+    document.addEventListener('pointerdown', onDown)
+    return () => document.removeEventListener('pointerdown', onDown)
+  }, [mobileSearchOpen])
+
+  useEffect(() => {
+    if (!isMobile || !mobileSearchOpen) return
+    const onPop = () => setMobileSearchOpen(false)
+    window.history.pushState({ mobileSearch: true }, '')
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [mobileSearchOpen, isMobile])
+
+  useEffect(() => {
+    const anyOpen = menuOpen || deskSidebarOpen || mobileSearchOpen
     if (!anyOpen) return
     const prevBodyOverflow = document.body.style.overflow
     const prevHtmlOverflow = document.documentElement.style.overflow
@@ -76,6 +106,7 @@ export default function Navbar() {
       if (e.key === 'Escape') {
         setMenuOpen(false)
         setDeskSidebarOpen(false)
+        setMobileSearchOpen(false)
       }
     }
     window.addEventListener('keydown', onKey)
@@ -84,9 +115,17 @@ export default function Navbar() {
       document.documentElement.style.overflow = prevHtmlOverflow
       window.removeEventListener('keydown', onKey)
     }
-  }, [menuOpen, deskSidebarOpen])
+  }, [menuOpen, deskSidebarOpen, mobileSearchOpen])
 
   const closeMenu = () => setMenuOpen(false)
+
+  const openMobileSearch = () => {
+    if (!mobileSearchOpen) {
+      track('header_search', undefined, { action: 'open' })
+    }
+    setMobileSearchOpen(true)
+    mobileSearchInputRef.current?.focus()
+  }
 
   const goHomeFresh = (e: React.MouseEvent) => {
     closeMenu()
@@ -395,7 +434,11 @@ export default function Navbar() {
     >
       <nav className="navbar">
         <div className="container nav-container">
-          <Link href="/" className="logo" onClick={goHomeFresh}>
+          <Link
+            href="/"
+            className={`logo${mobileSearchOpen ? ' search-open' : ''}`}
+            onClick={goHomeFresh}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/gadgeterea-logo.png"
@@ -435,6 +478,53 @@ export default function Navbar() {
             </form>
           )}
 
+          {isMobile && (
+            <div
+              ref={mobileSearchRef}
+              className={`m-search${mobileSearchOpen ? ' search-open' : ''}`}
+              onClick={() => openMobileSearch()}
+            >
+              <form className="m-search-form" role="search" onSubmit={submitSearch}>
+                <span className="m-search-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                  </svg>
+                </span>
+                <input
+                  ref={mobileSearchInputRef}
+                  type="search"
+                  placeholder="Search products…"
+                  aria-label="Search products"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => openMobileSearch()}
+                />
+                {mobileSearchOpen && (
+                  <button
+                    type="button"
+                    className="m-search-close"
+                    aria-label="Close search"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      track('header_search', undefined, { action: 'close' })
+                      setMobileSearchOpen(false)
+                    }}
+                  >
+                    ✕
+                  </button>
+                )}
+              </form>
+            </div>
+          )}
+
           {typeof document !== 'undefined' &&
             isMobile &&
             menuOpen &&
@@ -457,7 +547,9 @@ export default function Navbar() {
               document.body,
             )}
 
-          <div className="nav-actions">
+          <div
+            className={`nav-actions${mobileSearchOpen ? ' search-open' : ''}`}
+          >
             {user ? (
               <Link
                 href="/account"
@@ -489,7 +581,8 @@ export default function Navbar() {
                 </svg>
               </Link>
             )}
-            <Link href="/cart" className="icon-btn cart-btn" aria-label="Cart">
+            {!isMobile && (
+              <Link href="/cart" className="icon-btn cart-btn" aria-label="Cart">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -522,6 +615,7 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </Link>
+            )}
             <button
               type="button"
               className={`menu-toggle ${
