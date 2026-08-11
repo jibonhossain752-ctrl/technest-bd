@@ -11,6 +11,8 @@ let sessionIsNew = false
 let lastSent: Record<string, number> = {}
 let initialized = false
 const scrollSent: Record<number, boolean> = {}
+let currentPage = ''
+let pageStart = 0
 
 export function getSessionId(): string {
   if (sessionId) return sessionId
@@ -253,8 +255,9 @@ export function initAnalytics() {
   if (sessionIsNew) track('session_start')
   flushQueue()
 
-  const page = window.location.pathname
-  const now = Date.now()
+  currentPage = window.location.pathname
+  pageStart = Date.now()
+  const page = currentPage
 
   // Fire the page view 2.5s after load, asynchronously, without blocking.
   window.setTimeout(() => {
@@ -276,7 +279,7 @@ export function initAnalytics() {
       for (const pct of [25, 50, 75, 100]) {
         if (depth >= pct && !scrollSent[pct]) {
           scrollSent[pct] = true
-          track('scroll_depth', page, { percent: pct })
+          track('scroll_depth', currentPage, { percent: pct })
         }
       }
     })
@@ -285,10 +288,10 @@ export function initAnalytics() {
 
   // ---- time on page ----
   const sendTime = () => {
-    const seconds = Math.round((Date.now() - now) / 1000)
-    if (seconds >= 2) {
+    const seconds = Math.round((Date.now() - pageStart) / 1000)
+    if (seconds >= 2 && currentPage) {
       // no force: dedupe keeps pagehide + visibilitychange from double-sending
-      track('time_on_page', page, { seconds })
+      track('time_on_page', currentPage, { seconds })
     }
   }
   const onVisibility = () => {
@@ -389,4 +392,25 @@ export function initAnalytics() {
 
   // ---- scroll listener fallback cleanup ----
   window.setTimeout(onScroll, 3000)
+}
+
+/**
+ * Fire a page_view when Next.js App Router performs a client-side navigation
+ * (usePathname changes). Keeps per-page stats accurate for new pages/posts/
+ * products without any per-item setup.
+ */
+export function onRouteChange(pathname: string) {
+  if (typeof window === 'undefined' || !initialized) return
+  const p = pathname || window.location.pathname
+  if (!p || p === currentPage) return
+  // Flush the time spent on the page we are leaving: SPA navigations never
+  // fire pagehide, so without this the previous page's time-on-page is lost
+  // (and its exit never recorded).
+  const seconds = Math.round((Date.now() - pageStart) / 1000)
+  if (seconds >= 2 && currentPage) track('time_on_page', currentPage, { seconds })
+  currentPage = p
+  pageStart = Date.now()
+  for (const k of Object.keys(scrollSent)) delete scrollSent[Number(k)]
+  track('page_view', p)
+  pixelFor('page_view')
 }
