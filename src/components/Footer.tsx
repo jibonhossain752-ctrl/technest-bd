@@ -31,8 +31,14 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-brand">
           <Link href="/" className="logo">
-            <span className="logo-mark">G</span>
-            GadgetErea
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/gadgeterea-logo.png"
+              alt="GadgetErea"
+              width={66}
+              height={36}
+              className="logo-img"
+            />
           </Link>
           <p>
             Your trusted tech destination in the USA. Genuine products, fair

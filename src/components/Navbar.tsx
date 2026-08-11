@@ -138,8 +138,14 @@ export default function Navbar() {
     >
       <div className="side-panel-top">
         <Link href="/" className="side-logo" onClick={goHomeFresh}>
-          <span className="logo-mark">G</span>
-          GadgetErea
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/gadgeterea-logo.png"
+            alt="GadgetErea"
+            width={58}
+            height={32}
+            className="logo-img"
+          />
         </Link>
         <button
           type="button"
@@ -390,8 +396,14 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="container nav-container">
           <Link href="/" className="logo" onClick={goHomeFresh}>
-            <span className="logo-mark">G</span>
-            GadgetErea
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/gadgeterea-logo.png"
+              alt="GadgetErea"
+              width={80}
+              height={44}
+              className="logo-img"
+            />
           </Link>
 
           {!isMobile && desktopNavList}
