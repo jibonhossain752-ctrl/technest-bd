@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       url: 'https://gadgeterea.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://gadgeterea.com/favicon.svg',
+        url: 'https://gadgeterea.com/gadgeterea-logo.png',
       },
     },
     mainEntityOfPage: `https://gadgeterea.com/blog/${post.slug}`,
