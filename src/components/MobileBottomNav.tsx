@@ -29,7 +29,7 @@ const BN_ITEMS = [
   {
     label: 'Category',
     href: '/shop',
-    active: (p: string) => p.startsWith('/shop'),
+    active: (p: string) => p.startsWith('/shop') && !p.startsWith('/shop/flash-sale'),
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -49,8 +49,8 @@ const BN_ITEMS = [
   },
   {
     label: 'Offer',
-    href: '/deals',
-    active: (p: string) => p.startsWith('/deals'),
+    href: '/shop/flash-sale',
+    active: (p: string) => p.startsWith('/shop/flash-sale'),
     icon: (
       <svg
         viewBox="0 0 24 24"
