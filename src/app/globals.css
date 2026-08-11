@@ -3561,9 +3561,10 @@ button {
   }
 
   /* ---------- Mobile home order ----------
-     Hero -> Categories -> Flash Sale -> New Arrivals -> Best Selling
-     (View All inside) -> Why Choose -> Testimonials -> Subscribe
-     -> Social -> Footer. Desktop DOM order untouched. ---------- */
+     Hero -> Blog -> Watch & Shop -> Best Amazon Finds This Week
+     (View All inside) -> Newsletter (Get Weekly Gadget Deals)
+     -> Why Trust Us -> Testimonials -> Social -> Footer.
+     Matches desktop DOM order. Desktop order untouched. ---------- */
   .home {
     display: flex;
     flex-direction: column;
@@ -3573,31 +3574,19 @@ button {
     order: 1;
   }
 
-  .home .reveal-categories {
-    order: 2;
-  }
-
-  .home .reveal-flash {
-    order: 3;
-  }
-
-  .home .reveal-new-arrivals {
-    order: 4;
-  }
-
   .home .reveal-featured {
     order: 5;
   }
 
-  .home .reveal-why {
+  .home .reveal-newsletter {
     order: 6;
   }
 
-  .home .reveal-testimonials {
+  .home .reveal-why {
     order: 7;
   }
 
-  .home .reveal-newsletter {
+  .home .reveal-testimonials {
     order: 8;
   }
 
