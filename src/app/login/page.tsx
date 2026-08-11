@@ -31,8 +31,8 @@ export default function LoginPage() {
 
   return (
     <>
-      <Breadcrumb crumbs={[{ label: 'Login' }]} />
       <div className="category-seo-head">
+        <Breadcrumb crumbs={[{ label: 'Login' }]} />
         <h1>Login</h1>
         <p className="category-seo-intro">Welcome back to GadgetErea</p>
       </div>

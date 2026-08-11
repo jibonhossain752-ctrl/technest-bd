@@ -63,8 +63,8 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <>
-        <Breadcrumb crumbs={[{ label: 'Checkout' }]} />
         <div className="category-seo-head">
+          <Breadcrumb crumbs={[{ label: 'Checkout' }]} />
           <h1>Checkout</h1>
         </div>
         <section className="container">

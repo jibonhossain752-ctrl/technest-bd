@@ -39,8 +39,8 @@ export default function AdminLoginPage() {
 
   return (
     <>
-      <Breadcrumb crumbs={[{ label: 'Admin Login' }]} />
       <div className="category-seo-head">
+        <Breadcrumb crumbs={[{ label: 'Admin Login' }]} />
         <h1>Admin Login</h1>
         <p className="category-seo-intro">Restricted area — owners only</p>
       </div>

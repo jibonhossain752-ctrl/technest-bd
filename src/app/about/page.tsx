@@ -72,8 +72,8 @@ const STATS = [
 export default function AboutPage() {
   return (
     <>
-      <Breadcrumb crumbs={[{ label: 'About' }]} />
       <div className="category-seo-head">
+        <Breadcrumb crumbs={[{ label: 'About' }]} />
         <h1>About GadgetErea</h1>
         <p className="category-seo-intro">
           Where trending gadgets and the best Amazon finds come from.

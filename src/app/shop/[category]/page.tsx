@@ -176,16 +176,16 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <>
-      <Breadcrumb
-        crumbs={[
-          { label: 'Shop', href: '/shop' },
-          { label: crumbLabel },
-        ]}
-      />
       <Reveal>
         {seo?.intro && (
           <div className="container">
             <div className="category-seo-head">
+              <Breadcrumb
+                crumbs={[
+                  { label: 'Shop', href: '/shop' },
+                  { label: crumbLabel },
+                ]}
+              />
               <h1>{title}</h1>
               <p className="category-seo-intro">{seo.intro}</p>
             </div>

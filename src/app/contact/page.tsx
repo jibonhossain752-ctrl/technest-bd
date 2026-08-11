@@ -52,8 +52,8 @@ const CONTACT_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'yo
 export default function ContactPage() {
   return (
     <>
-      <Breadcrumb crumbs={[{ label: 'Contact' }]} />
       <div className="category-seo-head">
+        <Breadcrumb crumbs={[{ label: 'Contact' }]} />
         <h1>Contact GadgetErea</h1>
         <p className="category-seo-intro">
           Questions about an order, warranty or a gadget find? We reply within

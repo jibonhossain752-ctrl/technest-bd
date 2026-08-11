@@ -1315,9 +1315,9 @@ button {
 
 /* ---------- Page heading ---------- */
 .page-breadcrumb {
-  background: var(--bg-soft);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
+  background: none;
+  border: none;
+  padding: 18px 0 0;
   font-size: 0.85rem;
   color: var(--muted);
 }
@@ -1325,6 +1325,20 @@ button {
 .category-seo-head {
   text-align: center;
   padding: 36px 1rem 8px;
+}
+
+.category-seo-head .page-breadcrumb {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+}
+
+.category-seo-head .page-breadcrumb .container {
+  justify-content: center;
+  width: auto;
+  margin: 0;
 }
 
 .category-seo-head h1 {

@@ -57,8 +57,8 @@ export default function RegisterPage() {
 
   return (
     <>
-      <Breadcrumb crumbs={[{ label: 'Create Account' }]} />
       <div className="category-seo-head">
+        <Breadcrumb crumbs={[{ label: 'Create Account' }]} />
         <h1>Create Account</h1>
         <p className="category-seo-intro">Join GadgetErea today</p>
       </div>
