@@ -50,7 +50,7 @@ const SEO_META: Record<string, SeoMeta> = {
   accessories: {
     title: 'Cool Tech Gadgets Under $50 – Accessories',
     description:
-      'Cool tech gadgets under $50 — USB-C hubs, chargers, power banks and desk accessories at GadgetErea. Genuine accessories with official warranty and fast US delivery.',
+      'Cool tech gadgets under $50 — USB-C hubs, chargers, power banks and desk accessories at GadgetErea. Genuine, warranty-backed.',
     intro:
       'The best Amazon finds are often small: hubs, chargers, power banks and desk helpers. Our Accessories aisle is packed with cool tech gadgets under $50 that make a real difference every day.',
   },

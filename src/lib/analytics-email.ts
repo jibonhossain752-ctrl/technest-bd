@@ -78,7 +78,7 @@ export async function sendDailyReportEmail(
   payload: Record<string, unknown>,
   opts: { forceTest?: boolean } = {},
 ): Promise<EmailSendResult> {
-  const to = process.env.REPORT_EMAIL || 'admin@technest-bd.com'
+  const to = process.env.REPORT_EMAIL || 'support@gadgeterea.com'
   const smtpHost = process.env.SMTP_HOST
 
   if (!smtpHost && !opts.forceTest) {
@@ -109,7 +109,7 @@ export async function sendDailyReportEmail(
 
   const dateStr = String(payload.date ?? '')
   const info = await transporter.sendMail({
-    from: process.env.SMTP_FROM || 'GadgetErea Analytics <no-reply@technest-bd.com>',
+    from: process.env.SMTP_FROM || 'GadgetErea Analytics <no-reply@gadgeterea.com>',
     to,
     subject: `GadgetErea Daily Analytics Report — ${dateStr}`,
     text: renderEmailText(payload),

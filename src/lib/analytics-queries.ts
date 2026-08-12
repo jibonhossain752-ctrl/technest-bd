@@ -13,6 +13,7 @@
  * aggregateDay() (idempotent delete+recompute), single-flight + 60s TTL.
  */
 
+import { AsyncLocalStorage } from 'async_hooks'
 import { getDb } from '@/lib/supabase'
 import { REPORT_VERSION, lastNDates } from '@/lib/analytics-aggregate'
 import { PRODUCTS } from '@/data/products'
@@ -29,6 +30,44 @@ function daysAgo(days: number): string {
   const d = new Date()
   d.setUTCDate(d.getUTCDate() - days)
   return d.toISOString().slice(0, 10)
+}
+
+/* ----------------------------------------------------------------------
+   Per-request dedup cache.
+   A single dashboard page render calls many ranking functions (e.g. the
+   overview page calls 9, the search page calls 5), and each independently
+   queried analytics_reports/analytics_daily for the SAME range — meaning the
+   same Supabase round-trip happened up to 9x per page load. AsyncLocalStorage
+   scopes an in-flight Promise cache to the current HTTP request, so the first
+   caller issues the fetch and every concurrent caller within the same render
+   await the same Promise. No cross-request leakage; freed when the request
+   ends.
+---------------------------------------------------------------------- */
+interface RequestCache {
+  reports: Map<number, Promise<Payload[]>>
+  daily: Map<number, Promise<TrendPoint[]>>
+}
+const requestCache = new AsyncLocalStorage<Map<string, RequestCache>>()
+
+function getScopedCache(): RequestCache {
+  let store = requestCache.getStore()
+  if (!store) {
+    store = new Map<string, RequestCache>()
+    requestCache.enterWith(store)
+  }
+  const key = `q:${daysAgo(0)}`
+  let c = store.get(key)
+  if (!c) {
+    c = { reports: new Map(), daily: new Map() }
+    store.set(key, c)
+  }
+  return c
+}
+
+/** Wrap a thunk in a per-request AsyncLocalStorage context (for tests/probes). */
+export function withRequestCache<T>(thunk: () => Promise<T>): Promise<T> {
+  const store = new Map<string, RequestCache>()
+  return requestCache.run(store, thunk)
 }
 
 /* --------------------- aggregate freshness (cheap, non-blocking) --------------------- */
@@ -71,19 +110,29 @@ type Payload = Record<string, unknown>
 
 async function loadReports(days: number): Promise<Payload[]> {
   await getMissingAnalyticsDays(days)
-  const db = getDb()
-  const { data, error } = await db
-    .from('analytics_reports')
-    .select('date, payload')
-    .gte('date', daysAgo(days))
-    .order('date', { ascending: true })
-  if (error) throw new Error('report query failed: ' + error.message)
-  const out: Payload[] = []
-  for (const r of data ?? []) {
-    const p = (r as { payload: Payload | null }).payload
-    if (p && p.version === REPORT_VERSION) out.push(p)
-  }
-  return out
+  const cache = getScopedCache()
+  const existing = cache.reports.get(days)
+  if (existing) return existing
+  const p = (async () => {
+    const db = getDb()
+    const { data, error } = await db
+      .from('analytics_reports')
+      .select('date, payload')
+      .gte('date', daysAgo(days))
+      .order('date', { ascending: true })
+    if (error) throw new Error('report query failed: ' + error.message)
+    const out: Payload[] = []
+    for (const r of data ?? []) {
+      const pl = (r as { payload: Payload | null }).payload
+      if (pl && pl.version === REPORT_VERSION) out.push(pl)
+    }
+    return out
+  })()
+  cache.reports.set(days, p)
+  // On failure evict so a later retry can re-issue; success stays cached for
+  // the remainder of the request.
+  p.catch(() => cache.reports.delete(days))
+  return p
 }
 
 const arr = <T>(p: Payload, key: string): T[] => (p[key] as T[]) ?? []
@@ -347,31 +396,39 @@ export interface TrendPoint {
 
 export async function getDailyTrend(days: number): Promise<TrendPoint[]> {
   await getMissingAnalyticsDays(days)
-  const db = getDb()
-  const { data, error } = await db
-    .from('analytics_daily')
-    .select('date, visitors, page_views, sessions, affiliate_clicks, bounces')
-    .gte('date', daysAgo(days))
-    .order('date', { ascending: true })
-  if (error) throw new Error('trend query failed: ' + error.message)
-  const byDate = new Map<
-    string,
-    { visitors: number; pageViews: number; sessions: number; affiliateClicks: number; bounces: number }
-  >()
-  for (const r of data ?? []) {
-    const date = String(r.date).slice(0, 10)
-    const agg =
-      byDate.get(date) ?? { visitors: 0, pageViews: 0, sessions: 0, affiliateClicks: 0, bounces: 0 }
-    agg.visitors += num(r.visitors)
-    agg.pageViews += num(r.page_views)
-    agg.sessions += num(r.sessions)
-    agg.affiliateClicks += num(r.affiliate_clicks)
-    agg.bounces += num(r.bounces)
-    byDate.set(date, agg)
+  const cache = getScopedCache()
+  let fetcher = cache.daily.get(days)
+  if (!fetcher) {
+    fetcher = (async () => {
+      const db = getDb()
+      const { data, error } = await db
+        .from('analytics_daily')
+        .select('date, visitors, page_views, sessions, affiliate_clicks, bounces')
+        .gte('date', daysAgo(days))
+        .order('date', { ascending: true })
+      if (error) throw new Error('trend query failed: ' + error.message)
+      const byDate = new Map<
+        string,
+        { visitors: number; pageViews: number; sessions: number; affiliateClicks: number; bounces: number }
+      >()
+      for (const r of data ?? []) {
+        const date = String(r.date).slice(0, 10)
+        const agg =
+          byDate.get(date) ?? { visitors: 0, pageViews: 0, sessions: 0, affiliateClicks: 0, bounces: 0 }
+        agg.visitors += num(r.visitors)
+        agg.pageViews += num(r.page_views)
+        agg.sessions += num(r.sessions)
+        agg.affiliateClicks += num(r.affiliate_clicks)
+        agg.bounces += num(r.bounces)
+        byDate.set(date, agg)
+      }
+      return [...byDate.entries()].map(([date, v]) => ({ date, ...v }))
+        .sort((a, b) => a.date.localeCompare(b.date))
+    })()
+    cache.daily.set(days, fetcher)
+    fetcher.catch(() => cache.daily.delete(days))
   }
-  return [...byDate.entries()]
-    .map(([date, v]) => ({ date, ...v }))
-    .sort((a, b) => a.date.localeCompare(b.date))
+  return fetcher
 }
 
 /* ------------------------------- B7 realtime ------------------------------ */

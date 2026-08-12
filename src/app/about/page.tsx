@@ -5,7 +5,7 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 export const metadata: Metadata = {
   title: 'About GadgetErea – Your Trusted Gadget Store',
   description:
-    'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech gadgets under $50 to useful gadgets for home. Learn our story.',
+    'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech under $50 to useful gadgets for home. Learn our story.',
   alternates: { canonical: '/about' },
   keywords: [
     'gadget store usa',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: 'https://gadgeterea.com/about',
     title: 'About GadgetErea – Your Trusted Gadget Store',
     description:
-      'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech gadgets under $50 to useful gadgets for home.',
+      'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech under $50 to useful gadgets for home.',
     images: [
       {
         url: '/images/blog/best-tech-gifts-under-50.jpg',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About GadgetErea – Your Trusted Gadget Store',
     description:
-      'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech gadgets under $50 to useful gadgets for home.',
+      'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech under $50 to useful gadgets for home.',
     images: ['/images/blog/best-tech-gifts-under-50.jpg'],
   },
 }

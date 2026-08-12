@@ -43,7 +43,7 @@ const CHANNELS = [
     note: 'Fastest response',
     href: 'https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0',
   },
-  { icon: '✉️', title: 'Email', detail: 'support@technestus.com', note: 'Replies within 24 hours' },
+  { icon: '✉️', title: 'Email', detail: 'support@gadgeterea.com', note: 'Replies within 24 hours' },
   { icon: '📍', title: 'Store Address', detail: '1200 Tech Plaza, Suite 300, New York, NY 10001', note: 'Visit us in person' },
 ]
 
