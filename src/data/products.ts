@@ -15,6 +15,7 @@ export interface Product {
   isNew?: boolean
   description: string
   features: string[]
+  cardHref?: string
   buyUrl?: string
   metaTitle?: string
   metaDescription?: string
@@ -937,6 +938,7 @@ export const PRODUCTS: Product[] = [
       'MOVAhome App control',
     ],
     buyUrl: 'https://amzn.to/4fTpSuJ',
+    cardHref: '/product/mova-lidax-ultra-2000',
     metaTitle: 'MOVA LiDAX Ultra 2000 – Wireless Robot Lawn Mower for 0.5‑acre Yards',
     metaDescription: 'MOVA LiDAX Ultra 2000 is a wire‑free robot lawn mower with 3D LiDAR, AI vision, obstacle avoidance and ultra‑trim edge cutting for up to 0.5 acre.',
     altText: 'MOVA LiDAX Ultra 2000 wireless robot lawn mower',

@@ -6084,6 +6084,19 @@ button {
   object-position: center;
 }
 
+.blog-inline-figure {
+  margin: 26px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eef2f7;
+}
+
+.blog-inline-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .blog-post-body {
   max-width: 700px;
   margin: 0 auto;

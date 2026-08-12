@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { POSTS, getPostBySlug } from '@/data/posts'
+import { POSTS, getPostBySlug, type BlogPostImage } from '@/data/posts'
 import { PRODUCTS } from '@/data/products'
 import BlogCard from '@/components/BlogCard'
 import { categoryBadgeClass } from '@/data/blogCategories'
@@ -167,14 +167,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         )}
 
         <div className="blog-post-body">
-          {post.content.map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
+          {post.content.map((block, i) =>
+            typeof block === 'string' ? (
+              <p key={i}>{block}</p>
+            ) : (
+              <figure key={`img-${i}`} className="blog-inline-figure">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={(block as BlogPostImage).image}
+                  alt={(block as BlogPostImage).alt}
+                  loading="lazy"
+                />
+              </figure>
+            ),
+          )}
 
           {deal && (
             <>
               <p className="affiliate-disclosure">
-                As an Amazon Associate, I earn from qualifying purchases.
+                {post.affiliateDisclosure ??
+                  'As an Amazon Associate, I earn from qualifying purchases.'}
               </p>
               <div className="deal-card-inline">
                 {product?.imageUrl ? (
@@ -209,7 +221,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     location: 'blog-post',
                   }}
                 >
-                  Check Price on Amazon
+                  {deal.ctaLabel ?? 'Check Price on Amazon'}
                 </TrackedAffiliateLink>
               </div>
             </>

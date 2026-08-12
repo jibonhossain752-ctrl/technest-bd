@@ -78,14 +78,14 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
   return (
     <article className="product-card" ref={cardRef}>
       <Link
-        href={product.buyUrl ?? `/product/${product.slug}`}
+        href={product.cardHref ?? product.buyUrl ?? `/product/${product.slug}`}
         className="product-img"
         aria-label={product.name}
         onClick={() => {
-          track('product_card_click', product.buyUrl ?? `/product/${product.slug}`, {
+          track('product_card_click', product.cardHref ?? product.buyUrl ?? `/product/${product.slug}`, {
             product_slug: product.slug,
           })
-          if (product.buyUrl) trackAffiliate()
+          if (product.buyUrl && !product.cardHref) trackAffiliate()
         }}
       >
         {product.imageUrl ? (
@@ -125,7 +125,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           {product.category}
         </Link>
         <Link
-          href={product.buyUrl ?? `/product/${product.slug}`}
+          href={product.cardHref ?? product.buyUrl ?? `/product/${product.slug}`}
           className="product-name"
         >
           {product.name}
