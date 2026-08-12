@@ -379,47 +379,53 @@ export async function aggregateDay(
     locations.set(country, row)
   }
 
-  // ---- upsert daily rows ----
+  // ---- upsert daily rows (batched: one round-trip instead of one per key) ----
+  const dailyUpserts: Record<string, unknown>[] = []
   for (const [key, rec] of daily) {
     const [source, device, country] = key.split('|')
     const unique_visitors = (uniqueBy[key] ?? new Set()).size
     if ((rec.page_views ?? 0) === 0 && (rec.sessions ?? 0) === 0) continue
-    await db.from('analytics_daily').upsert(
-      {
-        date,
-        source,
-        device,
-        country,
-        visitors: rec.sessions ?? 0,
-        unique_visitors,
-        sessions: rec.sessions ?? 0,
-        page_views: rec.page_views ?? 0,
-        bounces: rec.bounces ?? 0,
-        session_seconds: rec.session_seconds ?? 0,
-        affiliate_clicks: rec.affiliate_clicks ?? 0,
-        add_to_cart: rec.add_to_cart ?? 0,
-        checkouts: rec.checkouts ?? 0,
-        newsletter_subscribes: rec.newsletter_subscribes ?? 0,
-        newsletter_shown: rec.newsletter_shown ?? 0,
-      },
-      { onConflict: 'date,source,device,country' },
-    )
+    dailyUpserts.push({
+      date,
+      source,
+      device,
+      country,
+      visitors: rec.sessions ?? 0,
+      unique_visitors,
+      sessions: rec.sessions ?? 0,
+      page_views: rec.page_views ?? 0,
+      bounces: rec.bounces ?? 0,
+      session_seconds: rec.session_seconds ?? 0,
+      affiliate_clicks: rec.affiliate_clicks ?? 0,
+      add_to_cart: rec.add_to_cart ?? 0,
+      checkouts: rec.checkouts ?? 0,
+      newsletter_subscribes: rec.newsletter_subscribes ?? 0,
+      newsletter_shown: rec.newsletter_shown ?? 0,
+    })
+  }
+  if (dailyUpserts.length > 0) {
+    await db.from('analytics_daily').upsert(dailyUpserts, {
+      onConflict: 'date,source,device,country',
+    })
   }
 
-  // ---- upsert per-page rows ----
+  // ---- upsert per-page rows (batched) ----
+  const pageUpserts: Record<string, unknown>[] = []
   for (const [page, rec] of pages) {
-    await db.from('analytics_pages_daily').upsert(
-      {
-        date,
-        page,
-        views: rec.views ?? 0,
-        unique_views: (uniquePages.get(page) ?? new Set()).size,
-        time_on_page_seconds: rec.time_on_page_seconds ?? 0,
-        exits: rec.exits ?? 0,
-        referral_hits: rec.referral_hits ?? 0,
-      },
-      { onConflict: 'date,page' },
-    )
+    pageUpserts.push({
+      date,
+      page,
+      views: rec.views ?? 0,
+      unique_views: (uniquePages.get(page) ?? new Set()).size,
+      time_on_page_seconds: rec.time_on_page_seconds ?? 0,
+      exits: rec.exits ?? 0,
+      referral_hits: rec.referral_hits ?? 0,
+    })
+  }
+  if (pageUpserts.length > 0) {
+    await db.from('analytics_pages_daily').upsert(pageUpserts, {
+      onConflict: 'date,page',
+    })
   }
 
   // ---- build summary payload (v2) ----
@@ -526,4 +532,44 @@ export async function aggregateRange(days: number): Promise<{ date: string; even
     }
   }
   return out
+}
+
+/**
+ * Time-budgeted backfill: only dates that are actually missing a
+ * version-current report are recomputed, and processing stops once the
+ * budget is spent so a long cold backfill never blows a serverless timeout.
+ * The caller (admin route + AnalyticsBackfill client loop) re-invokes until
+ * `remaining` reaches 0.
+ */
+export async function aggregateMissing(
+  days: number,
+  timeBudgetMs: number,
+): Promise<{ results: { date: string; events: number }[]; remaining: number }> {
+  const db = getDb()
+  const dates = lastNDates(days)
+  const { data } = await db
+    .from('analytics_reports')
+    .select('date, payload')
+    .gte('date', dates[0])
+  const have = new Set<string>()
+  for (const r of data ?? []) {
+    const p = (r as { payload: Record<string, unknown> | null }).payload
+    if (p && p.version === REPORT_VERSION) {
+      have.add(String((r as { date: string }).date).slice(0, 10))
+    }
+  }
+  const missing = dates.filter((d) => !have.has(d))
+  const results: { date: string; events: number }[] = []
+  const start = Date.now()
+  for (const d of missing) {
+    if (Date.now() - start > timeBudgetMs) break
+    try {
+      const res = await aggregateDay(d, db)
+      results.push({ date: res.date, events: res.events })
+    } catch (err) {
+      console.error('aggregate error for', d, err)
+      results.push({ date: d, events: -1 })
+    }
+  }
+  return { results, remaining: missing.length - results.length }
 }

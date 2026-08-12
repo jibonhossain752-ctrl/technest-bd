@@ -3,9 +3,10 @@ import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { ADMIN_COOKIE, verifySessionToken } from '@/lib/admin-auth'
-import { getLocationAnalytics } from '@/lib/analytics-queries'
+import { getLocationAnalytics, getMissingAnalyticsDays } from '@/lib/analytics-queries'
 import AnalyticsNav from '../AnalyticsNav'
 import ExportButtons from '../ExportButtons'
+import AnalyticsBackfill from '../AnalyticsBackfill'
 
 export const runtime = 'nodejs'
 export const metadata: Metadata = { title: 'Location Analytics — GadgetErea Admin' }
@@ -33,8 +34,12 @@ export default async function LocationsPage({
     | 90
 
   let locations: Awaited<ReturnType<typeof getLocationAnalytics>> | null = null
+  let missingDays: string[] = []
   try {
-    locations = await getLocationAnalytics(range)
+    ;[locations, missingDays] = await Promise.all([
+      getLocationAnalytics(range),
+      getMissingAnalyticsDays(range),
+    ])
   } catch (err) {
     console.error('location analytics failed', err)
   }
@@ -56,6 +61,8 @@ export default async function LocationsPage({
           </div>
 
           <AnalyticsNav active="locations" />
+
+          <AnalyticsBackfill missing={missingDays.length} range={range} />
 
           <div className="an-range-tabs">
             {RANGES.map((r) => (

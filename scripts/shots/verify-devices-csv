@@ -1,8 +1,8 @@
 group,key,sessions,page_views,conversions,conversion_rate
-device,desktop,8,162,5,62.5%
+device,desktop,13,377,6,46.2%
 device,mobile,1,8,0,0%
-os,windows,7,160,5,71.4%
+os,windows,12,375,6,50%
 os,linux,1,2,0,0%
 os,android,1,8,0,0%
-browser,chrome,5,25,1,20%
-browser,edge,4,145,4,100%
+browser,edge,7,354,5,71.4%
+browser,chrome,7,31,1,14.3%

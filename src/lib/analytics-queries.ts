@@ -14,7 +14,7 @@
  */
 
 import { getDb } from '@/lib/supabase'
-import { aggregateDay, REPORT_VERSION, lastNDates } from '@/lib/analytics-aggregate'
+import { REPORT_VERSION, lastNDates } from '@/lib/analytics-aggregate'
 import { PRODUCTS } from '@/data/products'
 import { POSTS } from '@/data/posts'
 import { CATEGORIES } from '@/data/categories'
@@ -31,53 +31,46 @@ function daysAgo(days: number): string {
   return d.toISOString().slice(0, 10)
 }
 
-/* --------------------- aggregate freshness (single-flight) --------------------- */
+/* --------------------- aggregate freshness (cheap, non-blocking) --------------------- */
 
-let aggregateInflight: Promise<void> | null = null
-let lastAggregateCheck = 0
+let missingCache: { at: number; days: number; missing: string[] } = {
+  at: 0,
+  days: 0,
+  missing: [],
+}
 
-async function ensureAggregates(days: number): Promise<void> {
+/**
+ * Dates in the range that lack a version-current report. NEVER aggregates
+ * inline: page loads render from whatever reports exist and a client
+ * component (AnalyticsBackfill) runs the aggregate route in the background,
+ * so a cold/missing backfill cannot block the dashboard for 10+ seconds.
+ */
+export async function getMissingAnalyticsDays(days: number): Promise<string[]> {
   const now = Date.now()
-  if (!aggregateInflight && now - lastAggregateCheck < 60_000) return
+  if (missingCache.days === days && now - missingCache.at < 60_000) {
+    return missingCache.missing
+  }
   const dates = lastNDates(days)
   const db = getDb()
   const { data } = await db
     .from('analytics_reports')
     .select('date, payload')
-    .gte('date', dates[dates.length - 1])
-  const have = new Set<string>()
+    .gte('date', dates[0])
+  const missing = new Set(dates)
   for (const r of data ?? []) {
     const p = (r as { payload: Record<string, unknown> | null }).payload
     if (p && p.version === REPORT_VERSION) {
-      have.add(String((r as { date: string }).date).slice(0, 10))
+      missing.delete(String((r as { date: string }).date).slice(0, 10))
     }
   }
-  const missing = dates.filter((d) => !have.has(d))
-  if (missing.length === 0) {
-    lastAggregateCheck = now
-    return
-  }
-  if (!aggregateInflight) {
-    aggregateInflight = (async () => {
-      for (const d of missing) {
-        try {
-          await aggregateDay(d)
-        } catch (err) {
-          console.error('ensureAggregates failed for', d, err)
-        }
-      }
-    })().finally(() => {
-      aggregateInflight = null
-    })
-  }
-  await aggregateInflight
-  lastAggregateCheck = now
+  missingCache = { at: now, days, missing: [...missing].sort() }
+  return missingCache.missing
 }
 
 type Payload = Record<string, unknown>
 
 async function loadReports(days: number): Promise<Payload[]> {
-  await ensureAggregates(days)
+  await getMissingAnalyticsDays(days)
   const db = getDb()
   const { data, error } = await db
     .from('analytics_reports')
@@ -353,7 +346,7 @@ export interface TrendPoint {
 }
 
 export async function getDailyTrend(days: number): Promise<TrendPoint[]> {
-  await ensureAggregates(days)
+  await getMissingAnalyticsDays(days)
   const db = getDb()
   const { data, error } = await db
     .from('analytics_daily')

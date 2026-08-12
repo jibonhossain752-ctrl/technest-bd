@@ -9,9 +9,11 @@ import {
   getFaqExpandRanking,
   getFaqGoogleTraffic,
   getSearchEngineTraffic,
+  getMissingAnalyticsDays,
 } from '@/lib/analytics-queries'
 import AnalyticsNav from '../AnalyticsNav'
 import ExportButtons from '../ExportButtons'
+import AnalyticsBackfill from '../AnalyticsBackfill'
 
 export const runtime = 'nodejs'
 export const metadata: Metadata = { title: 'Search & FAQ Analytics — GadgetErea Admin' }
@@ -43,14 +45,16 @@ export default async function SearchPage({
   let faqExpands: Awaited<ReturnType<typeof getFaqExpandRanking>> | null = null
   let faqGoogle: Awaited<ReturnType<typeof getFaqGoogleTraffic>> | null = null
   let engineTraffic: Awaited<ReturnType<typeof getSearchEngineTraffic>> | null = null
+  let missingDays: string[] = []
   try {
-    ;[searchRanks, clickRank, faqExpands, faqGoogle, engineTraffic] =
+    ;[searchRanks, clickRank, faqExpands, faqGoogle, engineTraffic, missingDays] =
       await Promise.all([
         getSearchRankings(range),
         getSearchClickRank(range),
         getFaqExpandRanking(range),
         getFaqGoogleTraffic(range),
         getSearchEngineTraffic(range),
+        getMissingAnalyticsDays(range),
       ])
   } catch (err) {
     console.error('search analytics failed', err)
@@ -81,6 +85,8 @@ export default async function SearchPage({
           </div>
 
           <AnalyticsNav active="search" />
+
+          <AnalyticsBackfill missing={missingDays.length} range={range} />
 
           <div className="an-range-tabs">
             {RANGES.map((r) => (

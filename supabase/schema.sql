@@ -131,3 +131,7 @@ create table if not exists public.analytics_reports (
   payload jsonb not null,
   created_at timestamptz not null default now()
 );
+create index if not exists analytics_reports_date_idx on public.analytics_reports (date desc);
+
+-- Composite for aggregation window scans (created_at filter + id ordering)
+create index if not exists analytics_events_created_id_idx on public.analytics_events (created_at, id);

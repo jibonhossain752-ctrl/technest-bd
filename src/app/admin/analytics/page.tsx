@@ -15,11 +15,13 @@ import {
   getSearchRankings,
   getFaqExpandRanking,
   getNewsletterStats,
+  getMissingAnalyticsDays,
 } from '@/lib/analytics-queries'
 import RealtimePanel from './RealtimePanel'
 import ReaggregateButton from './ReaggregateButton'
 import AnalyticsNav from './AnalyticsNav'
 import ExportButtons from './ExportButtons'
+import AnalyticsBackfill from './AnalyticsBackfill'
 
 export const runtime = 'nodejs'
 export const metadata: Metadata = { title: 'Analytics — GadgetErea Admin' }
@@ -111,7 +113,7 @@ export default async function AdminAnalyticsPage({
     }
   }
 
-  const [products, categories, blogPosts, sources, funnel, trend, topPages, reports, searchRanks, faqExpands, newsletter] =
+  const [products, categories, blogPosts, sources, funnel, trend, topPages, reports, searchRanks, faqExpands, newsletter, missingDays] =
     await Promise.all([
       safe(() => getTopProducts(range)),
       safe(() => getTopCategories(range)),
@@ -124,6 +126,7 @@ export default async function AdminAnalyticsPage({
       safe(() => getSearchRankings(range)),
       safe(() => getFaqExpandRanking(range)),
       safe(() => getNewsletterStats(range)),
+      safe(() => getMissingAnalyticsDays(range)),
     ])
 
   const totalViews = trend.reduce((s, t) => s + t.pageViews, 0)
@@ -156,6 +159,8 @@ export default async function AdminAnalyticsPage({
           </div>
 
           <AnalyticsNav active="overview" />
+
+          <AnalyticsBackfill missing={missingDays.length} range={range} />
 
           <div className="an-range-tabs">
             {RANGES.map((r) => (
