@@ -1,6 +1,8 @@
 export interface BlogPostImage {
   image: string
   alt: string
+  width?: number
+  height?: number
 }
 
 export interface BlogPost {
@@ -12,14 +14,14 @@ export interface BlogPost {
   author: string
   emoji: string
   readTime: string
-  content: Array<string | BlogPostImage>
+  content: Array<string | BlogPostImage | { heading: string }>
   metaTitle?: string
   metaDescription?: string
   heroImage?: string
   altText?: string
   dealCard?: {
     productSlug: string
-    price: string
+    price?: string
     affiliateUrl: string
     ctaLabel?: string
   }
@@ -29,10 +31,112 @@ export interface BlogPost {
   warranty?: string
   primaryKeyword?: string
   secondaryKeywords?: string[]
+  schemaRating?: { ratingValue: number; ratingCount: number }
   keepBrowsing?: { href: string; label: string }[]
 }
 
 export const POSTS: BlogPost[] = [
+  {
+    slug: 'jack-rose-k1-travel-steamer-review',
+    title:
+      'Jack & Rose K1 Travel Steamer Review — 2-in-1 Dual Voltage Steamer & Iron for Global Travel (2026)',
+    excerpt:
+      'A 2-in-1 steamer and iron for travel — 100-220V dual voltage, 15-second heat-up, 1.6 lb handheld size and a 10-square-inch ceramic dry ironing panel. Rated 4.3/5 by 4,800+ Amazon reviewers.',
+    category: 'Roundup',
+    date: '2026-08-14',
+    author: 'Alex Morgan',
+    heroImage: '/images/blog/jack-rose-k1-travel-steamer-hero.webp',
+    emoji: '🧳',
+    readTime: '7 min read',
+    content: [
+      'A Jack & Rose K1 Travel Steamer review usually starts with the same travel wardrobe problem: you arrive at a hotel, your shirts have creases from the suitcase, and the room has no iron. The K1 is built for that exact moment — a handheld garment steamer for global travel that also works as a dry iron, in a 1.6 lb package that packs like a water bottle.',
+      'The headline feature is the 100V-220V wide voltage support. The K1 is plug-and-play across international voltage systems, so it adapts automatically to European outlets without a separate converter — which is the main reason it gets called a dual voltage travel steamer rather than an ordinary home garment steamer.',
+      'Before the features, the numbers: this is a 1,000-watt steamer with a 15-second heat-up time, producing steam up to 248°F at up to 0.78 oz per minute. The 5 oz water tank lasts 3-5 loads of clothes at maximum steam output, with a maximum runtime of about 10 minutes per fill. On Amazon it holds a 4.3-star rating from more than 4,800 reviews and carries an Amazon\u2019s Choice badge.',
+      { heading: '2-in-1 Steamer and Iron for Travel: Two Tools, One Handheld' },
+      'The 2-in-1 steamer and iron for travel design is what separates the K1 from a pure steamer. Under the steam head sits a 10-square-inch ceramic dry ironing plate that heats to 302°F — enough for creases in collars and pant legs, which hanging steam alone often cannot flatten.',
+      'The Amethyst ceramic panel matters for dry ironing because ceramic heats more evenly and resists wear better than bare metal. The brand\u2019s comparison material rates this panel for roughly 4 years of wear resistance versus about 2 years for plain metal panels on competing steamers, and the 10-square-inch panel is roughly three times the pressing area of some competitor panels at about 3 square inches.',
+      {
+        image: '/images/blog/jack-rose-k1-travel-steamer-ceramic.webp',
+        alt: 'Jack & Rose K1 Amethyst ceramic dry ironing panel compared with a plain metal panel',
+        width: 900,
+        height: 1108,
+      },
+      'Fabric safety is a real consideration with any high-temperature tool. The K1 is suitable for silk, lace, organza, cotton, linen, nylon, denim, and wool, and the brand points to the appropriate wrinkle-release mode for protecting garments. That list covers both delicate travel clothes and heavier cottons — with the usual caveat to test a small hidden area first on very delicate fabrics.',
+      {
+        image: '/images/blog/jack-rose-k1-travel-steamer-fabrics.webp',
+        alt: 'Jack & Rose K1 steamer ironing cotton, organza, silk, wool and linen fabrics',
+        width: 900,
+        height: 1108,
+      },
+      { heading: 'Dual Voltage Travel Steamer: How the 100-220V K1 Works Abroad' },
+      'For trips to Europe and other 220-240V regions, the K1\u2019s 100V-220V wide voltage input means the heating element adjusts to the outlet automatically — plug it in and it works. The brand describes this as the core of the K1\u2019s travel positioning: no converter, no voltage step-down adapter, no hotel front-desk iron borrowing.',
+      'The portable form factor backs that up. At 10.23 x 3.9 inches and 1.6 lb — about the weight of a 750 ml bottle of water — it fits a carry-on or backpack. The rotating steam head, a 7.2 ft cord, and a heat-resistant plate are part of the design, and it ships with a travel pouch for packing.',
+      {
+        image: '/images/blog/jack-rose-k1-travel-steamer-design.webp',
+        alt: 'Jack & Rose K1 handheld travel steamer with LED display, control panel, cord and travel pouch',
+        width: 900,
+        height: 900,
+      },
+      { heading: 'Handheld Garment Steamer for Global Travel: Daily Usability' },
+      'Daily usability comes from the small details: a 5 oz water tank with an LED display, flat and hanging ironing modes for one-handed operation, and auto shut-off for safety when you set it down mid-morning. The 15-second heat-up matters in practice — steam is ready roughly by the time you hang the garment up.',
+      'The honest caveat in this Jack & Rose K1 travel steamer review is that a handheld cannot match a full-size steam station for volume work. For 3-5 loads of clothes per tank and trips where packing weight matters more than ironing throughput, the K1 is a reasonable trade — and the dual voltage capability removes the adapter headache entirely.',
+      'If you travel with a lot of structured clothing — blazers, shirts with sharp collars, trousers — the dry ironing panel earns its keep. If you mostly want quick de-wrinkling of casual layers in a hotel room, the steam function alone covers it. Either way, this is one of the more complete 2-in-1 steamer and iron options in the sub-$60 travel category.',
+    ],
+    metaTitle: 'Jack & Rose K1 Travel Steamer Review: Dual Voltage 2-in-1',
+    metaDescription:
+      'Read the Jack & Rose K1 Travel Steamer review: 100-220V dual voltage, 15-second heat-up, ceramic dry ironing panel and a 1.6 lb handheld design for global travel.',
+    altText: 'Jack & Rose K1 travel steamer removing wrinkles from a blue blouse in 30 seconds',
+    dealCard: {
+      productSlug: 'jack-rose-k1-travel-steamer',
+      affiliateUrl: 'https://amzn.to/3TMP8dB',
+    },
+    faq: [
+      {
+        question: 'Is the Jack & Rose K1 safe for all fabrics?',
+        answer:
+          'The listing says the K1 is suitable for silk, lace, organza, cotton, linen, nylon, denim, and wool, using the appropriate wrinkle-release mode. As with any steamer or iron, test a small hidden area first on very delicate fabrics and follow the garment care label.',
+      },
+      {
+        question: 'Does the Jack & Rose K1 work on 220V outlets in Europe?',
+        answer:
+          'Yes — the K1 supports 100V-220V wide voltage with automatic voltage adaptation, so it plugs directly into 220-240V European outlets without a separate converter.',
+      },
+      {
+        question: 'How long does the water tank last?',
+        answer:
+          'The 5 oz tank lasts roughly 3-5 loads of clothes at maximum steam output, with a maximum runtime of about 10 minutes per fill. It heats up in about 15 seconds.',
+      },
+      {
+        question: 'Can the K1 actually iron creases, or does it only steam?',
+        answer:
+          'It does both. The 10-square-inch Amethyst ceramic dry ironing plate heats to 302°F for creases, collars and pant legs, while the steam function runs at up to 248°F for hanging garments.',
+      },
+    ],
+    lastUpdated: '2026-08-14',
+    primaryKeyword: 'Jack & Rose K1 Travel Steamer Review',
+    secondaryKeywords: [
+      '2-in-1 steamer and iron for travel',
+      'dual voltage travel steamer',
+      'ceramic plate dry ironing',
+      'handheld garment steamer for global travel',
+      '100-220V travel steamer',
+    ],
+    schemaRating: { ratingValue: 4.3, ratingCount: 4844 },
+    keepBrowsing: [
+      {
+        href: '/blog/flying-with-carry-on-only',
+        label: '5 Tips for Flying with Carry-On Only (2026)',
+      },
+      {
+        href: '/blog/best-carry-on-luggage-2026',
+        label: 'Best Carry-On Luggage for Frequent Flyers (2026)',
+      },
+      {
+        href: '/deals',
+        label: 'Gadget deals online — see this week\u2019s discounts',
+      },
+    ],
+  },
   {
     slug: 'mova-lidax-ultra-2000-review',
     title:
@@ -55,6 +159,8 @@ export const POSTS: BlogPost[] = [
       {
         image: '/images/blog/mova-lidax-ultra-2000-lidar.jpg',
         alt: 'MOVA LiDAX Ultra 2000 robot lawn mower with 360° 3D LiDAR and AI vision navigation',
+        width: 2560,
+        height: 2560,
       },
       'The LiDAX Ultra 2000 combines 3D LiDAR with AI vision to understand its surroundings and plan its route. MOVA says the system can recognize more than 300 types of lawn obstacles.',
       'That means the mower is designed to identify and avoid common objects instead of simply following a predefined boundary.',
@@ -68,6 +174,8 @@ export const POSTS: BlogPost[] = [
       {
         image: '/images/blog/mova-lidax-ultra-2000-performance.jpg',
         alt: 'MOVA LiDAX Ultra 2000 robot lawn mower mowing on a lawn',
+        width: 2560,
+        height: 2560,
       },
       'Instead of randomly moving around the lawn, the LiDAX Ultra 2000 uses U-shaped path planning.',
       'When the battery becomes low, the mower can automatically return to its charging station and resume the mowing task afterward.',
@@ -80,6 +188,8 @@ export const POSTS: BlogPost[] = [
       {
         image: '/images/blog/mova-lidax-ultra-2000-final.jpg',
         alt: 'MOVA LiDAX Ultra 2000 wireless robot lawn mower on a lawn',
+        width: 2560,
+        height: 2560,
       },
       'If your priority is a wireless robot lawn mower without boundary wire or RTK, the MOVA LiDAX Ultra 2000 stands out because it combines LiDAR-based mapping with AI vision instead of depending on a conventional perimeter-wire setup.',
       'For a lawn of up to 0.5 acre, its combination of automated mapping, obstacle avoidance, edge cutting, slope handling, multi-zone control, and automatic charging makes it an attractive option for homeowners who want more hands-off lawn care.',

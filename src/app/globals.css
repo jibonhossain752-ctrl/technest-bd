@@ -6084,6 +6084,13 @@ button {
   object-position: center;
 }
 
+.blog-post-body h2.blog-post-h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 30px 0 12px;
+  line-height: 1.35;
+}
+
 .blog-inline-figure {
   margin: 26px 0;
   border-radius: 16px;

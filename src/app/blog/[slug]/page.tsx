@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { POSTS, getPostBySlug, type BlogPostImage } from '@/data/posts'
+import { POSTS, getPostBySlug } from '@/data/posts'
 import { PRODUCTS } from '@/data/products'
 import BlogCard from '@/components/BlogCard'
 import { categoryBadgeClass } from '@/data/blogCategories'
@@ -120,6 +121,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       },
     },
     mainEntityOfPage: `https://gadgeterea.com/blog/${post.slug}`,
+    ...(post.schemaRating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: post.schemaRating.ratingValue,
+            ratingCount: post.schemaRating.ratingCount,
+            bestRating: 5,
+          },
+        }
+      : {}),
   }
 
   return (
@@ -151,13 +162,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {post.heroImage ? (
           <figure className="blog-post-hero">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={post.heroImage}
               alt={post.altText ?? `${post.title} — featured image`}
               width={1200}
               height={675}
-              loading="eager"
+              sizes="(max-width: 768px) 100vw, 900px"
+              priority
             />
           </figure>
         ) : (
@@ -170,12 +181,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {post.content.map((block, i) =>
             typeof block === 'string' ? (
               <p key={i}>{block}</p>
+            ) : 'heading' in block ? (
+              <h2 key={`h-${i}`} className="blog-post-h2">
+                {block.heading}
+              </h2>
             ) : (
               <figure key={`img-${i}`} className="blog-inline-figure">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={(block as BlogPostImage).image}
-                  alt={(block as BlogPostImage).alt}
+                <Image
+                  src={block.image}
+                  alt={block.alt}
+                  width={block.width ?? 900}
+                  height={block.height ?? 675}
+                  sizes="(max-width: 768px) 100vw, 700px"
                   loading="lazy"
                 />
               </figure>

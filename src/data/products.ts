@@ -951,6 +951,38 @@ export const PRODUCTS: Product[] = [
     ],
   
   },
+  {
+    id: 'p48',
+    slug: 'jack-rose-k1-travel-steamer',
+    name: 'Jack & Rose K1 Travel Steamer for Clothes',
+    category: 'Accessories',
+    categorySlug: 'accessories',
+    price: 59.99,
+    imageUrl: '/images/products/jack-rose-k1-travel-steamer.webp',
+    image: '🧳',
+    rating: 4.3,
+    reviews: 4844,
+    description:
+      '100-220V dual voltage travel steamer and dry iron in one 1.6 lb handheld — 15-second heat-up, 10-square-inch ceramic panel, 5 oz tank and travel pouch.',
+    altText: 'Jack & Rose K1 travel steamer for clothes — dual voltage 2-in-1 steamer and iron',
+    features: [
+      '100V-220V wide voltage — automatic adaptation, no converter needed',
+      '15-second heat-up, 1,000 watts, steam up to 248°F at 0.78 oz/min',
+      '10-square-inch Amethyst ceramic dry ironing panel at 302°F',
+      '1.6 lb handheld with 7.2 ft cord, rotating steam head and travel pouch',
+      '5 oz water tank — 3-5 loads, up to 10 minutes of runtime per fill',
+    ],
+    buyUrl: 'https://amzn.to/3TMP8dB',
+    metaTitle: 'Jack & Rose K1 Travel Steamer – Dual Voltage 2-in-1 Steamer & Iron',
+    metaDescription: 'Jack & Rose K1 is a 100-220V dual voltage travel steamer and iron with 15-second heat-up and a 10-square-inch ceramic panel — perfect for global travel.',
+    primaryKeyword: 'jack rose k1 travel steamer',
+    secondaryKeywords: [
+      'dual voltage travel steamer',
+      '2-in-1 steamer and iron for travel',
+      'handheld garment steamer for global travel',
+      'portable iron for european travel',
+    ],
+  },
 ]
 
 export interface ShopView {
