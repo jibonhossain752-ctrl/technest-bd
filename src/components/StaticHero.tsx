@@ -30,6 +30,7 @@ export default function StaticHero() {
             className="hero-static-img-el"
             width={520}
             height={520}
+            fetchPriority="high"
           />
           <span className="hero-static-tag">Deal of the Week</span>
         </div>

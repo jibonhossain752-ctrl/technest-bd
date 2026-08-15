@@ -109,6 +109,7 @@ export function ProductDetailHero({ product }: { product: Product }) {
             className="pd-image-el"
             width={640}
             height={640}
+            fetchPriority="high"
           />
         ) : (
           <span
