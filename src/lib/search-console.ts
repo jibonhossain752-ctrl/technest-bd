@@ -10,6 +10,7 @@
  */
 
 import { google } from 'googleapis'
+import { createPrivateKey } from 'crypto'
 import { getDb } from '@/lib/supabase'
 
 export type GscErrorKind =
@@ -88,10 +89,21 @@ export async function getScClient() {
     e.gscKind = 'no_credentials'
     throw e
   }
+  const key = privateKey()
+  try {
+    if (!key) throw new Error('empty key')
+    createPrivateKey(key)
+  } catch {
+    const e = new Error(
+      'GSC_PRIVATE_KEY is not a valid service-account private key (PEM). Re-check the value in the environment, then refresh.',
+    ) as Error & { gscKind: GscErrorKind }
+    e.gscKind = 'no_credentials'
+    throw e
+  }
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GSC_CLIENT_EMAIL,
-      private_key: privateKey(),
+      private_key: key,
     },
     scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
   })
@@ -115,6 +127,19 @@ export function classifyGscError(err: unknown): GscError {
 
   if (e?.gscKind === 'no_credentials') {
     return { kind: 'no_credentials', message: msg, at }
+  }
+  if (
+    status === 401 ||
+    status === 400 ||
+    lower.includes('invalid_grant') ||
+    lower.includes('invalid_client')
+  ) {
+    return {
+      kind: 'no_credentials',
+      message:
+        'The Search Console credentials are invalid or expired (Google rejected the service-account key). Check GSC_CLIENT_EMAIL and GSC_PRIVATE_KEY in the environment, then refresh.',
+      at,
+    }
   }
   if (
     status === 403 &&
