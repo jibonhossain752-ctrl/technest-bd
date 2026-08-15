@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { aggregateRange, aggregateDay } from '@/lib/analytics-aggregate'
 import { sendDailyReportEmail } from '@/lib/analytics-email'
+import { syncSearchConsoleSnapshot } from '@/lib/search-console'
 
 export const runtime = 'nodejs'
 export const maxDuration = 60
@@ -32,7 +33,18 @@ export async function GET(req: Request) {
       const res = await aggregateDay(latest.date)
       email = await sendDailyReportEmail(res.payload, { forceTest })
     }
-    return NextResponse.json({ ok: true, results, email })
+    // Search Console sync (Google data updates ~daily). Non-blocking: a
+    // failure here must never break the analytics aggregation above.
+    let searchConsole: Record<string, unknown> | null = null
+    try {
+      const sc = await syncSearchConsoleSnapshot()
+      searchConsole = sc.ok
+        ? { ok: true, fetchedAt: sc.snapshot?.fetched_at }
+        : { ok: false, kind: sc.error?.kind, message: sc.error?.message }
+    } catch (scErr) {
+      searchConsole = { ok: false, message: String(scErr) }
+    }
+    return NextResponse.json({ ok: true, results, email, searchConsole })
   } catch (err) {
     // Tables may not exist yet (schema not applied) — log and stay green so
     // the cron doesn't page anyone while the site is mid-migration.

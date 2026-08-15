@@ -5,6 +5,11 @@ const ITEMS = [
   { key: 'devices', href: '/admin/analytics/devices', label: 'Devices' },
   { key: 'locations', href: '/admin/analytics/locations', label: 'Locations' },
   { key: 'search', href: '/admin/analytics/search', label: 'Search & FAQ' },
+  {
+    key: 'search-console',
+    href: '/admin/analytics/search-console',
+    label: 'Search Console',
+  },
 ] as const
 
 export type AnalyticsTab = (typeof ITEMS)[number]['key']
