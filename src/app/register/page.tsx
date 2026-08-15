@@ -5,6 +5,7 @@ import type { FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/context/useAuth'
+import { track, pixelFor } from '@/lib/tracking'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export default function RegisterPage() {
@@ -43,6 +44,8 @@ export default function RegisterPage() {
       setBusy(false)
       return
     }
+    track('register_success', undefined, { method: 'form' })
+    pixelFor('register_success')
     router.push('/account')
   }
 

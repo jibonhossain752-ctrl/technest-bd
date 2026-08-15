@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { track } from '@/lib/tracking'
+import { track, pixelFor } from '@/lib/tracking'
 
 interface ShareButtonsProps {
   title: string
@@ -17,6 +17,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     try {
       await navigator.clipboard.writeText(url)
       track('share_click', undefined, { platform: 'copy', post_slug: slug })
+      pixelFor('share_click', { platform: 'copy', post_slug: slug })
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
@@ -52,12 +53,12 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
           rel="noreferrer"
           aria-label={l.aria}
           className="share-btn"
-          onClick={() =>
-            track('share_click', undefined, {
-              platform: l.label.toLowerCase() === 'x' ? 'x' : l.label.toLowerCase(),
-              post_slug: slug,
-            })
-          }
+          onClick={() => {
+            const platform =
+              l.label.toLowerCase() === 'x' ? 'x' : l.label.toLowerCase()
+            track('share_click', undefined, { platform, post_slug: slug })
+            pixelFor('share_click', { platform, post_slug: slug })
+          }}
         >
           {l.label}
         </a>

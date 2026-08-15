@@ -6,7 +6,7 @@ import BlogCard from '@/components/BlogCard'
 import NewsletterWidget from '@/components/NewsletterWidget'
 import NewsletterPopup from '@/components/NewsletterPopup'
 import CategoryScrollHint from '@/components/CategoryScrollHint'
-import { track } from '@/lib/tracking'
+import { track, pixelFor } from '@/lib/tracking'
 
 const TABS = [
   { label: 'All', match: null as string | null },
@@ -94,6 +94,7 @@ export default function BlogPage() {
                     setTab(t.label)
                     setVisible(INITIAL_VISIBLE)
                     track('blog_tab_click', undefined, { tab: t.label, _dedupKey: t.label })
+                    pixelFor('blog_tab_click', { tab: t.label })
                   }}
                 >
                   {t.label}
@@ -116,12 +117,18 @@ export default function BlogPage() {
               }}
               onBlur={(e) => {
                 const q = e.target.value.trim()
-                if (q) track('blog_search', undefined, { query: q.slice(0, 100), results: filtered.length, _dedupKey: 'q-' + q.slice(0, 100) })
+                if (q) {
+                  track('blog_search', undefined, { query: q.slice(0, 100), results: filtered.length, _dedupKey: 'q-' + q.slice(0, 100) })
+                  pixelFor('blog_search', { query: q.slice(0, 100) })
+                }
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   const q = (e.target as HTMLInputElement).value.trim()
-                  if (q) track('blog_search', undefined, { query: q.slice(0, 100), results: filtered.length, _dedupKey: 'q-' + q.slice(0, 100) })
+                  if (q) {
+                    track('blog_search', undefined, { query: q.slice(0, 100), results: filtered.length, _dedupKey: 'q-' + q.slice(0, 100) })
+                    pixelFor('blog_search', { query: q.slice(0, 100) })
+                  }
                 }
               }}
               aria-label="Search posts"

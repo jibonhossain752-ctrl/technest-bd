@@ -15,7 +15,7 @@ export default function NewsletterWidget() {
     if (valid) {
       e.currentTarget.reset()
       track('newsletter_subscribe', undefined, { location: 'widget' })
-      pixelFor('newsletter_subscribe')
+      pixelFor('newsletter_subscribe', { email: input })
     }
   }
 

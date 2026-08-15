@@ -12,7 +12,7 @@ import Collapsible from './ui/Collapsible'
 import CategoryScrollHint from './CategoryScrollHint'
 import CountdownTimer from './ui/CountdownTimer'
 import { useEffect } from 'react'
-import { track } from '@/lib/tracking'
+import { track, pixelFor } from '@/lib/tracking'
 
 interface ShopCatalogProps {
   products: Product[]
@@ -116,12 +116,14 @@ export default function ShopCatalog({
 
   const trackSearch = (query: string) => {
     const q = query.trim()
-    if (q)
+    if (q) {
       track('shop_search', undefined, {
         query: q.slice(0, 100),
         results: filtered.length,
         _dedupKey: 'q-' + q.slice(0, 100),
       })
+      pixelFor('shop_search', { query: q.slice(0, 100) })
+    }
   }
 
   const sidebarLinks = (

@@ -15,7 +15,7 @@ export default function Newsletter() {
     if (valid) {
       e.currentTarget.reset()
       track('newsletter_subscribe', undefined, { location: 'section' })
-      pixelFor('newsletter_subscribe')
+      pixelFor('newsletter_subscribe', { email: input })
     }
   }
 

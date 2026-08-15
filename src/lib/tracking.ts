@@ -198,51 +198,86 @@ function flushQueue() {
   }
 }
 
-/** Meta Pixel stub — activates only when NEXT_PUBLIC_META_PIXEL_ID is set at build time. */
-function pixel(event: string, meta: Record<string, unknown> = {}) {
-  try {
-    const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID
-    if (!pixelId) return
-    const win = window as unknown as Record<string, unknown>
-    const fbq = win.fbq as ((...args: unknown[]) => void) | undefined
-    if (!fbq) {
-      const s = document.createElement('script')
-      s.src = 'https://connect.facebook.net/en_US/fbevents.js'
-      s.async = true
-      document.head.appendChild(s)
-      ;(win._fbq as unknown) = (win._fbq as unknown) || []
-      const fbqInit = ((...args: unknown[]) =>
-        ((win._fbq as unknown[]) || []).push(args)) as (...args: unknown[]) => void
-      win.fbq = fbqInit
-      fbqInit('init', pixelId)
-      fbqInit('track', 'PageView')
-      return
-    }
-    fbq('track', event, meta)
-  } catch {
-    /* ignore */
-  }
+/**
+ * Meta Pixel layer — mirrors internal analytics events to Meta standard and
+ * custom events. Event data is always derived from the site's real product
+ * data (see meta-pixel.ts) or real user input; nothing is fabricated.
+ */
+import {
+  pixelTrack,
+  pixelTrackCustom,
+  productEventParams,
+} from '@/lib/meta-pixel'
+
+function cleanMeta(meta: Record<string, unknown>): Record<string, unknown> {
+  const { _dedupKey, ...rest } = meta
+  return rest
 }
 
-/** Map internal events to Meta Pixel standard events. */
+/** Map internal events to Meta Pixel standard / custom events. */
 export function pixelFor(event: string, meta: Record<string, unknown> = {}) {
+  const m = cleanMeta(meta)
   switch (event) {
     case 'page_view':
-      pixel('PageView')
+      pixelTrack('PageView')
       break
     case 'product_view':
-      pixel('ViewContent', { content_name: meta.product_slug })
+      pixelTrack('ViewContent', productEventParams(m.product_slug))
       break
     case 'add_to_cart':
-      pixel('AddToCart', { content_name: meta.product_slug })
+      pixelTrack('AddToCart', productEventParams(m.product_slug))
       break
     case 'buy_now':
     case 'affiliate_click':
     case 'deal_price_click':
-      pixel('InitiateCheckout', { content_name: meta.product_slug })
+      pixelTrack('InitiateCheckout', productEventParams(m.product_slug))
       break
     case 'newsletter_subscribe':
-      pixel('Lead')
+      // Advanced Matching: the SDK hashes the email client-side before sending.
+      pixelTrack('Lead', {
+        ...(typeof m.email === 'string' && m.email ? { em: m.email } : {}),
+      })
+      break
+    case 'header_search':
+    case 'shop_search':
+      pixelTrack('Search', {
+        search_string: String(m.query ?? ''),
+        content_category: 'product',
+      })
+      break
+    case 'blog_search':
+      pixelTrack('Search', {
+        search_string: String(m.query ?? ''),
+        content_category: 'blog',
+      })
+      break
+    case 'contact_submit':
+      pixelTrack('Contact')
+      break
+    case 'register_success':
+      pixelTrack('CompleteRegistration')
+      break
+    case 'blog_tab_click':
+      if (m.tab && m.tab !== 'All') {
+        pixelTrackCustom('BlogCategoryFilterClick', { category: m.tab })
+      }
+      break
+    case 'share_click':
+      pixelTrackCustom('SocialShareClick', {
+        platform: m.platform,
+        post_slug: m.post_slug,
+      })
+      break
+    case 'video_card_click':
+      pixelTrackCustom('VideoWidgetClick', { platform: m.platform })
+      break
+    case 'community_link_click':
+      pixelTrackCustom(
+        m.platform === 'whatsapp'
+          ? 'WhatsAppCommunityClick'
+          : 'FacebookCommunityClick',
+        { platform: m.platform },
+      )
       break
   }
 }

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { PLATFORM_PATHS, type PlatformKey } from '@/lib/socials'
 import { VIDEOS } from '@/data/videos'
 import CategoryScrollHint from './CategoryScrollHint'
-import { track } from '@/lib/tracking'
+import { track, pixelFor } from '@/lib/tracking'
 
 const PLATFORM_LABEL: Record<PlatformKey, string> = {
   instagram: 'IG',
@@ -72,13 +72,14 @@ export default function WatchAndShop() {
                 }}
                 data-video-id={v.id}
                 data-video-platform={v.platform}
-                onClick={() =>
+                onClick={() => {
                   track('video_card_click', undefined, {
                     video_id: v.id,
                     platform: v.platform,
                     title: v.title.slice(0, 200),
                   })
-                }
+                  pixelFor('video_card_click', { platform: v.platform })
+                }}
               >
                 <div className={`watch-card-thumb thumb-${v.platform}`}>
                   {v.thumbnail ? (

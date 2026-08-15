@@ -148,6 +148,7 @@ export default function Navbar() {
       query: q.slice(0, 100),
       destination: '/shop',
     })
+    pixelFor('header_search', { query: q.slice(0, 100) })
     closeMenu()
     setDeskSidebarOpen(false)
     setSearchQuery('')
@@ -345,7 +346,10 @@ export default function Navbar() {
         target="_blank"
         rel="noreferrer"
         className="desk-community-link"
-        onClick={() => track('community_link_click', undefined, { platform: 'whatsapp' })}
+        onClick={() => {
+          track('community_link_click', undefined, { platform: 'whatsapp' })
+          pixelFor('community_link_click', { platform: 'whatsapp' })
+        }}
       >
         <span className="desk-community-icon" aria-hidden="true">
           💬
@@ -357,7 +361,10 @@ export default function Navbar() {
         target="_blank"
         rel="noreferrer"
         className="desk-community-link"
-        onClick={() => track('community_link_click', undefined, { platform: 'facebook' })}
+        onClick={() => {
+          track('community_link_click', undefined, { platform: 'facebook' })
+          pixelFor('community_link_click', { platform: 'facebook' })
+        }}
       >
         <span className="desk-community-icon" aria-hidden="true">
           👍
@@ -377,7 +384,7 @@ export default function Navbar() {
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return
             e.currentTarget.reset()
             track('newsletter_subscribe', undefined, { location: 'quick' })
-            pixelFor('newsletter_subscribe')
+            pixelFor('newsletter_subscribe', { email })
           }}
         >
           <input

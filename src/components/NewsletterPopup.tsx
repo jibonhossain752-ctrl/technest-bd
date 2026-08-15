@@ -81,7 +81,7 @@ export default function NewsletterPopup() {
     interactedRef.current = true
     setStatus('success')
     track('newsletter_subscribe', undefined, { location: 'popup' })
-    pixelFor('newsletter_subscribe')
+    pixelFor('newsletter_subscribe', { email })
     try {
       window.localStorage.setItem(SUBSCRIBED_KEY, '1')
     } catch {

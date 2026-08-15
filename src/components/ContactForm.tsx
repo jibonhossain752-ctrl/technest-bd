@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { track, pixelFor } from '@/lib/tracking'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
@@ -32,6 +33,8 @@ export default function ContactForm() {
       if (!res.ok) throw new Error(json.error ?? 'Something went wrong.')
       setStatus('sent')
       form.reset()
+      track('contact_submit', undefined, { method: 'form' })
+      pixelFor('contact_submit')
     } catch (err) {
       setStatus('error')
       setError(
