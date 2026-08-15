@@ -232,6 +232,13 @@ export function pixelFor(event: string, meta: Record<string, unknown> = {}) {
     case 'deal_price_click':
       pixelTrack('InitiateCheckout', productEventParams(m.product_slug))
       break
+    case 'begin_checkout':
+      pixelTrack('InitiateCheckout', {
+        content_type: 'product',
+        num_items: m.item_count,
+        content_ids: Array.isArray(m.product_slugs) ? m.product_slugs : undefined,
+      })
+      break
     case 'newsletter_subscribe':
       // Advanced Matching: the SDK hashes the email client-side before sending.
       pixelTrack('Lead', {

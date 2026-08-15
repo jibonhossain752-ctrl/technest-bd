@@ -39,7 +39,10 @@ export default function CartPage() {
   const openPopup = () => {
     setPopupOpen(true)
     track('checkout_view', '/checkout-popup', { item_count: items.length })
-    pixelFor('begin_checkout', { item_count: items.length })
+    pixelFor('begin_checkout', {
+      item_count: items.length,
+      product_slugs: items.map((i) => i.product.slug),
+    })
   }
 
   return (
