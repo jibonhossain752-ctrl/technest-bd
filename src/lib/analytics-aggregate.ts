@@ -2,7 +2,7 @@ import { getDb } from './supabase'
 import { fetchEvents, CLICK_EVENTS } from './analytics-server'
 import { PRODUCTS } from '@/data/products'
 
-export const REPORT_VERSION = 2
+export const REPORT_VERSION = 3
 
 function dayRange(dateStr: string) {
   const start = new Date(dateStr + 'T00:00:00.000Z')
@@ -224,12 +224,14 @@ export async function aggregateDay(
         r.event === 'newsletter_popup_shown' ||
         r.event === 'newsletter_shown'
       ) {
-        const loc = String(r.meta?.location ?? 'other') as string
-        const bucket = loc === 'popup' ? 'popup' : loc === 'quick' ? 'quick' : 'other'
-        const n = newsletter.get(bucket) ?? { shown: 0, subscribes: 0 }
+        // Bucket by the visitor's real country (Vercel IP geolocation header)
+        // so the dashboard shows actual subscriber locations, not the UI
+        // placement of the subscribe form.
+        const country = String(r.country || 'unknown') as string
+        const n = newsletter.get(country) ?? { shown: 0, subscribes: 0 }
         if (r.event === 'newsletter_subscribe') n.subscribes++
         else n.shown++
-        newsletter.set(bucket, n)
+        newsletter.set(country, n)
       }
 
       if (r.event === 'page_view' || r.event === 'session_start') {

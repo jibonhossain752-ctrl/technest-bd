@@ -63,14 +63,20 @@ function detectSource(): { source: string; refHost: string } {
 
 function detectDevice(): { device: string; os: string; browser: string } {
   const ua = navigator.userAgent
+  // iPadOS 13+ sends a desktop-class Macintosh UA, so a touchscreen is the
+  // only reliable way to spot those iPads (they carry no "iPad" token).
+  const isIPadTouch = /Macintosh/i.test(ua) && navigator.maxTouchPoints > 1
+  const isIOS = /iPhone|iPad|iPod/i.test(ua) || isIPadTouch
   const isMobile = /Mobi|Android|iPhone|iPod/i.test(ua)
-  const isTablet = /iPad|Tablet|PlayBook/i.test(ua)
+  const isTablet = /iPad|Tablet|PlayBook/i.test(ua) || isIPadTouch
   let os = 'unknown'
+  // iOS must be checked BEFORE Mac OS X: iPhone/iPod UAs contain
+  // "like Mac OS X", so /Mac OS X/ previously swallowed them into 'macos'.
   if (/Windows/i.test(ua)) os = 'windows'
-  else if (/Mac OS X|Macintosh/i.test(ua)) os = 'macos'
   else if (/Android/i.test(ua)) os = 'android'
-  else if (/iPhone|iPad|iPod/i.test(ua)) os = 'ios'
   else if (/Linux/i.test(ua)) os = 'linux'
+  else if (isIOS) os = 'ios'
+  else if (/Mac OS X|Macintosh/i.test(ua)) os = 'macos'
   let browser = 'unknown'
   if (/Edg\//i.test(ua)) browser = 'edge'
   else if (/OPR\//i.test(ua)) browser = 'opera'

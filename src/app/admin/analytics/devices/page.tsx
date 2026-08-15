@@ -17,6 +17,15 @@ function fmtNum(n: number) {
   return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n)
 }
 
+const OS_LABELS: Record<string, string> = {
+  windows: 'Windows',
+  macos: 'macOS',
+  ios: 'iOS (iPhone / iPad / iPod)',
+  android: 'Android',
+  linux: 'Linux',
+  unknown: 'Unknown',
+}
+
 export default async function DevicesPage({
   searchParams,
 }: {
@@ -196,7 +205,7 @@ export default async function DevicesPage({
                                   }}
                                 />
                               </div>
-                              {d.key}
+                              {OS_LABELS[d.key] ?? d.key}
                             </td>
                             <td>{fmtNum(d.sessions)}</td>
                             <td>{fmtNum(d.pageViews)}</td>

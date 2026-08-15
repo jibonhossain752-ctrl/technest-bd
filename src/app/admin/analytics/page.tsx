@@ -239,7 +239,7 @@ export default async function AdminAnalyticsPage({
                 <table className="admin-table">
                   <thead>
                     <tr>
-                      <th>Location</th>
+                      <th>Country</th>
                       <th>Subscribes</th>
                       <th>Impressions</th>
                       <th>Rate</th>
@@ -248,7 +248,7 @@ export default async function AdminAnalyticsPage({
                   <tbody>
                     {newsletterStats.byLocation.map((l) => (
                       <tr key={l.location}>
-                        <td>{l.location}</td>
+                        <td>{l.countryName ?? l.location}</td>
                         <td>{l.subscribes}</td>
                         <td>{l.impressions}</td>
                         <td>

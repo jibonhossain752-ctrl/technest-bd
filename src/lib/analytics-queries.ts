@@ -844,7 +844,7 @@ export interface NewsletterStats {
   subscribes: number
   impressions: number
   subscribeRate: number
-  byLocation: { location: string; subscribes: number; impressions: number }[]
+  byLocation: { location: string; countryName: string; subscribes: number; impressions: number }[]
 }
 
 /**
@@ -874,6 +874,7 @@ export async function getNewsletterStats(days: number): Promise<NewsletterStats>
     byLocation: [...merged.entries()]
       .map(([location, a]) => ({
         location,
+        countryName: COUNTRY_NAMES[location] ?? location,
         subscribes: a.subscribes,
         impressions: a.shown,
       }))
