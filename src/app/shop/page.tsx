@@ -1,3 +1,5 @@
+export const revalidate = 7200
+
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { PRODUCTS } from '@/data/products'

@@ -1,3 +1,5 @@
+export const revalidate = 7200
+
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
 import SocialIcon from '@/components/SocialIcon'

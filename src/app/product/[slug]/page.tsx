@@ -1,3 +1,5 @@
+export const revalidate = 7200
+
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getProductBySlug, getRelatedProducts, PRODUCTS } from '@/data/products'

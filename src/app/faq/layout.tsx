@@ -1,3 +1,5 @@
+export const revalidate = 7200
+
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {

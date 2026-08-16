@@ -1,3 +1,5 @@
+export const revalidate = 7200
+
 import type { Metadata } from 'next'
 import StaticHero from '@/components/StaticHero'
 import QuickPills from '@/components/QuickPills'
