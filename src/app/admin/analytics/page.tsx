@@ -22,6 +22,7 @@ import ReaggregateButton from './ReaggregateButton'
 import AnalyticsNav from './AnalyticsNav'
 import ExportButtons from './ExportButtons'
 import AnalyticsBackfill from './AnalyticsBackfill'
+import SubscriberTable from './SubscriberTable'
 
 export const runtime = 'nodejs'
 export const metadata: Metadata = { title: 'Analytics — GadgetErea Admin' }
@@ -263,6 +264,7 @@ export default async function AdminAnalyticsPage({
                 </table>
               </div>
             )}
+            <SubscriberTable />
           </div>
 
           <div className="an-section">

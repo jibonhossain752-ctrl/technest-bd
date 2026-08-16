@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { track, pixelFor } from '@/lib/tracking'
+import { reportNewsletterSignup } from '@/lib/newsletter-signup'
 
 export default function Newsletter() {
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -16,6 +17,7 @@ export default function Newsletter() {
       e.currentTarget.reset()
       track('newsletter_subscribe', undefined, { location: 'section' })
       pixelFor('newsletter_subscribe', { email: input })
+      reportNewsletterSignup(input, 'section')
     }
   }
 

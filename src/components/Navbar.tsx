@@ -9,6 +9,7 @@ import { useAuth } from '@/context/useAuth'
 import SocialIcon from './SocialIcon'
 import type { PlatformKey } from '@/lib/socials'
 import { track, pixelFor } from '@/lib/tracking'
+import { reportNewsletterSignup } from '@/lib/newsletter-signup'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -384,6 +385,7 @@ export default function Navbar() {
             e.currentTarget.reset()
             track('newsletter_subscribe', undefined, { location: 'quick' })
             pixelFor('newsletter_subscribe', { email })
+            reportNewsletterSignup(email, 'quick')
           }}
         >
           <input
