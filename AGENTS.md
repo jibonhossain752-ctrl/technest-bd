@@ -58,7 +58,31 @@ post, product, page, section, or anything else). Do not wait to be asked.
    `src/lib/analytics-aggregate.ts` keyed on meta slugs; admin queries join
    names only for display.)
 
-## 3. General
+## 3. Third-party script/API loading — standing rule (ALL future integrations)
+
+1. Every third-party pixel/integration script (Meta Pixel, GA4, GTM, TikTok
+   Pixel, Pinterest Tag, or any other vendor script added later) MUST load in a
+   non-blocking, parallel fashion: use Next.js `<Script strategy="afterInteractive">`
+   (or equivalent async, inject-only-at-runtime pattern). NEVER use a plain
+   synchronous `<script>` in `<head>`/HTML body that can delay first render.
+2. NEVER fully delay a tracking script until "everything else finished" — it
+   must start loading in parallel with the page so early exits still get
+   tracked (current Meta Pixel pattern in `src/app/layout.tsx`: inline fbq
+   bootstrap via `afterInteractive` + `src/lib/meta-pixel.ts` lazy async
+   fallback that queues events until the SDK is ready — keep this pattern).
+3. Server-side API integrations (e.g., Google Search Console via `googleapis`
+   in `src/lib/search-console.ts`) may only be called from API routes /
+   cron jobs — never from the storefront page render path, so they can never
+   add to page TTFB.
+4. JSON-LD `<script type="application/ld+json">` is data, not JavaScript —
+   it renders in-server and is exempt from these rules.
+5. After adding/editing any third-party integration, verify: script appears in
+   the initial HTML only as non-blocking/injected-at-runtime (check built
+   HTML in `.next/server/app/`), the vendor beacon fires (network trace, e.g.
+   `facebook.com/tr/?...ev=PageView&...`), and Lighthouse performance score is
+   not worse than before the change.
+
+## 4. General
 
 Run this checklist quietly on every addition: SEO fields filled from real
 source data → sitemap updated → domain references `gadgeterea.com` → analytics
