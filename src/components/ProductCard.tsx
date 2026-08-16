@@ -80,6 +80,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
     <article className="product-card" ref={cardRef}>
       <Link
         href={product.cardHref ?? product.buyUrl ?? `/product/${product.slug}`}
+        prefetch={false}
         className="product-img"
         aria-label={product.name}
         onClick={() => {
@@ -129,6 +130,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         </Link>
         <Link
           href={product.cardHref ?? product.buyUrl ?? `/product/${product.slug}`}
+          prefetch={false}
           className="product-name"
         >
           {product.name}

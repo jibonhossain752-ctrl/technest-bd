@@ -62,6 +62,7 @@ export default function WatchAndShop() {
             {VIDEOS.map((v) => (
               <Link
                 href={v.href}
+                prefetch={false}
                 key={v.id}
                 className="watch-card"
                 target="_blank"
