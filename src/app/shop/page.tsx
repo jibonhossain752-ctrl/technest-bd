@@ -49,8 +49,6 @@ export default function ShopPage() {
         <ShopCatalog
           products={PRODUCTS}
           activeSlug="all"
-          viewTitle="All Products"
-          viewDescription="Everything we stock, in one place"
         />
       </Suspense>
     </Reveal>

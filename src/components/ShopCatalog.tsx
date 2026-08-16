@@ -17,8 +17,6 @@ import { track, pixelFor } from '@/lib/tracking'
 interface ShopCatalogProps {
   products: Product[]
   activeSlug: string
-  viewTitle: string
-  viewDescription: string
   hideCategoriesMobile?: boolean
   showCountdown?: boolean
   onCategorySelect?: (slug: string) => void
@@ -39,8 +37,6 @@ const PER_PAGE = 8
 export default function ShopCatalog({
   products,
   activeSlug,
-  viewTitle,
-  viewDescription,
   hideCategoriesMobile = false,
   showCountdown = false,
   onCategorySelect,

@@ -46,7 +46,7 @@ export async function GET() {
 export async function POST() {
   if (!(await authed())) return unauthorized()
   try {
-    const { snapshot, lastError } = await getSearchConsoleSnapshot()
+    const { snapshot } = await getSearchConsoleSnapshot()
     if (snapshot && snapshot.fetched_at) {
       const age = Date.now() - new Date(snapshot.fetched_at).getTime()
       if (age < REFRESH_COOLDOWN_MS) {

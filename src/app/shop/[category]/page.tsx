@@ -153,11 +153,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   let products: Product[] = []
   let title = category
-  let description = ''
 
   if (view) {
     title = view.name
-    description = view.description
     products =
       view.slug === 'featured'
         ? PRODUCTS
@@ -166,7 +164,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           : PRODUCTS.filter((p) => p.isNew)
   } else if (cat) {
     title = cat.name
-    description = cat.description
     products = getProductsByCategory(cat.slug)
   } else {
     notFound()
@@ -195,8 +192,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <ShopCatalog
             products={products}
             activeSlug={category}
-            viewTitle={title}
-            viewDescription={description}
             hideCategoriesMobile={
               view ? ['new-arrivals', 'flash-sale'].includes(view.slug) : false
             }

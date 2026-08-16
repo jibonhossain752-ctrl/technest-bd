@@ -46,8 +46,6 @@ export default function DealsCatalog() {
           activeSlug={activeSlug}
           onCategorySelect={setActiveSlug}
           countProducts={deals}
-          viewTitle="Active Deals"
-          viewDescription="🛡️ Genuine products — prices verified every week"
         />
       </Suspense>
       <div className="container">
