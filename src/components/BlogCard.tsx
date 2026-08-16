@@ -4,6 +4,7 @@ import Link from 'next/link'
 import type { BlogPost } from '@/data/posts'
 import { categoryBadgeClass } from '@/data/blogCategories'
 import { track } from '@/lib/tracking'
+import { responsiveSrcset } from '@/lib/images'
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-GB', {
@@ -41,6 +42,8 @@ export default function BlogCard({
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={post.heroImage}
+            srcSet={responsiveSrcset(post.heroImage)}
+            sizes="(min-width: 1024px) 340px, (min-width: 768px) 260px, 45vw"
             alt={post.altText ?? `${post.title} — featured image`}
             className="blog-card-thumb-img"
             loading="lazy"

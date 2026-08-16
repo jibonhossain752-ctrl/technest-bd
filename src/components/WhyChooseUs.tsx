@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
               <span className="feature-icon" aria-hidden="true">
                 {feature.icon}
               </span>
-              <h4>{feature.title}</h4>
+              <h3>{feature.title}</h3>
               <p>{feature.desc}</p>
             </div>
           ))}

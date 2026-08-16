@@ -773,7 +773,7 @@ button {
   margin-bottom: 10px;
 }
 
-.feature h4 {
+.feature h3 {
   color: var(--dark);
   margin-bottom: 6px;
 }
@@ -2620,7 +2620,7 @@ button {
   display: block;
 }
 
-.footer-col h4 {
+.footer-col h3 {
   color: #fff;
   margin-bottom: 18px;
   font-size: 1rem;
@@ -3362,7 +3362,7 @@ button {
     margin-bottom: 6px;
   }
 
-  .feature h4 {
+  .feature h3 {
     font-size: 0.9rem;
     margin-bottom: 4px;
   }
@@ -3475,7 +3475,7 @@ button {
     margin-bottom: 12px;
   }
 
-  .footer-col h4 {
+  .footer-col h3 {
     font-size: 0.85rem;
     margin-bottom: 12px;
   }
@@ -4245,7 +4245,7 @@ button {
 }
 
 .badge-orange {
-  background: var(--accent);
+  background: #c2410c;
 }
 
 .badge-yellow {
@@ -4512,7 +4512,7 @@ button {
   box-shadow: var(--shadow);
 }
 
-.feature h4 {
+.feature h3 {
   color: var(--primary);
   font-size: 0.98rem;
 }
@@ -6234,7 +6234,7 @@ button {
 .desk-newsletter-mini {
   padding: 14px 20px 6px;
 }
-.desk-newsletter-mini h4 {
+.desk-newsletter-mini h3 {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--primary);

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { PRODUCTS } from '@/data/products'
+import { responsiveSrcset } from '@/lib/images'
 
 export default function StaticHero() {
   const product = [...PRODUCTS]
@@ -26,6 +27,8 @@ export default function StaticHero() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={product.imageUrl}
+            srcSet={responsiveSrcset(product.imageUrl)}
+            sizes="(min-width: 768px) 420px, 130px"
             alt={product.altText ?? product.name}
             className="hero-static-img-el"
             width={520}

@@ -372,7 +372,7 @@ export default function Navbar() {
       </a>
 
       <div className="desk-newsletter-mini">
-        <h4>Newsletter Quick Subscribe</h4>
+        <h3>Newsletter Quick Subscribe</h3>
         <form
           className="desk-nl-form"
           onSubmit={(e) => {

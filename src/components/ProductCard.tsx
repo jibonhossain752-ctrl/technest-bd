@@ -8,6 +8,7 @@ import { formatUSD } from '@/data/products'
 import RatingStars from './RatingStars'
 import { useCart } from '@/context/useCart'
 import { track, pixelFor } from '@/lib/tracking'
+import { responsiveSrcset } from '@/lib/images'
 
 interface ProductCardProps {
   product: Product
@@ -92,6 +93,8 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={product.imageUrl}
+            srcSet={responsiveSrcset(product.imageUrl)}
+            sizes="(min-width: 768px) 300px, 45vw"
             alt={product.altText ?? product.name}
             className="product-img-el"
             loading="lazy"

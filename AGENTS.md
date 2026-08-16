@@ -96,6 +96,10 @@ tracking active and verified.
   in paths.
 - Build/verify: `npm.cmd run build`. Verify SEO output on the built HTML in
   `.next/server/app/` (see `C:\Users\User\AppData\Local\Temp\opencode\verify-seo.js`).
+- After adding new product/blog/video images, regenerate responsive variants +
+  the variant map: `node scripts/gen-image-variants.js` (creates `-260w/-360w/-520w/-720w.webp`
+  and `-480w.webp` files + rebuilds `src/data/imageVariants.ts`; used by
+  `src/lib/images.ts` `responsiveSrcset()` in hero/product/blog cards).
 - Dark-blue `.page-header` hero banners are retired site-wide (old
   `src/components/ui/PageHeader.tsx` deleted). Page headers = light
   `Breadcrumb` bar + `.category-seo-head` H1 block.
