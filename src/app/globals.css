@@ -6376,8 +6376,22 @@ button {
     text-align: left;
     align-items: center;
   }
+  .hero-static {
+    animation: none;
+  }
   .hero-static-img {
     justify-self: center;
+    animation: none;
+  }
+  .hero-static-tag,
+  .hero-static-badge,
+  .hero-static-cta {
+    animation: none;
+  }
+  .hero-static-text h1,
+  .hero-static-text .hero-static-sub,
+  .hero-static-name {
+    opacity: 1;
     animation: none;
   }
   .hero-static-img-el {
