@@ -33,7 +33,7 @@ export default function Footer() {
           <Link href="/" className="logo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/gadgeterea-logo.png"
+              src="/gadgeterea-logo.webp"
               alt="GadgetErea"
               width={106}
               height={36}

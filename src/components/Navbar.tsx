@@ -179,7 +179,7 @@ export default function Navbar() {
         <Link href="/" className="side-logo" onClick={goHomeFresh}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/gadgeterea-logo.png"
+            src="/gadgeterea-logo.webp"
             alt="GadgetErea"
             width={94}
             height={32}
@@ -447,7 +447,7 @@ export default function Navbar() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/gadgeterea-logo.png"
+              src="/gadgeterea-logo.webp"
               alt="GadgetErea"
               width={129}
               height={44}
