@@ -21,7 +21,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gadgeterea.com'),
-  other: { 'x-build': 'v1' },
+  other: { 'x-build': 'v2' },
   title: {
     default: 'GadgetErea | Your Trusted Tech Store in the USA',
     template: '%s | GadgetErea',
