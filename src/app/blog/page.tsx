@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { POSTS } from '@/data/posts'
 import BlogCard from '@/components/BlogCard'
 import NewsletterWidget from '@/components/NewsletterWidget'
-import NewsletterPopup from '@/components/NewsletterPopup'
+import NewsletterPopup from '@/components/NewsletterPopupLazy'
 import CategoryScrollHint from '@/components/CategoryScrollHint'
 import { track, pixelFor } from '@/lib/tracking'
 

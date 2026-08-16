@@ -7,7 +7,7 @@ import { PRODUCTS } from '@/data/products'
 import BlogCard from '@/components/BlogCard'
 import { categoryBadgeClass } from '@/data/blogCategories'
 import ShareButtons from '@/components/ShareButtons'
-import NewsletterPopup from '@/components/NewsletterPopup'
+import NewsletterPopup from '@/components/NewsletterPopupLazy'
 import TrackedAffiliateLink from '@/components/TrackedAffiliateLink'
 import PostFaq from '@/components/PostFaq'
 

@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/context/useCart'
 import { useAuth } from '@/context/useAuth'
 import SocialIcon from './SocialIcon'
@@ -603,24 +602,11 @@ export default function Navbar() {
                 <circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
-              <AnimatePresence mode="popLayout">
-                {count > 0 && (
-                  <motion.span
-                    key={count}
-                    className="cart-count"
-                    initial={{ scale: 0.4, y: -8 }}
-                    animate={{ scale: 1, y: 0 }}
-                    exit={{ scale: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 400,
-                      damping: 16,
-                    }}
-                  >
-                    {count}
-                  </motion.span>
-                )}
-              </AnimatePresence>
+              {count > 0 && (
+                <span key={count} className="cart-count">
+                  {count}
+                </span>
+              )}
             </Link>
             )}
             <button

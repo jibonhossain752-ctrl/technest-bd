@@ -6,7 +6,6 @@ import { getSession } from '@/lib/auth'
 import { track, pixelFor } from '@/lib/tracking'
 
 const SUBSCRIBED_KEY = 'technest-newsletter-subscribed'
-const DELAY_MS = 30_000
 
 export default function NewsletterPopup() {
   const [open, setOpen] = useState(false)
@@ -41,7 +40,7 @@ export default function NewsletterPopup() {
       shownRef.current = true
       track('newsletter_popup_shown')
       setOpen(true)
-    }, DELAY_MS)
+    }, 0)
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current)
     }
