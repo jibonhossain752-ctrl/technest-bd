@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       'Fresh gadget deals online — trending gadget finds at the best prices, updated every week.',
     images: [
       {
-        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        url: '/images/blog/best-tech-gifts-under-50.webp',
         width: 1200,
         height: 675,
         alt: 'GadgetErea - trending gadgets and the best Amazon finds',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'Gadget Deals Online – Daily Tech Discounts | GadgetErea',
     description:
       'Fresh gadget deals online — trending gadget finds at the best prices, updated every week.',
-    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+    images: ['/images/blog/best-tech-gifts-under-50.webp'],
   },
 }
 

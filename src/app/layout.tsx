@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import { CartProvider } from '@/context/CartProvider'
 import { AuthProvider } from '@/context/AuthProvider'
@@ -11,6 +12,12 @@ import Toast from '@/components/Toast'
 import ScrollToTop from '@/components/ScrollToTop'
 import AnalyticsBootstrap from '@/components/AnalyticsBootstrap'
 import { META_PIXEL_ID } from '@/lib/meta-pixel'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gadgeterea.com'),
@@ -40,7 +47,7 @@ export const metadata: Metadata = {
       'GadgetErea - Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
     images: [
       {
-        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        url: '/images/blog/best-tech-gifts-under-50.webp',
         width: 1200,
         height: 675,
         alt: 'GadgetErea - trending gadgets and the best Amazon finds',
@@ -52,13 +59,13 @@ export const metadata: Metadata = {
     title: 'GadgetErea | Your Trusted Tech Store in the USA',
     description:
       'GadgetErea - Shop the latest gadgets, laptops, and accessories in the USA. Genuine products, fast delivery, best prices.',
-    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+    images: ['/images/blog/best-tech-gifts-under-50.webp'],
   },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <body>
         <AuthProvider>
           <CartProvider>

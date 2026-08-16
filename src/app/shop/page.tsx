@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       'Gadget deals online at GadgetErea — laptops, smartphones, cool tech gadgets under $50, useful home gadgets and more.',
     images: [
       {
-        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        url: '/images/blog/best-tech-gifts-under-50.webp',
         width: 1200,
         height: 675,
         alt: 'GadgetErea - trending gadgets and the best Amazon finds',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Shop Gadget Deals Online – Laptops, Phones & More | GadgetErea',
     description:
       'Gadget deals online at GadgetErea — laptops, smartphones, cool tech gadgets under $50, useful home gadgets and more.',
-    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+    images: ['/images/blog/best-tech-gifts-under-50.webp'],
   },
 }
 

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
 :root {
   --primary: #0f1b2e;
   --primary-dark: #0a1424;
@@ -29,7 +27,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;

@@ -129,7 +129,7 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: '/images/blog/best-tech-gifts-under-50.jpg',
+          url: '/images/blog/best-tech-gifts-under-50.webp',
           width: 1200,
           height: 675,
           alt: 'GadgetErea - trending gadgets and the best Amazon finds',

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
       'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech under $50 to useful gadgets for home.',
     images: [
       {
-        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        url: '/images/blog/best-tech-gifts-under-50.webp',
         width: 1200,
         height: 675,
         alt: 'GadgetErea - trending gadgets and the best Amazon finds',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: 'About GadgetErea – Your Trusted Gadget Store',
     description:
       'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech under $50 to useful gadgets for home.',
-    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+    images: ['/images/blog/best-tech-gifts-under-50.webp'],
   },
 }
 

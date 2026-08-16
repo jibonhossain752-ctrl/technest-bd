@@ -26,7 +26,7 @@ export const VIDEOS: VideoMeta[] = [
     fallbackTitle: 'Instagram Reel',
     emoji: '📱',
     href: 'https://www.instagram.com/reel/DbqkqRJCSXz/',
-    thumbnail: '/images/videos/v1.jpg',
+    thumbnail: '/images/videos/v1.webp',
     description:
       'Watch the Eurosteam Step Up steam iron lift itself automatically — a hands-on demo of our top US pick for 2026.',
   },
@@ -38,7 +38,7 @@ export const VIDEOS: VideoMeta[] = [
     fallbackTitle: 'YouTube Short',
     emoji: '▶️',
     href: 'https://www.youtube.com/shorts/svEfyu9bUCs',
-    thumbnail: '/images/videos/v2.jpg',
+    thumbnail: '/images/videos/v2.webp',
     description:
       'A hands-on PS5 DualSense experience from Spider-Man: Brand New Day — feel the fight in every vibration.',
   },
@@ -50,7 +50,7 @@ export const VIDEOS: VideoMeta[] = [
     fallbackTitle: 'Facebook Reel',
     emoji: '📸',
     href: 'https://www.facebook.com/reel/1826212645426031',
-    thumbnail: '/images/videos/v3.jpg',
+    thumbnail: '/images/videos/v3.webp',
     description:
       'The 140W Smart Auto Stop USB-C fast charger stops charging automatically — no more overcharging overnight.',
   },
@@ -62,7 +62,7 @@ export const VIDEOS: VideoMeta[] = [
     fallbackTitle: 'Pinterest Pin',
     emoji: '📌',
     href: 'https://www.pinterest.com/pin/1051168369298012793/',
-    thumbnail: '/images/videos/v4.jpg',
+    thumbnail: '/images/videos/v4.webp',
     description:
       'Why the Omni PRO dynamic ergonomic office chair keeps you cool and comfortable for 36-hour work sessions.',
   },
@@ -74,7 +74,7 @@ export const VIDEOS: VideoMeta[] = [
     fallbackTitle: 'TikTok Video',
     emoji: '🎵',
     href: 'https://www.tiktok.com/@amazonfindsgadget.shop/video/7662305439891180821',
-    thumbnail: '/images/videos/v5.jpg',
+    thumbnail: '/images/videos/v5.webp',
     description:
       'A first look at the Even Realities G2 AI smart glasses — see why they are our top wearable pick for 2026.',
   },

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       'Contact GadgetErea for order support, warranty and partnership inquiries. We reply within 24 hours.',
     images: [
       {
-        url: '/images/blog/best-tech-gifts-under-50.jpg',
+        url: '/images/blog/best-tech-gifts-under-50.webp',
         width: 1200,
         height: 675,
         alt: 'GadgetErea - trending gadgets and the best Amazon finds',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Contact GadgetErea – Support & Inquiries',
     description:
       'Contact GadgetErea for order support, warranty and partnership inquiries. We reply within 24 hours.',
-    images: ['/images/blog/best-tech-gifts-under-50.jpg'],
+    images: ['/images/blog/best-tech-gifts-under-50.webp'],
   },
 }
 

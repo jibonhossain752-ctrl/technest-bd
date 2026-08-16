@@ -146,7 +146,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-13',
     author: 'Alex Morgan',
-    heroImage: '/images/blog/mova-lidax-ultra-2000-hero.jpg',
+    heroImage: '/images/blog/mova-lidax-ultra-2000-hero.webp',
     emoji: '🤖',
     readTime: '8 min read',
     content: [
@@ -157,7 +157,7 @@ export const POSTS: BlogPost[] = [
       'The mower supports up to two independent maps and up to 150 managed mowing zones, giving homeowners more control when a property contains separate lawn areas.',
       'Navigation is one of the most important parts of any autonomous lawn mower.',
       {
-        image: '/images/blog/mova-lidax-ultra-2000-lidar.jpg',
+        image: '/images/blog/mova-lidax-ultra-2000-lidar.webp',
         alt: 'MOVA LiDAX Ultra 2000 robot lawn mower with 360° 3D LiDAR and AI vision navigation',
         width: 2560,
         height: 2560,
@@ -172,7 +172,7 @@ export const POSTS: BlogPost[] = [
       'The LiDAX Ultra 2000 is rated to handle slopes up to 45% and uses rear-wheel drive with off-road wheels for additional traction. It can also handle vertical obstacles up to approximately 1.6 inches.',
       'Actual performance can depend on surface conditions, grass conditions, weather, and the individual lawn layout.',
       {
-        image: '/images/blog/mova-lidax-ultra-2000-performance.jpg',
+        image: '/images/blog/mova-lidax-ultra-2000-performance.webp',
         alt: 'MOVA LiDAX Ultra 2000 robot lawn mower mowing on a lawn',
         width: 2560,
         height: 2560,
@@ -186,7 +186,7 @@ export const POSTS: BlogPost[] = [
       'The MOVA LiDAX Ultra 2000 is aimed at homeowners who want to reduce manual lawn maintenance without installing traditional boundary wires.',
       'Its combination of 3D LiDAR, AI vision, wire-free mapping, obstacle avoidance, edge-focused cutting, slope capability, multi-zone management, and adjustable cutting height makes it a feature-rich option for lawns up to around half an acre.',
       {
-        image: '/images/blog/mova-lidax-ultra-2000-final.jpg',
+        image: '/images/blog/mova-lidax-ultra-2000-final.webp',
         alt: 'MOVA LiDAX Ultra 2000 wireless robot lawn mower on a lawn',
         width: 2560,
         height: 2560,
@@ -255,7 +255,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-05',
     author: 'Alex Morgan',
-        heroImage: '/images/blog/usb-c-accessories-under-50.jpg',
+        heroImage: '/images/blog/usb-c-accessories-under-50.webp',
     emoji: '🔌',
     readTime: '6 min read',
     content: [
@@ -305,7 +305,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-03',
     author: 'Jordan Lee',
-        heroImage: '/images/blog/best-noise-canceling-headphones.jpg',
+        heroImage: '/images/blog/best-noise-canceling-headphones.webp',
     emoji: '🎧',
     readTime: '7 min read',
     content: [
@@ -354,7 +354,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-01',
     author: 'Sam Carter',
-        heroImage: '/images/blog/best-4k-webcams-2026.jpg',
+        heroImage: '/images/blog/best-4k-webcams-2026.webp',
     emoji: '📹',
     readTime: '6 min read',
     content: [
@@ -403,7 +403,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-28',
     author: 'Riley Thompson',
-        heroImage: '/images/blog/best-carry-on-luggage-2026.jpg',
+        heroImage: '/images/blog/best-carry-on-luggage-2026.webp',
     emoji: '🧳',
     readTime: '7 min read',
     content: [
@@ -452,7 +452,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-25',
     author: 'Alex Morgan',
-        heroImage: '/images/blog/best-mechanical-keyboards-2026.jpg',
+        heroImage: '/images/blog/best-mechanical-keyboards-2026.webp',
     emoji: '⌨️',
     readTime: '6 min read',
     content: [
@@ -501,7 +501,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-22',
     author: 'Casey Nguyen',
-        heroImage: '/images/blog/ergonomic-desk-upgrades-under-100.jpg',
+        heroImage: '/images/blog/ergonomic-desk-upgrades-under-100.webp',
     emoji: '🖱️',
     readTime: '5 min read',
     content: [
@@ -550,7 +550,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-18',
     author: 'Jordan Lee',
-        heroImage: '/images/blog/best-smart-speakers-2026.jpg',
+        heroImage: '/images/blog/best-smart-speakers-2026.webp',
     emoji: '🔊',
     readTime: '6 min read',
     content: [
@@ -600,7 +600,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-15',
     author: 'Riley Thompson',
-        heroImage: '/images/blog/best-3-in-1-wireless-chargers.jpg',
+        heroImage: '/images/blog/best-3-in-1-wireless-chargers.webp',
     emoji: '🔋',
     readTime: '5 min read',
     content: [
@@ -649,7 +649,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-10',
     author: 'Sam Carter',
-        heroImage: '/images/blog/best-tech-gifts-under-50.jpg',
+        heroImage: '/images/blog/best-tech-gifts-under-50.webp',
     emoji: '🎁',
     readTime: '6 min read',
     content: [
@@ -699,7 +699,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-07-06',
     author: 'Casey Nguyen',
-        heroImage: '/images/blog/best-gadgets-remote-workers.jpg',
+        heroImage: '/images/blog/best-gadgets-remote-workers.webp',
     emoji: '💻',
     readTime: '7 min read',
     content: [
@@ -749,7 +749,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-07-02',
     author: 'Alex Morgan',
-        heroImage: '/images/blog/how-to-choose-usb-c-hub.jpg',
+        heroImage: '/images/blog/how-to-choose-usb-c-hub.webp',
     emoji: '🔌',
     readTime: '8 min read',
     content: [
@@ -800,7 +800,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-28',
     author: 'Riley Thompson',
-        heroImage: '/images/blog/how-to-buy-carry-on-luggage.jpg',
+        heroImage: '/images/blog/how-to-buy-carry-on-luggage.webp',
     emoji: '🧳',
     readTime: '7 min read',
     content: [
@@ -850,7 +850,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-24',
     author: 'Casey Nguyen',
-        heroImage: '/images/blog/ergonomic-office-chair-buying-guide.jpg',
+        heroImage: '/images/blog/ergonomic-office-chair-buying-guide.webp',
     emoji: '🪑',
     readTime: '8 min read',
     content: [
@@ -901,7 +901,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-20',
     author: 'Sam Carter',
-        heroImage: '/images/blog/how-to-choose-4k-webcam.jpg',
+        heroImage: '/images/blog/how-to-choose-4k-webcam.webp',
     emoji: '📹',
     readTime: '7 min read',
     content: [
@@ -951,7 +951,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-16',
     author: 'Jordan Lee',
-        heroImage: '/images/blog/noise-canceling-headphones-buying-guide.jpg',
+        heroImage: '/images/blog/noise-canceling-headphones-buying-guide.webp',
     emoji: '🎧',
     readTime: '7 min read',
     content: [
@@ -1002,7 +1002,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-12',
     author: 'Alex Morgan',
-        heroImage: '/images/blog/ups-battery-backup-buying-guide.jpg',
+        heroImage: '/images/blog/ups-battery-backup-buying-guide.webp',
     emoji: '🔋',
     readTime: '8 min read',
     content: [
@@ -1054,7 +1054,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-08',
     author: 'Riley Thompson',
-        heroImage: '/images/blog/steam-iron-vs-steam-press.jpg',
+        heroImage: '/images/blog/steam-iron-vs-steam-press.webp',
     emoji: '👔',
     readTime: '6 min read',
     content: [
@@ -1105,7 +1105,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-06-04',
     author: 'Casey Nguyen',
-        heroImage: '/images/blog/magsafe-power-bank-buying-guide.jpg',
+        heroImage: '/images/blog/magsafe-power-bank-buying-guide.webp',
     emoji: '🔋',
     readTime: '6 min read',
     content: [
@@ -1155,7 +1155,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-05-30',
     author: 'Jordan Lee',
-        heroImage: '/images/blog/kids-smart-speaker-guide.jpg',
+        heroImage: '/images/blog/kids-smart-speaker-guide.webp',
     emoji: '🦉',
     readTime: '6 min read',
     content: [
@@ -1206,7 +1206,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-05-26',
     author: 'Sam Carter',
-        heroImage: '/images/blog/heated-lunch-box-buying-guide.jpg',
+        heroImage: '/images/blog/heated-lunch-box-buying-guide.webp',
     emoji: '🍱',
     readTime: '6 min read',
     content: [
@@ -1256,7 +1256,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-22',
     author: 'Casey Nguyen',
-        heroImage: '/images/blog/keep-iphone-17-pro-case-new.jpg',
+        heroImage: '/images/blog/keep-iphone-17-pro-case-new.webp',
     emoji: '📱',
     readTime: '5 min read',
     content: [
@@ -1306,7 +1306,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-18',
     author: 'Riley Thompson',
-        heroImage: '/images/blog/flying-with-carry-on-only.jpg',
+        heroImage: '/images/blog/flying-with-carry-on-only.webp',
     emoji: '✈️',
     readTime: '5 min read',
     content: [
@@ -1356,7 +1356,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-14',
     author: 'Alex Morgan',
-        heroImage: '/images/blog/fix-messy-desk-cables.jpg',
+        heroImage: '/images/blog/fix-messy-desk-cables.webp',
     emoji: '🧰',
     readTime: '5 min read',
     content: [
@@ -1407,7 +1407,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-10',
     author: 'Casey Nguyen',
-        heroImage: '/images/blog/reduce-eye-strain-monitor-lamp.jpg',
+        heroImage: '/images/blog/reduce-eye-strain-monitor-lamp.webp',
     emoji: '💡',
     readTime: '5 min read',
     content: [
@@ -1457,7 +1457,7 @@ export const POSTS: BlogPost[] = [
     category: 'Tips & Tricks',
     date: '2026-05-06',
     author: 'Alex Morgan',
-        heroImage: '/images/blog/extend-laptop-battery-life.jpg',
+        heroImage: '/images/blog/extend-laptop-battery-life.webp',
     emoji: '🔋',
     readTime: '6 min read',
     content: [
@@ -1508,7 +1508,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-05-02',
     author: 'Sam Carter',
-        heroImage: '/images/blog/gan-charging-explained.jpg',
+        heroImage: '/images/blog/gan-charging-explained.webp',
     emoji: '⚡',
     readTime: '5 min read',
     content: [
@@ -1558,7 +1558,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-04-28',
     author: 'Jordan Lee',
-        heroImage: '/images/blog/bluetooth-6-explained.jpg',
+        heroImage: '/images/blog/bluetooth-6-explained.webp',
     emoji: '🎧',
     readTime: '5 min read',
     content: [
@@ -1608,7 +1608,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-04-24',
     author: 'Alex Morgan',
-        heroImage: '/images/blog/sinewave-ups-explained.jpg',
+        heroImage: '/images/blog/sinewave-ups-explained.webp',
     emoji: '⚡',
     readTime: '6 min read',
     content: [
@@ -1660,7 +1660,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-04-20',
     author: 'Jordan Lee',
-        heroImage: '/images/blog/foldable-phones-2026.jpg',
+        heroImage: '/images/blog/foldable-phones-2026.webp',
     emoji: '📱',
     readTime: '6 min read',
     content: [
@@ -1711,7 +1711,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-04-16',
     author: 'Sam Carter',
-        heroImage: '/images/blog/ai-tracking-webcam-explained.jpg',
+        heroImage: '/images/blog/ai-tracking-webcam-explained.webp',
     emoji: '🎥',
     readTime: '5 min read',
     content: [
@@ -1762,7 +1762,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-08',
     author: 'Sam Carter',
-    heroImage: '/images/blog/cool-tech-gadgets-under-50.jpg',
+    heroImage: '/images/blog/cool-tech-gadgets-under-50.webp',
     emoji: '💡',
     readTime: '6 min read',
     content: [
@@ -1817,7 +1817,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-11',
     author: 'Alex Morgan',
-    heroImage: '/images/blog/best-amazon-finds-this-week.jpg',
+    heroImage: '/images/blog/best-amazon-finds-this-week.webp',
     emoji: '🛒',
     readTime: '7 min read',
     content: [
@@ -1872,7 +1872,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-08-07',
     author: 'Jordan Lee',
-    heroImage: '/images/blog/useful-gadgets-for-home.jpg',
+    heroImage: '/images/blog/useful-gadgets-for-home.webp',
     emoji: '🏠',
     readTime: '6 min read',
     content: [
@@ -1927,7 +1927,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-09',
     author: 'Casey Nguyen',
-    heroImage: '/images/blog/viral-tiktok-gadgets.jpg',
+    heroImage: '/images/blog/viral-tiktok-gadgets.webp',
     emoji: '🎬',
     readTime: '7 min read',
     content: [
@@ -1982,7 +1982,7 @@ export const POSTS: BlogPost[] = [
     category: 'Buying Guide',
     date: '2026-08-06',
     author: 'Riley Thompson',
-    heroImage: '/images/blog/best-gadget-deals-online.jpg',
+    heroImage: '/images/blog/best-gadget-deals-online.webp',
     emoji: '💸',
     readTime: '7 min read',
     content: [
@@ -2037,7 +2037,7 @@ export const POSTS: BlogPost[] = [
     category: 'Roundup',
     date: '2026-08-10',
     author: 'Alex Morgan',
-    heroImage: '/images/blog/weird-but-useful-gadgets.jpg',
+    heroImage: '/images/blog/weird-but-useful-gadgets.webp',
     emoji: '🤔',
     readTime: '6 min read',
     content: [
