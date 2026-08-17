@@ -137,7 +137,9 @@ export default function Navbar() {
   }
 
   const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href)
+    href === '/'
+      ? pathname === '/' || pathname === '' || pathname === '/index'
+      : pathname.startsWith(href)
 
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault()

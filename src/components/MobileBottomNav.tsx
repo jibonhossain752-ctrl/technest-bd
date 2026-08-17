@@ -10,7 +10,7 @@ const BN_ITEMS = [
   {
     label: 'Home',
     href: '/',
-    active: (p: string) => p === '/',
+    active: (p: string) => p === '/' || p === '' || p === '/index',
     icon: (
       <svg
         viewBox="0 0 24 24"
