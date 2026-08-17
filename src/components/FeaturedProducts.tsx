@@ -16,7 +16,6 @@ export default function FeaturedProducts() {
           products={[...PRODUCTS]
             .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
             .slice(0, BEST_SELLING_LIMIT)}
-          eagerFirst={4}
         />
         <div className="view-all-wrap">
           <Link href="/shop" className="btn btn-primary view-all-products">

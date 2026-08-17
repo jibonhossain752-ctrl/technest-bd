@@ -146,8 +146,8 @@ export default function BlogPage() {
               </div>
             ) : (
               <div className="blog-grid">
-                {visiblePosts.map((post, i) => (
-                  <BlogCard key={post.slug} post={post} eager={i < 4} />
+                {visiblePosts.map((post) => (
+                  <BlogCard key={post.slug} post={post} />
                 ))}
               </div>
             )}
