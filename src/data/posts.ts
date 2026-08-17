@@ -111,11 +111,6 @@ export const POSTS: BlogPost[] = [
         answer:
           'It does both. The 10-square-inch Amethyst ceramic dry ironing plate heats to 302°F for creases, collars and pant legs, while the steam function runs at up to 248°F for hanging garments.',
       },
-      {
-        question: 'Does the K1 come with a travel pouch?',
-        answer:
-          'Yes — according to the brand, the K1 ships with a travel pouch for packing, along with the 7.2 ft cord and heat-resistant plate.',
-      },
     ],
     lastUpdated: '2026-08-14',
     primaryKeyword: 'Jack & Rose K1 Travel Steamer Review',
