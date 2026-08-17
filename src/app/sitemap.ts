@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const productRoutes: MetadataRoute.Sitemap = PRODUCTS.map((p) => ({
     url: `${SITE}/product/${p.slug}`,
-    lastModified: now,
+    ...(p.addedAt ? { lastModified: new Date(p.addedAt) } : {}),
     changeFrequency: 'weekly',
     priority: 0.8,
     images: p.imageUrl ? [`${SITE}${p.imageUrl}`] : undefined,
@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogRoutes: MetadataRoute.Sitemap = POSTS.map((p) => ({
     url: `${SITE}/blog/${p.slug}`,
-    lastModified: p.lastUpdated ? new Date(p.lastUpdated) : now,
+    lastModified: p.lastUpdated ? new Date(p.lastUpdated) : new Date(p.date),
     changeFrequency: 'monthly',
     priority: 0.7,
     images: p.heroImage ? [`${SITE}${p.heroImage}`] : undefined,

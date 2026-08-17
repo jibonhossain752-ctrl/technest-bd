@@ -15,6 +15,7 @@ export interface Product {
   isNew?: boolean
   description: string
   features: string[]
+  addedAt?: string
   cardHref?: string
   buyUrl?: string
   metaTitle?: string
@@ -29,6 +30,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p17',
     slug: 'rayneo-air-4-pro-batman-justice',
+    addedAt: '2026-08-08',
     name: 'RayNeo Air 4 Pro × Batman Justice Edition AR Glasses',
     category: 'Audio & Wearables',
     categorySlug: 'audio-wearables',
@@ -53,6 +55,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'p18',    slug: 'kids-echo-dot-5th-gen-owl',
+    addedAt: '2026-08-08',
     name: '2022 Kids Echo Dot 5th Gen | Owl Design',
     category: 'Smart Home',
     categorySlug: 'smart-home',
@@ -82,6 +85,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p19',
     slug: 'libernovo-omni-pro-office-chair',
+    addedAt: '2026-08-08',
     name: 'LiberNovo Omni PRO Dynamic Ergonomic Office Chair',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -110,6 +114,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p20',
     slug: 'eurosteam-step-up-steam-iron',
+    addedAt: '2026-08-08',
     name: 'Eurosteam Step Up Self-Lifting Steam Iron 1800W',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -137,6 +142,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p21',
     slug: '140w-smart-auto-stop-charger',
+    addedAt: '2026-08-08',
     name: '140W Smart Auto Stop Charging Adapter',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -167,6 +173,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p22',
     slug: 'torras-ostand-q3-air-iphone-17-pro-case',
+    addedAt: '2026-08-08',
     name: 'TORRAS Ostand Q3 Air for iPhone 17 Pro Case, Midnight Blue',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -195,6 +202,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p23',
     slug: 'mixi-carry-on-luggage-charger',
+    addedAt: '2026-08-08',
     name: 'mixi Carry On Luggage with Cup Phone Holder and Charger, 20 Inch',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -226,6 +234,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p24',
     slug: 'level8-zipperless-carry-on-luggage',
+    addedAt: '2026-08-08',
     name: 'LEVEL8 Zipperless Carry On Luggage with Aluminum Frame, 20 Inch',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -254,6 +263,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p25',
     slug: 'level8-luminous-carry-on-luggage',
+    addedAt: '2026-08-08',
     name: 'LEVEL8 Hard Shell Carry on Luggage, Luminous Textured, 20 Inch Black',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -284,6 +294,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p26',
     slug: 'cio-smartcoby-ultra-slim-power-bank',
+    addedAt: '2026-08-08',
     name: 'CIO SMARTCOBY Ultra Slim 3K 3000mAh Wireless MagSafe Power Bank',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -311,6 +322,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p27',
     slug: 'narshton-open-ear-headphones',
+    addedAt: '2026-08-08',
     name: 'Narshton Open-Ear Headphones, Bluetooth 6.0 Wireless, Black',
     category: 'Audio & Wearables',
     categorySlug: 'audio-wearables',
@@ -341,6 +353,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p28',
     slug: 'taketoday-collapsible-water-bottle',
+    addedAt: '2026-08-08',
     name: 'TakeToday Collapsible Water Bottle with Straw, 21oz, Black',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -370,6 +383,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p29',
     slug: 'goldjoy-7-in-1-speaker-charging-station',
+    addedAt: '2026-08-08',
     name: 'GoldJoy 7 in 1 Bluetooth Speaker Wireless Charging Station',
     category: 'Audio & Wearables',
     categorySlug: 'audio-wearables',
@@ -401,6 +415,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p30',
     slug: 'samsung-galaxy-z-fold7-256gb',
+    addedAt: '2026-08-08',
     name: 'Samsung Galaxy Z Fold7 Cell Phone, 256GB Unlocked, Blue Shadow',
     category: 'Smartphones',
     categorySlug: 'smartphones',
@@ -432,6 +447,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p31',
     slug: 'samsung-galaxy-z-flip8-256gb',
+    addedAt: '2026-08-08',
     name: 'Samsung Galaxy Z Flip8 Unlocked Cell Phone + $200 Gift Card, 256GB, Pink',
     category: 'Smartphones',
     categorySlug: 'smartphones',
@@ -463,6 +479,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p32',
     slug: 'singer-intelligent-steam-press',
+    addedAt: '2026-08-08',
     name: 'SINGER Intelligent 2.0 Steam Press, 1600W, 20 Inch',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -492,6 +509,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p33',
     slug: 'xvolt-electric-heated-lunch-box',
+    addedAt: '2026-08-08',
     name: 'Xvolt Rechargeable Electric Heated Lunch Box',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -522,6 +540,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p34',
     slug: 'playstation-5-disc-console-slim',
+    addedAt: '2026-08-08',
     name: 'PlayStation 5 Disc Edition Console (Slim)',
     category: 'Gaming Gear',
     categorySlug: 'gaming',
@@ -550,6 +569,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p35',
     slug: 'forward-x-ovis-auto-follow-suitcase',
+    addedAt: '2026-08-08',
     name: 'FORWARD X OVIS Auto-follow Suitcase, 20 Inch, Red Dot Blue',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -580,6 +600,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p36',
     slug: 'echo-dot-5th-gen-charcoal',
+    addedAt: '2026-08-08',
     name: '2022 Echo Dot 5th Gen Smart Speaker, Charcoal',
     category: 'Smart Home',
     categorySlug: 'smart-home',
@@ -609,6 +630,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p37',
     slug: 'ugreen-usb-c-hub-5-in-1',
+    addedAt: '2026-08-08',
     name: 'UGREEN USB C Hub 5 in 1, 4K HDMI, 100W Power Delivery',
     category: 'Laptops & PCs',
     categorySlug: 'laptops',
@@ -641,6 +663,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p38',
     slug: 'emeet-c960-4k-webcam',
+    addedAt: '2026-08-08',
     name: 'EMEET C960 4K Webcam with PDAF Auto Focus',
     category: 'Cameras',
     categorySlug: 'cameras',
@@ -672,6 +695,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p39',
     slug: 'aula-f75-pro-wireless-keyboard',
+    addedAt: '2026-08-08',
     name: 'AULA F75 Pro Wireless Mechanical Keyboard, 75%',
     category: 'Gaming Gear',
     categorySlug: 'gaming',
@@ -702,6 +726,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p40',
     slug: 'sony-wh-1000xm5-headphones',
+    addedAt: '2026-08-08',
     name: 'Sony WH-1000XM5 Wireless Noise Canceling Headphones, Black',
     category: 'Audio & Wearables',
     categorySlug: 'audio-wearables',
@@ -734,6 +759,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p41',
     slug: 'cyberpower-cp1500pfclcd-ups',
+    addedAt: '2026-08-08',
     name: 'CyberPower CP1500PFCLCD PFC Sinewave UPS, 1500VA/1000W, 12 Outlets',
     category: 'Laptops & PCs',
     categorySlug: 'laptops',
@@ -765,6 +791,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p42',
     slug: 'scanfield-under-desk-cable-tray',
+    addedAt: '2026-08-08',
     name: 'Scanfield Under Desk Cable Management Tray, 17-Inch, 2-Pack Black',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -795,6 +822,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p43',
     slug: 'obsbot-tiny-2-lite-webcam',
+    addedAt: '2026-08-08',
     name: 'OBSBOT Tiny 2 Lite 4K Webcam with AI Tracking PTZ',
     category: 'Cameras',
     categorySlug: 'cameras',
@@ -824,6 +852,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p44',
     slug: 'quntis-computer-monitor-lamp',
+    addedAt: '2026-08-08',
     name: 'Quntis Computer Monitor Lamp, ScreenLinear Pro Gray',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -853,6 +882,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p45',
     slug: 'ueq-foldable-3-in-1-charging-station',
+    addedAt: '2026-08-08',
     name: 'UEQ Foldable 3 in 1 Wireless Charging Station, Pure Black',
     category: 'Accessories',
     categorySlug: 'accessories',
@@ -884,6 +914,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p46',
     slug: 'logitech-lift-vertical-mouse',
+    addedAt: '2026-08-08',
     name: 'Logitech Lift Vertical Ergonomic Wireless Mouse, Graphite',
     category: 'Laptops & PCs',
     categorySlug: 'laptops',
@@ -915,6 +946,7 @@ export const PRODUCTS: Product[] = [
     {
     id: 'p47',
     slug: 'mova-lidax-ultra-2000',
+    addedAt: '2026-08-13',
     name: 'MOVA LiDAX Ultra 2000 Robot Lawn Mower',
     category: 'Smart Home',
     categorySlug: 'smart-home',
@@ -954,6 +986,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p48',
     slug: 'jack-rose-k1-travel-steamer',
+    addedAt: '2026-08-14',
     name: 'Jack & Rose K1 Travel Steamer for Clothes',
     category: 'Accessories',
     categorySlug: 'accessories',

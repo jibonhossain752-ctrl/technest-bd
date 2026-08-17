@@ -133,6 +133,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       : {}),
   }
 
+  const faqPageJsonLd =
+    post.faq && post.faq.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: post.faq.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: { '@type': 'Answer', text: item.answer },
+          })),
+        }
+      : null
+
   return (
     <>
       <script
@@ -141,6 +154,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           __html: JSON.stringify(blogPostingJsonLd),
         }}
       />
+      {faqPageJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqPageJsonLd),
+          }}
+        />
+      )}
       <article className="blog-post container">
         <header className="blog-post-header">
           <span className={`blog-card-badge ${categoryBadgeClass(post.category)}`}>
