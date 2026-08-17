@@ -38,6 +38,7 @@ export default function Footer() {
               width={106}
               height={36}
               className="logo-img"
+              loading="lazy"
             />
           </Link>
           <p>

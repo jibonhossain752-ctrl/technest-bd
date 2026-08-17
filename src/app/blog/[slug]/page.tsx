@@ -235,6 +235,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     className="deal-card-inline-img-el"
                     width={58}
                     height={58}
+                    loading="lazy"
                   />
                 ) : (
                   <span

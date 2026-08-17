@@ -258,11 +258,12 @@ export default function ShopCatalog({
           ) : (
             <>
               <div className="product-grid shop-grid">
-                {currentPage.map((product) => (
+                {currentPage.map((product, i) => (
                   <ProductCard
                     key={product.id}
                     product={product}
                     onAddToCart={addToCart}
+                    eager={i < 4}
                   />
                 ))}
               </div>

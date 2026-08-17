@@ -13,6 +13,7 @@ import { responsiveSrcset } from '@/lib/images'
 interface ProductCardProps {
   product: Product
   onAddToCart?: (product: Product) => void
+  eager?: boolean
 }
 
 const BADGE_LABEL: Record<string, string> = {
@@ -21,7 +22,7 @@ const BADGE_LABEL: Record<string, string> = {
   sale: 'SALE',
 }
 
-export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export default function ProductCard({ product, onAddToCart, eager = false }: ProductCardProps) {
   const { buyNow } = useCart()
   const router = useRouter()
   const cardRef = useRef<HTMLElement>(null)
@@ -98,7 +99,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
             sizes="(min-width: 768px) 300px, 45vw"
             alt={product.altText ?? product.name}
             className="product-img-el"
-            loading="lazy"
+            loading={eager ? 'eager' : 'lazy'}
             width={400}
             height={400}
           />

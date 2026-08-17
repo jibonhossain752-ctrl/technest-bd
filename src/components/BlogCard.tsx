@@ -18,12 +18,14 @@ interface BlogCardProps {
   post: BlogPost
   trackLocation?: string
   fromSlug?: string
+  eager?: boolean
 }
 
 export default function BlogCard({
   post,
   trackLocation = 'listing',
   fromSlug,
+  eager = false,
 }: BlogCardProps) {
   return (
     <Link
@@ -46,7 +48,7 @@ export default function BlogCard({
             sizes="(min-width: 1024px) 340px, (min-width: 768px) 260px, 45vw"
             alt={post.altText ?? `${post.title} — featured image`}
             className="blog-card-thumb-img"
-            loading="lazy"
+            loading={eager ? 'eager' : 'lazy'}
             width={400}
             height={225}
           />

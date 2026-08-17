@@ -67,6 +67,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//connect.facebook.net" />
         <AuthProvider>
           <CartProvider>
             <Navbar />

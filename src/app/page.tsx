@@ -1,16 +1,18 @@
 export const revalidate = 7200
 
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import StaticHero from '@/components/StaticHero'
 import QuickPills from '@/components/QuickPills'
 import LatestBlogPosts from '@/components/LatestBlogPosts'
-import WatchAndShop from '@/components/WatchAndShop'
-import FeaturedProducts from '@/components/FeaturedProducts'
-import Newsletter from '@/components/Newsletter'
-import WhyChooseUs from '@/components/WhyChooseUs'
-import Testimonials from '@/components/Testimonials'
 import Reveal from '@/components/ui/Reveal'
 import VideoSchema from '@/components/VideoSchema'
+
+const WatchAndShop = dynamic(() => import('@/components/WatchAndShop'))
+const FeaturedProducts = dynamic(() => import('@/components/FeaturedProducts'))
+const Newsletter = dynamic(() => import('@/components/Newsletter'))
+const WhyChooseUs = dynamic(() => import('@/components/WhyChooseUs'))
+const Testimonials = dynamic(() => import('@/components/Testimonials'))
 
 export const metadata: Metadata = {
   title: 'Trending Gadgets & Amazon Finds',
