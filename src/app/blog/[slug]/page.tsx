@@ -206,6 +206,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <h2 key={`h-${i}`} className="blog-post-h2">
                 {block.heading}
               </h2>
+            ) : 'link' in block ? (
+              <p key={`l-${i}`} className="blog-cta-wrap">
+                <a
+                  href={block.link.href}
+                  target="_blank"
+                  rel="noopener nofollow"
+                  className="btn btn-accent blog-cta"
+                >
+                  {block.link.label}
+                </a>
+              </p>
             ) : (
               <figure key={`img-${i}`} className="blog-inline-figure">
                 <Image

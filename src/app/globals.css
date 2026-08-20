@@ -5235,6 +5235,15 @@ button {
   margin-bottom: 20px;
 }
 
+.blog-cta-wrap {
+  margin: 26px 0 20px;
+}
+
+.blog-cta {
+  text-decoration: none;
+  display: inline-flex;
+}
+
 .affiliate-disclosure {
   font-style: italic;
   font-size: 0.78rem;

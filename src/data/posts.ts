@@ -14,7 +14,12 @@ export interface BlogPost {
   author: string
   emoji: string
   readTime: string
-  content: Array<string | BlogPostImage | { heading: string }>
+  content: Array<
+    | string
+    | BlogPostImage
+    | { heading: string }
+    | { link: { href: string; label: string } }
+  >
   metaTitle?: string
   metaDescription?: string
   heroImage?: string
@@ -36,6 +41,65 @@ export interface BlogPost {
 }
 
 export const POSTS: BlogPost[] = [
+  {
+    slug: 'egor-egg-cooking-robot-cheffy-release-date',
+    title:
+      'The EGOR Egg Robot Is Blowing Up on Kickstarter — But You Won\u2019t See One Until Late 2026',
+    excerpt:
+      'Cheffy\u2019s viral breakfast robot has already pulled in over $1 million in pre-orders. Here\u2019s what it actually does, why the wait is longer than you\u2019d think, and what\u2019s worth grabbing on Amazon if you don\u2019t want to wait for shipping.',
+    category: 'Explainer',
+    date: '2026-08-20',
+    author: 'Riley Thompson',
+    heroImage: '/images/blog/egor-egg-cooking-robot-cheffy-release-date.webp',
+    emoji: '\u{1F95A}',
+    readTime: '4 min read',
+    content: [
+      'If you\u2019ve scrolled past a video of a robot cracking an egg without touching the shell in the last few weeks, you\u2019ve met EGOR. The countertop device from San Francisco startup Cheffy has become one of those \u201Cwait, is this real?\u201D moments on social media \u2014 and yes, it\u2019s real. Founder Arjun Mehta had to personally jump into the comments to confirm it wasn\u2019t an AI-generated prank.',
+      'EGOR \u2014 short for Efficient Gastronomic Operational Robot \u2014 loads a whole, uncracked egg, cracks it using what Cheffy only describes as \u201Cpatent-pending technology,\u201D and cooks it exactly the way you like it. Sunny side up, over easy, over medium, over hard, soft-boiled, medium-boiled, hard-boiled, or just cracked and left plain. Seven ways, zero shell in your hands. It pairs with TOASTR, a smart toaster that times itself so your toast and eggs finish together \u2014 because nothing kills a good breakfast moment like cold eggs and a toaster still cranking away.',
+      'The specs are modest by design: EGOR weighs about 8 pounds and runs on 500 to 1,000 watts. TOASTR is lighter at 5 pounds and pulls 800 watts. Both are dishwasher-safe, which matters more than it sounds \u2014 anyone who\u2019s hand-scrubbed a stovetop egg pan at 7 a.m. knows exactly why.',
+      {
+        heading: 'Here\u2019s the part that matters if you\u2019re actually considering one: it\u2019s not shipping yet.',
+      },
+      'EGOR is currently in its Kickstarter and pre-order phase. As of now, the campaign has crossed $1,024,000 from over 4,100 backers \u2014 funded in under seven minutes when it launched. Early-bird pricing runs from $199 to $299 for the egg unit alone, with TOASTR bundled in for $349 to $499. But backers aren\u2019t expected to actually receive their units until late 2026, and once the crowdfunding window closes, retail pricing is expected to land closer to $400.',
+      'That\u2019s a long runway if you\u2019re just trying to fix your weekday breakfast routine right now. Crowdfunded hardware is also, by nature, a bit of a leap of faith \u2014 this is Cheffy\u2019s first product, so there\u2019s no shipping track record to point to yet, even if the concept itself isn\u2019t reinventing any complicated engineering.',
+      'If you\u2019re curious enough to reserve one for yourself, pre-orders are open directly through Cheffy.',
+      {
+        link: { href: 'https://www.cheffy.ai/', label: 'Pre-order on Cheffy.ai \u2192' },
+      },
+      { heading: 'Is EGOR worth backing?' },
+      'If you like being early to things and don\u2019t mind the wait, EGOR is a genuinely clever idea executed by a team that seems to have thought through the annoying parts of egg-cooking \u2014 the shell mess, the babysitting, the mismatched timing with toast. It\u2019s not solving a hard problem, but it\u2019s solving an annoying one, which is arguably more useful.',
+      'If you\u2019re the type who backs things on day one, this is exactly the kind of campaign worth watching.',
+    ],
+    metaTitle: 'EGOR Egg Robot: Price, Release Date & What It Does (2026)',
+    metaDescription:
+      'Cheffy\u2019s EGOR egg-cracking robot has raised $1M+ on Kickstarter but won\u2019t ship until late 2026. Here\u2019s everything it does and how to pre-order.',
+    altText: 'EGOR egg-cooking robot on a kitchen counter',
+    faq: [
+      {
+        question: 'When will EGOR ship?',
+        answer:
+          'EGOR is currently in its Kickstarter and pre-order phase. Backers aren\u2019t expected to receive their units until late 2026, and retail pricing is expected to land closer to $400 once the crowdfunding window closes.',
+      },
+      {
+        question: 'How much does EGOR cost?',
+        answer:
+          'Early-bird pricing runs from $199 to $299 for the egg unit alone, with TOASTR bundled in for $349 to $499. After the crowdfunding window closes, retail pricing is expected to land closer to $400.',
+      },
+      {
+        question: 'Is EGOR available on Amazon?',
+        answer:
+          'No. EGOR is not sold on Amazon \u2014 it is only available through Cheffy\u2019s own Kickstarter and pre-order campaign, with reservations open directly through Cheffy.',
+      },
+      {
+        question: 'What does TOASTR do?',
+        answer:
+          'TOASTR is a smart toaster that runs at 800 watts and times itself so your toast and eggs finish together \u2014 it weighs about 5 pounds, and like EGOR it is dishwasher-safe.',
+      },
+    ],
+    lastUpdated: '2026-08-20',
+    primaryKeyword: 'EGOR egg cooking robot',
+    secondaryKeywords: ['Cheffy EGOR release date', 'EGOR egg robot price', 'EGOR Kickstarter pre-order', 'TOASTR smart toaster'],
+  },
   {
     slug: 'jack-rose-k1-travel-steamer-review',
     title:
