@@ -42,6 +42,80 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'beni-camera-robot-mondo-robotics-review',
+    title: 'Beni Just Raised 24x Its Kickstarter Goal in Days — Here\u2019s What This Camera Robot Actually Does',
+    excerpt:
+      'No drone license, no tripod, no asking a friend to film you. Mondo Robotics\u2019 Beni follows you around on wheels at nearly 18 mph and shoots in 4K. Nearly 2,000 backers are already in — here\u2019s whether it\u2019s worth your money too.',
+    category: 'Explainer',
+    date: '2026-08-20',
+    author: 'Jordan Lee',
+    heroImage: '/images/blog/beni-camera-robot-mondo-robotics-review.webp',
+    emoji: '\u{1F5A5}',
+    readTime: '5 min read',
+    content: [
+      'You\u2019ve propped your phone against a water bottle. You\u2019ve handed it to a stranger who filmed mostly sky. You\u2019ve skipped filming the moment entirely because setting up a tripod would\u2019ve meant missing it. Mondo Robotics thinks that\u2019s a solvable problem, and their answer is a 3.86-pound robot named Beni that just blew past its Kickstarter goal by 24 times over.',
+      'Beni is a self-balancing, all-terrain camera robot that follows you around — on grass, gravel, sidewalks, even up stairs — filming in 4K the whole time. No drone, no license needed, no open airspace required. It just rolls (and occasionally jumps) alongside you.',
+      {
+        image: '/images/blog/beni-camera-robot-mondo-robotics-review-how-it-works.webp',
+        alt: 'Beni all-terrain camera robot how it works — rolling alongside and filming in 4K',
+        width: 900,
+        height: 1131,
+      },
+      'The pitch is simple: Beni recognizes you, locks on, and follows using onboard processing — no internet connection required. You can set it to trail behind you, ride alongside, or orbit around you for more dynamic angles. Right now it tracks humans and dogs, with more subject types reportedly planned down the line.',
+      'It\u2019s fast, too — up to 17.9 mph, which is enough to keep pace with a jog, a bike ride, or a dog that just spotted a squirrel. It can jump up to 10 inches to clear curbs or short stairs, and if it tips over, it self-rights without you having to stop and flip it back over yourself. Camera-wise, it shoots 4K at 30fps, 3K at 60fps, or 1080p at 100fps, with electronic image stabilization built in — which matters more than it sounds, because a robot rolling over gravel generates constant vibration, and unstabilized footage from something like that would be unwatchable.',
+      {
+        image: '/images/blog/beni-camera-robot-mondo-robotics-review-use-case.webp',
+        alt: 'Beni camera robot use cases — ground-level footage of a pet running while it follows',
+        width: 768,
+        height: 1369,
+      },
+      'Beni isn\u2019t trying to replace a drone or a professional camera operator — it\u2019s filling the gap where neither is practical. Dog owners who want ground-level footage of their pet running. Trail runners and cyclists who want continuous coverage without a helmet cam\u2019s limited angle. Parents who want real footage of their kids playing instead of another blurry photo taken one-handed while also holding a juice box.',
+      'Battery life runs about 1.5 hours per pack, extendable to 4.5+ hours with battery swaps (each swap is tool-free). When you\u2019re done filming, Beni\u2019s auto-editing feature picks through the footage and puts together a highlight reel on its own — so there\u2019s no folder of forty video clips you\u2019ll never sort through.',
+      {
+        image: '/images/blog/beni-camera-robot-mondo-robotics-review-pricing.webp',
+        alt: 'Beni camera robot pricing and Kickstarter bundle with extra batteries',
+        width: 900,
+        height: 1131,
+      },
+      'Here\u2019s the part worth being clear-eyed about: Beni is still a Kickstarter product. Mondo Robotics has no prior hardware campaign to point to, so there\u2019s no shipping track record yet, even though the team includes engineers from backgrounds in autonomous mobility and consumer electronics, and prototype units are already out in the wild for early testing.',
+      'Super Early Bird pricing starts around $549 (about 31% off the $799 planned retail price), with bundle options going up for extra batteries and accessories. Shipping is expected to begin around October 2026. As with any crowdfunded hardware, treat this as a bet on a first-time product, not a guaranteed delivery — go in with that expectation and you won\u2019t be caught off guard either way.',
+      { heading: 'Is it worth backing?' },
+      'If you\u2019re the type who backs things early and doesn\u2019t mind the wait, Beni is one of the more genuinely useful crowdfunded gadgets to show up recently — it\u2019s solving a real, specific annoyance rather than reinventing something that already works fine. If you\u2019d rather wait for reviews after it actually ships, that\u2019s a reasonable call too — just don\u2019t expect it in your hands before October.',
+      {
+        link: { href: 'https://mondorobotics.com/', label: 'Learn More at Mondo Robotics \u2192' },
+      },
+    ],
+    metaTitle: 'Beni Camera Robot Review: Price, Release Date & Is It Worth It?',
+    metaDescription:
+      'Mondo Robotics\u2019 Beni camera robot raised 24x its Kickstarter goal. Here\u2019s how the all-terrain 4K follow-robot works, pricing, and whether it\u2019s worth backing.',
+    altText: 'Beni all-terrain camera robot following a user outdoors',
+    faq: [
+      {
+        question: 'When will Beni ship?',
+        answer:
+          'Shipping is expected to begin around October 2026. Beni is still a Kickstarter product from Mondo Robotics, so treat the timeline as a target shared by a first-time hardware campaign.',
+      },
+      {
+        question: 'How much does Beni cost?',
+        answer:
+          'Super Early Bird pricing starts around $549 — about 31% off the planned $799 retail price — with bundle options going up for extra batteries and accessories.',
+      },
+      {
+        question: 'Is Beni available on Amazon?',
+        answer:
+          'No. Beni is a Kickstarter-only product right now — it isn\u2019t sold on Amazon. The only way to get one is through the official Mondo Robotics campaign.',
+      },
+      {
+        question: 'How fast can Beni go?',
+        answer:
+          'Up to 17.9 mph — fast enough to keep pace with a jog, a bike ride, or a dog that just spotted a squirrel. It can also jump up to 10 inches to clear curbs or short stairs, and it self-rights if it tips over.',
+      },
+    ],
+    lastUpdated: '2026-08-20',
+    primaryKeyword: 'Mondo Robotics Beni camera robot',
+    secondaryKeywords: ['all-terrain camera robot', 'camera robot that follows you', 'Beni release date', 'Beni camera robot Kickstarter'],
+  },
+  {
     slug: 'egor-egg-cooking-robot-cheffy-release-date',
     title:
       'The EGOR Egg Robot Is Blowing Up on Kickstarter — But You Won\u2019t See One Until Late 2026',
