@@ -37,6 +37,7 @@ const IMAGE_VARIANTS: Record<string, number[]> = {
   'how-to-buy-carry-on-luggage.webp': [480, 720],
   'how-to-choose-4k-webcam.webp': [480, 720],
   'how-to-choose-usb-c-hub.webp': [480, 720],
+  'iphone-18-release-date.webp': [480, 720],
   'jack-rose-k1-travel-steamer-ceramic.webp': [480, 720],
   'jack-rose-k1-travel-steamer-design.webp': [480, 720],
   'jack-rose-k1-travel-steamer-fabrics.webp': [480, 720],

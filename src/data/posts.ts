@@ -42,6 +42,68 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'iphone-18-release-date',
+    title:
+      'Apple iPhone 18 Release Date: Why You Might Wait Until 2027 For Yours',
+    excerpt:
+      'Apple is rewriting its own playbook this year. Here\u2019s the real timeline for the iPhone 18 Pro, Pro Max, the foldable iPhone Ultra, and the standard iPhone 18 \u2014 plus why one of those isn\u2019t landing until spring 2027.',
+    category: 'Explainer',
+    date: '2026-08-22',
+    author: 'Alex Morgan',
+    heroImage: '/images/blog/iphone-18-release-date.webp',
+    emoji: '\u{1F4F1}',
+    readTime: '4 min read',
+    content: [
+      'For nearly a decade, \u201Cnew iPhone\u201D has meant one thing: a September keynote, four or five phones announced together, and pre-orders open within the week. That\u2019s not happening this year. Apple is splitting its own release calendar for the first time, and if you\u2019re trying to figure out exactly when your next iPhone shows up, the answer depends entirely on which model you\u2019re waiting for.',
+      { heading: 'The short version: some iPhone 18 models arrive in September 2026. The rest don\u2019t show up until spring 2027.' },
+      { heading: 'iPhone 18 Pro and Pro Max: September 2026' },
+      'The iPhone 18 Pro and iPhone 18 Pro Max are on track for Apple\u2019s traditional September event, expected to happen at the company\u2019s usual venue with pre-orders following the same week, deliveries landing shortly after. Alongside them, Apple is expected to introduce something it\u2019s never shipped before: a folding iPhone, widely rumored to be called the iPhone Ultra.',
+      'Design-wise, don\u2019t expect a dramatic overhaul. The Pro models are rumored to closely resemble the iPhone 17 Pro and Pro Max \u2014 same general triple-lens rear camera arrangement on a raised plateau, though a few leakers have suggested the camera bump and individual lenses might protrude slightly more than last year\u2019s model. Under the hood, the bigger story is the shift to a 2-nanometer manufacturing process for the new A20 Pro chip, plus the debut of Apple\u2019s own C2 modem \u2014 though it\u2019s possible U.S. units ship with a Qualcomm modem instead, depending on how Apple splits modem sourcing by region.',
+      'One color note worth mentioning if you care about that sort of thing: reports point to a \u201CDark Cherry\u201D finish replacing the Cosmic Orange option from the iPhone 17 Pro lineup.',
+      { heading: 'The standard iPhone 18: not until spring 2027' },
+      'Here\u2019s the part that catches people off guard. If you\u2019re someone who typically buys the standard (non-Pro) iPhone, you will not be able to get a new one this fall. Apple is holding the iPhone 18, the iPhone 18e, and a possible second-generation iPhone Air until spring 2027 \u2014 a full season after the Pro models launch.',
+      'The apparent logic: keep the September spotlight entirely on the Pro lineup and the new foldable, and give the more budget-friendly models their own separate moment a few months later. It\u2019s a real change to how Apple has run iPhone launches for years, and it means \u201CiPhone 18\u201D as a single release date doesn\u2019t really exist anymore \u2014 it\u2019s two separate release windows depending on which model you want.',
+      { heading: 'What about pricing?' },
+      'Nothing official yet, obviously, but for context: the iPhone 17 Pro Max held its starting price steady at $1,199 despite a $100 bump on the smaller Pro model the year before. Whether that pattern holds for the 18 Pro Max \u2014 especially with a brand-new foldable sharing the spotlight and likely commanding a price well north of $1,500, possibly closer to $2,000 \u2014 is still an open question heading into the announcement.',
+      { heading: 'The bottom line' },
+      'If you\u2019re set on a Pro model or curious about the first-ever folding iPhone, mark September on your calendar \u2014 that\u2019s when Apple\u2019s keynote is expected, with pre-orders opening the same week and phones in hand shortly after. If you\u2019re a standard iPhone buyer, the wait is longer: spring 2027 is the earliest you\u2019ll see a new one, so this fall\u2019s Pro-focused event isn\u2019t really built for you.',
+    ],
+    metaTitle: 'iPhone 18 Release Date: When Each Model Actually Arrives',
+    metaDescription:
+      'Apple is splitting the iPhone 18 launch in two. Here\u2019s when the iPhone 18 Pro, Pro Max, foldable iPhone Ultra, and standard iPhone 18 actually release.',
+    altText: 'Apple iPhone 18 Pro in rumored Dark Cherry color',
+    faq: [
+      {
+        question: 'When is the iPhone 18 release date?',
+        answer:
+          'The iPhone 18 Pro and Pro Max are expected in September 2026, alongside a new foldable iPhone. The standard iPhone 18, iPhone 18e, and a possible iPhone Air 2 aren\u2019t expected until spring 2027.',
+      },
+      {
+        question: 'Why is Apple splitting the iPhone 18 release into two dates?',
+        answer:
+          'Reports suggest Apple wants to keep the September launch focused on the Pro lineup and the new foldable iPhone, with the more affordable models getting a separate spring 2027 release window.',
+      },
+      {
+        question: 'Will the iPhone 18 Pro look different from the iPhone 17 Pro?',
+        answer:
+          'Rumors point to a similar overall design, with the same general triple-camera layout, though some leaks suggest a thicker camera plateau and a \u201CDark Cherry\u201D color option replacing Cosmic Orange.',
+      },
+      {
+        question: 'How much will the iPhone 18 Pro Max cost?',
+        answer:
+          'No official pricing yet. The iPhone 17 Pro Max started at $1,199, and it\u2019s unclear whether that price will hold for the 18 Pro Max.',
+      },
+    ],
+    lastUpdated: '2026-08-22',
+    primaryKeyword: 'apple iphone 18 release date',
+    secondaryKeywords: [
+      'iphone 18 pro max release date',
+      'folding iphone ultra',
+      'standard iphone 18 spring 2027',
+      'iphone 18 release date split',
+    ],
+  },
+  {
     slug: 'beni-camera-robot-mondo-robotics-review',
     title: 'Beni Just Raised 24x Its Kickstarter Goal in Days — Here\u2019s What This Camera Robot Actually Does',
     excerpt:
