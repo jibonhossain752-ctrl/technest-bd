@@ -42,6 +42,90 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'iphone-ultra-foldable-iphone',
+    title:
+      'iPhone Ultra: Apple\u2019s First Foldable Phone Is Finally Real \u2014 Here\u2019s Everything We Know',
+    excerpt:
+      'After eight years of \u201Cit\u2019s coming next year,\u201D Apple\u2019s foldable iPhone finally has a name, a design, and a launch window. Here\u2019s what the iPhone Ultra will actually offer, and why it\u2019s going to cost more than almost anything else in your pocket.',
+    category: 'Explainer',
+    date: '2026-08-22',
+    author: 'Sam Carter',
+    heroImage: '/images/blog/iphone-ultra-foldable-iphone.webp',
+    emoji: '\u{1F4F1}',
+    readTime: '5 min read',
+    content: [
+      {
+        image: '/images/blog/iphone-ultra-foldable-iphone.webp',
+        alt: 'iPhone Ultra foldable iPhone concept showing unfolded home screen',
+        width: 1200,
+        height: 675,
+      },
+      'Apple has been \u201Cabout to\u201D release a foldable iPhone since roughly 2018. Every year brought a new round of confident predictions \u2014 2020, then 2022, then 2024 \u2014 and every year, nothing shipped. That streak looks like it\u2019s finally ending. Momentum has been building toward a real September 2026 launch, and recent leaks have converged on a name most insiders now agree on: **iPhone Ultra**, not the \u201CiPhone Fold\u201D most people assumed Apple would go with.',
+      'The reasoning behind the name, according to Apple analyst Mark Gurman, ties back to branding \u2014 Apple is reportedly lining up a run of \u201CUltra\u201D products by the end of 2026, and the foldable is meant to sit at the top of that lineup. What you\u2019re looking at above is close to what leakers expect the unfolded software experience to look like: widgets, weather, and calendar spread across a tablet-sized canvas that used to be two separate phones\u2019 worth of screen.',
+      { heading: 'Design: a \u201Cpassport,\u201D not a phone that unfolds into a rectangle' },
+      {
+        image: '/images/blog/iphone-ultra-foldable-iphone-design.webp',
+        alt: 'iPhone Ultra passport-style folding design shown at an angle',
+        width: 900,
+        height: 514,
+      },
+      'Here\u2019s where the iPhone Ultra breaks from what you\u2019d expect if you\u2019ve seen a Samsung Galaxy Z Fold. Rather than unfolding into a tall, narrow rectangle, leakers describe a \u201Cpassport-style\u201D shape \u2014 shorter and squarer when closed, opening up to a roughly 7.7 to 7.8-inch internal display with an iPad mini-like 4:3 aspect ratio. It\u2019s a book-style, vertical fold (left and right halves closing together), similar in mechanism to the Pixel 9 Pro Fold, just built around a squatter proportion.',
+      'The detail every foldable owner actually cares about \u2014 the crease \u2014 is reportedly the thing Apple spent the most time solving. Sources say the company pursued a crease-free hinge \u201Cregardless of cost,\u201D developing new material specifically to make the fold line nearly invisible when the phone is open. If Apple actually pulls that off at launch, it would be a genuine first for the foldable category; every competitor on the market today still shows some visible line down the middle.',
+      'One notable omission: Face ID. Multiple sources agree the iPhone Ultra will use Touch ID instead, likely built into the power button, since fitting Face ID\u2019s sensor array into a folding hinge design has proven difficult industry-wide.',
+      { heading: 'Specs and what it\u2019s actually like to use' },
+      {
+        image: '/images/blog/iphone-ultra-foldable-iphone-specs.webp',
+        alt: 'iPhone Ultra unfolded showing tablet-style interior display',
+        width: 850,
+        height: 500,
+      },
+      'Under the (folding) hood, current reports point to Apple\u2019s A20 chip, 12GB of RAM, dual 48MP rear cameras, and a dual front-camera setup \u2014 but notably, no telephoto lens, and possibly a compromise on camera quality compared to the standalone iPhone 18 Pro Max, since fitting a full camera module into a foldable body is a tight squeeze. Battery reporting has shifted a few times, with the latest supply-chain leaks pointing to two cells totaling around 4,883mAh \u2014 enough to offset the two screens it has to power.',
+      'The idea Apple is selling here isn\u2019t \u201Ca phone that folds\u201D so much as \u201Can iPad mini that fits in your pocket.\u201D Multitasking, split-screen work, and reading are the use cases every leaker keeps circling back to \u2014 this is aimed at people who currently carry both an iPhone and an iPad and are tired of the redundancy, more than it\u2019s aimed at people just wanting a novelty form factor.',
+      { heading: 'Price and release date' },
+      'Brace yourself: multiple credible reports now converge on a starting price somewhere between **$1,999 and $2,499**, which would make the iPhone Ultra the single most expensive iPhone Apple has ever sold \u2014 and by a wide margin. JPMorgan\u2019s own analyst estimate lands right around the $2,000 mark, in line with most other reporting.',
+      'The release window is expected to be **September 2026**, launching alongside the iPhone 18 Pro and iPhone 18 Pro Max at Apple\u2019s usual fall event \u2014 not held back to spring like the standard iPhone 18 models this year.',
+      { heading: 'How it stacks up against Samsung' },
+      'Apple isn\u2019t walking into an empty category. Samsung\u2019s Galaxy Z Fold8 Ultra just launched at $2,099.99 and measures a remarkably thin 4.1mm when unfolded \u2014 reportedly thinner than the iPhone Ultra\u2019s rumored 4.5mm. If that holds true at launch, Apple would be entering the foldable race not as the innovator, but playing catch-up on pure hardware thinness, even while potentially leading on the crease problem everyone else has struggled with.',
+      { heading: 'Is it worth waiting for?' },
+      'If you\u2019re due for an upgrade and don\u2019t mind spending iPad-and-a-half money on a single device, the iPhone Ultra is shaping up to be a genuinely different kind of iPhone rather than a bigger version of what already exists. But it\u2019s still Apple\u2019s first attempt at a foldable, launching against a Samsung lineup with eight generations of manufacturing experience behind it \u2014 the safer bet, if you just want a great phone today, is still a standard iPhone.',
+    ],
+    metaTitle: 'iPhone Ultra: Apple\u2019s First Foldable Phone \u2014 Price, Release Date & Specs',
+    metaDescription:
+      'Apple\u2019s foldable iPhone finally has a name. Here\u2019s everything known about the iPhone Ultra\u2019s design, specs, price, and September 2026 release date.',
+    altText: 'iPhone Ultra foldable iPhone concept showing unfolded home screen',
+    faq: [
+      {
+        question: 'When is the iPhone Ultra release date?',
+        answer:
+          'Current rumors point to September 2026, launching alongside the iPhone 18 Pro and iPhone 18 Pro Max.',
+      },
+      {
+        question: 'How much will the iPhone Ultra cost?',
+        answer:
+          'Estimates range from $1,999 to $2,499, which would make it the most expensive iPhone Apple has ever released.',
+      },
+      {
+        question: 'Will the iPhone Ultra have Face ID?',
+        answer:
+          'No \u2014 current leaks point to Touch ID instead, likely integrated into the power button.',
+      },
+      {
+        question: 'Is the iPhone Ultra the same as the \u201CiPhone Fold\u201D?',
+        answer:
+          'They refer to the same device. Early rumors used \u201CiPhone Fold,\u201D but more recent, credible leaks point to Apple branding it \u201CiPhone Ultra\u201D instead.',
+      },
+    ],
+    lastUpdated: '2026-08-22',
+    primaryKeyword: 'iPhone Ultra',
+    secondaryKeywords: [
+      'foldable iphone',
+      'iphone ultra release date',
+      'iphone ultra price',
+      'apple foldable phone',
+      'iphone ultra specs',
+    ],
+  },
+  {
     slug: 'iphone-18-release-date',
     title:
       'Apple iPhone 18 Release Date: Why You Might Wait Until 2027 For Yours',

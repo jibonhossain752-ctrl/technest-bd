@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { PRODUCTS, SHOP_VIEWS } from '@/data/products'
-import { POSTS } from '@/data/posts'
+import { POSTS, BlogPostImage } from '@/data/posts'
 import { CATEGORIES } from '@/data/categories'
 
 const SITE = 'https://gadgeterea.com'
@@ -41,13 +41,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: p.imageUrl ? [`${SITE}${p.imageUrl}`] : undefined,
   }))
 
-  const blogRoutes: MetadataRoute.Sitemap = POSTS.map((p) => ({
-    url: `${SITE}/blog/${p.slug}`,
-    lastModified: p.lastUpdated ? new Date(p.lastUpdated) : new Date(p.date),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-    images: p.heroImage ? [`${SITE}${p.heroImage}`] : undefined,
-  }))
+  const blogRoutes: MetadataRoute.Sitemap = POSTS.map((p) => {
+    const inlineImages = p.content
+      .filter((b): b is BlogPostImage => typeof b === 'object' && 'image' in b && 'alt' in b)
+      .map((b) => `${SITE}${b.image}`)
+    const allImages = [
+      ...(p.heroImage ? [`${SITE}${p.heroImage}`] : []),
+      ...inlineImages,
+    ]
+    return {
+      url: `${SITE}/blog/${p.slug}`,
+      lastModified: p.lastUpdated ? new Date(p.lastUpdated) : new Date(p.date),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      images: allImages.length > 0 ? allImages : undefined,
+    }
+  })
 
   return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes]
 }
