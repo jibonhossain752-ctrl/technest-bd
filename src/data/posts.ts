@@ -2365,7 +2365,87 @@ export const POSTS: BlogPost[] = [
     keepBrowsing: [
       { href: '/shop/accessories', label: 'Cool tech gadgets under $50 in Accessories' },
       { href: '/shop/cameras', label: 'Amazon finds — cameras & webcams' },
-      { href: '/deals', label: 'Gadget deals online — see this week\u2019s discounts' },
+      { href: '/deals', label: 'Gadget deals online — see this week’s discounts' },
+    ],
+  },
+  {
+    slug: 'elden-ring-tarnished-edition-patch-notes',
+    title:
+      'Elden Ring Tarnished Edition Patch Notes: Everything New in Update 1.17',
+    excerpt:
+      'FromSoftware just brought Elden Ring to Switch 2 with the Tarnished Edition — and along with it came patch 1.17, new starting classes, a fresh look for Torrent, and a stack of balance changes for every platform.',
+    category: 'Explainer',
+    date: '2026-08-28',
+    author: 'Sam Carter',
+    heroImage: '/images/blog/elden-ring-tarnished-edition-patch-notes-hero.webp',
+    emoji: '⚔️',
+    readTime: '5 min read',
+    content: [
+      'Elden Ring just did something it’s never done before: shown up on a Nintendo console. The Tarnished Edition launched on Switch 2 on August 28, 2026, bundling the base game with the Shadow of the Erdtree expansion — and to mark the occasion, FromSoftware and Bandai Namco pushed patch 1.17 to every platform at once, PS4, PS5, Xbox One, Xbox Series X|S, and Steam included.',
+      'The patch’s headline feature is the “Tarnished Pack,” a paid DLC bundle on older platforms that comes included by default with the Switch 2 edition. Here’s what actually changed.',
+      { heading: 'New starting classes: Idus Knight and Heavy Knight' },
+      {
+        image: '/images/blog/elden-ring-tarnished-edition-patch-notes-classes.webp',
+        alt: 'Idus Knight and Heavy Knight new starting classes from the Tarnished Pack',
+        width: 900,
+        height: 502,
+      },
+      'Two new options join character creation with the Tarnished Pack: the Idus Knight, described as lightweight and dexterous, wielding a curved sword and shield with the kind of mobility that suits players who like to stay light on their feet, and the Heavy Knight, the opposite approach entirely — bulky steel armor built for players who’d rather mow through enemies with a substantially-sized greatsword than dodge around them.',
+      'Neither class is exclusive to players who buy the pack outright, either. Both sets of starting equipment can also be found naturally in the Lands Between or purchased from merchants, so players without the DLC still have a path to the same gear eventually — the pack just hands it to you from character creation onward instead of making you go find it.',
+      { heading: 'Torrent gets three new looks' },
+      {
+        image: '/images/blog/elden-ring-tarnished-edition-patch-notes-torrent.webp',
+        alt: 'Tarnished knight riding Torrent with new Spectral Steed Attire',
+        width: 900,
+        height: 506,
+      },
+      'Your spectral steed isn’t getting left out of the update. Three new Spectral Steed Attire options change Torrent’s appearance, each one tucked away in a different corner of the map: Tree Sentinel Attire waits in Stormveil Castle, Silver of Caria Attire is found in Liurnia of the Lakes, and Funereal Night Attire turns up in Altus Plateau. None of them change how Torrent handles — this is a cosmetic update, not a stat change — but for a game where you spend a genuinely enormous amount of time riding through open fields, a new coat on your horse is a bigger deal than it sounds.',
+      { heading: 'Balance changes and combat adjustments' },
+      {
+        image: '/images/blog/elden-ring-tarnished-edition-patch-notes-combat.webp',
+        alt: 'Elden Ring mounted combat showing Torrent and weapon action',
+        width: 900,
+        height: 506,
+      },
+      'Alongside the new content, 1.17 quietly reworks a handful of weapon interactions. The Smithscript Axe, Smithscript Spear, and Spear of the Impaler all got their weapon-throwing attacks adjusted — reduced stamina consumption paired with increased throwing power, making them noticeably more spammable in both PvE and PvP. Critical hit power was increased across a set of weapons, and Intelligence scaling was changed so it now boosts the attack power of all damage types on affected weapons, not just magic — a change that opens up some new build possibilities for casters who’ve been sticking to pure sorcery damage.',
+      'On top of the numbers, some items found in the field or dropped by powerful enemies in the Realm of Shadow have been upgraded to higher-tier versions or swapped for other treasures entirely. If you’ve already picked up the old version of an item, don’t worry — anything already collected stays as-is; this only affects items not yet found.',
+      { heading: 'Should you update?' },
+      'If you play online at all, this one isn’t optional — Elden Ring requires the latest patch for multiplayer, so 1.17 is mandatory the moment you want to summon, invade, or co-op with anyone. And even for solo players, the balance changes are live the moment you boot up the game, whether or not you own the Tarnished Pack DLC itself. The cosmetic and class content behind the paywall is genuinely optional, but the underlying patch isn’t something you get to skip.',
+    ],
+    metaTitle: 'Elden Ring Tarnished Edition Patch Notes: Update 1.17 Explained',
+    metaDescription:
+      'Elden Ring’s Tarnished Edition just launched on Switch 2 with patch 1.17 — new classes, Torrent attire, and balance changes. Here’s everything that’s new.',
+    altText: 'Elden Ring Tarnished Edition key art with Tarnished knight and Malenia',
+    faq: [
+      {
+        question: 'What’s included in the Elden Ring Tarnished Pack?',
+        answer:
+          'Two new starting classes (Idus Knight and Heavy Knight), new weapons purchasable from merchants or found in the world, three new Torrent Spectral Steed Attire options, and a few new NPC invasion events in Leyndell and Caelid.',
+      },
+      {
+        question: 'Is the Tarnished Pack free?',
+        answer:
+          'It’s a paid DLC (around £3.99 / roughly a cup of coffee) on PS4, PS5, Xbox, and Steam. It’s included by default in the Nintendo Switch 2 Tarnished Edition.',
+      },
+      {
+        question: 'Do I need to download patch 1.17 to play online?',
+        answer:
+          'Yes — online play requires applying the latest update, regardless of whether you own the Tarnished Pack DLC.',
+      },
+      {
+        question: 'What changed in the balance patch?',
+        answer:
+          'Reduced stamina cost and increased power on several weapon-throwing attacks, increased critical hit power on select weapons, and an Intelligence scaling change that now boosts all damage types instead of just magic.',
+      },
+    ],
+    lastUpdated: '2026-08-28',
+    primaryKeyword: 'Elden Ring Tarnished Edition patch notes',
+    secondaryKeywords: [
+      'Elden Ring patch 1.17',
+      'Tarnished Edition Switch 2',
+      'Elden Ring new starting classes',
+      'Elden Ring Torrent Spectral Steed Attire',
+      'Elden Ring Tarnished Pack',
     ],
   },
 ]
