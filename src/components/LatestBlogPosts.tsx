@@ -2,7 +2,9 @@ import { POSTS } from '@/data/posts'
 import BlogCard from './BlogCard'
 
 export default function LatestBlogPosts() {
-  const posts = POSTS.slice(0, 4)
+  const posts = [...POSTS]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 4)
 
   return (
     <section className="latest-blog-posts">

@@ -59,7 +59,9 @@ export default function BlogPage() {
           p.excerpt.toLowerCase().includes(q),
       )
     }
-    return list
+    return [...list].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    )
   }, [tab, query])
 
   const visiblePosts = filtered.slice(0, visible)
