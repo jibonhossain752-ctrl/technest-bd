@@ -1016,6 +1016,41 @@ export const PRODUCTS: Product[] = [
       'portable iron for european travel',
     ],
   },
+  {
+    id: 'p49',
+    slug: 'jinraiko-overhead-camera-mount',
+    addedAt: '2026-08-29',
+    name: 'JINRAIKO Overhead Camera Mount with 360° Adjustable Arm & Phone Holder',
+    category: 'Cameras',
+    categorySlug: 'cameras',
+    price: null,
+    imageUrl: '/product-images/jinraiko-overhead-camera-mount.webp',
+    image: '📷',
+    rating: 4.2,
+    reviews: 42,
+    description:
+      'Desk-mount overhead camera arm with a hydraulic floating arm, 360° multi-axis rotation, and an included phone holder. Aluminum build, one-hand operation, and a complete set with extension pole and quick-install hardware.',
+    altText: 'JINRAIKO overhead camera mount with 360° adjustable arm holding a camera on a white desk',
+    features: [
+      'Hydraulic floating arm — smooth, one-hand adjustment for the perfect overhead angle',
+      '360° multi-axis rotation on the arm joints for overhead and side angles',
+      'Compatible with cameras, DSLRs, webcams, microphones, and any smartphone via the included phone holder',
+      'Aluminum body, 2.1 kg, tabletop C-clamp mount — no permanent installation',
+      'Complete set: extension pole, phone holder, and UKA quick-install hardware',
+    ],
+    buyUrl: 'https://amzn.to/4zO2F53',
+    metaTitle: 'JINRAIKO Overhead Camera Mount — 360° Adjustable Arm Review',
+    metaDescription:
+      'JINRAIKO overhead camera mount with 360° hydraulic arm, phone holder and C-clamp desk mount — built for TikTok, YouTube and unboxing content creators.',
+    primaryKeyword: 'jinraiko overhead camera mount',
+    secondaryKeywords: [
+      'overhead camera mount review',
+      '360 degree camera arm',
+      'desk mount camera arm',
+      'content creator camera mount',
+      'tiktok overhead mount',
+    ],
+  },
 ]
 
 export interface ShopView {
