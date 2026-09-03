@@ -2558,6 +2558,107 @@ export const POSTS: BlogPost[] = [
     ],
     schemaRating: { ratingValue: 4.2, ratingCount: 42 },
   },
+  {
+    slug: 'ios-27',
+    title: 'iOS 27: Everything New in Apple\u2019s Latest iPhone Update',
+    excerpt:
+      'Redesigned Siri, a Lock Screen that adapts itself, and a handful of quiet quality-of-life upgrades \u2014 here\u2019s what actually changed.',
+    category: 'Explainer',
+    date: '2026-08-30',
+    author: 'Sam Carter',
+    heroImage: '/images/blog/ios-27-hero.webp',
+    emoji: '\u{1F4F1}',
+    readTime: '6 min read',
+    content: [
+      'Apple unveiled iOS 27 at WWDC on June 8, 2026, and after months of developer and public betas, the update is rolling out to iPhones this September. It isn\u2019t a ground-up visual overhaul like some past releases \u2014 instead, Apple spent this cycle on two things: making Siri genuinely useful, and fixing the small annoyances that pile up over a year of daily use. If you\u2019re wondering what\u2019s actually in iOS 27 and whether your iPhone will run it well, here\u2019s the breakdown.',
+      { heading: 'When Is iOS 27 Releasing?' },
+      'iOS 27 is expected to roll out publicly around mid-September 2026, following Apple\u2019s usual pattern of releasing the finished version alongside its new iPhone lineup. The developer and public betas have been available since June, and by the final beta rounds, Apple had ironed out most of the rough edges reported earlier in the cycle.',
+      'One thing to know upfront: Siri\u2019s biggest AI upgrade won\u2019t necessarily be ready the same day iOS 27 launches. Apple has said a Siri AI beta will arrive in English \u201Clater in 2026,\u201D meaning some of what\u2019s covered below may show up as a follow-up update rather than on day one.',
+      { heading: 'What\u2019s New in iOS 27' },
+      { heading: 'A Wallpaper That Adapts to Every Screen' },
+      'One of the more visually memorable additions is the new wallpaper extension feature. Pick a single photo, and Apple Intelligence automatically extends it beyond its original frame so it fills the entire Lock Screen naturally \u2014 no more awkward cropping or a photo that only looks right on one aspect ratio. In Apple\u2019s own demo, the same source photo was shown adapting cleanly across five different iPhones side by side, each with a slightly different framing but no visible stretching or distortion. It\u2019s a small feature, but one of those things that\u2019s hard to go back from once you\u2019ve used it.',
+      { heading: 'Siri Gets Rebuilt Around Generative AI' },
+      {
+        image: '/images/blog/ios-27-siri-camera-control.webp',
+        alt: 'iOS 27 Siri in Camera Control and the new system-wide search bar with Siri and ChatGPT options',
+        width: 900,
+        height: 600,
+      },
+      'This is the headline feature of iOS 27. Siri has been rebuilt around a generative AI model, with the goal of finally handling follow-up questions, understanding what\u2019s on your screen, digging through your email for specific information, and completing multi-step tasks inside apps \u2014 the kind of assistant behavior competitors have offered for a while. In the new Camera Control interface, Siri now sits as its own dedicated mode alongside Photo and Portrait, and the system-wide search bar lets you choose between Siri and ChatGPT depending on what you\u2019re asking.',
+      'Early beta testing has shown steady improvement: Siri AI responds noticeably faster than it did in the first beta, and the gap between it and assistants like Gemini has narrowed with each update. That said, it\u2019s still not flawless \u2014 one recurring issue in testing is that Siri sometimes cuts off longer spoken requests before the user finishes talking, though short prompts process instantly.',
+      { heading: 'A Redesigned Siri Icon and Animation' },
+      {
+        image: '/images/blog/ios-27-siri-glow.webp',
+        alt: 'iOS 27 redesigned Siri glow animation around the Dynamic Island on the Lock Screen',
+        width: 900,
+        height: 506,
+      },
+      'The visual identity changed along with the functionality. Siri\u2019s icon and the glow animation around the Dynamic Island have been refreshed to better reflect how the new AI-driven Siri actually behaves \u2014 a subtler, more fluid animation replaces the older pulsing orb look. It\u2019s a minor detail, but it signals how much Apple is treating Siri as a core part of the OS rather than a bolted-on assistant this time around.',
+      'Custom Siri voices \u2014 letting you pick how Siri actually sounds \u2014 require newer hardware (A19 Pro chip, found in the iPhone Air and iPhone 17 Pro), so this particular feature won\u2019t reach most existing iPhones even after the update installs.',
+      { heading: 'Smarter, Reorganized Lock Screen Widgets' },
+      {
+        image: '/images/blog/ios-27-lock-screen-widgets.webp',
+        alt: 'iOS 27 Lock Screen widgets in three different reorganized stacks for Weather, Calendar and Find My',
+        width: 900,
+        height: 506,
+      },
+      'Widget layout on the Lock Screen has been quietly reworked. Weather and Find My widgets, for example, now sit in a slightly reorganized stack, making better use of the available space depending on what widgets you\u2019ve chosen and how much information each one needs to show. It\u2019s not a dramatic redesign, but if you rely on Lock Screen widgets daily, the improved spacing is a welcome, low-key fix.',
+      { heading: 'Other Notable Changes' },
+      'A few additional updates round out the release:',
+      'Search rebuilt from the ground up \u2014 indexing new content on your device almost instantly, and Mail\u2019s internal search ranking has been overhauled to surface more relevant results.',
+      'Shared Albums in Photos now accept contributions from Android and Windows users \u2014 a genuinely overdue cross-platform fix.',
+      'Safari can organize open tabs into topics, monitor pages for changes, and build simple extensions from natural-language descriptions.',
+      'Health app is expanding into perimenopause and menopause tracking.',
+      'AirPods gain a new custom EQ option, and Apple Maps\u2019 Fly Over feature looks noticeably more realistic thanks to improved intelligence models.',
+      'Under the hood, a reworked CPU scheduler aims to help older iPhones handle demanding tasks more smoothly, alongside smoother Wi-Fi-to-cellular handoffs.',
+      { heading: 'Which iPhones Support iOS 27?' },
+      'iOS 27 has a wide compatibility range \u2014 it supports every iPhone that could already run iOS 26, going back to the iPhone 11 and the second-generation iPhone SE. That said, not every feature reaches every supported device:',
+      'Apple Intelligence features (including most of the new Siri capabilities) require an A17 Pro chip or newer \u2014 that\u2019s the iPhone 15 Pro and later.',
+      'Custom Siri voices specifically need an A19 Pro chip, limited to the iPhone Air and iPhone 17 Pro.',
+      'Everyone else on a supported device still gets the performance, Photos, Safari, Health, and Lock Screen improvements \u2014 just without the newest AI-driven Siri behavior.',
+      'Siri AI also won\u2019t be available at launch in the EU or in China, where Apple is still working through regulatory requirements.',
+      { heading: 'Should You Update Right Away?' },
+      'If your iPhone supports Apple Intelligence (iPhone 15 Pro or newer), iOS 27 is worth installing once the stable release lands \u2014 the Siri improvements and wallpaper extension alone make it a meaningful update. If you\u2019re on an older but still-supported iPhone (iPhone 11 through 14-series), you\u2019ll still get the performance and app-level fixes, just without the AI headline features.',
+      'One general rule of thumb: back up your iPhone before any major iOS update, and if you\u2019re currently on a public beta, know that features can still change before the final release ships.',
+    ],
+    metaTitle: 'iOS 27: Release Date, New Features & Compatible iPhones',
+    metaDescription:
+      'iOS 27 brings a redesigned Siri, an auto-adapting Lock Screen wallpaper, and smarter widgets. Here\u2019s everything new and if your iPhone qualifies.',
+    altText:
+      'iOS 27 Lock Screen with the new auto-extending wallpaper feature showing across multiple iPhones',
+    faq: [
+      {
+        question: 'Does iOS 27 work on my iPhone?',
+        answer:
+          'If your iPhone can currently run iOS 26, it can run iOS 27 \u2014 support goes back to the iPhone 11 and the second-generation iPhone SE.',
+      },
+      {
+        question: 'Do I need a new iPhone to use the new Siri?',
+        answer:
+          'Not entirely \u2014 most Apple Intelligence-powered Siri features need an iPhone 15 Pro or newer (A17 Pro chip). Custom Siri voices go a step further and need an iPhone 17 Pro or iPhone Air.',
+      },
+      {
+        question: 'Is the new Siri available on day one?',
+        answer:
+          'Not necessarily. Apple has said the Siri AI beta will arrive in English later in 2026, so some of the headline Siri features may land as a follow-up update after iOS 27\u2019s initial release.',
+      },
+      {
+        question: 'Will iOS 27 slow down my older iPhone?',
+        answer:
+          'Apple says the opposite is intended \u2014 a reworked CPU scheduler in iOS 27 is aimed at helping older iPhones manage demanding tasks more efficiently, though real-world results can vary by device and usage.',
+      },
+    ],
+    lastUpdated: '2026-08-30',
+    primaryKeyword: 'iOS 27',
+    secondaryKeywords: [
+      'iOS 27 release date',
+      'iOS 27 features',
+      'iOS 27 compatible iPhones',
+      'Apple Intelligence Siri',
+      'iOS 27 Lock Screen widgets',
+      'iOS 27 wallpaper extension',
+    ],
+  },
 ]
 
 export const getPostBySlug = (slug: string): BlogPost | undefined =>

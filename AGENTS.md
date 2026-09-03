@@ -101,10 +101,12 @@ sorted above all existing posts — in BOTH of these locations:
 
 This must happen naturally via publish-date-based sorting (newest first), not
 require manual reordering of the `POSTS` array each time. The current
-implementation sorts by `date` descending inside `useMemo` (blog page) and
-inline in the component (Latest Blog Posts). If a future refactor accidentally
-restores source-order rendering, the new-post-first behavior will silently
-break — verify with a live screenshot of both pages after every new post.
+implementation sorts by `date` descending, with a `lastUpdated ?? date`
+descending tiebreaker so two posts on the same day still order by recency
+(in `src/app/blog/page.tsx` `useMemo` and in `src/components/LatestBlogPosts.tsx`).
+If a future refactor accidentally restores source-order rendering, the
+new-post-first behavior will silently break — verify with a live screenshot
+of both pages after every new post.
 
 When publishing any future post:
 

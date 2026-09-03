@@ -59,9 +59,14 @@ export default function BlogPage() {
           p.excerpt.toLowerCase().includes(q),
       )
     }
-    return [...list].sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-    )
+    return [...list].sort((a, b) => {
+      const ad = new Date(a.date).getTime()
+      const bd = new Date(b.date).getTime()
+      if (bd !== ad) return bd - ad
+      const aL = new Date(a.lastUpdated ?? a.date).getTime()
+      const bL = new Date(b.lastUpdated ?? b.date).getTime()
+      return bL - aL
+    })
   }, [tab, query])
 
   const visiblePosts = filtered.slice(0, visible)

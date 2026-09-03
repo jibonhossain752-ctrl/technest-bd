@@ -3,7 +3,14 @@ import BlogCard from './BlogCard'
 
 export default function LatestBlogPosts() {
   const posts = [...POSTS]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => {
+      const ad = new Date(a.date).getTime()
+      const bd = new Date(b.date).getTime()
+      if (bd !== ad) return bd - ad
+      const aL = new Date(a.lastUpdated ?? a.date).getTime()
+      const bL = new Date(b.lastUpdated ?? b.date).getTime()
+      return bL - aL
+    })
     .slice(0, 4)
 
   return (
