@@ -2,10 +2,20 @@
 
 import { useState } from 'react'
 import { track, pixelFor } from '@/lib/tracking'
+import { PLATFORM_PATHS, SHARE_ICON_PATHS } from '@/lib/socials'
 
 interface ShareButtonsProps {
   title: string
   slug: string
+}
+
+type ShareKey = 'facebook' | 'x' | 'linkedin' | 'copy'
+
+interface ShareLink {
+  key: Exclude<ShareKey, 'copy'>
+  label: string
+  href: string
+  path: string
 }
 
 export default function ShareButtons({ title, slug }: ShareButtonsProps) {
@@ -25,21 +35,24 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     }
   }
 
-  const links = [
+  const links: ShareLink[] = [
     {
-      label: 'Facebook',
-      aria: 'Share on Facebook',
+      key: 'facebook',
+      label: 'Share on Facebook',
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      path: PLATFORM_PATHS.facebook,
     },
     {
-      label: 'X',
-      aria: 'Share on X',
+      key: 'x',
+      label: 'Share on X',
       href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+      path: SHARE_ICON_PATHS.x,
     },
     {
-      label: 'LinkedIn',
-      aria: 'Share on LinkedIn',
+      key: 'linkedin',
+      label: 'Share on LinkedIn',
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+      path: SHARE_ICON_PATHS.linkedin,
     },
   ]
 
@@ -47,29 +60,46 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     <div className="share-buttons">
       {links.map((l) => (
         <a
-          key={l.label}
+          key={l.key}
           href={l.href}
           target="_blank"
           rel="noreferrer"
-          aria-label={l.aria}
+          aria-label={l.label}
+          title={l.label}
           className="share-btn"
           onClick={() => {
-            const platform =
-              l.label.toLowerCase() === 'x' ? 'x' : l.label.toLowerCase()
-            track('share_click', undefined, { platform, post_slug: slug })
-            pixelFor('share_click', { platform, post_slug: slug })
+            track('share_click', undefined, { platform: l.key, post_slug: slug })
+            pixelFor('share_click', { platform: l.key, post_slug: slug })
           }}
         >
-          {l.label}
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d={l.path} />
+          </svg>
         </a>
       ))}
       <button
         type="button"
-        className="share-btn"
+        className="share-btn share-btn-copy"
         onClick={handleCopy}
-        aria-label="Copy link"
+        aria-label={copied ? 'Link copied' : 'Copy link'}
+        title={copied ? 'Link copied' : 'Copy link'}
       >
-        {copied ? '✓' : '🔗'}
+        {copied ? (
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d={SHARE_ICON_PATHS.check} />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d={SHARE_ICON_PATHS.link} />
+          </svg>
+        )}
+        <span
+          className={`share-btn-toast${copied ? ' share-btn-toast--visible' : ''}`}
+          role="status"
+          aria-live="polite"
+        >
+          Copied!
+        </span>
       </button>
     </div>
   )

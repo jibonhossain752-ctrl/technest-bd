@@ -5345,9 +5345,11 @@ button {
 .share-buttons {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .share-btn {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -5358,12 +5360,46 @@ button {
   font-size: 0.68rem;
   font-weight: 800;
   border: none;
+  cursor: pointer;
+  padding: 0;
   transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.share-btn svg {
+  width: 19px;
+  height: 19px;
+  display: block;
 }
 
 .share-btn:hover {
   background: var(--accent);
   transform: scale(1.1);
+}
+
+.share-btn-copy {
+  font-family: inherit;
+}
+
+.share-btn-toast {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.share-btn-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .related-posts {
