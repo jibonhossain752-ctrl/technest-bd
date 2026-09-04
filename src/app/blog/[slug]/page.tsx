@@ -18,7 +18,7 @@ interface BlogPostPageProps {
 const DEFAULT_KEEP_BROWSING = [
   {
     href: '/deals',
-    label: 'Gadget deals online — see this week\u2019s discounts',
+    label: 'Gadget deals online — see this week’s discounts',
   },
   {
     href: '/shop/accessories',
@@ -29,6 +29,17 @@ const DEFAULT_KEEP_BROWSING = [
     label: 'Trending gadgets — audio & wearables',
   },
 ]
+
+/**
+ * STAGED ROLLOUT: left-align the blog post header (H1, subtitle, meta row)
+ * for these two slugs only, so the change can be reviewed before becoming
+ * the default for every post. Remove this allow-list and the matching
+ * `blog-post-header--left` CSS once approved.
+ */
+const LEFT_ALIGN_HEADER_SLUGS = new Set<string>([
+  'ios-27',
+  'overhead-camera-mount-review-jinraiko',
+])
 
 export function generateStaticParams() {
   return POSTS.map((post) => ({ slug: post.slug }))
@@ -163,7 +174,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         />
       )}
       <article className="blog-post container">
-        <header className="blog-post-header">
+        <header
+          className={
+            LEFT_ALIGN_HEADER_SLUGS.has(post.slug)
+              ? 'blog-post-header blog-post-header--left'
+              : 'blog-post-header'
+          }
+        >
           <span className={`blog-card-badge ${categoryBadgeClass(post.category)}`}>
             {post.category}
           </span>

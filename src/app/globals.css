@@ -5172,8 +5172,34 @@ button {
   color: #fff;
   display: inline-grid;
   place-items: center;
-  font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 700;
+  font-size: 0.78rem;
+  margin-right: 2px;
+}
+
+/* ---------- Blog post header — left-align variant (staged rollout) ----------
+   Override the default center alignment for the post title, subtitle, and
+   meta row on posts that opt in via the `blog-post-header--left` class.
+   Remove the staged-rollout class + this block once approved; the standard
+   template can be flipped to left-align by changing the `.blog-post-header`
+   text-align and meta `justify-content` defaults instead.
+*/
+.blog-post-header--left {
+  text-align: left;
+}
+
+.blog-post-header--left h1 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.blog-post-header--left .blog-post-excerpt {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.blog-post-header--left .blog-meta {
+  justify-content: flex-start;
 }
 
 .blog-post-emoji {
