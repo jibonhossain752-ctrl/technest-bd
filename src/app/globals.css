@@ -5191,11 +5191,13 @@ button {
 .blog-post-header--left h1 {
   margin-left: 0;
   margin-right: 0;
+  max-width: none;
 }
 
 .blog-post-header--left .blog-post-excerpt {
   margin-left: 0;
   margin-right: 0;
+  max-width: none;
 }
 
 .blog-post-header--left .blog-meta {
