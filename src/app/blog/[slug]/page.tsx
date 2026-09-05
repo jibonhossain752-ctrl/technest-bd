@@ -174,13 +174,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         />
       )}
       <article className="blog-post container">
-        <header
-          className={
-            LEFT_ALIGN_HEADER_SLUGS.has(post.slug)
-              ? 'blog-post-header blog-post-header--left'
-              : 'blog-post-header'
-          }
-        >
+        <header className="blog-post-header">
           <span className={`blog-card-badge ${categoryBadgeClass(post.category)}`}>
             {post.category}
           </span>

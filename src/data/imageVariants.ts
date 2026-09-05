@@ -17,6 +17,7 @@ const IMAGE_VARIANTS: Record<string, number[]> = {
   'best-tech-gifts-under-50.webp': [480, 720],
   'bluetooth-6-explained.webp': [480, 720],
   'cio-smartcoby-ultra-slim-power-bank.webp': [260, 360, 520, 720],
+  'cyberpower-cp1500pfclcd-ups-hero.webp': [480, 720],
   'cyberpower-cp1500pfclcd-ups.webp': [260, 360, 520, 720],
   'echo-dot-5th-gen-charcoal.webp': [260, 360, 520, 720],
   'egor-egg-cooking-robot-cheffy-release-date.webp': [480, 720],
