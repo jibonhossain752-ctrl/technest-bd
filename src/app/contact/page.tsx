@@ -9,7 +9,7 @@ import type { PlatformKey } from '@/lib/socials'
 export const metadata: Metadata = {
   title: 'Contact GadgetErea – Support & Inquiries',
   description:
-    'Contact GadgetErea for order support, warranty and partnership inquiries. Phone, WhatsApp, and email — we reply within 24 hours.',
+    'Contact GadgetErea for order support, warranty and partnership inquiries. Phone, WhatsApp, email and store in New York, USA. We reply within 24 hours.',
   alternates: { canonical: '/contact' },
   openGraph: {
     siteName: 'GadgetErea',
@@ -61,6 +61,7 @@ const CHANNELS = [
     note: 'Replies within 24 hours',
     href: 'mailto:info@gadgeterea.com',
   },
+  { icon: '📍', title: 'Store Address', detail: '1200 Tech Plaza, Suite 300, New York, NY 10001', note: 'Visit us in person' },
 ]
 
 const CONTACT_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'youtube', 'pinterest']
