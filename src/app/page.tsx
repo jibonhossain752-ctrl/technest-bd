@@ -55,9 +55,9 @@ const organizationJsonLd = {
   ],
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-844-292-0061',
+    telephone: '+880-1746-374416',
     contactType: 'customer service',
-    email: 'support@gadgeterea.com',
+    email: 'info@gadgeterea.com',
     availableLanguage: ['English'],
   },
   potentialAction: {

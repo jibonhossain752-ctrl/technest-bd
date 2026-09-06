@@ -9,7 +9,7 @@ import type { PlatformKey } from '@/lib/socials'
 export const metadata: Metadata = {
   title: 'Contact GadgetErea – Support & Inquiries',
   description:
-    'Contact GadgetErea for order support, warranty and partnership inquiries. Phone, WhatsApp, email and store in New York, USA. We reply within 24 hours.',
+    'Contact GadgetErea for order support, warranty and partnership inquiries. Phone, WhatsApp, and email — we reply within 24 hours.',
   alternates: { canonical: '/contact' },
   openGraph: {
     siteName: 'GadgetErea',
@@ -36,17 +36,31 @@ export const metadata: Metadata = {
   },
 }
 
+const PHONE_DISPLAY = '01746374416'
+const PHONE_E164 = '8801746374416'
+
 const CHANNELS = [
-  { icon: '📞', title: 'Phone', detail: '(555) 010-1234', note: 'Mon - Fri, 9AM - 9PM' },
+  {
+    icon: '📞',
+    title: 'Phone',
+    detail: PHONE_DISPLAY,
+    note: 'Mon - Fri, 9AM - 9PM',
+    href: `tel:${PHONE_DISPLAY}`,
+  },
   {
     icon: '💬',
     title: 'WhatsApp',
-    detail: '+1 (555) 010-1234',
+    detail: `+${PHONE_E164}`,
     note: 'Fastest response',
-    href: 'https://chat.whatsapp.com/G5i6PUKjtlX34htXhvnKHc?s=sh&p=a&ilr=0',
+    href: `https://wa.me/${PHONE_E164}`,
   },
-  { icon: '✉️', title: 'Email', detail: 'support@gadgeterea.com', note: 'Replies within 24 hours' },
-  { icon: '📍', title: 'Store Address', detail: '1200 Tech Plaza, Suite 300, New York, NY 10001', note: 'Visit us in person' },
+  {
+    icon: '✉️',
+    title: 'Email',
+    detail: 'info@gadgeterea.com',
+    note: 'Replies within 24 hours',
+    href: 'mailto:info@gadgeterea.com',
+  },
 ]
 
 const CONTACT_SOCIALS: PlatformKey[] = ['facebook', 'instagram', 'whatsapp', 'youtube', 'pinterest']

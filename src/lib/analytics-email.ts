@@ -78,7 +78,7 @@ export async function sendDailyReportEmail(
   payload: Record<string, unknown>,
   opts: { forceTest?: boolean } = {},
 ): Promise<EmailSendResult> {
-  const to = process.env.REPORT_EMAIL || 'support@gadgeterea.com'
+  const to = process.env.REPORT_EMAIL || 'info@gadgeterea.com'
   const smtpHost = process.env.SMTP_HOST
 
   if (!smtpHost && !opts.forceTest) {
