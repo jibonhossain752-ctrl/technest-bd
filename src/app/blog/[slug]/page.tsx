@@ -10,6 +10,7 @@ import ShareButtons from '@/components/ShareButtons'
 import NewsletterPopup from '@/components/NewsletterPopupLazy'
 import TrackedAffiliateLink from '@/components/TrackedAffiliateLink'
 import PostFaq from '@/components/PostFaq'
+import AuthorBio from '@/components/AuthorBio'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -228,6 +229,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {block.link.label}
                 </a>
               </p>
+            ) : 'list' in block ? (
+              <ul key={`lst-${i}`} className="blog-post-list">
+                {block.list.map((item, j) => (
+                  <li key={j}>{item}</li>
+                ))}
+              </ul>
             ) : (
               <figure key={`img-${i}`} className="blog-inline-figure">
                 <Image
@@ -308,6 +315,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <span className="blog-share-label">Share this post:</span>
           <ShareButtons title={post.title} slug={post.slug} />
         </div>
+
+        <AuthorBio name={post.author} />
       </article>
 
       <section className="related-posts">
