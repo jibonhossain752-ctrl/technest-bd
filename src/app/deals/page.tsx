@@ -2,6 +2,7 @@ export const revalidate = 7200
 
 import type { Metadata } from 'next'
 import DealsCatalog from '@/components/DealsCatalog'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export const metadata: Metadata = {
   title: 'Gadget Deals Online – Daily Tech Discounts',
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
 export default function DealsPage() {
   return (
     <>
+      <Breadcrumb crumbs={[{ label: 'Deals' }]} />
       <div className="category-seo-head">
         <h1>Gadget Deals Online</h1>
         <p className="category-seo-intro">

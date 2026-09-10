@@ -11,6 +11,7 @@ import NewsletterPopup from '@/components/NewsletterPopupLazy'
 import TrackedAffiliateLink from '@/components/TrackedAffiliateLink'
 import PostFaq from '@/components/PostFaq'
 import AuthorBio from '@/components/AuthorBio'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -133,17 +134,34 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       },
     },
     mainEntityOfPage: `https://gadgeterea.com/blog/${post.slug}`,
-    ...(post.schemaRating
+  }
+
+  const productJsonLd =
+    post.schemaRating && deal && product
       ? {
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          name: product.name,
+          description: product.description,
+          ...(product.imageUrl
+            ? { image: `https://gadgeterea.com${product.imageUrl}` }
+            : post.heroImage
+              ? { image: `https://gadgeterea.com${post.heroImage}` }
+              : {}),
           aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: post.schemaRating.ratingValue,
             ratingCount: post.schemaRating.ratingCount,
             bestRating: 5,
           },
+          offers: {
+            '@type': 'Offer',
+            url: deal.affiliateUrl,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
         }
-      : {}),
-  }
+      : null
 
   const faqPageJsonLd =
     post.faq && post.faq.length > 0
@@ -160,12 +178,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
+      <Breadcrumb
+        crumbs={[
+          { label: 'Blog', href: '/blog' },
+          { label: post.title },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(blogPostingJsonLd),
         }}
       />
+      {productJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(productJsonLd),
+          }}
+        />
+      )}
       {faqPageJsonLd && (
         <script
           type="application/ld+json"

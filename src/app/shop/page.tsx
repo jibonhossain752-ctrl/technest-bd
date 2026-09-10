@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import { PRODUCTS } from '@/data/products'
 import ShopCatalog from '@/components/ShopCatalog'
 import Reveal from '@/components/ui/Reveal'
+import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export const metadata: Metadata = {
   title: 'Shop Gadget Deals Online – Laptops, Phones & More',
@@ -39,6 +40,7 @@ export const metadata: Metadata = {
 export default function ShopPage() {
   return (
     <Reveal>
+      <Breadcrumb crumbs={[{ label: 'Shop' }]} />
       <div className="category-seo-head">
         <h1>Shop Gadget Deals Online</h1>
         <p className="category-seo-intro">
