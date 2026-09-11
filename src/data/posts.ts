@@ -43,6 +43,106 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'iphone-duo',
+    title: 'iPhone Duo: Apple\u2019s First Foldable iPhone Is Official',
+    excerpt:
+      'Apple\u2019s first foldable is real \u2014 here\u2019s the design, the specs, the price, and when you can actually buy one.',
+    category: 'Explainer',
+    date: '2026-09-09',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/iphone-duo.webp',
+    emoji: '📱',
+    readTime: '7 min read',
+    content: [
+      { heading: 'What Is the iPhone Duo?' },
+      'The iPhone Duo is Apple\u2019s first foldable iPhone, announced on September 9, 2026 at the company\u2019s \u201CSurprise and Shine\u201D event. It opens like a book from a 5.4-inch closed device into a 7.6-inch inner display \u2014 the largest screen Apple has ever put in an iPhone. It\u2019s priced at $1,999, launches October 23, 2026, and runs a modified version of iOS 27 built specifically for its folding design.',
+      'That\u2019s the short version. Here\u2019s everything Apple actually announced.',
+      { heading: 'Design and Display: What Makes It Different' },
+      {
+        image: '/images/blog/iphone-duo-design.webp',
+        alt: 'iPhone Duo folded showing the titanium hinge and camera plateau',
+        width: 900,
+        height: 502,
+      },
+      'Unlike early foldables from other brands, Apple didn\u2019t just slap a hinge on an existing phone. The iPhone Duo is built around a machined and polished titanium frame, with Ceramic Shield on the back and the newer Ceramic Shield 2 on the front. Closed, it\u2019s reportedly the thinnest iPhone Apple has ever made \u2014 helped by an internal layout that pushes components into the camera plateau to free up space elsewhere.',
+      'The inner display uses a custom nano-texture finish designed to cut glare and reflections, along with a separate micro-lens texture \u2014 created using maskless laser lithography that etches each lens pixel by pixel \u2014 aimed at making the fold crease as close to invisible as possible while still feeling premium under your thumb. The device carries an IP68 rating for dust and water resistance and comes in two colors: Star White and Night Sky.',
+      { heading: 'Camera and Hardware' },
+      {
+        image: '/images/blog/iphone-duo-camera.webp',
+        alt: 'iPhone Duo rear camera lenses close-up',
+        width: 900,
+        height: 502,
+      },
+      'Powering the iPhone Duo is Apple\u2019s new A20 Pro chip, paired with a vapor-chamber cooling system \u2014 a first for iPhone, likely needed to manage heat across the larger, thinner chassis. The device uses a dual-battery system split across both halves of the phone to balance weight and preserve battery life once unfolded.',
+      'On the camera side, Apple kept its familiar dual-lens setup, capable of 48MP photos and 4K 120fps video. Software-wise, Face ID has been replaced with Touch ID on the iPhone Duo \u2014 likely a space and engineering trade-off given the folding design, rather than a step back in security.',
+      { heading: 'Software Experience: iOS 27, Rebuilt for Folding' },
+      {
+        image: '/images/blog/iphone-duo-software.webp',
+        alt: 'iPhone Duo standing open showing iOS 27 multitasking',
+        width: 900,
+        height: 502,
+      },
+      'This is where the iPhone Duo separates itself from being \u201Cjust a bigger iPhone.\u201D iOS 27 has been adapted specifically for the device\u2019s different positions and orientations, supporting Split View multitasking, hands-free FaceTime and video calling, and a StandBy mode that works even without charging \u2014 something the standard iPhone\u2019s StandBy mode requires.',
+      'Essential controls have been moved to the sides of the display to stay within thumb\u2019s reach, the Home Screen dock is now oriented vertically, and the status bar has been redesigned to sit neatly in the display\u2019s corner. Apple Pencil support over USB-C is coming to the iPhone Duo later in 2026, extending the device\u2019s usefulness for note-taking and sketching once unfolded.',
+      { heading: 'How the iPhone Duo Compares' },
+      {
+        image: '/images/blog/iphone-duo-comparison.webp',
+        alt: 'iPhone Duo vs traditional foldable comparison graphic',
+        width: 900,
+        height: 502,
+      },
+      'Apple isn\u2019t the first company to ship a foldable phone \u2014 brands like Samsung have sold book-style foldables for several years. What sets the iPhone Duo apart on paper is its wider aspect ratio: rather than the tall, narrow unfolded shape common on earlier foldables, Apple opted for a shape closer to a small iPad, which the company says better suits watching video and multitasking. Whether that translates to a genuinely better day-to-day experience will depend on real-world reviews once the device ships.',
+      { heading: 'Price and Release Date' },
+      'The iPhone Duo starts at $1,999 for the 256GB model. Pre-orders open October 16 at 5am Pacific in the US (1pm in the UK), with the device going on sale October 23 in more than 70 countries and regions, including the US, UK, Canada, Australia, China, France, Germany, India, and Japan. A further 28 countries and regions will get it a week later, on October 30.',
+    ],
+    metaTitle: 'iPhone Duo: Apple\u2019s First Foldable \u2014 Price, Specs & Release',
+    metaDescription:
+      'Apple just unveiled the iPhone Duo, its first foldable iPhone \u2014 7.6" inner display, A20 Pro chip, $1,999 price. Here\u2019s everything announced today.',
+    altText: 'iPhone Duo foldable iPhone opened in hand showing home screen',
+    faq: [
+      {
+        question: 'How much does the iPhone Duo cost?',
+        answer:
+          'The iPhone Duo starts at $1,999 for the 256GB storage option \u2014 making it the most expensive iPhone Apple currently sells.',
+      },
+      {
+        question: 'When can I buy the iPhone Duo?',
+        answer:
+          'Pre-orders begin October 16, 2026, with the device officially going on sale October 23 in most major markets.',
+      },
+      {
+        question: 'Does the iPhone Duo use Face ID?',
+        answer:
+          'No. Apple replaced Face ID with Touch ID on the iPhone Duo, likely due to space constraints from the folding design.',
+      },
+      {
+        question: 'What chip does the iPhone Duo use?',
+        answer:
+          'It runs on Apple\u2019s new A20 Pro chip with a vapor-chamber cooling system, a first for any iPhone.',
+      },
+      {
+        question: 'Is the iPhone Duo durable?',
+        answer:
+          'Apple gave it an IP68 rating for dust and water resistance, along with a titanium frame and Ceramic Shield 2 on the front display.',
+      },
+    ],
+    lastUpdated: '2026-09-09',
+    primaryKeyword: 'iPhone Duo',
+    secondaryKeywords: [
+      'foldable iphone',
+      'iphone duo price',
+      'iphone duo release date',
+      'iphone duo specs',
+      'apple foldable phone',
+      'a20 pro chip',
+    ],
+    keepBrowsing: [
+      { href: '/blog/foldable-phones-2026', label: 'Z Fold7 vs Z Flip8: 5 key differences' },
+      { href: '/blog/ios-27', label: 'iOS 27: everything new in Apple\u2019s latest update' },
+      { href: '/blog/iphone-18-release-date', label: 'iPhone 18 release date: when each model ships' },
+    ],
+  },
+  {
     slug: 'iphone-ultra-foldable-iphone',
     title:
       'iPhone Ultra: Apple\u2019s First Foldable Phone Is Finally Real \u2014 Here\u2019s Everything We Know',
