@@ -91,3 +91,13 @@ Shop/category pages (use the "Keep Browsing" links section already rendered on e
 4. Confirm 2–3 internal links to Shop/category pages (the "Keep Browsing" block renders automatically on every post).
 5. Add hero image to `public/images/blog/<slug>.jpg` (1200×675, descriptive filename).
 6. Rebuild, commit, push — sitemap.xml and BlogPosting schema update automatically.
+
+## Content formatting rules (standing)
+- Do NOT paste raw Markdown `**` or `#`/`##` into post bodies. Use the structured block types in `content` instead:
+  - paragraphs → plain strings
+  - main sections → `{ heading: '...' }` (renders `<h2>`)
+  - sub-sections → `{ subheading: '...' }` (renders `<h3>`, visually smaller than H2)
+  - images → `{ image, alt, width, height }`
+  - lists → `{ list: [...] }`
+  - external CTA → `{ link: { href, label } }`
+- Inline bold inside a paragraph is the only accepted Markdown: `**text**` (the renderer converts it to `<strong>`). Anything else Markdown-shaped will leak as raw text.

@@ -116,6 +116,16 @@ When publishing any future post:
   pages to confirm the new post is genuinely the first card in each grid —
   do not assume the sort logic handles it.
 
+### Blog content formatting (standing rule)
+
+- Do NOT paste raw Markdown `**` or `#`/`##` into post `content`. Use the
+  structured block types: plain strings for paragraphs, `{ heading }` for H2,
+  `{ subheading }` for H3 (visually smaller, added 2026-09 for heading
+  hierarchy), `{ image }`, `{ list }`, `{ link }`.
+- The only accepted Markdown in a body paragraph is inline `**bold**` (the
+  template converts it to `<strong>` — see `renderInline` in
+  `src/app/blog/[slug]/page.tsx`). Any other `**`/`#` will leak as raw text.
+
 ## Technical notes
 
 - NEVER use PowerShell `Get-Content`/`Set-Content` on UTF-8 source files
