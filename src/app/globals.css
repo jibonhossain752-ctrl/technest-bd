@@ -5207,6 +5207,14 @@ button {
   line-height: 1.35;
 }
 
+.blog-post-body h3.blog-post-h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 22px 0 10px;
+  line-height: 1.4;
+  color: var(--text-muted, #5b6470);
+}
+
 .blog-inline-figure {
   margin: 26px 0;
   border-radius: 16px;

@@ -101,6 +101,18 @@ function formatDate(date: string) {
   })
 }
 
+function renderInline(text: string) {
+  const parts = text.split('**')
+  if (parts.length === 1) return text
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={i}>{part}</strong>
+    ) : (
+      <span key={i}>{part}</span>
+    ),
+  )
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = getPostBySlug(slug)
@@ -245,11 +257,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="blog-post-body">
           {post.content.map((block, i) =>
             typeof block === 'string' ? (
-              <p key={i}>{block}</p>
+              <p key={i}>{renderInline(block)}</p>
             ) : 'heading' in block ? (
               <h2 key={`h-${i}`} className="blog-post-h2">
                 {block.heading}
               </h2>
+            ) : 'subheading' in block ? (
+              <h3 key={`sh-${i}`} className="blog-post-h3">
+                {block.subheading}
+              </h3>
             ) : 'link' in block ? (
               <p key={`l-${i}`} className="blog-cta-wrap">
                 <a

@@ -18,6 +18,7 @@ export interface BlogPost {
     | string
     | BlogPostImage
     | { heading: string }
+    | { subheading: string }
     | { link: { href: string; label: string } }
     | { list: string[] }
   >
@@ -155,12 +156,6 @@ export const POSTS: BlogPost[] = [
     emoji: '\u{1F4F1}',
     readTime: '5 min read',
     content: [
-      {
-        image: '/images/blog/iphone-ultra-foldable-iphone.webp',
-        alt: 'iPhone Ultra foldable iPhone concept showing unfolded home screen',
-        width: 1200,
-        height: 675,
-      },
       'Apple has been \u201Cabout to\u201D release a foldable iPhone since roughly 2018. Every year brought a new round of confident predictions \u2014 2020, then 2022, then 2024 \u2014 and every year, nothing shipped. That streak looks like it\u2019s finally ending. Momentum has been building toward a real September 2026 launch, and recent leaks have converged on a name most insiders now agree on: **iPhone Ultra**, not the \u201CiPhone Fold\u201D most people assumed Apple would go with.',
       'The reasoning behind the name, according to Apple analyst Mark Gurman, ties back to branding \u2014 Apple is reportedly lining up a run of \u201CUltra\u201D products by the end of 2026, and the foldable is meant to sit at the top of that lineup. What you\u2019re looking at above is close to what leakers expect the unfolded software experience to look like: widgets, weather, and calendar spread across a tablet-sized canvas that used to be two separate phones\u2019 worth of screen.',
       { heading: 'Design: a \u201Cpassport,\u201D not a phone that unfolds into a rectangle' },
@@ -246,11 +241,11 @@ export const POSTS: BlogPost[] = [
     content: [
       'For nearly a decade, \u201Cnew iPhone\u201D has meant one thing: a September keynote, four or five phones announced together, and pre-orders open within the week. That\u2019s not happening this year. Apple is splitting its own release calendar for the first time, and if you\u2019re trying to figure out exactly when your next iPhone shows up, the answer depends entirely on which model you\u2019re waiting for.',
       { heading: 'The short version: some iPhone 18 models arrive in September 2026. The rest don\u2019t show up until spring 2027.' },
-      { heading: 'iPhone 18 Pro and Pro Max: September 2026' },
+      { subheading: 'iPhone 18 Pro and Pro Max: September 2026' },
       'The iPhone 18 Pro and iPhone 18 Pro Max are on track for Apple\u2019s traditional September event, expected to happen at the company\u2019s usual venue with pre-orders following the same week, deliveries landing shortly after. Alongside them, Apple is expected to introduce something it\u2019s never shipped before: a folding iPhone, widely rumored to be called the iPhone Ultra.',
       'Design-wise, don\u2019t expect a dramatic overhaul. The Pro models are rumored to closely resemble the iPhone 17 Pro and Pro Max \u2014 same general triple-lens rear camera arrangement on a raised plateau, though a few leakers have suggested the camera bump and individual lenses might protrude slightly more than last year\u2019s model. Under the hood, the bigger story is the shift to a 2-nanometer manufacturing process for the new A20 Pro chip, plus the debut of Apple\u2019s own C2 modem \u2014 though it\u2019s possible U.S. units ship with a Qualcomm modem instead, depending on how Apple splits modem sourcing by region.',
       'One color note worth mentioning if you care about that sort of thing: reports point to a \u201CDark Cherry\u201D finish replacing the Cosmic Orange option from the iPhone 17 Pro lineup.',
-      { heading: 'The standard iPhone 18: not until spring 2027' },
+      { subheading: 'The standard iPhone 18: not until spring 2027' },
       'Here\u2019s the part that catches people off guard. If you\u2019re someone who typically buys the standard (non-Pro) iPhone, you will not be able to get a new one this fall. Apple is holding the iPhone 18, the iPhone 18e, and a possible second-generation iPhone Air until spring 2027 \u2014 a full season after the Pro models launch.',
       'The apparent logic: keep the September spotlight entirely on the Pro lineup and the new foldable, and give the more budget-friendly models their own separate moment a few months later. It\u2019s a real change to how Apple has run iPhone launches for years, and it means \u201CiPhone 18\u201D as a single release date doesn\u2019t really exist anymore \u2014 it\u2019s two separate release windows depending on which model you want.',
       { heading: 'What about pricing?' },
@@ -2887,10 +2882,10 @@ export const POSTS: BlogPost[] = [
       'The real-world use case the brand calls out is multi-scene: live streaming, unboxing, crafts, 3D printing, and similar top-down content. All of those have one thing in common \u2014 the camera is pointing down at a static subject, and the person recording is either off to the side or off-camera entirely. For those workflows, the JINRAIKO arm is genuinely the right tool: a single arm holds the camera, the C-clamp lives on the back of the desk out of the way, and the hydraulic joint keeps the framing where you put it even if you bump the desk. It is less ideal as a run-and-gun vlogging arm \u2014 if that\u2019s what you want, a lightweight on-camera grip is a better fit.',
       { heading: 'The honest pros and cons' },
       'The JINRAIKO arm has clear strengths and a few real weaknesses, and any review that doesn\u2019t flag both isn\u2019t useful.',
-      { heading: 'What it does well' },
+      { subheading: 'What it does well' },
       'The hydraulic floating arm is the genuine highlight. One-hand adjustment that holds position is the single thing you want from a mount like this, and the JINRAIKO delivers it without the locking knob you have to re-tighten every time. The 360\u00B0 multi-axis rotation is a close second \u2014 having three independent joints means the arm reaches overhead, side, and angled positions without compromise, and you don\u2019t have to choose between an overhead mount and a side mount, you get both in one arm.',
       'Build quality is solid for the price. The aluminum body, 2.1 kg weight, and C-clamp mounting system all point to a mount that is meant to live on your desk, not to be packed up and carried around \u2014 which is the right design choice for the target use case. The complete set with extension pole, phone holder, and quick-install hardware means you don\u2019t need to buy anything else to actually use it. And the universal 1/4\u201D-20 head means future cameras, webcams, or microphones you upgrade to will just work.',
-      { heading: 'Where it falls short' },
+      { subheading: 'Where it falls short' },
       'At 2.1 kg, the arm is heavy. That\u2019s an asset for stability but a liability for portability \u2014 if you need a mount that travels with you to shoots, a lighter folding arm is a better fit. The phone holder works with all smartphones, but it\u2019s not a quick-release design, so swapping between a phone and a camera takes a few seconds. The marketing imagery shows laptop use, but the Amazon listing\u2019s Compatible Devices is scoped to cameras, so any laptop use is unofficial. And the C-clamp is sized for typical desks \u2014 very thick or unusually shaped desk edges will not fit cleanly.',
       { heading: 'Who this overhead camera mount is actually for' },
       'The JINRAIKO overhead camera mount is the right buy for content creators who already know what an overhead shot should look like and just need a tool that holds the camera there. That means TikTok and YouTube creators doing unboxings, recipe videos, craft tutorials, painting demos, top-down keyboard reviews, and similar \u201Ccamera looks straight down at the desk\u201D content. It\u2019s also a good fit for Twitch streamers who want a clean overhead shot of a desk setup, and for product photographers who need a repeatable top-down rig.',
@@ -2967,9 +2962,9 @@ export const POSTS: BlogPost[] = [
       'iOS 27 is expected to roll out publicly around mid-September 2026, following Apple\u2019s usual pattern of releasing the finished version alongside its new iPhone lineup. The developer and public betas have been available since June, and by the final beta rounds, Apple had ironed out most of the rough edges reported earlier in the cycle.',
       'One thing to know upfront: Siri\u2019s biggest AI upgrade won\u2019t necessarily be ready the same day iOS 27 launches. Apple has said a Siri AI beta will arrive in English \u201Clater in 2026,\u201D meaning some of what\u2019s covered below may show up as a follow-up update rather than on day one.',
       { heading: 'What\u2019s New in iOS 27' },
-      { heading: 'A Wallpaper That Adapts to Every Screen' },
+      { subheading: 'A Wallpaper That Adapts to Every Screen' },
       'One of the more visually memorable additions is the new wallpaper extension feature. Pick a single photo, and Apple Intelligence automatically extends it beyond its original frame so it fills the entire Lock Screen naturally \u2014 no more awkward cropping or a photo that only looks right on one aspect ratio. In Apple\u2019s own demo, the same source photo was shown adapting cleanly across five different iPhones side by side, each with a slightly different framing but no visible stretching or distortion. It\u2019s a small feature, but one of those things that\u2019s hard to go back from once you\u2019ve used it.',
-      { heading: 'Siri Gets Rebuilt Around Generative AI' },
+      { subheading: 'Siri Gets Rebuilt Around Generative AI' },
       {
         image: '/images/blog/ios-27-siri-camera-control.webp',
         alt: 'iOS 27 Siri in Camera Control and the new system-wide search bar with Siri and ChatGPT options',
@@ -2978,7 +2973,7 @@ export const POSTS: BlogPost[] = [
       },
       'This is the headline feature of iOS 27. Siri has been rebuilt around a generative AI model, with the goal of finally handling follow-up questions, understanding what\u2019s on your screen, digging through your email for specific information, and completing multi-step tasks inside apps \u2014 the kind of assistant behavior competitors have offered for a while. In the new Camera Control interface, Siri now sits as its own dedicated mode alongside Photo and Portrait, and the system-wide search bar lets you choose between Siri and ChatGPT depending on what you\u2019re asking.',
       'Early beta testing has shown steady improvement: Siri AI responds noticeably faster than it did in the first beta, and the gap between it and assistants like Gemini has narrowed with each update. That said, it\u2019s still not flawless \u2014 one recurring issue in testing is that Siri sometimes cuts off longer spoken requests before the user finishes talking, though short prompts process instantly.',
-      { heading: 'A Redesigned Siri Icon and Animation' },
+      { subheading: 'A Redesigned Siri Icon and Animation' },
       {
         image: '/images/blog/ios-27-siri-glow.webp',
         alt: 'iOS 27 redesigned Siri glow animation around the Dynamic Island on the Lock Screen',
@@ -2987,7 +2982,7 @@ export const POSTS: BlogPost[] = [
       },
       'The visual identity changed along with the functionality. Siri\u2019s icon and the glow animation around the Dynamic Island have been refreshed to better reflect how the new AI-driven Siri actually behaves \u2014 a subtler, more fluid animation replaces the older pulsing orb look. It\u2019s a minor detail, but it signals how much Apple is treating Siri as a core part of the OS rather than a bolted-on assistant this time around.',
       'Custom Siri voices \u2014 letting you pick how Siri actually sounds \u2014 require newer hardware (A19 Pro chip, found in the iPhone Air and iPhone 17 Pro), so this particular feature won\u2019t reach most existing iPhones even after the update installs.',
-      { heading: 'Smarter, Reorganized Lock Screen Widgets' },
+      { subheading: 'Smarter, Reorganized Lock Screen Widgets' },
       {
         image: '/images/blog/ios-27-lock-screen-widgets.webp',
         alt: 'iOS 27 Lock Screen widgets in three different reorganized stacks for Weather, Calendar and Find My',
@@ -2995,7 +2990,7 @@ export const POSTS: BlogPost[] = [
         height: 506,
       },
       'Widget layout on the Lock Screen has been quietly reworked. Weather and Find My widgets, for example, now sit in a slightly reorganized stack, making better use of the available space depending on what widgets you\u2019ve chosen and how much information each one needs to show. It\u2019s not a dramatic redesign, but if you rely on Lock Screen widgets daily, the improved spacing is a welcome, low-key fix.',
-      { heading: 'Other Notable Changes' },
+      { subheading: 'Other Notable Changes' },
       'A few additional updates round out the release:',
       'Search rebuilt from the ground up \u2014 indexing new content on your device almost instantly, and Mail\u2019s internal search ranking has been overhauled to surface more relevant results.',
       'Shared Albums in Photos now accept contributions from Android and Windows users \u2014 a genuinely overdue cross-platform fix.',
