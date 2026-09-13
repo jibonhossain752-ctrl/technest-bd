@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -123,6 +124,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const product = deal
     ? PRODUCTS.find((p) => p.slug === deal.productSlug)
     : undefined
+  const firstDealIdx = post.content.findIndex(
+    (b) => typeof b === 'object' && 'deal' in b,
+  )
 
   const blogPostingJsonLd = {
     '@context': 'https://schema.org',
@@ -283,6 +287,59 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <li key={j}>{item}</li>
                 ))}
               </ul>
+            ) : 'deal' in block ? (
+              <Fragment key={`deal-${i}`}>
+                {i === firstDealIdx && (
+                  <p className="affiliate-disclosure">
+                    {post.affiliateDisclosure ??
+                      'As an Amazon Associate, I earn from qualifying purchases.'}
+                  </p>
+                )}
+                <div className="deal-card-inline">
+                  <span
+                    className="deal-card-inline-img"
+                    role="img"
+                    aria-label={block.deal.name}
+                  >
+                    🛒
+                  </span>
+                  <div className="deal-card-inline-info">
+                    <strong>{block.deal.name}</strong>
+                  </div>
+                  <TrackedAffiliateLink
+                    href={block.deal.affiliateUrl}
+                    className="btn btn-accent deal-card-inline-cta"
+                    meta={{
+                      product_slug: block.deal.name,
+                      post_slug: post.slug,
+                      location: 'blog-post',
+                    }}
+                  >
+                    {block.deal.ctaLabel ?? 'Check Price on Amazon'}
+                  </TrackedAffiliateLink>
+                </div>
+              </Fragment>
+            ) : 'table' in block ? (
+              <div key={`tbl-${i}`} className="blog-post-table-wrap">
+                <table className="blog-post-table">
+                  <thead>
+                    <tr>
+                      {block.table.headers.map((h, j) => (
+                        <th key={j}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {block.table.rows.map((row, j) => (
+                      <tr key={j}>
+                        {row.map((cell, k) => (
+                          <td key={k}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             ) : (
               <figure key={`img-${i}`} className="blog-inline-figure">
                 <Image
