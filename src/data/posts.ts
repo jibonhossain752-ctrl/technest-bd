@@ -44,6 +44,73 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'dyson-camerajet-toothbrush',
+    title: 'Dyson CameraJet: $500 Toothbrush With a Camera \u2014 Worth It?',
+    excerpt:
+      'Dyson\u2019s newest gadget isn\u2019t a vacuum or a hairdryer \u2014 it\u2019s a toothbrush with a camera built into the brush head, and it costs as much as a budget laptop.',
+    category: 'Explainer',
+    date: '2026-09-13',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/dyson-camerajet-toothbrush.webp',
+    emoji: '\u{1FAA5}',
+    readTime: '6 min read',
+    content: [
+      { heading: 'What Is the Dyson CameraJet?' },
+      'The Dyson CameraJet is an electric toothbrush with a built-in 1mm camera that analyzes 28 images per second while you brush, using AI to detect gaps between your teeth and fire a precision water jet to floss them automatically. It launched September 1, 2026, priced at $499, and connects to the MyDyson app for live footage and brushing feedback.',
+      'That\u2019s the short version. Here\u2019s what it actually does and whether the price makes sense.',
+      { heading: 'How the Camera Actually Works' },
+      'Dyson calls the core feature Gap Optical Targeting. A tiny camera sits in the brush head itself, reading 28 images every second as you brush, and an onboard AI model tracks where the bristles are and aren\u2019t reaching in real time. When it detects a gap between teeth, the toothbrush fires a short, targeted burst of mouth rinse \u2014 about one millisecond long \u2014 directly into that gap to help clear plaque a brush alone can\u2019t reach.',
+      'This is a different approach from every timer-based electric toothbrush on the market. A two-minute timer doesn\u2019t know where your brush actually went; it just counts down. The CameraJet\u2019s camera knows exactly which spots got missed, session after session, and adjusts its guidance accordingly.',
+      { heading: 'The App and Live View' },
+      'Pair the toothbrush with the MyDyson app and you get live video from inside your mouth while you brush, along with real-time coverage guidance and haptic alerts if you\u2019re pressing too hard or using the wrong angle. Dyson says none of this footage is stored \u2014 images are processed either on-device or briefly in the app and deleted immediately after viewing, not saved or shared.',
+      'The dock plays a supporting role here too. It\u2019s a 3-in-1 unit that charges the toothbrush, stores it, and refills its 12.5ml mouth rinse tank at the push of a button, so the day-to-day habit stays close to a normal electric toothbrush despite everything happening underneath it.',
+      { heading: 'What You Actually Get for $499' },
+      'Three modes come standard: automatic brushing-and-flossing together, brush-only, or floss-only, each with three intensity settings (Gentle, Variable, Deep Clean). Dyson also says its variable sonic oscillation is built to avoid the \u201Cstalling\u201D issue common in cheaper sonic brushes, where bristles briefly stop moving against harder tooth surfaces.',
+      'On the health-claim side, Dyson cites clinical testing showing improved gum health compared to manual brushing, and lab testing (developed with the National University of Singapore\u2019s Faculty of Dentistry) comparing its conical jet against needle-style flossing jets used by some competitors.',
+      { subheading: 'Is It Worth $499?' },
+      'For most people, no electric toothbrush needs to cost this much \u2014 a solid sonic toothbrush with a timer covers the basics for a fraction of the price. The CameraJet is aimed squarely at people who already struggle with consistent flossing and want a device that does the targeting for them, or anyone curious enough about the camera gimmick to pay for the novelty. Whether it\u2019s \u201Cworth it\u201D comes down to whether inconsistent flossing is a real problem for you specifically, not a general recommendation.',
+      { heading: 'Where to Buy' },
+      'The Dyson CameraJet is available directly through Dyson, and also listed on Amazon and Best Buy in multiple colorways, including Ceramic Pink and Ceramic Ultra Blue.',
+    ],
+    metaTitle: 'Dyson CameraJet: $500 Toothbrush With a Camera \u2014 Worth It?',
+    metaDescription:
+      'Dyson\u2019s CameraJet toothbrush has a 1mm camera that scans 28 images a second to find missed spots and auto-floss. Price, specs, and how it actually works.',
+    altText: 'Dyson CameraJet electric toothbrush with built-in camera in the brush head',
+    faq: [
+      {
+        question: 'How much does the Dyson CameraJet cost?',
+        answer: 'The Dyson CameraJet is priced at $499.',
+      },
+      {
+        question: 'Does the Dyson CameraJet store video of my mouth?',
+        answer:
+          'No. Dyson says images are processed on-device or briefly in the app and deleted immediately after viewing \u2014 never stored or shared.',
+      },
+      {
+        question: 'What does Gap Optical Targeting mean?',
+        answer:
+          'It\u2019s Dyson\u2019s name for the camera-and-AI system that detects gaps between teeth in real time and triggers a precision water jet to flush plaque from those spots while you brush.',
+      },
+      {
+        question: 'Is the Dyson CameraJet compatible with regular brush heads?',
+        answer:
+          'No \u2014 Dyson states the CameraJet only works properly with genuine Dyson brush heads made for this specific device.',
+      },
+      {
+        question: 'When did the Dyson CameraJet launch?',
+        answer: 'Dyson announced the CameraJet on September 1, 2026, in Paris.',
+      },
+    ],
+    lastUpdated: '2026-09-13',
+    primaryKeyword: 'Dyson CameraJet',
+    secondaryKeywords: [
+      'Dyson toothbrush with camera',
+      'Dyson CameraJet price',
+      'Gap Optical Targeting',
+      'Dyson CameraJet specs',
+    ],
+  },
+  {
     slug: 'iphone-duo',
     title: 'iPhone Duo: Apple\u2019s First Foldable iPhone Is Official',
     excerpt:
