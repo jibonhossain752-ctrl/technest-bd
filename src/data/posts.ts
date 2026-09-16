@@ -99,8 +99,8 @@ export const POSTS: BlogPost[] = [
           headers: ['Fan', 'Best For', 'Key Feature', 'Smart Features', 'Review Volume (Amazon)'],
           rows: [
             ['Dreo Pilot Max S', 'Best Overall', 'App-based auto temperature control', 'Alexa/Google Home', '~30,000+ reviews'],
-            ['Dreame MF10', 'Whole-Room Coverage', '270° spatial airflow, temperature-adaptive', 'Onboard app', '—'],
-            ['Dyson Cool AM07', 'Build Quality', 'Air Multiplier smooth airflow', 'None on base model', '—'],
+            ['Dreame MF10', 'Whole-Room Coverage', '270° spatial airflow, temperature-adaptive', 'Onboard app', '4.3 stars, ~261 reviews'],
+            ['Dyson Cool AM07', 'Build Quality', 'Air Multiplier smooth airflow', 'None on base model', '4.3 stars, ~151 reviews'],
           ],
         },
       },
