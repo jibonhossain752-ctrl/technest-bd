@@ -1051,6 +1051,43 @@ export const PRODUCTS: Product[] = [
       'tiktok overhead mount',
     ],
   },
+  {
+    id: 'p50',
+    slug: 'hibbent-1080-faucet-extender',
+    addedAt: '2026-09-21',
+    name: 'Hibbent 1080° Rotatable Faucet Extender',
+    category: 'Accessories',
+    categorySlug: 'accessories',
+    price: null,
+    imageUrl: '/product-images/hibbent-1080-faucet-extender.webp',
+    image: '🚰',
+    badge: 'new',
+    isNew: true,
+    rating: null,
+    reviews: 0,
+    description:
+      'Swivel faucet attachment with three rotating joints — a full 1080° range — plus two water modes (soft stream and sprayer) in a solid brass and ABS build. Fits 15/16-inch male threads; adapter included for female-thread faucets.',
+    altText: 'Hibbent 1080° rotatable faucet extender spraying water into a kitchen sink',
+    features: [
+      'Three rotating joints — 1080° total swivel range reaches every corner of the sink',
+      'Two water modes: soft stream for face washing and rinsing produce, stronger sprayer for dishes',
+      'Solid brass connector and arm with ABS aerator body and multi-layer plated finish',
+      '15/16-inch male thread connection — adapter included for female-thread faucets',
+      'Tool-free installation on standard faucets (included wrench for tight aerators)',
+    ],
+    buyUrl: 'https://amzn.to/4hchjuk',
+    metaTitle: 'Hibbent 1080° Faucet Extender for Kitchen Sink Review',
+    metaDescription:
+      'Hibbent 1080° rotatable faucet extender with 3 rotating joints and 2 water modes — solid brass build, tool-free install. Fits 15/16-inch male threads.',
+    primaryKeyword: 'faucet extender for kitchen sink',
+    secondaryKeywords: [
+      'hibbent 1080 faucet extender',
+      '1080 degree swivel faucet aerator',
+      'rotatable faucet sprayer attachment',
+      'kitchen sink swivel extender',
+      'faucet extender for face washing',
+    ],
+  },
 ]
 
 export interface ShopView {

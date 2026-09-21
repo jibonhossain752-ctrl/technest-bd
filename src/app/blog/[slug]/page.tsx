@@ -114,6 +114,41 @@ function renderInline(text: string) {
   )
 }
 
+/**
+ * Inline `{ deal }` content block. When the deal names a real catalog product
+ * via `productSlug`, render the actual product image (matching the bottom
+ * `dealCard`); otherwise fall back to the 🛒 placeholder.
+ */
+function InlineDealImage({
+  name,
+  productSlug,
+}: {
+  name: string
+  productSlug?: string
+}) {
+  const product = productSlug
+    ? PRODUCTS.find((p) => p.slug === productSlug)
+    : undefined
+  if (product?.imageUrl) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={product.imageUrl}
+        alt={product.altText ?? product.name}
+        className="deal-card-inline-img-el"
+        width={58}
+        height={58}
+        loading="lazy"
+      />
+    )
+  }
+  return (
+    <span className="deal-card-inline-img" role="img" aria-label={name}>
+      🛒
+    </span>
+  )
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = getPostBySlug(slug)
@@ -127,6 +162,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const firstDealIdx = post.content.findIndex(
     (b) => typeof b === 'object' && 'deal' in b,
   )
+  const firstDeal = post.content.find(
+    (b): b is { deal: { name: string; productSlug?: string; affiliateUrl: string; ctaLabel?: string } } =>
+      typeof b === 'object' && 'deal' in b,
+  )?.deal
+  const inlineDealProduct = firstDeal
+    ? PRODUCTS.find((p) => p.slug === firstDeal.productSlug)
+    : undefined
 
   const blogPostingJsonLd = {
     '@context': 'https://schema.org',
@@ -152,15 +194,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     mainEntityOfPage: `https://gadgeterea.com/blog/${post.slug}`,
   }
 
+  const schemaProduct = product ?? inlineDealProduct
+  const schemaProductUrl =
+    deal && product ? deal.affiliateUrl : firstDeal?.affiliateUrl
+
   const productJsonLd =
-    post.schemaRating && deal && product
+    post.schemaRating && schemaProduct
       ? {
           '@context': 'https://schema.org',
           '@type': 'Product',
-          name: product.name,
-          description: product.description,
-          ...(product.imageUrl
-            ? { image: `https://gadgeterea.com${product.imageUrl}` }
+          name: schemaProduct.name,
+          description: schemaProduct.description,
+          ...(schemaProduct.imageUrl
+            ? { image: `https://gadgeterea.com${schemaProduct.imageUrl}` }
             : post.heroImage
               ? { image: `https://gadgeterea.com${post.heroImage}` }
               : {}),
@@ -172,7 +218,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           },
           offers: {
             '@type': 'Offer',
-            url: deal.affiliateUrl,
+            url: schemaProductUrl,
             priceCurrency: 'USD',
             availability: 'https://schema.org/InStock',
           },
@@ -296,13 +342,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </p>
                 )}
                 <div className="deal-card-inline">
-                  <span
-                    className="deal-card-inline-img"
-                    role="img"
-                    aria-label={block.deal.name}
-                  >
-                    🛒
-                  </span>
+                  <InlineDealImage
+                    name={block.deal.name}
+                    productSlug={block.deal.productSlug}
+                  />
                   <div className="deal-card-inline-info">
                     <strong>{block.deal.name}</strong>
                   </div>

@@ -21,7 +21,14 @@ export interface BlogPost {
     | { subheading: string }
     | { link: { href: string; label: string } }
     | { list: string[] }
-    | { deal: { name: string; affiliateUrl: string; ctaLabel?: string } }
+    | {
+        deal: {
+          name: string
+          productSlug?: string
+          affiliateUrl: string
+          ctaLabel?: string
+        }
+      }
     | { table: { headers: string[]; rows: string[][] } }
   >
   metaTitle?: string
@@ -45,6 +52,99 @@ export interface BlogPost {
 }
 
 export const POSTS: BlogPost[] = [
+  {
+    slug: 'best-faucet-extender-kitchen-sink-2026',
+    title: 'Best Faucet Extender for Kitchen Sink 2026: Hibbent 1080° Review',
+    excerpt:
+      'A small attachment that turns any kitchen or bathroom faucet into a 1080-degree swivel sprayer — here’s whether it’s worth installing.',
+    category: 'Roundup',
+    date: '2026-09-21',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/best-faucet-extender-kitchen-sink-2026.webp',
+    emoji: '🚰',
+    readTime: '6 min read',
+    content: [
+      { heading: 'What Is the Hibbent 1080° Faucet Extender?' },
+      'The Hibbent 1080° Faucet Extender is a swivel attachment that screws onto an existing kitchen or bathroom faucet, adding three rotating joints that together move a full 1080 degrees in any direction. It offers two water outlet modes — a soft stream and a stronger sprayer — and is built from solid brass and ABS, priced affordably as a small add-on rather than a faucet replacement.',
+      'That’s the short version. Here’s how it actually works and who it makes sense for.',
+      { heading: 'How It Works' },
+      {
+        image: '/images/blog/best-faucet-extender-kitchen-sink-2026-how-it-works.webp',
+        alt: 'Diagram of the Hibbent 1080° faucet extender’s three rotating joints with directional arrows',
+        width: 960,
+        height: 536,
+      },
+      'The extender attaches directly to the faucet’s existing spout and adds three separate 360-degree joints along its arm. Because each joint rotates independently, the combined range of motion reaches roughly every corner of a standard sink — something a fixed faucet spout usually can’t do without moving the whole basin or leaning awkwardly to one side. Turning the outlet head switches between the two water modes: a softer stream for face washing, brushing teeth, or rinsing produce, and a stronger sprayer mode for rinsing dishes or clearing stuck-on residue faster.',
+      { heading: 'Two Water Modes' },
+      'The stream mode is designed to feel gentler and reduce splashing, which matters more than it sounds — a lot of “extra reach” faucet gadgets end up splashing water outside the sink instead of into it. The sprayer mode trades that gentleness for more water pressure when you actually need it, like rinsing a pan or washing hands after handling something messy.',
+      { heading: 'Is It Compatible With Your Faucet?' },
+      {
+        image: '/images/blog/best-faucet-extender-kitchen-sink-2026-thread-measure.webp',
+        alt: 'Measuring a faucet spout’s thread diameter to check faucet extender compatibility',
+        width: 960,
+        height: 536,
+      },
+      {
+        image: '/images/blog/best-faucet-extender-kitchen-sink-2026-thread-types.webp',
+        alt: 'Comparison of a female thread faucet and a male thread faucet spout',
+        width: 960,
+        height: 536,
+      },
+      'Compatibility comes down to your faucet’s thread type and size. This extender uses a 15/16-inch male thread connection, and works with female-thread faucets using the included adapter. Before buying, it’s worth measuring your faucet’s spout opening — inner diameter around 23.5–24mm typically means a female thread faucet, while an outer diameter around 21.5–22mm typically means a male thread faucet. Getting this measurement right before installing avoids the most common complaint with faucet attachments in general: buying one that simply doesn’t thread onto your specific faucet.',
+      { heading: 'Installation' },
+      'Installation is meant to be tool-free for most standard faucets — unscrew the existing aerator (or use the included wrench if it’s on tight), thread on the appropriate adapter if your faucet has female threading, then screw the extender on by hand. No plumbing tools or professional installation should be necessary for a standard kitchen or bathroom sink faucet.',
+      {
+        deal: {
+          name: 'Hibbent 1080° Rotatable Faucet Extender',
+          productSlug: 'hibbent-1080-faucet-extender',
+          affiliateUrl: 'https://amzn.to/4hchjuk',
+        },
+      },
+      { subheading: 'Who Should Buy This' },
+      'If your sink has awkward reach — a shallow basin, a faucet positioned too far back, or kids who need help reaching the water stream — this kind of extender solves a real, specific problem cheaply. If your existing faucet already reaches comfortably everywhere in your sink, this is more of a nice-to-have than a necessity.',
+    ],
+    metaTitle: 'Best Faucet Extender for Kitchen Sink 2026: Hibbent 1080° Review',
+    metaDescription:
+      'We tested the Hibbent 1080° Faucet Extender — 3 rotating joints, 2 water modes, solid brass build. Here’s how it performs and if it’s the best pick for your sink.',
+    altText:
+      'Person washing their face using the Hibbent 1080° faucet extender at a kitchen sink',
+    faq: [
+      {
+        question: 'Does the Hibbent 1080° Faucet Extender fit any faucet?',
+        answer:
+          'It uses a 15/16-inch male thread connection and includes an adapter for female-thread faucets, but always measure your faucet’s thread size before buying to confirm compatibility.',
+      },
+      {
+        question: 'Does it reduce water pressure?',
+        answer:
+          'Adding any attachment can slightly reduce pressure compared to a bare faucet spout, but the sprayer mode is specifically designed to maintain strong output for tasks like dish rinsing.',
+      },
+      {
+        question: 'Is it easy to install without a plumber?',
+        answer:
+          'Yes — installation is designed to be tool-free (or with just the included wrench) for standard faucets, without needing a professional.',
+      },
+      {
+        question: 'What’s it made of?',
+        answer:
+          'The connector and arm are solid brass, with an ABS aerator body and a multi-layer plated surface for corrosion resistance.',
+      },
+    ],
+    lastUpdated: '2026-09-21',
+    primaryKeyword: 'faucet extender for kitchen sink',
+    secondaryKeywords: [
+      'hibbent 1080 faucet extender',
+      '1080 degree faucet extender',
+      'faucet extender for face washing',
+      '15/16 faucet aerator adapter',
+      'kitchen sink swivel sprayer attachment',
+    ],
+    keepBrowsing: [
+      { href: '/blog/best-tech-gifts-under-50', label: '10 Best Tech Gifts Under $50 (2026)' },
+      { href: '/blog/fix-messy-desk-cables', label: '10-Minute Cable Fix: 6 Steps to a Mess-Free Desk' },
+      { href: '/blog/reduce-eye-strain-monitor-lamp', label: '5 Monitor Lamp Tips to Reduce Eye Strain at Night' },
+    ],
+  },
   {
     slug: 'best-bladeless-tower-fan-2026',
     title: 'Best Bladeless Tower Fan 2026: Dreame vs Dyson vs Dreo Compared',
