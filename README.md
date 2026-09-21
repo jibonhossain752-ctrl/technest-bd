@@ -1,6 +1,6 @@
 # GadgetErea
 
-An e-commerce store for tech products in Bangladesh, built with **Next.js**.
+An e-commerce store for tech products serving a US-based audience, built with **Next.js**.
 
 ## Tech Stack
 

@@ -166,7 +166,7 @@ full page reload, not SPA nav), nav links, search bar, cart icon, hamburger menu
 (Community links: WhatsApp/Facebook, Newsletter Quick Subscribe, 5 social icons:
 Facebook/Instagram/WhatsApp/YouTube/Pinterest).
 
-**Products:** 29 real Amazon affiliate products, sourced from real Amazon
+**Products:** 34 real Amazon affiliate products, sourced from real Amazon
 listings (name, image, price, rating, description) — **never fabricated**.
 Products with unconfirmed price show "Price unavailable" (price field is
 nullable), never a guessed number.
