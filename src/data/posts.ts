@@ -61,7 +61,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-09-24',
     author: 'Gadgeterea Team',
-    heroImage: '/images/blog/beats-360-wireless-headphones-hero.webp',
+    heroImage: '/images/blog/beats-360-headphones-hero.webp',
     emoji: '🎧',
     readTime: '7 min read',
     content: [
