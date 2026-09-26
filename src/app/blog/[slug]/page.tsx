@@ -348,6 +348,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   />
                   <div className="deal-card-inline-info">
                     <strong>{block.deal.name}</strong>
+                    {block.deal.price ? (
+                      <span className="deal-card-inline-price">
+                        {block.deal.price}
+                      </span>
+                    ) : null}
                   </div>
                   <TrackedAffiliateLink
                     href={block.deal.affiliateUrl}

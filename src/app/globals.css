@@ -5385,6 +5385,13 @@ button {
   font-size: 0.95rem;
 }
 
+.deal-card-inline-price {
+  display: block;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .deal-card-inline-cta {
   flex-shrink: 0;
   border-radius: 999px;

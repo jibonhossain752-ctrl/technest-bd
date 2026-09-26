@@ -25,6 +25,7 @@ export interface BlogPost {
         deal: {
           name: string
           productSlug?: string
+          price?: string
           affiliateUrl: string
           ctaLabel?: string
         }
@@ -52,6 +53,131 @@ export interface BlogPost {
 }
 
 export const POSTS: BlogPost[] = [
+  {
+    slug: 'beats-360-wireless-headphones',
+    title: 'Beats 360: $350 Wireless Headphones With Swappable Cushions',
+    excerpt:
+      'Beats’ first new over-ear design in years swaps the usual formula for interchangeable cushions, stronger noise cancellation, and a price tag between the AirPods Max and the Studio Pro.',
+    category: 'Explainer',
+    date: '2026-09-24',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/beats-360-wireless-headphones-hero.webp',
+    emoji: '🎧',
+    readTime: '7 min read',
+    content: [
+      { heading: 'What Is the Beats 360?' },
+      'The Beats 360 is Apple-owned Beats’ newest over-ear wireless headphone, officially announced and released September 24, 2026 at $349.99. It’s built around a completely redesigned acoustic system with up to 1.75x stronger active noise cancellation than the Beats Studio Pro, and it’s the first Beats over-ear headphone with swappable ear and headband cushions, letting you change its color and feel without buying a new pair.',
+      'That’s the short version. Here’s everything Beats actually built into it.',
+      { heading: 'Interchangeable Cushions: Beats’ New Signature Feature' },
+      {
+        image: '/images/blog/beats-360-cushion-kits.webp',
+        alt: 'Stack of Beats 360 interchangeable ear cushion kits in different colors',
+        width: 960,
+        height: 540,
+      },
+      'This is the headline idea behind the Beats 360. Both the ear cushions and the headband cushion twist or snap off and on in seconds, and Beats sells replacement cushion kits in two styles — Performance Knit (breathable, workout-friendly, included in the box) and UltraPlush (softer, more pillowy, sold separately). Cushion kits are normally $49.99, but Beats is running a launch promotion dropping that to $9.99 through October 31, 2026, in select markets including the US.',
+      'The headphones themselves come in four colors — Black, Cloud, Pink, and Sky — and mixing a different cushion color with the headphone shell is the whole point: you’re not locked into one look for the life of the product.',
+      { heading: 'Key Features at a Glance' },
+      {
+        image: '/images/blog/beats-360-feature-infographic.webp',
+        alt: 'Official Beats 360 feature infographic showing ANC, battery life and water resistance specs',
+        width: 960,
+        height: 536,
+      },
+      'Beyond the cushion system, Beats packed in a fairly complete feature set for a $349.99 headphone: active noise cancellation with a Transparency mode, IPX4 sweat and water resistance (a first for a Beats over-ear model), up to 32 hours of battery life with ANC on, fast charging (10 minutes of charge for roughly 1.5 hours of playback), one-touch pairing for both Apple and Android devices, and Spatial Audio with dynamic head tracking.',
+      { heading: 'Noise Cancellation and Sound' },
+      {
+        image: '/images/blog/beats-360-anc-gym.webp',
+        alt: 'Person wearing Beats 360 headphones with Adaptive ANC during a gym workout',
+        width: 960,
+        height: 540,
+      },
+      'Beats built the Beats 360 around eight microphones that read both the inside and outside acoustic environment, which the company says delivers its strongest ANC yet along with a 12dB increase in output while keeping distortion low across frequencies. Turning off both ANC and Transparency mode activates Adaptive EQ, which automatically retunes the sound based on how the headphones currently fit your ears — useful since cushion swapping can change the seal slightly.',
+      'For calls, a dedicated voice microphone is meant to keep call quality clear even in noisier environments like a gym or a commute.',
+      { heading: 'Portability and Fold-Flat Design' },
+      {
+        image: '/images/blog/beats-360-fold-flat-case.webp',
+        alt: 'Beats 360 headphones folded flat next to their woven ripstop carrying case',
+        width: 960,
+        height: 540,
+      },
+      'The Beats 360 folds flat rather than folding inward like some over-ear designs, which Beats says makes it comfortable to wear around the neck between listening sessions, not just easier to pack. It ships with a woven ripstop fabric case built for the folded shape, so it’s meant to travel in a bag without needing a rigid hard case.',
+      { heading: 'What’s in the Box' },
+      {
+        image: '/images/blog/beats-360-box-contents.webp',
+        alt: 'Beats 360 box contents with the headphones and woven ripstop carrying case',
+        width: 960,
+        height: 540,
+      },
+      'Each Beats 360 comes with the headphones themselves (in Performance Knit cushions by default) and the woven ripstop fabric carrying case. UltraPlush cushion kits, if you want the alternate feel, are purchased separately.',
+      { heading: 'Price and Where to Buy' },
+      'The Beats 360 costs $349.99 and is available now directly through Beats, Apple, and other major retailers. For context, Beats simultaneously dropped the price of its existing Studio Pro model to $299.99, positioning the 360 as the step-up option rather than a straight replacement.',
+      {
+        deal: {
+          name: 'Beats 360 Wireless Headphones',
+          productSlug: 'beats-360-wireless-headphones',
+          price: '$349.99',
+          affiliateUrl: 'https://amzn.to/4heeH0f',
+        },
+      },
+      { subheading: 'Is the Beats 360 Worth It?' },
+      'If swappable cushions and IPX4 water resistance matter to you — say, you want one headphone that works for both commuting and the gym without babying it — the Beats 360 is a legitimately new idea in this price range, not just a spec bump. If you don’t care about changing the look or sweat resistance, the discounted Beats Studio Pro at $299.99 covers most of the same core listening experience for $50 less.',
+    ],
+    metaTitle: 'Beats 360: $350 Wireless Headphones With Swappable Cushions',
+    metaDescription:
+      'Beats’ new wireless headphones, the Beats 360, cost $349.99 — 1.75x stronger ANC, swappable ear cushions, IPX4 water resistance. Everything announced today.',
+    altText:
+      'Beats 360 wireless headphones in Cloud and Midnight colorways side by side',
+    faq: [
+      {
+        question: 'How much does the Beats 360 cost?',
+        answer: 'The Beats 360 is priced at $349.99.',
+      },
+      {
+        question: 'Can you actually change the color of the Beats 360?',
+        answer:
+          'Yes — the ear cushions and headband cushion are interchangeable, so you can swap in a different color or texture kit without buying a new headphone.',
+      },
+      {
+        question: 'Is the Beats 360 waterproof?',
+        answer:
+          'No — it has an IPX4 rating, which protects against sweat and light splashes, not full submersion or heavy rain.',
+      },
+      {
+        question: 'How long does the battery last?',
+        answer:
+          'Beats rates the Beats 360 at up to 32 hours of battery life with active noise cancellation turned on.',
+      },
+      {
+        question: 'Is the Beats 360 better than the Beats Studio Pro?',
+        answer:
+          'It offers stronger noise cancellation, water resistance, and swappable cushions that the Studio Pro doesn’t have, but it also costs $50 more — the Studio Pro remains available at a reduced $299.99 for buyers who don’t need those specific upgrades.',
+      },
+    ],
+    lastUpdated: '2026-09-24',
+    primaryKeyword: 'Beats 360',
+    secondaryKeywords: [
+      'beats 360 wireless headphones',
+      'beats 360 price',
+      'beats 360 swappable cushions',
+      'beats 360 vs studio pro',
+      'beats over-ear headphones 2026',
+    ],
+    keepBrowsing: [
+      {
+        href: '/blog/best-noise-canceling-headphones',
+        label: '7 Best Noise-Canceling Headphones for Every Budget (2026)',
+      },
+      {
+        href: '/blog/bluetooth-6-explained',
+        label: 'Bluetooth 6.0: 4 Things It Means for Your Headphones (2026)',
+      },
+      {
+        href: '/blog/noise-canceling-headphones-buying-guide',
+        label: '5 Steps to Choosing the Right Noise-Canceling Headphones',
+      },
+    ],
+  },
   {
     slug: 'best-faucet-extender-kitchen-sink-2026',
     title: 'Best Faucet Extender for Kitchen Sink 2026: Hibbent 1080° Review',
