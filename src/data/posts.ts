@@ -55,7 +55,7 @@ export interface BlogPost {
 export const POSTS: BlogPost[] = [
   {
     slug: 'vintage-retro-screenless-digital-camera',
-    title: 'Best Vintage & Retro Screenless Digital Camera',
+    title: 'Vintage & Retro Screenless Digital Camera',
     excerpt:
       'No screen. No scrolling. Just a viewfinder, a shutter button, and whatever you were actually looking at when you pressed it.',
     category: 'Explainer',
@@ -101,7 +101,7 @@ export const POSTS: BlogPost[] = [
       },
       'This is the part that matters most: the actual photos. Arcade lights at night, a payphone prop at a pop-up, friends under a rainbow arch at a festival, a lineup of classic cars parked in the sun — the kind of moments that would otherwise live for a few seconds in a phone’s camera roll before disappearing into a thousand other photos. Shot on something built specifically to slow the process down, they end up feeling less like documentation and more like something worth developing, printing, keeping.',
     ],
-    metaTitle: 'Best Vintage & Retro Screenless Digital Camera',
+    metaTitle: 'Vintage & Retro Screenless Digital Camera',
     metaDescription:
       'Screenless digital cameras are trending again — the Camp Snap 110D brings 1970s retro styling with zero screen, just a viewfinder. Here’s what to know.',
     altText:
