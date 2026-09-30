@@ -54,6 +54,100 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'vintage-retro-screenless-digital-camera',
+    title: 'Best Vintage & Retro Screenless Digital Camera',
+    excerpt:
+      'No screen. No scrolling. Just a viewfinder, a shutter button, and whatever you were actually looking at when you pressed it.',
+    category: 'Explainer',
+    date: '2026-09-30',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/camp-snap-110d-screenless-camera-hero.webp',
+    emoji: '📷',
+    readTime: '5 min read',
+    content: [
+      { heading: 'The Screenless Camera Trend Isn’t Going Away' },
+      'Screenless digital cameras strip photography back to a single decision — point, look through the viewfinder, press the shutter. There’s no screen to check afterward, no instant preview to second-guess, no filter menu to scroll through mid-moment. The retro screenless camera the images in this post are built around is Camp Snap’s 110D, a pocket-sized digital camera shaped like the classic 110 film cameras of the 1970s.',
+      'That’s the idea in one sentence. Here’s what it actually feels like to carry one.',
+      { heading: 'Made to Carry, Not to Carry Around' },
+      {
+        image: '/images/blog/camp-snap-110d-pocket-fit.webp',
+        alt: 'Camp Snap 110D screenless camera slipped into a jeans pocket',
+        width: 960,
+        height: 540,
+      },
+      'The whole shape of a camera like this is designed around one question: will you actually have it with you? A slim, flat body slides into a jeans pocket the same way a phone does, without the bulk that keeps most cameras sitting in a bag at home. That’s the quiet trade this kind of camera is built on — fewer megapixels, no zoom, no screen, in exchange for something small enough that “I forgot my camera” stops being the reason you didn’t take the photo.',
+      { heading: 'Looking Through It' },
+      {
+        image: '/images/blog/camp-snap-110d-viewfinder.webp',
+        alt: 'Person holding the Camp Snap 110D up to their eyes to frame a shot through the viewfinder',
+        width: 960,
+        height: 540,
+      },
+      'Without a screen, the only way to frame a shot is the optical viewfinder — you hold it up, look through it, and what you see is what you get. There’s no chimping between shots, no reviewing and retaking until it’s perfect. It’s a small shift in behavior that changes how a moment gets captured: less composing, more reacting.',
+      { heading: 'Five Ways to See the Same Moment' },
+      {
+        image: '/images/blog/camp-snap-110d-filters.webp',
+        alt: 'Comparison of the Camp Snap 110D’s five built-in filters on the same scene',
+        width: 960,
+        height: 540,
+      },
+      'A small switch on the body cycles through five built-in filters — Standard, Vintage 1, Vintage 2, Black & White, and Analog — each one changing the color, grain, and mood of a shot before it’s even taken, not after in an app. The same street scene can go from clean and neutral to warm and sun-faded to stripped down to black and white, all from the same spot, all decided in the second before pressing the shutter.',
+      { heading: 'What Actually Comes Out the Other Side' },
+      {
+        image: '/images/blog/camp-snap-110d-sample-photos.webp',
+        alt: 'Sample photos from the Camp Snap 110D — arcade lights at night and friends at a festival',
+        width: 960,
+        height: 540,
+      },
+      'This is the part that matters most: the actual photos. Arcade lights at night, a payphone prop at a pop-up, friends under a rainbow arch at a festival, a lineup of classic cars parked in the sun — the kind of moments that would otherwise live for a few seconds in a phone’s camera roll before disappearing into a thousand other photos. Shot on something built specifically to slow the process down, they end up feeling less like documentation and more like something worth developing, printing, keeping.',
+    ],
+    metaTitle: 'Best Vintage & Retro Screenless Digital Camera',
+    metaDescription:
+      'Screenless digital cameras are trending again — the Camp Snap 110D brings 1970s retro styling with zero screen, just a viewfinder. Here’s what to know.',
+    altText:
+      'Screenless retro digital camera resting on a leather desk with a compass and map',
+    faq: [
+      {
+        question: 'What does “screenless” mean on a digital camera?',
+        answer:
+          'It means the camera has no LCD display for previewing or reviewing photos — you frame every shot through an optical viewfinder instead, and only see the results once you transfer the photos to another device.',
+      },
+      {
+        question: 'Do screenless retro cameras still take digital photos?',
+        answer:
+          'Yes — despite the vintage film-camera styling, cameras like this shoot fully digital photos (typically JPEG), stored on a memory card and transferred via USB-C, with no film or processing involved.',
+      },
+      {
+        question: 'Why are retro screenless cameras popular again?',
+        answer:
+          'Part of it is nostalgia for film-era photography, and part of it is a reaction to constantly reviewing and retaking photos on a phone — a camera with no screen forces a more decisive, in-the-moment way of shooting.',
+      },
+      {
+        question: 'Can you change filters after taking the photo?',
+        answer:
+          'No — on this style of camera, the filter is applied at the moment of capture via a physical switch on the body, not edited afterward in an app.',
+      },
+    ],
+    lastUpdated: '2026-09-30',
+    primaryKeyword: 'vintage screenless digital camera',
+    secondaryKeywords: ['retro digital camera', 'screenless digital camera'],
+    keepBrowsing: [
+      {
+        href: '/blog/beni-camera-robot-mondo-robotics-review',
+        label:
+          'Beni Just Raised 24x Its Kickstarter Goal in Days — Here’s What This Camera Robot Actually Does',
+      },
+      {
+        href: '/blog/dyson-camerajet-toothbrush',
+        label: 'Dyson CameraJet: $500 Toothbrush With a Camera — Worth It?',
+      },
+      {
+        href: '/blog/best-tech-gifts-under-50',
+        label: '10 Best Tech Gifts Under $50 (2026)',
+      },
+    ],
+  },
+  {
     slug: 'beats-360-wireless-headphones',
     title: 'Beats 360: $350 Wireless Headphones With Swappable Cushions',
     excerpt:
