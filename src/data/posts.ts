@@ -26,6 +26,8 @@ export interface BlogPost {
           name: string
           productSlug?: string
           price?: string
+          image?: string
+          imageAlt?: string
           affiliateUrl: string
           ctaLabel?: string
         }
@@ -53,6 +55,134 @@ export interface BlogPost {
 }
 
 export const POSTS: BlogPost[] = [
+  {
+    slug: 'best-universal-travel-adapter',
+    title: 'Best Universal Travel Adapter for International Trips',
+    excerpt:
+      'One compact charger with four built-in plug types, three charging ports, and enough safety features to trust it on every trip.',
+    category: 'Roundup',
+    date: '2026-09-30',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/mukiya-travel-adapter-hero.webp',
+    emoji: '🔌',
+    readTime: '7 min read',
+    content: [
+      { heading: 'What Makes a Travel Adapter “Universal”?' },
+      'A universal travel adapter combines multiple regional plug standards into one device, so a single charger works across most of the world instead of needing a different adapter per country. The Mukiya 70W GaN Universal Travel Adapter does this with four built-in, retractable plug types — US, EU, UK, and AU — plus three USB charging ports (2 USB-C, 1 USB-A) that handle the actual device charging once it’s plugged in.',
+      'That’s the short version. Here’s how it actually works.',
+      { heading: 'Which Countries and Regions It Covers' },
+      {
+        image: '/images/blog/mukiya-travel-adapter-plug-coverage.webp',
+        alt: 'City plug coverage for the Mukiya travel adapter — New York, Paris, London and Sydney outlets',
+        width: 960,
+        height: 540,
+      },
+      'The four built-in plug standards are grouped by region: the US plug type covers the US, Japan, Canada, Mexico, the Philippines, and Taiwan; the EU plug type covers the EU, Korea, Brazil, Indonesia, Russia, and Vietnam; the UK plug type covers the UK, Hong Kong, Malaysia, Singapore, and UAE; and the AU plug type covers Australia, China, New Zealand, Argentina, and Fiji. Between these four groups, the adapter is built to handle outlets across most popular international travel routes — though outlet types can still vary by specific country and property, so it’s worth double-checking before a trip to a country not clearly listed above.',
+      { heading: 'Four Plugs, One Rotating Design' },
+      {
+        image: '/images/blog/mukiya-travel-adapter-rotating-plugs.webp',
+        alt: 'The Mukiya travel adapter’s 360-degree rotating plug mechanism',
+        width: 960,
+        height: 540,
+      },
+      'Instead of separate snap-on adapter heads that are easy to lose, the Mukiya adapter rotates a full 360 degrees between its four plug types, then retracts flat for packing. You rotate to whichever pin type you need, use it, then rotate it back in when you’re done — no loose parts to misplace in a suitcase.',
+      { heading: 'Worldwide Voltage, USB-Only Charging' },
+      {
+        image: '/images/blog/mukiya-travel-adapter-voltage.webp',
+        alt: 'Diagram of the Mukiya travel adapter’s 100-240V worldwide voltage input',
+        width: 960,
+        height: 540,
+      },
+      'The adapter accepts 100-240V input at 50/60Hz, which covers the voltage standards used across essentially every country, so the adapter itself isn’t the limiting factor on where it works. One important distinction: the AC pins are for USB charging only — this is not a voltage converter for plugging in non-USB appliances like hair dryers or hotel kettles that expect their home country’s specific voltage.',
+      { heading: 'Charging Multiple Devices at Once' },
+      {
+        image: '/images/blog/mukiya-travel-adapter-bedside-charging.webp',
+        alt: 'Three devices charging overnight on a bedside table from the Mukiya travel adapter',
+        width: 960,
+        height: 540,
+      },
+      'With 2 USB-C ports and 1 USB-A port sharing a combined 70W GaN output, the adapter is built to charge up to 3 devices simultaneously — a phone, a tablet, and a pair of earbuds overnight, for example — using intelligent power distribution to split output across whatever’s actually plugged in rather than a fixed split per port.',
+      { heading: 'Built-In Safety Protections' },
+      {
+        image: '/images/blog/mukiya-travel-adapter-safety.webp',
+        alt: 'The Mukiya travel adapter’s built-in safety protections and durable PC+ABS shell',
+        width: 960,
+        height: 540,
+      },
+      'Beyond the charging specs, the adapter includes four safeguards — high temperature protection, overcharge protection, short circuit protection, and overvoltage protection — along with a durable PC+ABS shell and ETL listing. For a device that’s going to sit plugged into unfamiliar outlets in different countries, this kind of built-in protection matters more than it does for a charger that never leaves your home outlet.',
+      { heading: 'Size and Portability' },
+      {
+        image: '/images/blog/mukiya-travel-adapter-size.webp',
+        alt: 'Hand-held Mukiya travel adapter at 5.2oz packed alongside travel essentials',
+        width: 960,
+        height: 540,
+      },
+      'At 5.2oz and roughly 2 inches on each side, the adapter is small enough to sit in a hand or tuck into a packing cube alongside headphones, a passport, and a luggage tag without adding meaningful bulk — the kind of size that makes it realistic to actually pack every trip instead of leaving it behind to save space.',
+      { heading: 'Price and Where to Buy' },
+      'The Mukiya 70W GaN Universal Travel Adapter launched in late September 2026 and is available on Amazon.',
+      {
+        deal: {
+          name: 'Mukiya 70W GaN Universal Travel Adapter',
+          image: '/images/blog/mukiya-travel-adapter-hero.webp',
+          imageAlt:
+            'Mukiya 70W GaN universal travel adapter with global plug coverage list and five color options',
+          affiliateUrl: 'https://amzn.to/46Y0sqs',
+        },
+      },
+      { subheading: 'Is a Universal Travel Adapter Worth Buying?' },
+      'If you travel to multiple regions with different plug types — not just one country repeatedly — a single rotating adapter like this is simpler than carrying separate adapters per destination, and the built-in USB ports mean you’re not also packing a separate wall charger. If you only ever travel to one region with a consistent outlet type, a simpler single-standard charger may cover your needs for less.',
+    ],
+    metaTitle: 'Best Universal Travel Adapter for International Trips',
+    metaDescription:
+      'We tested the Mukiya 70W GaN travel adapter — charges 3 devices via 2 USB-C + 1 USB-A ports in a compact body. Here’s if it’s the best universal pick.',
+    altText:
+      'Mukiya 70W GaN universal travel adapter with global plug coverage list and five color options',
+    faq: [
+      {
+        question: 'Is a universal travel adapter the same as a voltage converter?',
+        answer:
+          'No — a universal travel adapter changes the physical plug shape to fit different outlets, but devices still need to handle the actual voltage themselves. Most phones, tablets, and laptops already support 100-240V automatically, but appliances like hair dryers often don’t.',
+      },
+      {
+        question: 'Can this adapter charge a laptop?',
+        answer:
+          'It depends on the laptop’s charging requirements and the adapter’s per-port output — check your laptop’s required wattage against the adapter’s USB-C output before relying on it as your only laptop charger.',
+      },
+      {
+        question: 'Does this adapter work in every country?',
+        answer:
+          'It covers US, EU, UK, and AU-standard outlets, which accounts for most popular travel destinations, but a small number of countries use less common outlet types not covered by these four standards — worth checking your specific destination beforehand.',
+      },
+      {
+        question: 'How many devices can it charge at once?',
+        answer:
+          'Up to 3 devices simultaneously, using its 2 USB-C and 1 USB-A ports with shared 70W GaN output.',
+      },
+    ],
+    lastUpdated: '2026-10-02',
+    primaryKeyword: 'universal travel adapter',
+    secondaryKeywords: [
+      'mukiya 70w gan travel adapter',
+      'universal travel adapter with usb ports',
+      'gan travel charger international',
+      'international travel plug adapter',
+      'rotating universal plug adapter',
+    ],
+    keepBrowsing: [
+      {
+        href: '/blog/best-carry-on-luggage-2026',
+        label: '7 Best Carry-On Luggage for Frequent Flyers (2026)',
+      },
+      {
+        href: '/blog/flying-with-carry-on-only',
+        label: '5 Tips for Flying with Carry-On Only (2026)',
+      },
+      {
+        href: '/blog/how-to-buy-carry-on-luggage',
+        label: '5 Rules for Buying a Carry-On That Fits Every Airline',
+      },
+    ],
+  },
   {
     slug: 'vintage-retro-screenless-digital-camera',
     title: 'Vintage & Retro Screenless Digital Camera',

@@ -122,19 +122,24 @@ function renderInline(text: string) {
 function InlineDealImage({
   name,
   productSlug,
+  image,
+  imageAlt,
 }: {
   name: string
   productSlug?: string
+  image?: string
+  imageAlt?: string
 }) {
   const product = productSlug
     ? PRODUCTS.find((p) => p.slug === productSlug)
     : undefined
-  if (product?.imageUrl) {
+  const src = product?.imageUrl ?? image
+  if (src) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src={product.imageUrl}
-        alt={product.altText ?? product.name}
+        src={src}
+        alt={product?.altText ?? imageAlt ?? name}
         className="deal-card-inline-img-el"
         width={58}
         height={58}
@@ -345,6 +350,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <InlineDealImage
                     name={block.deal.name}
                     productSlug={block.deal.productSlug}
+                    image={block.deal.image}
+                    imageAlt={block.deal.imageAlt}
                   />
                   <div className="deal-card-inline-info">
                     <strong>{block.deal.name}</strong>
