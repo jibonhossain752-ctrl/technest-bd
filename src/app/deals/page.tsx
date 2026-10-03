@@ -45,6 +45,11 @@ export default function DealsPage() {
           tech deals on laptops, phones, audio, smart home and accessories,
           verified and refreshed every week.
         </p>
+        <p className="category-seo-intro">
+          Every deal here is a price drop on a product already in the
+          GadgetErea catalog — when a price climbs back to its usual level,
+          that product leaves the list automatically.
+        </p>
       </div>
       <DealsCatalog />
     </>

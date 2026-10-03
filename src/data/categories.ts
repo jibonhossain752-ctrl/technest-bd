@@ -14,7 +14,6 @@ const CATEGORY_META = [
   { name: 'Audio & Wearables', slug: 'audio-wearables', icon: '🎧' },
   { name: 'Gaming Gear', slug: 'gaming', icon: '🎮' },
   { name: 'Accessories', slug: 'accessories', icon: '⌨️' },
-  { name: 'Networking', slug: 'networking', icon: '📡' },
   { name: 'Cameras', slug: 'cameras', icon: '📷' },
   { name: 'Smart Home', slug: 'smart-home', icon: '🏠' },
 ] as const

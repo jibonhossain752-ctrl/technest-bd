@@ -1,0 +1,33 @@
+# GadgetErea
+
+> GadgetErea is a US-focused tech publication and storefront that reviews and curates consumer gadgets — laptops, smartphones, audio gear, cameras, smart home devices and everyday tech accessories — with buying guides, product roundups and honest reviews. Product listings link out to Amazon for purchase.
+
+## Main pages
+
+- [Home](https://gadgeterea.com/): latest blog posts, featured products and current deals
+- [Shop](https://gadgeterea.com/shop): full product catalog by category
+- [Deals](https://gadgeterea.com/deals): current price drops across the catalog
+- [Blog](https://gadgeterea.com/blog): all reviews, buying guides and explainers
+- [About](https://gadgeterea.com/about): what GadgetErea is and how it works
+- [FAQ](https://gadgeterea.com/faq): common questions about the site
+- [Contact](https://gadgeterea.com/contact): how to reach the team
+
+## Product categories
+
+- [Laptops & PCs](https://gadgeterea.com/shop/laptops): laptops, UPS backup and desk essentials
+- [Smartphones](https://gadgeterea.com/shop/smartphones): unlocked phones and foldables
+- [Audio & Wearables](https://gadgeterea.com/shop/audio-wearables): headphones, earbuds and AR glasses
+- [Gaming Gear](https://gadgeterea.com/shop/gaming): consoles and gaming peripherals
+- [Accessories](https://gadgeterea.com/shop/accessories): chargers, cases, luggage and desk upgrades
+- [Cameras](https://gadgeterea.com/shop/cameras): webcams and creator camera gear
+- [Smart Home](https://gadgeterea.com/shop/smart-home): smart speakers and connected home devices
+
+## Recent guides and reviews
+
+- [Best Universal Travel Adapter for International Trips](https://gadgeterea.com/blog/best-universal-travel-adapter): 70W GaN adapter with four built-in plug types
+- [Vintage & Retro Screenless Digital Camera](https://gadgeterea.com/blog/vintage-retro-screenless-digital-camera): what shooting on a screenless retro camera actually feels like
+- [Beats 360: $350 Wireless Headphones With Swappable Cushions](https://gadgeterea.com/blog/beats-360-wireless-headphones): Apple-owned Beats' newest over-ear headphone
+- [Best Faucet Extender for Kitchen Sink 2026: Hibbent 1080° Review](https://gadgeterea.com/blog/best-faucet-extender-kitchen-sink-2026): 1080° swivel faucet attachment review
+- [5 Best 4K Webcams for Work From Home (2026)](https://gadgeterea.com/blog/best-4k-webcams-2026): webcam picks for video calls and streaming
+- [4 Key Specs to Check When Buying a UPS for Your PC](https://gadgeterea.com/blog/ups-battery-backup-buying-guide): UPS buying guide
+- [CyberPower CP1500PFCLCD Review: The Sinewave UPS We Trust for PCs, Studios and Home Offices](https://gadgeterea.com/blog/cyberpower-cp1500pfclcd-ups-review): long-term UPS review

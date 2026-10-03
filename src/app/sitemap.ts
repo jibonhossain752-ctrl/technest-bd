@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'daily' as const,
       priority: 0.7,
-    })),
+    })).filter((v) => !v.url.endsWith('/shop/featured')),
   ]
 
   const productRoutes: MetadataRoute.Sitemap = PRODUCTS.map((p) => ({

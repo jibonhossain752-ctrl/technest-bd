@@ -3,10 +3,13 @@ import SocialIcon from './SocialIcon'
 import type { PlatformKey } from '@/lib/socials'
 
 const SHOP_LINKS = [
-  { label: 'Laptops', href: '/shop/laptops' },
+  { label: 'Laptops & PCs', href: '/shop/laptops' },
   { label: 'Smartphones', href: '/shop/smartphones' },
+  { label: 'Audio & Wearables', href: '/shop/audio-wearables' },
+  { label: 'Gaming Gear', href: '/shop/gaming' },
   { label: 'Accessories', href: '/shop/accessories' },
-  { label: 'Gaming', href: '/shop/gaming' },
+  { label: 'Cameras', href: '/shop/cameras' },
+  { label: 'Smart Home', href: '/shop/smart-home' },
 ]
 
 const SUPPORT_LINKS = [

@@ -221,12 +221,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ratingCount: post.schemaRating.ratingCount,
             bestRating: 5,
           },
-          offers: {
-            '@type': 'Offer',
-            url: schemaProductUrl,
-            priceCurrency: 'USD',
-            availability: 'https://schema.org/InStock',
-          },
+          offers:
+            schemaProduct.price != null
+              ? {
+                  '@type': 'Offer',
+                  url: schemaProductUrl,
+                  priceCurrency: 'USD',
+                  price: schemaProduct.price,
+                  availability: 'https://schema.org/InStock',
+                }
+              : undefined,
         }
       : null
 
@@ -326,7 +330,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <a
                   href={block.link.href}
                   target="_blank"
-                  rel="noopener nofollow"
+                  rel="noopener"
                   className="btn btn-accent blog-cta"
                 >
                   {block.link.label}

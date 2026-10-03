@@ -18,6 +18,7 @@ interface SeoMeta {
   title: string
   description: string
   intro: string
+  intro2?: string
 }
 
 const SEO_META: Record<string, SeoMeta> = {
@@ -27,6 +28,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Trending laptops and PCs at GadgetErea — powerful machines for work and play. Shop genuine laptops with official warranty and fast US delivery.',
     intro:
       'Looking for trending gadgets to upgrade your desk? Our Laptops & PCs collection features fast, reliable machines for work, study and gaming — every one genuine, warrantied and delivered fast across the USA.',
+    intro2:
+      'Right now the shelf leans desk-first: the CyberPower CP1500PFCLCD sinewave UPS that keeps a workstation running through outages, the Logitech Lift vertical mouse for easier wrist angles, and the UGREEN 5-in-1 USB-C hub that adds 4K HDMI and 100W passthrough charging to a single port.',
   },
   smartphones: {
     title: 'Trending Gadgets & Amazon Finds – Smartphones',
@@ -34,6 +37,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Amazon finds gadgets shoppers love — start with smartphones. Shop trending unlocked phones and bundles at GadgetErea with warranty and fast US delivery.',
     intro:
       'If you hunt the best Amazon finds gadgets, the smartphone aisle is where the biggest wins live. Our phones are unlocked, genuine and backed by official warranty — bundle deals often include gift cards.',
+    intro2:
+      'The current lineup is all foldable: Samsung’s Galaxy Z Fold7 for book-style multitasking, and the clamshell Z Flip8 unlocked with a $200 gift card included — both 256GB, both shipped fast.',
   },
   'audio-wearables': {
     title: 'Trending Gadgets – Audio & Wearables',
@@ -41,6 +46,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Trending gadgets for your ears — noise-canceling headphones, open-ear earbuds and wearable audio at GadgetErea. Genuine picks, official warranty, fast delivery.',
     intro:
       'From noise-canceling headphones to open-ear earbuds, this is where trending gadgets meet everyday listening. Every pair is genuine, warranty-backed and shipped fast to your door.',
+    intro2:
+      'Today’s picks run from the Sony WH-1000XM5 noise-canceling headphones and the new Beats 360 to Narshton’s Bluetooth 6.0 open-ear buds — plus the RayNeo Air 4 Pro AR glasses and GoldJoy’s 7-in-1 speaker and charging station.',
   },
   gaming: {
     title: 'Cool Tech Gadgets Under $50 – Gaming Gear',
@@ -48,6 +55,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Cool tech gadgets under $50 for gamers — keyboards, controllers and console upgrades at GadgetErea. Genuine gaming gear with official warranty and fast delivery.',
     intro:
       'Gamers don’t need a huge budget to feel the upgrade. Our Gaming Gear picks show off cool tech gadgets under $50 that genuinely change how you play — and bigger-ticket consoles when you want to go further.',
+    intro2:
+      'It starts with the PlayStation 5 Disc Edition (Slim) and the AULA F75 Pro 75% wireless mechanical keyboard — the two pieces most setups build around first.',
   },
   accessories: {
     title: 'Cool Tech Gadgets Under $50 – Accessories',
@@ -55,6 +64,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Cool tech gadgets under $50 — USB-C hubs, chargers, power banks and desk accessories at GadgetErea. Genuine, warranty-backed.',
     intro:
       'The best Amazon finds are often small: hubs, chargers, power banks and desk helpers. Our Accessories aisle is packed with cool tech gadgets under $50 that make a real difference every day.',
+    intro2:
+      'The range runs wide — an ergonomic office chair from LiberNovo, a self-lifting steam iron and an intelligent steam press, travel pieces from LEVEL8, mixi and FORWARD X, and everyday fixes like the Scanfield under-desk cable tray and Quntis monitor lamp.',
   },
   networking: {
     title: 'Useful Gadgets for Home – Networking',
@@ -69,6 +80,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Amazon finds gadgets for creators — 4K webcams, vlogging cameras and AI-tracking camcorders at GadgetErea. Genuine cameras with official warranty and fast delivery.',
     intro:
       'Whether you stream, vlog or take meetings, the cameras here are the Amazon finds gadgets creators keep recommending. 4K webcams and AI-tracking models — genuine, with official warranty.',
+    intro2:
+      'Three creator-focused picks lead the aisle: the EMEET C960 4K webcam with PDAF autofocus, the OBSBOT Tiny 2 Lite with AI-powered tracking, and the JINRAIKO overhead mount with a 360° adjustable arm.',
   },
   'smart-home': {
     title: 'Useful Gadgets for Home – Smart Home',
@@ -76,6 +89,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Useful gadgets for home — smart speakers, lighting and home tech at GadgetErea. Genuine smart home devices with official warranty and fast US delivery.',
     intro:
       'From kid-friendly smart speakers to 3-in-1 chargers, our Smart Home shelf is full of useful gadgets for home that make daily life easier — all genuine and warranty-backed.',
+    intro2:
+      'It’s built around Amazon’s Echo Dot 5th Gen — in standard charcoal and the kid-friendly Owl design — plus the MOVA LiDAX Ultra 2000 robot lawn mower for the yard.',
   },
   featured: {
     title: 'Trending Gadgets – Featured Picks',
@@ -83,6 +98,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Our featured trending gadgets — hand-picked best-sellers, cool tech gadgets under $50 and Amazon finds at GadgetErea. Genuine products, fast US delivery.',
     intro:
       'These are the trending gadgets our team picks every week — the best Amazon finds, the coolest tech under $50 and the products customers keep coming back for.',
+    intro2:
+      'This view is the whole floor in one scroll — every product currently in the GadgetErea catalog, from the CyberPower sinewave UPS to the Beats 360 headphones.',
   },
   'flash-sale': {
     title: 'Gadget Deals Online – Flash Sale',
@@ -90,6 +107,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'Gadget deals online with the deepest discounts — flash sale prices on trending gadgets at GadgetErea. Time-limited, verified and updated weekly.',
     intro:
       'Flash sale prices move fast — when they’re gone, they’re gone. For gadget deals online worth the refresh, this is the page to watch: verified prices, genuine products, no gimmicks.',
+    intro2:
+      'Every discount here is a real price drop on an in-catalog product — when a price climbs back to its usual level, that product leaves the list on its own.',
   },
   'new-arrivals': {
     title: 'Trending Gadgets – New Arrivals',
@@ -97,6 +116,8 @@ const SEO_META: Record<string, SeoMeta> = {
       'New trending gadgets just landed — the latest phones, headphones and smart home tech at GadgetErea. Be first with genuine products and fast US delivery.',
     intro:
       'Fresh off the truck: the newest trending gadgets to hit the market, from foldables to AI-tracking webcams. New arrivals always ship fast, with official warranty included.',
+    intro2:
+      'Right now that means the Beats 360 headphones, the Galaxy Z Fold7 and Z Flip8, the RayNeo Air 4 Pro AR glasses and the Hibbent faucet extender — each one marked NEW on its card.',
   },
 }
 
@@ -187,6 +208,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               />
               <h1>{title}</h1>
               <p className="category-seo-intro">{seo.intro}</p>
+              {seo.intro2 && (
+                <p className="category-seo-intro">{seo.intro2}</p>
+              )}
             </div>
           </div>
         )}

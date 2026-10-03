@@ -84,7 +84,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           ],
         }
       : {}),
-    ...(product.rating != null
+    ...(product.rating != null && (product.reviews ?? 0) > 0
       ? {
           aggregateRating: {
             '@type': 'AggregateRating',
@@ -93,13 +93,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
           },
         }
       : {}),
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      ...(product.price != null ? { price: product.price } : {}),
-      availability: 'https://schema.org/InStock',
-      ...(product.buyUrl ? { url: product.buyUrl } : {}),
-    },
+    // An Offer without a price is invalid structured data — omit the whole
+    // block when no confirmed price exists rather than emitting a broken Offer.
+    ...(product.price != null
+      ? {
+          offers: {
+            '@type': 'Offer',
+            priceCurrency: 'USD',
+            price: product.price,
+            availability: 'https://schema.org/InStock',
+            ...(product.buyUrl ? { url: product.buyUrl } : {}),
+          },
+        }
+      : {}),
   }
 
   return (

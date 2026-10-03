@@ -48,6 +48,11 @@ export default function ShopPage() {
           smartphones, audio, gaming gear, smart home, cameras and accessories,
           with deals updated weekly.
         </p>
+        <p className="category-seo-intro">
+          Browse by aisle, or jump straight to what’s new and what’s on flash
+          sale this week — every product page shows the live price, specs and
+          the fastest place to buy.
+        </p>
       </div>
       <Suspense fallback={null}>
         <ShopCatalog
