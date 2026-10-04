@@ -56,6 +56,115 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'grogu-gitamini-robot-assistant',
+    title: 'Grogu Gitamini: Best Robot Assistant That Follows You',
+    excerpt:
+      'A Star Wars-licensed robot built around one job — carry your stuff and follow you wherever you go, from the living room to the campsite.',
+    category: 'Explainer',
+    date: '2026-09-30',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/grogu-gitamini-hero.webp',
+    emoji: '🤖',
+    readTime: '6 min read',
+    content: [
+      { heading: 'What Is the Grogu Gitamini?' },
+      'The Grogu gitamini is a cargo-carrying robot from Piaggio Fast Forward, officially licensed with Lucasfilm and designed after Grogu’s floating pram from The Mandalorian. It uses onboard cameras and sensors to identify a specific person as its “leader” and follow them automatically, carrying up to 20lb of gear along the way. It’s priced at $2,875 and ships directly from Piaggio Fast Forward.',
+      'That’s the short version. Here’s what it’s actually built to do.',
+      { heading: 'What’s Actually Inside' },
+      {
+        image: '/images/blog/grogu-gitamini-compartment.webp',
+        alt: 'Overhead view of the Grogu gitamini’s open storage compartment',
+        width: 960,
+        height: 540,
+      },
+      'Underneath the Star Wars styling, the gitamini is a genuine cargo robot — its main compartment holds up to 1,000 cubic inches, roughly the size of a full grocery bag. The lid lifts open from the top, and the entire interior is sized around one idea: carrying real stuff, not just looking like a prop.',
+      { heading: 'Loading It Up' },
+      {
+        image: '/images/blog/grogu-gitamini-packing.webp',
+        alt: 'Hand packing bags into the Grogu gitamini, with the lunch-box-style lid panel visible',
+        width: 960,
+        height: 540,
+      },
+      'In practice, that means loading it the same way you’d load a basket or a small cooler — bags, water bottles, a jacket, whatever you’d normally be holding or wearing a backpack for. A themed lunch-box-style panel built into the lid is one of the more obvious nods to Grogu’s character, alongside custom sound and light patterns the robot uses to communicate whether it’s resting, following, or charging.',
+      { heading: 'Following You Around the House' },
+      {
+        image: '/images/blog/grogu-gitamini-following.webp',
+        alt: 'The Grogu gitamini following a person through a living room',
+        width: 960,
+        height: 540,
+      },
+      'The core feature is autonomous following: once paired to its leader, the gitamini uses its cameras and sensors to track and follow a specific person through a space, adjusting speed and navigating around obstacles rather than needing to be pushed or remote-controlled. It’s built to move politely through tight indoor spaces as easily as it follows someone across a room.',
+      { heading: 'Built for More Than the Living Room' },
+      {
+        image: '/images/blog/grogu-gitamini-campsite.webp',
+        alt: 'The Grogu gitamini at an outdoor campsite with two people',
+        width: 960,
+        height: 540,
+      },
+      'The gitamini is rated for roughly 19-22 miles of continuous travel per charge, with a top speed of 6mph, and is built to handle a range of terrain — which is why Piaggio shows it being used outdoors at a campsite as easily as indoors at home. A 2-hour charge time and a companion mygita app (for checking battery, distance traveled, and receiving over-the-air updates) round out the day-to-day experience.',
+      { heading: 'Where to Buy' },
+      'The Grogu gitamini is sold directly through Piaggio Fast Forward’s official store at piaggiofastforward.com/shop/grogu, priced at $2,875. It ships within 5-10 business days in the contiguous US, and requires Wi-Fi and a power outlet to set up.',
+      {
+        link: {
+          href: 'https://piaggiofastforward.com/shop/grogu',
+          label: 'Shop the Grogu Gitamini at Piaggio Fast Forward →',
+        },
+      },
+    ],
+    metaTitle: 'Grogu Gitamini: Inside Piaggio’s Star Wars Cargo Robot',
+    metaDescription:
+      'The Grogu gitamini is a Star Wars-licensed robot assistant that follows you and carries up to 20lb of gear. Here’s how Piaggio’s $2,875 robot works.',
+    altText:
+      'The Grogu gitamini cargo robot with a Grogu figure in its basket on a dark studio background',
+    faq: [
+      {
+        question: 'How much does the Grogu gitamini cost?',
+        answer: 'The Grogu gitamini is priced at $2,875.',
+      },
+      {
+        question: 'How much weight can it carry?',
+        answer:
+          'It can carry up to 20lb of gear, with roughly 1,000 cubic inches of interior storage space — about the size of one grocery bag.',
+      },
+      {
+        question: 'How far can it travel on a single charge?',
+        answer:
+          'Piaggio rates it for approximately 19-22 miles of continuous travel per charge, with a charge time of under 2 hours.',
+      },
+      {
+        question: 'Does it actually follow you automatically?',
+        answer:
+          'Yes — it uses onboard cameras and sensors to identify and track a specific “leader” and follow them, adjusting speed and avoiding obstacles without needing to be remote-controlled.',
+      },
+      {
+        question: 'Is this an official Star Wars product?',
+        answer:
+          'Yes — the Grogu gitamini is officially licensed with Lucasfilm, designed around details from Grogu’s pram in The Mandalorian.',
+      },
+    ],
+    lastUpdated: '2026-10-04',
+    primaryKeyword: 'best robot assistant',
+    secondaryKeywords: [
+      'grogu gitamini',
+      'piaggio fast forward gitamini',
+      'star wars robot assistant',
+    ],
+    keepBrowsing: [
+      {
+        href: '/blog/beni-camera-robot-mondo-robotics-review',
+        label: 'Beni: the camera robot that follows you and films in 4K',
+      },
+      {
+        href: '/blog/egor-egg-cooking-robot-cheffy-release-date',
+        label: 'The EGOR egg robot blowing up on Kickstarter',
+      },
+      {
+        href: '/blog/ai-tracking-webcam-explained',
+        label: 'AI tracking webcams: 5 features that matter',
+      },
+    ],
+  },
+  {
     slug: 'best-universal-travel-adapter',
     title: 'Best Universal Travel Adapter for International Trips',
     excerpt:
