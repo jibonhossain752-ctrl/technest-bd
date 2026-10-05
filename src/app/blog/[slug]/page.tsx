@@ -168,7 +168,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     (b) => typeof b === 'object' && 'deal' in b,
   )
   const firstDeal = post.content.find(
-    (b): b is { deal: { name: string; productSlug?: string; affiliateUrl: string; ctaLabel?: string } } =>
+    (b): b is { deal: { name: string; productSlug?: string; price?: string; image?: string; imageAlt?: string; affiliateUrl: string; ctaLabel?: string } } =>
       typeof b === 'object' && 'deal' in b,
   )?.deal
   const inlineDealProduct = firstDeal
@@ -202,6 +202,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const schemaProduct = product ?? inlineDealProduct
   const schemaProductUrl =
     deal && product ? deal.affiliateUrl : firstDeal?.affiliateUrl
+  const inlineDealPrice = firstDeal?.price
+    ? Number(firstDeal.price.replace(/[^0-9.]/g, ''))
+    : NaN
 
   const productJsonLd =
     post.schemaRating && schemaProduct
@@ -232,7 +235,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 }
               : undefined,
         }
-      : null
+      : firstDeal?.price
+        ? {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: firstDeal.name,
+            ...(firstDeal.image ?? post.heroImage
+              ? {
+                  image: `https://gadgeterea.com${firstDeal.image ?? post.heroImage}`,
+                }
+              : {}),
+            offers: {
+              '@type': 'Offer',
+              url: firstDeal.affiliateUrl,
+              priceCurrency: 'USD',
+              ...(Number.isFinite(inlineDealPrice) && inlineDealPrice > 0
+                ? { price: inlineDealPrice }
+                : {}),
+              availability: 'https://schema.org/InStock',
+            },
+          }
+        : null
 
   const faqPageJsonLd =
     post.faq && post.faq.length > 0

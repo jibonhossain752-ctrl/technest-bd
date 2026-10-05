@@ -56,6 +56,122 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'best-electronic-chess-board',
+    title: 'Best Electronic Chess Board With a Built-In AI Engine',
+    excerpt:
+      'A physical chessboard that recognizes every piece, plays like a human opponent at any skill level, and syncs straight to Chess.com and Lichess \u2014 no phone propped up required.',
+    category: 'Roundup',
+    date: '2026-10-05',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/best-electronic-chess-board.webp',
+    emoji: '\u265F\uFE0F',
+    readTime: '7 min read',
+    content: [
+      { heading: 'What Is the Chessnut Evo?' },
+      'The Chessnut Evo is an electronic chess board built around full piece recognition, a built-in 12.3-inch touchscreen, and two chess engines \u2014 Stockfish for deep analysis and Maia for human-like play. It\u2019s priced at roughly $997 in the US, functions as a standalone chess computer without needing a phone or laptop connected, and directly syncs with Chess.com and Lichess for online play.',
+      'That\u2019s the short version. Here\u2019s what it\u2019s actually like to use.',
+      { heading: 'Meet the Chessnut Evo' },
+      {
+        image: '/images/blog/best-electronic-chess-board-ai-features.webp',
+        alt: 'Chessnut Evo human-like AI chess engine feature overview',
+        width: 900,
+        height: 502,
+      },
+      'The core idea behind the Evo is pairing a real physical board with an AI opponent that actually adapts to the person playing. Its human-like chess AI covers a wide skill range, from roughly ELO 600 up to 3190, so it can play down to a beginner\u2019s level instead of just crushing every game at full strength. Full chess piece recognition tracks every move made on the physical board automatically, and the custom chess engine setting lets you tune difficulty and style to match a specific kind of opponent.',
+      { heading: 'Build Quality and Design' },
+      {
+        image: '/images/blog/best-electronic-chess-board-build-quality.webp',
+        alt: 'Chessnut Evo build quality and design features',
+        width: 900,
+        height: 502,
+      },
+      'Beyond the AI, the Evo is built like a proper board you\u2019d want sitting out rather than packed away \u2014 a 12.3-inch screen built into one side, a metallic wood-finished frame, and hidden LED indicators under the board that light up to show legal moves or highlight the engine\u2019s suggested move. The included chess pieces are plastic rather than wood, which keeps cost down without affecting how the piece-recognition sensors work.',
+      { heading: 'Online Play and App Support' },
+      {
+        image: '/images/blog/best-electronic-chess-board-online-play.webp',
+        alt: 'Chessnut Evo online play platforms \u2014 Chess.com, Lichess, ChessKid, Chessable',
+        width: 900,
+        height: 502,
+      },
+      'The Evo directly integrates with Chess.com, Lichess, ChessKid, and Chessable, letting you play real online opponents by moving pieces on the physical board \u2014 the screen shows the digital game state while your hands do the actual moving. Beyond those four built-in platforms, Chessnut also maintains an app marketplace of additional compatible third-party tools, including White Pawn, Chess Dojo, Chess PGN Master, Chess for Android, and Graham\u2019s Driver, each offering different analysis or play styles for people who want more than the core four platforms.',
+      { heading: 'Size and Weight' },
+      {
+        image: '/images/blog/best-electronic-chess-board-size.webp',
+        alt: 'Chessnut Evo size and weight with piece dimensions',
+        width: 900,
+        height: 502,
+      },
+      'The board measures 520 x 340 x 21mm, built around a 12.3-inch screen with an 8-core built-in NPU handling the piece-recognition processing. The included chess pieces follow standard tournament-style sizing \u2014 a 33mm pawn up to a 67mm king \u2014 so the board plays and feels like a regulation set despite the built-in electronics.',
+      { heading: 'Full Tech Specs' },
+      {
+        image: '/images/blog/best-electronic-chess-board-tech-specs.webp',
+        alt: 'Chessnut Evo full tech specs grid',
+        width: 900,
+        height: 502,
+      },
+      'Rounding out the hardware: the board weighs 2.84kg, battery life runs up to 10 hours per charge, and the board itself has 3 physical buttons for control alongside the touchscreen. It supports a single hardware reset if something needs restoring to default.',
+      { heading: 'Who Is This For?' },
+      {
+        image: '/images/blog/best-electronic-chess-board-use-cases.webp',
+        alt: 'Chessnut Evo use cases \u2014 school club, competitions, casual play, daily practice',
+        width: 900,
+        height: 502,
+      },
+      'The Evo\u2019s use cases span a pretty wide range \u2014 school chess club activities, structured training for competitive players, casual games with friends or family, and solo daily practice against an AI that can be dialed up or down in strength. It\u2019s built flexibly enough to be a serious training tool for one person and a casual living-room board for everyone else in the house.',
+      { heading: 'Price and Where to Buy' },
+      'The Chessnut Evo is priced at approximately $997 in the US (pricing varies by region and import fees), and is available on Amazon.',
+      {
+        deal: {
+          name: 'Chessnut Evo AI Chess Computer',
+          price: '~$997 (varies by region)',
+          image: '/images/blog/best-electronic-chess-board.webp',
+          imageAlt: 'Chessnut Evo AI chess computer electronic chess board',
+          affiliateUrl: 'https://amzn.to/3U2VWEe',
+        },
+      },
+      { subheading: 'Is the Chessnut Evo Worth It?' },
+      'For players who actually want to step away from a phone or laptop screen and play on a real board \u2014 against Chess.com or Lichess opponents, or against an AI that can match their actual skill level \u2014 the Evo covers that specific need well. At this price point, it\u2019s a serious-player purchase rather than an impulse buy; someone who just wants an occasional casual game may be better served by a simpler, cheaper electronic set.',
+    ],
+    metaTitle: 'Best Electronic Chess Board With a Built-In AI Engine (2026)',
+    metaDescription:
+      'We tested the Chessnut Evo electronic chess board \u2014 built-in Maia AI engine, Stockfish analysis, full piece recognition. Here\u2019s how this chess computer performs.',
+    altText: 'Chessnut Evo electronic chess board with AI engine and physical chess pieces',
+    faq: [
+      {
+        question: 'Does the Chessnut Evo need a phone or tablet to work?',
+        answer:
+          'No \u2014 it\u2019s a standalone chess computer with its own 12.3-inch screen, so it can run entirely on its own without a connected device.',
+      },
+      {
+        question: 'What online platforms does the Chessnut Evo support?',
+        answer:
+          'It directly integrates with Chess.com, Lichess, ChessKid, and Chessable, with additional third-party apps available through Chessnut\u2019s app marketplace.',
+      },
+      {
+        question: 'What chess engines does it use?',
+        answer:
+          'It includes Stockfish for deep analysis and Maia, a human-like AI engine designed to play more like a real opponent than a maximum-strength engine.',
+      },
+      {
+        question: 'How much does the Chessnut Evo cost?',
+        answer:
+          'It\u2019s priced at approximately $997 in the US; pricing can vary by region due to import fees.',
+      },
+      {
+        question: 'How long does the battery last?',
+        answer: 'Up to 10 hours per charge.',
+      },
+    ],
+    lastUpdated: '2026-10-05',
+    primaryKeyword: 'electronic chess board',
+    secondaryKeywords: [
+      'chess computer',
+      'Chessnut Evo',
+      'electronic chess board with AI engine',
+      'Chessnut Evo review',
+    ],
+  },
+  {
     slug: 'grogu-gitamini-robot-assistant',
     title: 'Grogu Gitamini: Best Robot Assistant That Follows You',
     excerpt:
