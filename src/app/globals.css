@@ -7648,6 +7648,11 @@ button {
 .blog-video-card {
   margin: 30px 0;
 }
+/* Arrival autoplay target: homepage cards link here as ?play=1#video, so the
+   anchor needs clearance for the sticky site header. */
+#video {
+  scroll-margin-top: 90px;
+}
 .blog-video-watchcard {
   display: block;
   width: 280px;

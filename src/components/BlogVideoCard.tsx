@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Script from 'next/script'
 import { PLATFORM_PATHS } from '@/lib/socials'
 import { platformName, resolveBlogVideo } from '@/lib/video'
@@ -20,6 +20,12 @@ import { platformName, resolveBlogVideo } from '@/lib/video'
  * - A small "Watch on [platform]" text link below the card is the fallback.
  * - The thumbnail is reused from the homepage video data when the URL matches
  *   a homepage card; otherwise a neutral fallback card is shown.
+ * - Arrival autoplay: homepage cards link here as /blog/<slug>?play=1#video.
+ *   On arrival the card is scrolled into view and the embed is mounted to play
+ *   muted (YouTube/Facebook take autoplay+mute params; Instagram, TikTok and
+ *   Pinterest mount their own player, which may wait for a tap). Readers who
+ *   prefer reduced motion only get the scroll plus the visible play button,
+ *   and a normal visit without ?play=1 keeps the click-to-load behavior.
  */
 export default function BlogVideoCard({
   videoUrl,
@@ -30,8 +36,64 @@ export default function BlogVideoCard({
 }) {
   const video = resolveBlogVideo(videoUrl)
   const [playing, setPlaying] = useState(false)
+  // True only for an arrival-autoplay load, so the embed can be asked to play.
+  const [arrivalPlay, setArrivalPlay] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('play') !== '1') return
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+    // Stop nudging once the reader takes the scroll over themselves.
+    let readerTookOver = false
+    const markIntent = () => {
+      readerTookOver = true
+    }
+    const alignToCard = (smooth: boolean) => {
+      if (readerTookOver) return
+      // The link carries #video; this keeps the landing position clear of the
+      // sticky site header even if the hash was not processed.
+      document.getElementById('video')?.scrollIntoView({
+        behavior: smooth && !reduceMotion ? 'smooth' : 'instant',
+        block: 'start',
+      })
+    }
+    window.addEventListener('wheel', markIntent, { passive: true })
+    window.addEventListener('touchmove', markIntent, { passive: true })
+    window.addEventListener('keydown', markIntent)
+    alignToCard(true)
+    // Images above the card can still finish loading after mount and push the
+    // card off-screen, so re-align once the first layout has settled.
+    const settle = window.setTimeout(() => alignToCard(false), 1200)
+    if (!reduceMotion) {
+      setPlaying(true)
+      setArrivalPlay(true)
+    }
+    return () => {
+      window.clearTimeout(settle)
+      window.removeEventListener('wheel', markIntent)
+      window.removeEventListener('touchmove', markIntent)
+      window.removeEventListener('keydown', markIntent)
+    }
+  }, [])
 
   if (!video) return null
+
+  /**
+   * Embed URL for the current state. On arrival, YouTube and Facebook are
+   * asked to autoplay muted; the other platforms decide for themselves, so
+   * they keep their plain embed and show their own play control.
+   */
+  const embedSrc = (() => {
+    if (!video.embedUrl) return null
+    if (!arrivalPlay) return video.embedUrl
+    if (video.platform === 'youtube')
+      return `${video.embedUrl}?autoplay=1&mute=1`
+    if (video.platform === 'facebook')
+      return `${video.embedUrl}&autoplay=1&mute=1`
+    return video.embedUrl
+  })()
 
   const play = () => {
     setPlaying(true)
@@ -46,7 +108,7 @@ export default function BlogVideoCard({
   }
 
   return (
-    <div className="blog-video-card">
+    <div className="blog-video-card" id="video">
       {!playing ? (
         <button
           type="button"
@@ -109,21 +171,21 @@ export default function BlogVideoCard({
               />
             </>
           )}
-          {video.platform === 'youtube' && video.embedUrl && (
+          {video.platform === 'youtube' && embedSrc && (
             <iframe
-              src={video.embedUrl}
+              src={embedSrc}
               title={title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               loading="lazy"
             />
           )}
-          {video.platform === 'instagram' && video.embedUrl && (
-            <iframe src={video.embedUrl} title={title} loading="lazy" />
+          {video.platform === 'instagram' && embedSrc && (
+            <iframe src={embedSrc} title={title} loading="lazy" />
           )}
-          {video.platform === 'facebook' && video.embedUrl && (
+          {video.platform === 'facebook' && embedSrc && (
             <iframe
-              src={video.embedUrl}
+              src={embedSrc}
               title={title}
               style={{ border: 'none', overflow: 'hidden' }}
               scrolling="no"

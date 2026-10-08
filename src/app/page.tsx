@@ -11,6 +11,7 @@ import WhyChooseUs from '@/components/WhyChooseUs'
 import Testimonials from '@/components/Testimonials'
 import Reveal from '@/components/ui/Reveal'
 import VideoSchema from '@/components/VideoSchema'
+import { getVideoPostLinks } from '@/lib/postVideoLinks'
 
 export const metadata: Metadata = {
   title: 'Trending Gadgets & Amazon Finds',
@@ -81,7 +82,7 @@ export default function HomePage() {
         <LatestBlogPosts />
       </Reveal>
       <Reveal className="reveal-watch-shop" delay={0.05}>
-        <WatchAndShop />
+        <WatchAndShop postLinks={getVideoPostLinks()} />
       </Reveal>
       <Reveal className="reveal-featured" delay={0.05}>
         <FeaturedProducts />

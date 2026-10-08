@@ -16,7 +16,16 @@ const PLATFORM_LABEL: Record<PlatformKey, string> = {
   whatsapp: 'WA',
 }
 
-export default function WatchAndShop() {
+/**
+ * Video card destinations supplied by the homepage (see lib/postVideoLinks).
+ * A card whose video matches a blog post links to that post and plays there;
+ * a card without a match keeps its original external href and new-tab behavior.
+ */
+export default function WatchAndShop({
+  postLinks = {},
+}: {
+  postLinks?: Record<string, string>
+}) {
   const [isDesktop, setIsDesktop] = useState(false)
   const cardRefs = useRef<(HTMLAnchorElement | null)[]>([])
 
@@ -59,14 +68,16 @@ export default function WatchAndShop() {
         </div>
         <div className="watch-shop-wrap">
           <div className="watch-shop-strip" aria-label="Watch & Shop videos">
-            {VIDEOS.map((v) => (
+            {VIDEOS.map((v) => {
+              const postHref = postLinks[v.id]
+              return (
               <Link
-                href={v.href}
+                href={postHref ?? v.href}
                 prefetch={false}
                 key={v.id}
                 className="watch-card"
-                target="_blank"
-                rel="noopener noreferrer"
+                target={postHref ? undefined : '_blank'}
+                rel={postHref ? undefined : 'noopener noreferrer'}
                 aria-label={`Watch ${v.title} on ${PLATFORM_LABEL[v.platform]}`}
                 ref={(el) => {
                   cardRefs.current[VIDEOS.findIndex((x) => x.id === v.id)] = el
@@ -118,7 +129,8 @@ export default function WatchAndShop() {
                   <p>Watch on {PLATFORM_LABEL[v.platform]} — opens in new tab</p>
                 </div>
               </Link>
-            ))}
+              )
+            })}
           </div>
           <CategoryScrollHint
             targetSelector=".watch-shop-strip"
