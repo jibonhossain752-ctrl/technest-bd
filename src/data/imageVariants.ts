@@ -57,6 +57,7 @@ const IMAGE_VARIANTS: Record<string, number[]> = {
   'ergonomic-desk-upgrades-under-100.webp': [480, 720],
   'ergonomic-office-chair-buying-guide.webp': [480, 720],
   'eurosteam-step-up-steam-iron.webp': [260, 360, 520, 720],
+  'even-g2-smart-glasses-translation-scene.webp': [480, 720],
   'extend-laptop-battery-life.webp': [480, 720],
   'fix-messy-desk-cables.webp': [480, 720],
   'flying-with-carry-on-only.webp': [480, 720],

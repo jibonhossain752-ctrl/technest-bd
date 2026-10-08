@@ -69,6 +69,7 @@ export const POSTS: BlogPost[] = [
     category: 'Explainer',
     date: '2026-10-08',
     author: 'Gadgeterea Team',
+    heroImage: '/images/blog/even-g2-smart-glasses-translation-scene.webp',
     emoji: '👓',
     readTime: '7 min read',
     content: [
@@ -114,7 +115,8 @@ export const POSTS: BlogPost[] = [
     metaTitle: 'Even G2 Smart Glasses With Display: Features Explained',
     metaDescription:
       'Even G2 smart glasses with a built-in display: real-time translation, teleprompter, AI prompts and notifications in a 36 g frame. No camera, IP65 rated.',
-    altText: 'Even G2 smart glasses with display',
+    altText:
+      'Three people talking at an event while Spanish and French captions are translated into English, illustrating the Even G2 real-time translation feature',
     faq: [
       {
         question: 'Does the Even G2 have a camera?',
