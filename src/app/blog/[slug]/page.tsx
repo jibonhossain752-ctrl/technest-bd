@@ -11,6 +11,8 @@ import ShareButtons from '@/components/ShareButtons'
 import NewsletterPopup from '@/components/NewsletterPopupLazy'
 import TrackedAffiliateLink from '@/components/TrackedAffiliateLink'
 import PostFaq from '@/components/PostFaq'
+import BlogVideoCard from '@/components/BlogVideoCard'
+import { resolveBlogVideo } from '@/lib/video'
 import AuthorBio from '@/components/AuthorBio'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 
@@ -235,7 +237,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 }
               : undefined,
         }
-      : firstDeal?.price
+      : firstDeal?.price &&
+          Number.isFinite(inlineDealPrice) &&
+          inlineDealPrice > 0
         ? {
             '@context': 'https://schema.org',
             '@type': 'Product',
@@ -270,6 +274,46 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         }
       : null
 
+  /**
+   * Optional VideoObject schema, emitted only when the post sets BOTH
+   * `videoUrl` and `videoUploadDate`. Thumbnail is reused from the homepage
+   * video data when the URL matches a homepage card. Without a real upload
+   * date the card still shows but the schema is skipped — never guess a date.
+   */
+  const resolvedVideo = post.videoUrl
+    ? resolveBlogVideo(post.videoUrl)
+    : null
+  const videoJsonLd =
+    resolvedVideo && post.videoUploadDate
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'VideoObject',
+          name: post.videoTitle ?? post.title,
+          description:
+            post.videoDescription ?? post.metaDescription ?? post.excerpt,
+          ...(resolvedVideo.thumbnail
+            ? {
+                thumbnailUrl: `https://gadgeterea.com${resolvedVideo.thumbnail}`,
+              }
+            : {}),
+          uploadDate: post.videoUploadDate,
+          contentUrl: resolvedVideo.url,
+          url: `https://gadgeterea.com/blog/${post.slug}`,
+          ...(resolvedVideo.embedUrl
+            ? { embedUrl: resolvedVideo.embedUrl }
+            : {}),
+          publisher: {
+            '@type': 'Organization',
+            name: 'GadgetErea',
+            url: 'https://gadgeterea.com',
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://gadgeterea.com/gadgeterea-logo.webp',
+            },
+          },
+        }
+      : null
+
   return (
     <>
       <Breadcrumb
@@ -297,6 +341,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(faqPageJsonLd),
+          }}
+        />
+      )}
+      {videoJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(videoJsonLd),
           }}
         />
       )}
@@ -480,6 +532,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </TrackedAffiliateLink>
               </div>
             </>
+          )}
+
+          {/**
+           * Optional in-post video card (reusable). Rendered directly after
+           * the last content section (the verdict on recent posts) and before
+           * the FAQ. Posts without `videoUrl` render nothing here.
+           */}
+          {post.videoUrl && (
+            <BlogVideoCard
+              videoUrl={post.videoUrl}
+              title={post.videoTitle ?? post.title}
+            />
           )}
 
           {post.faq && post.faq.length > 0 && (

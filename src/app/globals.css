@@ -7643,3 +7643,39 @@ button {
   box-shadow: 0 0 0 2px #fff;
 }
 
+/* --- Blog post video card (reusable, optional; see BlogVideoCard.tsx) ---
+   Rendered only for posts that set `videoUrl`; nothing renders otherwise. */
+.blog-video-card {
+  margin: 30px 0;
+}
+.blog-video-watchcard {
+  display: block;
+  width: 280px;
+  min-width: 0;
+  max-width: 280px;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.blog-video-embed {
+  display: flex;
+  justify-content: center;
+}
+.blog-video-embed iframe {
+  width: 325px;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  border: 0;
+  border-radius: 14px;
+}
+.blog-video-fallback {
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+}
+.blog-video-fallback a {
+  color: var(--accent);
+}
+

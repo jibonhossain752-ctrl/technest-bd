@@ -52,9 +52,116 @@ export interface BlogPost {
   secondaryKeywords?: string[]
   schemaRating?: { ratingValue: number; ratingCount: number }
   keepBrowsing?: { href: string; label: string }[]
+  /** Optional in-post video (reusable feature; see src/lib/video.ts). */
+  videoUrl?: string
+  /** ISO 8601 upload date, e.g. '2026-07-14'. Required for VideoObject schema. */
+  videoUploadDate?: string
+  videoTitle?: string
+  videoDescription?: string
 }
 
 export const POSTS: BlogPost[] = [
+  {
+    slug: 'even-g2-smart-glasses-with-display',
+    title: 'Even G2 Smart Glasses With Display: Features Explained',
+    excerpt:
+      'Display smart glasses that put translation, notifications, and a teleprompter in your line of sight — no camera, 36 g frame, per the manufacturer. Here is what the Even G2 can do, and what to check before buying.',
+    category: 'Explainer',
+    date: '2026-10-08',
+    author: 'Gadgeterea Team',
+    emoji: '👓',
+    readTime: '7 min read',
+    content: [
+      { heading: 'What Is the Even G2?' },
+      'The Even G2 is a pair of display smart glasses from Even Realities — glasses that show information directly on the lenses, so you can glance at it without pulling out a phone. According to Even Realities, the frame weighs 36 grams, has no camera, and is built to be worn like a regular pair of glasses throughout the day.',
+      'This post walks through what the manufacturer says the G2 can do, how each feature is described, and what some early owners report about living with it. Everything here comes from the manufacturer\u2019s own product page and the owner comments shown on it — we have not tested these glasses, so features are described as claimed, not verified.',
+      { heading: 'How the Display Works' },
+      'Instead of a screen bolted to the frame, the G2 puts information on the lenses themselves. The manufacturer lists a Micro LED display with a green display color, 640x350 resolution, a 27.5-degree field of view, and up to 1,200 nits of brightness, using waveguide optics in a binocular setup — both eyes get the image. The display runs at 60 Hz, adjusts brightness automatically, and the company describes it as monochrome: a single green color that sits in your line of sight without filling it, with 98% pass-through so the world around the text stays visible.',
+      'In practice, that design suits short glances — a notification, a direction, a line of a script — rather than watching long-form content on your face.',
+      { heading: 'Conversate: Prep Notes, AI Cues, and AI Summary' },
+      'The manufacturer\u2019s headline feature set is grouped under the name Conversate. Prep Notes lets you set key points before a conversation and keep them in view while you talk. AI Cues surfaces context in your line of sight when an unfamiliar name or reference comes up. And AI Summary, according to Even Realities, captures the conversation and turns it into a summary in the Even Realities companion app afterward.',
+      'On privacy, the manufacturer states that no data is stored in the cloud without explicit consent and that data is encrypted when processing is needed. That is the company\u2019s own statement about how it handles data, not an independent audit — worth reading on the manufacturer\u2019s page if privacy is a deciding factor for you.',
+      { heading: 'Real-Time Translation and the Teleprompter' },
+      'Two features stand out for people who work across languages or speak in front of audiences. Real-time translation supports 35 languages, according to Even Realities, with the translation shown on the lenses. There is also a voice-controlled teleprompt mode, listed as Teleprompt, designed for scripts and presentations — you control it with your voice instead of tapping a screen.',
+      { heading: 'Notifications, Navigation, and Ask Even AI' },
+      'The everyday dashboard features include notifications, calendar, and a task list called QuickList. Hands-free turn-by-turn navigation is listed as well, which the manufacturer says works wherever Google Maps does. A voice assistant, Ask Even AI, is invoked by saying \u201CHey, Even.\u201D For developers, Even Hub is the company\u2019s platform for third-party apps built for the glasses.',
+      'The glasses connect over Bluetooth BLE 5.4 and work with the Even Realities companion app on iOS and Android. Even Realities also makes the Even R1, a separate smart ring that adds tap-and-scroll control with the G2 — it is an optional accessory, not part of the glasses package.',
+      { heading: 'Design and Comfort' },
+      'The frame weighs 36 grams, according to the manufacturer, with a magnesium and titanium build, a screwless hinge, and adjustable nose pads. There is no camera — a deliberate design choice that shapes what these glasses are for. Four microphones handle voice input.',
+      { heading: 'Battery and the Charging Case' },
+      'Even Realities says the glasses run up to two days of battery life on a charge, and that the charging case listed in its own store package holds enough power for seven full charges — enough, in theory, to get through a weekend without a wall outlet. Both figures are manufacturer claims.',
+      { heading: 'Durability: IP65' },
+      'The glasses carry an IP65 rating for dust and water resistance, according to the manufacturer. IP65 is a dust-tight, water-jet-resistant rating — protection against rain and splashes rather than submersion.',
+      { heading: 'Prescription Lenses and What to Check Before Buying' },
+      'The G2\u2019s lenses are, according to Even Realities, 30% thinner than the previous generation. If you need a prescription, the manufacturer offers custom prescription lenses from -12.00 to +12.00 through its own store, and notes the glasses are HSA/FSA eligible there.',
+      'The Even G2 is also listed on Amazon — but marketplace listings can differ from the manufacturer\u2019s own store. Before ordering, check the Amazon listing for exactly what is included in the box, which lens options are actually offered, and whether prescription support is available through that seller. We do not restate the manufacturer\u2019s store package here as a guarantee of what you will receive from a marketplace listing.',
+      { heading: 'What Some Early Owners Say' },
+      'Owner comments shown on the manufacturer\u2019s own page — anecdotal, from a small sample — mention a few recurring issues. The display is green and monochrome, which is a dealbreaker for anyone expecting a color view. Some owners say they needed time to filter notifications because there were too many at first. A few owners who had never worn glasses mention glare or a reduced peripheral view. Some owners who use the R1 ring report unintended activations, and some mention software bugs that were being fixed with updates.',
+      'None of these change the core pitch, but they are worth knowing before you buy — especially the monochrome display, which is a design property of the product, not a defect one seller can fix.',
+      { heading: 'Price and Where to Buy' },
+      'The Even G2 is listed on Amazon. We are not quoting a price here because it can change and can vary with options; use the button below to see the current price on the listing.',
+      {
+        deal: {
+          name: 'Even G2 Smart Glasses',
+          price: 'Check Current Price on Amazon',
+          affiliateUrl: 'https://amzn.to/4dtyy9D',
+        },
+      },
+      { subheading: 'Is the Even G2 Worth It?' },
+      'If you want information in your line of sight — translation, directions, notifications, a teleprompter — without a camera on your face and without holding a phone, the G2 is designed for exactly that, and the manufacturer\u2019s spec sheet is consistent with the pitch: a 36-gram frame, no camera, a two-day battery claim, and prescription options through its own store. It suits presenters who want a script in view, people who work across languages, and anyone who wants notifications without reaching for a screen.',
+      'Think twice if you expect a color display, want to record video, or mainly want audio glasses for music and calls — the G2 is a display-first product, and the green monochrome display plus the camera-free design are core decisions, not oversights. And since the figures above are manufacturer claims rather than tested results, treat them as targets, read recent owner feedback, and check the Amazon listing carefully before you decide.',
+    ],
+    metaTitle: 'Even G2 Smart Glasses With Display: Features Explained',
+    metaDescription:
+      'Even G2 smart glasses with a built-in display: real-time translation, teleprompter, AI prompts and notifications in a 36 g frame. No camera, IP65 rated.',
+    altText: 'Even G2 smart glasses with display',
+    faq: [
+      {
+        question: 'Does the Even G2 have a camera?',
+        answer:
+          'No. According to Even Realities, the G2 is camera-free by design — there is no recording hardware on the frame.',
+      },
+      {
+        question: 'Is the Even G2 water resistant?',
+        answer:
+          'Yes — the manufacturer lists an IP65 rating for dust and water resistance. That covers rain and splashes, not submersion.',
+      },
+      {
+        question: 'How long does the Even G2 battery last?',
+        answer:
+          'The manufacturer claims up to two days of battery life per charge, and says the charging case holds enough power for seven full charges. These are manufacturer claims, not independently verified results.',
+      },
+      {
+        question: 'Does the Even G2 support prescription lenses?',
+        answer:
+          'The manufacturer offers custom prescription lenses from -12.00 to +12.00 through its own store. Check the Amazon listing for which lens options are offered there, as marketplace availability can differ.',
+      },
+      {
+        question: 'Does the Even G2 need a phone?',
+        answer:
+          'It works with the Even Realities companion app, which is available for iOS and Android. The manufacturer\u2019s page describes features like AI Summary and the dashboard in connection with that app.',
+      },
+      {
+        question: 'Does the Even R1 ring come with the glasses?',
+        answer:
+          'No. The Even R1 is a separate smart ring that works with the G2 for tap and scroll control, but it is an optional accessory sold separately.',
+      },
+    ],
+    lastUpdated: '2026-10-08',
+    primaryKeyword: 'even g2 smart glasses',
+    secondaryKeywords: [
+      'even realities g2',
+      'smart glasses with display',
+      'even g2 features',
+    ],
+    videoUrl:
+      'https://www.tiktok.com/@amazonfindsgadget.shop/video/7662305439891180821',
+    videoUploadDate: '2026-07-14',
+    videoTitle:
+      'The Future Is on Your Face! | Even Realities G2 AI Smart Glasses | Top US Pick 2026',
+    videoDescription:
+      'Even G2 smart glasses with a built-in display: real-time translation, teleprompter, AI prompts and notifications in a 36 g frame. No camera, IP65 rated.',
+  },
   {
     slug: 'best-electronic-chess-board',
     title: 'Best Electronic Chess Board With a Built-In AI Engine',
