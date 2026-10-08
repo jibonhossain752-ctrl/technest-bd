@@ -62,6 +62,149 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'libernovo-omni-pro-ergonomic-chair-with-fan',
+    title: 'LiberNovo Omni Pro: Ergonomic Chair With Built-In Fan',
+    excerpt:
+      'LiberNovo Omni Pro ergonomic chair: seat ventilation fan, motorized lumbar stretch, 5 recline positions from 105\u00b0 to 160\u00b0, and dynamic synced support.',
+    category: 'Explainer',
+    date: '2026-10-08',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/libernovo-omni-pro-hero.webp',
+    emoji: '\uD83E\uDE91',
+    readTime: '8 min read',
+    content: [
+      { heading: 'What Is the LiberNovo Omni Pro?' },
+      'The LiberNovo Omni Pro is a dynamic ergonomic chair \u2014 the manufacturer\u2019s full name for it is the LiberNovo Omni Pro Dynamic Ergonomic Chair. It comes in two colours, Graphite and Glacier, with a choice of two seat depths, 45 cm or 48 cm. What separates it from an ordinary office chair is that several of its parts are motorised or designed to move together: a ventilated seat, a lumbar mechanism that stretches under power, and a backrest built from flexible panels rather than one rigid shell.',
+      'That framing matters for how you read the rest of this post. Everything below comes from the manufacturer\u2019s own product page, describing what LiberNovo says about the chair, how the parts are meant to work and what the test claims are. We have not sat in this chair, so nothing here is a hands-on verdict \u2014 and where buyers have reported problems, those are included too.',
+      { heading: 'The Five Recline Positions' },
+      {
+        image: '/images/blog/libernovo-omni-pro-image-2.webp',
+        alt: 'A person seated in a dark ergonomic chair at a desk with a monitor, a footrest under their feet and recline angle markers overlaid on the image',
+        width: 900,
+        height: 502,
+      },
+      'The image shows the chair in use at a desk, with a footrest under the user\u2019s feet and the recline angles laid over the picture. According to LiberNovo the chair locks into five positions rather than one: 105\u00b0, 115\u00b0, 125\u00b0, 135\u00b0 and 160\u00b0, named Deep Focus, Balance, Solo-Work, Soft Recline and Spine Flow. The idea is that you move between those settings through the day instead of sitting in one fixed angle \u2014 the upright end for desk work, the deeper ones when you want to lean back \u2014 and the footrest visible in the picture is the accessory that pairs with the reclined positions.',
+      { heading: 'The Seat Ventilation Fan' },
+      {
+        image: '/images/blog/libernovo-omni-pro-image-3.webp',
+        alt: 'Cutaway of a chair seat showing stacked fabric, foam and mesh layers above a base with a round fan and blue airflow streams',
+        width: 900,
+        height: 502,
+      },
+      'This cutaway shows what sits under the seat cushion: layers of fabric, padding, mesh and perforated foam above a base that holds a centrifugal fan, with the airflow drawn out to the sides. LiberNovo calls this active airflow seat ventilation and lists the fan at 4000 RPM with two speed settings. There is also a seat sensor that pauses the airflow when you get up and starts it again when you sit back down, so the fan is not running against an empty chair.',
+      'The battery behind it is a 3000mAh built-in pack, and the manufacturer\u2019s FAQ gives two runtime figures with the ventilation running: up to 36 hours on the low setting, and up to 9 hours on the high setting. Those numbers are fan runtimes, not a comfort claim \u2014 the video card further down this page leads with the 36-hour figure, and that is what the figure refers to.',
+      { heading: 'The Backrest and Dynamic Support' },
+      {
+        image: '/images/blog/libernovo-omni-pro-image-4.webp',
+        alt: 'Collage of five photos showing people using the chair at desks, at a gaming setup and reclined reading a book',
+        width: 900,
+        height: 502,
+      },
+      'The collage shows the chair in the places people actually use it: a desk setup, a workstation with a monitor or two, a gaming corner with the lights down, and someone reclined with a book. What the manufacturer is pointing at here is the backrest. LiberNovo describes the Bionic FlexFit backrest as eight flexible panels with sixteen pivot points that move with the spine, rather than a single rigid shell. It also describes dynamic support, where the headrest, backrest and armrests move in sync through what it calls differential tilt \u2014 so the parts follow one another as you recline instead of each moving on its own.',
+      { heading: 'The Adjustments, Panel by Panel' },
+      {
+        image: '/images/blog/libernovo-omni-pro-image-5.webp',
+        alt: 'Four-panel diagram showing the armrest, the recline range, the detachable headrest and the seat height on a dark ergonomic chair',
+        width: 900,
+        height: 502,
+      },
+      'The last image is a diagram rather than a photograph: four panels covering the armrest, the recline and tension control, the headrest and the seat height, each with arrows showing which way the part moves. It works as a summary of what is adjustable \u2014 the armrests move in several directions, the recline and its tension are set separately, the headrest detaches, and the seat height is on a lever under the seat. LiberNovo describes the neck support as memory foam and the backrest foam as high-density and resilient, with a multi-density cushion on the seat.',
+      { heading: 'Motorised Lumbar Support and OmniStretch' },
+      'Alongside the flexing backrest, the Omni Pro has motorised lumbar support and a motorised lumbar stretch that LiberNovo markets as OmniStretch. Both are operated by buttons on the armrest rather than by a lever under the seat, and that is the part that makes them different from a manual lumbar dial: you can change the amount of support, or run the stretch, without leaving the position you are sitting in. The manufacturer designs the chair for comfort and support through long sessions and makes no medical claim about it, so treat the stretch as a powered adjustment you can reach from the chair rather than as a treatment for anything.',
+      { heading: 'Materials and Durability Claims' },
+      'The upholstery is Gabriel Atlantic fabric, a Danish textile that LiberNovo cites with a rub-test rating above 100,000 cycles. The base is reinforced aluminium alloy, and the chair runs on casters. On durability, the manufacturer publishes BIFMA-based cycle claims for individual parts: 300,000 cycles for the recline mechanism, 120,000 for the backrest, 120,000 for the seat swivel, 100,000 for seating impact, 100,000 for the base and casters, and 60,000 for the armrests. Those are the manufacturer\u2019s test-cycle figures, not measurements we made.',
+      { heading: 'Who the Omni Pro Fits' },
+      'LiberNovo recommends the chair for heights from 5\'0" to 6\'1" (153 to 186 cm), with a stated weight limit of up to 300 lbs \u2014 136 kg under BIFMA, 110 kg under EN1335. The two seat depths are the other half of the fit decision, and the usual logic applies: the deeper option suits longer thighs, the shallower one suits shorter legs. If you fall outside the recommended height range, or you are unsure which depth suits you, that is worth settling before you order.',
+      {
+        link: {
+          href: '/blog/ergonomic-office-chair-buying-guide',
+          label: 'The wider checklist: what to look for in any ergonomic chair \u2192',
+        },
+      },
+      { heading: 'What Some Buyers Report' },
+      'Reviews on the manufacturer\u2019s page are not all glowing, and the recurring complaints are worth knowing about. One buyer reported a problem with the lumbar support and a delayed replacement part. Another said the armrests pivot too easily, that the armrest tops are not replaceable, and that the footrest felt cheaper than the chair itself. Individual reports are not a pattern we can verify \u2014 we have not used the chair \u2014 but on a premium-priced product they are the kind of detail worth weighing before you commit.',
+      { heading: 'Price, Warranty and Where to Buy' },
+      'The Omni Pro is a premium-priced chair, and we are not quoting a figure here because prices move and the manufacturer\u2019s store and Amazon are separate purchase paths. On LiberNovo\u2019s own store the warranty runs six years on the frame and two years on the electronics, with a 30-day trial; those terms are for that store, and Amazon\u2019s returns and warranty handling may differ, so check the Amazon listing for what applies to you. The manufacturer\u2019s store also sells the chair in bundles \u2014 chair only, chair with footrest, and chair with footrest and an extra battery \u2014 and we cannot say which of those a given listing corresponds to.',
+      {
+        deal: {
+          name: 'LiberNovo Omni Pro Dynamic Ergonomic Chair',
+          price: 'Check Current Price on Amazon',
+          image: '/images/blog/libernovo-omni-pro-hero.webp',
+          imageAlt:
+            'Two LiberNovo Omni Pro ergonomic chairs side by side on a dark background, one graphite and one glacier',
+          affiliateUrl: 'https://amzn.to/4rSk20Z',
+        },
+      },
+      { subheading: 'Is the LiberNovo Omni Pro Worth It?' },
+      'If what you want is a chair that moves with you \u2014 a backrest that flexes instead of holding one shape, powered lumbar support you can adjust from the armrest, five locked recline positions and a seat that keeps air moving underneath you \u2014 this chair is built around exactly those ideas, and the manufacturer documents the parts in more detail than most. Seat ventilation is the feature that is hardest to find elsewhere, and the 36-hour low-speed runtime means it can run for several working days between charges. Against that: it is a premium purchase, some buyers have reported problems with the lumbar support and the armrests, and the warranty and trial terms quoted here come from the manufacturer\u2019s own store rather than Amazon. If you want a straightforward chair and would never use a fan or a powered stretch, the features you would be paying for are the ones you would leave switched off.',
+    ],
+    metaTitle: 'LiberNovo Omni Pro: Ergonomic Chair With Built-In Fan',
+    metaDescription:
+      'LiberNovo Omni Pro ergonomic chair: seat ventilation fan, motorized lumbar stretch, 5 recline positions from 105\u00b0 to 160\u00b0, and dynamic synced support.',
+    altText:
+      'Two LiberNovo Omni Pro ergonomic chairs side by side on a dark background, one graphite and one glacier',
+    faq: [
+      {
+        question: 'What is the LiberNovo Omni Pro?',
+        answer:
+          'It is the LiberNovo Omni Pro Dynamic Ergonomic Chair, a chair with seat ventilation, powered lumbar support and stretch, five recline positions and a flexible panel backrest. It comes in Graphite and Glacier with 45 cm or 48 cm seat depth.',
+      },
+      {
+        question: 'How many recline positions does the Omni Pro have?',
+        answer:
+          'Five: 105\u00b0, 115\u00b0, 125\u00b0, 135\u00b0 and 160\u00b0, named Deep Focus, Balance, Solo-Work, Soft Recline and Spine Flow, according to LiberNovo.',
+      },
+      {
+        question: 'How long does the seat fan run on a charge?',
+        answer:
+          'The manufacturer\u2019s FAQ says up to 36 hours on the low setting and up to 9 hours on high with the ventilation running, from a 3000mAh built-in battery.',
+      },
+      {
+        question: 'What is OmniStretch?',
+        answer:
+          'It is the motorised lumbar stretch, operated from the armrest buttons along with the motorised lumbar support.',
+      },
+      {
+        question: 'Who does the Omni Pro fit?',
+        answer:
+          'LiberNovo recommends it for heights from 5\'0" to 6\'1" (153 to 186 cm) and weights up to 300 lbs \u2014 136 kg under BIFMA and 110 kg under EN1335 \u2014 with 45 cm and 48 cm seat depth options.',
+      },
+      {
+        question: 'Are the warranty and trial the same on Amazon?',
+        answer:
+          'The six-year frame and two-year electronics warranty and the 30-day trial are stated on the manufacturer\u2019s own store. Amazon\u2019s terms may differ, so check the Amazon listing for the details that apply.',
+      },
+    ],
+    lastUpdated: '2026-10-08',
+    primaryKeyword: 'libernovo omni pro',
+    secondaryKeywords: [
+      'omni pro ergonomic chair',
+      'office chair with built-in fan',
+      'chair with seat ventilation',
+      'chair with motorized lumbar support',
+    ],
+    keepBrowsing: [
+      {
+        href: '/blog/ergonomic-office-chair-buying-guide',
+        label: '7 features to look for in an ergonomic office chair',
+      },
+      {
+        href: '/blog/ergonomic-desk-upgrades-under-100',
+        label: '6 ergonomic desk upgrades under $100',
+      },
+      {
+        href: '/blog/best-gadgets-remote-workers',
+        label: '8 best gadgets for remote workers',
+      },
+    ],
+    videoUrl: 'https://www.pinterest.com/pin/1051168369298012793/',
+    videoUploadDate: '2026-08-07',
+    videoTitle:
+      'Stay Cool for 36 Hours! | Omni PRO Dynamic Ergonomic Chair | Top US Pick 2026',
+    videoDescription:
+      'LiberNovo Omni Pro ergonomic chair: seat ventilation fan, motorized lumbar stretch, 5 recline positions from 105\u00b0 to 160\u00b0, and dynamic synced support.',
+  },
+  {
     slug: 'smart-auto-stop-charging-adapter',
     title: 'Smart Auto Stop Charging Adapter: Does It Really Work?',
     excerpt:
@@ -2902,6 +3045,7 @@ export const POSTS: BlogPost[] = [
       'Armrests should adjust at least in height. If you type, the armrests should sit just below your elbows — a common chair buying mistake is fixed armrests that force you to lean. 4D armrests (height, depth, width, and pivot) are worth the upgrade for anyone who types more than two hours a day.',
       { heading: 'What are the bonus features worth paying for?' },
       'A few chairs go further. The LiberNovo Omni PRO adds a built-in two-speed fan for airflow ventilation (no more swampy back in summer) and a footrest for stretch breaks — thoughtful extras for long sessions. Headrest adjustability, seat-forward tilt, and adjustable backrest tension are also worth having.',
+      { link: { href: '/blog/libernovo-omni-pro-ergonomic-chair-with-fan', label: 'How the Omni Pro’s fan, lumbar stretch and recline positions work →' } },
       { heading: 'How to prioritize the upgrade path' },
       'Whatever you choose, the upgrade path is simple: chair first, monitor height second, then keyboard and mouse. Most back pain disappears once the chair and screen heights are right. A short feature checklist for the buying decision:',
       { list: [
