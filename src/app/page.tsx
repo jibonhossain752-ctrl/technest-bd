@@ -10,7 +10,6 @@ import Newsletter from '@/components/Newsletter'
 import WhyChooseUs from '@/components/WhyChooseUs'
 import Testimonials from '@/components/Testimonials'
 import Reveal from '@/components/ui/Reveal'
-import VideoSchema from '@/components/VideoSchema'
 import { getVideoPostLinks } from '@/lib/postVideoLinks'
 
 export const metadata: Metadata = {
@@ -75,7 +74,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
-      <VideoSchema />
       <StaticHero />
       <QuickPills />
       <Reveal className="reveal-blog-posts" delay={0.05}>

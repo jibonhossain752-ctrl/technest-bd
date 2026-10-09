@@ -28,7 +28,7 @@ export const VIDEOS: VideoMeta[] = [
     href: 'https://www.instagram.com/reel/DbqkqRJCSXz/',
     thumbnail: '/images/videos/v1.webp',
     description:
-      'Watch the Eurosteam Step Up steam iron lift itself automatically — a hands-on demo of our top US pick for 2026.',
+      'A short video look at the Eurosteam Step Up self-lifting steam iron, one of our top picks for 2026.',
   },
   {
     id: 'v2',
@@ -40,7 +40,7 @@ export const VIDEOS: VideoMeta[] = [
     href: 'https://www.youtube.com/shorts/svEfyu9bUCs',
     thumbnail: '/images/videos/v2.webp',
     description:
-      'A hands-on PS5 DualSense experience from Spider-Man: Brand New Day — feel the fight in every vibration.',
+      'A short video look at the PS5 DualSense in Spider-Man: Brand New Day — how the fight comes through in every vibration.',
   },
   {
     id: 'v3',

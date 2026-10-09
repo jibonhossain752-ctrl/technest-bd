@@ -64,7 +64,7 @@ export default function WatchAndShop({
       <div className="container">
         <div className="section-head">
           <h2>Watch & Shop</h2>
-          <p>Real reviews and hands-on demos — short videos, honest opinions</p>
+          <p>Short videos and guides to our top picks</p>
         </div>
         <div className="watch-shop-wrap">
           <div className="watch-shop-strip" aria-label="Watch & Shop videos">
@@ -126,7 +126,7 @@ export default function WatchAndShop({
                 </div>
                 <div className="watch-card-body">
                   <h3>{v.title}</h3>
-                  <p>Watch on {PLATFORM_LABEL[v.platform]} — opens in new tab</p>
+                  <p>Read the guide &amp; watch</p>
                 </div>
               </Link>
               )

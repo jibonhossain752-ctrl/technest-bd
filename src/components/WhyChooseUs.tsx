@@ -8,7 +8,7 @@ const FEATURES: Feature[] = [
   {
     icon: '⭐',
     title: 'Genuine Reviews',
-    desc: 'Real, tested opinions from our team — never paid placements.',
+    desc: 'Clear guides that separate what manufacturers claim from what is proven.',
   },
   {
     icon: '✅',
