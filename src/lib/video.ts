@@ -62,8 +62,15 @@ export function platformName(platform: VideoPlatform): string {
 /**
  * Resolve a post's videoUrl into everything the card and schema need.
  * Returns null when the platform cannot be detected (no card, no schema).
+ *
+ * `overrideThumbnail` is the poster for a post whose video is not one of the
+ * homepage "Watch & Shop" cards (see `videoThumbnail` in src/data/posts.ts);
+ * a matching homepage card still wins so those cards stay consistent.
  */
-export function resolveBlogVideo(rawUrl: string): ResolvedBlogVideo | null {
+export function resolveBlogVideo(
+  rawUrl: string,
+  overrideThumbnail?: string | null,
+): ResolvedBlogVideo | null {
   const url = normalizeVideoUrl(rawUrl.trim())
   const platform = detectVideoPlatform(url)
   if (!platform) return null
@@ -102,7 +109,7 @@ export function resolveBlogVideo(rawUrl: string): ResolvedBlogVideo | null {
     platform,
     platformLabel: PLATFORM_LABELS[platform],
     homepageVideo,
-    thumbnail: homepageVideo?.thumbnail ?? null,
+    thumbnail: homepageVideo?.thumbnail ?? overrideThumbnail ?? null,
     embedUrl,
     videoId,
   }

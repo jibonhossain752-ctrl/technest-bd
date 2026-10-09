@@ -100,6 +100,11 @@ const IMAGE_VARIANTS: Record<string, number[]> = {
   'iphone-duo-design.webp': [480, 720],
   'iphone-duo-software.webp': [480, 720],
   'iphone-duo.webp': [480, 720],
+  'iphone-telephoto-grip-kit-hero.webp': [480, 720],
+  'iphone-telephoto-grip-kit-image-2.webp': [480, 720],
+  'iphone-telephoto-grip-kit-image-3.webp': [480, 720],
+  'iphone-telephoto-grip-kit-image-4.webp': [480, 720],
+  'iphone-telephoto-grip-kit-image-5.webp': [480, 720],
   'iphone-ultra-foldable-iphone-design.webp': [480, 720],
   'iphone-ultra-foldable-iphone-specs.webp': [480, 720],
   'iphone-ultra-foldable-iphone.webp': [480, 720],
@@ -167,6 +172,7 @@ const IMAGE_VARIANTS: Record<string, number[]> = {
   'v2.webp': [480],
   'v3.webp': [480],
   'v5.webp': [480],
+  'v6.webp': [480],
   'xvolt-electric-heated-lunch-box.webp': [260, 360, 520, 720],
 }
 

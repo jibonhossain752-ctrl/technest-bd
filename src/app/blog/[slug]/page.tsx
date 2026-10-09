@@ -281,7 +281,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
    * date the card still shows but the schema is skipped — never guess a date.
    */
   const resolvedVideo = post.videoUrl
-    ? resolveBlogVideo(post.videoUrl)
+    ? resolveBlogVideo(post.videoUrl, post.videoThumbnail)
     : null
   const videoJsonLd =
     resolvedVideo && post.videoUploadDate
@@ -543,6 +543,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <BlogVideoCard
               videoUrl={post.videoUrl}
               title={post.videoTitle ?? post.title}
+              posterImage={post.videoThumbnail}
             />
           )}
 

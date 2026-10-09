@@ -19,7 +19,8 @@ import { platformName, resolveBlogVideo } from '@/lib/video'
  *   platform's official embed, loading the embed script lazily on first click.
  * - A small "Watch on [platform]" text link below the card is the fallback.
  * - The thumbnail is reused from the homepage video data when the URL matches
- *   a homepage card; otherwise a neutral fallback card is shown.
+ *   a homepage card, or taken from the `posterImage` prop when the post sets
+ *   its own; otherwise a neutral fallback card is shown.
  * - Arrival autoplay: homepage cards link here as /blog/<slug>?play=1#video.
  *   On arrival the card is scrolled into view and the embed is mounted to play
  *   muted (YouTube/Facebook take autoplay+mute params; Instagram, TikTok and
@@ -30,11 +31,14 @@ import { platformName, resolveBlogVideo } from '@/lib/video'
 export default function BlogVideoCard({
   videoUrl,
   title,
+  posterImage,
 }: {
   videoUrl: string
   title: string
+  /** Poster for a video that is not one of the homepage "Watch & Shop" cards. */
+  posterImage?: string
 }) {
-  const video = resolveBlogVideo(videoUrl)
+  const video = resolveBlogVideo(videoUrl, posterImage)
   const [playing, setPlaying] = useState(false)
   // True only for an arrival-autoplay load, so the embed can be asked to play.
   const [arrivalPlay, setArrivalPlay] = useState(false)

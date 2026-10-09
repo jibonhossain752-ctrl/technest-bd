@@ -58,9 +58,142 @@ export interface BlogPost {
   videoUploadDate?: string
   videoTitle?: string
   videoDescription?: string
+  /**
+   * Poster image for the in-post video card, for posts whose video is not one
+   * of the homepage "Watch & Shop" cards (those reuse their card thumbnail).
+   */
+  videoThumbnail?: string
 }
 
 export const POSTS: BlogPost[] = [
+  {
+    slug: 'iphone-telephoto-lens-camera-grip-kit',
+    title: 'Best iPhone Telephoto Lens and Camera Grip Kit',
+    excerpt:
+      'A retro-styled grip, a 2.35x telephoto lens and real camera controls for the iPhone 17 Pro Max, explained part by part.',
+    category: 'Roundup',
+    date: '2026-10-09',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/iphone-telephoto-grip-kit-hero.webp',
+    emoji: '\uD83D\uDCF7',
+    readTime: '6 min read',
+    content: [
+      { heading: 'What Is the PGYTECH RetroVa Kit?' },
+      'The PGYTECH RetroVa is an all-in-one photography kit for the iPhone 17 Pro and 17 Pro Max. It combines a MagSafe-ready case, a detachable textured camera grip with physical controls, and a 2.35x telephoto lens that the manufacturer rates at 235mm equivalent. It is sold on Amazon, and the set shown here is the Pro Max version.',
+      'That is the short version. Here is what each part does, based on the manufacturer\u2019s listing and images.',
+      { heading: 'A Modular Kit, Part by Part' },
+      {
+        image: '/images/blog/iphone-telephoto-grip-kit-image-2.webp',
+        alt: 'Exploded diagram of the PGYTECH RetroVa kit showing the phone case, the detachable grip, a lens adapter ring and the 2.35x telephoto lens as separate parts',
+        width: 900,
+        height: 502,
+      },
+      'The kit is built from separate pieces instead of one fixed body: a phone case, a grip that attaches to it, a lens adapter ring, and the 2.35x telephoto lens. The same system also shows a filter adapter ring with a filter, and a lighter 2x telephoto lens. The manufacturer\u2019s diagram presents these as parts of the RetroVa system, but not every piece is necessarily in every set, so check the Amazon listing for exactly what comes in the box.',
+      { heading: 'Physical Controls, Like a Real Camera' },
+      {
+        image: '/images/blog/iphone-telephoto-grip-kit-image-3.webp',
+        alt: 'Diagram of the PGYTECH RetroVa grip controls, labelling the shutter button, multi-function button, zoom lever and control dial on top of the grip',
+        width: 900,
+        height: 502,
+      },
+      'The grip is the part that changes how shooting feels. According to the manufacturer\u2019s diagram, the top has a shutter button (half-press to focus, full press to shoot, long press for burst), a multi-function button for power, quick start, mode switch, camera flip and Bluetooth pairing, a zoom lever, and a control dial that works with the mode button to adjust settings such as ISO, exposure and white balance. The zoom lever switches between fixed focal lengths in Vintage Mode and zooms freely in Standard Mode. How responsive these controls feel in daily use is something we have not tried.',
+      { heading: 'Setups for Different Situations' },
+      {
+        image: '/images/blog/iphone-telephoto-grip-kit-image-4.webp',
+        alt: 'Four-panel collage of the PGYTECH RetroVa kit in different setups, showing a MagSafe light attached to the case, the grip mounted on the phone, a tripod setup and a wearable strap',
+        width: 900,
+        height: 502,
+      },
+      'The manufacturer\u2019s images show four ways to use the kit. The MagSafe-ready case lets you add accessories such as a MagSafe light, which is sold separately. The grip can be taken off to switch between phone mode and camera mode. In the All-in-one set, the images also show a tripod setup and a wearable strap, both marked as included in that set.',
+      { heading: 'How Far Can the Telephoto Lens Reach?' },
+      {
+        image: '/images/blog/iphone-telephoto-grip-kit-image-5.webp',
+        alt: 'Manufacturer sample comparison of the same scene shot on a native iPhone and through the PGYTECH RetroVa 2.35x telephoto lens at 235mm equivalent, showing a city landmark and a bird in flight',
+        width: 900,
+        height: 502,
+      },
+      'The lens is the headline feature. The manufacturer rates the 2.35x telephoto lens at 235mm equivalent, and its sample comparisons show a city landmark and a bird in flight, with the native iPhone on one side and the RetroVa on the other. Treat these as manufacturer-supplied examples, not our results. The footnote also separates the stand-alone lens (2x reach) from the All-in-one set (2.35x reach), so make sure the listing you buy matches the reach you want.',
+      { heading: 'Which iPhones Does It Fit?' },
+      'The listing names the iPhone 17 Pro and the iPhone 17 Pro Max, with a separate set for each. The set discussed here is the Pro Max version. A case is made for one phone size, so do not assume it fits other models, and always pick the variant that matches your phone on the Amazon page.',
+      { heading: 'Honest Limits Before You Buy' },
+      'We have not tested this kit, so everything here comes from the manufacturer\u2019s listing and images. The listing data is inconsistent in places, and the photo comparisons are manufacturer examples. We are not quoting a price because it changes: check the Amazon listing for the current price, the exact contents of the set, and recent owner feedback.',
+      { heading: 'Price and Where to Buy' },
+      'The PGYTECH RetroVa kit is sold on Amazon. Prices vary by variant and change often, so we are not quoting one.',
+      {
+        deal: {
+          name: 'PGYTECH RetroVa All-in-one Photography Grip Kit for iPhone 17 Pro Max',
+          image: '/images/blog/iphone-telephoto-grip-kit-hero.webp',
+          imageAlt:
+            'PGYTECH RetroVa all-in-one photography grip kit laid out on a white background with the phone case, textured grip, telephoto lens, strap, pouch and tripod mount',
+          affiliateUrl: 'https://amzn.to/4yQSfR2',
+          ctaLabel: 'Check Price on Amazon',
+        },
+      },
+      { subheading: 'Is It Worth It?' },
+      'If you like shooting with physical controls and want more reach than the iPhone\u2019s built-in telephoto, this is a kit built for exactly that, and the modular design lets you use only the parts you need. If you mostly take casual photos, a plain case may suit you better. Because lens reach and included parts differ between sets, read the listing carefully first.',
+    ],
+    metaTitle: 'iPhone Telephoto Lens & Camera Grip Kit: PGYTECH RetroVa',
+    metaDescription:
+      'This iPhone telephoto lens and camera grip kit for iPhone 17 Pro Max adds a 2.35x lens, shutter and zoom controls, Bluetooth pairing and a MagSafe-ready case.',
+    altText:
+      'PGYTECH RetroVa all-in-one photography grip kit laid out on a white background with the phone case, textured grip, telephoto lens, strap, pouch and tripod mount',
+    faq: [
+      {
+        question: 'Which iPhones does the PGYTECH RetroVa kit fit?',
+        answer:
+          'The listing names the iPhone 17 Pro and iPhone 17 Pro Max, with a separate set for each. This post covers the Pro Max set.',
+      },
+      {
+        question: 'How far does the telephoto lens reach?',
+        answer:
+          'The manufacturer rates the 2.35x lens in the All-in-one set at 235mm equivalent. The stand-alone lens is listed at 2x reach.',
+      },
+      {
+        question: 'Can you take the grip off?',
+        answer:
+          'According to the manufacturer\u2019s images, yes. The grip detaches from the case so you can switch between phone mode and camera mode.',
+      },
+      {
+        question: 'Is the MagSafe light included?',
+        answer:
+          'No. The manufacturer\u2019s image notes that the MagSafe light is sold separately.',
+      },
+      {
+        question: 'Does it include a strap and tripod mount?',
+        answer:
+          'The manufacturer\u2019s images mark both as included in the All-in-one set. Confirm the contents on the Amazon listing before ordering.',
+      },
+    ],
+    lastUpdated: '2026-10-09',
+    primaryKeyword: 'iPhone telephoto lens',
+    secondaryKeywords: [
+      'iPhone camera grip kit',
+      'PGYTECH RetroVa',
+      '2.35x telephoto lens for iPhone',
+      'iPhone 17 Pro Max camera grip',
+    ],
+    keepBrowsing: [
+      {
+        href: '/blog/keep-iphone-17-pro-case-new',
+        label: '7 ways to keep your iPhone 17 Pro case looking new',
+      },
+      {
+        href: '/blog/vintage-retro-screenless-digital-camera',
+        label: 'Vintage & retro screenless digital cameras',
+      },
+      {
+        href: '/blog/overhead-camera-mount-review-jinraiko',
+        label: 'Overhead camera mount review \u2014 JINRAIKO\u2019s 360\u00b0 arm for content creators',
+      },
+    ],
+    videoUrl: 'https://www.youtube.com/shorts/i92KsnjnmQA',
+    videoUploadDate: '2026-10-09',
+    videoTitle:
+      'Turn Your iPhone 17 Pro Max Into a Retro Camera with a 2.35X Telephoto Lens!',
+    videoDescription:
+      'This iPhone telephoto lens and camera grip kit for iPhone 17 Pro Max adds a 2.35x lens, shutter and zoom controls, Bluetooth pairing and a MagSafe-ready case.',
+    videoThumbnail: '/images/videos/v6.webp',
+  },
   {
     slug: 'libernovo-omni-pro-ergonomic-chair-with-fan',
     title: 'LiberNovo Omni Pro: Ergonomic Chair With Built-In Fan',
