@@ -1,9 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Script from 'next/script'
 import { PLATFORM_PATHS } from '@/lib/socials'
-import { platformName, resolveBlogVideo } from '@/lib/video'
+import { VIDEO_EMBED, platformName, resolveBlogVideo } from '@/lib/video'
 import { VIDEO_POSTER_ALT, playButtonLabel } from '@/lib/imageAlt'
 
 /**
@@ -14,25 +13,26 @@ import { VIDEO_POSTER_ALT, playButtonLabel } from '@/lib/imageAlt'
  * placeholder and no layout gap.
  *
  * Behavior:
- * - Looks like the homepage "Watch & Shop" cards (platform badge, 9:16 media
- *   box, title) for visual consistency.
- * - YouTube is embedded directly with `loading="lazy"`, so the visitor presses
- *   YouTube's own play button once — no poster in front of the player. The card
- *   keeps the same size and the same title/caption block it had as a poster.
- * - Instagram, Facebook, TikTok and Pinterest stay click-to-load: nothing is
- *   requested from those platforms until the reader asks for the video, so a
- *   page view never hits TikTok.
- * - A small "Watch on [platform]" text link below the card is the fallback.
- * - The thumbnail is reused from the homepage video data when the URL matches
- *   a homepage card, or taken from the `posterImage` prop when the post sets
- *   its own; otherwise a neutral fallback is shown. It still feeds the
- *   VideoObject `thumbnailUrl` even where the card no longer shows it.
+ * - Looks like the homepage "Watch & Shop" cards (9:16 media box, title) for
+ *   visual consistency, at the same 280px width.
+ * - YouTube, Instagram, Pinterest and TikTok embed their official player
+ *   directly with `loading="lazy"`, so the visitor presses the platform's own
+ *   play button once — there is no poster in front of the player and no second
+ *   click. The post's thumbnail still feeds the VideoObject `thumbnailUrl`; the
+ *   card no longer shows it because the player draws its own poster frame.
+ * - Facebook keeps the click-to-load poster (see `mode` in VIDEO_EMBED): its
+ *   embed player asks for a Facebook session, so pressing play inside it leaves
+ *   for facebook.com instead of playing here. The poster also keeps ~3 MB of
+ *   Facebook player off a page view until the reader actually wants the video.
+ * - A platform whose video cannot be resolved to an embed URL (for example a
+ *   `pin.it` short link) falls back to the poster card, which opens the video
+ *   on its platform instead of pretending it can play in place.
  * - Arrival autoplay: homepage cards link here as /blog/<slug>?play=1#video.
- *   On arrival the card is scrolled into view and the direct YouTube embed is
- *   asked to autoplay muted (browsers block unmuted autoplay, so the mute
- *   rides along with the autoplay rather than the plain embed). Readers who
- *   prefer reduced motion skip the smooth scroll, and a normal visit without
- *   ?play=1 shows the player paused.
+ *   On arrival the card is scrolled into view and, where the platform
+ *   documents an autoplay parameter, the embed is asked to play muted (see
+ *   VIDEO_EMBED in src/lib/video.ts). Readers who prefer reduced motion skip
+ *   the smooth scroll, and a normal visit without ?play=1 shows the player
+ *   paused.
  */
 export default function BlogVideoCard({
   videoUrl,
@@ -45,9 +45,10 @@ export default function BlogVideoCard({
   posterImage?: string
 }) {
   const video = resolveBlogVideo(videoUrl, posterImage)
-  const [playing, setPlaying] = useState(false)
   // True only for an arrival-autoplay load, so the embed can be asked to play.
   const [arrivalPlay, setArrivalPlay] = useState(false)
+  // Set when the reader presses a click-to-load poster (see VIDEO_EMBED.mode).
+  const [revealed, setRevealed] = useState(false)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -87,24 +88,25 @@ export default function BlogVideoCard({
 
   if (!video) return null
 
-  const isYoutube = video.platform === 'youtube'
+  const embed = VIDEO_EMBED[video.platform]
 
   /**
-   * Embed URL for the current state. On arrival, YouTube and Facebook are
-   * asked to autoplay muted; the other platforms decide for themselves, so
-   * they keep their plain embed and show their own play control.
+   * Embed URL for the current state. Autoplay rides along only on an arrival
+   * (?play=1) and only where the platform documents the parameter, so the
+   * recorded `embedUrl` — which the VideoObject schema publishes — stays clean.
    */
   const embedSrc = (() => {
     if (!video.embedUrl) return null
-    if (!arrivalPlay) return video.embedUrl
-    if (isYoutube) return `${video.embedUrl}&autoplay=1&mute=1`
-    if (video.platform === 'facebook')
-      return `${video.embedUrl}&autoplay=1&mute=1`
-    return video.embedUrl
+    if (!arrivalPlay || !embed.autoplayParams) return video.embedUrl
+    const separator = video.embedUrl.includes('?') ? '&' : '?'
+    return `${video.embedUrl}${separator}${embed.autoplayParams}`
   })()
 
-  const play = () => {
-    setPlaying(true)
+  // A direct platform shows its player at once; a click-to-load one waits.
+  const showEmbed = Boolean(embedSrc) && (embed.mode === 'direct' || revealed)
+
+  /** Analytics for an explicit play intent, fired from both card shapes. */
+  const trackPlay = () => {
     import('@/lib/tracking')
       .then(({ track }) =>
         track('blog_video_play', undefined, {
@@ -115,120 +117,95 @@ export default function BlogVideoCard({
       .catch(() => {})
   }
 
+  /** The reader asked for a click-to-load video: swap the poster for the player. */
+  const play = () => {
+    setRevealed(true)
+    trackPlay()
+  }
+
+  /** Poster artwork, shared by the click-to-load button and the link-out card. */
+  const posterArt = (
+    <div className={`watch-card-thumb thumb-${video.platform}`}>
+      {video.thumbnail ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={video.thumbnail}
+          alt={VIDEO_POSTER_ALT}
+          className="watch-thumb-img"
+          loading="lazy"
+        />
+      ) : (
+        <span className="watch-platform-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d={PLATFORM_PATHS[video.platform]} />
+          </svg>
+        </span>
+      )}
+      <span className="watch-platform-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d={PLATFORM_PATHS[video.platform]} />
+        </svg>
+        {video.platformLabel}
+      </span>
+      <span className="watch-play-btn" aria-hidden="true">
+        <span className="watch-play-icon">▶</span>
+      </span>
+    </div>
+  )
+
+  const cardBody = (caption: string) => (
+    <div className="watch-card-body">
+      <h3>{title}</h3>
+      <p>{caption}</p>
+    </div>
+  )
+
   return (
     <div className="blog-video-card" id="video">
-      {isYoutube ? (
-        /* Direct embed: the visitor clicks YouTube's own play button once. */
+      {showEmbed && embedSrc ? (
+        /* Direct embed: the platform's own play button starts it in one click. */
         <div className="watch-card blog-video-watchcard">
-          <div className="watch-card-thumb blog-video-frame">
-            {embedSrc && (
-              <iframe
-                src={embedSrc}
-                title={title}
-                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                allowFullScreen
-                loading="lazy"
-              />
-            )}
+          <div
+            className={`watch-card-thumb blog-video-frame blog-video-frame-${embed.frame}`}
+          >
+            <iframe
+              src={embedSrc}
+              title={title}
+              allow={embed.allow}
+              allowFullScreen
+              loading="lazy"
+            />
           </div>
-          <div className="watch-card-body">
-            <h3>{title}</h3>
-            <p>Press play — the video plays right here</p>
-          </div>
+          {cardBody(
+            embed.mode === 'direct'
+              ? 'Press play — the video plays right here'
+              : 'Tap to play — the video loads right here',
+          )}
         </div>
-      ) : !playing ? (
+      ) : video.embedUrl ? (
+        /* Click-to-load: the player is not requested until the reader asks. */
         <button
           type="button"
           className="watch-card blog-video-watchcard"
           onClick={play}
           aria-label={playButtonLabel(title)}
         >
-          <div className={`watch-card-thumb thumb-${video.platform}`}>
-            {video.thumbnail ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={video.thumbnail}
-                alt={VIDEO_POSTER_ALT}
-                className="watch-thumb-img"
-                loading="lazy"
-              />
-            ) : (
-              <span className="watch-platform-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d={PLATFORM_PATHS[video.platform]} />
-                </svg>
-              </span>
-            )}
-            <span className="watch-platform-badge">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d={PLATFORM_PATHS[video.platform]} />
-              </svg>
-              {video.platformLabel}
-            </span>
-            <span className="watch-play-btn" aria-hidden="true">
-              <span className="watch-play-icon">▶</span>
-            </span>
-          </div>
-          <div className="watch-card-body">
-            <h3>{title}</h3>
-            <p>Tap to play — the video loads right here</p>
-          </div>
+          {posterArt}
+          {cardBody('Tap to play — the video loads right here')}
         </button>
       ) : (
-        <div className="blog-video-embed">
-          {video.platform === 'tiktok' && (
-            <>
-              <blockquote
-                className="tiktok-embed"
-                cite={video.url}
-                data-video-id={video.videoId}
-                style={{ maxWidth: '325px', minWidth: '288px' }}
-              >
-                <section>
-                  <a target="_blank" rel="noopener" href={video.url}>
-                    {title}
-                  </a>
-                </section>
-              </blockquote>
-              {/* TikTok's embed script converts the blockquote above into the
-                  official in-place player. Loaded lazily, only after click. */}
-              <Script
-                src="https://www.tiktok.com/embed.js"
-                strategy="afterInteractive"
-              />
-            </>
-          )}
-          {video.platform === 'instagram' && embedSrc && (
-            <iframe src={embedSrc} title={title} loading="lazy" />
-          )}
-          {video.platform === 'facebook' && embedSrc && (
-            <iframe
-              src={embedSrc}
-              title={title}
-              style={{ border: 'none', overflow: 'hidden' }}
-              scrolling="no"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
-          )}
-          {video.platform === 'pinterest' && (
-            <>
-              <a
-                data-pin-do="embedPin"
-                href={video.url}
-                target="_blank"
-                rel="noopener"
-              >
-                {title}
-              </a>
-              <Script
-                src="https://assets.pinterest.com/js/pinit.js"
-                strategy="afterInteractive"
-              />
-            </>
-          )}
-        </div>
+        /* No resolvable embed URL, so the poster opens the video instead. */
+        <a
+          href={video.url}
+          target="_blank"
+          rel="noopener"
+          className="watch-card blog-video-watchcard"
+          aria-label={playButtonLabel(title)}
+          onClick={trackPlay}
+        >
+          {posterArt}
+          {cardBody(`Opens on ${platformName(video.platform)}`)}
+        </a>
       )}
       <p className="blog-video-fallback">
         <a href={video.url} target="_blank" rel="noopener">

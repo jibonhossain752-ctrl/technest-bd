@@ -60,6 +60,77 @@ export function platformName(platform: VideoPlatform): string {
 }
 
 /**
+ * Per-platform embed facts for the in-post video card.
+ *
+ * Every parameter here is documented by the platform itself — nothing is
+ * guessed:
+ *
+ * - YouTube: `autoplay` and `mute`. Mute rides along because browsers block
+ *   unmuted autoplay.
+ * - TikTok player v1: `autoplay` (its parameter table lists `autoplay` and
+ *   `muted`; `muted` is deliberately not used because it locks the volume
+ *   control off for the rest of the session).
+ * - Facebook video plugin: `autoplay`. Its documentation states autoplay
+ *   "will be played without sound (muted)" and lists no `mute` parameter, so
+ *   none is added.
+ * - Instagram and Pinterest document no autoplay parameter at all, so those
+ *   embeds only ever start on a click.
+ *
+ * `frame: 'chrome'` marks a player that draws its own header/footer around the
+ * video (Instagram's profile row and action bar, Facebook's page row), so the
+ * card gives it a taller box instead of clipping the chrome away.
+ *
+ * `mode: 'click-to-load'` keeps the poster in front of the player until the
+ * reader asks for it. Facebook is the one platform that needs it: its embedded
+ * player wants a Facebook session, so pressing play inside the embed navigates
+ * to facebook.com instead of playing in the page. The poster is what the card
+ * had before the direct-embed change, and it keeps Facebook's several-megabyte
+ * player off a page view entirely.
+ */
+export interface VideoEmbedConfig {
+  /** iframe `allow` attribute. */
+  allow: string
+  /** Autoplay query string, or null when the platform documents none. */
+  autoplayParams: string | null
+  frame: 'media' | 'chrome'
+  mode: 'direct' | 'click-to-load'
+}
+
+export const VIDEO_EMBED: Record<VideoPlatform, VideoEmbedConfig> = {
+  youtube: {
+    allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen',
+    autoplayParams: 'autoplay=1&mute=1',
+    frame: 'media',
+    mode: 'direct',
+  },
+  tiktok: {
+    allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen',
+    autoplayParams: 'autoplay=1',
+    frame: 'media',
+    mode: 'direct',
+  },
+  pinterest: {
+    allow: 'encrypted-media; picture-in-picture; fullscreen',
+    autoplayParams: null,
+    frame: 'media',
+    mode: 'direct',
+  },
+  instagram: {
+    allow: 'encrypted-media; picture-in-picture; fullscreen',
+    autoplayParams: null,
+    frame: 'chrome',
+    mode: 'direct',
+  },
+  facebook: {
+    allow:
+      'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen',
+    autoplayParams: 'autoplay=true',
+    frame: 'chrome',
+    mode: 'click-to-load',
+  },
+}
+
+/**
  * Resolve a post's videoUrl into everything the card and schema need.
  * Returns null when the platform cannot be detected (no card, no schema).
  *
@@ -155,7 +226,10 @@ export function resolveBlogVideo(
 
   if (platform === 'tiktok') {
     videoId = url.match(/\/video\/(\d+)/)?.[1] ?? null
-    embedUrl = videoId ? `https://www.tiktok.com/embed/v2/${videoId}` : null
+    // The v1 player is TikTok's current official embed. The older blockquote +
+    // embed.js route builds the same thing but rate-limits hard, so the card
+    // never loads that script.
+    embedUrl = videoId ? `https://www.tiktok.com/player/v1/${videoId}` : null
   } else if (platform === 'youtube') {
     videoId =
       url.match(/(?:shorts\/|embed\/|watch\?v=|youtu\.be\/)([\w-]{6,})/)?.[1] ??
@@ -171,15 +245,21 @@ export function resolveBlogVideo(
     const kind = url.match(/\/(reel|p)\//)?.[1] ?? 'reel'
     videoId = url.match(/\/(?:reel|p)\/([\w-]+)/)?.[1] ?? null
     embedUrl = videoId
-      ? `https://www.instagram.com/${kind}/${videoId}/embed`
+      ? `https://www.instagram.com/${kind}/${videoId}/embed/`
       : null
   } else if (platform === 'facebook') {
     embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
       url,
     )}&show_text=false`
+  } else if (platform === 'pinterest') {
+    videoId = url.match(/\/pin\/(\d+)/)?.[1] ?? null
+    // The same iframe Pinterest's own pinit.js widget injects, so the pin
+    // plays in place without loading their widget script. `pin.it` short
+    // links carry no id, so those keep the click-to-load card.
+    embedUrl = videoId
+      ? `https://assets.pinterest.com/ext/embed.html?id=${videoId}`
+      : null
   }
-  // Pinterest has no simple iframe embed URL; its widget script is loaded
-  // by the card component on click instead.
 
   return {
     url,

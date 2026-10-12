@@ -7669,11 +7669,25 @@ button {
   display: flex;
   justify-content: center;
 }
-/* YouTube is embedded directly (no poster, no click-to-load), so YouTube's own
-   play button starts the video on the first click. The iframe fills exactly the
-   9:16 box the orange poster used to occupy, keeping the card layout unchanged. */
+/* Every platform except Facebook embeds its official player directly (no
+   poster, no click-to-load), so its own play button starts the video on the
+   first click. The iframe fills exactly the 9:16 box the poster used to occupy,
+   keeping the card layout unchanged. */
 .blog-video-frame {
   background: #000;
+}
+/* A player that draws its own header/footer around the video (Instagram's
+   profile row and action bar, Facebook's page row) gets a taller box than 9:16
+   so that chrome is shown rather than clipped; the box background matches so
+   the taller area is not a white gap.
+
+   Instagram's embed at the card's 280px width measures ~547px tall (profile
+   row, portrait media, action bar, likes, comment field), so 640px shows all of
+   its chrome with room for a caption line, instead of the ~210px of white the
+   760px box left below it. */
+.blog-video-frame-chrome {
+  aspect-ratio: auto;
+  height: 640px;
 }
 .blog-video-frame iframe {
   position: absolute;
