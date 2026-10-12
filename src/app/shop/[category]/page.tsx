@@ -1,5 +1,9 @@
 export const revalidate = 21600
 
+// Only the category and shop-view slugs below are real pages: anything else is
+// a 404, not a 200 that happens to render the not-found view.
+export const dynamicParams = false
+
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
@@ -66,13 +70,6 @@ const SEO_META: Record<string, SeoMeta> = {
       'The best Amazon finds are often small: hubs, chargers, power banks and desk helpers. Our Accessories aisle is packed with cool tech gadgets under $50 that make a real difference every day.',
     intro2:
       'The range runs wide — an ergonomic office chair from LiberNovo, a self-lifting steam iron and an intelligent steam press, travel pieces from LEVEL8, mixi and FORWARD X, and everyday fixes like the Scanfield under-desk cable tray and Quntis monitor lamp.',
-  },
-  networking: {
-    title: 'Useful Gadgets for Home – Networking',
-    description:
-      'Useful gadgets for home networking — Wi-Fi boosters, routers and UPS backup at GadgetErea. Genuine networking gear with official warranty and fast US delivery.',
-    intro:
-      'A dead spot in the living room or a router that drops calls? The useful gadgets for home in our Networking collection fix real problems — tested, genuine and backed by warranty.',
   },
   cameras: {
     title: 'Amazon Finds Gadgets – Cameras & Webcams',
