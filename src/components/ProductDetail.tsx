@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Product } from '@/data/products'
 import { formatUSD } from '@/data/products'
+import { productImageAlt } from '@/lib/imageAlt'
 import RatingStars from './RatingStars'
 import { useCart } from '@/context/useCart'
 import { track, pixelFor } from '@/lib/tracking'
@@ -105,7 +106,7 @@ export function ProductDetailHero({ product }: { product: Product }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={product.imageUrl}
-            alt={product.altText ?? product.name}
+            alt={productImageAlt(product)}
             className="pd-image-el"
             width={640}
             height={640}
@@ -115,7 +116,7 @@ export function ProductDetailHero({ product }: { product: Product }) {
           <span
             className="pd-emoji"
             role="img"
-            aria-label={product.altText ?? product.name}
+            aria-label={productImageAlt(product)}
           >
             {product.image}
           </span>

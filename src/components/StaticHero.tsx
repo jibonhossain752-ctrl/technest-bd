@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { PRODUCTS } from '@/data/products'
 import { responsiveSrcset } from '@/lib/images'
+import { productImageAlt } from '@/lib/imageAlt'
 
 export default function StaticHero() {
   const product = [...PRODUCTS]
@@ -29,7 +30,7 @@ export default function StaticHero() {
             src={product.imageUrl}
             srcSet={responsiveSrcset(product.imageUrl)}
             sizes="(min-width: 768px) 420px, 130px"
-            alt={product.altText ?? product.name}
+            alt={productImageAlt(product)}
             className="hero-static-img-el"
             width={520}
             height={520}

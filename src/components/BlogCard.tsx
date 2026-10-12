@@ -5,6 +5,7 @@ import type { BlogPost } from '@/data/posts'
 import { categoryBadgeClass } from '@/data/blogCategories'
 import { track } from '@/lib/tracking'
 import { responsiveSrcset } from '@/lib/images'
+import { blogHeroAlt } from '@/lib/imageAlt'
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-GB', {
@@ -44,7 +45,7 @@ export default function BlogCard({
             src={post.heroImage}
             srcSet={responsiveSrcset(post.heroImage)}
             sizes="(min-width: 1024px) 340px, (min-width: 768px) 260px, 45vw"
-            alt={post.altText ?? `${post.title} — featured image`}
+            alt={blogHeroAlt(post)}
             className="blog-card-thumb-img"
             loading="lazy"
             width={400}

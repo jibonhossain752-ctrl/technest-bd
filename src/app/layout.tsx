@@ -10,6 +10,7 @@ import Footer from '@/components/Footer'
 import MobileBottomNav from '@/components/MobileBottomNav'
 import Toast from '@/components/Toast'
 import ScrollToTop from '@/components/ScrollToTop'
+import { DECORATIVE_ALT } from '@/lib/imageAlt'
 import AnalyticsBootstrap from '@/components/AnalyticsBootstrap'
 import { META_PIXEL_ID } from '@/lib/meta-pixel'
 
@@ -90,7 +91,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 height="1"
                 width="1"
                 style={{ display: 'none' }}
-                alt=""
+                alt={DECORATIVE_ALT}
                 src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
               />
             </noscript>

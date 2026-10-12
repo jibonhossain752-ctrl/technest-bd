@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { Product } from '@/data/products'
 import { formatUSD } from '@/data/products'
+import { productImageAlt } from '@/lib/imageAlt'
 import RatingStars from './RatingStars'
 import { useCart } from '@/context/useCart'
 import { track, pixelFor } from '@/lib/tracking'
@@ -95,7 +96,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
             src={product.imageUrl}
             srcSet={responsiveSrcset(product.imageUrl)}
             sizes="(min-width: 768px) 300px, 45vw"
-            alt={product.altText ?? product.name}
+            alt={productImageAlt(product)}
             className="product-img-el"
             loading="lazy"
             width={400}
@@ -105,7 +106,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           <span
             className="product-emoji"
             role="img"
-            aria-label={product.altText ?? product.name}
+            aria-label={productImageAlt(product)}
           >
             {product.image}
           </span>

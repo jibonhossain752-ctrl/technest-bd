@@ -101,3 +101,14 @@ Shop/category pages (use the "Keep Browsing" links section already rendered on e
   - lists → `{ list: [...] }`
   - external CTA → `{ link: { href, label } }`
 - Inline bold inside a paragraph is the only accepted Markdown: `**text**` (the renderer converts it to `<strong>`). Anything else Markdown-shaped will leak as raw text.
+
+## Alt text (standing)
+
+Alt text: all images get alt via the shared helper in `src/lib/imageAlt.ts`.
+Existing hand-written alt (post `altText`, inline image `alt`, deal `imageAlt`)
+always wins. Fallbacks: blog hero = post title, in-body = nearest heading,
+products = product name, gallery = name plus variant or "photo N of M". Empty
+alt only for decorative images; video poster alt is empty because the title is
+adjacent; icon-only links need aria-label. Never invent image descriptions,
+never stuff keywords. To customize one image, set its alt in data, never
+hardcode alt in a component.

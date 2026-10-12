@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
+import { productImageAlt } from '@/lib/imageAlt'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import { track, pixelFor } from '@/lib/tracking'
 
@@ -141,7 +142,7 @@ export default function CheckoutPage() {
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={product.imageUrl}
-                    alt={product.altText ?? product.name}
+                    alt={productImageAlt(product)}
                     className="summary-item-img"
                     loading="lazy"
                     width={36}
@@ -252,7 +253,7 @@ export default function CheckoutPage() {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={product.imageUrl}
-                      alt={product.altText ?? product.name}
+                      alt={productImageAlt(product)}
                       className="summary-item-img"
                       loading="lazy"
                       width={36}

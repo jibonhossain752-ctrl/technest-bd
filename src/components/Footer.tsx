@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import SocialIcon from './SocialIcon'
 import type { PlatformKey } from '@/lib/socials'
+import { LOGO_ALT } from '@/lib/imageAlt'
 
 const SHOP_LINKS = [
   { label: 'Laptops & PCs', href: '/shop/laptops' },
@@ -37,7 +38,7 @@ export default function Footer() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/gadgeterea-logo.webp"
-              alt="GadgetErea"
+              alt={LOGO_ALT}
               width={106}
               height={36}
               className="logo-img"

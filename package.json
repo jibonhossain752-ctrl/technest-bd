@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/check-image-alt.js",
     "start": "next start",
     "lint": "oxlint"
   },

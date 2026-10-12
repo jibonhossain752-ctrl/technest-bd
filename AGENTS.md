@@ -36,6 +36,21 @@ post, product, page, section, or anything else). Do not wait to be asked.
    dark-blue `.page-header` hero banner (deleted `PageHeader.tsx`) is retired
    site-wide — do not reintroduce it.
 
+### Alt text (standing rule)
+
+Alt text: all images get alt via the shared helper in `src/lib/imageAlt.ts`.
+Existing hand-written alt (post `altText`, inline image `alt`, deal `imageAlt`,
+product `altText`) always wins. Fallbacks: blog hero = post title, in-body =
+nearest heading, products = product name, gallery = name plus variant or
+"photo N of M" (a generated alt that repeats another on the same page gets
+", photo N of M" appended). Empty alt only for decorative images; video poster
+alt is empty because the title is adjacent; icon-only links need aria-label.
+Never invent image descriptions, never stuff keywords, keep alt under ~125
+characters. To customize one image, set its alt in data, never hardcode alt in
+a component. `npm run build` runs `scripts/check-image-alt.js`, which warns
+(never fails) about images without alt and about one alt describing two
+different images on a page.
+
 ## 2. Analytics — every new addition
 
 1. New blog posts, products, and pages must automatically be covered by the

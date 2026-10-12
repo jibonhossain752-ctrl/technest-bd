@@ -10,6 +10,7 @@ import SocialIcon from './SocialIcon'
 import type { PlatformKey } from '@/lib/socials'
 import { track, pixelFor } from '@/lib/tracking'
 import { reportNewsletterSignup } from '@/lib/newsletter-signup'
+import { DECORATIVE_ALT, LOGO_ALT } from '@/lib/imageAlt'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -183,7 +184,7 @@ export default function Navbar() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/gadgeterea-logo.webp"
-            alt="GadgetErea"
+            alt={LOGO_ALT}
             width={94}
             height={32}
             className="logo-img"
@@ -452,7 +453,7 @@ export default function Navbar() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/gadgeterea-logo.webp"
-              alt="GadgetErea"
+              alt={LOGO_ALT}
               width={129}
               height={44}
               className="logo-img"
@@ -568,7 +569,7 @@ export default function Navbar() {
               >
                 {avatar ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={avatar} alt="" className="user-avatar-img" />
+                  <img src={avatar} alt={DECORATIVE_ALT} className="user-avatar-img" />
                 ) : (
                   <span className="user-avatar">
                     {user.name.trim().charAt(0).toUpperCase()}

@@ -6,6 +6,7 @@ import { PLATFORM_PATHS, type PlatformKey } from '@/lib/socials'
 import { VIDEOS } from '@/data/videos'
 import CategoryScrollHint from './CategoryScrollHint'
 import { track, pixelFor } from '@/lib/tracking'
+import { VIDEO_POSTER_ALT } from '@/lib/imageAlt'
 
 const PLATFORM_LABEL: Record<PlatformKey, string> = {
   instagram: 'IG',
@@ -98,7 +99,7 @@ export default function WatchAndShop({
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={v.thumbnail}
-                      alt={`${v.title} — video thumbnail`}
+                      alt={VIDEO_POSTER_ALT}
                       className="watch-thumb-img"
                       loading="lazy"
                     />

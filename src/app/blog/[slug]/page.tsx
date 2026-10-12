@@ -13,6 +13,13 @@ import TrackedAffiliateLink from '@/components/TrackedAffiliateLink'
 import PostFaq from '@/components/PostFaq'
 import BlogVideoCard from '@/components/BlogVideoCard'
 import { resolveBlogVideo, resolveVideoUploadDate } from '@/lib/video'
+import {
+  blogHeroAlt,
+  blogImageAlts,
+  blogInlineAlt,
+  dealImageAlt,
+  productImageAlt,
+} from '@/lib/imageAlt'
 import AuthorBio from '@/components/AuthorBio'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 
@@ -136,12 +143,18 @@ function InlineDealImage({
     ? PRODUCTS.find((p) => p.slug === productSlug)
     : undefined
   const src = product?.imageUrl ?? image
+  // The product's own image is the one rendered when the product has one, so
+  // its alt applies; otherwise this is the deal's own image and gets its alt.
+  const alt = dealImageAlt(
+    { name, imageAlt },
+    product?.imageUrl ? product : undefined,
+  )
   if (src) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
         src={src}
-        alt={product?.altText ?? imageAlt ?? name}
+        alt={alt}
         className="deal-card-inline-img-el"
         width={58}
         height={58}
@@ -150,7 +163,7 @@ function InlineDealImage({
     )
   }
   return (
-    <span className="deal-card-inline-img" role="img" aria-label={name}>
+    <span className="deal-card-inline-img" role="img" aria-label={alt}>
       🛒
     </span>
   )
@@ -160,6 +173,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) notFound()
+
+  // Alt text for every image on this page, resolved together so two different
+  // pictures never share one description (see src/lib/imageAlt.ts).
+  const imageAlts = blogImageAlts(post)
 
   const related = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3)
   const deal = post.dealCard
@@ -382,7 +399,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <figure className="blog-post-hero">
             <Image
               src={post.heroImage}
-              alt={post.altText ?? `${post.title} — featured image`}
+              alt={imageAlts.hero ?? blogHeroAlt(post)}
               width={1200}
               height={675}
               sizes="(max-width: 768px) 100vw, 900px"
@@ -485,7 +502,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <figure key={`img-${i}`} className="blog-inline-figure">
                 <Image
                   src={block.image}
-                  alt={block.alt}
+                  alt={imageAlts.inline.get(i) ?? blogInlineAlt(post, block)}
                   width={block.width ?? 900}
                   height={block.height ?? 675}
                   sizes="(max-width: 768px) 100vw, 700px"
@@ -504,25 +521,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="deal-card-inline">
                 {product?.imageUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={product.imageUrl}
-                    alt={product.altText ?? product.name}
-                    className="deal-card-inline-img-el"
-                    width={58}
-                    height={58}
-                    loading="lazy"
-                  />
-                ) : (
-                  <span
-                    className="deal-card-inline-img"
-                    role="img"
-                    aria-label={
-                      product?.altText ?? product?.name ?? deal.productSlug
-                    }
-                  >
-                    {product?.image ?? '🛒'}
-                  </span>
-                )}
+          <img
+            src={product.imageUrl}
+            alt={productImageAlt(product)}
+            className="deal-card-inline-img-el"
+            width={58}
+            height={58}
+            loading="lazy"
+          />
+        ) : (
+          <span
+            className="deal-card-inline-img"
+            role="img"
+            aria-label={product ? productImageAlt(product) : deal.productSlug}
+          >
+            {product?.image ?? '🛒'}
+          </span>
+        )}
                 <div className="deal-card-inline-info">
                   <strong>{product?.name ?? deal.productSlug}</strong>
                 </div>

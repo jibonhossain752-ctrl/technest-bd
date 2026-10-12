@@ -7,6 +7,7 @@ import NewsletterWidget from '@/components/NewsletterWidget'
 import NewsletterPopup from '@/components/NewsletterPopupLazy'
 import CategoryScrollHint from '@/components/CategoryScrollHint'
 import { track, pixelFor } from '@/lib/tracking'
+import { DECORATIVE_ALT } from '@/lib/imageAlt'
 
 const TABS = [
   { label: 'All', match: null as string | null },
@@ -193,7 +194,13 @@ export default function BlogPage() {
                   <span className="popular-post-thumb" aria-hidden="true">
                     {post.heroImage ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={post.heroImage} alt="" width={46} height={46} loading="lazy" />
+                      <img
+                        src={post.heroImage}
+                        alt={DECORATIVE_ALT}
+                        width={46}
+                        height={46}
+                        loading="lazy"
+                      />
                     ) : (
                       post.emoji
                     )}

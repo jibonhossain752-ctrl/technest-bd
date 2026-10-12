@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/context/useCart'
 import { formatUSD } from '@/data/products'
+import { productImageAlt } from '@/lib/imageAlt'
 import { track, pixelFor } from '@/lib/tracking'
 
 export default function CartPage() {
@@ -71,7 +72,7 @@ export default function CartPage() {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={product.imageUrl}
-                        alt={product.altText ?? product.name}
+                        alt={productImageAlt(product)}
                         loading="lazy"
                         width={72}
                         height={72}
@@ -187,7 +188,7 @@ export default function CartPage() {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={product.imageUrl}
-                        alt={product.altText ?? product.name}
+                        alt={productImageAlt(product)}
                         loading="lazy"
                         width={48}
                         height={48}

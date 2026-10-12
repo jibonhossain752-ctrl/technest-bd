@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Script from 'next/script'
 import { PLATFORM_PATHS } from '@/lib/socials'
 import { platformName, resolveBlogVideo } from '@/lib/video'
+import { VIDEO_POSTER_ALT, playButtonLabel } from '@/lib/imageAlt'
 
 /**
  * Reusable, optional in-post video card.
@@ -140,14 +141,14 @@ export default function BlogVideoCard({
           type="button"
           className="watch-card blog-video-watchcard"
           onClick={play}
-          aria-label={`Play video: ${title}`}
+          aria-label={playButtonLabel(title)}
         >
           <div className={`watch-card-thumb thumb-${video.platform}`}>
             {video.thumbnail ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={video.thumbnail}
-                alt=""
+                alt={VIDEO_POSTER_ALT}
                 className="watch-thumb-img"
                 loading="lazy"
               />
