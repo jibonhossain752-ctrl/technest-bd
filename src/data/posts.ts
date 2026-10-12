@@ -54,7 +54,14 @@ export interface BlogPost {
   keepBrowsing?: { href: string; label: string }[]
   /** Optional in-post video (reusable feature; see src/lib/video.ts). */
   videoUrl?: string
-  /** ISO 8601 upload date, e.g. '2026-07-14'. Required for VideoObject schema. */
+  /**
+   * ISO 8601 upload date, e.g. '2026-07-14'. Required for VideoObject schema.
+   *
+   * A bare date is fine, and stays one where the platform id proves the real
+   * upload time (TikTok). Where the platform shows only a date, use
+   * `<date>T12:00:00Z`: the date is real, and the 12:00:00Z time of day is a
+   * placeholder that exists only so `uploadDate` carries a timezone.
+   */
   videoUploadDate?: string
   videoTitle?: string
   videoDescription?: string
@@ -187,7 +194,8 @@ export const POSTS: BlogPost[] = [
       },
     ],
     videoUrl: 'https://www.youtube.com/shorts/i92KsnjnmQA',
-    videoUploadDate: '2026-10-09',
+    // Real upload date; 12:00:00Z is a placeholder time of day.
+    videoUploadDate: '2026-10-09T12:00:00Z',
     videoTitle:
       'Turn Your iPhone 17 Pro Max Into a Retro Camera with a 2.35X Telephoto Lens!',
     videoDescription:
@@ -331,7 +339,8 @@ export const POSTS: BlogPost[] = [
       },
     ],
     videoUrl: 'https://www.pinterest.com/pin/1051168369298012793/',
-    videoUploadDate: '2026-08-07',
+    // Real upload date; 12:00:00Z is a placeholder time of day.
+    videoUploadDate: '2026-08-07T12:00:00Z',
     videoTitle:
       'Stay Cool for 36 Hours! | Omni PRO Dynamic Ergonomic Chair | Top US Pick 2026',
     videoDescription:
@@ -472,7 +481,8 @@ export const POSTS: BlogPost[] = [
       },
     ],
     videoUrl: 'https://www.facebook.com/reel/1826212645426031',
-    videoUploadDate: '2026-08-02',
+    // Real upload date; 12:00:00Z is a placeholder time of day.
+    videoUploadDate: '2026-08-02T12:00:00Z',
     videoTitle:
       'Stop Overcharging Forever! | 140W Smart Auto Stop USB-C Fast Charger | Top US Pick 2026',
     videoDescription:
@@ -605,7 +615,8 @@ export const POSTS: BlogPost[] = [
       },
     ],
     videoUrl: 'https://www.youtube.com/shorts/svEfyu9bUCs',
-    videoUploadDate: '2026-08-02',
+    // Real upload date; 12:00:00Z is a placeholder time of day.
+    videoUploadDate: '2026-08-02T12:00:00Z',
     videoTitle:
       'Spider-Man vs Venom Begins! | PS5 DualSense Experience | Spider-Man: Brand New Day',
     videoDescription:
@@ -743,7 +754,8 @@ export const POSTS: BlogPost[] = [
       },
     ],
     videoUrl: 'https://www.instagram.com/reel/DbqkqRJCSXz/',
-    videoUploadDate: '2026-08-05',
+    // Real upload date; 12:00:00Z is a placeholder time of day.
+    videoUploadDate: '2026-08-03T12:00:00Z',
     videoTitle:
       'This Iron Lifts Itself Automatically! | Eurosteam Step Up Steam Iron | Top US Pick 2026',
     videoDescription:
