@@ -12,7 +12,7 @@ import NewsletterPopup from '@/components/NewsletterPopupLazy'
 import TrackedAffiliateLink from '@/components/TrackedAffiliateLink'
 import PostFaq from '@/components/PostFaq'
 import BlogVideoCard from '@/components/BlogVideoCard'
-import { resolveBlogVideo } from '@/lib/video'
+import { resolveBlogVideo, resolveVideoUploadDate } from '@/lib/video'
 import AuthorBio from '@/components/AuthorBio'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 
@@ -283,8 +283,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedVideo = post.videoUrl
     ? resolveBlogVideo(post.videoUrl, post.videoThumbnail)
     : null
-  const videoJsonLd =
+  // Always emit a well-formed datetime: a time without a timezone is stripped
+  // back to its date, and a platform that encodes its own UTC time (TikTok)
+  // supplies the offset. See resolveVideoUploadDate.
+  const uploadDate =
     resolvedVideo && post.videoUploadDate
+      ? resolveVideoUploadDate(resolvedVideo, post.videoUploadDate)
+      : null
+  const videoJsonLd =
+    resolvedVideo && uploadDate
       ? {
           '@context': 'https://schema.org',
           '@type': 'VideoObject',
@@ -296,7 +303,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 thumbnailUrl: `https://gadgeterea.com${resolvedVideo.thumbnail}`,
               }
             : {}),
-          uploadDate: post.videoUploadDate,
+          uploadDate,
           contentUrl: resolvedVideo.url,
           url: `https://gadgeterea.com/blog/${post.slug}`,
           ...(resolvedVideo.embedUrl
