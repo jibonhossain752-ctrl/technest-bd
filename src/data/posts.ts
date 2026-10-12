@@ -91,7 +91,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'A Modular Kit, Part by Part' },
       {
         image: '/images/blog/iphone-telephoto-grip-kit-image-2.webp',
-        alt: 'Exploded diagram of the PGYTECH RetroVa kit showing the phone case, the detachable grip, a lens adapter ring and the 2.35x telephoto lens as separate parts',
+        alt: 'PGYTECH grip kit parts laid out separately',
         width: 900,
         height: 502,
       },
@@ -99,7 +99,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'Physical Controls, Like a Real Camera' },
       {
         image: '/images/blog/iphone-telephoto-grip-kit-image-3.webp',
-        alt: 'Diagram of the PGYTECH RetroVa grip controls, labelling the shutter button, multi-function button, zoom lever and control dial on top of the grip',
+        alt: 'PGYTECH grip buttons and dials labelled',
         width: 900,
         height: 502,
       },
@@ -107,7 +107,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'Setups for Different Situations' },
       {
         image: '/images/blog/iphone-telephoto-grip-kit-image-4.webp',
-        alt: 'Four-panel collage of the PGYTECH RetroVa kit in different setups, showing a MagSafe light attached to the case, the grip mounted on the phone, a tripod setup and a wearable strap',
+        alt: 'PGYTECH grip setups shown in four panels',
         width: 900,
         height: 502,
       },
@@ -115,7 +115,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'How Far Can the Telephoto Lens Reach?' },
       {
         image: '/images/blog/iphone-telephoto-grip-kit-image-5.webp',
-        alt: 'Manufacturer sample comparison of the same scene shot on a native iPhone and through the PGYTECH RetroVa 2.35x telephoto lens at 235mm equivalent, showing a city landmark and a bird in flight',
+        alt: 'Comparison photos of a windmill and a bird',
         width: 900,
         height: 502,
       },
@@ -131,7 +131,7 @@ export const POSTS: BlogPost[] = [
           name: 'PGYTECH RetroVa All-in-one Photography Grip Kit for iPhone 17 Pro Max',
           image: '/images/blog/iphone-telephoto-grip-kit-hero.webp',
           imageAlt:
-            'PGYTECH RetroVa all-in-one photography grip kit laid out on a white background with the phone case, textured grip, telephoto lens, strap, pouch and tripod mount',
+            'PGYTECH grip kit and accessories on white',
           affiliateUrl: 'https://amzn.to/4yQSfR2',
           ctaLabel: 'Check Price on Amazon',
         },
@@ -143,7 +143,7 @@ export const POSTS: BlogPost[] = [
     metaDescription:
       'This iPhone telephoto lens and camera grip kit for iPhone 17 Pro Max adds a 2.35x lens, shutter and zoom controls, Bluetooth pairing and a MagSafe-ready case.',
     altText:
-      'PGYTECH RetroVa all-in-one photography grip kit laid out on a white background with the phone case, textured grip, telephoto lens, strap, pouch and tripod mount',
+      'PGYTECH camera grip kit with its accessories',
     faq: [
       {
         question: 'Which iPhones does the PGYTECH RetroVa kit fit?',
@@ -220,7 +220,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'The Five Recline Positions' },
       {
         image: '/images/blog/libernovo-omni-pro-image-2.webp',
-        alt: 'A person seated in a dark ergonomic chair at a desk with a monitor, a footrest under their feet and recline angle markers overlaid on the image',
+        alt: 'Person reclining in an office chair at a desk',
         width: 900,
         height: 502,
       },
@@ -228,7 +228,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'The Seat Ventilation Fan' },
       {
         image: '/images/blog/libernovo-omni-pro-image-3.webp',
-        alt: 'Cutaway of a chair seat showing stacked fabric, foam and mesh layers above a base with a round fan and blue airflow streams',
+        alt: 'Cutaway of a chair seat with airflow',
         width: 900,
         height: 502,
       },
@@ -237,7 +237,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'The Backrest and Dynamic Support' },
       {
         image: '/images/blog/libernovo-omni-pro-image-4.webp',
-        alt: 'Collage of five photos showing people using the chair at desks, at a gaming setup and reclined reading a book',
+        alt: 'Collage of people sitting in the chair',
         width: 900,
         height: 502,
       },
@@ -245,7 +245,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'The Adjustments, Panel by Panel' },
       {
         image: '/images/blog/libernovo-omni-pro-image-5.webp',
-        alt: 'Four-panel diagram showing the armrest, the recline range, the detachable headrest and the seat height on a dark ergonomic chair',
+        alt: 'Diagram of the chair\u2019s adjustable parts',
         width: 900,
         height: 502,
       },
@@ -272,7 +272,7 @@ export const POSTS: BlogPost[] = [
           price: 'Check Current Price on Amazon',
           image: '/images/blog/libernovo-omni-pro-hero.webp',
           imageAlt:
-            'Two LiberNovo Omni Pro ergonomic chairs side by side on a dark background, one graphite and one glacier',
+            'LiberNovo chairs on a dark background',
           affiliateUrl: 'https://amzn.to/4rSk20Z',
         },
       },
@@ -283,7 +283,7 @@ export const POSTS: BlogPost[] = [
     metaDescription:
       'LiberNovo Omni Pro ergonomic chair: seat ventilation fan, motorized lumbar stretch, 5 recline positions from 105\u00b0 to 160\u00b0, and dynamic synced support.',
     altText:
-      'Two LiberNovo Omni Pro ergonomic chairs side by side on a dark background, one graphite and one glacier',
+      'Two LiberNovo chairs on a dark background',
     faq: [
       {
         question: 'What is the LiberNovo Omni Pro?',
@@ -381,7 +381,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'The Claim: Power Stops at Full Charge' },
       {
         image: '/images/blog/auto-stop-charging-adapter-image-4.webp',
-        alt: 'A phone showing Auto Stop and 100% on its screen with the charging adapter plugged into its bottom port',
+        alt: 'Charging adapter plugged into a phone',
         width: 900,
         height: 502,
       },
@@ -389,7 +389,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'What It Looks Like in the Hand' },
       {
         image: '/images/blog/auto-stop-charging-adapter-image-5.webp',
-        alt: 'The charging adapter held between a thumb and a finger beside a coin, with a USB plug illustrated to the right',
+        alt: 'Adapter held between a thumb and finger',
         width: 900,
         height: 502,
       },
@@ -414,7 +414,7 @@ export const POSTS: BlogPost[] = [
           price: 'Check Current Price on Amazon',
           image: '/images/blog/auto-stop-charging-adapter-hero.webp',
           imageAlt:
-            'Silver auto stop charging adapter with a blue illuminated ring on its front, shown plugged into a socket',
+            'Silver adapter with a glowing blue ring',
           affiliateUrl: 'https://amzn.to/4zoSUJC',
         },
       },
@@ -425,7 +425,7 @@ export const POSTS: BlogPost[] = [
     metaDescription:
       'This smart auto stop charging adapter cuts power once your device is fully charged, with USB-C support up to 140W for phones, tablets, laptops. Plug and play.',
     altText:
-      'Silver auto stop charging adapter with a blue illuminated ring on its front, shown plugged into a socket',
+      'Silver charging adapter with a blue ring',
     faq: [
       {
         question: 'What does a smart auto stop charging adapter do?',
@@ -506,7 +506,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'Two Spider-Men, One Game' },
       {
         image: '/images/blog/ps5-spider-man-edition-image-2.webp',
-        alt: 'Two characters in Spider-Man suits leaping together above a red background under the Spider-Man 2 title art',
+        alt: 'Two Spider-Man characters leaping over red',
         width: 900,
         height: 506,
       },
@@ -514,7 +514,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'Adaptive Triggers and the Feel of Web-Swinging' },
       {
         image: '/images/blog/ps5-spider-man-edition-image-3.webp',
-        alt: 'A character in a black Spider-Man suit mid-leap with blue electrical energy above a large black symbiote figure on a rainy city street',
+        alt: 'Spider-Man and a symbiote figure above a street',
         width: 900,
         height: 506,
       },
@@ -522,7 +522,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'Haptics and the Symbiote Powers' },
       {
         image: '/images/blog/ps5-spider-man-edition-image-4.webp',
-        alt: 'A figure in a black suit with a white spider emblem crouched on a rooftop in the rain with city lights behind',
+        alt: 'Black-suited Spider-Man crouched on a rooftop',
         width: 900,
         height: 506,
       },
@@ -530,7 +530,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'The Symbiote Threat' },
       {
         image: '/images/blog/ps5-spider-man-edition-image-5.webp',
-        alt: 'A large black symbiote figure with a long red tongue and a white emblem on its chest in a neon-lit street at night',
+        alt: 'Symbiote figure with a red tongue on a street',
         width: 900,
         height: 506,
       },
@@ -549,7 +549,7 @@ export const POSTS: BlogPost[] = [
           price: 'Check Current Price on Amazon',
           image: '/images/blog/ps5-spider-man-edition-hero.webp',
           imageAlt:
-            'PlayStation 5 console with a black and red Spider-Man themed cover and a matching DualSense controller',
+            'Spider-Man themed PlayStation 5 and controller',
           affiliateUrl: 'https://amzn.to/4zneYnT',
         },
       },
@@ -560,7 +560,7 @@ export const POSTS: BlogPost[] = [
     metaDescription:
       'Spider-Man 2 on PS5 uses the DualSense\u2019s adaptive triggers for web-swinging and haptics for symbiote powers. See what the Spider-Man PS5 edition offers.',
     altText:
-      'PlayStation 5 console with a black and red Spider-Man themed cover beside a matching DualSense controller on a red background',
+      'PlayStation 5 console with a Spider-Man cover',
     faq: [
       {
         question: 'What does the DualSense controller add to Spider-Man 2 on PS5?',
@@ -639,7 +639,7 @@ export const POSTS: BlogPost[] = [
       { heading: '1800W of Power' },
       {
         image: '/images/blog/eurosteam-step-up-image-2.webp',
-        alt: 'Steam iron angled upward on a light background with a lightning bolt graphic and a cord and plug beside it',
+        alt: 'Steam iron with a lightning bolt graphic',
         width: 900,
         height: 502,
       },
@@ -647,7 +647,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'The Self-Lifting Feature, Explained' },
       {
         image: '/images/blog/eurosteam-step-up-image-3.webp',
-        alt: 'Steam iron shown from the side with callout lines pointing to the soleplate, tip, rear controls, base and a measuring cup beside it',
+        alt: 'Steam iron with labelled parts and a cup',
         width: 900,
         height: 502,
       },
@@ -655,7 +655,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'One Temperature for Different Fabrics' },
       {
         image: '/images/blog/eurosteam-step-up-image-4.webp',
-        alt: 'Steam iron standing on a wooden table beside fabric swatches labelled for cotton, wool, synthetics and silk',
+        alt: 'Steam iron beside labelled fabric swatches',
         width: 900,
         height: 502,
       },
@@ -663,7 +663,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'Spray and Steam Burst, Vertically or Flat' },
       {
         image: '/images/blog/eurosteam-step-up-image-5.webp',
-        alt: 'Two photos showing a person steaming a hanging garment upright and another person ironing flat on a board',
+        alt: 'Two photos of steaming and ironing clothes',
         width: 900,
         height: 502,
       },
@@ -671,7 +671,7 @@ export const POSTS: BlogPost[] = [
       { heading: 'Auto Shutoff and Everyday Handling' },
       {
         image: '/images/blog/eurosteam-step-up-image-6.webp',
-        alt: 'Rear view of the steam iron showing its water tank, the cord entering the top and two control buttons on the back',
+        alt: 'Back of the steam iron and its tank',
         width: 900,
         height: 502,
       },
@@ -778,7 +778,7 @@ export const POSTS: BlogPost[] = [
       'This post walks through what the manufacturer says the G2 can do, how each feature is described, and what some early owners report about living with it. Everything here comes from the manufacturer\u2019s own product page and the owner comments shown on it — we have not tested these glasses, so features are described as claimed, not verified.',
       {
         image: '/images/blog/even-g2-smart-glasses-image-2.webp',
-        alt: 'Person wearing dark-framed glasses outdoors looking toward a bird, with a question and answer panel overlaid',
+        alt: 'Woman outdoors looking at a bird on a branch',
         width: 900,
         height: 503,
       },
@@ -858,7 +858,7 @@ export const POSTS: BlogPost[] = [
     metaDescription:
       'Even G2 smart glasses with a built-in display: real-time translation, teleprompter, AI prompts and notifications in a 36 g frame. No camera, IP65 rated.',
     altText:
-      'Black-framed smart glasses with a round lens on the frame, shown next to a phone displaying an app screen',
+      'Black glasses beside a phone showing text',
     faq: [
       {
         question: 'Does the Even G2 have a camera?',
@@ -2015,7 +2015,7 @@ export const POSTS: BlogPost[] = [
       'It\u2019s fast, too — up to 17.9 mph, which is enough to keep pace with a jog, a bike ride, or a dog that just spotted a squirrel. It can jump up to 10 inches to clear curbs or short stairs, and if it tips over, it self-rights without you having to stop and flip it back over yourself. Camera-wise, it shoots 4K at 30fps, 3K at 60fps, or 1080p at 100fps, with electronic image stabilization built in — which matters more than it sounds, because a robot rolling over gravel generates constant vibration, and unstabilized footage from something like that would be unwatchable.',
       {
         image: '/images/blog/beni-camera-robot-mondo-robotics-review-use-case.webp',
-        alt: 'Beni camera robot use cases — ground-level footage of a pet running while it follows',
+        alt: 'Beni camera robot on a gravel path',
         width: 768,
         height: 1369,
       },
@@ -2023,7 +2023,7 @@ export const POSTS: BlogPost[] = [
       'Battery life runs about 1.5 hours per pack, extendable to 4.5+ hours with battery swaps (each swap is tool-free). When you\u2019re done filming, Beni\u2019s auto-editing feature picks through the footage and puts together a highlight reel on its own — so there\u2019s no folder of forty video clips you\u2019ll never sort through.',
       {
         image: '/images/blog/beni-camera-robot-mondo-robotics-review-pricing.webp',
-        alt: 'Beni camera robot pricing and Kickstarter bundle with extra batteries',
+        alt: 'Beni camera robot standing on grass',
         width: 900,
         height: 1131,
       },
@@ -2289,7 +2289,7 @@ export const POSTS: BlogPost[] = [
       'Its combination of 3D LiDAR, AI vision, wire-free mapping, obstacle avoidance, edge-focused cutting, slope capability, multi-zone management, and adjustable cutting height makes it a feature-rich option for lawns up to around half an acre.',
       {
         image: '/images/blog/mova-lidax-ultra-2000-final.webp',
-        alt: 'MOVA LiDAX Ultra 2000 wireless robot lawn mower on a lawn',
+        alt: 'Overhead mowing zone map with a no-go area',
         width: 2560,
         height: 2560,
       },
@@ -2383,7 +2383,7 @@ export const POSTS: BlogPost[] = [
     metaTitle: 'Best USB-C Accessories Under $50: Our 10 Picks',
     metaDescription:
       'The best USB-C accessories under $50 in 2026 — hubs with 4K HDMI, GaN chargers, MagSafe power banks and 3-in-1 wireless chargers. Genuine picks with real prices.',
-    altText: 'USB-C hub, charger and wireless charging accessories on a desk',
+    altText: 'UGREEN USB C hub, braided cable and adapters',
     dealCard: {
       productSlug: 'ugreen-usb-c-hub-5-in-1',
       price: '$12.99',
@@ -3068,7 +3068,7 @@ export const POSTS: BlogPost[] = [
     metaTitle: 'USB-C Hub Buying Guide: 5 Checks Before You Buy',
     metaDescription:
       'USB-C hub buying guide: 4K HDMI at 60Hz, 100W power delivery, USB-A data ports and plug-and-play setup. Best pick under $15 with real specs.',
-    altText: 'USB C hub connecting laptop to HDMI monitor',
+    altText: 'UGREEN USB C hub with its adapters',
     dealCard: {
       productSlug: 'ugreen-usb-c-hub-5-in-1',
       price: '$12.99',
@@ -3280,7 +3280,7 @@ export const POSTS: BlogPost[] = [
     metaTitle: '4K Webcam Buying Guide: 6 Things to Check First',
     metaDescription:
       'How to choose a 4K webcam — sensor size, PDAF autofocus, field of view and low-light performance explained. Best picks for meetings and streaming.',
-    altText: 'AI tracking PTZ 4K webcam on a monitor',
+    altText: 'OBSBOT webcam base and mounting arm',
     dealCard: {
       productSlug: 'obsbot-tiny-2-lite-webcam',
       price: '$159.00',
@@ -3989,7 +3989,7 @@ export const POSTS: BlogPost[] = [
     metaTitle: 'Monitor Lamp Tips: Reduce Eye Strain at Night',
     metaDescription:
       'Monitor light bar tips for eye strain — auto-dimming, flicker-free lighting and the 20-20-20 rule. Quntis ScreenLinear Pro spotlight.',
-    altText: 'Monitor light bar mounted on top of computer monitor',
+    altText: 'Quntis monitor light bar and its remote',
     dealCard: {
       productSlug: 'quntis-computer-monitor-lamp',
       price: '$39.95',
@@ -4417,7 +4417,7 @@ export const POSTS: BlogPost[] = [
     metaTitle: 'AI Tracking Webcam Guide: 5 Features That Matter',
     metaDescription:
       'AI tracking webcams explained — PTZ gimbals, gesture control, HDR sensors and who actually needs one. OBSBOT Tiny 2 Lite spotlight.',
-    altText: 'AI tracking webcam following a presenter in a room',
+    altText: 'OBSBOT webcam base and arm',
     dealCard: {
       productSlug: 'obsbot-tiny-2-lite-webcam',
       price: '$159.00',
@@ -4792,7 +4792,7 @@ export const POSTS: BlogPost[] = [
     metaDescription:
       'A real-world look at the CyberPower CP1500PFCLCD 1500VA / 1000W pure sinewave UPS: pure sinewave output, AVR, runtime, software, and who it\u2019s for.',
     altText:
-      'CyberPower CP1500PFCLCD sinewave UPS on a desk with a desktop PC and monitor in the background',
+      'CyberPower UPS tower with a lit display',
     faq: [
       {
         question: 'Is the CyberPower CP1500PFCLCD a pure sinewave UPS?',
