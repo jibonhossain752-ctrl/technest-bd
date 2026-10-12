@@ -1172,5 +1172,16 @@ export const getRelatedProducts = (product: Product, limit = 4): Product[] =>
 export const getShopViewBySlug = (slug: string): ShopView | undefined =>
   SHOP_VIEWS.find((v) => v.slug === slug)
 
+/**
+ * Products a shop view renders — shared by the view page and the sitemap, so
+ * the page and its lastModified date can never disagree.
+ */
+export const getShopViewProducts = (slug: string): Product[] => {
+  if (slug === 'featured') return PRODUCTS
+  if (slug === 'flash-sale') return PRODUCTS.filter((p) => p.isFlashSale)
+  if (slug === 'new-arrivals') return PRODUCTS.filter((p) => p.isNew)
+  return []
+}
+
 export const formatUSD = (value: number | null | undefined): string =>
   value == null ? 'Price unavailable' : `$${value.toLocaleString('en-US')}`

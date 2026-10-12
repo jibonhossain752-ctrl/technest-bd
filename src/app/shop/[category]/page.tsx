@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 import type { Product } from '@/data/products'
-import { PRODUCTS, SHOP_VIEWS, getShopViewBySlug } from '@/data/products'
+import { SHOP_VIEWS, getShopViewBySlug, getShopViewProducts } from '@/data/products'
 import { CATEGORIES, getCategoryBySlug, getProductsByCategory } from '@/data/categories'
 import ShopCatalog from '@/components/ShopCatalog'
 import Breadcrumb from '@/components/ui/Breadcrumb'
@@ -179,12 +179,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   if (view) {
     title = view.name
-    products =
-      view.slug === 'featured'
-        ? PRODUCTS
-        : view.slug === 'flash-sale'
-          ? PRODUCTS.filter((p) => p.isFlashSale)
-          : PRODUCTS.filter((p) => p.isNew)
+    products = getShopViewProducts(view.slug)
   } else if (cat) {
     title = cat.name
     products = getProductsByCategory(cat.slug)
