@@ -89,7 +89,13 @@ export function resolveBlogVideo(
     videoId =
       url.match(/(?:shorts\/|embed\/|watch\?v=|youtu\.be\/)([\w-]{6,})/)?.[1] ??
       null
-    embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}` : null
+    // `rel=0` keeps related videos to the same channel and `playsinline=1`
+    // stops iOS Safari from hijacking the card into a fullscreen player. The
+    // card appends its own autoplay/mute params on top of this base URL, and
+    // the VideoObject `embedUrl` is this value verbatim (no extra params).
+    embedUrl = videoId
+      ? `https://www.youtube.com/embed/${videoId}?rel=0&playsinline=1`
+      : null
   } else if (platform === 'instagram') {
     const kind = url.match(/\/(reel|p)\//)?.[1] ?? 'reel'
     videoId = url.match(/\/(?:reel|p)\/([\w-]+)/)?.[1] ?? null

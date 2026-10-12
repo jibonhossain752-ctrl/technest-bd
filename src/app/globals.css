@@ -7669,6 +7669,19 @@ button {
   display: flex;
   justify-content: center;
 }
+/* YouTube is embedded directly (no poster, no click-to-load), so YouTube's own
+   play button starts the video on the first click. The iframe fills exactly the
+   9:16 box the orange poster used to occupy, keeping the card layout unchanged. */
+.blog-video-frame {
+  background: #000;
+}
+.blog-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 .blog-video-embed iframe {
   width: 325px;
   max-width: 100%;
