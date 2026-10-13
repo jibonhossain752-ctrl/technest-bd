@@ -4,6 +4,8 @@ import type { Product } from '@/data/products'
 import { POSTS } from '@/data/posts'
 import type { BlogPost, BlogPostImage } from '@/data/posts'
 import { CATEGORIES } from '@/data/categories'
+import { QUICK_LOOK_SLUGS, getQuickLookProduct } from '@/data/quick-look'
+import { SITE_URL } from '@/lib/site'
 
 /**
  * Single source of truth for the XML sitemap.
@@ -15,7 +17,10 @@ import { CATEGORIES } from '@/data/categories'
  * product or category therefore lands in the sitemap with no manual step.
  */
 
-export const SITE = 'https://gadgeterea.com'
+// The canonical origin lives in src/lib/site.ts (single source of truth for
+// brand, domain, locale, currency and country) and is re-exported here so the
+// sitemap, robots and coverage check all read the same value.
+export const SITE = SITE_URL
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>
 
@@ -42,6 +47,7 @@ export const STATIC_PAGES: {
   { path: '/', changeFrequency: 'daily', priority: 1 },
   { path: '/shop', changeFrequency: 'daily', priority: 0.9 },
   { path: '/deals', changeFrequency: 'daily', priority: 0.9 },
+  { path: '/quick-look', changeFrequency: 'weekly', priority: 0.8 },
   { path: '/blog', changeFrequency: 'weekly', priority: 0.7 },
   { path: '/about', changeFrequency: 'monthly', priority: 0.5 },
   { path: '/contact', changeFrequency: 'monthly', priority: 0.5 },
@@ -54,6 +60,8 @@ export const STATIC_PAGES: {
  * update the date when the page changes.
  */
 const STATIC_CONTENT_DATES: Record<string, string> = {
+  // Quick Look section created 2026-10-14; bump when the listing copy changes.
+  '/quick-look': '2026-10-14',
   '/about': '2026-10-05',
   '/contact': '2026-10-05',
   '/faq': '2026-08-11',
@@ -145,6 +153,23 @@ const productEntries = (): SitemapEntry[] =>
     images: product.imageUrl ? [product.imageUrl] : undefined,
   }))
 
+/**
+ * Quick Look spec sheets — one URL per product that has an entry in the Quick
+ * Look data layer, with the product photo declared for Google Image Search.
+ * Adding an entry there puts the URL in the sitemap with no edit here.
+ */
+const quickLookEntries = (): SitemapEntry[] =>
+  QUICK_LOOK_SLUGS.map((slug) => {
+    const product = getQuickLookProduct(slug)
+    return {
+      path: `/quick-look/${slug}`,
+      lastModified: product ? productDate(product) : undefined,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+      images: product?.imageUrl ? [product.imageUrl] : undefined,
+    }
+  })
+
 const blogEntries = (): SitemapEntry[] =>
   POSTS.map((post) => {
     const inlineImages = post.content
@@ -167,6 +192,7 @@ export function getSitemapEntries(): SitemapEntry[] {
     ...categoryEntries(),
     ...shopViewEntries(),
     ...productEntries(),
+    ...quickLookEntries(),
     ...blogEntries(),
   ]
 }
@@ -206,6 +232,7 @@ export function getExcludedPublicPaths(): { path: string; reason: string }[] {
 export const DYNAMIC_ROUTE_SOURCES: Record<string, () => string[]> = {
   '/blog/[slug]': () => POSTS.map((post) => `/blog/${post.slug}`),
   '/product/[slug]': () => PRODUCTS.map((product) => `/product/${product.slug}`),
+  '/quick-look/[slug]': () => QUICK_LOOK_SLUGS.map((slug) => `/quick-look/${slug}`),
   '/shop/[category]': () => [
     ...CATEGORIES.map((category) => `/shop/${category.slug}`),
     ...SHOP_VIEWS.map((view) => `/shop/${view.slug}`),

@@ -1,0 +1,17 @@
+{
+  "//": "Used only by scripts/check-quick-look.js to load the Quick Look data layer in plain Node. It compiles src/data/quick-look-links.ts (plus the files it imports) to CommonJS in .next/tmp-quicklook. The app never builds with this config.",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": false,
+    "resolveJsonModule": true,
+    "outDir": ".next/tmp-quicklook",
+    "rootDir": "src",
+    "types": ["node"]
+  },
+  "files": ["src/data/quick-look-links.ts"]
+}

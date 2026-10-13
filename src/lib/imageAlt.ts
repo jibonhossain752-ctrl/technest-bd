@@ -153,6 +153,32 @@ export function productImageAlt(product: Pick<Product, 'name' | 'altText'>): str
 }
 
 /**
+ * Product GALLERY / thumbnail image (Quick Look pages).
+ *
+ * - With a verified variant label: "<product alt> in <variant>".
+ * - Otherwise "<product alt>, photo N of M" — so every image in one gallery
+ *   gets its own position-accurate alt instead of repeating the hero's.
+ *
+ * Never describes angle, contents or specs: those words are not in the data,
+ * and inventing them is exactly what this helper exists to prevent.
+ */
+export function productGalleryImageAlt(
+  product: Pick<Product, 'name' | 'altText'>,
+  position: number,
+  total: number,
+  variantLabel?: string,
+): string {
+  const base = productImageAlt(product)
+  const variant = variantLabel?.trim()
+  if (variant) {
+    return total > 1
+      ? clampGenerated(`${base} in ${variant}, photo ${position + 1} of ${total}`)
+      : clampGenerated(`${base} in ${variant}`)
+  }
+  return clampGenerated(`${base}, photo ${position + 1} of ${total}`)
+}
+
+/**
  * Deal card image. Pass the product when the product's own image is the one
  * rendered (that is what `imageUrl` decides on the blog templates); otherwise
  * the deal's own image alt, then its name, applies.

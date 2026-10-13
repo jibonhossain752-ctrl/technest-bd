@@ -14,6 +14,7 @@ const SHOP_LINKS = [
 ]
 
 const SUPPORT_LINKS = [
+  { label: 'Quick Look', href: '/quick-look' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Blog', href: '/blog' },
   { label: 'About Us', href: '/about' },

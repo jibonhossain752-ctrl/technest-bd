@@ -1,0 +1,127 @@
+export const revalidate = 21600
+
+// Only slugs with a Quick Look entry are real pages: an unknown product slug is
+// a 404, not a 200 that happens to render a not-found view.
+export const dynamicParams = false
+
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { QUICK_LOOK_SLUGS, getQuickLookEntry, getQuickLookImages, getQuickLookProduct } from '@/data/quick-look'
+import { getQuickLookGuide } from '@/data/quick-look-content'
+import { productImageAlt, productGalleryImageAlt } from '@/lib/imageAlt'
+import { SITE, SITE_URL } from '@/lib/site'
+import {
+  quickLookFaqSchema,
+  quickLookMetaDescription,
+  quickLookMetaTitle,
+  quickLookProductSchema,
+} from '@/lib/quick-look-schema'
+import Breadcrumb from '@/components/ui/Breadcrumb'
+import QuickLookDetail from '@/components/QuickLookDetail'
+import QuickLookGuideSection from '@/components/QuickLookGuide'
+
+interface QuickLookPageProps {
+  params: Promise<{ slug: string }>
+}
+
+export function generateStaticParams() {
+  return QUICK_LOOK_SLUGS.map((slug) => ({ slug }))
+}
+
+export async function generateMetadata({ params }: QuickLookPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const entry = getQuickLookEntry(slug)
+  const product = getQuickLookProduct(slug)
+  if (!entry || !product) return { title: 'Spec sheet not found' }
+
+  const title = quickLookMetaTitle(entry.displayName)
+  const description = quickLookMetaDescription(product, entry)
+  const url = `${SITE_URL}/quick-look/${product.slug}`
+
+  return {
+    title,
+    description,
+    keywords: [product.primaryKeyword, ...(product.secondaryKeywords ?? [])].filter(
+      (keyword): keyword is string => Boolean(keyword),
+    ),
+    alternates: { canonical: `/quick-look/${product.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      url,
+      siteName: SITE.brand,
+      ...(product.imageUrl
+        ? {
+            images: [
+              {
+                url: `${SITE_URL}${product.imageUrl}`,
+                width: 1200,
+                height: 1200,
+                alt: productImageAlt(product),
+              },
+            ],
+          }
+        : {}),
+    },
+    twitter: {
+      card: product.imageUrl ? 'summary_large_image' : 'summary',
+      title,
+      description,
+      ...(product.imageUrl ? { images: [`${SITE_URL}${product.imageUrl}`] } : {}),
+    },
+  }
+}
+
+/**
+ * Quick Look detail page — /quick-look/<product-slug>.
+ *
+ * A spec sheet rather than a second shop page: the product's own catalog record
+ * supplies every fact, the data layer supplies the grouped spec table, and the
+ * written guide (when one exists for the slug) supplies the long-form section.
+ * Products without a guide still render the spec sheet; they just have no guide
+ * section, so no thin pages ship.
+ */
+export default async function QuickLookProductPage({ params }: QuickLookPageProps) {
+  const { slug } = await params
+  const entry = getQuickLookEntry(slug)
+  const product = getQuickLookProduct(slug)
+  if (!entry || !product) notFound()
+
+  const guide = getQuickLookGuide(slug)
+  const images = getQuickLookImages(entry)
+  // A gallery of one keeps the plain product alt; a real gallery gets a
+  // position-accurate alt per image so no two describe the same picture.
+  const imageAlts =
+    images.length > 1
+      ? images.map((_, position) => productGalleryImageAlt(product, position, images.length))
+      : [productImageAlt(product)]
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(quickLookProductSchema(product, entry)) }}
+      />
+      {/* FAQ markup is built from the SAME array the guide renders, so the
+          marked-up questions match the visible text exactly. */}
+      {guide && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(quickLookFaqSchema(guide.faqs)) }}
+        />
+      )}
+
+      <Breadcrumb
+        crumbs={[
+          { label: 'Quick Look', href: '/quick-look' },
+          { label: entry.displayName },
+        ]}
+      />
+
+      <QuickLookDetail product={product} entry={entry} images={images} imageAlts={imageAlts} />
+
+      {guide && <QuickLookGuideSection guide={guide} productSlug={product.slug} />}
+    </>
+  )
+}
