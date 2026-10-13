@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
 import SocialIcon from '@/components/SocialIcon'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import PageIntro from '@/components/ui/PageIntro'
 import type { PlatformKey } from '@/lib/socials'
 
 export const metadata: Metadata = {
@@ -71,11 +72,10 @@ export default function ContactPage() {
     <>
       <div className="category-seo-head">
         <Breadcrumb crumbs={[{ label: 'Contact' }]} />
-        <h1>Contact GadgetErea</h1>
-        <p className="category-seo-intro">
-          Questions about an order, warranty or a gadget find? We reply within
-          24 hours.
-        </p>
+        <PageIntro
+          title="Contact GadgetErea"
+          description="Questions about an order, warranty or a gadget find? We reply within 24 hours."
+        />
       </div>
       <section className="contact container">
         <div className="contact-layout">

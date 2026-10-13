@@ -3,6 +3,7 @@ export const revalidate = 21600
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import PageIntro from '@/components/ui/PageIntro'
 
 export const metadata: Metadata = {
   title: 'About GadgetErea – Your Trusted Gadget Store',
@@ -76,10 +77,10 @@ export default function AboutPage() {
     <>
       <div className="category-seo-head">
         <Breadcrumb crumbs={[{ label: 'About' }]} />
-        <h1>About GadgetErea</h1>
-        <p className="category-seo-intro">
-          Where trending gadgets and the best Amazon finds come from.
-        </p>
+        <PageIntro
+          title="About GadgetErea"
+          description="Where trending gadgets and the best Amazon finds come from."
+        />
       </div>
       <section className="about-intro container">
         <div className="about-text">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getQuickLookCatalog } from '@/data/quick-look'
 import { SITE, SITE_URL } from '@/lib/site'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import PageIntro from '@/components/ui/PageIntro'
 import QuickLookCard from '@/components/QuickLookCard'
 import ViewAllButton from '@/components/ViewAllButton'
 
@@ -46,12 +47,10 @@ export default function QuickLookListingPage() {
       <div className="container">
         <div className="category-seo-head">
           <Breadcrumb crumbs={[{ label: 'Quick Look' }]} />
-          <h1>Quick Look: Gadget Specs and Buying Guides</h1>
-          <p className="category-seo-intro">
-            Quick Look pages put one product under the microscope: the specifications grouped by
-            category, what each feature means in daily use, who the product suits and who should
-            skip it, and honest buying advice before you check the price on Amazon.
-          </p>
+          <PageIntro
+            title="Quick Look: Gadget Specs and Buying Guides"
+            description="Quick Look pages put one popular gadget under the microscope — specs, what each feature means and who it suits."
+          />
         </div>
       </div>
 

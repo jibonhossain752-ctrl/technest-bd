@@ -3,6 +3,7 @@ export const revalidate = 21600
 import type { Metadata } from 'next'
 import DealsCatalog from '@/components/DealsCatalog'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import PageIntro from '@/components/ui/PageIntro'
 
 export const metadata: Metadata = {
   title: 'Gadget Deals Online – Daily Tech Discounts',
@@ -39,17 +40,10 @@ export default function DealsPage() {
     <>
       <Breadcrumb crumbs={[{ label: 'Deals' }]} />
       <div className="category-seo-head">
-        <h1>Gadget Deals Online</h1>
-        <p className="category-seo-intro">
-          The best Amazon finds this week at the lowest prices — hand-picked
-          tech deals on laptops, phones, audio, smart home and accessories,
-          verified and refreshed every week.
-        </p>
-        <p className="category-seo-intro">
-          Every deal here is a price drop on a product already in the
-          GadgetErea catalog — when a price climbs back to its usual level,
-          that product leaves the list automatically.
-        </p>
+        <PageIntro
+          title="Gadget Deals Online"
+          description="Gadget deals online — the best Amazon finds at the lowest verified prices."
+        />
       </div>
       <DealsCatalog />
     </>

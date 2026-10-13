@@ -5,6 +5,7 @@ import { POSTS } from '@/data/posts'
 import BlogCard from '@/components/BlogCard'
 import NewsletterWidget from '@/components/NewsletterWidget'
 import NewsletterPopup from '@/components/NewsletterPopupLazy'
+import PageIntro from '@/components/ui/PageIntro'
 import CategoryScrollHint from '@/components/CategoryScrollHint'
 import { track, pixelFor } from '@/lib/tracking'
 import { DECORATIVE_ALT } from '@/lib/imageAlt'
@@ -83,10 +84,10 @@ export default function BlogPage() {
     <>
       <section className="blog container">
         <div className="blog-head">
-          <h1>Gadget Reviews &amp; Amazon Finds</h1>
-          <p>
-            Best Amazon finds this week, trending gadget reviews and buying guides
-          </p>
+          <PageIntro
+            title="Gadget Reviews & Amazon Finds"
+            description="Best Amazon finds this week, trending gadget reviews and buying guides"
+          />
         </div>
         <div className="blog-toolbar">
           <div className="blog-tabs-wrap">

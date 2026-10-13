@@ -6,6 +6,7 @@ import { PRODUCTS } from '@/data/products'
 import ShopCatalog from '@/components/ShopCatalog'
 import Reveal from '@/components/ui/Reveal'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import PageIntro from '@/components/ui/PageIntro'
 
 export const metadata: Metadata = {
   title: 'Shop Gadget Deals Online – Laptops, Phones & More',
@@ -42,17 +43,10 @@ export default function ShopPage() {
     <Reveal>
       <Breadcrumb crumbs={[{ label: 'Shop' }]} />
       <div className="category-seo-head">
-        <h1>Shop Gadget Deals Online</h1>
-        <p className="category-seo-intro">
-          Every trending gadget and Amazon find in one place — laptops,
-          smartphones, audio, gaming gear, smart home, cameras and accessories,
-          with deals updated weekly.
-        </p>
-        <p className="category-seo-intro">
-          Browse by aisle, or jump straight to what’s new and what’s on flash
-          sale this week — every product page shows the live price, specs and
-          the fastest place to buy.
-        </p>
+        <PageIntro
+          title="Shop Gadget Deals Online"
+          description="Every trending gadget and Amazon find in one place — laptops, phones, audio and gaming gear."
+        />
       </div>
       <Suspense fallback={null}>
         <ShopCatalog

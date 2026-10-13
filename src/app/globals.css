@@ -934,15 +934,31 @@ button {
 }
 
 .category-seo-head h1 {
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  /* Scales smoothly from the mobile size to 2.4rem: the old 3vw dip made
+     tablet titles smaller than phone ones, which squeezed the description
+     below into more lines than on desktop. */
+  font-size: clamp(1.8rem, 1.05vw + 1.5625rem, 2.4rem);
   font-weight: 800;
   color: var(--dark);
   margin-bottom: 10px;
 }
 
+/* Title + description share one width: this wrapper hugs the title (so the
+   description can never widen it, and the title still wraps on narrow
+   screens), and the description below fills exactly that width. Rendered by
+   the shared PageIntro component, so every page's intro lines up the same. */
+.page-intro-inner {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
 .category-seo-intro {
-  max-width: 640px;
-  margin: 0 auto;
+  /* width 0 keeps the description out of the wrapper's width calculation;
+     min-width 100% then stretches it to the title's width. */
+  width: 0;
+  min-width: 100%;
+  margin: 0;
   padding: 0;
   font-size: 0.95rem;
   line-height: 1.65;
@@ -4767,7 +4783,8 @@ button {
 }
 
 .blog-head h1 {
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  /* Same scale as .category-seo-head h1, so every page intro matches. */
+  font-size: clamp(1.8rem, 1.05vw + 1.5625rem, 2.4rem);
   font-weight: 800;
   color: var(--dark);
   margin-bottom: 8px;
@@ -4776,8 +4793,6 @@ button {
 .blog-head p {
   color: var(--muted);
   font-size: 0.95rem;
-  max-width: 640px;
-  margin: 0 auto;
 }
 
 .blog-toolbar {

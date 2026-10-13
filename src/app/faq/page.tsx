@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { FAQS, FAQ_CATEGORIES } from '@/data/faqs'
+import PageIntro from '@/components/ui/PageIntro'
 import { track } from '@/lib/tracking'
 
 export default function FaqPage() {
@@ -16,10 +17,10 @@ export default function FaqPage() {
     <>
       <section className="faq container">
         <div className="blog-head">
-          <h1>FAQ – Gadget Deals, Delivery &amp; Returns</h1>
-          <p>
-            Quick answers on orders, shipping, warranty and gadget deals online
-          </p>
+          <PageIntro
+            title="FAQ – Gadget Deals, Delivery & Returns"
+            description="Quick answers on orders, shipping, warranty and gadget deals online"
+          />
         </div>
         <div className="faq-filters">
           {['All', ...FAQ_CATEGORIES].map((cat) => (
