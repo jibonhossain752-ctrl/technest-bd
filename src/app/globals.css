@@ -8320,3 +8320,89 @@ button {
   }
 }
 
+/* ============================================================
+   HEADER: single-line desktop nav, logo nearer the left edge
+   ============================================================
+   Scope: >=768px only. The mobile/tablet header and its hamburger
+   drawer at <=767px are deliberately untouched (the inline nav is
+   display:none there, and none of these rules apply below 768px).
+
+   Priority when the row runs short of space: logo size and vertical
+   centring (unchanged), then nav links on ONE line, then the search
+   box width. The search is the item that gives way: it is capped and
+   allowed to shrink, while the nav is held at its one-line width, so a
+   link can never wrap or overlap.
+   ============================================================ */
+@media (min-width: 768px) {
+  /* Wider inner container: the logo starts closer to the left edge and the
+     whole row gains room. The page-wide .container (1200px) is unchanged. */
+  .navbar .nav-container {
+    width: min(1360px, 96%);
+    gap: 14px;
+  }
+
+  /* The logo keeps its 44px height and its centring; it only gives up the
+     space that used to sit to its left. */
+  .navbar .logo {
+    margin-left: 0;
+    padding-left: 0;
+    flex: 0 0 auto;
+  }
+
+  /* "Quick Look" (and every other label) stays on one line. min-width:
+     max-content stops the list being squeezed narrower than its own
+     one-line content, which is what used to force the wrap. */
+  .nav-links.nav-inline {
+    min-width: max-content;
+  }
+
+  .nav-links.nav-inline a {
+    white-space: nowrap;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  /* Keep the active/hover underline aligned with the tighter padding. */
+  .nav-links.nav-inline a::after {
+    left: 10px;
+    right: 10px;
+  }
+
+  /* Search: the flexible item. Capped a little narrower than before and
+     allowed to shrink to 0 so the nav is never forced to wrap. */
+  .header-search {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 280px;
+    margin: 0 14px;
+  }
+
+  /* Account / cart / hamburger keep their size rather than squeezing. */
+  .nav-actions {
+    flex: 0 0 auto;
+  }
+}
+
+/* Narrower desktops and large tablets that still show the inline nav:
+   trim the link padding and cap the search box further. */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .navbar .nav-container {
+    gap: 10px;
+  }
+
+  .nav-links.nav-inline a {
+    font-size: 0.84rem;
+    padding: 8px 7px;
+  }
+
+  .nav-links.nav-inline a::after {
+    left: 7px;
+    right: 7px;
+  }
+
+  .header-search {
+    max-width: 190px;
+    margin: 0 10px;
+  }
+}
+
