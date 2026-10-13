@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Product } from '@/data/products'
 import type { QuickLookEntry } from '@/data/quick-look'
 import { productImageAlt } from '@/lib/imageAlt'
-import { SITE, AFFILIATE_CTA, datedPrice } from '@/lib/site'
+import { SITE, AFFILIATE_CTA, AFFILIATE_LINK_ATTRS, datedPrice } from '@/lib/site'
 import TrackedAffiliateLink from './TrackedAffiliateLink'
 import QuickLookGallery from './QuickLookGallery'
 
@@ -77,6 +77,12 @@ export default function QuickLookDetail({
               <TrackedAffiliateLink
                 href={product.buyUrl}
                 className="btn btn-accent ql-buy-btn"
+                // Affiliate links must be sponsored and nofollowed, in a new
+                // tab. Passing them here (rather than relying on the shared
+                // component's default rel) keeps this rule explicit at the one
+                // place the Quick Look section sends traffic to Amazon.
+                target={AFFILIATE_LINK_ATTRS.target}
+                rel={AFFILIATE_LINK_ATTRS.rel}
                 meta={{
                   product_slug: product.slug,
                   product_name: product.name.slice(0, 200),

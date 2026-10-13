@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { QuickLookGuide } from '@/data/quick-look-content'
 import { getPostsForProduct, postHref } from '@/data/quick-look-links'
+import { SITE } from '@/lib/site'
 
 interface QuickLookGuideProps {
   guide: QuickLookGuide
@@ -47,6 +48,10 @@ export default function QuickLookGuideSection({ guide, productSlug }: QuickLookG
 
         <div className="ql-block">
           <h3>{guide.priceSection.heading}</h3>
+          {/* The money section is the guide's buying surface, so the Amazon
+              Associates disclosure appears here in plain visible text as well
+              as beside the buy button above. */}
+          <p className="ql-disclosure">{SITE.amazonDisclosure}</p>
           {guide.priceSection.paragraphs.map((paragraph) => (
             <p className="ql-body" key={paragraph.slice(0, 40)}>
               {paragraph}

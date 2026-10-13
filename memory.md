@@ -27,9 +27,12 @@ from a sister project, rewritten for this store. These rules are standing.
    "as of <date>" — see `datedPrice()` in `src/lib/site.ts`. Product JSON-LD
    omits `offers` entirely unless that dated, verified price exists.
 4. **Affiliate disclosure and rel attributes.** Every outbound Amazon link uses
-   `TrackedAffiliateLink` (or `rel="sponsored nofollow noopener"` plus
-   `target="_blank"`) and the Amazon Associates disclosure sits next to the first
-   buy button in plain visible text, and again in the guide section.
+   `TrackedAffiliateLink` with the attributes from `AFFILIATE_LINK_ATTRS` in
+   `src/lib/site.ts` — `rel="sponsored nofollow noopener"` and
+   `target="_blank"`. The Amazon Associates disclosure
+   (`SITE.amazonDisclosure`) appears in plain visible text in TWO places on a
+   Quick Look page: next to the first buy button, and in the guide's money
+   section.
 5. **No aggregateRating from Amazon data.** Amazon star ratings and review
    counts are Amazon's data, not ours. Never copy them into JSON-LD, schema or
    written text as our own rating, and never emit `review` markup for a product
