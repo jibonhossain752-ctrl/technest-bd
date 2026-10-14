@@ -8794,3 +8794,26 @@ button {
     overflow-y: auto;
   }
 }
+
+/* ============================================================
+   RATING ROW: the Amazon review count is labelled "reviews in
+   Amazon", which is longer than the bare "(19,960)" it replaces.
+   Only wrapping is declared here — the star colour, number size
+   and element order stay in their existing rules so they are not
+   overridden by a later block.
+   ============================================================ */
+
+.rating {
+  flex-wrap: wrap;
+  row-gap: 2px;
+}
+
+.rating-stars {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.rating small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

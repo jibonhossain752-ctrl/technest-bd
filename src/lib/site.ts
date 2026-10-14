@@ -50,6 +50,18 @@ export const PRICE_DISCLAIMER =
 export const AFFILIATE_CTA = 'Check current price on Amazon'
 
 /**
+ * How the review count behind a star rating is labelled, everywhere stars are
+ * shown. The words "reviews in Amazon" must always be present: the rating and
+ * the count are Amazon's data, not this store's, and the row would read as our
+ * own score without them.
+ *
+ * Change the wording here and it changes on every card and product page. The
+ * singular form ("review in Amazon") is derived from this string, so keep the
+ * word "reviews" first.
+ */
+export const RATING_SOURCE_LABEL = 'reviews in Amazon'
+
+/**
  * A price is only ever displayable when it was verified on a known date. The
  * site stores prices without a check date, so this returns null for them and
  * the UI shows the call to action alone rather than a number that may be stale.
