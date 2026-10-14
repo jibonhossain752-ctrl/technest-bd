@@ -97,11 +97,11 @@ export default function QuickLookDetail({
   return (
     <article className="container ql-detail">
       <div className="ql-titleblock">
-        <p className="ql-crumbs">
-          <Link href="/quick-look">Quick Look</Link>
-          <span aria-hidden="true"> / </span>
-          <Link href={`/shop/${product.categorySlug}`}>{product.category}</Link>
-        </p>
+        {/* The title block opens the page: the ported crumb row was removed on
+            purpose (memory.md rule 4c), so no trail is rendered here. Its space
+            lives in `.ql-detail`'s top padding now, which is why the padding is
+            larger than the rest of the section's spacing. Do not re-add a
+            trail — navigation is the guide's "Keep exploring" links. */}
         <h1 className="ql-title">{entry.displayName}: Specs, Features and Buying Guide</h1>
         <p className="ql-lede">{product.description}</p>
 

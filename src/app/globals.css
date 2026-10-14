@@ -7777,8 +7777,14 @@ button {
 }
 
 /* Detail page */
+/* Top padding carries the space the removed crumb row used to occupy, so the
+   title block keeps its distance from the header (memory.md rule 4c). The row
+   was 8px of page padding + one 20.5px line (0.8rem at the inherited 1.6
+   line-height, which never wrapped at any width) + a 10px margin = 38.5px, so
+   the padding below is the same 38px tall figure. Change it only together with
+   what sits above the H1. */
 .ql-detail {
-  padding: 8px 0 20px;
+  padding: 38px 0 20px;
 }
 
 .ql-hero {
@@ -7786,20 +7792,6 @@ button {
   grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
   gap: 40px;
   align-items: start;
-}
-
-.ql-crumbs {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.ql-crumbs a {
-  color: var(--muted);
-}
-
-.ql-crumbs a:hover {
-  color: var(--accent);
 }
 
 .ql-title {

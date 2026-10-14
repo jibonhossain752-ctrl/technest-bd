@@ -16,7 +16,6 @@ import {
   quickLookMetaTitle,
   quickLookProductSchema,
 } from '@/lib/quick-look-schema'
-import Breadcrumb from '@/components/ui/Breadcrumb'
 import QuickLookDetail from '@/components/QuickLookDetail'
 import QuickLookGuideSection from '@/components/QuickLookGuide'
 
@@ -112,13 +111,9 @@ export default async function QuickLookProductPage({ params }: QuickLookPageProp
         />
       )}
 
-      <Breadcrumb
-        crumbs={[
-          { label: 'Quick Look', href: '/quick-look' },
-          { label: entry.displayName },
-        ]}
-      />
-
+      {/* No breadcrumb trail on this page, visible or marked up (memory.md rule
+          4c): the H1 in the title block below is the first thing a visitor or a
+          crawler reaches. The listing page /quick-look keeps its own. */}
       <QuickLookDetail product={product} entry={entry} images={images} imageAlts={imageAlts} />
 
       {guide && <QuickLookGuideSection guide={guide} productSlug={product.slug} />}

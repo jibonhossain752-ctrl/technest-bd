@@ -53,6 +53,17 @@ from a sister project, rewritten for this store. These rules are standing.
    "improve" the ported sections. The Spec Score badge is a completeness
    indicator (share of filled spec fields) and must never be emitted as schema
    or described as a rating.
+4c. **No breadcrumb on the detail pages.** No visible breadcrumb and no
+   BreadcrumbList on Quick Look detail pages; navigation is via Keep exploring
+   links. Both halves were deleted: the ported `.ql-crumbs` row ("Quick Look /
+   <Category>") in `src/components/QuickLookDetail.tsx` and the detail page's
+   `Breadcrumb` render. The row's three selectors in `src/app/globals.css` went
+   with it — nothing else ever used them — and the space the row occupied moved
+   into `.ql-detail`'s top padding, so the title block keeps its distance from
+   the header. Three things deliberately stay: the listing page `/quick-look`
+   keeps its own `Breadcrumb` (JSON-LD only, it has never rendered a row), the
+   Product JSON-LD is unchanged, and the FAQPage JSON-LD is unchanged.
+   `scripts/check-quick-look.js` fails the build if either half comes back.
 5. **No aggregateRating from Amazon data.** Amazon star ratings and review
    counts are Amazon's data, not ours. Never copy them into JSON-LD, schema or
    written text as our own rating, and never emit `review` markup for a product
@@ -74,8 +85,9 @@ from a sister project, rewritten for this store. These rules are standing.
    first: it fails the build on a broken cross-link slug, a breached link limit,
    a missing `specSource`, `displayName`, `metaDescription` or spec row, an
    empty spec group, a purchase panel missing its note, a rendered price figure,
-   or any trace of another market's country, currency or brand. Every entry also
-   needs at least 3 `highlights`, 5 `keySpecs` and 4 `additionalInfo` rows, and
+   a breadcrumb or `BreadcrumbList` on a detail page, or any trace of another
+   market's country, currency or brand. Every entry also needs at least 3
+   `highlights`, 5 `keySpecs` and 4 `additionalInfo` rows, and
    its `metaDescription` must be 120–160 characters with no wording about a
    price, a review or testing. Quick Look URLs are registered in
    `src/lib/sitemap-routes.ts` (both `STATIC_PAGES` and

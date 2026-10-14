@@ -33,6 +33,14 @@
  *      must be rendered exactly once across the detail surface (beside the buy
  *      button); the site-wide footer carries the other copy.
  *
+ *   5. No breadcrumb on the detail pages, and none marked up. A Quick Look
+ *      detail page renders no crumb row and no BreadcrumbList: the visible
+ *      ".ql-crumbs" row and its three CSS selectors were deleted on purpose,
+ *      because claiming a trail the visitor cannot see misdescribes the page
+ *      (memory.md rule 4c). Navigation is the guide's "Keep exploring" links.
+ *      The /quick-look listing page is out of scope — it keeps its own
+ *      Breadcrumb, which has never rendered anything visible.
+ *
  * Loading the TS data: no ts-node in this project, so the same
  * tsc-transpile fallback the other build guards use applies — the shared
  * tsconfig.check-quick-look.json compiles the data layer into
@@ -361,6 +369,64 @@ if (fs.existsSync(detailPath)) {
   if (/\$\d/.test(detailText)) {
     failures.push(
       'src/components/QuickLookDetail.tsx renders a price figure — the Quick Look page shows no price, only the Amazon call to action',
+    )
+  }
+}
+
+/* ── 5. No breadcrumb on the Quick Look detail pages ─────────────────── */
+
+// Standing rule (memory.md rule 4c). Both halves of the detail page's trail
+// were removed on purpose: the ported ".ql-crumbs" row in
+// src/components/QuickLookDetail.tsx (the only user of those selectors), and
+// the shared Breadcrumb render on the detail page.
+//
+// Source-level on purpose: this guard runs from `prebuild`, before the app is
+// compiled, so reading .next here would inspect the PREVIOUS build's HTML and
+// fail the first build after a correct fix. The built HTML is verified by hand
+// instead (npm run build, then grep the detail pages).
+//
+// The /quick-look listing page is deliberately excluded: it keeps its own
+// Breadcrumb, which renders JSON-LD only and has never put a row on screen.
+const DETAIL_PAGE = 'src/app/quick-look/[slug]/page.tsx'
+const LISTING_PAGE = 'src/app/quick-look/page.tsx'
+const detailPageFull = path.join(ROOT, DETAIL_PAGE)
+
+if (!fs.existsSync(detailPageFull)) {
+  failures.push(`expected Quick Look detail page is missing: ${DETAIL_PAGE}`)
+} else {
+  const detailPageText = fs.readFileSync(detailPageFull, 'utf8')
+  if (/BreadcrumbList/.test(detailPageText)) {
+    failures.push(
+      `${DETAIL_PAGE} emits BreadcrumbList — the detail page has no visible breadcrumb, so it must not claim one (memory.md rule 4c)`,
+    )
+  }
+  if (/Breadcrumb/.test(detailPageText)) {
+    failures.push(
+      `${DETAIL_PAGE} renders the shared Breadcrumb component — Quick Look detail pages carry no breadcrumb, visible or marked up (memory.md rule 4c)`,
+    )
+  }
+}
+
+// The removed row and its CSS may not come back either. globals.css is scanned
+// because that is where the row's selectors lived: no other page ever used
+// them, so deleting them was safe and re-adding them is a regression.
+const NO_CRUMB_SURFACE = [
+  ...SOURCE_FILES.filter((relative) => relative !== LISTING_PAGE),
+  'src/app/globals.css',
+]
+
+for (const relative of new Set(NO_CRUMB_SURFACE)) {
+  const full = path.join(ROOT, relative)
+  if (!fs.existsSync(full)) continue
+  const text = fs.readFileSync(full, 'utf8')
+  if (/ql-crumbs/.test(text)) {
+    failures.push(
+      `${relative} still carries the removed ".ql-crumbs" breadcrumb row — Quick Look detail pages have no crumb row (memory.md rule 4c)`,
+    )
+  }
+  if (/BreadcrumbList/.test(text)) {
+    failures.push(
+      `${relative} emits BreadcrumbList — only the /quick-look listing page may carry one (memory.md rule 4c)`,
     )
   }
 }
