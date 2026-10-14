@@ -27,7 +27,10 @@ export function quickLookProductSchema(product: Product, entry: QuickLookEntry) 
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    brand: { '@type': 'Brand', name: product.name.split(' ')[0] },
+    // A standalone entry names its own brand; a linked entry falls back to the
+    // first word of the catalog name, which is the maker for every product in
+    // this catalog.
+    brand: { '@type': 'Brand', name: entry.product?.brand ?? product.name.split(' ')[0] },
     category: product.category,
     url,
     // Specs the page actually prints, kept as additional properties so the

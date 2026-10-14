@@ -6,7 +6,7 @@ export const dynamicParams = false
 
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { QUICK_LOOK_SLUGS, getQuickLookEntry, getQuickLookImages, getQuickLookProduct } from '@/data/quick-look'
+import { QUICK_LOOK_SLUGS, getQuickLookImages, resolveQuickLook } from '@/data/quick-look'
 import { getQuickLookGuide } from '@/data/quick-look-content'
 import { productImageAlt, productGalleryImageAlt } from '@/lib/imageAlt'
 import { SITE, SITE_URL } from '@/lib/site'
@@ -29,9 +29,9 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: QuickLookPageProps): Promise<Metadata> {
   const { slug } = await params
-  const entry = getQuickLookEntry(slug)
-  const product = getQuickLookProduct(slug)
-  if (!entry || !product) return { title: 'Spec sheet not found' }
+  const view = resolveQuickLook(slug)
+  if (!view) return { title: 'Spec sheet not found' }
+  const { entry, product } = view
 
   const title = quickLookMetaTitle(entry.displayName)
   const description = quickLookMetaDescription(entry)
@@ -83,9 +83,11 @@ export async function generateMetadata({ params }: QuickLookPageProps): Promise<
  */
 export default async function QuickLookProductPage({ params }: QuickLookPageProps) {
   const { slug } = await params
-  const entry = getQuickLookEntry(slug)
-  const product = getQuickLookProduct(slug)
-  if (!entry || !product) notFound()
+  const view = resolveQuickLook(slug)
+  if (!view) notFound()
+  // `product` is the catalog record for a linked entry, or the Product-shaped
+  // view built from a standalone entry's own fields (see src/data/quick-look.ts).
+  const { entry, product } = view
 
   const guide = getQuickLookGuide(slug)
   const images = getQuickLookImages(entry)

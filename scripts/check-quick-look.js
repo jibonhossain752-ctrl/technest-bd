@@ -14,12 +14,22 @@
  *      (the post's product block and the Quick Look page's blog block) read
  *      that single map, so a typo would break two pages at once.
  *
- *   2. Quick Look data integrity (src/data/quick-look.ts): each entry joins a
- *      real product slug, carries a display name, a spec source, a hand-written
- *      meta description of 120-160 characters with no price or review wording,
- *      the detail-page panels (highlights, key specs, additional info) and at
- *      least one spec group with either label/value rows or bullet items. Each
- *      entry also stores no price without a `priceCheckedOn` date.
+ *   2. Quick Look data integrity (src/data/quick-look.ts): each entry carries a
+ *      display name, a spec source, a hand-written meta description of 120-160
+ *      characters with no price or review wording, the detail-page panels
+ *      (highlights, key specs, additional info) and at least one spec group with
+ *      either label/value rows or bullet items. Each entry also stores no price
+ *      without a `priceCheckedOn` date, and no price at all unless it can be
+ *      displayed as dated.
+ *
+ *      An entry is either LINKED to a catalog record or STANDALONE:
+ *      - linked: the slug must be a real product slug in src/data/products.ts.
+ *      - standalone: it must carry its OWN product block (name, category,
+ *        categorySlug, buyUrl, description, features, at least one image) using
+ *        a real shop category, an https buy link, no undated price, and a
+ *        rating only when it comes with the review count that labels it.
+ *      A slug that matches no catalog record and carries no product block is a
+ *      failure, so a page can never render around missing data.
  *
  *   3. Market language: the Quick Look source files must not mention the sister
  *      project's country, currency or brand. TARGET is a US store in USD.
@@ -41,6 +51,15 @@
  *      The /quick-look listing page is out of scope — it keeps its own
  *      Breadcrumb, which has never rendered anything visible.
  *
+ *   6. Slugs, buy links and guide links. Every entry needs a plain
+ *      lowercase-hyphenated slug and a buy link that actually goes somewhere
+ *      (the page's only call to action). Every guide's "Keep exploring" cards
+ *      must point at real pages: a known static route, a real shop category, a
+ *      real Quick Look page, or a /product/<slug> that exists in the catalog —
+ *      a standalone product has no product page, so linking one would be a 404.
+ *      Each guide must also carry a card back to /quick-look and one for its
+ *      own category aisle.
+ *
  * Loading the TS data: no ts-node in this project, so the same
  * tsc-transpile fallback the other build guards use applies — the shared
  * tsconfig.check-quick-look.json compiles the data layer into
@@ -54,18 +73,32 @@ const ROOT = process.cwd()
 const failures = []
 const warnings = []
 
+/** Every module the guard reads out of the transpiled data layer. */
+const EMITTED = [
+  'quick-look-links.js',
+  'quick-look.js',
+  'products.js',
+  'posts.js',
+  'categories.js',
+  'quick-look-content.js',
+]
+
 function loadQuickLookData() {
   const outDir = path.join(ROOT, '.next', 'tmp-quicklook', 'data')
-  const entry = path.join(outDir, 'quick-look-links.js')
   try {
-    if (!fs.existsSync(entry)) {
+    // Compile when ANY of the modules is missing, not only the entry file: a
+    // newly added data file would otherwise be silently absent and the checks
+    // that read it would quietly not run.
+    if (EMITTED.some((file) => !fs.existsSync(path.join(outDir, file)))) {
       execSync('npx tsc --project tsconfig.check-quick-look.json', { stdio: 'inherit' })
     }
     return {
-      links: require(entry),
+      links: require(path.join(outDir, 'quick-look-links.js')),
       quickLook: require(path.join(outDir, 'quick-look.js')),
       products: require(path.join(outDir, 'products.js')),
       posts: require(path.join(outDir, 'posts.js')),
+      categories: require(path.join(outDir, 'categories.js')),
+      content: require(path.join(outDir, 'quick-look-content.js')),
     }
   } catch (error) {
     console.error(`\ncheck-quick-look: could not load the Quick Look data — ${error.message}`)
@@ -73,7 +106,9 @@ function loadQuickLookData() {
   }
 }
 
-const { links, quickLook, products, posts } = loadQuickLookData()
+const { links, quickLook, products, posts, categories, content } = loadQuickLookData()
+const { CATEGORIES } = categories
+const { QUICK_LOOK_GUIDES } = content
 
 const {
   POST_PRODUCT_LINKS,
@@ -86,6 +121,9 @@ const { POSTS } = posts
 
 const productSlugs = new Set(PRODUCTS.map((product) => product.slug))
 const postSlugs = new Set(POSTS.map((post) => post.slug))
+
+// Shop categories, for validating every entry's aisle link and category name.
+const categoryBySlug = new Map(CATEGORIES.map((category) => [category.slug, category]))
 
 /* ── 1. Cross-links ─────────────────────────────────────────────────── */
 
@@ -137,8 +175,68 @@ for (const slug of Object.keys(QUICK_LOOK)) {
   if (entry.slug !== slug) {
     failures.push(`Quick Look entry "${slug}" has a mismatched slug field ("${entry.slug}")`)
   }
+  // Linked or standalone. A linked entry takes its category, price and rating
+  // from its catalog record; a standalone one has to supply all of them itself,
+  // because nothing else on the site knows this product exists.
   if (!productSlugs.has(slug)) {
-    failures.push(`Quick Look entry "${slug}" matches no product in src/data/products.ts`)
+    const own = entry.product
+    if (!own) {
+      failures.push(
+        `Quick Look entry "${slug}" matches no product in src/data/products.ts and carries no own \`product\` block — a standalone entry must supply one (see resolveQuickLook in src/data/quick-look.ts)`,
+      )
+    } else {
+      for (const key of ['name', 'category', 'categorySlug', 'description', 'buyUrl']) {
+        if (typeof own[key] !== 'string' || !own[key].trim()) {
+          failures.push(`standalone entry "${slug}" has no product.${key}`)
+        }
+      }
+      if (!Array.isArray(own.features) || own.features.length < 3) {
+        failures.push(
+          `standalone entry "${slug}" needs at least 3 product.features (the detail page's highlight list renders them)`,
+        )
+      }
+      if (typeof own.buyUrl === 'string' && !/^https:\/\//.test(own.buyUrl)) {
+        failures.push(`standalone entry "${slug}" has a buyUrl that is not an https link`)
+      }
+      const category = categoryBySlug.get(own.categorySlug)
+      if (!category) {
+        failures.push(
+          `standalone entry "${slug}" uses categorySlug "${own.categorySlug}", which is not a shop category (the aisle link would 404)`,
+        )
+      } else if (own.category !== category.name) {
+        failures.push(
+          `standalone entry "${slug}" category "${own.category}" does not match the shop's name for "${own.categorySlug}" ("${category.name}")`,
+        )
+      }
+      if (!Array.isArray(entry.images) || entry.images.length === 0) {
+        failures.push(
+          `standalone entry "${slug}" lists no images — the gallery would fall back to an emoji stand-in`,
+        )
+      }
+      // A price the page can never display is data nobody can check, and an
+      // undated number is exactly what memory.md rule 3 forbids shipping.
+      if (own.price != null && !own.priceCheckedOn) {
+        failures.push(
+          `standalone entry "${slug}" stores a price with no priceCheckedOn — the page would show a stale number or none at all, so the price must not be stored`,
+        )
+      }
+      if (own.price != null && own.oldPrice != null && own.oldPrice <= own.price) {
+        failures.push(
+          `standalone entry "${slug}" has an oldPrice (${own.oldPrice}) that is not above its price (${own.price})`,
+        )
+      }
+      if (own.rating != null && (typeof own.rating !== 'number' || own.rating < 0 || own.rating > 5)) {
+        failures.push(`standalone entry "${slug}" has a rating outside 0-5`)
+      }
+      if (own.rating != null && !(own.reviews > 0)) {
+        failures.push(
+          `standalone entry "${slug}" has a rating with no review count — the row cannot render without one, since the count is what attributes it to Amazon`,
+        )
+      }
+      if (own.reviews != null && !Number.isInteger(own.reviews)) {
+        failures.push(`standalone entry "${slug}" has a non-integer review count`)
+      }
+    }
   }
   if (!entry.displayName || !entry.displayName.trim()) {
     failures.push(`Quick Look entry "${slug}" has no displayName (used for the H1 and meta title)`)
@@ -428,6 +526,103 @@ for (const relative of new Set(NO_CRUMB_SURFACE)) {
     failures.push(
       `${relative} emits BreadcrumbList — only the /quick-look listing page may carry one (memory.md rule 4c)`,
     )
+  }
+}
+
+/* ── 6. Slugs, buy links and guide links ─────────────────────────────── */
+
+// Three things every page needs on its own, whichever data shape it uses: a
+// slug that is a real route segment, a buy link that goes somewhere, and
+// "Keep exploring" cards aimed at pages that exist. A /product/<slug> card is
+// only allowed when that product is in the catalog: a standalone product has
+// no /product page, so linking one would ship a 404.
+const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+const STATIC_HREFS = new Set([
+  '/quick-look',
+  '/shop',
+  '/deals',
+  '/blog',
+  '/faq',
+  '/about',
+  '/contact',
+])
+
+/** The buy link behind the page's only call to action. */
+const buyLinkFor = (slug) =>
+  PRODUCTS.find((product) => product.slug === slug)?.buyUrl ?? QUICK_LOOK[slug]?.product?.buyUrl
+
+/** The shop category the page belongs to, from either data shape. */
+const categoryFor = (slug) =>
+  PRODUCTS.find((product) => product.slug === slug)?.categorySlug ??
+  QUICK_LOOK[slug]?.product?.categorySlug
+
+for (const slug of Object.keys(QUICK_LOOK)) {
+  if (!SLUG_PATTERN.test(slug)) {
+    failures.push(`Quick Look slug "${slug}" is not a plain lowercase-hyphenated route segment`)
+  }
+  const buyUrl = buyLinkFor(slug)
+  if (!buyUrl) {
+    failures.push(
+      `Quick Look entry "${slug}" has no buy link — the page's only call to action would be missing (a linked entry needs its record's buyUrl, a standalone entry its own)`,
+    )
+  } else if (!/^https:\/\//.test(buyUrl)) {
+    failures.push(`Quick Look entry "${slug}" has a buy link that is not an https URL`)
+  }
+}
+
+for (const [slug, guide] of Object.entries(QUICK_LOOK_GUIDES)) {
+  if (!(slug in QUICK_LOOK)) {
+    failures.push(`guide "${slug}" has no Quick Look entry — nothing renders it`)
+    continue
+  }
+  const links = Array.isArray(guide.links) ? guide.links : []
+  if (links.length === 0) {
+    failures.push(`guide "${slug}" has no "Keep exploring" cards — the page would have no way out`)
+  }
+  for (const link of links) {
+    if (!link.label || !link.description || !link.href) {
+      failures.push(
+        `guide "${slug}" has a "Keep exploring" card missing its label, description or href`,
+      )
+      continue
+    }
+    if (STATIC_HREFS.has(link.href)) continue
+    if (link.href.startsWith('/shop/')) {
+      if (!categoryBySlug.has(link.href.slice('/shop/'.length))) {
+        failures.push(`guide "${slug}" links to ${link.href}, which is not a shop category`)
+      }
+      continue
+    }
+    if (link.href.startsWith('/product/')) {
+      if (!productSlugs.has(link.href.slice('/product/'.length))) {
+        failures.push(
+          `guide "${slug}" links to ${link.href}, a product page that does not exist — a Quick Look page may only link to a product it shares with the shop`,
+        )
+      }
+      continue
+    }
+    if (link.href.startsWith('/quick-look/')) {
+      if (!QUICK_LOOK_SLUGS.includes(link.href.slice('/quick-look/'.length))) {
+        failures.push(`guide "${slug}" links to ${link.href}, which has no Quick Look page`)
+      }
+      continue
+    }
+    failures.push(`guide "${slug}" links to ${link.href}, which is not a known route`)
+  }
+  if (!links.some((link) => link.href === '/quick-look')) {
+    failures.push(`guide "${slug}" has no card back to /quick-look`)
+  }
+  const categorySlug = categoryFor(slug)
+  if (categorySlug && !links.some((link) => link.href === `/shop/${categorySlug}`)) {
+    failures.push(`guide "${slug}" has no card for its own aisle (/shop/${categorySlug})`)
+  }
+}
+
+// A page without a guide still renders its spec sheet (see memory.md), but
+// every page shipped in a batch is expected to carry one, so say so out loud.
+for (const slug of Object.keys(QUICK_LOOK)) {
+  if (!(slug in QUICK_LOOK_GUIDES)) {
+    warnings.push(`Quick Look entry "${slug}" has no guide — the page renders its spec sheet alone`)
   }
 }
 

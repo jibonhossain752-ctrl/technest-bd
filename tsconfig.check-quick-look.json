@@ -1,5 +1,5 @@
 {
-  "//": "Used only by scripts/check-quick-look.js to load the Quick Look data layer in plain Node. It compiles src/data/quick-look-links.ts (plus the files it imports) to CommonJS in .next/tmp-quicklook. The app never builds with this config.",
+  "//": "Used only by scripts/check-quick-look.js to load the Quick Look data layer in plain Node. It compiles the listed data files (plus everything they import) to CommonJS in .next/tmp-quicklook. categories.ts is an explicit entry too, because the guard validates every standalone entry's category against the shop categories, and quick-look-content.ts because it validates the guides' links. The app never builds with this config.",
   "compilerOptions": {
     "target": "ES2022",
     "module": "node16",
@@ -13,5 +13,9 @@
     "rootDir": "src",
     "types": ["node"]
   },
-  "files": ["src/data/quick-look-links.ts"]
+  "files": [
+    "src/data/quick-look-links.ts",
+    "src/data/categories.ts",
+    "src/data/quick-look-content.ts"
+  ]
 }
