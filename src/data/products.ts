@@ -23,7 +23,6 @@ export interface Product {
   altText?: string
   primaryKeyword?: string
   secondaryKeywords?: string[]
-  warranty?: string | null
 }
 
 export const PRODUCTS: Product[] = [
@@ -75,7 +74,6 @@ export const PRODUCTS: Product[] = [
       'Playful owl design for kids rooms',
       '2-year worry-free guarantee',
     ],
-    warranty: '2-year worry-free guarantee',
     metaTitle: 'Kids Echo Dot 5th Gen (Owl) – Amazon Kids Smart Speaker',
     metaDescription: 'Kid-friendly Echo Dot 5th Gen in a playful owl design with Alexa Kids content, parental controls and privacy features. Official warranty, fast US delivery.',
     altText: 'Kids Echo Dot 5th Gen smart speaker in owl design',
@@ -104,7 +102,6 @@ export const PRODUCTS: Product[] = [
       'Active airflow seat ventilation',
       '45cm seat',
     ],
-    warranty: 'Electronics: 2 years; Frame: 5 years',
     metaTitle: 'LiberNovo Omni PRO Ergonomic Office Chair with Built-in Fan',
     metaDescription: 'Ergonomic office chair with a built-in fan, footrest and 105-160 degree recline for all-day comfort at home or in the office.',
     altText: 'LiberNovo Omni PRO ergonomic office chair with built-in fan',
@@ -437,7 +434,6 @@ export const PRODUCTS: Product[] = [
       'Long battery life',
       'Blue Shadow',
     ],
-    warranty: 'US 1 Yr Manufacturer Warranty',
     metaTitle: 'Samsung Galaxy Z Fold7 256GB Unlocked, Blue Shadow',
     metaDescription: 'Samsung Galaxy Z Fold7 unlocked with 256GB, a large foldable display and AI photo edits. Includes US 1-year manufacturer warranty.',
     altText: 'Samsung Galaxy Z Fold7 in Blue Shadow',
@@ -469,7 +465,6 @@ export const PRODUCTS: Product[] = [
       'Unlocked',
       '$200 gift card included',
     ],
-    warranty: 'US 1 Yr Warranty',
     metaTitle: 'Samsung Galaxy Z Flip8 Unlocked 256GB, Pink + $200 Gift Card',
     metaDescription: 'Samsung Galaxy Z Flip8 unlocked with FlexCam, Super Steady video and Snapdragon 8 Elite Gen 5. Includes a $200 gift card.',
     altText: 'Samsung Galaxy Z Flip8 in Pink',
@@ -499,7 +494,6 @@ export const PRODUCTS: Product[] = [
       'Non-stick pressing surface',
       '20 inch',
     ],
-    warranty: '1 Year Manufacturer',
     metaTitle: 'SINGER Intelligent 2.0 Steam Press – 1600W with Auto Shutoff',
     metaDescription: 'SINGER Intelligent 2.0 steam press with guided digital controls, two heat modes, auto shutoff and a 1000ml water tank.',
     altText: 'SINGER Intelligent 2.0 steam press',
@@ -620,7 +614,6 @@ export const PRODUCTS: Product[] = [
       'Compact design',
       'Smart home control',
     ],
-    warranty: '90-day limited warranty and service',
     metaTitle: 'Amazon Echo Dot 5th Gen Smart Speaker, Charcoal',
     metaDescription: 'Echo Dot 5th Gen smart speaker with Alexa voice control, crisp vocals and balanced bass. Controls your smart home.',
     altText: 'Amazon Echo Dot 5th Gen smart speaker',
@@ -653,7 +646,6 @@ export const PRODUCTS: Product[] = [
       'Compact design',
       'MacBook compatible',
     ],
-    warranty: '24 month',
     metaTitle: 'UGREEN USB-C Hub 5-in-1 – 4K HDMI, 100W Power Delivery',
     metaDescription: 'UGREEN 5-in-1 USB-C hub with 4K HDMI output, 100W pass-through charging and three USB-A ports. Compact, plug and play, MacBook ready.',
     altText: 'UGREEN 5 in 1 USB C hub with HDMI and 100W power delivery',
@@ -749,7 +741,6 @@ export const PRODUCTS: Product[] = [
       'Multipoint connection',
       'Touch controls',
     ],
-    warranty: '1 year',
     metaTitle: 'Sony WH-1000XM5 Wireless Noise Canceling Headphones',
     metaDescription: 'Sony WH-1000XM5 headphones with industry-leading noise cancellation, crystal-clear calls and 30-hour battery life.',
     altText: 'Sony WH-1000XM5 noise cancelling wireless headphones',
@@ -780,8 +771,6 @@ export const PRODUCTS: Product[] = [
       '2 USB charge ports',
       '3-year warranty',
     ],
-    warranty:
-      '3-YEAR WARRANTY – INCLUDING THE BATTERY; $500,000 Connected Equipment Guarantee',
     metaTitle: 'CyberPower CP1500PFCLCD Sinewave UPS, 1500VA/1000W',
     metaDescription: 'CyberPower PFC Sinewave UPS with 1500VA/1000W, 12 outlets, AVR voltage regulation and a color LCD display. 3-year warranty including battery.',
     altText: 'CyberPower CP1500PFCLCD sinewave UPS battery backup',
@@ -812,7 +801,6 @@ export const PRODUCTS: Product[] = [
       '17-inch length',
       '2-pack',
     ],
-    warranty: 'Warranty Included',
     metaTitle: 'Scanfield Under Desk Cable Management Tray, 17 Inch (2-Pack)',
     metaDescription: 'No-screw under-desk cable management tray with strong adhesive and a 5-inch interior that holds power strips. 2-pack.',
     altText: 'Scanfield under desk cable management tray 2 pack',

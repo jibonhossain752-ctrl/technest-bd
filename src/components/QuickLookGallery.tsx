@@ -12,12 +12,31 @@ interface QuickLookGalleryProps {
   /** Emoji stand-in used when the product has no photo on file. */
   fallbackEmoji: string
   altFallback: string
+  /**
+   * Spec Score shown on the image badge — the share of this entry's spec fields
+   * that are actually filled. It is a completeness indicator, not a rating, and
+   * it is deliberately never emitted as schema.
+   */
+  specScore?: number
 }
 
+/** Thumbnails shown inline before the "+N" tile takes over. */
+const MAX_THUMBS = 3
+
 /**
- * Main image plus thumbnail strip for a Quick Look page. Clicking the main
- * image opens the lightbox; with a single image the thumbnails and arrows are
- * skipped entirely rather than showing a control that does nothing.
+ * Gallery for a Quick Look page, ported from the source layout: ONE framed unit
+ * holds the thumbnails and the main image, DOM order [thumbs, main], reversed on
+ * small screens so the main image sits on top with a scrollable horizontal thumb
+ * row beneath it. From 1024px the thumbs become a vertical rail on the LEFT of
+ * the main image.
+ *
+ * Rendering rules:
+ * - Up to MAX_THUMBS + 1 images: every thumbnail renders inline, no tile.
+ * - More than that: the first MAX_THUMBS render inline and the last slot becomes
+ *   a "+N" tile that opens the lightbox; the main image is click-to-zoom too.
+ * - The Spec Score badge rides on the main image box.
+ * - Prev/next arrows stay on the image box in both layouts.
+ * - With no images the emoji stand-in renders alone, no controls.
  */
 export default function QuickLookGallery({
   images,
@@ -25,6 +44,7 @@ export default function QuickLookGallery({
   productName,
   fallbackEmoji,
   altFallback,
+  specScore,
 }: QuickLookGalleryProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [active, setActive] = useState(0)
@@ -39,47 +59,100 @@ export default function QuickLookGallery({
     )
   }
 
-  const current = images[active] ?? images[0]
-  const currentAlt = alts[active] ?? alts[0] ?? altFallback
+  // More than MAX_THUMBS + 1 images (>4): 3 thumbs + the "+N" tile.
+  // MAX_THUMBS + 1 or fewer (≤4): show them ALL inline, no tile.
+  const showSeeAll = images.length > MAX_THUMBS + 1
+  const inlineThumbs = showSeeAll ? images.slice(0, MAX_THUMBS) : images
+
+  const activeIdx = active % images.length
+  const current = images[activeIdx] ?? images[0]
+  const currentAlt = alts[activeIdx] ?? alts[0] ?? altFallback
+
+  const step = (delta: number) => setActive((value) => (value + delta + images.length) % images.length)
 
   return (
     <div className="ql-gallery">
-      <button
-        type="button"
-        className="ql-gallery-main"
-        onClick={() => setOpenIndex(active)}
-        aria-label={`${currentAlt} — open larger view`}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={current}
-          srcSet={responsiveSrcset(current)}
-          sizes="(max-width: 900px) 90vw, 520px"
-          alt={currentAlt}
-          width={640}
-          height={640}
-          fetchPriority="high"
-        />
-      </button>
-
-      {images.length > 1 && (
-        <div className="ql-gallery-thumbs">
-          {images.map((image, position) => (
+      <div className="ql-gallery-shell">
+        <div className="ql-gallery-rail">
+          {inlineThumbs.map((image, position) => (
             <button
               key={image}
               type="button"
-              className={position === active ? 'ql-gallery-thumb active' : 'ql-gallery-thumb'}
+              className={position === activeIdx ? 'ql-gallery-thumb active' : 'ql-gallery-thumb'}
               onClick={() => setActive(position)}
               aria-label={`Show image ${position + 1} of ${images.length}`}
-              aria-current={position === active}
+              aria-current={position === activeIdx}
             >
-              {/* Decorative: the main image above already carries the alt. */}
+              {/* Decorative: the main image below carries the alt. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={image} alt="" width={72} height={72} loading="lazy" />
+              <img src={image} alt="" width={80} height={80} loading="lazy" />
             </button>
           ))}
+
+          {showSeeAll && (
+            <button
+              type="button"
+              className="ql-gallery-thumb ql-gallery-seeall"
+              onClick={() => setOpenIndex(activeIdx)}
+              aria-label={`See all ${images.length} images`}
+            >
+              {/* Decorative: the tile is a control, and the count is the label. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={images[MAX_THUMBS]} alt="" width={80} height={80} loading="lazy" />
+              <span className="ql-gallery-seeall-count">+{images.length - MAX_THUMBS}</span>
+            </button>
+          )}
         </div>
-      )}
+
+        <div className="ql-gallery-stage">
+          {typeof specScore === 'number' && (
+            <div className="ql-spec-score">
+              <span className="ql-spec-score-label">Spec Score</span>
+              <span className="ql-spec-score-value">{specScore}%</span>
+            </div>
+          )}
+
+          <button
+            type="button"
+            className={showSeeAll ? 'ql-gallery-main zoomable' : 'ql-gallery-main'}
+            onClick={showSeeAll ? () => setOpenIndex(activeIdx) : undefined}
+            aria-label={`${currentAlt}${showSeeAll ? ' — open larger view' : ''}`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              key={current}
+              src={current}
+              srcSet={responsiveSrcset(current)}
+              sizes="(max-width: 900px) 90vw, 520px"
+              alt={currentAlt}
+              width={640}
+              height={640}
+              fetchPriority="high"
+            />
+          </button>
+
+          {images.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="ql-gallery-arrow left"
+                onClick={() => step(-1)}
+                aria-label="Previous image"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="ql-gallery-arrow right"
+                onClick={() => step(1)}
+                aria-label="Next image"
+              >
+                ›
+              </button>
+            </>
+          )}
+        </div>
+      </div>
 
       {openIndex !== null && (
         <LightboxGallery

@@ -1,12 +1,79 @@
 import Link from 'next/link'
-import type { QuickLookGuide } from '@/data/quick-look-content'
+import type { QuickLookGuide, QuickLookSection } from '@/data/quick-look-content'
 import { getPostsForProduct, postHref } from '@/data/quick-look-links'
-import { SITE } from '@/lib/site'
 
 interface QuickLookGuideProps {
   guide: QuickLookGuide
   /** Product slug — the key the cross-link reverse lookup uses. */
   productSlug: string
+}
+
+/**
+ * One optional guide section: an H3, prose, and any of the sub-parts the data
+ * supplies — an H4 sub-section with its own paragraphs, a card row, or a
+ * comparison table. Every element reuses the classes already on this page, so a
+ * deeper guide needs no new layout.
+ */
+function GuideSection({ section }: { section: QuickLookSection }) {
+  return (
+    <div className="ql-block">
+      <h3>{section.heading}</h3>
+
+      {section.paragraphs?.map((paragraph) => (
+        <p className="ql-body" key={paragraph.slice(0, 40)}>
+          {paragraph}
+        </p>
+      ))}
+
+      {section.table && (
+        <div className="ql-compare-wrap">
+          <table className="ql-compare">
+            <thead>
+              <tr>
+                {section.table.head.map((cell) => (
+                  <th scope="col" key={cell}>
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {section.table.rows.map((row) => (
+                <tr key={row[0]}>
+                  <th scope="row">{row[0]}</th>
+                  {row.slice(1).map((cell, position) => (
+                    <td key={`${row[0]}-${position}`}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {section.cards && (
+        <div className="ql-card-grid">
+          {section.cards.map((card) => (
+            <div className="ql-card" key={card.title}>
+              <h4>{card.title}</h4>
+              <p>{card.body}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {section.subsections?.map((sub) => (
+        <div className="ql-block" key={sub.heading}>
+          <h4 className="ql-subhead">{sub.heading}</h4>
+          {sub.paragraphs.map((paragraph) => (
+            <p className="ql-body" key={paragraph.slice(0, 40)}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 /**
@@ -28,6 +95,12 @@ interface QuickLookGuideProps {
  *   no link renders twice on one page.
  * - Blog posts are excluded from the data's own `links` array on purpose —
  *   that block is the reverse lookup's job.
+ * - The Amazon Associates disclosure is NOT repeated here. It appears once,
+ *   beside the buy button in QuickLookDetail, plus the site-wide footer line;
+ *   that is the whole disclosure footprint for a Quick Look page.
+ * - `deepDive` and `useCases` are optional extra sections rendered by
+ *   GuideSection between the existing blocks; a guide that supplies none renders
+ *   exactly as it did before they existed.
  */
 export default function QuickLookGuideSection({ guide, productSlug }: QuickLookGuideProps) {
   const relatedPosts = getPostsForProduct(productSlug).filter(
@@ -48,10 +121,9 @@ export default function QuickLookGuideSection({ guide, productSlug }: QuickLookG
 
         <div className="ql-block">
           <h3>{guide.priceSection.heading}</h3>
-          {/* The money section is the guide's buying surface, so the Amazon
-              Associates disclosure appears here in plain visible text as well
-              as beside the buy button above. */}
-          <p className="ql-disclosure">{SITE.amazonDisclosure}</p>
+          {/* No disclosure in here on purpose: the Amazon Associates line sits
+              once, beside the buy button in QuickLookDetail, and the site-wide
+              footer carries the other one. */}
           {guide.priceSection.paragraphs.map((paragraph) => (
             <p className="ql-body" key={paragraph.slice(0, 40)}>
               {paragraph}
@@ -84,6 +156,10 @@ export default function QuickLookGuideSection({ guide, productSlug }: QuickLookG
           </div>
         )}
 
+        {guide.deepDive?.map((section) => (
+          <GuideSection section={section} key={section.heading} />
+        ))}
+
         <div className="ql-block">
           <h3>{guide.buyers.heading}</h3>
           <div className="ql-card-grid">
@@ -105,6 +181,10 @@ export default function QuickLookGuideSection({ guide, productSlug }: QuickLookG
             </div>
           </div>
         </div>
+
+        {guide.useCases?.map((section) => (
+          <GuideSection section={section} key={section.heading} />
+        ))}
 
         <div className="ql-block">
           <h3>{guide.pros.heading}</h3>

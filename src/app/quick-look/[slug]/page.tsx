@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: QuickLookPageProps): Promise<
   if (!entry || !product) return { title: 'Spec sheet not found' }
 
   const title = quickLookMetaTitle(entry.displayName)
-  const description = quickLookMetaDescription(product, entry)
+  const description = quickLookMetaDescription(entry)
   const url = `${SITE_URL}/quick-look/${product.slug}`
 
   return {

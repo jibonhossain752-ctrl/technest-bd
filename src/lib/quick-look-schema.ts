@@ -1,4 +1,4 @@
-import { SITE, SITE_URL, AFFILIATE_CTA } from './site'
+import { SITE_URL, AFFILIATE_CTA } from './site'
 import type { Product } from '@/data/products'
 import type { QuickLookEntry } from '@/data/quick-look'
 
@@ -10,19 +10,19 @@ import type { QuickLookEntry } from '@/data/quick-look'
  * - The Product markup mirrors only what the page shows. No `aggregateRating`
  *   and no `review` are emitted, ever: Amazon star ratings and review counts
  *   are Amazon's data, not ours, and re-publishing them as our own rating is
- *   both wrong and against the site's rules.
- * - `offers` appears ONLY when a price was verified on a known date
- *   (`priceCheckedOn`). Without that date there is no confirmed price, so the
- *   whole offers block is omitted rather than emitting a broken or stale offer.
+ *   both wrong and against the site's rules. The detail page's Spec Score badge
+ *   is a completeness indicator, not a rating, so it never reaches the markup.
+ * - No `offers` block at all: this store shows no price and sells nothing on
+ *   site, so the Product node carries no offer and no availability claim.
  * - The FAQPage markup is built from the SAME array the page renders, so the
  *   marked-up questions and answers match the visible text exactly.
  */
 
-/** Product schema for a Quick Look page. Never carries ratings or reviews. */
+/** Product schema for a Quick Look page. Never carries ratings, reviews or offers. */
 export function quickLookProductSchema(product: Product, entry: QuickLookEntry) {
   const url = `${SITE_URL}/quick-look/${product.slug}`
 
-  const schema: Record<string, unknown> = {
+  return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
@@ -33,7 +33,7 @@ export function quickLookProductSchema(product: Product, entry: QuickLookEntry) 
     // Specs the page actually prints, kept as additional properties so the
     // markup never claims more than the visible table does.
     additionalProperty: entry.specs
-      .flatMap((group) => group.rows)
+      .flatMap((group) => group.rows ?? [])
       .map((row) => ({
         '@type': 'PropertyValue',
         name: row.label,
@@ -41,23 +41,6 @@ export function quickLookProductSchema(product: Product, entry: QuickLookEntry) 
       })),
     ...(product.imageUrl ? { image: [`${SITE_URL}${product.imageUrl}`] } : {}),
   }
-
-  // A price is only ever marked up when it was verified on a dated source and
-  // the page displays the same dated figure.
-  if (entry.priceCheckedOn && product.price != null) {
-    schema.offers = {
-      '@type': 'Offer',
-      priceCurrency: SITE.currency,
-      price: product.price,
-      availability:
-        entry.status === 'available'
-          ? 'https://schema.org/InStock'
-          : 'https://schema.org/PreOrder',
-      url,
-    }
-  }
-
-  return schema
 }
 
 /** FAQPage schema — pass the EXACT array the page renders. */
@@ -74,38 +57,32 @@ export function quickLookFaqSchema(faqs: { question: string; answer: string }[])
 }
 
 /**
- * Meta title for a Quick Look page: "{Product} Specs, Price & Review",
- * trimmed to stay under 60 characters. The product name comes first because it
- * is the search term; the suffix is dropped, then softened, when the name is
- * long enough to push the title over the limit.
+ * Meta title for a Quick Look page: "{Product} Specs & Buying Guide", trimmed to
+ * stay under 60 characters. The product name comes first because it is the
+ * search term; the suffix falls back to "Specs & Features" when the name is long
+ * enough to push the title over the limit.
  *
- * Pass the entry's `displayName` (brand + model), not the full catalog name —
- * the catalog name is an Amazon listing title and blows the 60-character limit
- * on almost every product.
+ * Deliberately never says "Price" (the page shows none) or "Review" (we do not
+ * review the product). Pass the entry's `displayName` (brand + model), not the
+ * full catalog name — the catalog name is an Amazon listing title and blows the
+ * 60-character limit on almost every product.
  */
 export function quickLookMetaTitle(displayName: string): string {
-  const full = `${displayName} Specs, Price & Review`
+  const full = `${displayName} Specs & Buying Guide`
   if (full.length <= 60) return full
-  const short = `${displayName} Specs & Review`
+  const short = `${displayName} Specs & Features`
   if (short.length <= 60) return short
   return `${displayName} Specs`.slice(0, 60).trimEnd()
 }
 
 /**
- * Meta description for a Quick Look page. Deliberately carries no price: the
- * page itself shows none, and a description quoting a figure that has moved is
- * worse than one that sends the reader to the listing.
+ * Meta description for a Quick Look page. Hand-written per product and stored
+ * on the entry (`metaDescription`); the guard checks the 120–160 character
+ * limit, so nothing is trimmed here. Carries no price: the page itself shows
+ * none, and a figure that has moved is worse than none at all.
  */
-export function quickLookMetaDescription(product: Product, entry: QuickLookEntry): string {
-  const firstGroup = entry.specs[0]
-  const lead = firstGroup?.rows
-    .slice(0, 3)
-    .map((row) => `${row.label.toLowerCase()}: ${row.value}`)
-    .join(', ')
-  const base = lead
-    ? `${product.name} specs and review: ${lead}. See the full spec sheet and check the current price on Amazon.`
-    : `${product.name} specs and review: the full spec sheet, who it suits and check the current price on Amazon.`
-  return base.length <= 160 ? base : `${base.slice(0, 157).trimEnd()}…`
+export function quickLookMetaDescription(entry: QuickLookEntry): string {
+  return entry.metaDescription
 }
 
 /** Shared CTA label so every buy button on the site says the same thing. */

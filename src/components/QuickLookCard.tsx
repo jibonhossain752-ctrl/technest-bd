@@ -55,8 +55,11 @@ export default function QuickLookCard({ product, entry }: QuickLookCardProps) {
           {entry.displayName}
         </Link>
         <p className="ql-card-note">
-          {entry.specs.reduce((total, group) => total + group.rows.length, 0)} specs across{' '}
-          {entry.specs.length} categories
+          {entry.specs.reduce(
+            (total, group) => total + (group.rows?.length ?? 0) + (group.items?.length ?? 0),
+            0,
+          )}{' '}
+          specs across {entry.specs.length} categories
         </p>
         <Link href={`/quick-look/${product.slug}`} prefetch={false} className="ql-card-cta">
           Read the spec sheet →

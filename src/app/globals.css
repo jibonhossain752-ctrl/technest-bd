@@ -7869,12 +7869,6 @@ button {
   color: var(--muted);
 }
 
-.ql-warranty {
-  margin-top: 8px;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
 /* Gallery */
 .ql-gallery {
   display: grid;
@@ -8165,6 +8159,56 @@ button {
   color: var(--text);
 }
 
+/* H4 sub-heading inside a guide block (e.g. one rival in the comparison, or
+   one troubleshooting topic). Same treatment as a card heading. */
+.ql-subhead {
+  margin-top: 26px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* Comparison table inside a guide block (scrolls sideways on a narrow screen
+   instead of squeezing the columns). Same tokens as the spec tables. */
+.ql-compare-wrap {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.ql-compare {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.ql-compare th,
+.ql-compare td {
+  padding: 10px 14px 10px 0;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.ql-compare thead th {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ql-compare tbody th {
+  width: 26%;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.ql-compare td {
+  color: var(--text);
+}
+
 .ql-block {
   margin-top: 40px;
 }
@@ -8421,3 +8465,376 @@ button {
   }
 }
 
+/* ============================================================
+   QUICK LOOK DETAIL — layout ported from the source project's
+   product page (highlight strip, thumbnail rail, variant chips,
+   key-value panels). Colours and fonts come only from the site's
+   own custom properties above.
+   ============================================================ */
+
+.ql-titleblock {
+  margin-bottom: 26px;
+}
+
+.ql-pills {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+}
+
+.ql-pill {
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.ql-pill.accent {
+  border-color: transparent;
+  background: rgba(255, 107, 53, 0.1);
+  color: var(--accent-dark);
+}
+
+/* Highlight strip — desktop only, matching the source layout where the
+   same facts repeat in the panels below. */
+.ql-highlight-grid {
+  display: none;
+}
+
+.ql-highlight-card {
+  display: grid;
+  gap: 2px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.ql-highlight-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  overflow-wrap: anywhere;
+}
+
+.ql-highlight-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.ql-hero-media {
+  min-width: 0;
+}
+
+.ql-info {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
+.ql-panels {
+  display: grid;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.ql-panel {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.ql-panel-title {
+  margin-bottom: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* Variant chips */
+.ql-variant-group + .ql-variant-group {
+  margin-top: 14px;
+}
+
+.ql-variant-label {
+  margin-bottom: 8px;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.ql-variant-current {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.ql-variant-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ql-chip {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 0.86rem;
+  color: var(--text);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.ql-chip:hover {
+  border-color: rgba(255, 107, 53, 0.5);
+}
+
+.ql-chip.active {
+  border-color: var(--accent);
+  background: rgba(255, 107, 53, 0.1);
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.ql-variant-note {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Purchase panel — the single outbound link, its one-line note and the one
+   visible disclosure. No price number lives anywhere in here. */
+.ql-buy-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ql-buy-note {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Key / value rows inside the panels */
+.ql-kv-list {
+  display: grid;
+}
+
+.ql-kv {
+  display: grid;
+  grid-template-columns: minmax(90px, 40%) 1fr;
+  gap: 0 16px;
+  align-items: start;
+  padding: 9px 0;
+  border-top: 1px solid var(--border);
+}
+
+.ql-kv:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.ql-kv-label {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.ql-kv-value {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* Gallery shell: thumbnails and main image inside one framed unit, main image
+   first on small screens, vertical rail on the left from 1024px. */
+.ql-gallery-shell {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.ql-gallery-rail {
+  display: flex;
+  flex-shrink: 0;
+  gap: 12px;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.ql-gallery-thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.ql-gallery-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  object-fit: contain;
+}
+
+.ql-gallery-thumb:hover {
+  border-color: rgba(255, 107, 53, 0.5);
+}
+
+.ql-gallery-thumb.active {
+  border-color: var(--accent);
+  background: rgba(255, 107, 53, 0.08);
+}
+
+.ql-gallery-seeall img {
+  padding: 0;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.ql-gallery-seeall-count {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.ql-gallery-stage {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.ql-gallery-stage .ql-gallery-main {
+  height: 100%;
+}
+
+.ql-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: #fff;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transform: translateY(-50%);
+}
+
+.ql-gallery-arrow.left {
+  left: 8px;
+}
+
+.ql-gallery-arrow.right {
+  right: 8px;
+}
+
+.ql-gallery-arrow:hover {
+  color: var(--accent);
+}
+
+/* Spec Score badge — a completeness indicator over the main image, never
+   emitted as schema and never presented as a rating. */
+.ql-spec-score {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: grid;
+  gap: 2px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: var(--dark);
+  color: #fff;
+}
+
+.ql-spec-score-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.ql-spec-score-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent);
+}
+
+@media (min-width: 768px) {
+  .ql-gallery-thumb {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* The variant and purchase panels sit side by side only once the info column
+   is wide enough for them — below that they stack, so the buy button never
+   squeezes into a 180px column. */
+@media (min-width: 1200px) {
+  .ql-panels {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ql-highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .ql-hero-media {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+  }
+
+  .ql-gallery-shell {
+    flex-direction: row;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .ql-gallery-rail {
+    flex-direction: column;
+    width: 80px;
+    max-height: 26rem;
+    overflow-x: visible;
+    overflow-y: auto;
+  }
+}
