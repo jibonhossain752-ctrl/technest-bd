@@ -7842,24 +7842,8 @@ button {
   background: var(--accent);
 }
 
-.ql-buy {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-soft);
-}
-
 .ql-buy-btn {
   align-self: flex-start;
-}
-
-.ql-price-note {
-  font-size: 0.82rem;
-  line-height: 1.6;
-  color: var(--muted);
 }
 
 .ql-disclosure {
@@ -7901,34 +7885,6 @@ button {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-soft);
-}
-
-.ql-gallery-thumbs {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-}
-
-.ql-gallery-thumb {
-  flex: 0 0 auto;
-  width: 72px;
-  height: 72px;
-  padding: 4px;
-  border: 2px solid var(--border);
-  border-radius: 10px;
-  background: #fff;
-  transition: border-color 0.2s ease;
-}
-
-.ql-gallery-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.ql-gallery-thumb:hover,
-.ql-gallery-thumb.active {
-  border-color: var(--accent);
 }
 
 /* Lightbox */
