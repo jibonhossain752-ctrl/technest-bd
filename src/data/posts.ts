@@ -74,6 +74,167 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'apple-homeview-price-release-date-features',
+    title: 'Apple HomeView: Price, Release Date, Specs and Features',
+    excerpt:
+      'Apple\u2019s first smart home display: a 7-inch screen from $299, Siri AI, and deliveries from November 13 \u2014 plus what a wall mount adds to the cost.',
+    category: 'Explainer',
+    date: '2026-10-16',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/apple-homeview-hero.webp',
+    emoji: '🏠',
+    readTime: '5 min read',
+    content: [
+      'Apple HomeView is Apple\u2019s first dedicated smart home display. It has a 7-inch square screen, starts at $299 and begins arriving on November 13, 2026. It is built around Siri AI and works as a control screen for your home, a video-call screen and a music speaker. Apple announced it on October 13 at its \u201CWelcome Home\u201D event, and pre-orders opened the same day.',
+      { heading: 'What Is Apple HomeView?' },
+      'HomeView is a smart display with a 7-inch Liquid Retina screen. It comes in two versions: a tabletop version with a built-in speaker base, and a wall-mounted version. Apple presents it as a hub for controlling the home, making FaceTime calls and playing media. It was announced together with a new Apple TV 4K and HomePod mini 2, so it is one part of a wider smart home push. Pricing and dates for those two products are not covered here, so check Apple\u2019s site for them.',
+      { heading: 'Apple HomeView Price and Release Date' },
+      'Both versions start at $299. Pre-orders are open now and the first deliveries begin on November 13. Apple says availability starts in select markets.',
+      { subheading: 'Wall Mount Cost' },
+      'The wall-mounted version needs a separate mount from Schneider Home:',
+      {
+        list: [
+          'Power Mount USB-C Wall Connector: from $59.95',
+          'Power Mount AC Wired: from $79.95',
+          'Power Mount PoE Wired: $129.95, arriving in early 2027',
+        ],
+      },
+      'So the cheapest wall-mounted setup costs $358.95 ($299 plus $59.95), and with the AC Wired mount it is $378.95. The tabletop version does not need a mount. Prices are before tax and shipping. Check Apple\u2019s page for what is included in the box.',
+      {
+        image: '/images/blog/apple-homeview-image-4.webp',
+        alt: 'Render of the Apple HomeView mounted on a living room wall',
+        width: 900,
+        height: 502,
+      },
+      { heading: 'Colors' },
+      'The tabletop version comes in silver, starlight, rose pink and space gray. The wall-mounted version comes in space gray and silver only. Apple lists no price difference between colors in the announcement we read, so confirm on the Apple Store page before ordering.',
+      {
+        image: '/images/blog/apple-homeview-image-3.webp',
+        alt: 'Render of four Apple HomeView units in silver, starlight, rose pink and space gray',
+        width: 900,
+        height: 502,
+      },
+      { heading: 'Display, Sound and Camera' },
+      'The screen has True Tone and reaches 500 nits of brightness. It can also dim down to 0.3 nits, which suits a nightstand because it will not light up the room. For sound, Apple describes two full-range drivers in the display, a down-firing woofer and two passive radiators. A Center Stage camera is included for FaceTime calls.',
+      {
+        image: '/images/blog/apple-homeview-image-2.webp',
+        alt: 'Render of the tabletop Apple HomeView close up on its speaker base',
+        width: 900,
+        height: 502,
+      },
+      { heading: 'Siri AI' },
+      'Siri AI is the centerpiece of HomeView. If you own an iPhone or iPad that supports Apple Intelligence, HomeView can use your personal context. Without one, Siri AI on HomeView is limited to world knowledge and music discovery.',
+      'HomeView can recognize up to six people and show each one a personalized Home Screen. The screen also changes with distance: from across the room it shows simple information, and as you get closer it shows more detail.',
+      {
+        image: '/images/blog/apple-homeview-image-6.webp',
+        alt: 'Render of the tabletop Apple HomeView playing music on a kitchen counter',
+        width: 900,
+        height: 502,
+      },
+      { heading: 'Faces' },
+      'HomeView offers several screen faces, including Photos, Flow and a Snoopy face.',
+      {
+        image: '/images/blog/apple-homeview-image-5.webp',
+        alt: 'Apple HomeView units showing clock, photo, weather and music faces',
+        width: 900,
+        height: 502,
+      },
+      { heading: 'Smart Home Features' },
+      'HomeView supports Matter and AirPlay, and it can sync across rooms. The Home Camera face can show up to nine live video feeds at once. Apple also announced an Apple Home Collection of accessories made with LG and Schneider. Earlier reports said the LG products would take at least a few months to arrive, and we have not confirmed their prices or dates, so check each product before planning a setup around it.',
+      { heading: 'Not Available in the EU' },
+      'HomeView will not launch in the European Union at first, because Siri AI is not available there. Availability elsewhere starts in select markets.',
+      { heading: 'Who Should Buy Apple HomeView?' },
+      { subheading: 'It suits you if' },
+      {
+        list: [
+          'Your household already uses Apple devices and the Home app.',
+          'You want one shared screen for cameras and home controls instead of reaching for your phone.',
+          'You want a kitchen or bedside display for FaceTime and music.',
+        ],
+      },
+      { subheading: 'Consider waiting if' },
+      {
+        list: [
+          'You live in the EU.',
+          'You want to wall-mount it and have not counted the cost of the mount.',
+          'You want the LG accessories, which arrive later.',
+          'You need specific third-party apps. Earlier reports said HomeView would run Apple apps without an App Store, so confirm what it supports on Apple\u2019s page.',
+        ],
+      },
+    ],
+    metaTitle: 'Apple HomeView: Price, Release Date, Specs & Features',
+    metaDescription:
+      'Apple HomeView is a $299 smart display with a 7-inch screen and Siri AI, shipping November 13. See specs, colors, wall mounts and who should buy.',
+    altText:
+      'Render of Apple HomeView tabletop and wall-mounted versions side by side',
+    faq: [
+      {
+        question: 'How much does Apple HomeView cost?',
+        answer:
+          'It starts at $299 for both the tabletop and wall-mounted versions. Wall mounts are sold separately, from $59.95.',
+      },
+      {
+        question: 'When does Apple HomeView come out?',
+        answer:
+          'Pre-orders are open now and deliveries begin on November 13, 2026.',
+      },
+      {
+        question: 'How big is the Apple HomeView screen?',
+        answer:
+          'It has a 7-inch square Liquid Retina display. Some early rumors said 6 inches, but the announced size is 7 inches.',
+      },
+      {
+        question: 'What colors does Apple HomeView come in?',
+        answer:
+          'The tabletop version comes in silver, starlight, rose pink and space gray. The wall-mounted version comes in space gray and silver.',
+      },
+      {
+        question: 'Is Apple HomeView available in Europe?',
+        answer:
+          'Not at launch, because Siri AI is not available in the EU.',
+      },
+      {
+        question: 'Does HomeView work with Matter devices?',
+        answer:
+          'Yes. Matter is supported, along with AirPlay and multi-room sync.',
+      },
+      {
+        question: 'Do I need an iPhone to use Siri AI on HomeView?',
+        answer:
+          'To get personal context you need an iPhone or iPad that supports Apple Intelligence. Without one, Siri AI is limited to world knowledge and music discovery.',
+      },
+    ],
+    lastUpdated: '2026-10-16',
+    primaryKeyword: 'Apple HomeView',
+    secondaryKeywords: [
+      'Apple HomeView price',
+      'Apple HomeView release date',
+      'Apple HomeView specs',
+      'Apple HomeView colors',
+      'HomeView wall mount',
+      'Siri AI smart display',
+    ],
+    keepBrowsing: [
+      {
+        href: '/blog/best-smart-speakers-2026',
+        label: '5 best smart speakers for every room (2026)',
+      },
+      {
+        href: '/blog/ios-27',
+        label: 'iOS 27: everything new in Apple\u2019s latest update',
+      },
+      {
+        href: '/blog/iphone-duo',
+        label: 'iPhone Duo: Apple\u2019s first foldable iPhone is official',
+      },
+    ],
+    videoUrl: 'https://youtube.com/shorts/8tO23pejXtQ',
+    // Real upload date and time from the publisher, recorded in Bangladesh
+    // time (UTC+6), so the offset is the real one and not a placeholder.
+    videoUploadDate: '2026-10-15T00:00:00+06:00',
+    videoTitle: 'Apple HomeView video',
+  },
+  {
     slug: 'iphone-telephoto-lens-camera-grip-kit',
     title: 'Best iPhone Telephoto Lens and Camera Grip Kit',
     excerpt:
