@@ -24,9 +24,10 @@ from a sister project, rewritten for this store. These rules are standing.
    written into copy, data or schema. Pages show the "Check current price on
    Amazon" call to action instead. A price may be displayed *only* when the data
    stores it together with a verified date (`priceCheckedOn`) and the UI shows
-   "as of <date>" — see `datedPrice()` in `src/lib/site.ts`. Product JSON-LD
-   carries no `offers` block at all: this store sells nothing on site, so the
-   Product node never claims a price or an availability.
+   "as of <date>" — see `datedPrice()` in `src/lib/site.ts`. A Quick Look page
+   carries no Product JSON-LD at all: this store sells nothing on site, so there
+   is no offer, price or availability to claim, and Google rejects a Product node
+   without `offers`, `review` or `aggregateRating` (see rule 4d).
 4. **Affiliate disclosure, and what never comes back.** Disclosure: one compact
    line beside the buy button plus the site-wide footer disclosure. No price
    notes, no listing-warranty text. The line is `SITE.amazonDisclosure` rendered
@@ -55,15 +56,25 @@ from a sister project, rewritten for this store. These rules are standing.
    or described as a rating.
 4c. **No breadcrumb on the detail pages.** No visible breadcrumb and no
    BreadcrumbList on Quick Look detail pages; navigation is via Keep exploring
-   links. Both halves were deleted: the ported `.ql-crumbs` row ("Quick Look /
-   <Category>") in `src/components/QuickLookDetail.tsx` and the detail page's
-   `Breadcrumb` render. The row's three selectors in `src/app/globals.css` went
-   with it — nothing else ever used them — and the space the row occupied moved
-   into `.ql-detail`'s top padding, so the title block keeps its distance from
-   the header. Three things deliberately stay: the listing page `/quick-look`
-   keeps its own `Breadcrumb` (JSON-LD only, it has never rendered a row), the
-   Product JSON-LD is unchanged, and the FAQPage JSON-LD is unchanged.
+   links. Both halves were deleted: the ported `.ql-crumbs`   row ("Quick Look / <Category>") in `src/components/QuickLookDetail.tsx` and
+   the detail page's `Breadcrumb` render. The row's three selectors in
+   `src/app/globals.css` went with it — nothing else ever used them — and the
+   space the row occupied moved into `.ql-detail`'s top padding, so the title
+   block keeps its distance from the header. Two things deliberately stay:
+   the listing page `/quick-look` keeps its own `Breadcrumb` (JSON-LD only, it
+   has never rendered a row) and the detail page keeps its FAQPage JSON-LD.
    `scripts/check-quick-look.js` fails the build if either half comes back.
+4d. **No Product JSON-LD on the detail pages (2026-10-17).** Search Console
+   reported a critical Product-snippet error on every Quick Look page —
+   `Either "offers", "review", or "aggregateRating" should be specified` —
+   because the Product node carried only name, description, brand, category,
+   url, additionalProperty and image. There is nothing true to add: no price is
+   shown, nothing is sold on site, and rule 5 forbids publishing Amazon's rating
+   or a review of an untested product. The node was therefore deleted from
+   `src/app/quick-look/[slug]/page.tsx` and `quickLookProductSchema` was removed
+   from `src/lib/quick-look-schema.ts`. `BreadcrumbList` (never present here)
+   and `FAQPage` are untouched. Do not re-add a Product node to this surface
+   without a real, visible offer, review or rating to put in it.
 5. **No aggregateRating from Amazon data.** Amazon star ratings and review
    counts are Amazon's data, not ours. Never copy them into JSON-LD, schema or
    written text as our own rating, and never emit `review` markup for a product

@@ -1,5 +1,4 @@
-import { SITE_URL, AFFILIATE_CTA } from './site'
-import type { Product } from '@/data/products'
+import { AFFILIATE_CTA } from './site'
 import type { QuickLookEntry } from '@/data/quick-look'
 
 /**
@@ -7,44 +6,19 @@ import type { QuickLookEntry } from '@/data/quick-look'
  * with them.
  *
  * RULES (standing rules — see memory.md):
- * - The Product markup mirrors only what the page shows. No `aggregateRating`
- *   and no `review` are emitted, ever: Amazon star ratings and review counts
- *   are Amazon's data, not ours, and re-publishing them as our own rating is
- *   both wrong and against the site's rules. The detail page's Spec Score badge
- *   is a completeness indicator, not a rating, so it never reaches the markup.
- * - No `offers` block at all: this store shows no price and sells nothing on
- *   site, so the Product node carries no offer and no availability claim.
+ * - No Product JSON-LD on a Quick Look page. Google's Product snippet requires
+ *   one of `offers`, `review` or `aggregateRating`, and this page truthfully has
+ *   none of the three: the store sells nothing on site, so there is no offer and
+ *   no availability to claim; the page shows no price; and the site does not
+ *   test products, so it has no review or rating of its own to publish. Amazon's
+ *   star ratings and review counts belong to Amazon and are never re-published
+ *   as ours (memory.md rule 5). A Product node carrying none of the three
+ *   properties is a critical Product-snippet error in Search Console, so the
+ *   node was removed (2026-10-17, memory.md rule 4c) rather than padded out with
+ *   data the page does not have. The FAQPage markup stays.
  * - The FAQPage markup is built from the SAME array the page renders, so the
  *   marked-up questions and answers match the visible text exactly.
  */
-
-/** Product schema for a Quick Look page. Never carries ratings, reviews or offers. */
-export function quickLookProductSchema(product: Product, entry: QuickLookEntry) {
-  const url = `${SITE_URL}/quick-look/${product.slug}`
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    description: product.description,
-    // A standalone entry names its own brand; a linked entry falls back to the
-    // first word of the catalog name, which is the maker for every product in
-    // this catalog.
-    brand: { '@type': 'Brand', name: entry.product?.brand ?? product.name.split(' ')[0] },
-    category: product.category,
-    url,
-    // Specs the page actually prints, kept as additional properties so the
-    // markup never claims more than the visible table does.
-    additionalProperty: entry.specs
-      .flatMap((group) => group.rows ?? [])
-      .map((row) => ({
-        '@type': 'PropertyValue',
-        name: row.label,
-        value: row.value,
-      })),
-    ...(product.imageUrl ? { image: [`${SITE_URL}${product.imageUrl}`] } : {}),
-  }
-}
 
 /** FAQPage schema — pass the EXACT array the page renders. */
 export function quickLookFaqSchema(faqs: { question: string; answer: string }[]) {

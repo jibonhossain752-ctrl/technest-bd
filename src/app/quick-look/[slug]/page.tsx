@@ -14,7 +14,6 @@ import {
   quickLookFaqSchema,
   quickLookMetaDescription,
   quickLookMetaTitle,
-  quickLookProductSchema,
 } from '@/lib/quick-look-schema'
 import QuickLookDetail from '@/components/QuickLookDetail'
 import QuickLookGuideSection from '@/components/QuickLookGuide'
@@ -100,10 +99,12 @@ export default async function QuickLookProductPage({ params }: QuickLookPageProp
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(quickLookProductSchema(product, entry)) }}
-      />
+      {/* No Product JSON-LD on this page (memory.md rule 4c). Google's Product
+          snippet needs `offers`, `review` or `aggregateRating`, and this page
+          has none of the three to give: no price is shown, nothing is sold on
+          site, and the site does not test products, so there is no review or
+          rating of its own. Amazon's ratings are Amazon's and are never
+          re-published as ours. The FAQPage markup below stays. */}
       {/* FAQ markup is built from the SAME array the guide renders, so the
           marked-up questions match the visible text exactly. */}
       {guide && (
