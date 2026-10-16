@@ -21,7 +21,7 @@ interface ShareLink {
 export default function ShareButtons({ title, slug }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false)
 
-  const url = `https://gadgeterea.com/blog/${slug}`
+  const url = `https://www.gadgeterea.com/blog/${slug}`
 
   const handleCopy = async () => {
     try {

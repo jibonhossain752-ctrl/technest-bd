@@ -2,7 +2,7 @@ interface BreadcrumbProps {
   crumbs: { label: string; href?: string }[]
 }
 
-const SITE = 'https://gadgeterea.com'
+const SITE = 'https://www.gadgeterea.com'
 
 export default function Breadcrumb({ crumbs }: BreadcrumbProps) {
   const items = [

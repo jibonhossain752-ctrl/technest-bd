@@ -66,7 +66,7 @@ export async function generateMetadata({
   const metaTitle = post.metaTitle ?? post.title
   const metaDescription = post.metaDescription ?? post.excerpt
   const heroImage = post.heroImage
-    ? `https://gadgeterea.com${post.heroImage}`
+    ? `https://www.gadgeterea.com${post.heroImage}`
     : undefined
   return {
     title: metaTitle,
@@ -199,7 +199,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.metaDescription ?? post.excerpt,
-    image: post.heroImage ? `https://gadgeterea.com${post.heroImage}` : undefined,
+    image: post.heroImage ? `https://www.gadgeterea.com${post.heroImage}` : undefined,
     datePublished: post.date,
     dateModified: post.lastUpdated ?? post.date,
     author: {
@@ -209,13 +209,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     publisher: {
       '@type': 'Organization',
       name: 'GadgetErea',
-      url: 'https://gadgeterea.com',
+      url: 'https://www.gadgeterea.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://gadgeterea.com/gadgeterea-logo.webp',
+        url: 'https://www.gadgeterea.com/gadgeterea-logo.webp',
       },
     },
-    mainEntityOfPage: `https://gadgeterea.com/blog/${post.slug}`,
+    mainEntityOfPage: `https://www.gadgeterea.com/blog/${post.slug}`,
   }
 
   const schemaProduct = product ?? inlineDealProduct
@@ -233,9 +233,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           name: schemaProduct.name,
           description: schemaProduct.description,
           ...(schemaProduct.imageUrl
-            ? { image: `https://gadgeterea.com${schemaProduct.imageUrl}` }
+            ? { image: `https://www.gadgeterea.com${schemaProduct.imageUrl}` }
             : post.heroImage
-              ? { image: `https://gadgeterea.com${post.heroImage}` }
+              ? { image: `https://www.gadgeterea.com${post.heroImage}` }
               : {}),
           aggregateRating: {
             '@type': 'AggregateRating',
@@ -263,7 +263,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             name: firstDeal.name,
             ...(firstDeal.image ?? post.heroImage
               ? {
-                  image: `https://gadgeterea.com${firstDeal.image ?? post.heroImage}`,
+                  image: `https://www.gadgeterea.com${firstDeal.image ?? post.heroImage}`,
                 }
               : {}),
             offers: {
@@ -317,22 +317,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             post.videoDescription ?? post.metaDescription ?? post.excerpt,
           ...(resolvedVideo.thumbnail
             ? {
-                thumbnailUrl: `https://gadgeterea.com${resolvedVideo.thumbnail}`,
+                thumbnailUrl: `https://www.gadgeterea.com${resolvedVideo.thumbnail}`,
               }
             : {}),
           uploadDate,
           contentUrl: resolvedVideo.url,
-          url: `https://gadgeterea.com/blog/${post.slug}`,
+          url: `https://www.gadgeterea.com/blog/${post.slug}`,
           ...(resolvedVideo.embedUrl
             ? { embedUrl: resolvedVideo.embedUrl }
             : {}),
           publisher: {
             '@type': 'Organization',
             name: 'GadgetErea',
-            url: 'https://gadgeterea.com',
+            url: 'https://www.gadgeterea.com',
             logo: {
               '@type': 'ImageObject',
-              url: 'https://gadgeterea.com/gadgeterea-logo.webp',
+              url: 'https://www.gadgeterea.com/gadgeterea-logo.webp',
             },
           },
         }

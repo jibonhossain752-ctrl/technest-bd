@@ -3,7 +3,7 @@
  *
  * Brand name, canonical domain, locale, currency and country all live here so
  * no page, component or data file has to spell them out again. Anything that
- * says "GadgetErea", "gadgeterea.com", "en-US", "USD" or "United States"
+ * says "GadgetErea", "www.gadgeterea.com", "en-US", "USD" or "United States"
  * should read it from this file.
  *
  * Adding a new page? Import SITE_URL / BRAND_NAME from here instead of typing
@@ -15,9 +15,9 @@ export const SITE = {
   /** Brand name as it appears in titles, footer and JSON-LD. */
   brand: 'GadgetErea',
   /** Canonical host, without the protocol. */
-  domain: 'gadgeterea.com',
+  domain: 'www.gadgeterea.com',
   /** Canonical origin — every absolute URL the site emits starts here. */
-  url: 'https://gadgeterea.com',
+  url: 'https://www.gadgeterea.com',
   /** BCP 47 locale for <html lang> and Open Graph. */
   locale: 'en-US',
   /** ISO 4217 currency code used by display helpers and schema. */
@@ -32,7 +32,7 @@ export const SITE = {
   amazonDisclosure: 'As an Amazon Associate we earn from qualifying purchases.',
 } as const
 
-/** Canonical origin, e.g. `https://gadgeterea.com`. */
+/** Canonical origin, e.g. `https://www.gadgeterea.com`. */
 export const SITE_URL: string = SITE.url
 
 /** Brand name, e.g. `GadgetErea`. */

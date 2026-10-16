@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'GadgetErea',
     type: 'website',
-    url: 'https://gadgeterea.com/deals',
+    url: 'https://www.gadgeterea.com/deals',
     title: 'Gadget Deals Online – Daily Tech Discounts | GadgetErea',
     description:
       'Fresh gadget deals online — trending gadget finds at the best prices, updated every week.',

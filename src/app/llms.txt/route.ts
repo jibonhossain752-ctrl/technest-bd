@@ -2,7 +2,7 @@ import { POSTS } from '@/data/posts'
 import { PRODUCTS } from '@/data/products'
 import { CATEGORIES } from '@/data/categories'
 
-const SITE = 'https://gadgeterea.com'
+const SITE = 'https://www.gadgeterea.com'
 
 export const dynamic = 'force-static'
 

@@ -44,7 +44,7 @@ export async function generateMetadata({
         ? {
             images: [
               {
-                url: `https://gadgeterea.com${product.imageUrl}`,
+                url: `https://www.gadgeterea.com${product.imageUrl}`,
                 width: 1200,
                 height: 1200,
                 alt: product.altText ?? product.name,
@@ -58,7 +58,7 @@ export async function generateMetadata({
       title,
       description,
       ...(product.imageUrl
-        ? { images: [`https://gadgeterea.com${product.imageUrl}`] }
+        ? { images: [`https://www.gadgeterea.com${product.imageUrl}`] }
         : {}),
     },
   }
@@ -80,7 +80,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     ...(product.imageUrl
       ? {
           image: [
-            `https://gadgeterea.com${product.imageUrl}`,
+            `https://www.gadgeterea.com${product.imageUrl}`,
           ],
         }
       : {}),

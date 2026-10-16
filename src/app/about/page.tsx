@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'GadgetErea',
     type: 'website',
-    url: 'https://gadgeterea.com/about',
+    url: 'https://www.gadgeterea.com/about',
     title: 'About GadgetErea – Your Trusted Gadget Store',
     description:
       'GadgetErea finds and tests the best Amazon finds and trending gadgets — from cool tech under $50 to useful gadgets for home.',

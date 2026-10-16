@@ -22,9 +22,12 @@ post, product, page, section, or anything else). Do not wait to be asked.
 6. NEVER fabricate SEO content, keywords, specs, prices, or claims not
    grounded in the real source (Amazon listing / actual product data). If
    something can't be verified, say so instead of guessing.
-7. Use `gadgeterea.com` for canonical URLs, sitemap URLs, and any hardcoded
-   domain references — never `technest-bd.vercel.app` (unless explicitly told
-   otherwise).
+7. Use `www.gadgeterea.com` — the canonical host (decided 2026-10-17; the
+   apex `gadgeterea.com` 308-redirects to it) — for canonical URLs, sitemap
+   URLs, Open Graph/Twitter URLs, JSON-LD URLs and any hardcoded domain
+   references. Never the non-www apex and never `technest-bd.vercel.app`
+   (unless explicitly told otherwise). Read it from `SITE_URL` in
+   `src/lib/site.ts` instead of typing the domain.
 8. SEO correctness must NEVER come at the cost of visual quality. Implement
    SEO requirements (H1, meta, keywords, alt text, schema) with the site's
    existing design language — subtle, well-integrated elements only: a light
@@ -100,8 +103,8 @@ different images on a page.
 ## 4. General
 
 Run this checklist quietly on every addition: SEO fields filled from real
-source data → sitemap updated → domain references `gadgeterea.com` → analytics
-tracking active and verified.
+source data → sitemap updated → domain references `www.gadgeterea.com` →
+analytics tracking active and verified.
 
 ## 5. Blog post ordering — newest first (standing rule)
 
@@ -157,8 +160,10 @@ When publishing any future post:
   `src/components/ui/PageHeader.tsx` deleted). Page headers = light
   `Breadcrumb` bar + `.category-seo-head` H1 block.
 - Commit + push to `main`; Vercel auto-deploys gadgeterea.com.
-- Live site 308-redirects to `www.gadgeterea.com`; keep canonical/sitemap URLs
-  on `gadgeterea.com` (non-www) per the SEO prompt unless told otherwise.
+- Canonical host is `www.gadgeterea.com` (changed 2026-10-17). The apex
+  `gadgeterea.com` 308-redirects to it via the Vercel domain setting, and every
+  canonical/sitemap/OG/JSON-LD URL must be the www one, so Google is never told
+  the canonical is a URL that redirects.
 
 ## Project Context (full recap — permanent, do not ask again)
 

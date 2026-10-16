@@ -116,7 +116,7 @@ export async function generateMetadata({
     openGraph: {
       siteName: 'GadgetErea',
       type: 'website',
-      url: `https://gadgeterea.com/shop/${category}`,
+      url: `https://www.gadgeterea.com/shop/${category}`,
       title: `${title} | GadgetErea`,
       description,
       images: [

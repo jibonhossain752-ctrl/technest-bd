@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'GadgetErea',
     type: 'website',
-    url: 'https://gadgeterea.com/contact',
+    url: 'https://www.gadgeterea.com/contact',
     title: 'Contact GadgetErea – Support & Inquiries',
     description:
       'Contact GadgetErea for order support, warranty and partnership inquiries. We reply within 24 hours.',

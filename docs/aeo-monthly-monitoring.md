@@ -23,7 +23,7 @@ date + a short result note each time.
 ## 3. AI answer-engine visibility
 
 - [ ] Query the site's brand/top terms in 2–3 AI tools (ChatGPT, Perplexity, Google AI Overviews) — e.g. "best 4k webcam under $100", "noise cancelling headphones buying guide". Note whether GadgetErea is cited/mentioned.
-- [ ] Check `llms.txt` is reachable at `https://gadgeterea.com/llms.txt` (200, lists all posts/products) and content is current after any new post.
+- [ ] Check `llms.txt` is reachable at `https://www.gadgeterea.com/llms.txt` (200, lists all posts/products) and content is current after any new post.
 - [ ] For new posts: confirm the direct-answer intro (first paragraph) answers the query in plain language, question-style H2s present, and an `<ul>` list exists (these are the AEO citation triggers).
 
 ## 4. Core Web Vitals (perf still on track)
@@ -46,7 +46,7 @@ date + a short result note each time.
 
 - [ ] No broken internal links (run a link check, or scan GSC for 404s pointing to internal pages).
 - [ ] No new pages missing canonical / meta description / H1.
-- [ ] `llms.txt`, `robots.txt`, and `sitemap.xml` all reference the correct domain `gadgeterea.com` (no `.vercel.app` or old "technest-bd" leakage).
+- [ ] `llms.txt`, `robots.txt`, and `sitemap.xml` all reference the canonical host `www.gadgeterea.com` (no non-www, no `.vercel.app`, no old "technest-bd" leakage).
 
 ---
 

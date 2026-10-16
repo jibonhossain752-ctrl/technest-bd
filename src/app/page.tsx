@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'GadgetErea',
     type: 'website',
-    url: 'https://gadgeterea.com/',
+    url: 'https://www.gadgeterea.com/',
     title: 'Trending Gadgets & Amazon Finds | GadgetErea',
     description:
       'Shop trending gadgets and the best Amazon finds — cool tech gadgets under $50, useful gadgets for home and more.',
@@ -46,8 +46,8 @@ const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'OnlineStore',
   name: 'GadgetErea',
-  url: 'https://gadgeterea.com',
-  logo: 'https://gadgeterea.com/images/logo.png',
+  url: 'https://www.gadgeterea.com',
+  logo: 'https://www.gadgeterea.com/images/logo.png',
   sameAs: [
     'https://www.facebook.com/profile.php?id=61554811563391',
     'https://www.instagram.com/gadgeterea/',
@@ -62,7 +62,7 @@ const organizationJsonLd = {
   },
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://gadgeterea.com/shop?q={search_term_string}',
+    target: 'https://www.gadgeterea.com/shop?q={search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 }
