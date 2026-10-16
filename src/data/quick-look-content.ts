@@ -1187,6 +1187,836 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
     ],
   },
+
+  'honor-robot-phone': {
+    productName: 'HONOR Robot Phone',
+    heading: 'HONOR Robot Phone specs, features and buying guide',
+    lead: 'The HONOR Robot Phone is a 6.31-inch handset whose rear camera sits on a motorised gimbal arm that lifts out of the body, so the camera can turn and track without you moving the phone. It is aimed at people who shoot video and take photos on a phone and want the framing to behave like a small gimbal rather than a fixed lens.',
+    overview: [
+      'The moving camera is the whole idea. HONOR describes a 4-DoF motorised system with a 3-axis mechanical gimbal stabilisation system it calls the Titanium Agile Gimbal, carrying a 200 MP main sensor. The same phone also carries a 200 MP periscope telephoto and a 50 MP ultra wide, so the gimbal arm is an addition to a full camera set rather than a replacement for one.',
+      'Around that, HONOR lists specifications that read like a current flagship: a 6.31-inch LTPO OLED panel with an adaptive 1-120 Hz refresh rate and a 6,800-nit peak brightness, the Snapdragon 8 Elite Gen 5, up to 16 GB of memory with 1 TB of storage, and a 7,060 mAh battery with 120 W wired and 50 W wireless HONOR SuperCharge.',
+      'Two facts matter before the feature list. The first is where it is sold: HONOR\u2019s own pages and launch announcement point to China, with pre-orders from 12 August 2026 and sales from 18 August, and no HONOR US sales page for the model was found. The second is durability: HONOR lists IP54, which covers splashes rather than immersion. Everything below is HONOR\u2019s own published data, named in the sources note on this page.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the HONOR Robot Phone',
+      paragraphs: [
+        'The market question comes first, and HONOR\u2019s own pages answer it: the model is listed for sale in China, and HONOR\u2019s launch announcement describes Chinese pre-orders and a Chinese on-sale date. No HONOR US sales page for the Robot Phone was found, and the US address on HONOR\u2019s site redirects to its global site. If you are buying from outside HONOR\u2019s listed market, you are buying an imported device, and the software experience, the app ecosystem and the update schedule are the things to think through before ordering.',
+        'The second thing to settle is the gimbal itself. A motorised camera arm is a moving part, and HONOR publishes no service-life figure or drop rating for it. It is also the reason the phone is 9.59 mm thick and around 248 g, so it changes how the device feels in a pocket long before it changes how a photo looks.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Display', detail: '6.31-inch LTPO OLED, 1216 x 2640, 1-120 Hz' },
+      { term: 'Processor', detail: 'Snapdragon 8 Elite Gen 5' },
+      { term: 'Memory and storage', detail: '12 GB + 512 GB, or 16 GB + 1 TB' },
+      { term: 'Rear cameras', detail: '200 MP gimbal main, 50 MP ultra wide, 200 MP periscope telephoto' },
+      { term: 'Gimbal', detail: '4-DoF motorised arm with 3-axis mechanical stabilisation' },
+      { term: 'Battery', detail: '7,060 mAh' },
+      { term: 'Charging', detail: '120 W wired, 50 W wireless' },
+      { term: 'Water and dust', detail: 'IP54' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'A camera on a motorised arm',
+        body: 'HONOR describes four degrees of freedom on the rear camera module and a 3-axis mechanical gimbal, which is a different approach to stabilisation from the sensor-shift systems most phones use: the hardware moves the whole camera rather than the sensor inside it. HONOR says the arm can track subjects and locate a voice source, and it publishes hands-free gesture controls as part of the same idea \u2014 the camera turns to follow rather than you turning the phone.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Three high-resolution rear cameras',
+        body: 'The gimbal carries a 200 MP sensor with a 1/1.28-inch size, an f/1.6 aperture and optical image stabilisation. Beside it sit a 50 MP ultra wide at f/2.0 with a 122-degree field of view, and a 200 MP periscope telephoto on a 1/1.4-inch sensor at f/2.6 with 2.7x optical zoom and optical stabilisation of its own. HONOR lists digital zoom to 200x, which is an interpolated figure rather than an optical one.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'A 7,060 mAh battery with 120 W charging',
+        body: 'The capacity is large for a phone this size, and HONOR pairs it with 120 W wired and 50 W wireless HONOR SuperCharge. Those are HONOR\u2019s ratings rather than measured results, and HONOR does not publish a charging-time figure on the specification pages reviewed, so the wattage tells you the class of charging rather than how long a fill takes.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'MagicOS 10 with YOYO Robot Mode',
+        body: 'The software is MagicOS 10 on Android 16, and HONOR groups the robot-camera behaviours under YOYO Robot Mode: multimodal perception, gesture recognition, AI subject tracking, voice-source localisation, auto execution and live-stream or video-call tracking. HONOR also lists Camera Agent, Magic Pose and AI-assisted composition among the shooting features.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'What the robotic camera changes about shooting',
+        paragraphs: [
+          'A phone camera normally moves when you move. HONOR\u2019s design separates those two things: the arm can change the camera\u2019s angle while the handset stays where it is, which is why subject tracking and gesture control matter more here than they would on a fixed module. For filming yourself, or for leaving the phone on a table while you move around, that is the difference between holding a conversation with a subject and pointing a lens at one.',
+          'The trade-offs are physical. Every moving part is a part that can wear, and HONOR publishes no durability figure for the mechanism. The module also makes the phone thicker than a conventional handset at 9.59 mm and heavier at about 248 g. If most of your photography is quick snapshots, the mechanism is doing expensive work you may never ask it to do.',
+        ],
+      },
+      {
+        heading: 'The three rear cameras, side by side',
+        paragraphs: [
+          'HONOR\u2019s specification page gives enough detail to compare the rear cameras directly, which is worth doing because the three lenses are built for different jobs rather than being the same sensor at three lengths.',
+        ],
+        table: {
+          head: ['Rear camera, per HONOR', 'Sensor', 'Aperture', 'Stabilisation'],
+          rows: [
+            ['Gimbal main, 200 MP', '1/1.28-inch', 'f/1.6', 'Optical, on the motorised arm'],
+            ['Ultra wide, 50 MP', 'Not stated by HONOR', 'f/2.0', 'Not stated by HONOR'],
+            ['Periscope telephoto, 200 MP', '1/1.4-inch', 'f/2.6', 'Optical'],
+          ],
+        },
+      },
+      {
+        heading: 'Display, size and what the numbers mean in the hand',
+        paragraphs: [
+          'The panel is a 6.31-inch LTPO OLED at 1216 x 2640 with an adaptive refresh rate between 1 and 120 Hz, and HONOR quotes a 6,800-nit peak brightness. Peak brightness figures describe small highlights rather than a full white screen, so treat it as a measure of outdoor legibility rather than of how bright the whole display gets.',
+          'The frame measures 151.43 by 72.86 by 9.59 mm at about 248 g. A 6.31-inch screen is compact by current flagship standards, which makes the phone easier to hold with one hand than its weight suggests \u2014 but the depth and the weight both come from the camera system, so the Robot Phone is a device you choose for what the arm does.',
+        ],
+      },
+      {
+        heading: 'Software support, and the one number HONOR does not give',
+        paragraphs: [
+          'The operating system is MagicOS 10 based on Android 16. HONOR publishes a seven-year Android and security-update commitment for its Magic series, but that announcement is about the Magic series and does not establish a Robot Phone schedule; HONOR\u2019s current security-update bulletin page does not list the Robot Phone either. If you keep phones for five years, that gap is worth weighing before you buy a first-generation moving camera.',
+          'What HONOR does publish is the feature list: YOYO Robot Mode, gesture controls, AI subject tracking, voice-source localisation, auto execution, and camera-side tools including Magic Pose and AI-assisted composition. Those are the parts of the software that depend on the hardware, which is why they are the parts least likely to appear on another phone.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the HONOR Robot Phone, and who should skip it',
+      should: [
+        'You film yourself or track moving subjects and want the camera to do the turning.',
+        'You want a compact 6.31-inch flagship with a genuinely different camera system.',
+        'You are comfortable buying a device whose listed market is China, and understand what that means for apps and software.',
+        'You want a large battery in a small body: 7,060 mAh with 120 W wired charging.',
+      ],
+      skip: [
+        'You need a phone sold and supported in your own market by HONOR \u2014 HONOR lists China for this model.',
+        'You want water protection beyond splashes: HONOR lists IP54.',
+        'You need a published operating-system update commitment, which HONOR does not state for this model.',
+        'You dislike moving parts in a device you will keep for years; HONOR publishes no durability rating for the gimbal.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Where the Robot Phone fits',
+        cards: [
+          {
+            title: 'Filming yourself',
+            body: 'The arm turns the camera to the subject, so a phone propped on a desk can follow you instead of you re-framing it every few seconds.',
+          },
+          {
+            title: 'Live streaming and video calls',
+            body: 'HONOR lists live-stream and video-call tracking alongside voice-source localisation, which is the pair of features that makes the gimbal useful after the novelty wears off.',
+          },
+          {
+            title: 'Photographers who want reach',
+            body: 'A 200 MP periscope telephoto with 2.7x optical zoom sits next to the 200 MP main camera, so the long lens is a real sensor rather than a crop.',
+          },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'HONOR Robot Phone pros and cons',
+      pros: [
+        'A 4-DoF motorised gimbal camera with 3-axis mechanical stabilisation',
+        '200 MP gimbal main camera and a 200 MP periscope telephoto',
+        '6.31-inch LTPO OLED at 1-120 Hz with 6,800-nit peak brightness',
+        'Snapdragon 8 Elite Gen 5 with up to 16 GB of memory and 1 TB of storage',
+        '7,060 mAh battery with 120 W wired and 50 W wireless charging',
+        'Hands-free gesture controls and subject tracking',
+      ],
+      cons: [
+        'HONOR lists China as the sales market, and no US sales page for the model was found',
+        'IP54 only, which covers splashes rather than immersion',
+        'No Robot Phone-specific operating-system update commitment is published',
+        'No durability or service-life figure is published for the moving camera arm',
+        'Battery and charging figures are HONOR ratings rather than independent measurements',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the HONOR Robot Phone',
+      paragraphs: [
+        'Start with the market, because everything else depends on it. HONOR\u2019s own pages list the Robot Phone in China, and the launch announcement describes Chinese pre-orders from 12 August 2026 and sales from 18 August. If you are buying outside that market, work out the software and support position first, and check what radio bands the version you are buying covers against your own carrier \u2014 HONOR does not publish a US-market variant of this model.',
+        'Then decide whether you want the moving camera at all. It is the reason the phone is thicker and heavier than its screen size suggests, and it is the feature that has no published durability rating. If the answer is yes, the rest of the specification \u2014 Snapdragon 8 Elite Gen 5, up to 16 GB and 1 TB, a 6.31-inch 120 Hz panel and a 7,060 mAh battery \u2014 is a current flagship specification, so you are buying the mechanism rather than settling for the hardware around it.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'What is the HONOR Robot Phone?',
+        answer:
+          'A 6.31-inch Android phone whose rear camera sits on a motorised 4-DoF gimbal arm with 3-axis mechanical stabilisation, carrying a 200 MP main sensor. HONOR announced it on 12 August 2026.',
+      },
+      {
+        question: 'Is the HONOR Robot Phone sold in the US?',
+        answer:
+          'No HONOR US sales page for the model was found, and the US address on HONOR\u2019s site redirects to its global site. HONOR\u2019s own pages and launch announcement point to China, with sales starting 18 August 2026.',
+      },
+      {
+        question: 'How many cameras does the Robot Phone have?',
+        answer:
+          'Three on the back: a 200 MP gimbal main camera on a 1/1.28-inch sensor at f/1.6, a 50 MP ultra wide at f/2.0 with a 122-degree field of view, and a 200 MP periscope telephoto on a 1/1.4-inch sensor at f/2.6 with 2.7x optical zoom. The front camera is 50 MP.',
+      },
+      {
+        question: 'What is 4-DoF on the Robot Phone camera?',
+        answer:
+          'It describes four degrees of freedom of movement in HONOR\u2019s motorised camera arm, which HONOR pairs with a 3-axis mechanical gimbal stabilisation system it calls the Titanium Agile Gimbal.',
+      },
+      {
+        question: 'Is the HONOR Robot Phone waterproof?',
+        answer:
+          'HONOR lists IP54 for this model, which protects against dust and splashes rather than immersion. It is not a phone to take swimming.',
+      },
+      {
+        question: 'How long does the Robot Phone battery last?',
+        answer:
+          'HONOR lists a 7,060 mAh capacity with 120 W wired and 50 W wireless HONOR SuperCharge. HONOR does not publish a battery-life or charging-time figure on the pages reviewed for this sheet.',
+      },
+      {
+        question: 'What software does the HONOR Robot Phone run?',
+        answer:
+          'MagicOS 10 based on Android 16, with YOYO Robot Mode, gesture recognition, AI subject tracking, voice-source localisation and hands-free gesture controls.',
+      },
+      {
+        question: 'How long will the Robot Phone get software updates?',
+        answer:
+          'HONOR does not state a Robot Phone-specific operating-system or security-update commitment. Its published seven-year commitment covers the Magic series, and HONOR\u2019s current security-update bulletin does not list the Robot Phone.',
+      },
+    ],
+    links: [
+      {
+        label: 'Smartphones',
+        href: '/shop/smartphones',
+        description: 'Every phone the store carries.',
+      },
+      {
+        label: 'Galaxy S26 Ultra spec sheet',
+        href: '/quick-look/samsung-galaxy-s26-ultra',
+        description: 'Another flagship spec sheet, for comparison.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'apple-iphone-17-pro-max': {
+    productName: 'iPhone 17 Pro Max',
+    heading: 'Apple iPhone 17 Pro Max specs, features and buying guide',
+    lead: 'The iPhone 17 Pro Max is Apple\u2019s 6.9-inch flagship from 2025, built around the A19 Pro chip and a 48 MP Pro Fusion camera system that reaches 8x optical-quality zoom. It suits anyone who wants the largest iPhone display, the longest battery Apple rates in this generation, and a camera system that covers everything from wide to long without switching phones.',
+    overview: [
+      'The display is a 6.9-inch OLED Super Retina XDR panel at 2868 x 1320, with ProMotion running adaptively up to 120 Hz and an Always-On display. The chip is the A19 Pro, which Apple lists as a 6-core CPU with two performance and four efficiency cores, a 6-core GPU with Neural Accelerators and a 16-core Neural Engine.',
+      'The camera system is where the model distinguishes itself: three 48 MP sensors \u2014 a Fusion Main at f/1.78, a Fusion Ultra Wide at f/2.2 and a Fusion Telephoto at f/2.8 on a tetraprism design \u2014 covering an 8x optical-quality zoom in, a 16x range and up to 40x digital. Storage runs from 256 GB to 2 TB.',
+      'One availability fact belongs up front. Apple\u2019s current iPhone line-up page lists iPhone 18 Pro, iPhone Air, iPhone 17 and iPhone 17e, and does not include the iPhone 17 Pro Max, so Apple no longer presents this model as current, even though its technical specifications page for it remains live. Everything below comes from Apple\u2019s own pages, named in the sources note on this page.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the iPhone 17 Pro Max',
+      paragraphs: [
+        'The first thing to settle is which generation you are buying. Apple\u2019s current line-up page promotes the iPhone 18 Pro and does not list the 17 Pro Max, so a listing for this model is selling a previous-generation phone. That does not make it a bad buy \u2014 the specification is unchanged and Apple\u2019s support page for it is live \u2014 but it does mean comparing it with what replaced it before deciding.',
+        'Then check the details that vary by model rather than by listing. Storage runs from 256 GB to 2 TB, and the battery and camera figures Apple publishes are identical across the Pro Max line-up, so capacity is the main thing a listing will change. US models use dual eSIM and, per Apple, are not compatible with physical SIM cards at all.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Display', detail: '6.9-inch OLED Super Retina XDR, 2868 x 1320 at 460 ppi' },
+      { term: 'Refresh rate', detail: 'ProMotion, adaptive up to 120 Hz, Always-On' },
+      { term: 'Chip', detail: 'A19 Pro: 6-core CPU, 6-core GPU, 16-core Neural Engine' },
+      { term: 'Storage', detail: '256 GB, 512 GB, 1 TB or 2 TB' },
+      { term: 'Rear cameras', detail: 'Three 48 MP sensors: Fusion Main, Ultra Wide and Telephoto' },
+      { term: 'Zoom', detail: '8x optical-quality in and up to 40x digital' },
+      { term: 'Battery', detail: 'Up to 39 hours of video playback, per Apple' },
+      { term: 'Weight', detail: '233 g (8.22 oz)' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'A vapor chamber, which is new for this design',
+        body: 'Apple says the phone has an Apple-designed vapor chamber laser-welded into the aluminum chassis with deionized water sealed inside, moving heat away from the A19 Pro and into the unibody. Apple attributes up to 40% better sustained performance than the previous generation to the chip paired with that chamber \u2014 a claim about long sessions rather than peak speed.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Three 48 MP cameras instead of three different sensors',
+        body: 'Apple calls it a 48 MP Pro Fusion camera system: a main camera at 24 mm and f/1.78, an ultra wide at 13 mm and f/2.2 with a 120-degree field of view, and a telephoto at 100 mm and f/2.8 on a tetraprism design with 3D sensor-shift stabilisation. The same main sensor also produces a 12 MP 48 mm 2x shot, and the telephoto produces a 12 MP 200 mm 8x shot.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Video aimed at people who finish in an editor',
+        body: 'Apple lists 4K Dolby Vision at up to 120 fps on the Fusion Main camera, slo-mo at 4K up to 120 fps and 1080p up to 240 fps, and ProRes up to 4K at 120 fps with external recording, alongside ProRes RAW, Apple Log 2, ACES and Genlock. Cinematic mode reaches 4K at 30 fps and Action mode 2.8K at 60 fps.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Charging, in three numbers',
+        body: 'Apple rates the battery at up to 39 hours of video playback and up to 35 hours of streamed video. Charging is up to 50% in 20 minutes with a 40 W-or-higher adapter and a USB-C cable, or up to 50% in 30 minutes on MagSafe with a 30 W-or-higher adapter, with MagSafe and Qi2 wireless charging at up to 25 W.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Display, size and the Always-On panel',
+        paragraphs: [
+          'At 6.9 inches and 460 ppi, this is the largest and sharpest display Apple ships in the 17 Pro generation, with ProMotion adapting the refresh rate up to 120 Hz and an Always-On mode that keeps information visible without waking the phone. Those are the two features that make the size usable rather than merely large.',
+          'The body measures 163.4 by 78.0 by 8.75 mm at 233 g, in an aluminum unibody with Ceramic Shield 2 on the front and Ceramic Shield on the back. That is a two-handed device for most people, which is the trade for the screen and the battery.',
+        ],
+      },
+      {
+        heading: 'The camera system, zoom by zoom',
+        paragraphs: [
+          'Apple\u2019s optical-quality language is doing specific work here: the main camera covers 1x at 24 mm and produces a 2x shot at 48 mm, while the telephoto covers 4x at 100 mm and produces an 8x shot at 200 mm. The result is an 8x optical-quality zoom in, a 16x optical-quality range across the three cameras, and digital zoom to 40x on top of that.',
+          'The front camera is an 18 MP Center Stage sensor at f/1.9 with autofocus, which Apple lists with 4K Dolby Vision video up to 60 fps and ProRes recording up to 4K at 60 fps with external recording. The macro, time-lapse and Night mode time-lapse modes sit alongside them; the last of those is worth knowing about because it is the mode that benefits most from the vapor chamber during long exposures.',
+        ],
+        table: {
+          head: ['Camera, per Apple', 'Sensor', 'Focal length', 'Aperture'],
+          rows: [
+            ['Fusion Main', '48 MP', '24 mm', 'f/1.78'],
+            ['Fusion Ultra Wide', '48 MP', '13 mm, 120 degrees', 'f/2.2'],
+            ['Fusion Telephoto', '48 MP', '100 mm, 4x', 'f/2.8'],
+            ['Front, Center Stage', '18 MP', 'Not stated by Apple', 'f/1.9'],
+          ],
+        },
+      },
+      {
+        heading: 'Battery and charging in practice',
+        paragraphs: [
+          'Apple\u2019s headline is up to 39 hours of video playback, with up to 35 hours for streamed video, and it does not publish an audio-playback figure on the US technology-specifications page for this model. As always those are Apple\u2019s ratings under set conditions, so your own number will track how much screen time and camera time the day contains.',
+          'Charging divides into wired and wireless. Wired, Apple quotes up to 50% in 20 minutes with a 40 W-or-higher adapter; on MagSafe, up to 50% in 30 minutes with a 30 W-or-higher adapter, with wireless charging peaking at 25 W on MagSafe or Qi2. The adapter and cable are what a listing will not tell you, so they are worth checking with the order.',
+        ],
+      },
+      {
+        heading: 'Connectivity, SIMs and Apple Intelligence',
+        paragraphs: [
+          'The port is USB-C with USB 3 support up to 10 Gb/s and DisplayPort, which is the detail that matters if you move ProRes files off the phone rather than over the air. Wireless is Wi-Fi 7 with 2x2 MIMO, Bluetooth 6, Thread for smart-home accessories, and 5G including sub-6GHz and mmWave.',
+          'US models use dual eSIM and Apple states they are not compatible with physical SIM cards. On the software side, Apple highlighted Live Translation for text and audio across Messages, FaceTime and Phone, and visual intelligence for acting on what is on screen, and it describes Apple Intelligence as beta with feature and language availability that may vary.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the iPhone 17 Pro Max, and who should skip it',
+      should: [
+        'You want the largest iPhone display with ProMotion and an Always-On screen.',
+        'You shoot video seriously and want ProRes, Apple Log 2 and 4K at 120 fps.',
+        'You need optical-quality reach beyond 4x without giving up the wide cameras.',
+        'You want Apple\u2019s longest video-playback rating in this generation.',
+      ],
+      skip: [
+        'You always want Apple\u2019s newest generation: the current line-up page lists the iPhone 18 Pro, not this model.',
+        'You need a physical SIM card slot \u2014 US models are dual eSIM only.',
+        'You want a phone you can comfortably use one-handed at 233 g and 6.9 inches.',
+        'You need a published audio-playback battery figure, which Apple does not list for this model.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Where the iPhone 17 Pro Max fits',
+        cards: [
+          {
+            title: 'Video on the move',
+            body: 'ProRes up to 4K at 120 fps with external recording, 4K Dolby Vision, and a USB-C port rated to 10 Gb/s for getting the files off the phone.',
+          },
+          {
+            title: 'Photography across distances',
+            body: 'Three 48 MP sensors covering 13 mm to 100 mm, with 8x optical-quality zoom and up to 40x digital on top.',
+          },
+          {
+            title: 'Long days away from a charger',
+            body: 'Up to 39 hours of video playback per Apple, with up to 50% back in 20 minutes on a 40 W-or-higher adapter.',
+          },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'Apple iPhone 17 Pro Max pros and cons',
+      pros: [
+        '6.9-inch OLED Super Retina XDR at up to 120 Hz with Always-On',
+        'A19 Pro with a 6-core CPU, 6-core GPU and 16-core Neural Engine',
+        'Three 48 MP rear cameras with an 8x optical-quality zoom',
+        'Up to 39 hours of video playback and up to 50% charge in 20 minutes',
+        'IP68 to 6 metres, with Ceramic Shield 2 on the front',
+        'A vapor chamber Apple says improves sustained performance',
+      ],
+      cons: [
+        'No longer in Apple\u2019s current iPhone line-up',
+        '233 g and 6.9 inches make it a two-handed phone',
+        'US models are dual eSIM with no physical SIM support',
+        'Apple publishes no audio-playback hour figure for this model',
+        'Battery and charging numbers are Apple ratings rather than independent measurements',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the iPhone 17 Pro Max in the US',
+      paragraphs: [
+        'Since Apple\u2019s line-up page has moved on to the iPhone 18 Pro, the useful question is not whether this phone is current but whether it does the job you need at the storage tier you want. The camera system, the display and the A19 Pro are unchanged by the arrival of a newer model, and Apple\u2019s technical-specifications page for it remains the reference \u2014 so compare the specification, not the generation number.',
+        'Two practical points before ordering. Storage is the only hardware variable a listing changes, running from 256 GB to 2 TB, so pick the tier deliberately: ProRes footage at 4K is what eats capacity fastest. And because US models are dual eSIM with no physical SIM tray, set the phone up with your carrier\u2019s eSIM process rather than expecting to move a card across.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'What chip does the iPhone 17 Pro Max use?',
+        answer:
+          'The A19 Pro, which Apple lists as a 6-core CPU with two performance and four efficiency cores, a 6-core GPU with Neural Accelerators, and a 16-core Neural Engine.',
+      },
+      {
+        question: 'How big is the iPhone 17 Pro Max display?',
+        answer:
+          '6.9 inches diagonally on an OLED Super Retina XDR panel at 2868 x 1320 and 460 ppi, with ProMotion adapting the refresh rate up to 120 Hz and an Always-On display.',
+      },
+      {
+        question: 'Does the iPhone 17 Pro Max have a physical SIM slot?',
+        answer:
+          'No. Apple states that US models use dual eSIM and are not compatible with physical SIM cards.',
+      },
+      {
+        question: 'How much zoom does the iPhone 17 Pro Max have?',
+        answer:
+          'Apple specifies 8x optical-quality zoom in, 2x optical zoom out, a 16x optical-quality zoom range and digital zoom up to 40x. The telephoto is a 48 MP sensor at 100 mm (4x), which also produces a 12 MP 200 mm 8x shot.',
+      },
+      {
+        question: 'How long does the iPhone 17 Pro Max battery last?',
+        answer:
+          'Apple rates it at up to 39 hours of video playback and up to 35 hours of streamed video playback. Apple does not publish an audio-playback figure for this model on its US technology-specifications page.',
+      },
+      {
+        question: 'How fast does the iPhone 17 Pro Max charge?',
+        answer:
+          'Apple quotes up to 50% in 20 minutes with a 40 W-or-higher adapter and a USB-C cable, or up to 50% in 30 minutes on MagSafe with a 30 W-or-higher adapter. Wireless charging reaches 25 W on MagSafe or Qi2.',
+      },
+      {
+        question: 'Is the iPhone 17 Pro Max still sold by Apple?',
+        answer:
+          'Apple\u2019s current iPhone line-up page lists the iPhone 18 Pro, iPhone Air, iPhone 17 and iPhone 17e, and does not include the iPhone 17 Pro Max, so Apple does not present it as a current model. Its technical-specifications page for the model is still published.',
+      },
+      {
+        question: 'Is the iPhone 17 Pro Max waterproof?',
+        answer:
+          'It carries an IP68 rating under IEC 60529, which Apple specifies as a maximum depth of 6 metres for up to 30 minutes in laboratory conditions.',
+      },
+    ],
+    links: [
+      {
+        label: 'Smartphones',
+        href: '/shop/smartphones',
+        description: 'Every phone the store carries.',
+      },
+      {
+        label: 'iPad Air 11-inch (M3) spec sheet',
+        href: '/quick-look/apple-ipad-air-11-m3',
+        description: 'The Apple tablet spec sheet, if you are pairing the two.',
+      },
+      {
+        label: "Today's deals",
+        href: '/deals',
+        description: 'The catalog filtered down to products that are discounted right now.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'vivo-x300-pro': {
+    productName: 'vivo X300 Pro',
+    heading: 'vivo X300 Pro specs, features and buying guide',
+    lead: 'The vivo X300 Pro is a camera-first flagship: a 6.78-inch AMOLED display with an LTPO refresh rate between 1 and 120 Hz, a MediaTek Dimensity 9500, and three ZEISS-branded rear cameras led by a 200 MP telephoto. It suits someone who wants long-range reach and a big battery, and who is ready to look past a US-market gap.',
+    overview: [
+      'The camera hardware is the reason this phone exists in its segment. vivo lists a 50 MP main camera on a Sony LYT-828 sensor at f/1.57, a 50 MP ultra wide on a JN1 sensor at f/2.0, and a 200 MP telephoto on an HPB sensor at f/2.67 with 3.5x optical zoom and optical stabilisation, all three branded under ZEISS.',
+      'The rest of the specification is current-flagship work: a 6.78-inch AMOLED at 2800 x 1260 and 452 ppi with 4,500-nit local peak brightness, 16 GB of LPDDR5X Ultra memory with 512 GB of UFS 4.1 storage, and a 6,510 mAh battery charged at 90 W over a cable or 40 W on a pad.',
+      'One thing has to be said plainly, and vivo\u2019s own site is the source for it. vivo\u2019s official country selector does not list the United States, and no vivo US sales or support listing for the X300 Pro was found. It is sold in vivo\u2019s global, India and Europe markets. Everything below is vivo\u2019s published data, and where vivo does not state a value, this sheet leaves it out rather than filling it in.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the vivo X300 Pro',
+      paragraphs: [
+        'The market is the first question, because it changes the rest of the decision. vivo sells the X300 Pro through its global, India and Europe channels, and its country selector does not include the United States, so a US buyer is looking at an import. That affects how the phone is serviced, which radio bands the version you buy covers, and which accessories and regional software it ships with.',
+        'The second thing to check is the battery figure, because vivo publishes two. Its global and India specification pages list 6,510 mAh typical and state that the figure applies to markets outside Europe, while vivo\u2019s Europe page lists 5,440 mAh typical for the same model name. Whichever region you are buying from, that is the number your device is built to.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Display', detail: '6.78-inch AMOLED, 2800 x 1260 at 452 ppi' },
+      { term: 'Refresh rate', detail: 'LTPO, adaptive 1-120 Hz' },
+      { term: 'Chipset', detail: 'MediaTek Dimensity 9500' },
+      { term: 'Memory and storage', detail: '16 GB LPDDR5X Ultra with 512 GB UFS 4.1' },
+      { term: 'Telephoto', detail: '200 MP ZEISS APO at f/2.67 with 3.5x optical zoom' },
+      { term: 'Battery', detail: '6,510 mAh typical outside Europe, per vivo' },
+      { term: 'Charging', detail: '90 W wired FlashCharge and 40 W wireless' },
+      { term: 'Durability', detail: 'IP68 and IP69' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'A 200 MP telephoto with ZEISS branding',
+        body: 'The long camera is the standout: a 200 MP sensor at f/2.67 with autofocus, optical image stabilisation and 3.5x optical zoom, which vivo markets under the ZEISS APO name. A sensor that dense at that focal length is unusual, and the optical zoom figure is credited to vivo\u2019s India specification page rather than inferred from the lens.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The main camera is stabilised, not just big',
+        body: 'vivo calls the main camera a ZEISS Gimbal-Grade 50 MP module on a Sony LYT-828 sensor at f/1.57 with optical image stabilisation. It is the widest aperture in the system, which is what makes it the low-light default; the ultra wide sits at f/2.0 with autofocus and a 119-degree view.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'A battery with two official figures',
+        body: 'vivo lists 6,510 mAh typical for markets outside Europe and 5,440 mAh typical on its Europe page. Charging is 90 W wired FlashCharge and 40 W wireless on both. Publishing both figures rather than one is the reason this sheet lists them separately instead of picking a favourite.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'IP68 and IP69, which are not the same thing',
+        body: 'vivo rates the X300 Pro to both standards. IP68 covers dust and immersion; IP69 covers protection against high-pressure, high-temperature water jets. Together they describe a phone built for wet conditions, though neither rating is a licence to take it swimming.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'The camera system, sensor by sensor',
+        paragraphs: [
+          'vivo\u2019s specification pages are specific about two of the three sensors and silent about the third maker, which is worth passing on rather than papering over. The main camera is a Sony LYT-828, the ultra wide is a JN1 and the telephoto is identified as an HPB; vivo does not name the maker of the HPB on the pages reviewed.',
+          'The front camera is a 50 MP JN1 at f/2.0 with autofocus and ZEISS branding, which is a higher-resolution selfie camera than most flagships carry. Between them, the four cameras cover 119 degrees at the wide end and 3.5x optical at the long end.',
+        ],
+        table: {
+          head: ['Camera, per vivo', 'Sensor', 'Aperture', 'Notes'],
+          rows: [
+            ['Main, 50 MP', 'Sony LYT-828', 'f/1.57', 'ZEISS Gimbal-Grade, optical stabilisation'],
+            ['Ultra wide, 50 MP', 'JN1', 'f/2.0', 'Autofocus, 119 degrees'],
+            ['Telephoto, 200 MP', 'HPB', 'f/2.67', 'ZEISS APO, 3.5x optical'],
+            ['Front, 50 MP', 'JN1', 'f/2.0', 'Autofocus, 92 degrees, ZEISS'],
+          ],
+        },
+      },
+      {
+        heading: 'Display, brightness and what 452 ppi buys you',
+        paragraphs: [
+          'The panel is a 6.78-inch AMOLED at 2800 x 1260, which vivo measures at 452 ppi, with an LTPO refresh rate adapting between 1 and 120 Hz. LTPO is the reason a phone this size can hold a high refresh rate without draining the battery during a static screen, because the display drops to 1 Hz when nothing is moving.',
+          'vivo also publishes a 4,500-nit local peak brightness figure. As with every peak number, it describes small highlights rather than a full-screen white, so read it as outdoor legibility. The body is 161.98 by 75.48 by 7.99 mm at 226 g, which is thin for the battery inside it.',
+        ],
+      },
+      {
+        heading: 'Software, connectivity and the small omissions',
+        paragraphs: [
+          'The operating system is OriginOS 6 on Android 16, with a 3D ultrasonic fingerprint sensor, Wi-Fi 6 and Wi-Fi 7, Bluetooth 6.0, NFC, USB 3.2 Gen 1 and an infrared blaster. vivo lists Hi-Fi audio as not supported and FM as not supported, and states that storage is not expandable, so the 512 GB in the reviewed configuration is what you get.',
+          'One practical detail belongs in a buying guide rather than a footnote: vivo says the phone supports Bluetooth and digital USB-C earphones but not analogue wired earphones, and that 3.5 mm analogue headphones need a separately purchased USB-C adapter with a built-in DAC. If you still use wired headphones, that is an extra item to plan for.',
+        ],
+      },
+      {
+        heading: 'Where the X300 Pro fits against its own family and the US market',
+        paragraphs: [
+          'vivo positions the X300 Pro as the camera-led option in its X300 line, and the specification backs that up: a 200 MP telephoto is the part most phones in this class do not have. If you compare it with other flagships, compare the optical zoom factors and aperture sizes, because those are the figures the manufacturers publish and the ones that change what a photo looks like.',
+          'The market question is separate from the hardware. vivo\u2019s country selector omits the United States, and its international-warranty eligibility page does not cover the US either, so a US buyer is importing. That is not a reason to avoid the phone, but it is a reason to check the version, the bands and the support path before ordering rather than after.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the vivo X300 Pro, and who should skip it',
+      should: [
+        'You want long-range reach from a 200 MP telephoto with 3.5x optical zoom.',
+        'You shoot in low light and want the widest aperture in the system as your main camera.',
+        'You want a large battery and fast charging: 6,510 mAh with 90 W wired outside Europe.',
+        'You are comfortable importing, and you have checked the version and its bands.',
+      ],
+      skip: [
+        'You need a phone sold and supported in the US \u2014 vivo\u2019s country selector does not list it.',
+        'You want expandable storage, which vivo states is not supported.',
+        'You use 3.5 mm analogue headphones without wanting a USB-C DAC adapter.',
+        'You need the battery figure to be the same in every market; vivo publishes two.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Where the X300 Pro fits',
+        cards: [
+          {
+            title: 'Long-range photography',
+            body: 'A 200 MP telephoto at 3.5x optical and a stabilised 50 MP main camera cover everything between 119 degrees and a compressed portrait.',
+          },
+          {
+            title: 'Travel and full days out',
+            body: 'A 6,510 mAh battery with 90 W wired charging, plus IP68 and IP69 protection against rain and spray.',
+          },
+          {
+            title: 'Video and calls',
+            body: 'A 50 MP autofocus front camera and Wi-Fi 7 with Bluetooth 6.0, in a 7.99 mm body that weighs 226 g.',
+          },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'vivo X300 Pro pros and cons',
+      pros: [
+        '200 MP ZEISS APO telephoto with 3.5x optical zoom and optical stabilisation',
+        '50 MP main camera on a Sony LYT-828 sensor at f/1.57',
+        '6.78-inch AMOLED with an LTPO 1-120 Hz refresh rate',
+        'Dimensity 9500 with 16 GB of LPDDR5X Ultra memory and 512 GB of UFS 4.1 storage',
+        '6,510 mAh with 90 W wired and 40 W wireless charging outside Europe',
+        'IP68 and IP69 ratings, and a 3D ultrasonic fingerprint sensor',
+      ],
+      cons: [
+        'vivo\u2019s country selector does not list the United States',
+        'Two different official battery figures depending on region',
+        'No expandable storage, per vivo',
+        'No speaker configuration is published for this model',
+        'Analogue wired earphones need a separately purchased USB-C adapter with a DAC',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the vivo X300 Pro',
+      paragraphs: [
+        'Work out the region first. vivo\u2019s site divides its products by market, and the X300 Pro is listed for its global, India and Europe channels. The version you buy decides the battery capacity you get, because vivo publishes 6,510 mAh outside Europe and 5,440 mAh on its Europe page, and it also decides which bands the phone supports \u2014 something neither this page nor vivo\u2019s global specification can settle for your carrier.',
+        'Then decide whether the camera is worth the compromises. You are buying a 200 MP telephoto with 3.5x optical zoom, a stabilised 50 MP main camera and a 6,510 mAh battery in a 7.99 mm body; in exchange you take no expandable storage, no published speaker configuration, and a wired-headphone situation that needs an adapter. If the camera is not the reason, a mainstream US-market phone will be simpler to own.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Is the vivo X300 Pro sold in the US?',
+        answer:
+          'No vivo US sales or support listing for the X300 Pro was found, and vivo\u2019s official country selector does not list the United States. The model is listed for vivo\u2019s global, India and Europe markets.',
+      },
+      {
+        question: 'What is the X300 Pro battery capacity?',
+        answer:
+          'vivo publishes two figures: 6,510 mAh typical for markets outside Europe, and 5,440 mAh typical on its Europe specification page. Both versions are listed with 90 W wired FlashCharge and 40 W wireless charging.',
+      },
+      {
+        question: 'How much optical zoom does the X300 Pro have?',
+        answer:
+          '3.5x optical on the 200 MP ZEISS APO telephoto, which vivo specifies at f/2.67 with autofocus and optical image stabilisation.',
+      },
+      {
+        question: 'What chip does the vivo X300 Pro use?',
+        answer:
+          'The MediaTek Dimensity 9500, an 8-core chipset, paired in the configuration vivo publishes with 16 GB of LPDDR5X Ultra memory and 512 GB of UFS 4.1 storage.',
+      },
+      {
+        question: 'Does the vivo X300 Pro support a microSD card?',
+        answer: 'No. vivo states that expandable storage is not supported on this model.',
+      },
+      {
+        question: 'Is the X300 Pro waterproof?',
+        answer:
+          'It carries both IP68 and IP69 ratings. IP68 covers dust and immersion, while IP69 covers protection against high-pressure, high-temperature water jets.',
+      },
+      {
+        question: 'Can I use wired headphones with the X300 Pro?',
+        answer:
+          'Only digital USB-C earphones directly. vivo states that analogue 3.5 mm earphones need a separately purchased USB-C adapter with a built-in DAC.',
+      },
+      {
+        question: 'How fast does the vivo X300 Pro charge?',
+        answer:
+          'vivo lists 90 W wired FlashCharge and 40 W wireless charging. vivo does not publish a charging-time figure on the specification pages reviewed for this sheet.',
+      },
+    ],
+    links: [
+      {
+        label: 'Smartphones',
+        href: '/shop/smartphones',
+        description: 'Every phone the store carries.',
+      },
+      {
+        label: 'Galaxy S26 Ultra spec sheet',
+        href: '/quick-look/samsung-galaxy-s26-ultra',
+        description: 'A US-market flagship spec sheet to compare it with.',
+      },
+      {
+        label: "Today's deals",
+        href: '/deals',
+        description: 'The catalog filtered down to products that are discounted right now.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'apple-ipad-air-11-m3': {
+    productName: 'iPad Air 11-inch (M3)',
+    heading: 'Apple iPad Air 11-inch (M3) specs, features and buying guide',
+    lead: 'The 11-inch iPad Air with the M3 chip is the middle of Apple\u2019s tablet range: a Liquid Retina display at 264 ppi, 8 GB of memory, Apple Pencil Pro support and a front camera that finally sits in the landscape edge. It suits people who want one light device for notes, reading, video and light work rather than a laptop.',
+    overview: [
+      'Apple introduced this model on 4 March 2025, with devices arriving from 12 March. The display measures 10.86 inches diagonally as a rectangle, which Apple markets as 11 inches, at 2360 x 1640 and 264 ppi with 500 nits of brightness, P3 wide colour, True Tone, full lamination and an antireflective coating.',
+      'Inside are the M3 with an 8-core CPU split between four performance and four efficiency cores, a 9-core GPU and a 16-core Neural Engine, plus 8 GB of memory. Storage runs from 128 GB to 1 TB, and the whole thing weighs 460 g at 6.1 mm thick.',
+      'Two facts shape a purchase. Apple\u2019s current iPad Air page now promotes the M4 generation, so the M3 model this sheet describes is a previous generation even though Apple\u2019s technical-specifications page for it is live. And Apple lists a 20 W USB-C power adapter in the box, with no faster charging figure published. Everything below is Apple\u2019s own data, named in the sources note on this page.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the iPad Air 11-inch (M3)',
+      paragraphs: [
+        'Start with the generation question, because it changes the comparison. Apple\u2019s current iPad Air page promotes the M4 model, and the M3 remains documented on Apple Support. That means the specification on this page is accurate for the model named, and it also means checking what the newer generation changed before deciding that the older one is the bargain.',
+        'The Pencil is the other thing to settle, and it is not a small one on a tablet. This iPad Air takes Apple Pencil Pro and Apple Pencil (USB-C), which are two different products with different features, and neither ships in the box. The keyboard is a third purchase: Apple lists the Magic Keyboard for iPad Air as the compatible option. Between a Pencil and a keyboard the accessories can matter as much as the storage tier.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Display', detail: '11-inch Liquid Retina, 2360 x 1640 at 264 ppi, 500 nits' },
+      { term: 'Chip', detail: 'Apple M3: 8-core CPU, 9-core GPU, 16-core Neural Engine' },
+      { term: 'Memory', detail: '8 GB' },
+      { term: 'Storage', detail: '128 GB, 256 GB, 512 GB or 1 TB' },
+      { term: 'Front camera', detail: 'Landscape 12 MP Center Stage at f/2.0' },
+      { term: 'Battery', detail: '28.93 Wh, up to 10 hours of web surfing or video' },
+      { term: 'Port', detail: 'USB-C with USB 3 support up to 10 Gb/s' },
+      { term: 'Weight', detail: '460 g (1.01 lb)' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'The front camera moved to the landscape edge',
+        body: 'The front camera is a 12 MP Center Stage sensor at f/2.0, and Apple\u2019s connector diagram places it at the right of the display in landscape. That is the orientation a video call actually happens in when the tablet is propped on a keyboard, and it is the change that matters most for anyone who spends the day on calls.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'An M3 rather than a mobile chip',
+        body: 'The M3 is the same silicon family Apple puts in Macs, listed here with an 8-core CPU, a 9-core GPU and a 16-core Neural Engine, paired with 8 GB of memory. That combination is what lets a tablet this thin run tablet apps and desktop-class software without the usual compromise.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Apple Pencil Pro and Magic Keyboard support',
+        body: 'Apple lists Apple Pencil Pro and Apple Pencil (USB-C) as compatible, and the Magic Keyboard for iPad Air as the keyboard option. Pencil Pro adds the squeeze and barrel-roll style interactions that the USB-C Pencil does not have, so the two are not interchangeable if those matter to your workflow.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'USB-C at USB 3 speed',
+        body: 'The port is USB-C with USB 3 support up to 10 Gb/s, which is worth noting because plenty of tablets make you choose between a modern connector and a fast one. It is the same speed class Apple quotes on its phones, and it makes external drives and card readers usable rather than painful.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'The display, and what 500 nits means day to day',
+        paragraphs: [
+          'Apple specifies 500 nits of brightness on a 2360 x 1640 panel at 264 ppi, with P3 wide colour, True Tone, full lamination and an antireflective coating. The lamination is the part that changes how the tablet feels in use: it removes the visible gap between the glass and the picture, which is why the screen reads as closer to your finger than an entry-level iPad\u2019s.',
+          'Brightness is the honest limit. 500 nits is comfortable indoors and adequate in shade, and it is well below what Apple\u2019s phone panels reach. If you plan to use the tablet outdoors in direct sun, compare that figure with whatever else you are considering.',
+        ],
+      },
+      {
+        heading: 'Battery, charging and the adapter in the box',
+        paragraphs: [
+          'The battery is a 28.93-watt-hour unit that Apple rates at up to 10 hours of web surfing on Wi-Fi or video watching, and at up to 9 hours of web surfing on cellular models. Those are Apple\u2019s own figures under set conditions, and like all tablet numbers they move with screen brightness and with how much you use the Pencil.',
+          'Apple lists a 20 W USB-C power adapter in the box and publishes no faster-charging figure for this model on the technical-specifications page, so there is no fast-charge promise to compare against. Charging through a computer\u2019s USB-C port is also documented, which is useful when travelling with a laptop rather than a wall adapter.',
+        ],
+      },
+      {
+        heading: 'Storage tiers, and why 128 GB is the wrong end for some buyers',
+        paragraphs: [
+          'Storage runs from 128 GB to 1 TB across four tiers: 128 GB, 256 GB, 512 GB or 1 TB. Because the memory is fixed at 8 GB on every tier, the storage is the only thing the extra spend buys \u2014 which is worth knowing, because it is easy to assume a larger tier also means a faster device.',
+          'The tier that makes sense depends on what you put on it. Video editing, downloaded shows and offline maps are what consume a tablet, and none of those can be solved later without replacing the device. If you are unsure, 256 GB is the tier that avoids the 128 GB question entirely; if the tablet is mostly a screen for streaming and notes, 128 GB stays workable.',
+        ],
+      },
+      {
+        heading: 'Where it sits in Apple\u2019s range now',
+        paragraphs: [
+          'Apple\u2019s current iPad Air product page promotes the M4 generation, and the M3 remains in Apple\u2019s model comparison and on Apple Support. That is a normal lifecycle for a tablet: the hardware stays documented and supported, and the marketing moves on. For a buyer the practical consequence is that a spec-sheet comparison across generations is now necessary rather than optional.',
+          'The fixed points in this model are the 10.86-inch display, the M3 and its 8 GB of memory, the landscape front camera, the two Pencil options, the Magic Keyboard, Wi-Fi 6E, Bluetooth 5.3, USB 3 speeds over USB-C, Touch ID in the top button, and 460 g at 6.1 mm. Those are what you are buying, whichever generation number is on the box.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the iPad Air 11-inch (M3), and who should skip it',
+      should: [
+        'You want a light tablet for notes and sketching, with Apple Pencil Pro support.',
+        'You take a lot of video calls and want the front camera in the landscape edge.',
+        'You want desktop-class silicon in a 460 g body rather than an entry-level tablet chip.',
+        'You move files: USB-C at USB 3 speeds up to 10 Gb/s is unusual at this size.',
+      ],
+      skip: [
+        'You always want Apple\u2019s current generation \u2014 the iPad Air page now promotes the M4 model.',
+        'You need a Pencil or a keyboard in the box: neither is included.',
+        'You want more than 8 GB of memory, which Apple does not offer on this model.',
+        'You need water or dust protection, which Apple does not rate for the iPad Air.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Where the iPad Air 11-inch (M3) fits',
+        cards: [
+          {
+            title: 'Study and note-taking',
+            body: 'Apple Pencil Pro support with a laminated 264 ppi display, in a tablet that weighs 460 g and is 6.1 mm thick.',
+          },
+          {
+            title: 'Video calls and remote work',
+            body: 'A landscape 12 MP Center Stage front camera, plus a Magic Keyboard for iPad Air when you want a real keyboard.',
+          },
+          {
+            title: 'Reading, streaming and travel',
+            body: 'Up to 10 hours of web surfing or video per Apple, with charging over USB-C from a wall adapter or a laptop.',
+          },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'Apple iPad Air 11-inch (M3) pros and cons',
+      pros: [
+        'Apple M3 with an 8-core CPU, 9-core GPU and 16-core Neural Engine',
+        '11-inch Liquid Retina display at 2360 x 1640, 264 ppi and 500 nits',
+        'Landscape 12 MP Center Stage front camera',
+        'Apple Pencil Pro and Apple Pencil (USB-C) support',
+        'USB-C with USB 3 support up to 10 Gb/s',
+        '460 g and 6.1 mm, with Wi-Fi 6E and Bluetooth 5.3',
+      ],
+      cons: [
+        'No longer the current generation: Apple\u2019s iPad Air page promotes the M4 model',
+        'Memory is fixed at 8 GB on every storage tier',
+        'A 20 W adapter is listed in the box, with no faster-charging figure published',
+        'No water or dust resistance rating is stated by Apple',
+        'Pencil and keyboard are separate purchases',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the iPad Air 11-inch (M3) in the US',
+      paragraphs: [
+        'Decide the accessories with the tablet rather than after it, because they are the difference between a tablet and a work device here. Apple Pencil Pro and Apple Pencil (USB-C) are both supported but are not the same product, and the Magic Keyboard for iPad Air is a third item. If you are buying this as a laptop replacement, budget for all three and compare the total against a laptop.',
+        'Then pick storage on what you will actually store. Memory is 8 GB on every tier, so the money buys capacity alone: 128 GB suits streaming and notes, while video, downloads and large app libraries push you to 256 GB or beyond. And because Apple\u2019s current iPad Air page now promotes the M4 generation, check what changed in it before deciding the M3 is the value option \u2014 the specification above is the honest baseline for the comparison.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'What chip does the iPad Air 11-inch (M3) use?',
+        answer:
+          'Apple\u2019s M3, listed with an 8-core CPU split between four performance and four efficiency cores, a 9-core GPU and a 16-core Neural Engine, alongside 8 GB of memory.',
+      },
+      {
+        question: 'How big is the iPad Air 11-inch (M3) screen?',
+        answer:
+          'Apple markets it as 11 inches and lists the display as 10.86 inches diagonally as a rectangle, at 2360 x 1640 and 264 ppi, with 500 nits of brightness.',
+      },
+      {
+        question: 'Does the iPad Air 11-inch (M3) work with Apple Pencil Pro?',
+        answer:
+          'Yes, and with Apple Pencil (USB-C) as well. Neither is included in the box, and the two Pencils have different features, so pick deliberately.',
+      },
+      {
+        question: 'What is the battery life of the iPad Air 11-inch (M3)?',
+        answer:
+          'Apple rates the 28.93-watt-hour battery at up to 10 hours of web surfing on Wi-Fi or video watching, and up to 9 hours of web surfing on cellular models.',
+      },
+      {
+        question: 'How much storage does the iPad Air 11-inch (M3) come with?',
+        answer:
+          '128 GB, 256 GB, 512 GB or 1 TB. Memory is 8 GB on every tier, so storage is the only thing the larger tiers add.',
+      },
+      {
+        question: 'Is a charger included with the iPad Air 11-inch (M3)?',
+        answer:
+          'Apple lists a 20 W USB-C power adapter in the box. The technical-specifications page states no faster-charging figure for this model.',
+      },
+      {
+        question: 'Is the iPad Air 11-inch (M3) waterproof?',
+        answer: 'Apple states no water or dust resistance rating for the iPad Air, so treat it as a device to keep away from water.',
+      },
+      {
+        question: 'Is the iPad Air 11-inch (M3) still sold by Apple?',
+        answer:
+          'Apple\u2019s current iPad Air page promotes the M4 generation, so the M3 is a previous generation. Apple still publishes its technical specifications and lists it in the iPad comparison tool.',
+      },
+    ],
+    links: [
+      {
+        label: 'Laptops & PCs',
+        href: '/shop/laptops',
+        description: 'Tablets, laptops and desktop PCs the store carries.',
+      },
+      {
+        label: 'iPhone 17 Pro Max spec sheet',
+        href: '/quick-look/apple-iphone-17-pro-max',
+        description: 'The Apple phone spec sheet, if you are pairing the two.',
+      },
+      {
+        label: "Today's deals",
+        href: '/deals',
+        description: 'The catalog filtered down to products that are discounted right now.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
 }
 
 export function getQuickLookGuide(slug: string): QuickLookGuide | undefined {

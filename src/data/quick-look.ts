@@ -943,6 +943,644 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       },
     ],
   },
+
+  // ── Standalone entries (batch 2) ─────────────────────────────────────────
+  'honor-robot-phone': {
+    slug: 'honor-robot-phone',
+    displayName: 'HONOR Robot Phone',
+    status: 'available',
+    product: {
+      name: 'HONOR Robot Phone',
+      category: 'Smartphones',
+      categorySlug: 'smartphones',
+      buyUrl: 'https://amzn.to/3WrnWlC',
+      brand: 'HONOR',
+      description:
+        "HONOR's Robot Phone mounts a motorised 4-DoF gimbal camera on the back of a 6.31-inch handset, alongside a 200 MP main camera, a 200 MP periscope telephoto and a 7,060 mAh battery with 120 W charging.",
+      features: [
+        'Motorised 4-DoF gimbal camera with 3-axis mechanical stabilisation',
+        '6.31-inch LTPO OLED at 1-120 Hz with a 6,800-nit peak brightness',
+        '200 MP gimbal main camera and a 200 MP periscope telephoto',
+        '7,060 mAh battery with 120 W wired and 50 W wireless HONOR SuperCharge',
+        'MagicOS 10 on Android 16, with YOYO Robot Mode gestures',
+      ],
+    },
+    // HONOR's own product and specification pages, including the China
+    // specification page that carries the resolution, dimensions, weight and
+    // IP rating, plus HONOR's launch announcement for the date and market.
+    specSource:
+      "HONOR's official Robot Phone product and specification pages (global and China) and HONOR's Robot Phone launch announcement, together with HONOR's official market and update pages — checked against HONOR's own pages in October 2026",
+    metaDescription:
+      'HONOR Robot Phone spec sheet: a motorised 4-DoF gimbal camera, a 6.31-inch 120 Hz LTPO OLED display, 200 MP cameras and a 7,060 mAh battery.',
+    images: [
+      '/product-images/honor-robot-phone-rear-view.webp',
+      '/product-images/honor-robot-phone-robotic-camera-close-up.webp',
+      '/product-images/honor-robot-phone-two-units.webp',
+      '/product-images/honor-robot-phone-silver-pair.webp',
+      '/product-images/honor-robot-phone-camera-arm.webp',
+    ],
+    highlights: [
+      { label: 'Display', value: '6.31-inch LTPO OLED' },
+      { label: 'Gimbal camera', value: '200 MP, 4-DoF' },
+      { label: 'Telephoto', value: '200 MP, 2.7x optical' },
+      { label: 'Battery', value: '7,060 mAh' },
+      { label: 'Charging', value: '120 W wired' },
+    ],
+    keySpecs: [
+      { label: 'Display', value: '6.31-inch LTPO OLED, 1216 x 2640, 1-120 Hz' },
+      { label: 'Processor', value: 'Snapdragon 8 Elite Gen 5' },
+      { label: 'Memory and storage', value: '12 GB + 512 GB, or 16 GB + 1 TB' },
+      {
+        label: 'Rear cameras',
+        value: '200 MP gimbal main, 50 MP ultra wide and a 200 MP periscope telephoto',
+      },
+      { label: 'Robotic camera', value: '4-DoF motorised arm with 3-axis mechanical stabilisation' },
+      { label: 'Front camera', value: '50 MP wide' },
+      { label: 'Battery', value: '7,060 mAh' },
+      { label: 'Charging', value: '120 W wired and 50 W wireless HONOR SuperCharge' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'HONOR' },
+      { label: 'Model', value: 'Robot Phone' },
+      { label: 'Announced', value: '12 August 2026, per HONOR' },
+      {
+        label: 'Sales market',
+        value: 'China, per HONOR\u2019s own store and launch announcement',
+      },
+      { label: 'Dimensions', value: '151.43 x 72.86 x 9.59 mm' },
+      { label: 'Weight', value: 'About 248 g including the battery' },
+      { label: 'Water and dust', value: 'IP54' },
+      { label: 'Operating system', value: 'MagicOS 10 based on Android 16' },
+    ],
+    specs: [
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Size', value: '6.31 inches' },
+          { label: 'Panel', value: 'LTPO OLED' },
+          { label: 'Resolution', value: '1216 x 2640, FHD+ as HONOR lists it' },
+          { label: 'Refresh rate', value: 'Adaptive 1-120 Hz' },
+          { label: 'Peak brightness', value: '6,800 nits' },
+        ],
+      },
+      {
+        group: 'Performance and memory',
+        rows: [
+          { label: 'Processor', value: 'Snapdragon 8 Elite Gen 5 Mobile Platform' },
+          { label: 'Memory', value: '12 GB or 16 GB' },
+          { label: 'Storage', value: '512 GB or 1 TB' },
+        ],
+      },
+      {
+        group: 'Camera system',
+        rows: [
+          {
+            label: 'Gimbal main camera',
+            value: '200 MP, 1/1.28-inch sensor, f/1.6, optical image stabilisation',
+          },
+          { label: 'Ultra wide', value: '50 MP, f/2.0, 122-degree field of view' },
+          {
+            label: 'Periscope telephoto',
+            value: '200 MP, 1/1.4-inch sensor, f/2.6, 2.7x optical zoom and optical image stabilisation',
+          },
+          { label: 'Digital zoom', value: 'Up to 200x, as HONOR lists it' },
+          { label: 'Front camera', value: '50 MP wide, f/2.0, up to a 90-degree field of view' },
+        ],
+      },
+      {
+        group: 'Robotic camera',
+        rows: [
+          { label: 'Degrees of freedom', value: '4-DoF motorised movement' },
+          { label: 'Stabilisation', value: '3-axis mechanical gimbal stabilisation' },
+          { label: 'HONOR\u2019s name for it', value: 'Titanium Agile Gimbal' },
+        ],
+      },
+      {
+        group: 'Battery and charging',
+        rows: [
+          { label: 'Capacity', value: '7,060 mAh' },
+          { label: 'Wired charging', value: '120 W HONOR SuperCharge' },
+          { label: 'Wireless charging', value: '50 W HONOR SuperCharge' },
+        ],
+      },
+      {
+        group: 'Build',
+        rows: [
+          { label: 'Dimensions', value: '151.43 x 72.86 x 9.59 mm' },
+          { label: 'Weight', value: 'About 248 g including the battery' },
+          { label: 'Water and dust resistance', value: 'IP54' },
+        ],
+      },
+      {
+        group: 'Software and AI',
+        rows: [
+          { label: 'Operating system', value: 'MagicOS 10 based on Android 16' },
+          { label: 'YOYO Robot Mode', value: 'Listed by HONOR with multimodal perception and gesture recognition' },
+          { label: 'Subject tracking', value: 'AI subject tracking and voice-source localisation' },
+          { label: 'Gestures', value: 'Hands-free gesture controls' },
+          { label: 'Camera features', value: 'Camera Agent, Magic Pose and AI-assisted composition' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'HONOR publishes no Robot Phone-specific operating-system or security-update commitment; its seven-year announcement covers the Magic series, not this model.',
+          'The IP54 rating HONOR lists covers splashes rather than immersion.',
+          'HONOR identifies China as the sales market for the Robot Phone, and no HONOR US sales page for it was found.',
+          'The zoom figures are HONOR\u2019s own: 2.7x optical on the periscope telephoto and up to 200x digital.',
+          'Battery capacity and charging wattages are HONOR ratings rather than independent measurements.',
+        ],
+      },
+    ],
+  },
+
+  'apple-iphone-17-pro-max': {
+    slug: 'apple-iphone-17-pro-max',
+    displayName: 'Apple iPhone 17 Pro Max',
+    status: 'available',
+    product: {
+      name: 'Apple iPhone 17 Pro Max',
+      category: 'Smartphones',
+      categorySlug: 'smartphones',
+      buyUrl: 'https://amzn.to/4jieTwY',
+      brand: 'Apple',
+      description:
+        "Apple's 2025 flagship: a 6.9-inch Super Retina XDR OLED display at up to 120 Hz, the A19 Pro chip, a 48 MP Pro Fusion camera system with 8x optical-quality zoom and up to 39 hours of video playback.",
+      features: [
+        '6.9-inch OLED Super Retina XDR at up to 120 Hz with an Always-On display',
+        'A19 Pro with a 6-core CPU, 6-core GPU and 16-core Neural Engine',
+        '48 MP Pro Fusion camera system with 8x optical-quality zoom',
+        'Up to 39 hours of video playback, per Apple',
+        'IP68 to 6 metres, in an aluminum unibody with Ceramic Shield 2',
+      ],
+    },
+    // Apple's own technical-specifications page for this model on Apple
+    // Support, Apple's launch announcement, and Apple's current line-up page
+    // (which no longer lists it) for the availability note.
+    specSource:
+      "Apple's iPhone 17 Pro Max technical specifications on Apple Support, Apple's September 2025 launch announcement for the iPhone 17 Pro and iPhone 17 Pro Max, and Apple's current iPhone line-up page — checked against Apple's own pages in October 2026",
+    metaDescription:
+      'iPhone 17 Pro Max spec sheet: a 6.9-inch 120 Hz display, the A19 Pro chip, a 48 MP Pro Fusion camera system and up to 39 hours of video playback.',
+    images: [
+      '/product-images/apple-iphone-17-pro-max-colours.webp',
+      '/product-images/apple-iphone-17-pro-max-orange-and-front.webp',
+      '/product-images/apple-iphone-17-pro-max-camera-array.webp',
+      '/product-images/apple-iphone-17-pro-max-in-hand.webp',
+      '/product-images/apple-iphone-17-pro-max-control-center.webp',
+      '/product-images/apple-iphone-17-pro-max-live-translation-call.webp',
+      '/product-images/apple-iphone-17-pro-max-home-screen.webp',
+      '/product-images/apple-iphone-17-pro-max-app-icons.webp',
+    ],
+    highlights: [
+      { label: 'Display', value: '6.9-inch OLED' },
+      { label: 'Chip', value: 'A19 Pro' },
+      { label: 'Main camera', value: '48 MP' },
+      { label: 'Zoom', value: '8x optical-quality' },
+      { label: 'Video playback', value: 'Up to 39 h' },
+    ],
+    keySpecs: [
+      { label: 'Display', value: '6.9-inch OLED Super Retina XDR, 2868 x 1320 at 460 ppi' },
+      { label: 'Refresh rate', value: 'ProMotion, adaptive up to 120 Hz, with an Always-On display' },
+      { label: 'Chip', value: 'A19 Pro, 6-core CPU, 6-core GPU and 16-core Neural Engine' },
+      { label: 'Storage', value: '256 GB, 512 GB, 1 TB or 2 TB' },
+      { label: 'Rear cameras', value: '48 MP Fusion Main, 48 MP Fusion Ultra Wide and 48 MP Fusion Telephoto' },
+      { label: 'Front camera', value: '18 MP Center Stage with autofocus' },
+      { label: 'Battery', value: 'Up to 39 hours of video playback, per Apple' },
+      { label: 'Charging', value: 'Up to 50% in 20 minutes with a 40 W-or-higher adapter' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Apple' },
+      { label: 'Model', value: 'iPhone 17 Pro Max' },
+      { label: 'Weight', value: '233 g (8.22 oz)' },
+      { label: 'Dimensions', value: '163.4 x 78.0 x 8.75 mm' },
+      { label: 'Materials', value: 'Aluminum unibody, Ceramic Shield 2 front and Ceramic Shield back' },
+      {
+        label: 'Thermal design',
+        value: 'Apple-designed vapor chamber laser-welded into the aluminum chassis',
+      },
+      { label: 'SIM', value: 'US models use dual eSIM and do not take a physical SIM card' },
+      { label: 'Water and dust resistance', value: 'IP68, to a maximum depth of 6 metres for up to 30 minutes' },
+    ],
+    specs: [
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Size', value: '6.9 inches diagonally' },
+          { label: 'Type', value: 'OLED Super Retina XDR, all-screen' },
+          { label: 'Resolution', value: '2868 x 1320 at 460 ppi' },
+          { label: 'Refresh rate', value: 'ProMotion with adaptive rates up to 120 Hz' },
+          { label: 'Always-On display', value: 'Yes' },
+        ],
+      },
+      {
+        group: 'Performance',
+        rows: [
+          {
+            label: 'Chip',
+            value: 'A19 Pro, 6-core CPU with 2 performance and 4 efficiency cores',
+          },
+          { label: 'Graphics', value: '6-core GPU with Neural Accelerators' },
+          { label: 'Neural Engine', value: '16-core' },
+          { label: 'Ray tracing', value: 'Hardware-accelerated, per Apple' },
+          {
+            label: 'Sustained performance',
+            value: 'Apple attributes up to 40% better sustained performance than the previous generation to the chip and vapor chamber',
+          },
+        ],
+      },
+      {
+        group: 'Cameras',
+        rows: [
+          {
+            label: 'Fusion Main',
+            value: '48 MP, 24 mm, f/1.78, second-generation sensor-shift stabilisation',
+          },
+          { label: 'Fusion Ultra Wide',
+            value: '48 MP, 13 mm, f/2.2, 120-degree field of view' },
+          {
+            label: 'Fusion Telephoto',
+            value: '48 MP, 100 mm (4x), f/2.8, tetraprism design with 3D sensor-shift stabilisation',
+          },
+          {
+            label: 'Zoom',
+            value: '8x optical-quality in, 2x optical out, a 16x optical-quality range and up to 40x digital',
+          },
+          { label: 'Front camera', value: '18 MP Center Stage, f/1.9, autofocus with Focus Pixels' },
+        ],
+      },
+      {
+        group: 'Video and audio',
+        rows: [
+          {
+            label: '4K Dolby Vision',
+            value: '24, 25, 30, 60, 100 or 120 fps on the Fusion Main camera',
+          },
+          { label: 'Slo-mo', value: '1080p up to 240 fps and 4K Dolby Vision up to 120 fps' },
+          {
+            label: 'ProRes',
+            value: 'Up to 4K at 120 fps with external recording, plus ProRes RAW',
+          },
+          { label: 'Other video', value: 'Cinematic mode up to 4K at 30 fps and Action mode up to 2.8K at 60 fps' },
+          {
+            label: 'Audio playback hours',
+            value: 'Not stated by Apple on the US technology-specifications page for this model',
+          },
+        ],
+      },
+      {
+        group: 'Battery and charging',
+        rows: [
+          { label: 'Video playback', value: 'Up to 39 hours, per Apple' },
+          { label: 'Streamed video playback', value: 'Up to 35 hours, per Apple' },
+          {
+            label: 'Wired charging',
+            value: 'Up to 50% in 20 minutes with a 40 W-or-higher adapter and a USB-C cable',
+          },
+          {
+            label: 'Wireless charging',
+            value: 'Up to 25 W with MagSafe or Qi2, or up to 50% in 30 minutes on MagSafe with a 30 W-or-higher adapter',
+          },
+        ],
+      },
+      {
+        group: 'Build and durability',
+        rows: [
+          { label: 'Frame', value: 'Aluminum unibody' },
+          { label: 'Glass', value: 'Ceramic Shield 2 on the front and Ceramic Shield on the back' },
+          {
+            label: 'Water and dust resistance',
+            value: 'IP68 under IEC 60529, to a maximum depth of 6 metres for up to 30 minutes',
+          },
+          { label: 'Weight', value: '233 g (8.22 oz)' },
+          { label: 'Dimensions', value: '163.4 x 78.0 x 8.75 mm' },
+        ],
+      },
+      {
+        group: 'Connectivity',
+        rows: [
+          { label: 'Port', value: 'USB-C with USB 3 support up to 10 Gb/s, plus DisplayPort' },
+          { label: 'Wi-Fi', value: 'Wi-Fi 7 (802.11be) with 2x2 MIMO' },
+          { label: 'Bluetooth', value: 'Bluetooth 6' },
+          { label: 'Cellular', value: '5G including sub-6GHz and mmWave, per Apple' },
+          { label: 'SIM', value: 'Dual eSIM on US models, with no physical SIM card slot' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'Apple\u2019s current iPhone line-up page does not include the iPhone 17 Pro Max, so Apple no longer presents it as a current model.',
+          'Apple publishes no audio-playback hour figure for this model on the US technology-specifications page.',
+          'US models use dual eSIM and are not compatible with physical SIM cards, per Apple.',
+          'Apple describes Apple Intelligence as beta and notes that feature and language availability may vary.',
+          'Battery hours and charging times are Apple ratings under set conditions rather than independent measurements.',
+        ],
+      },
+    ],
+  },
+
+  'vivo-x300-pro': {
+    slug: 'vivo-x300-pro',
+    displayName: 'vivo X300 Pro',
+    status: 'available',
+    product: {
+      name: 'vivo X300 Pro',
+      category: 'Smartphones',
+      categorySlug: 'smartphones',
+      buyUrl: 'https://amzn.to/4jV4GXs',
+      brand: 'vivo',
+      description:
+        "vivo's camera-led flagship: a 6.78-inch AMOLED display at up to 120 Hz, a MediaTek Dimensity 9500, a 200 MP ZEISS APO telephoto and a 6,510 mAh battery with 90 W charging.",
+      features: [
+        '6.78-inch AMOLED with an LTPO 1-120 Hz refresh rate',
+        'MediaTek Dimensity 9500 with 16 GB of LPDDR5X Ultra memory',
+        '200 MP ZEISS APO telephoto with 3.5x optical zoom',
+        '6,510 mAh battery with 90 W wired and 40 W wireless FlashCharge',
+        'IP68 and IP69 ratings',
+      ],
+    },
+    // vivo's own specification pages. The global and India pages carry the
+    // 6,510 mAh battery figure and vivo states it applies to "Overseas (except
+    // Europe)"; the Europe page publishes 5,440 mAh, and both are recorded
+    // rather than averaged.
+    specSource:
+      "vivo's official X300 Pro product and specification pages for the global, India and Europe markets, together with vivo's official country/region selector and international-warranty page — checked against vivo's own pages in October 2026",
+    metaDescription:
+      'vivo X300 Pro spec sheet: a 6.78-inch 120 Hz AMOLED display, a Dimensity 9500, a 200 MP ZEISS telephoto and a 6,510 mAh battery with 90 W charging.',
+    images: [
+      '/product-images/vivo-x300-pro-box-and-phone.webp',
+      '/product-images/vivo-x300-pro-rear-camera.webp',
+      '/product-images/vivo-x300-pro-camera-module.webp',
+      '/product-images/vivo-x300-pro-box-contents.webp',
+    ],
+    highlights: [
+      { label: 'Display', value: '6.78-inch AMOLED' },
+      { label: 'Chip', value: 'Dimensity 9500' },
+      { label: 'Telephoto', value: '200 MP ZEISS' },
+      { label: 'Battery', value: '6,510 mAh' },
+      { label: 'Charging', value: '90 W wired' },
+    ],
+    keySpecs: [
+      { label: 'Display', value: '6.78-inch AMOLED, 2800 x 1260, LTPO 1-120 Hz' },
+      { label: 'Chipset', value: 'MediaTek Dimensity 9500' },
+      { label: 'Memory and storage', value: '16 GB of RAM with 512 GB of storage' },
+      {
+        label: 'Rear cameras',
+        value: '50 MP main, 50 MP ultra wide and a 200 MP ZEISS APO telephoto',
+      },
+      { label: 'Front camera', value: '50 MP with autofocus' },
+      { label: 'Battery', value: '6,510 mAh typical outside Europe, per vivo' },
+      { label: 'Charging', value: '90 W wired FlashCharge and 40 W wireless' },
+      { label: 'Durability', value: 'IP68 and IP69' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'vivo' },
+      { label: 'Model', value: 'X300 Pro' },
+      { label: 'Dimensions', value: '161.98 x 75.48 x 7.99 mm' },
+      { label: 'Weight', value: '226 g' },
+      { label: 'Operating system', value: 'OriginOS 6, based on Android 16' },
+      { label: 'Fingerprint sensor', value: '3D ultrasonic' },
+      {
+        label: 'Sales markets',
+        value: 'vivo\u2019s country selector does not list the United States',
+      },
+      { label: 'Expandable storage', value: 'Not supported, per vivo' },
+    ],
+    specs: [
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Size', value: '6.78 inches' },
+          { label: 'Panel', value: 'AMOLED' },
+          { label: 'Resolution', value: '2800 x 1260 at 452 ppi' },
+          { label: 'Refresh rate', value: 'LTPO, adaptive 1-120 Hz' },
+          { label: 'Peak brightness', value: '4,500 nits local peak' },
+        ],
+      },
+      {
+        group: 'Performance and memory',
+        rows: [
+          { label: 'Chipset', value: 'MediaTek Dimensity 9500, 8-core CPU' },
+          { label: 'Memory', value: '16 GB LPDDR5X Ultra' },
+          { label: 'Storage', value: '512 GB UFS 4.1' },
+          { label: 'Expandable storage', value: 'Not supported, per vivo' },
+        ],
+      },
+      {
+        group: 'Cameras',
+        rows: [
+          {
+            label: 'Main',
+            value: '50 MP Sony LYT-828, f/1.57, optical image stabilisation, ZEISS Gimbal-Grade',
+          },
+          { label: 'Ultra wide', value: '50 MP JN1, f/2.0, autofocus, 119 degrees' },
+          {
+            label: 'Telephoto',
+            value: '200 MP HPB, f/2.67, autofocus, optical image stabilisation, ZEISS APO',
+          },
+          { label: 'Optical zoom', value: '3.5x on the telephoto, as vivo states' },
+          { label: 'Front', value: '50 MP JN1, f/2.0, autofocus, 92 degrees, ZEISS' },
+        ],
+      },
+      {
+        group: 'Battery and charging',
+        rows: [
+          { label: 'Capacity', value: '6,510 mAh typical' },
+          {
+            label: 'Region note from vivo',
+            value: 'vivo states the 6,510 mAh figure applies to Overseas (except Europe); its Europe page lists 5,440 mAh typical',
+          },
+          { label: 'Wired charging', value: '90 W FlashCharge' },
+          { label: 'Wireless charging', value: '40 W' },
+        ],
+      },
+      {
+        group: 'Build',
+        rows: [
+          { label: 'Dimensions', value: '161.98 x 75.48 x 7.99 mm' },
+          { label: 'Weight', value: '226 g' },
+          { label: 'Water and dust resistance', value: 'IP68 and IP69' },
+        ],
+      },
+      {
+        group: 'Software and connectivity',
+        rows: [
+          { label: 'Operating system', value: 'OriginOS 6, based on Android 16' },
+          { label: 'Wi-Fi', value: 'Wi-Fi 6 and Wi-Fi 7' },
+          { label: 'Bluetooth', value: 'Bluetooth 6.0' },
+          { label: 'Port', value: 'USB 3.2 Gen 1' },
+          { label: 'Fingerprint sensor', value: '3D ultrasonic' },
+          { label: 'Infrared blaster', value: 'Included' },
+          { label: 'Hi-Fi audio', value: 'Not supported, per vivo' },
+          { label: 'FM radio', value: 'Not supported, per vivo' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'vivo\u2019s official country selector does not list the United States, and no vivo US sales or support listing for the X300 Pro was found.',
+          'vivo publishes two different battery figures by region rather than one: 6,510 mAh for markets outside Europe and 5,440 mAh on its Europe page.',
+          'vivo does not publish a speaker configuration for this model, so no speaker row is listed here.',
+          'Storage is not expandable, per vivo, and the pages reviewed list only 16 GB with 512 GB.',
+          'vivo states that analogue earphones need a separately purchased USB-C adapter with a built-in DAC.',
+        ],
+      },
+    ],
+  },
+
+  'apple-ipad-air-11-m3': {
+    slug: 'apple-ipad-air-11-m3',
+    displayName: 'Apple iPad Air 11 (M3)',
+    status: 'available',
+    product: {
+      name: 'Apple iPad Air 11-inch (M3)',
+      category: 'Laptops & PCs',
+      categorySlug: 'laptops',
+      buyUrl: 'https://amzn.to/4ilnCNV',
+      brand: 'Apple',
+      description:
+        "The 11-inch iPad Air built on Apple's M3 chip, with a Liquid Retina display, 8 GB of memory, support for Apple Pencil Pro and Magic Keyboard, and a landscape 12 MP Center Stage front camera.",
+      features: [
+        '11-inch Liquid Retina display at 2360 x 1640 and 500 nits',
+        'Apple M3 with an 8-core CPU, 9-core GPU and 16-core Neural Engine',
+        '8 GB of memory and storage from 128 GB up to 1 TB',
+        'Apple Pencil Pro and Apple Pencil (USB-C) support',
+        'Landscape 12 MP Center Stage front camera',
+      ],
+    },
+    // Apple's own technical-specifications page for the M3 iPad Air on Apple
+    // Support, plus Apple's March 2025 announcement for the release date, the
+    // storage tiers, the colours and iPadOS 18 at launch.
+    specSource:
+      "Apple's 11-inch iPad Air (M3) technical specifications on Apple Support and Apple's March 2025 iPad Air with M3 announcement — checked against Apple's own pages in October 2026",
+    metaDescription:
+      'iPad Air 11-inch (M3) spec sheet: a 2360 x 1640 Liquid Retina display, the M3 chip, Apple Pencil Pro support and up to 10 hours of battery life.',
+    images: [
+      '/product-images/apple-ipad-air-11-m3-display.webp',
+      '/product-images/apple-ipad-air-11-m3-gray-front-and-back.webp',
+      '/product-images/apple-ipad-air-11-m3-gold-front-and-back.webp',
+      '/product-images/apple-ipad-air-11-m3-blue.webp',
+      '/product-images/apple-ipad-air-11-m3-purple.webp',
+      '/product-images/apple-ipad-air-11-m3-space-gray.webp',
+      '/product-images/apple-ipad-air-11-m3-starlight.webp',
+      '/product-images/apple-ipad-air-11-m3-purple-display.webp',
+    ],
+    highlights: [
+      { label: 'Display', value: '11-inch Liquid Retina' },
+      { label: 'Chip', value: 'Apple M3' },
+      { label: 'Memory', value: '8 GB' },
+      { label: 'Storage', value: '128 GB to 1 TB' },
+      { label: 'Battery', value: 'Up to 10 h' },
+    ],
+    keySpecs: [
+      { label: 'Display', value: '11-inch Liquid Retina, 2360 x 1640 at 264 ppi and 500 nits' },
+      { label: 'Chip', value: 'Apple M3 with an 8-core CPU, 9-core GPU and 16-core Neural Engine' },
+      { label: 'Memory', value: '8 GB' },
+      { label: 'Storage', value: '128 GB, 256 GB, 512 GB or 1 TB' },
+      { label: 'Rear camera', value: '12 MP Wide, f/1.8, with 4K video recording' },
+      { label: 'Front camera', value: 'Landscape 12 MP Center Stage, f/2.0' },
+      { label: 'Battery', value: '28.93 Wh, up to 10 hours of web surfing or video' },
+      { label: 'Weight', value: '460 g (1.01 lb)' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Apple' },
+      { label: 'Model', value: 'iPad Air 11-inch (M3)' },
+      { label: 'Introduced', value: '4 March 2025, arriving 12 March 2025 per Apple' },
+      { label: 'Colours', value: 'Blue, purple, starlight and space gray' },
+      { label: 'Apple Pencil', value: 'Apple Pencil Pro and Apple Pencil (USB-C)' },
+      { label: 'Keyboard', value: 'Magic Keyboard for iPad Air' },
+      { label: 'Touch ID', value: 'Built into the top button' },
+      { label: 'Operating system at launch', value: 'iPadOS 18' },
+    ],
+    specs: [
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Size', value: 'Marketed as 11 inches; Apple lists 10.86 inches diagonally as a rectangle' },
+          { label: 'Type', value: 'Liquid Retina, LED-backlit Multi-Touch with IPS' },
+          { label: 'Resolution', value: '2360 x 1640 at 264 ppi' },
+          { label: 'Brightness', value: '500 nits' },
+          { label: 'Extras', value: 'P3 wide colour, True Tone, full lamination and antireflective coating' },
+        ],
+      },
+      {
+        group: 'Performance and memory',
+        rows: [
+          { label: 'Chip', value: 'Apple M3' },
+          { label: 'CPU', value: '8-core, with 4 performance and 4 efficiency cores' },
+          { label: 'GPU', value: '9-core' },
+          { label: 'Neural Engine', value: '16-core' },
+          { label: 'Memory', value: '8 GB' },
+          { label: 'Storage', value: '128 GB, 256 GB, 512 GB or 1 TB' },
+        ],
+      },
+      {
+        group: 'Cameras',
+        rows: [
+          { label: 'Rear', value: '12 MP Wide, f/1.8' },
+          { label: 'Rear video', value: '4K at 24, 25, 30 or 60 fps, and 1080p slo-mo at 120 or 240 fps' },
+          {
+            label: 'Front',
+            value: 'Landscape 12 MP Center Stage, f/2.0, with 1080p video at 25, 30 or 60 fps',
+          },
+          {
+            label: 'Front camera position',
+            value: 'On the right of the display in landscape, per Apple\u2019s connector diagram',
+          },
+        ],
+      },
+      {
+        group: 'Pencil and keyboard',
+        rows: [
+          { label: 'Apple Pencil Pro', value: 'Supported' },
+          { label: 'Apple Pencil (USB-C)', value: 'Supported' },
+          { label: 'Keyboard', value: 'Magic Keyboard for iPad Air' },
+        ],
+      },
+      {
+        group: 'Battery and charging',
+        rows: [
+          { label: 'Battery', value: 'Built-in 28.93-watt-hour rechargeable lithium-polymer' },
+          {
+            label: 'Web surfing or video',
+            value: 'Up to 10 hours on Wi-Fi, per Apple',
+          },
+          { label: 'Cellular browsing', value: 'Up to 9 hours on Wi-Fi + Cellular models, per Apple' },
+          { label: 'In the box', value: 'A 20 W USB-C power adapter, per Apple\u2019s specification page' },
+        ],
+      },
+      {
+        group: 'Connectivity',
+        rows: [
+          { label: 'Wi-Fi', value: 'Wi-Fi 6E (802.11ax) with 2x2 MIMO' },
+          { label: 'Bluetooth', value: 'Bluetooth 5.3' },
+          { label: 'Port', value: 'USB-C with USB 3 support up to 10 Gb/s' },
+          { label: 'Touch ID', value: 'In the top button' },
+        ],
+      },
+      {
+        group: 'Build',
+        rows: [
+          { label: 'Dimensions', value: '247.6 x 178.5 x 6.1 mm' },
+          { label: 'Weight', value: '460 g (1.01 lb), for both Wi-Fi and cellular models per Apple' },
+          { label: 'Colours', value: 'Blue, purple, starlight and space gray' },
+          {
+            label: 'Water and dust resistance',
+            value: 'Apple states no water or dust rating for this model',
+          },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'Apple\u2019s current iPad Air product page promotes the M4 generation, so the M3 model this sheet describes is no longer the current generation on Apple\u2019s site.',
+          'Apple lists a 20 W USB-C power adapter in the box and states no faster-charging figure on the technical-specifications page.',
+          'Apple publishes no water or dust resistance rating for the iPad Air.',
+          'The 10-hour battery figure is Apple\u2019s own web-surfing and video rating rather than an independent measurement.',
+          'The display measures 10.86 inches diagonally as a rectangle, which Apple markets as 11 inches.',
+        ],
+      },
+    ],
+  },
 }
 
 /**
