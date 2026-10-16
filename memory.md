@@ -10,9 +10,13 @@ view of products that already exist in the catalog. It was ported in structure
 from a sister project, rewritten for this store. These rules are standing.
 
 1. **Alt text via helper.** Every image alt comes from `src/lib/imageAlt.ts`
-   (`productImageAlt` for the hero, `productGalleryImageAlt` for gallery
-   images). Never hardcode an alt string in a Quick Look component, and never
-   invent a description of what a photo shows.
+   (`productImageAlt` for the hero, `quickLookGalleryAlts` for the gallery list,
+   which falls back to `productGalleryImageAlt` per position). Hand-written alt
+   in the data layer wins: an entry's `imageAlts` array is position-matched to
+   its gallery and is passed through untouched, the same way a post's `altText`
+   does. Never hardcode an alt string in a Quick Look component, and never
+   invent a description of what a photo shows. The guard fails the build when
+   `imageAlts` is not the same length as the gallery the page renders.
 2. **Cross-linking rule (one field).** `POST_PRODUCT_LINKS` in
    `src/data/quick-look-links.ts` is the single source for the blog ↔ Quick Look
    relationship. Both directions read it: a post's product block from its own
@@ -75,6 +79,20 @@ from a sister project, rewritten for this store. These rules are standing.
    from `src/lib/quick-look-schema.ts`. `BreadcrumbList` (never present here)
    and `FAQPage` are untouched. Do not re-add a Product node to this surface
    without a real, visible offer, review or rating to put in it.
+4e. **Informational entries — the one page with no purchase path (2026-10-17).**
+   `informational: true` marks a spec sheet for a product this store does not
+   sell and cannot link to a store for (first use: Apple HomeView). Such an
+   entry is STANDALONE, carries no `buyUrl`, is never added to
+   `src/data/products.ts` (no shop card, no /product page), and its page renders
+   NO purchase panel: no store button, no price note, no affiliate disclosure.
+   The site-wide footer line still appears, as it does on every page. In the
+   panel's place the detail page renders a plain visible note saying the store
+   does not sell it — text only, never a link — and, because the gallery shows
+   renders rather than the manufacturer's photographs, one line under the
+   gallery saying so. `scripts/check-quick-look.js` fails the build when such an
+   entry carries a buy link, when an informational entry is a catalog product,
+   or when `QuickLookDetail.tsx` stops branching on the flag. The guide's price
+   rule exception is described at the top of `src/data/quick-look-content.ts`.
 5. **No aggregateRating from Amazon data.** Amazon star ratings and review
    counts are Amazon's data, not ours. Never copy them into JSON-LD, schema or
    written text as our own rating, and never emit `review` markup for a product

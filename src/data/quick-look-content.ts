@@ -11,6 +11,13 @@
  * - No prices appear in this copy, and the absence of one is never explained
  *   either: the listing is one click away and the button label says so.
  *   Listing-warranty text is never repeated — those terms belong to the seller.
+ *   The ONE exception is an informational entry's guide (a product this store
+ *   does not sell and cannot link to): there the manufacturer's own announced
+ *   launch price may be quoted when it is attributed to the manufacturer, dated
+ *   to the announcement and marked as before tax and shipping — a fixed,
+ *   announced figure rather than the moving price this rule exists to keep off
+ *   the page. Every price in such a guide must come from the manufacturer's own
+ *   pages, and a price the manufacturer does not state stays out.
  * - The FAQ array here drives BOTH the visible FAQ cards and the FAQPage
  *   JSON-LD, so the marked-up text always matches what a reader sees.
  * - The page's product name is the only H1; this section starts at H2 and never
@@ -2014,6 +2021,269 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         label: 'All Quick Look spec sheets',
         href: '/quick-look',
         description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  // Announcement-only page: no purchase panel, no affiliate disclosure, and the
+  // prices in this copy are the figures Apple announced on October 13, 2026 —
+  // attributed to Apple, dated, and marked as before tax and shipping. They are
+  // not a live price and not a price this store is paid on.
+  'apple-homeview-smart-display': {
+    productName: 'Apple HomeView',
+    heading: 'Apple HomeView specs, features and buying guide',
+    lead: 'Apple HomeView is Apple’s first smart display: a 7-inch Liquid Retina screen running Siri AI on the A18 chip, either on a domed speaker base for a tabletop or as a flat panel on a wall. Apple’s announced US price is $299 for both models, pre-orders opened on October 13, 2026, and the first units arrive on November 13. This page covers both versions, what each one really costs to set up, and the facts Apple has not published yet.',
+    overview: [
+      'HomeView is the screen part of Apple’s smart home push. The tabletop version puts the display on a domed speaker base with a stainless steel hinge, so it can be tilted for a counter, a nightstand or a side table, and it comes in four colors — silver, starlight, rose pink and space gray, each with a matching cable. The wall-mounted version is a separate model, offered in space gray and silver, that attaches to a wall through a purpose-built mount from Schneider Home.',
+      'Both run Siri AI, an entirely new version of Siri powered by Apple Intelligence. Apple’s own framing is that Siri AI brings broad world knowledge to a shared screen, and that a paired iPhone or iPad adds personal context — calendar, messages, playlists and the like — for the person the display recognizes. HomeView can recognize up to six people, and each of them gets their own Home Screen with their own apps and widgets. Guests and unrecognized users can still control accessories, check the weather, set timers and play music without touching anyone’s personal content.',
+      'The display is the part Apple emphasizes for rooms. It is a 7-inch Liquid Retina panel that goes from 500 nits in a bright kitchen down to 0.3 nits, Apple’s lowest minimum, for a bedside table, with True Tone adjusting to the light in the room. The interface itself adapts to distance, showing less detail across the room and more as you walk up to it. Audio is the other half: two custom full-range drivers sit in the display, and the base carries a down-firing woofer plus two force-cancelling passive radiators. The wall-mounted version uses two drivers with computational audio tuned for on-wall placement.',
+      'Everything on this page comes from Apple’s announcement, its product page and its technical specifications, all read in October 2026. We do not test products, so what follows is what Apple documents — not a hands-on verdict — and anything Apple has not published is called out as missing rather than estimated.',
+    ],
+    priceSection: {
+      heading: 'Apple HomeView price and the full setup cost',
+      paragraphs: [
+        'Apple announced a US price of $299 for Apple HomeView and $299 for Apple HomeView (Wall Mounted) on October 13, 2026. Those are Apple’s announced US launch prices, before tax and shipping, and they are the figures this page uses: this store does not sell HomeView, so there is no live price to watch here and no affiliate link on this page.',
+        'The tabletop version is the simpler purchase. Apple’s technical-specifications page lists a 1.5 m USB-C cable and a 30W power adapter in the box alongside the display, and states that the tabletop model needs no mount — so nothing else is required to switch it on.',
+        'The wall-mounted version is where a budget can move. Apple sells it with documentation only, and its specifications page states plainly that the compatible wall mount, the USB-C cable and a power adapter of at least 20W are each sold separately. Three purpose-built Schneider Home mounts fit it: Power Mount USB-C Wall Connector, Power Mount AC Wired, and Power Mount PoE Wired, which Apple says arrives in early 2027.',
+        'Mount prices are “from” prices in Apple’s own wording, which is why the wall-mounted totals below are starting totals rather than a final bill: the cable and the power adapter are not in them. US prices can change, and every other country prices the same products in its own currency.',
+      ],
+    },
+    // Rendered by the component as the semantic <dl> inside the price block, so
+    // the setup totals sit where a buyer is already reading about cost. Every
+    // figure is Apple's own announced figure; see this file's header note for
+    // why this one guide is allowed to carry prices at all.
+    keyFacts: [
+        { term: 'Tabletop version', detail: '$299 — no mount needed, and Apple includes the USB-C cable and a 30W power adapter' },
+        { term: 'Wall mounted + Power Mount USB-C Wall Connector', detail: '$299 + $59.95 = $358.95' },
+        { term: 'Wall mounted + Power Mount AC Wired', detail: '$299 + $79.95 = $378.95' },
+        { term: 'Wall mounted + Power Mount PoE Wired (early 2027)', detail: '$299 + $129.95 = $428.95' },
+        { term: 'Also needed for the wall-mounted model', detail: 'A USB-C cable and a power adapter of at least 20W, each sold separately and not included in the totals above' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Siri AI that works with or without your iPhone',
+        body: 'Apple puts Siri AI at the centre of HomeView, and the split matters when you are deciding. Broad world knowledge, natural back-and-forth conversation and music discovery work on the display itself, so the device is useful with nobody’s phone nearby. What a paired iPhone or iPad adds is personal context: Apple says an Apple Intelligence-enabled device lets Siri draw on your calendar, messages and apps to answer questions about your own life rather than the world’s. Conversations also sync through iCloud to the Siri app on your other Apple devices, so a question started in the kitchen can be picked up on a phone later.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Faces built for a screen people walk past',
+        body: 'HomeView is meant to sit in a busy room, so Apple ships it with faces rather than a home screen full of icons. The Photos face adds portrait-style depth so the subject stays sharp against a blurred background and can pull from a shared album, which turns the display into a photo frame the whole family can add to. The Flow face reacts to movement in the room, and Snoopy animates to the time of day, the weather and even sporting events. For the smart home there are two more: the Home Modular face for the accessories you use most, and the Home Camera face, which Apple says can stream up to nine camera feeds at once.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'A sound system in the base, not a phone speaker',
+        body: 'The tabletop model carries its speakers in the base: two custom full-range drivers in the display, and a down-firing woofer with two force-cancelling passive radiators underneath, tuned in real time by computational audio. Apple supports Spatial Audio with Dolby Atmos for music and video, and AirPlay multiroom works with HomePod, Apple TV 4K and compatible speakers, so HomeView can join a whole-house audio setup. The wall-mounted model keeps two custom drivers and gets its own tuning for on-wall placement, which is the honest difference between the two versions: less bass extension, same Spatial Audio support.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'A camera and microphones aimed at the room',
+        body: 'The 12MP Center Stage camera keeps people framed during FaceTime calls even as they move around or as more people join, which is the difference between a video call on a laptop and one on a screen sitting across the kitchen. Apple lists a four-microphone design — front, left, right and rear — for far-field Siri, so you can ask from the other side of the room, and beamforming helps the microphones pick up voices while reducing background noise on calls.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Privacy treated as a hardware feature',
+        body: 'Because more than one person uses the screen, Apple built the separation into the silicon: the A18 chip inside HomeView contains Secure Exclaves, compartments that process camera and microphone data away from the rest of the system. In Apple’s account, the operating system, the apps, the user and Apple itself cannot reach the audio and visual data used for face and voice recognition. Personal content is a second layer: Apple says messages and calendar entries surface only when the enrolled user is recognized by face and their paired iPhone or iPad is present and has been recently unlocked. Siri requests are handled either on the device or by Private Cloud Compute, which Apple says does not store the data or make it accessible to anyone.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'What Siri AI needs from your iPhone, and what it does not',
+        paragraphs: [
+          'The single most useful thing to understand before ordering is that HomeView is two products in one: a stand-alone smart display, and a personal assistant that gets noticeably better when it can see your phone.',
+        ],
+        subsections: [
+          {
+            heading: 'What works with no phone in the room',
+            paragraphs: [
+              'Apple states that even users without an Apple Intelligence-enabled iPhone or iPad get Siri AI’s broad world knowledge, its natural conversation and its music discovery. That covers the questions a kitchen screen actually gets: timers, weather, conversions, recipes started from a Safari page, music, podcasts and the Home app. Guests and unrecognized users can also control smart home accessories, check the weather, set timers and play music on someone else’s HomeView without ever seeing that person’s information.',
+              'Smart home control does not depend on Siri AI either. Apple lists the Home app as built in, with scenes, automations and accessory control available by touch or voice, and Apple Home, Matter and Thread arrive with the hardware rather than through an iPhone.',
+            ],
+          },
+          {
+            heading: 'What a paired iPhone or iPad unlocks',
+            paragraphs: [
+              'With an Apple Intelligence-enabled iPhone or iPad, Apple says Siri AI can act across apps and surface relevant information from messages, calendar and Apple Music playlists by drawing on that person’s personal context. Apple’s own examples are a party invitation, RSVPs buried in messages and the right soundtrack for the moment. Voice customization is also carried over from the paired device, so the expressiveness and pace of Siri can be tuned once and used in the kitchen.',
+              'The catch is the pairing itself. Apple lists iOS 27.2 or later on iPhone, or iPadOS 27.2 or later on iPad, as a system requirement, and both the store page and the product page tie a full personalized experience to an Apple Account plus membership of the shared home in the Home app. In practice that means an Android-only household should treat HomeView as a capable smart display and home hub, not as the full personal assistant.',
+            ],
+          },
+          {
+            heading: 'How the six-user recognition works',
+            paragraphs: [
+              'Apple says HomeView recognizes up to six people by face and switches between them, and that each enrolled person gets their own Home Screen with their own apps and widgets. Enrolment happens through the Home app, and Apple’s store page adds the requirement that each member has an Apple Account and an iPhone or iPad running the latest software.',
+              'The privacy design is what makes that useful rather than unsettling. Apple’s description is that content is shown only when the face matches and the paired device is present and recently unlocked, and that the face and voice recognition itself runs in the Secure Exclaves on the A18 chip so the audio and visual data never reaches the operating system.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Tabletop or wall mounted: what actually changes',
+        paragraphs: [
+          'The two models share a display, a chip, a camera and the same feature set, so the choice comes down to position, audio, colour and what is in the box. Everything in the table is Apple’s own published figure for that model.',
+        ],
+        table: {
+          head: ['', 'Apple HomeView', 'Apple HomeView (Wall Mounted)'],
+          rows: [
+            ['Position', 'Sits on a kitchen counter, nightstand or side table', 'Attaches to a wall, in places like an entryway or hallway'],
+            ['Speakers', 'Two full-range drivers in the display, plus a down-firing woofer and dual passive radiators in the base', 'Two custom full-range drivers with computational audio tuned for on-wall placement'],
+            ['Colors', 'Silver, starlight, rose pink, space gray', 'Silver and space gray'],
+            ['Weight', '2.1 pounds (952 grams)', '0.63 pound (286 grams)'],
+            ['Power in the box', '1.5 m USB-C cable and a 30W power adapter included', 'None — mount, cable and an adapter of at least 20W sold separately'],
+            ['Other box contents', 'Documentation', 'Documentation only'],
+            ['Installation', 'None needed', 'A Schneider Home mount is required; ADT professional installation is available in most areas'],
+            ['Announced US price', '$299', '$299, before the mount, cable and adapter'],
+          ],
+        },
+      },
+      {
+        heading: 'The smart home side: Home app, Home Collection and cameras',
+        paragraphs: [
+          'HomeView is a hub as much as a screen. The Home app is built in and syncs with your other Apple devices, so the same accessories, scenes and automations are on the display as on an iPhone. Apple also states that thousands of Works with Apple Home accessories are compatible, and that HomeView works with Matter accessories from other brands.',
+          'Two Apple features are worth knowing before you buy. The first is HomeKit Secure Video with a supported iCloud+ subscription: Apple says HomeView can recognise people, familiar faces, pets, packages and vehicles on compatible cameras with end-to-end encryption, and describe what happened in a clip so you do not have to watch it. The second is sound recognition — HomeView listens for smoke and carbon monoxide alarm sounds and alerts you on an iPhone, iPad or Apple Watch.',
+          'Apple also announced the Apple Home Collection, a line of cameras, thermostats and a door lock designed with LG Electronics and Schneider Electric. Apple’s product page marks that line as coming later, so a HomeView bought now is a hub for the accessories you already own rather than a bundle. Apple has not published the Home Collection prices, so none appear on this page.',
+        ],
+        cards: [
+          { title: 'Home Modular face', body: 'A concise grid of the accessories you use most, controlled by tap or voice.' },
+          { title: 'Home Camera face', body: 'Apple says it can livestream up to nine camera feeds at once, which suits a hallway screen.' },
+          { title: 'Home app notifications', body: 'Apple Intelligence groups related notifications, and video descriptions summarise footage without you watching it.' },
+        ],
+      },
+      {
+        heading: 'What Apple has not published, and why it is missing here',
+        paragraphs: [
+          'A spec sheet is only as useful as the gaps it admits to. These are the figures and details that were not on Apple’s HomeView pages when this page was written, so they are left out rather than filled in from reporting: memory and storage, a water or dust resistance rating, and any Ultra Wideband chip — the published wireless set is Wi-Fi 6E, Bluetooth 6.0 and Thread. Warranty terms are not quoted here either, because a warranty is a region-specific legal document rather than a product spec; check Apple’s own terms for your country.',
+          'Two other limits are Apple’s own words rather than omissions. Siri AI is described as available in beta in HomeView software version 27.2, with usage limits possibly applying, and HomeView is not available for sale in the European Union because Siri AI is currently unavailable in iOS there. If either of those changes, it will change on Apple’s pages first.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy Apple HomeView, and who should skip it',
+      should: [
+        'Households already using the Home app: it puts the same accessories, scenes and automations on a screen anyone can walk up to.',
+        'Anyone who wants Siri without picking up a phone — timers, weather, recipes, music and intercom, hands-free from across the room.',
+        'Families where several people want their own calendar, messages and music, since Apple recognises up to six and keeps their content separate.',
+        'Kitchen counters and nightstands: the 0.3-nit minimum is built for a bedside table, and the hinge tilts the screen to suit the surface.',
+        'Homes that already run HomePod, HomePod mini or an Apple TV 4K, because AirPlay multiroom is part of the system.',
+      ],
+      skip: [
+        'Anyone shopping from the EU — Apple states HomeView is not for sale there at launch.',
+        'Buyers who want a finished assistant: Apple describes Siri AI as available in beta in HomeView software version 27.2, with possible usage limits.',
+        'Android-only households expecting the personalised side, since personal context and the full experience are tied to a paired iPhone or iPad on iOS 27.2 or iPadOS 27.2.',
+        'People expecting a media player with an app store: Apple lists built-in apps plus a group that runs from the paired iPhone, and its specification page lists no App Store.',
+        'Anyone who wants a wall screen with nothing else to buy: the wall-mounted model needs a mount, a cable and an adapter of at least 20W, each sold separately.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Which HomeView are you buying?',
+        cards: [
+          { title: 'Kitchen counter', body: 'The tabletop model at 500 nits, with recipes started from Safari, hands-free timers and Siri for conversions while your hands are full.' },
+          { title: 'Bedside table', body: 'The reason the 0.3-nit minimum exists: an alarm, weather and a sleep-friendly screen that does not light the room up.' },
+          { title: 'Entryway or hallway', body: 'A wall-mounted HomeView with the Home Camera face for up to nine feeds, remembering the mount, cable and adapter cost on top of the display.' },
+          { title: 'Household of six', body: 'Six recognized people, each with their own Home Screen, and guest access for anyone who is not enrolled.' },
+          { title: 'Whole-home audio', body: 'Tabletop audio, Spatial Audio and AirPlay multiroom with HomePod, Apple TV 4K and compatible speakers.' },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'Apple HomeView pros and cons',
+      pros: [
+        '7-inch Liquid Retina display with True Tone that dims to 0.3 nits, Apple’s lowest minimum, for bedside use',
+        'Siri AI runs on the display itself, with broad world knowledge even without a paired iPhone',
+        'A real audio system in the tabletop base: two full-range drivers, a down-firing woofer and dual force-cancelling passive radiators',
+        'Apple Home, Thread and Matter in one hub, with the Home Camera face streaming up to nine feeds',
+        'Recognizes up to six people, each with a private Home Screen, with face recognition running in the A18 chip’s Secure Exclaves',
+        'The tabletop version includes its USB-C cable and a 30W power adapter',
+      ],
+      cons: [
+        'Not available for sale in the EU at launch, because Siri AI is not available in iOS there',
+        'The wall-mounted model ships without a mount, a cable or a power adapter, and the adapter must be at least 20W',
+        'Siri AI is in beta in HomeView software version 27.2, and Apple says usage limits may apply',
+        'Personal context needs an Apple Intelligence-enabled iPhone or iPad nearby',
+        'Apple publishes no memory, storage or water-resistance figures',
+        'Apple has not published prices for the Apple Home Collection accessories it announced alongside HomeView',
+      ],
+    },
+    buyingTips: {
+      heading: 'Before you order an Apple HomeView',
+      paragraphs: [
+        'Pre-orders opened on October 13, 2026 and Apple lists availability beginning Friday, November 13 in the first-wave countries: Australia, Canada, India, New Zealand, the UK and the US, with Singapore pre-orders from October 15 and South Africa buying through Apple Authorized Resellers. Ordering from outside those markets means buying a display whose assistant language support has not started there yet — and in the EU Apple is not selling it at all, because Siri AI is currently unavailable in iOS in the EU.',
+        'Decide on the model before the mount. If the screen is going on a wall, budget for the mount, a USB-C cable and a power adapter of at least 20W on top of the display, and check which of the three Schneider Home mounts suits your wiring: the USB-C and AC Wired mounts can be ordered now, while Apple says PoE Wired arrives in early 2027. If it is going on furniture, the tabletop version needs nothing else — the cable and 30W adapter are in the box.',
+        'Finally, set expectations for Siri AI. Apple describes it as available in beta in HomeView software version 27.2 with usage limits possibly applying, and the personalised half of it depends on an Apple Intelligence-enabled iPhone or iPad being paired and nearby. If your household is on that hardware, the display is the point: a shared, always-on screen for Siri, the Home app and FaceTime. If it is not, the smart home hub and the audio still work, but the personal assistant is not what you are buying yet.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How much does Apple HomeView cost?',
+        answer:
+          'Apple announced a US price of $299 for Apple HomeView and $299 for Apple HomeView (Wall Mounted) on October 13, 2026. Those are Apple’s announced US launch prices, before tax and shipping. The tabletop model includes a 1.5 m USB-C cable and a 30W power adapter in the box, and needs no mount.',
+      },
+      {
+        question: 'How much does a wall-mounted setup cost?',
+        answer:
+          'A wall-mounted setup starts at $358.95: $299 for HomeView (Wall Mounted) plus $59.95 for the Schneider Home Power Mount USB-C Wall Connector. With Power Mount AC Wired it is $378.95, and the PoE Wired mount, due in early 2027, takes it to $428.95. Apple also lists the USB-C cable and a power adapter of at least 20W as sold separately, so those are not included in these totals. Mount prices are “from” prices, before tax and shipping.',
+      },
+      {
+        question: 'When does Apple HomeView go on sale?',
+        answer:
+          'Pre-orders opened on October 13, 2026, and Apple lists availability beginning Friday, November 13, 2026 in the first-wave countries. Singapore pre-orders started on October 15, and South Africa buys through Apple Authorized Resellers.',
+      },
+      {
+        question: 'Does Apple HomeView work without an iPhone?',
+        answer:
+          'Yes, for most everyday use. Apple states that even without an Apple Intelligence-enabled iPhone or iPad, Siri AI’s broad world knowledge, natural conversation and music discovery work, and the Home app controls accessories. Personal context — your messages, calendar and playlists — is what a paired Apple Intelligence-enabled device adds. Apple lists iOS 27.2 or later and iPadOS 27.2 or later as system requirements.',
+      },
+      {
+        question: 'How many people can use one Apple HomeView?',
+        answer:
+          'Apple says HomeView recognizes up to six people and gives each of them their own Home Screen with their own apps and widgets. Apple’s store page adds that each enrolled person needs an Apple Account and an iPhone or iPad running the latest software, and enrolment happens through the Home app. Guests and unrecognized users can still control accessories, set timers and play music.',
+      },
+      {
+        question: 'What is in the box with Apple HomeView (Wall Mounted)?',
+        answer:
+          'Apple lists the wall-mounted model with documentation only. The compatible wall mount, the USB-C cable and a power adapter of at least 20W are each sold separately, and the mount must be a Schneider Home Power Mount.',
+      },
+      {
+        question: 'Does Apple HomeView have an App Store?',
+        answer:
+          'Apple’s specification page lists built-in apps such as FaceTime, Home, Messages, Music, Podcasts, Safari, Timers and Weather, plus a smaller group available from iPhone — Audiobooks, Classical Music, News and TV. It states that compatible third-party audio and video apps are supported from the paired iPhone, and lists no App Store on the device.',
+      },
+      {
+        question: 'How many camera feeds can Apple HomeView show?',
+        answer:
+          'Apple says the Home Camera face can livestream up to nine video feeds at once. With a supported iCloud+ subscription, compatible cameras can also use end-to-end encrypted recognition of people, familiar faces, pets, packages and vehicles, and Apple’s video descriptions summarise what happened in a clip.',
+      },
+      {
+        question: 'Is Apple HomeView waterproof?',
+        answer:
+          'Apple publishes no water or dust resistance rating for HomeView, so treat it as an indoor device to keep away from sinks, baths and spills. The technical-specifications page lists no IP rating for either model.',
+      },
+      {
+        question: 'How much storage does Apple HomeView have?',
+        answer:
+          'Apple does not publish a memory or storage figure for either model, so this page does not state one. What Apple does publish is the chip — the A18 — along with the display, audio and wireless specifications.',
+      },
+      {
+        question: 'Why is Apple HomeView not available in the EU?',
+        answer:
+          'Apple states that Apple HomeView is not available for sale in the European Union because Siri AI is currently unavailable in iOS in the EU, and that it is working with the EU on a path forward. Siri AI on HomeView starts in English in the US, Australia, Canada, India, New Zealand, Singapore, South Africa and the UK, with Canadian French promised later by software update.',
+      },
+    ],
+    links: [
+      {
+        label: 'Smart Home',
+        href: '/shop/smart-home',
+        description: 'The smart speakers and connected-home devices the store carries.',
+      },
+      {
+        label: 'More Apple spec sheets',
+        href: '/quick-look',
+        description: 'The rest of the Quick Look section, including the Apple phone and tablet sheets.',
+      },
+      {
+        label: 'GadgetErea blog',
+        href: '/blog',
+        description: 'Reviews, buying guides and explainers on the gadgets in the shop.',
       },
     ],
   },

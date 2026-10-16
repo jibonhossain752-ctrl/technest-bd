@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { QUICK_LOOK_SLUGS, getQuickLookImages, resolveQuickLook } from '@/data/quick-look'
 import { getQuickLookGuide } from '@/data/quick-look-content'
-import { productImageAlt, productGalleryImageAlt } from '@/lib/imageAlt'
+import { productImageAlt, quickLookGalleryAlts } from '@/lib/imageAlt'
 import { SITE, SITE_URL } from '@/lib/site'
 import {
   quickLookFaqSchema,
@@ -90,12 +90,10 @@ export default async function QuickLookProductPage({ params }: QuickLookPageProp
 
   const guide = getQuickLookGuide(slug)
   const images = getQuickLookImages(entry)
-  // A gallery of one keeps the plain product alt; a real gallery gets a
-  // position-accurate alt per image so no two describe the same picture.
-  const imageAlts =
-    images.length > 1
-      ? images.map((_, position) => productGalleryImageAlt(product, position, images.length))
-      : [productImageAlt(product)]
+  // Hand-written per-image alt from the entry wins at its own position (see
+  // quickLookGalleryAlts); positions without one fall back to the generated
+  // gallery alt, so a gallery of one keeps the plain product alt.
+  const imageAlts = quickLookGalleryAlts(entry.imageAlts, product, images.length)
 
   return (
     <>

@@ -32,6 +32,11 @@ export const POST_PRODUCT_LINKS: Record<string, string[]> = {
   // The buying guide explains what flagship ANC does and prices the trade-off
   // using the XM5 as its reference model.
   'noise-canceling-headphones-buying-guide': ['sony-wh-1000xm5-headphones'],
+  // The HomeView explainer reports the same Apple announcement this spec sheet
+  // documents, so the spec sheet's "From our blog" block points back at it.
+  // (The spec sheet is informational: it carries no purchase path, so this
+  // mapping never produces a buy link on either page.)
+  'apple-homeview-price-release-date-features': ['apple-homeview-smart-display'],
 }
 
 /** Product slugs a post covers, filtered to ones with a Quick Look page. */

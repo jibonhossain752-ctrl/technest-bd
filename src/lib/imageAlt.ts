@@ -179,6 +179,29 @@ export function productGalleryImageAlt(
 }
 
 /**
+ * Quick Look gallery alt LIST.
+ *
+ * Position-matched hand-written alt from the data layer (`imageAlts` on a
+ * Quick Look entry) wins at its own position — it was written while looking at
+ * that file, so it is passed through untouched, exactly like a post's `altText`.
+ * Every position without authored alt falls back to the generated gallery alt,
+ * so a gallery can never lose alt text by authoring only part of it.
+ */
+export function quickLookGalleryAlts(
+  authored: string[] | undefined,
+  product: Pick<Product, 'name' | 'altText'>,
+  total: number,
+): string[] {
+  return Array.from({ length: total }, (_, position) => {
+    const own = authored?.[position]?.trim()
+    if (own && !isGenericAlt(own)) return own
+    return total > 1
+      ? productGalleryImageAlt(product, position, total)
+      : productImageAlt(product)
+  })
+}
+
+/**
  * Deal card image. Pass the product when the product's own image is the one
  * rendered (that is what `imageUrl` decides on the blog templates); otherwise
  * the deal's own image alt, then its name, applies.

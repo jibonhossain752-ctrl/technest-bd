@@ -19,6 +19,11 @@ import type { Product } from './products'
  *    deliberately NEVER added to `src/data/products.ts`: it gets no shop card
  *    and no /product page, only its Quick Look page.
  *
+ * An entry may also be INFORMATIONAL (`informational: true`): a page that
+ * carries no purchase path at all — no outbound store link, no price, no
+ * affiliate disclosure. Only manufacturer announcements that this store does
+ * not sell belong here, and such an entry must NOT carry a `buyUrl`.
+ *
  * Both shapes are resolved through `resolveQuickLook()`. Callers that need a
  * product record should use that rather than reaching into PRODUCTS, so a
  * standalone entry works everywhere a linked one does.
@@ -84,8 +89,12 @@ export interface QuickLookProductFields {
   category: string
   /** Shop category SLUG — drives the aisle link on the card and in the guide. */
   categorySlug: string
-  /** The product's own affiliate link. Required: the buy button is the exit. */
-  buyUrl: string
+  /**
+   * The product's own affiliate link — the page's buy button. Required on every
+   * standalone entry EXCEPT an `informational` one, which has no purchase path
+   * and must leave this unset (the guard fails the build on either mismatch).
+   */
+  buyUrl?: string
   /** One-sentence description, used as the page lede and the card copy. */
   description: string
   /** Short scan-first lines, rendered as the page's highlight list. */
@@ -152,6 +161,22 @@ export interface QuickLookEntry {
    * really has one and the labels are verified. Left unset when unverified.
    */
   options?: QuickLookOption[]
+  /**
+   * Set on a page that carries NO purchase path: the detail page renders no
+   * purchase panel at all (no store button, no price note, no affiliate
+   * disclosure) and the entry carries no `buyUrl`. Use it only for a product
+   * this store does not sell — a manufacturer announcement whose only real
+   * facts are specifications and an announced price.
+   */
+  informational?: boolean
+  /**
+   * Hand-written alt text, position-matched to `images` (index 0 is the first
+   * gallery image, which is also the card and og:image). Written while looking
+   * at each file, so it always wins over the generated fallback — same rule as
+   * a post's `altText` or an in-body image's `alt` (src/lib/imageAlt.ts). The
+   * guard fails the build when the array length does not match the gallery.
+   */
+  imageAlts?: string[]
   /**
    * Short, human product name used for the H1 and meta title — the brand plus
    * the model exactly as the listing spells them, without the listing's
@@ -1581,6 +1606,224 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       },
     ],
   },
+
+  // ── Announcement-only entry ───────────────────────────────────────────────
+  // Apple HomeView is not sold by this store and Apple does not sell it through
+  // Amazon, so this entry is INFORMATIONAL: no buy link, no purchase panel and
+  // no affiliate disclosure on the page. Two things follow from that and are
+  // deliberate, not oversights:
+  // - No rating and no review count: there is no listing to take one from, and
+  //   the page must never present Amazon's or anyone else's figures as ours.
+  // - The prices on this page are the ones Apple announced on October 13, 2026
+  //   and they live in the guide's prose (attributed, dated, "before tax and
+  //   shipping"), because the data layer stores no undated price. Nothing here
+  //   is a live or falling price, which is the only kind this store refuses to
+  //   publish.
+  'apple-homeview-smart-display': {
+    slug: 'apple-homeview-smart-display',
+    displayName: 'Apple HomeView',
+    status: 'upcoming',
+    informational: true,
+    product: {
+      name: 'Apple HomeView',
+      category: 'Smart Home',
+      categorySlug: 'smart-home',
+      brand: 'Apple',
+      description:
+        'Apple\u2019s first smart display: a 7-inch Liquid Retina screen on a domed speaker base, or a flat wall-mounted panel, both powered by the A18 chip with Siri AI. Pre-orders opened on October 13, 2026 and availability begins on November 13.',
+      features: [
+        '7-inch Liquid Retina display, 1088-by-1088 pixels at 220 ppi',
+        'A18 chip with Secure Exclaves for camera and microphone data',
+        'Siri AI, powered by Apple Intelligence',
+        'Two models: a tabletop version on a domed base, or a wall-mounted panel',
+        'Tabletop version in four colors, the wall-mounted version in two',
+        'Pre-orders open now, with availability beginning November 13',
+      ],
+      altText:
+        'Apple HomeView render: silver tabletop model with music playing on screen',
+    },
+    // Apple's own pages only. Every row below was read on one of them on
+    // October 17, 2026; nothing is carried over from reporting or from memory.
+    specSource:
+      "Apple's HomeView newsroom announcement, Apple's HomeView product page, Apple's HomeView technical specifications page and Apple's HomeView buy page on apple.com — all read on October 17, 2026",
+    metaDescription:
+      'Apple HomeView spec sheet: the 7-inch Liquid Retina display, A18 chip, Siri AI, audio system, colors, both models and what a wall mount needs.',
+    // Position-matched to `images` below, and written while looking at each
+    // file. They are renders — Apple has published no photographs these could
+    // copy — so the wording says "render" and names only what the picture shows.
+    imageAlts: [
+      'Apple HomeView render: silver tabletop model with music playing on screen, render 1 of 6',
+      'Apple HomeView render: starlight tabletop model on a surface, render 2 of 6',
+      'Apple HomeView render: rose pink tabletop model with album art on screen, render 3 of 6',
+      'Apple HomeView render: space gray tabletop model tilted on its base, render 4 of 6',
+      'Apple HomeView render: silver wall-mounted model showing home-control tiles, render 5 of 6',
+      'Apple HomeView render: space gray wall-mounted model mounted on a wall, render 6 of 6',
+    ],
+    images: [
+      '/product-images/apple-homeview-silver.webp',
+      '/product-images/apple-homeview-starlight.webp',
+      '/product-images/apple-homeview-rose-pink.webp',
+      '/product-images/apple-homeview-space-gray.webp',
+      '/product-images/apple-homeview-wall-mounted-silver.webp',
+      '/product-images/apple-homeview-wall-mounted-space-gray.webp',
+    ],
+    highlights: [
+      { label: 'Display', value: '7-inch Liquid Retina' },
+      { label: 'Chip', value: 'A18' },
+      { label: 'Camera', value: '12MP Center Stage' },
+      { label: 'Wireless', value: 'Wi-Fi 6E, BT 6.0, Thread' },
+      { label: 'Availability', value: 'From November 13' },
+    ],
+    // Informational chips only. They select nothing and change no figure — the
+    // page has no price to change.
+    variants: [
+      {
+        label: 'Model',
+        options: [
+          { label: 'HomeView', note: 'Tabletop: domed speaker base, cable and 30W adapter in the box' },
+          { label: 'HomeView (Wall Mounted)', note: 'Flat panel: mount, cable and adapter sold separately' },
+        ],
+      },
+      {
+        label: 'Color',
+        options: [
+          { label: 'Silver', note: 'Both models' },
+          { label: 'Starlight', note: 'Tabletop only' },
+          { label: 'Rose Pink', note: 'Tabletop only' },
+          { label: 'Space Gray', note: 'Both models' },
+        ],
+      },
+    ],
+    keySpecs: [
+      { label: 'Display', value: '7-inch (diagonal) Liquid Retina, 1088-by-1088 pixels at 220 ppi' },
+      { label: 'Chip', value: 'A18 chip with Secure Exclaves' },
+      { label: 'Camera', value: '12MP Center Stage camera, \u0192/2.4 aperture' },
+      { label: 'Speakers, tabletop', value: 'Two full-range drivers, a down-firing woofer and dual force-cancelling passive radiators' },
+      { label: 'Speakers, wall mounted', value: 'Two custom full-range drivers, tuned for on-wall placement' },
+      { label: 'Wireless', value: 'Wi-Fi 6E, Bluetooth 6.0 and Thread' },
+      { label: 'Setup', value: 'Pairs with an iPhone on iOS 27.2 or an iPad on iPadOS 27.2' },
+      { label: 'Power', value: 'Wired; USB-C, with the wall-mounted model requiring a separate adapter of at least 20W' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Apple' },
+      { label: 'Models', value: 'Apple HomeView and Apple HomeView (Wall Mounted)' },
+      { label: 'Weight, tabletop', value: '2.1 pounds (952 grams)' },
+      { label: 'Weight, wall mounted', value: '0.63 pound (286 grams)' },
+      { label: 'In the box, tabletop', value: 'HomeView, a 1.5 m USB-C cable, a 30W power adapter and documentation' },
+      { label: 'In the box, wall mounted', value: 'HomeView (Wall Mounted) and documentation only' },
+      { label: 'Product images', value: 'Illustrations based on Apple\u2019s announced design, not photographs' },
+    ],
+    specs: [
+      {
+        group: 'Models and availability',
+        rows: [
+          { label: 'Models', value: 'Apple HomeView (tabletop) and Apple HomeView (Wall Mounted)' },
+          { label: 'Announced', value: 'October 13, 2026' },
+          { label: 'Availability', value: 'Beginning Friday, November 13, 2026' },
+          { label: 'First-wave countries', value: 'Australia, Canada, India, New Zealand, the UK and the US, with Singapore pre-orders from October 15 and South Africa through Apple Authorized Resellers' },
+          { label: 'Where to order', value: 'apple.com, the Apple Store app and select partners; Apple says all first-wave countries share the November 13 date' },
+          { label: 'Not sold in', value: 'The European Union \u2014 Apple states Siri AI is currently unavailable in iOS in the EU' },
+        ],
+      },
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Size', value: '7-inch (diagonal) Liquid Retina; Apple notes the measured diagonal is 6.98 inches' },
+          { label: 'Type', value: 'LED backlit Multi-Touch display with IPS technology' },
+          { label: 'Resolution', value: '1088-by-1088 pixels at 220 ppi' },
+          { label: 'Brightness', value: '500 nits maximum, 0.3 nits minimum' },
+          { label: 'Adaptive', value: 'True Tone and automatic brightness; the interface reveals more detail as you step closer' },
+          { label: 'Coating', value: 'Fingerprint-resistant oleophobic coating' },
+        ],
+      },
+      {
+        group: 'Chip, camera and microphones',
+        rows: [
+          { label: 'Chip', value: 'A18 chip, with Secure Exclaves that process camera and microphone data' },
+          { label: 'Camera', value: '12MP Center Stage camera, \u0192/2.4 aperture' },
+          { label: 'Calls', value: 'FaceTime video and audio over Wi-Fi to any FaceTime-enabled device' },
+          { label: 'Microphones', value: 'Four-microphone design for far-field Siri \u2014 front, left, right and rear' },
+        ],
+      },
+      {
+        group: 'Audio',
+        rows: [
+          { label: 'Tabletop speakers', value: 'Two custom full-range drivers in the display, a custom down-firing woofer and dual force-cancelling passive radiators in the base' },
+          { label: 'Wall-mounted speakers', value: 'Two custom full-range drivers, with computational audio tuned for on-wall placement' },
+          { label: 'Spatial Audio', value: 'Dolby Atmos for music and video' },
+          { label: 'Tuning', value: 'Computational audio adjusts loudness and bass response in real time' },
+          { label: 'Multiroom', value: 'AirPlay with HomePod, Apple TV 4K and compatible speakers' },
+          { label: 'Sound recognition', value: 'Detects smoke and carbon monoxide alarm sounds and alerts your iPhone, iPad or Apple Watch' },
+        ],
+      },
+      {
+        group: 'Siri AI and users',
+        rows: [
+          { label: 'Assistant', value: 'Siri AI, powered by Apple Intelligence; hands-free with \u201CSiri\u201D or \u201CHey Siri\u201D' },
+          { label: 'Without a paired device', value: 'Broad world knowledge, natural conversation and music discovery still work' },
+          { label: 'Personal context', value: 'Needs an Apple Intelligence-enabled iPhone or iPad nearby' },
+          { label: 'Recognized users', value: 'Up to six people, each with their own Home Screen apps and widgets' },
+          { label: 'Faces', value: 'Photos, Flow and Snoopy, plus informative faces such as Calendar and Weather' },
+          { label: 'Languages', value: 'Siri AI starts in English in the US, Australia, Canada, India, New Zealand, Singapore, South Africa and the UK; Canadian French arrives later by software update' },
+        ],
+      },
+      {
+        group: 'Smart home',
+        rows: [
+          { label: 'Home app', value: 'Built in and synced with your other Apple devices' },
+          { label: 'Camera feeds', value: 'The Home Camera face streams up to nine video feeds at once' },
+          { label: 'Secure Video', value: 'End-to-end encrypted recognition of people, familiar faces, pets, packages and vehicles with a supported iCloud+ subscription, plus video descriptions' },
+          { label: 'Accessories', value: 'Works with Apple Home and Matter accessories, and with Apple Home Collection cameras, thermostats and a door lock, which arrive later' },
+          { label: 'Installation', value: 'The tabletop model needs no installation; ADT professional installation is available for the wall-mounted model in most areas' },
+        ],
+      },
+      {
+        group: 'Wireless, sensors and power',
+        rows: [
+          { label: 'Wi-Fi', value: 'Wi-Fi 6E (802.11ax) with MIMO, simultaneous dual band and peer-to-peer discovery' },
+          { label: 'Bluetooth', value: 'Bluetooth 6.0' },
+          { label: 'Thread', value: 'Thread networking technology' },
+          { label: 'Sensors', value: 'Ambient light, temperature and humidity, and an accelerometer' },
+          { label: 'Line voltage', value: '100V to 240V AC, 50Hz to 60Hz' },
+          { label: 'Tabletop power', value: 'USB-C, with a 1.5 m cable and a 30W adapter included' },
+          { label: 'Wall-mounted power', value: 'USB-C, with the mount, the cable and an adapter of at least 20W each sold separately' },
+        ],
+      },
+      {
+        group: 'Size and weight, in Apple\u2019s own figures',
+        rows: [
+          { label: 'Tabletop model', value: '5.73 in (14.55 cm), with two figures that move across the hinge\u2019s tilt range: 5.38-6.82 in (13.67-17.32 cm) and 3.78-5.13 in (9.60-13.02 cm)' },
+          { label: 'Tabletop weight', value: '2.1 pounds (952 grams)' },
+          { label: 'Wall-mounted model', value: '5.73 in, 5.73 in and 0.39 in (14.55 cm, 14.55 cm and 0.98 cm)' },
+          { label: 'Wall-mounted weight', value: '0.63 pound (286 grams)' },
+          { label: 'Operating range', value: '32 to 95 degrees F (0 to 35 degrees C), 5% to 90% relative humidity, tested up to 10,000 feet' },
+        ],
+      },
+      {
+        group: 'Apps and accessibility',
+        rows: [
+          { label: 'Built-in apps', value: 'Alarms, Calendar, FaceTime, Find My, Home, Intercom, Messages, Music, Podcasts, Reminders, Safari, Settings, Timers, Weather and World Clock' },
+          { label: 'Apps from iPhone', value: 'Audiobooks, Classical Music, News and TV' },
+          { label: 'Third-party apps', value: 'Compatible third-party audio and video apps run from the paired iPhone; Apple\u2019s specification page lists no App Store' },
+          { label: 'Recipes', value: 'Safari pages convert into step-by-step cooking instructions' },
+          { label: 'Handoff', value: 'Start a song, podcast, call, video or recipe on iPhone and continue on HomeView' },
+          { label: 'Accessibility', value: 'VoiceOver, Zoom, Voice Control, Switch Control, AssistiveTouch, Real-Time Text, Live Speech, Live Captions, Siri and Dictation, Type to Siri, Vocal Shortcuts, and subtitles and closed captioning' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'Apple HomeView is not available for sale in the European Union, because Apple states Siri AI is currently unavailable in iOS in the EU.',
+          'The wall-mounted model ships without a mount, a USB-C cable or a power adapter \u2014 Apple says each is sold separately and that the adapter must be at least 20W.',
+          'Personal context needs an Apple Intelligence-enabled iPhone or iPad; Apple states Siri AI ships in beta in HomeView software version 27.2 and that usage limits may apply.',
+          'Apple\u2019s specification page lists no memory or storage figure for either model, so this sheet publishes none.',
+          'Apple lists no Ultra Wideband chip: the published wireless set is Wi-Fi 6E, Bluetooth 6.0 and Thread.',
+          'Apple publishes no water or dust resistance rating for HomeView.',
+          'Snoopy, Flow and Photos are Apple\u2019s own names for the faces; Apple has not published a complete face list.',
+        ],
+      },
+    ],
+  },
 }
 
 /**
@@ -1649,7 +1892,9 @@ export function resolveQuickLook(slug: string): QuickLookView | undefined {
       reviews: own.reviews ?? 0,
       description: own.description,
       features: own.features,
-      buyUrl: own.buyUrl,
+      // Absent on an informational entry: the page renders no purchase panel,
+      // so there is no link for a button to use.
+      ...(own.buyUrl ? { buyUrl: own.buyUrl } : {}),
       ...(own.altText ? { altText: own.altText } : {}),
       ...(own.metaTitle ? { metaTitle: own.metaTitle } : {}),
       ...(own.metaDescription ? { metaDescription: own.metaDescription } : {}),

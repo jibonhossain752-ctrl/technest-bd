@@ -146,6 +146,15 @@ export default function QuickLookDetail({
             altFallback={heroAlt}
             specScore={specScore}
           />
+          {/* An informational page shows renders rather than the manufacturer's
+              photographs, so the gallery says so under the image. Text only —
+              no badge, no banner. */}
+          {entry.informational && (
+            <p className="ql-spec-source">
+              The images above are illustrations based on the design Apple announced on
+              October 13, 2026, not photographs of a shipping unit.
+            </p>
+          )}
         </div>
 
         <div className="ql-info">
@@ -198,39 +207,57 @@ export default function QuickLookDetail({
             {/* Purchase panel — the source page's price card is replaced here by
                 the single outbound Amazon button, one plain line explaining why
                 there is no figure, and the one visible disclosure line. No
-                price number, no strike-through price, no store lines. */}
-            <div className="ql-panel ql-buy-panel">
-              {product.buyUrl ? (
-                <TrackedAffiliateLink
-                  href={product.buyUrl}
-                  className="btn btn-accent ql-buy-btn"
-                  // Affiliate links must be sponsored and nofollowed, in a new
-                  // tab. Passing them here (rather than relying on the shared
-                  // component's default rel) keeps this rule explicit at the one
-                  // place the Quick Look section sends traffic to Amazon.
-                  target={AFFILIATE_LINK_ATTRS.target}
-                  rel={AFFILIATE_LINK_ATTRS.rel}
-                  meta={{
-                    product_slug: product.slug,
-                    product_name: product.name.slice(0, 200),
-                    location: 'quick-look',
-                  }}
-                >
-                  {AFFILIATE_CTA} ↗
-                </TrackedAffiliateLink>
-              ) : (
-                <Link href={`/product/${product.slug}`} className="btn btn-accent ql-buy-btn">
-                  View the product page
-                </Link>
-              )}
-              <p className="ql-buy-note">
-                Amazon prices change often, so check the current price on the listing.
-              </p>
-              {/* The one visible disclosure next to the buy button. The guide
-                  below does NOT repeat it — the site-wide footer carries the
-                  site's other copy of this line. */}
-              <p className="ql-disclosure">{SITE.amazonDisclosure}</p>
-            </div>
+                price number, no strike-through price, no store lines.
+
+                An INFORMATIONAL entry (see QuickLookEntry.informational) renders
+                no purchase panel at all: no store button, no price note and no
+                affiliate disclosure, because there is nothing to buy and no
+                listing to point at. In its place is a plain note saying so —
+                visible text only, never a link. */}
+            {entry.informational ? (
+              <div className="ql-panel ql-buy-panel">
+                <h2 className="ql-panel-title">A spec sheet, not a store listing</h2>
+                <p className="ql-buy-note">
+                  {entry.displayName} is an Apple product this store does not sell, so there is no
+                  buy button and no shop link on this page. The dollar figures in the guide below are
+                  Apple’s own announced US launch prices, dated to its announcement and marked as
+                  before tax and shipping.
+                </p>
+              </div>
+            ) : (
+              <div className="ql-panel ql-buy-panel">
+                {product.buyUrl ? (
+                  <TrackedAffiliateLink
+                    href={product.buyUrl}
+                    className="btn btn-accent ql-buy-btn"
+                    // Affiliate links must be sponsored and nofollowed, in a new
+                    // tab. Passing them here (rather than relying on the shared
+                    // component's default rel) keeps this rule explicit at the one
+                    // place the Quick Look section sends traffic to Amazon.
+                    target={AFFILIATE_LINK_ATTRS.target}
+                    rel={AFFILIATE_LINK_ATTRS.rel}
+                    meta={{
+                      product_slug: product.slug,
+                      product_name: product.name.slice(0, 200),
+                      location: 'quick-look',
+                    }}
+                  >
+                    {AFFILIATE_CTA} ↗
+                  </TrackedAffiliateLink>
+                ) : (
+                  <Link href={`/product/${product.slug}`} className="btn btn-accent ql-buy-btn">
+                    View the product page
+                  </Link>
+                )}
+                <p className="ql-buy-note">
+                  Amazon prices change often, so check the current price on the listing.
+                </p>
+                {/* The one visible disclosure next to the buy button. The guide
+                    below does NOT repeat it — the site-wide footer carries the
+                    site's other copy of this line. */}
+                <p className="ql-disclosure">{SITE.amazonDisclosure}</p>
+              </div>
+            )}
           </div>
 
           {entry.keySpecs.length > 0 && (

@@ -31,6 +31,14 @@
  *      A slug that matches no catalog record and carries no product block is a
  *      failure, so a page can never render around missing data.
  *
+ *      INFORMATIONAL entries (`informational: true`) are the one exception and
+ *      are checked in both directions: such an entry must NOT carry a buyUrl
+ *      (the page renders no purchase panel, so a link would have no button to
+ *      use) and must NOT be a catalog product (the shop card and the /product
+ *      page would carry the purchase path the page is supposed to omit). The
+ *      detail component must still branch on the flag, so the panel cannot come
+ *      back by accident.
+ *
  *   3. Market language: the Quick Look source files must not mention the sister
  *      project's country, currency or brand. TARGET is a US store in USD.
  *
@@ -146,7 +154,12 @@ for (const [postSlug, productList] of Object.entries(POST_PRODUCT_LINKS)) {
     failures.push(`post "${postSlug}" lists the same product slug twice`)
   }
   for (const productSlug of productList) {
-    if (!productSlugs.has(productSlug)) {
+    // A slug here is normally a catalog product. An INFORMATIONAL Quick Look
+    // entry is the exception: it deliberately has no catalog record (no shop
+    // card, no /product page), so the reverse lookup is the only place a post
+    // can point at it.
+    const informationalEntry = QUICK_LOOK[productSlug]?.informational === true
+    if (!productSlugs.has(productSlug) && !informationalEntry) {
       failures.push(`post "${postSlug}" references unknown product slug "${productSlug}"`)
       continue
     }
@@ -185,17 +198,27 @@ for (const slug of Object.keys(QUICK_LOOK)) {
         `Quick Look entry "${slug}" matches no product in src/data/products.ts and carries no own \`product\` block — a standalone entry must supply one (see resolveQuickLook in src/data/quick-look.ts)`,
       )
     } else {
-      for (const key of ['name', 'category', 'categorySlug', 'description', 'buyUrl']) {
+      // An informational page has no purchase path, so `buyUrl` is forbidden
+      // there and required everywhere else — the same rule the detail component
+      // follows when it hides the purchase panel.
+      const required = ['name', 'category', 'categorySlug', 'description']
+      if (!entry.informational) required.push('buyUrl')
+      for (const key of required) {
         if (typeof own[key] !== 'string' || !own[key].trim()) {
           failures.push(`standalone entry "${slug}" has no product.${key}`)
         }
+      }
+      if (entry.informational && typeof own.buyUrl === 'string' && own.buyUrl.trim()) {
+        failures.push(
+          `informational entry "${slug}" carries a product.buyUrl — the page renders no purchase panel, so it must have no store link`,
+        )
       }
       if (!Array.isArray(own.features) || own.features.length < 3) {
         failures.push(
           `standalone entry "${slug}" needs at least 3 product.features (the detail page's highlight list renders them)`,
         )
       }
-      if (typeof own.buyUrl === 'string' && !/^https:\/\//.test(own.buyUrl)) {
+      if (typeof own.buyUrl === 'string' && own.buyUrl.trim() && !/^https:\/\//.test(own.buyUrl)) {
         failures.push(`standalone entry "${slug}" has a buyUrl that is not an https link`)
       }
       const category = categoryBySlug.get(own.categorySlug)
@@ -238,6 +261,41 @@ for (const slug of Object.keys(QUICK_LOOK)) {
       }
     }
   }
+  // An informational entry is a manufacturer announcement this store does not
+  // sell, so it must stay out of the catalog: a shop card or a /product page
+  // would carry the very purchase path that page is built without.
+  if (entry.informational && productSlugs.has(slug)) {
+    failures.push(
+      `Quick Look entry "${slug}" is marked informational but is a catalog product — a shop card and a /product page would carry the buy path it must not have`,
+    )
+  }
+
+  // Hand-written gallery alt is position-matched to the gallery the page
+  // renders, so its length must match: a shorter list would silently leave an
+  // image on the generated alt.
+  if (entry.imageAlts) {
+    const galleryLength = [
+      PRODUCTS.find((product) => product.slug === slug)?.imageUrl,
+      ...(Array.isArray(entry.images) ? entry.images : []),
+    ].filter((image) => typeof image === 'string' && image.startsWith('/product-images/')).length
+    if (entry.imageAlts.length !== galleryLength) {
+      failures.push(
+        `Quick Look entry "${slug}" has ${entry.imageAlts.length} imageAlts for a gallery of ${galleryLength} — the text is position-matched, so the two must agree`,
+      )
+    }
+    entry.imageAlts.forEach((alt, position) => {
+      if (typeof alt !== 'string' || !alt.trim()) {
+        failures.push(
+          `Quick Look entry "${slug}" has an empty imageAlts entry at position ${position + 1}`,
+        )
+      } else if (alt.length > 125) {
+        failures.push(
+          `Quick Look entry "${slug}" image alt ${position + 1} is ${alt.length} characters (the site's limit is 125)`,
+        )
+      }
+    })
+  }
+
   if (!entry.displayName || !entry.displayName.trim()) {
     failures.push(`Quick Look entry "${slug}" has no displayName (used for the H1 and meta title)`)
   }
@@ -469,6 +527,13 @@ if (fs.existsSync(detailPath)) {
       'src/components/QuickLookDetail.tsx renders a price figure — the Quick Look page shows no price, only the Amazon call to action',
     )
   }
+  // An informational entry must render NO purchase panel — the branch is what
+  // keeps the store button and its disclosure off that page.
+  if (!/entry\.informational/.test(detailText)) {
+    failures.push(
+      'src/components/QuickLookDetail.tsx no longer branches on entry.informational — an informational page would render a purchase panel and an affiliate disclosure it must not have',
+    )
+  }
 }
 
 /* ── 5. No breadcrumb on the Quick Look detail pages ─────────────────── */
@@ -561,6 +626,17 @@ for (const slug of Object.keys(QUICK_LOOK)) {
     failures.push(`Quick Look slug "${slug}" is not a plain lowercase-hyphenated route segment`)
   }
   const buyUrl = buyLinkFor(slug)
+  if (QUICK_LOOK[slug].informational) {
+    // The one page shape with no call to action at all: informational entries
+    // are announcements this store does not sell, so a buy link here would be
+    // the store link the page is built without.
+    if (buyUrl) {
+      failures.push(
+        `informational entry "${slug}" resolves to a buy link — an informational page renders no purchase panel, so it may carry no store link`,
+      )
+    }
+    continue
+  }
   if (!buyUrl) {
     failures.push(
       `Quick Look entry "${slug}" has no buy link — the page's only call to action would be missing (a linked entry needs its record's buyUrl, a standalone entry its own)`,
