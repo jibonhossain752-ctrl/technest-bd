@@ -1652,10 +1652,10 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
     // file. They are renders — Apple has published no photographs these could
     // copy — so the wording says "render" and names only what the picture shows.
     imageAlts: [
-      'Apple HomeView render: silver tabletop model with music playing on screen, render 1 of 6',
-      'Apple HomeView render: starlight tabletop model on a surface, render 2 of 6',
-      'Apple HomeView render: rose pink tabletop model with album art on screen, render 3 of 6',
-      'Apple HomeView render: space gray tabletop model tilted on its base, render 4 of 6',
+      'Apple HomeView render: silver tabletop model on its speaker base, music playing, render 1 of 6',
+      'Apple HomeView render: starlight tabletop model on its speaker base, render 2 of 6',
+      'Apple HomeView render: rose pink tabletop model on its speaker base with album art, render 3 of 6',
+      'Apple HomeView render: space gray tabletop model on its speaker base, render 4 of 6',
       'Apple HomeView render: silver wall-mounted model showing home-control tiles, render 5 of 6',
       'Apple HomeView render: space gray wall-mounted model mounted on a wall, render 6 of 6',
     ],
