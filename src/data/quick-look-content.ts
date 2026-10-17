@@ -2287,6 +2287,790 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
     ],
   },
+
+  'asus-vivobook-15-x1504va': {
+    productName: 'Vivobook 15 (X1504VA)',
+    heading: 'ASUS Vivobook 15 (X1504VA) specs, features and buying guide',
+    lead: 'The ASUS Vivobook 15 X1504VA is an everyday 15.6-inch laptop: a full-HD anti-glare screen, a 13th Gen Intel Core U-series processor, 16 GB of DDR4 memory and a 512 GB or 1 TB SSD in a 1.70 kg chassis. It is built for documents, browsing, video calls and coursework rather than gaming or colour-accurate work.',
+    overview: [
+      'The screen measures 15.6 inches diagonally at 1920 x 1080, with an anti-glare finish, 250 nits of brightness, a 60 Hz refresh rate and 45% NTSC colour coverage. ASUS quotes an 84% screen-to-body ratio, so the bezels are slim for an everyday laptop, and the chassis is 1.79 cm thick and 1.70 kg.',
+      'Inside, ASUS lists three 13th Gen Intel Core U-series processors for this model: the Core i7-1355U, the Core i5-1334U and the Core i3-1315U. Memory is 16 GB of DDR4 in a single SO-DIMM slot with a 16 GB ceiling, and storage is a 512 GB or 1 TB M.2 NVMe SSD on PCIe 3.0. Graphics are Intel UHD, with Iris Xe only on the Core i5 and i7 builds that run dual-channel memory, which ASUS states on its own specification page.',
+      'Two details decide whether a particular listing suits you. ASUS sells several X1504VA configurations, so the processor, SSD size, keyboard backlight and even whether a power adapter is included vary by model and by region \u2014 ASUS says adapter inclusion depends on country, region and model. And the USB-C port on this build is data only: ASUS lists no DisplayPort output and no charging over USB-C.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the Vivobook 15 (X1504VA)',
+      paragraphs: [
+        'Read the model string, not just the product name. X1504VA covers Core i3, i5 and i7 builds with different SSDs, and the specification table above reflects the range ASUS publishes rather than one fixed configuration. Match the processor and SSD in the listing against what you actually need, because the price difference between those builds is real and the badge on the lid is identical.',
+        'Then decide on memory. There is one DDR4 SO-DIMM slot and a 16 GB maximum, so a 16 GB machine is already at the ceiling and cannot be taken further; if a listing shows 8 GB, adding a second module later replaces the existing one rather than adding to it. Check the box contents for the adapter too, since ASUS states that whether one ships depends on the country, region and model.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Display', detail: '15.6-inch FHD, 1920 x 1080, 60 Hz, 250 nits, anti-glare' },
+      { term: 'Processors', detail: 'Core i7-1355U, Core i5-1334U or Core i3-1315U' },
+      { term: 'Memory', detail: '16 GB DDR4, one SO-DIMM slot, 16 GB maximum' },
+      { term: 'Storage', detail: '512 GB or 1 TB M.2 NVMe PCIe 3.0 SSD' },
+      { term: 'Wireless', detail: 'Wi-Fi 6 (802.11ax) 1x1 and Bluetooth 5.2' },
+      { term: 'Ports', detail: 'USB-C data only, two USB-A 5 Gbps, one USB-A 2.0, HDMI 1.4' },
+      { term: 'Battery', detail: '42 Wh, 3-cell, with a 45 W adapter' },
+      { term: 'Size and weight', detail: '35.97 x 23.25 x 1.79 cm, 1.70 kg (3.75 lb)' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'A 15.6-inch anti-glare screen',
+        body: 'The panel is full HD at 1920 x 1080 on a 16:9 15.6-inch diagonal, with 250 nits of brightness, 45% NTSC colour coverage and an anti-glare coating. It is a matte, non-touch display: fine for documents and streaming, and the matte finish is what keeps reflections down in a bright room. It is not a colour-work panel, and ASUS does not claim it is.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'U-series processors, and what that means for speed',
+        body: 'All three chips ASUS lists are U-series parts, which is Intel\u2019s lower-power laptop line rather than the H-series used in heavier machines. They are built for battery life and quiet fans, and they handle documents, browser tabs and video calls comfortably. What they are not is a gaming or video-editing engine \u2014 there is no discrete graphics option on this sheet.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'One memory slot with a hard ceiling',
+        body: 'Memory is 16 GB of DDR4 with a 16 GB maximum, in a single SO-DIMM slot. That is enough for the way most people use a laptop this size, but it means the machine is not upgradable beyond what it ships with. Buyers who expect to add memory in two years should know that on this model there is nowhere to add it.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Iris Xe only when memory runs in dual channel',
+        body: 'ASUS states that Iris Xe graphics appear only on Core i5, i7 or i9 models configured with dual-channel memory; otherwise the laptop uses Intel UHD Graphics. That is worth checking on the exact build you are considering, because the integrated graphics badge affects light photo work and video playback more than everyday browsing.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'What 250 nits and 45% NTSC mean in practice',
+        paragraphs: [
+          '250 nits is an indoor figure. It is comfortable in an office, a classroom or a kitchen table, and it holds up in a car or on a train. Outdoors in direct sun it will look washed out, which is true of most laptops at this level and is the honest reason to think twice if you plan to work on a patio.',
+          '45% NTSC is the colour figure ASUS publishes, and it is the one that matters if you edit photos or grade video. A panel at this coverage shows a narrower range of colour than a wide-gamut display, so work that depends on accurate colour should be done on an external monitor. For documents, spreadsheets and streaming, the number is irrelevant.',
+        ],
+      },
+      {
+        heading: 'The ports, and what the USB-C port cannot do',
+        paragraphs: [
+          'There are three USB-A ports: two at USB 3.2 Gen 1 speed, which is 5 Gbps, and one at USB 2.0. Alongside them sit a single USB-C port at 5 Gbps, an HDMI 1.4 output, a 3.5 mm combo jack and a barrel connector for the power adapter.',
+          'The USB-C port is data only on this model. ASUS lists no DisplayPort alt mode and no USB Power Delivery, so it will not drive a monitor and it will not charge the laptop. A monitor goes on the HDMI 1.4 port, which tops out below the HDMI 2.0 and 2.1 standards used for high-refresh 4K, and charging goes through the supplied barrel adapter.',
+        ],
+      },
+      {
+        heading: 'Battery, adapter and the 42 Wh ceiling',
+        paragraphs: [
+          'The battery is a 42 Wh three-cell lithium-ion pack, charged by a 45 W adapter at 19 V and 2.37 A with a 100-240 V input. 42 Wh is a modest capacity for a 15.6-inch machine, and ASUS does not publish a runtime figure for this model on the specification page, so there is no claim here to compare against.',
+          'What that means for a buyer is simple: plan on keeping the adapter nearby for a full working day, and treat the laptop as a plug-in-first machine that can move between rooms unplugged. The adapter itself is small enough to travel with, when one is included \u2014 ASUS states that inclusion varies by country, region and model, so check the box contents on the listing.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the Vivobook 15 (X1504VA), and who should skip it',
+      should: [
+        'You want a 15.6-inch screen and a full keyboard for documents, browsing and coursework.',
+        'You want a matte display that stays readable in a bright room.',
+        'You want a 1.70 kg laptop with HDMI, three USB-A ports and a card-free setup.',
+        'You are buying for a household or a student and want 16 GB of memory from day one.',
+      ],
+      skip: [
+        'You edit photos or video for a living: 45% NTSC and 250 nits are not a colour-work panel.',
+        'You need USB-C charging or a USB-C monitor output.',
+        'You want to add memory later: one slot, 16 GB maximum.',
+        'You want to play demanding games: there is no discrete graphics option.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Where the Vivobook 15 (X1504VA) fits',
+        cards: [
+          {
+            title: 'Study and coursework',
+            body: 'A 15.6-inch full-HD screen with a matte finish, a full-size keyboard with 1.4 mm travel and a precision touchpad, in a 1.70 kg body.',
+          },
+          {
+            title: 'Home office and video calls',
+            body: 'A 720p camera with a privacy shutter, a built-in microphone array, SonicMaster speakers and HDMI 1.4 for a second screen.',
+          },
+          {
+            title: 'Everyday family laptop',
+            body: '16 GB of DDR4 and a 512 GB or 1 TB NVMe SSD, with three USB-A ports for a mouse, a printer and a drive at the same time.',
+          },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'ASUS Vivobook 15 (X1504VA) pros and cons',
+      pros: [
+        '15.6-inch full-HD anti-glare display with an 84% screen-to-body ratio',
+        '13th Gen Intel Core U-series processors up to the Core i7-1355U',
+        '16 GB of DDR4 memory and a 512 GB or 1 TB NVMe SSD',
+        'Wi-Fi 6 and Bluetooth 5.2',
+        'Two USB-A 5 Gbps ports, one USB-A 2.0, HDMI 1.4 and a combo jack',
+        'A privacy shutter on the 720p camera',
+      ],
+      cons: [
+        'The USB-C port is data only \u2014 no monitor output and no charging',
+        'One memory slot with a 16 GB maximum',
+        '250 nits and 45% NTSC suit documents, not colour work',
+        '42 Wh is a small battery for a 15.6-inch laptop',
+        'ASUS does not list a backlit keyboard for this column of the X1504 table',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the Vivobook 15 (X1504VA) in the US',
+      paragraphs: [
+        'Start from the model string and the listed processor, then work outwards. The same X1504VA name covers a Core i3, a Core i5 and a Core i7, with either 512 GB or 1 TB of storage, so two listings that look identical can differ by hundreds of dollars of hardware. If the listing does not name the processor, ask before ordering.',
+        'Then check the small things that are easy to miss: whether the build has a backlit keyboard, whether a power adapter is in the box, and which colour the chassis is. None of those change how the laptop performs, and all of them change whether it feels right on day one.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'What processor does the ASUS Vivobook 15 X1504VA use?',
+        answer:
+          'ASUS lists three 13th Gen Intel Core U-series chips for this model: the Core i7-1355U, the Core i5-1334U and the Core i3-1315U. Which one you get depends on the configuration, so check the exact build in the listing.',
+      },
+      {
+        question: 'Can you upgrade the memory in the Vivobook 15 X1504VA?',
+        answer:
+          'There is one DDR4 SO-DIMM slot and ASUS lists a 16 GB maximum. A machine that ships with 16 GB is already at the ceiling, so replacing the module is the only route and it buys no extra capacity.',
+      },
+      {
+        question: 'Does the USB-C port on the Vivobook 15 X1504VA support charging or a monitor?',
+        answer:
+          'No. ASUS lists the USB-C port as USB 3.2 Gen 1 at 5 Gbps for data only, with no DisplayPort output and no power delivery. Video goes out over HDMI 1.4 and the laptop charges from its barrel adapter.',
+      },
+      {
+        question: 'Is the Vivobook 15 X1504VA display a touchscreen?',
+        answer:
+          'The panel ASUS specifies for this model is a 15.6-inch full-HD LED-backlit anti-glare display and it is non-touch.',
+      },
+      {
+        question: 'Does the Vivobook 15 X1504VA have a backlit keyboard?',
+        answer:
+          'ASUS lists a chiclet keyboard with 1.4 mm key travel and does not list a backlight for the X1504VA column of its specification table, although other X1504 models do offer one. Confirm it on the exact listing if a backlight matters to you.',
+      },
+      {
+        question: 'How big is the battery, and is a charger included?',
+        answer:
+          'The battery is a 42 Wh three-cell pack and the adapter ASUS lists is 45 W with a 100-240 V input. ASUS states that whether a power adapter is included varies by country, region and model, so check the box contents before ordering.',
+      },
+      {
+        question: 'What storage options does the Vivobook 15 X1504VA offer?',
+        answer:
+          'A 512 GB or 1 TB M.2 NVMe SSD on PCIe 3.0, with one M.2 2280 slot on PCIe 4.0 x4 for expansion. ASUS lists the slot, not a second drive in the box.',
+      },
+      {
+        question: 'Does the Vivobook 15 X1504VA have Wi-Fi 6?',
+        answer:
+          'Yes. ASUS lists Wi-Fi 6 at 802.11ax in a 1x1 configuration with dual-band support, alongside Bluetooth 5.2.',
+      },
+    ],
+    links: [
+      {
+        label: 'Laptops & PCs',
+        href: '/shop/laptops',
+        description: 'The laptops and desktops the store carries.',
+      },
+      {
+        label: 'Lenovo IdeaCentre AIO 27 spec sheet',
+        href: '/quick-look/lenovo-ideacentre-aio-27',
+        description: 'The 27-inch all-in-one, if a desktop suits you better than a laptop.',
+      },
+      {
+        label: "Today's deals",
+        href: '/deals',
+        description: 'The catalog filtered down to products that are discounted right now.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'lenovo-ideacentre-aio-27': {
+    productName: 'IdeaCentre AIO 27',
+    heading: 'Lenovo IdeaCentre AIO 27 specs, features and buying guide',
+    lead: 'The Lenovo IdeaCentre AIO 27IRH9 is a 27-inch all-in-one desktop: a full-HD IPS screen at 100 Hz, a 13th Gen Intel Core processor, DDR5 memory in two upgradeable slots and a 5 MP camera with a privacy shutter. One power cable and a keyboard is the whole setup, which is the point of an all-in-one.',
+    overview: [
+      'The display is 27 inches at 1920 x 1080 on an IPS panel with an anti-glare finish, 300 nits of brightness, a 100 Hz refresh rate and 99% sRGB coverage. Lenovo also sells QHD versions of the same family at 2560 x 1440 and 350 nits, and touch versions with 10-point multi-touch, so the panel is one thing to confirm against the exact model.',
+      'Inside, Lenovo lists processors from the Core i3-1315U up to the Core i9-13900H, DDR5-5200 memory across two SO-DIMM slots for up to 32 GB, and a single M.2 2280 SSD on PCIe 4.0 x4 up to 1 TB. Graphics are integrated Intel UHD or Iris Xe, and there is no discrete GPU option in the specifications Lenovo publishes.',
+      'Around the back and sides sit one USB-A port at 10 Gbps, two at USB 2.0, a USB-C port at 10 Gbps, HDMI in, HDMI out, gigabit Ethernet and a headphone jack. The USB-C port is data transfer only, and the stand tilts from -5 to +15 degrees with no height adjustment.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the IdeaCentre AIO 27',
+      paragraphs: [
+        'Lenovo sells 27-inch IdeaCentre all-in-ones in more than one family, and the specification above is the Intel 27IRH9 \u2014 the one whose full data sheet Lenovo publishes. Before ordering, match the model number in the listing against 27IRH9. If the listing names a different family, the processor list, panel figures and port layout here may not apply.',
+        'Within the family, three choices matter most: full HD or QHD, touch or non-touch, and whether a keyboard and mouse are included. Lenovo lists keyboard and mouse as configuration options and some models ship without either, so a desktop that looks cheaper may simply have no input devices in the box.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Display', detail: '27-inch FHD IPS, 300 nits, 100 Hz, 99% sRGB, anti-glare' },
+      { term: 'Processors', detail: 'Core i3-1315U, i5-13420H, i7-13620H or i9-13900H' },
+      { term: 'Memory', detail: 'Up to 32 GB DDR5-5200, two SO-DIMM slots' },
+      { term: 'Storage', detail: 'One M.2 2280 SSD on PCIe 4.0 x4, up to 1 TB' },
+      { term: 'Camera', detail: '5 MP, or 5 MP IR, with a shutter latch' },
+      { term: 'Audio', detail: 'Stereo speakers at 3 W each, Audio by HARMAN' },
+      { term: 'Ports', detail: 'USB-C 10 Gbps data only, 3 USB-A, HDMI in and out, Ethernet' },
+      { term: 'Weight', detail: 'Around 7.1 kg for FHD models, 7.51 kg for QHD' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'A 100 Hz panel on a desktop',
+        body: 'Most all-in-ones settle for 60 Hz. Lenovo lists 100 Hz here, which makes scrolling and window movement look smoother rather than changing what the screen can display. It does not make this a gaming machine: the graphics are integrated, and the panel is 300 nits at 99% sRGB, which is an office and photo-hobby panel rather than a reference display.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Two SO-DIMM slots and DDR5',
+        body: 'Memory is DDR5-5200 across two SO-DIMM slots, up to 32 GB. That is unusual for an all-in-one at this size, where memory is often soldered. It means a 16 GB machine can be taken further later with a pair of modules, and it also means the memory runs in dual channel when both slots are populated.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'HDMI in as well as HDMI out',
+        body: 'The HDMI input is the port that separates this from a monitor with a PC bolted on. It lets a games console, a streaming stick or a work laptop use the 27-inch panel, and Lenovo lists HDMI 1.4 for that input. The HDMI output is 2.1 TMDS, so the desktop can drive an external screen as well.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'A 5 MP camera with a shutter latch',
+        body: 'The webcam is 5 MP, with a 5 MP IR option on models that support Windows Hello face sign-in, and both carry a shutter latch. A 5 MP sensor is a step above the 1080p cameras most desktops still ship, which matters if you spend the day on video calls. The dual-microphone array is separate from the speakers.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: '27 inches at 1920 x 1080, and what that density means',
+        paragraphs: [
+          'A 27-inch 1920 x 1080 panel works out to roughly 82 pixels per inch. Text is legible and video looks fine, but close-up work shows the pixel structure more than a smaller laptop screen would, and split-screen use at this size is tighter than the diagonal suggests. Lenovo publishes that number honestly, and it is the reason a QHD version of the same family exists.',
+          'The QHD option is 2560 x 1440 at 350 nits on the same 27-inch diagonal. That is the version to choose if you read a lot of text, work with two windows side by side, or edit photos. The trade is a slightly heavier machine \u2014 7.51 kg against 7.1 kg \u2014 and a higher price for the same processor options.',
+        ],
+      },
+      {
+        heading: 'The ports, and the one that is data-only',
+        paragraphs: [
+          'Rear ports are one USB-A at 10 Gbps, two USB-A at USB 2.0, HDMI in, HDMI out, gigabit Ethernet and the power input. The USB-C port sits on the left at 10 Gbps and is data transfer only, so it cannot drive a display and cannot charge anything.',
+          'That is worth saying plainly because USB-C is often assumed to mean video out. On this desktop, an external monitor goes on the HDMI 2.1 TMDS output, and the Ethernet port means a wired connection is available without a dongle. Lenovo lists a 90 W or 135 W autosensing adapter depending on the configuration.',
+        ],
+      },
+      {
+        heading: 'Tilt only, and where the desk should sit',
+        paragraphs: [
+          'The stand tilts from -5 to +15 degrees. There is no height adjustment and no swivel, which is the main ergonomic limit of this design: the bottom of the screen sits at a fixed height, so the desk and chair have to do the work that a height-adjustable stand would otherwise do.',
+          'The footprint is roughly 612 x 192 mm for the FHD model, and the whole thing weighs about 7.1 kg. Measure the desk depth before ordering, because a 27-inch all-in-one with a stand this deep takes more room than a monitor on an arm, and the panel sits closer to the wall than a tower-plus-monitor setup would.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the IdeaCentre AIO 27, and who should skip it',
+      should: [
+        'You want one cable and a clean desk rather than a tower, a monitor and a tangle of leads.',
+        'You want a 27-inch screen that a console or a work laptop can also use, through HDMI in.',
+        'You want memory you can upgrade later: two DDR5 SO-DIMM slots up to 32 GB.',
+        'You take a lot of video calls and want a 5 MP camera with a privacy shutter.',
+      ],
+      skip: [
+        'You need detailed text at 27 inches: a 1920 x 1080 panel at this size is about 82 ppi.',
+        'You need a height-adjustable or swivelling stand \u2014 this one only tilts.',
+        'You want USB-C video output or USB-C charging: that port is data only.',
+        'You need a discrete GPU for gaming or 3D work: Lenovo lists integrated graphics only.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Where the IdeaCentre AIO 27 fits',
+        cards: [
+          {
+            title: 'Home office',
+            body: 'A 27-inch 100 Hz display, a 5 MP camera with a shutter latch, dual microphones and HARMAN-tuned stereo speakers, with gigabit Ethernet for a wired connection.',
+          },
+          {
+            title: 'Family computer',
+            body: 'HDMI in for a console or a streaming stick, plus a 27-inch screen that does not need a tower underneath it.',
+          },
+          {
+            title: 'Study and light creative work',
+            body: 'DDR5 memory up to 32 GB, a PCIe 4.0 SSD up to 1 TB and 99% sRGB coverage on the FHD panel.',
+          },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'Lenovo IdeaCentre AIO 27 pros and cons',
+      pros: [
+        '27-inch FHD IPS display at 100 Hz with 99% sRGB coverage',
+        '13th Gen Intel Core processors up to the Core i9-13900H',
+        'Two DDR5 SO-DIMM slots, up to 32 GB \u2014 memory is not soldered',
+        'HDMI in as well as HDMI out',
+        '5 MP camera with a privacy shutter and dual microphones',
+        'Wi-Fi 6, Bluetooth 5.2 and gigabit Ethernet',
+      ],
+      cons: [
+        '1920 x 1080 works out to roughly 82 ppi at 27 inches',
+        'The stand tilts but does not adjust for height or swivel',
+        'The USB-C port is data only',
+        'Integrated graphics only \u2014 no discrete GPU option',
+        'Keyboard and mouse are configuration options on some models',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the IdeaCentre AIO 27 in the US',
+      paragraphs: [
+        'Confirm the model number first, then the panel. Lenovo builds 27-inch IdeaCentre all-in-ones in more than one family, and this sheet documents the Intel 27IRH9. Within that family, decide between full HD and QHD before anything else: it is the choice you cannot change later, and at 27 inches it is the one you will notice every day.',
+        'Then check what is in the box. Lenovo lists keyboard and mouse as configuration options, so a desktop sold without them needs a set added to the total. If you want Windows Hello face sign-in, look for the 5 MP IR camera rather than the standard 5 MP module, since they are different configurations of the same chassis.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'What processors does the IdeaCentre AIO 27 use?',
+        answer:
+          'Lenovo lists 13th Gen Intel Core chips from the Core i3-1315U through the Core i5-13420H and Core i7-13620H to the Core i9-13900H on the 27IRH9. The exact chip depends on the configuration.',
+      },
+      {
+        question: 'Can you upgrade the memory and storage on the IdeaCentre AIO 27?',
+        answer:
+          'Yes for memory: there are two DDR5 SO-DIMM slots supporting up to 32 GB at DDR5-5200, so it is not soldered. Storage is a single M.2 2280 slot on PCIe 4.0 x4, up to 1 TB, so a larger drive replaces the original rather than adding to it.',
+      },
+      {
+        question: 'Can the USB-C port on the IdeaCentre AIO 27 drive a monitor?',
+        answer:
+          'No. Lenovo lists the USB-C port at 10 Gbps for data transfer only. An external display goes on the HDMI 2.1 TMDS output, and the desktop also has an HDMI 1.4 input.',
+      },
+      {
+        question: 'Does the IdeaCentre AIO 27 have a touchscreen?',
+        answer:
+          'On some models. Lenovo lists 10-point multi-touch as available on touch configurations of the 27IRH9, with non-touch panels on the others, so check the listing.',
+      },
+      {
+        question: 'Is a keyboard and mouse included with the IdeaCentre AIO 27?',
+        answer:
+          'Lenovo lists wired or wireless keyboard and mouse sets on some models and configurations without them on others. It is not safe to assume either way, so confirm the box contents before ordering.',
+      },
+      {
+        question: 'Can I use the IdeaCentre AIO 27 as a monitor for a console?',
+        answer:
+          'Yes. The HDMI 1.4 input lets another device use the 27-inch panel, so a console, a streaming stick or a laptop can drive the screen without going through Windows.',
+      },
+      {
+        question: 'How heavy is the IdeaCentre AIO 27?',
+        answer:
+          'Around 7.1 kg for the full-HD models and around 7.51 kg for the QHD models, according to Lenovo. The stand tilts from -5 to +15 degrees and does not adjust for height.',
+      },
+      {
+        question: 'Does the IdeaCentre AIO 27 have a privacy shutter on the camera?',
+        answer:
+          'Yes. Lenovo lists a camera shutter latch on both the 5 MP and the 5 MP IR camera options, so the lens can be covered when it is not in use.',
+      },
+    ],
+    links: [
+      {
+        label: 'Laptops & PCs',
+        href: '/shop/laptops',
+        description: 'The laptops and desktops the store carries.',
+      },
+      {
+        label: 'ASUS Vivobook 15 spec sheet',
+        href: '/quick-look/asus-vivobook-15-x1504va',
+        description: 'The 15.6-inch laptop, if you need something that travels.',
+      },
+      {
+        label: "Today's deals",
+        href: '/deals',
+        description: 'The catalog filtered down to products that are discounted right now.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'xiaomi-redmi-watch-5': {
+    productName: 'Redmi Watch 5',
+    heading: 'Xiaomi Redmi Watch 5 specs, features and buying guide',
+    lead: 'The Redmi Watch 5 is Xiaomi\u2019s mid-range smartwatch: a 2.07-inch square AMOLED screen rated at 1500 nits, a 550 mAh battery Xiaomi says lasts 24 days in typical use, 5ATM water resistance and built-in five-system GNSS. It suits people who want a large, bright screen and long battery life without flagship money.',
+    overview: [
+      'The display is the headline. It is a 2.07-inch square AMOLED at 432 x 514 pixels, which works out to 324 ppi, with a 60 Hz refresh rate, an 82% screen-to-body ratio and 1500 nits of peak brightness in high-brightness mode. Xiaomi describes the bezel as a 2 mm quadrilateral and the glass as 2.5D curved.',
+      'The case is 47.5 x 41.1 x 11.3 mm with an aluminium alloy middle frame and a stainless-steel rotating crown, and it weighs about 33.5 g without the strap. The in-box strap is TPU in 135-205 mm, in Obsidian Black, Silver Gray or Lavender Purple, and it uses a quick-release fitting so other straps can be swapped on.',
+      'Inside, Xiaomi lists a heart rate sensor with a blood oxygen sensor, an accelerometer, a gyroscope, an ambient light sensor and an electronic compass, plus five satellite systems, Bluetooth 5.3, a speaker, two microphones and 164 MB of local storage. The watch runs Xiaomi HyperOS and pairs with phones on Android 8.0 and above or iOS 12.0 and above.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the Redmi Watch 5',
+      paragraphs: [
+        'Check the phone first. HyperOS on this watch supports Android 8.0 and above and iOS 12.0 and above, and Xiaomi states that the watch has to stay connected to the phone over Bluetooth for calls and notifications. If your phone is older than either line, the watch is the wrong purchase regardless of the hardware.',
+        'Then decide the strap colour, because it is the one cosmetic choice you make at checkout. All three in-box straps are TPU in the same 135-205 mm length, so the difference is appearance rather than fit, and the quick-release fitting means a swap later is easy. If you want a leather strap, Xiaomi sells those separately \u2014 the specification page lists a cream white leather strap as an accessory, not as an option in the box.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Display', detail: '2.07-inch square AMOLED, 432 x 514, 324 ppi, 60 Hz, 1500 nits' },
+      { term: 'Battery', detail: '550 mAh, 24 days of typical use per Xiaomi' },
+      { term: 'Water resistance', detail: '5ATM, rated for 18 water sports' },
+      { term: 'Positioning', detail: 'GPS, Galileo, GLONASS, BeiDou and QZSS' },
+      { term: 'Calling', detail: 'Bluetooth 5.3, speaker and two microphones' },
+      { term: 'Sensors', detail: 'Heart rate with blood oxygen, accelerometer, gyroscope, compass' },
+      { term: 'Size and weight', detail: '47.5 x 41.1 x 11.3 mm, about 33.5 g without the strap' },
+      { term: 'Storage', detail: '164 MB available for local use' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'A 2.07-inch AMOLED screen at 1500 nits',
+        body: 'This is the part of the watch you notice first. 2.07 inches on a square case is large for a watch, the AMOLED panel gives proper blacks, and 1500 nits of peak brightness is Xiaomi\u2019s answer to outdoor visibility. Xiaomi also lists a 60 Hz refresh rate, which makes scrolling through notifications and widgets feel less stepped than the 30 Hz panels common at lower price points.',
+      },
+      {
+        heading: 'Key features explained',
+        title: '24 days, and what typical use means',
+        body: 'Xiaomi rates the 550 mAh battery at 24 days in typical usage mode, a figure it says comes from its own lab and represents a 20% improvement over the Redmi Watch 4. Typical use is a defined test condition rather than a guarantee: heavy GPS tracking, always-on display or frequent calling will use more, and Xiaomi does not publish a separate heavy-use figure for this model on its specification page.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Five-system GNSS without a phone',
+        body: 'The watch has built-in GNSS covering GPS, Galileo, GLONASS, BeiDou and QZSS, so an outdoor run or ride is tracked by the watch itself rather than by the phone in your pocket. That matters for pacing and distance accuracy on routes with tree cover or tall buildings, where a phone-based track often drifts.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Bluetooth calling with two microphones',
+        body: 'Calls run over Bluetooth 5.3 through the paired phone, using the built-in speaker and two microphones. Xiaomi states that the watch has to stay connected to the phone and that voice calls from third-party apps are not supported, so this is a way to take a call without reaching for your phone \u2014 not a standalone phone.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: '5ATM: what the rating actually covers',
+        paragraphs: [
+          '5ATM is a water-resistance rating of five atmospheres, and Xiaomi pairs it with a claim that the watch suits 18 water sports. That is a real rating for swimming pools and shallow open water, and it is more than most budget watches offer.',
+          'It is not a depth rating for diving, and it is not a licence to press buttons underwater. Xiaomi describes the product as not designed for medical purposes, and the same caution applies to water: rinse the watch in fresh water after salt water or chlorine, and avoid hot showers and saunas, where steam is harder on seals than immersion. If you want a watch for diving, this is not that watch.',
+        ],
+      },
+      {
+        heading: 'HyperOS, the Mi Fitness app and 164 MB of storage',
+        paragraphs: [
+          'The watch runs Xiaomi HyperOS and pairs with the Mi Fitness app, which is where health data, watch faces and settings live. Xiaomi also states that the data can be shared with platforms including Suunto, which is worth knowing if you already keep a training log somewhere.',
+          'Local storage is 164 MB. That sounds small next to a phone, and it is: the storage holds watch faces, the recorder\u2019s audio and small app assets rather than music libraries. Xiaomi notes that the operating system and pre-installed software take part of the flash memory, so the usable figure is lower than the headline number.',
+        ],
+      },
+      {
+        heading: 'Health tracking: what Xiaomi publishes and what it does not',
+        paragraphs: [
+          'Xiaomi lists all-day heart rate monitoring, all-day blood oxygen saturation, sleep tracking and stress monitoring, and it says the watch uses an upgraded analogue front-end chip with a new algorithm for a claimed 5.2% improvement in heart rate accuracy and 10% in sleep recognition compared with the Redmi Watch 4. Those are the manufacturer\u2019s own lab figures, not independent measurements.',
+          'What Xiaomi does not publish is an accuracy claim against a clinical reference, and the watch is explicitly not a medical device. Read the numbers as trends over weeks \u2014 resting heart rate drifting down as fitness improves, sleep duration across a month \u2014 rather than as measurements to act on medically.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the Redmi Watch 5, and who should skip it',
+      should: [
+        'You want a large, bright AMOLED screen and do not want to charge a watch every night.',
+        'You run or ride outdoors and want built-in GNSS rather than a phone-tracked route.',
+        'You swim, or you want a watch you do not have to take off at the pool.',
+        'You want calls and notifications on the wrist from an Android phone or an iPhone.',
+      ],
+      skip: [
+        'You need standalone cellular: this watch has no cellular connection.',
+        'You want to make calls through third-party apps from the watch \u2014 Xiaomi says that is unsupported.',
+        'You need a medically certified device for heart rhythm or blood oxygen.',
+        'You want a small, light dress watch: 2.07 inches is a big screen on a 47.5 mm case.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Where the Redmi Watch 5 fits',
+        cards: [
+          {
+            title: 'Running and cycling',
+            body: 'Built-in five-system GNSS, 150+ sports modes and 10 on-wrist running courses, with the phone left at home.',
+          },
+          {
+            title: 'Swimming',
+            body: 'A 5ATM rating Xiaomi says covers 18 water sports, in a case that weighs about 33.5 g without the strap.',
+          },
+          {
+            title: 'Everyday wear',
+            body: 'Bluetooth calling through the paired phone, 200+ watch faces and a battery Xiaomi rates at 24 days of typical use.',
+          },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'Xiaomi Redmi Watch 5 pros and cons',
+      pros: [
+        '2.07-inch square AMOLED at 432 x 514, 324 ppi and 1500 nits peak',
+        '550 mAh battery rated at 24 days of typical use',
+        'Built-in five-system GNSS for phone-free outdoor tracking',
+        '5ATM water resistance, rated for 18 water sports',
+        'Bluetooth 5.3 calling with a speaker and two microphones',
+        'Aluminium alloy frame and a stainless-steel rotating crown',
+      ],
+      cons: [
+        'No Wi-Fi or cellular connection is listed',
+        'Calls from third-party apps are not supported',
+        'Xiaomi publishes one 24-day battery figure and no heavy-use figure',
+        'No charging time is published for this model',
+        'The 47.5 mm case and 2.07-inch screen are large on small wrists',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the Redmi Watch 5 in the US',
+      paragraphs: [
+        'Check the phone compatibility line before anything else. Xiaomi lists Android 8.0 and above and iOS 12.0 and above, and the watch depends on that Bluetooth link for calls and notifications. It is also worth pairing it once before you rely on it for a race or a swim, so the app and the firmware are up to date.',
+        'Then decide which strap you want, and whether you need a second one. All three in-box options are TPU in the same 135-205 mm length, so the choice is colour rather than fit, and the quick-release fitting means you can change it later without tools. Beyond that, the specification list is fixed across colours: the display, battery, sensors and GNSS are the same watch.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How long does the Redmi Watch 5 battery last?',
+        answer:
+          'Xiaomi rates the 550 mAh battery at 24 days in typical usage mode, measured in its own lab and described as a 20% improvement over the Redmi Watch 4. Heavy GPS use, always-on display or frequent calling will reduce that, and Xiaomi does not publish a separate heavy-use figure for this model.',
+      },
+      {
+        question: 'Does the Redmi Watch 5 need a phone?',
+        answer:
+          'For calls and notifications, yes: Xiaomi states the watch must stay connected to the phone over Bluetooth. Fitness tracking and GNSS work without it, so a run can be recorded with the phone left behind.',
+      },
+      {
+        question: 'Can you swim with the Redmi Watch 5?',
+        answer:
+          'Xiaomi rates it at 5ATM and says that rating suits 18 water sports, so pool and shallow open-water swimming is within the claim. It is not a diving rating, and the watch is not designed for medical purposes.',
+      },
+      {
+        question: 'Does the Redmi Watch 5 have built-in GPS?',
+        answer:
+          'Yes. Xiaomi lists built-in GNSS with GPS, Galileo, GLONASS, BeiDou and QZSS, so outdoor workouts track without the paired phone.',
+      },
+      {
+        question: 'Can you take calls on the Redmi Watch 5?',
+        answer:
+          'Yes, over Bluetooth through the paired phone, using the built-in speaker and two microphones. Xiaomi states that voice calls from third-party apps are not currently supported.',
+      },
+      {
+        question: 'Which phones does the Redmi Watch 5 work with?',
+        answer:
+          'Xiaomi lists support for smartphones on Android 8.0 and above, or iOS 12.0 and above, paired through the Mi Fitness app.',
+      },
+      {
+        question: 'Does the Redmi Watch 5 have Wi-Fi or cellular?',
+        answer:
+          'No. Xiaomi\u2019s specification page lists Bluetooth 5.3 as the wireless connection and no Wi-Fi or cellular radio, so anything online goes through the paired phone.',
+      },
+      {
+        question: 'What is in the box with the Redmi Watch 5?',
+        answer:
+          'Xiaomi lists the watch, a magnetic charging cable and a user manual that includes the warranty notice. A strap is fitted to the watch; the specification page lists a cream white leather strap as a separate accessory.',
+      },
+    ],
+    links: [
+      {
+        label: 'Audio & Wearables',
+        href: '/shop/audio-wearables',
+        description: 'The earbuds, headphones and wearables the store carries.',
+      },
+      {
+        label: 'Soundcore R50i spec sheet',
+        href: '/quick-look/anker-soundcore-r50i',
+        description: 'A pair of budget earbuds to go with the watch.',
+      },
+      {
+        label: "Today's deals",
+        href: '/deals',
+        description: 'The catalog filtered down to products that are discounted right now.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'anker-soundcore-r50i': {
+    productName: 'soundcore R50i',
+    heading: 'Anker Soundcore R50i specs, features and buying guide',
+    lead: 'The soundcore R50i is Anker\u2019s entry-level true-wireless pair: 10 mm drivers, Bluetooth 5.3, IPX5 water resistance and 10 hours of playback per charge that the case extends to 30. It suits anyone who wants a light everyday pair, a spare for a bag, or a first set of wireless earbuds without paying for noise cancellation.',
+    overview: [
+      'Each earbud carries a 10 mm driver, and Anker describes the tuning as boosted bass. The soundcore app adds 22 preset equalisers, including the BassUp preset, along with tap-control remapping and a Find My Earbuds feature that makes a lost earbud emit a sound.',
+      'Battery figures are 10 hours on a single charge and 30 hours with the case. Anker also lists a fast-charge figure: 10 minutes in the case gives 2 hours of playback. The earbuds support single-earbud mode, so one can be used while the other charges, and a gaming mode in the app lowers the in-game audio delay.',
+      'The model is worth pinning down, because the name is shared. Anker\u2019s own support documentation covers the P20i, R50i and P25i under one A3949 user guide, and the P20i product page carries the same 10 mm driver, 30-hour and IPX5 figures. The R50i NC is a different product with active noise cancellation, sold as the P30i in the US.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the soundcore R50i',
+      paragraphs: [
+        'First, be sure which model you are buying. The R50i and the R50i NC have almost the same name and different hardware: the NC adds active noise cancellation, four microphones and a longer total playtime. Anker\u2019s own comparison table lists no noise cancellation for the R50i, so if ANC is the reason you are shopping, check the model number on the listing before ordering.',
+        'Second, look at what the listing bundles. The earbuds come with a charging case that has a lanyard attached, and the case is part of the 30-hour figure \u2014 a single charge is rated at 10 hours, not 30. Everything else, including the equalisers and the gaming mode, runs through the soundcore app, so the phone you pair with matters more than the box contents.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Drivers', detail: '10 mm dynamic, one per earbud' },
+      { term: 'Playtime', detail: '10 hours per charge, 30 hours with the charging case' },
+      { term: 'Fast charge', detail: '10 minutes for 2 hours of playback' },
+      { term: 'Bluetooth', detail: 'Bluetooth 5.3' },
+      { term: 'Water resistance', detail: 'IPX5' },
+      { term: 'Microphones', detail: 'Two, with an AI algorithm for calls' },
+      { term: 'App', detail: '22 EQ presets, tap-control remapping, Find My Earbuds' },
+      { term: 'Noise cancellation', detail: 'None listed for this model' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: '10 mm drivers and 22 equaliser presets',
+        body: 'A 10 mm driver is large for budget earbuds, and Anker leans on it: the tuning is described as big bass. The app is where that becomes personal, with 22 presets including BassUp and full control remapping. If you dislike the default sound, the presets are the first thing to try before deciding the earbuds are wrong for you.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Ten hours, thirty with the case',
+        body: 'Anker rates 10 hours per charge and 30 hours total with the case, plus 2 hours of playback from a 10-minute charge. That fast-charge figure is the practical one: it covers a commute or a workout from a case that was nearly empty. The case carries a lanyard, which is unusual at this price and genuinely useful for clipping to a bag.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Two microphones and an AI algorithm for calls',
+        body: 'Call audio runs through two microphones with an AI algorithm that Anker says picks up your voice without you having to shout. There is no noise cancellation here, so this is voice pickup rather than noise removal \u2014 expect calls to be clear in a quiet room and workable, not silent, on a busy street.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'IPX5, and what it does not cover',
+        body: 'IPX5 means the earbuds resist water jets. The X is the part people skip: it means dust protection was not tested or not rated, so these are earbuds for rain and sweat rather than for a dusty workshop. They are not rated for swimming, and the case should stay dry.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'R50i or R50i NC: the same name, different product',
+        paragraphs: [
+          'Anker sells two earbuds whose names differ by two letters. The R50i is the model on this page: 10 mm drivers, two microphones, 10/30 hours and IPX5, with no noise cancellation. The R50i NC adds active noise cancellation, a 10/45-hour rating and IP54, and is sold in the US as the P30i.',
+          'If a listing promises noise cancellation and a 45-hour total, it is the NC model and this specification sheet does not describe it. That is worth checking carefully, because the two are often sold side by side and the difference in use is significant: ANC changes commuting and open-plan offices, and it is the feature you would miss most if you bought the wrong one.',
+        ],
+      },
+      {
+        heading: 'Single-earbud mode, tap controls and the app',
+        paragraphs: [
+          'Single-earbud mode is the small feature that makes these practical. Take one earbud out and it keeps playing on its own, which is what you want for a call in the car, a bike ride on a quiet road, or a long day where one earbud is charging while the other works.',
+          'Tap controls can be remapped in the soundcore app, so the gestures you actually use can be assigned to play, skip or your voice assistant. The app also holds the 22 equaliser presets and the gaming mode. None of it is required to listen, but all of it is why the earbuds cost what they do rather than less.',
+        ],
+      },
+      {
+        heading: 'What soundcore does not publish',
+        paragraphs: [
+          'The product page reviewed does not list driver impedance, frequency response, codec support or the charging connector. Those are the specifications an enthusiast would ask for first, and their absence is worth knowing about rather than filling in from another source.',
+          'What Anker does publish is the practical set: 10 mm drivers, Bluetooth 5.3, 10/30 hours, 10 minutes for 2 hours, IPX5, two microphones and the app features. For a pair at this level that is the information a buyer actually uses, and it is enough to compare against the R50i NC and the P30i on Anker\u2019s own comparison table.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the soundcore R50i, and who should skip it',
+      should: [
+        'You want a light everyday pair with long battery life and a case that clips to a bag.',
+        'You want 10 hours per charge, with 2 hours from a 10-minute top-up.',
+        'You want to tune the sound with 22 presets instead of accepting the default.',
+        'You want a spare pair for a gym bag, a desk or a car.',
+      ],
+      skip: [
+        'You want active noise cancellation: that is the R50i NC, a different product.',
+        'You need dust protection: IPX5 covers water jets and does not rate dust.',
+        'You need published codec support or a specific hi-res codec \u2014 Anker does not list one here.',
+        'You want a case that charges wirelessly; no wireless charging is documented for this model.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'Where the soundcore R50i fits',
+        cards: [
+          {
+            title: 'Commuting and calls',
+            body: 'Two microphones with an AI algorithm for voice pickup, and 10 hours per charge with 2 hours from a 10-minute top-up.',
+          },
+          {
+            title: 'Gym and running',
+            body: 'IPX5 water-jet resistance for sweat and rain, in-ear tips for a firmer fit, and single-earbud mode when you want one ear free.',
+          },
+          {
+            title: 'A spare pair',
+            body: 'A charging case with a lanyard that clips to a bag, and 22 equaliser presets so it can be tuned to taste.',
+          },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'Anker Soundcore R50i pros and cons',
+      pros: [
+        '10 mm drivers in a budget pair',
+        '10 hours per charge and 30 hours with the case',
+        'A 10-minute charge gives 2 hours of playback',
+        '22 EQ presets and tap-control remapping in the app',
+        'IPX5 water resistance',
+        'Bluetooth 5.3 and single-earbud mode',
+      ],
+      cons: [
+        'No active noise cancellation',
+        'No dust rating is published',
+        'Impedance, frequency response and codec support are not published',
+        'The 30-hour figure includes the case; a single charge is 10 hours',
+        'No wireless charging is documented',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the soundcore R50i in the US',
+      paragraphs: [
+        'Confirm the model before you compare prices. The R50i and the R50i NC are routinely sold alongside each other, and only one of them has noise cancellation. Anker\u2019s support documentation covers the P20i, R50i and P25i under the same A3949 guide, so the P20i page is the right place to check the R50i\u2019s hardware figures if the listing is thin.',
+        'Then plan around the battery figure honestly: 10 hours per charge, 30 with the case. If you fly long-haul or work a full day on calls, that is enough for the flight and the day but not for a week unplugged, and the 10-minute fast charge is the feature that covers the gap. Install the app on day one so the presets and controls are set up before you need them.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Does the soundcore R50i have noise cancellation?',
+        answer:
+          'No. Anker\u2019s comparison table lists no noise cancellation for the R50i. The R50i NC is a separate product with active noise cancellation, sold in the US as the P30i.',
+      },
+      {
+        question: 'How long does the soundcore R50i battery last?',
+        answer:
+          'Anker rates 10 hours of playback on a single charge and 30 hours in total with the charging case. A 10-minute charge in the case gives 2 hours of playback.',
+      },
+      {
+        question: 'Are the soundcore R50i earbuds waterproof?',
+        answer:
+          'They carry an IPX5 rating, which covers water jets. That suits sweat and rain, but the X means dust protection is not rated, and the earbuds are not rated for swimming.',
+      },
+      {
+        question: 'Which Bluetooth version do the soundcore R50i use?',
+        answer:
+          'Bluetooth 5.3, according to Anker. The earbuds also support single-earbud mode, so one can play while the other charges.',
+      },
+      {
+        question: 'Can you change the sound on the soundcore R50i?',
+        answer:
+          'Yes. The soundcore app offers 22 preset equalisers, including BassUp, and lets you remap the tap controls. The app also includes a gaming mode and Find My Earbuds.',
+      },
+      {
+        question: 'What is the difference between the R50i and the P20i?',
+        answer:
+          'Anker\u2019s own support documentation covers the P20i, R50i and P25i under one A3949 user guide, and the P20i product page lists the same 10 mm drivers, 10/30-hour battery and IPX5 rating as the R50i. The names differ by market.',
+      },
+      {
+        question: 'Do the soundcore R50i come with a charging case?',
+        answer:
+          'Yes. The earbuds ship with a charging case that carries a lanyard, and the case is where the 30-hour total figure comes from. A single charge of the earbuds is rated at 10 hours.',
+      },
+      {
+        question: 'What codecs do the soundcore R50i support?',
+        answer:
+          'Anker does not publish codec support on the product page reviewed, so this sheet does not state one. Bluetooth 5.3 is the version Anker lists.',
+      },
+    ],
+    links: [
+      {
+        label: 'Audio & Wearables',
+        href: '/shop/audio-wearables',
+        description: 'The earbuds, headphones and wearables the store carries.',
+      },
+      {
+        label: 'Redmi Watch 5 spec sheet',
+        href: '/quick-look/xiaomi-redmi-watch-5',
+        description: 'The budget smartwatch, if you are pairing a wearable with the earbuds.',
+      },
+      {
+        label: "Today's deals",
+        href: '/deals',
+        description: 'The catalog filtered down to products that are discounted right now.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
 }
 
 export function getQuickLookGuide(slug: string): QuickLookGuide | undefined {

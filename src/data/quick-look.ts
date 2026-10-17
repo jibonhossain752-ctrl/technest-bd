@@ -1824,6 +1824,571 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       },
     ],
   },
+
+  // ── Standalone entries, batch 3 ───────────────────────────────────────────
+  // No price, no rating, no review count: the owner supplies those by hand and
+  // the page must never guess them. Specs come only from the makers' own pages,
+  // recorded in specSource, and anything they do not publish stays out.
+  'asus-vivobook-15-x1504va': {
+    slug: 'asus-vivobook-15-x1504va',
+    displayName: 'ASUS Vivobook 15 (X1504VA)',
+    status: 'available',
+    product: {
+      name: 'ASUS Vivobook 15 (X1504VA)',
+      category: 'Laptops & PCs',
+      categorySlug: 'laptops',
+      brand: 'ASUS',
+      buyUrl: 'https://amzn.to/4yoTZQH',
+      description:
+        "ASUS's 15.6-inch everyday laptop in the X1504VA build: a full-HD anti-glare display, 13th Gen Intel Core U-series processors, 16 GB of DDR4 memory and a 42 Wh battery in a 1.70 kg chassis.",
+      features: [
+        '15.6-inch FHD anti-glare display at 250 nits and 60 Hz',
+        '13th Gen Intel Core i3, i5 or i7 U-series processors',
+        '16 GB of DDR4 memory, expandable to a 16 GB maximum',
+        '512 GB or 1 TB M.2 NVMe SSD',
+        'Wi-Fi 6 and Bluetooth 5.2, with USB-C, HDMI and three USB-A ports',
+        '720p HD camera with a privacy shutter',
+      ],
+    },
+    specSource:
+      "ASUS's Vivobook 15 (X1504) technical-specifications page on asus.com, which lists the X1504VA build alongside its other X1504 models — checked in October 2026",
+    metaDescription:
+      'ASUS Vivobook 15 X1504VA spec sheet: a 15.6-inch FHD anti-glare display, 13th Gen Intel Core options, 16 GB DDR4, Wi-Fi 6 and a 42 Wh battery.',
+    images: [
+      '/product-images/asus-vivobook-15-x1504va-cool-silver.webp',
+      '/product-images/asus-vivobook-15-x1504va-quiet-blue.webp',
+      '/product-images/asus-vivobook-15-x1504va-terra-cotta.webp',
+    ],
+    imageAlts: [
+      'ASUS Vivobook 15 X1504VA laptop in Cool Silver',
+      'ASUS Vivobook 15 X1504VA laptop in Quiet Blue',
+      'ASUS Vivobook 15 X1504VA laptop in Terra Cotta',
+    ],
+    highlights: [
+      { label: 'Display', value: '15.6-inch FHD' },
+      { label: 'Processor', value: '13th Gen Core' },
+      { label: 'Memory', value: '16 GB DDR4' },
+      { label: 'Storage', value: '512 GB or 1 TB' },
+      { label: 'Weight', value: '1.70 kg' },
+    ],
+    keySpecs: [
+      { label: 'Display', value: '15.6-inch FHD (1920 x 1080), 60 Hz, 250 nits, anti-glare' },
+      {
+        label: 'Processor',
+        value: '13th Gen Intel Core i7-1355U, i5-1334U or i3-1315U, depending on the model',
+      },
+      { label: 'Memory', value: '16 GB DDR4, 16 GB maximum, one SO-DIMM slot' },
+      { label: 'Storage', value: '512 GB or 1 TB M.2 NVMe PCIe 3.0 SSD' },
+      { label: 'Graphics', value: 'Intel UHD Graphics; Iris Xe on some i5 and i7 builds' },
+      { label: 'Wireless', value: 'Wi-Fi 6 (802.11ax) dual band and Bluetooth 5.2' },
+      { label: 'Battery', value: '42 Wh, 3-cell lithium-ion' },
+      { label: 'Weight', value: '1.70 kg (3.75 lb)' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'ASUS' },
+      { label: 'Model', value: 'Vivobook 15 (X1504VA)' },
+      { label: 'Operating system', value: 'Windows 11 Home' },
+      { label: 'Colour in the reviewed build', value: 'Cool Silver' },
+      { label: 'Camera', value: '720p HD with a privacy shutter' },
+      {
+        label: 'Keyboard',
+        value: 'Chiclet keyboard with 1.4 mm key travel and a precision touchpad',
+      },
+    ],
+    specs: [
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Size', value: '15.6 inches, 16:9' },
+          { label: 'Resolution', value: 'FHD (1920 x 1080)' },
+          { label: 'Panel', value: 'LED backlit, anti-glare, non-touch' },
+          { label: 'Refresh rate', value: '60 Hz' },
+          { label: 'Brightness', value: '250 nits' },
+          { label: 'Colour gamut', value: '45% NTSC' },
+          { label: 'Screen-to-body ratio', value: '84%' },
+          { label: 'Certification', value: 'TUV Rheinland certified' },
+        ],
+      },
+      {
+        group: 'Performance and memory',
+        rows: [
+          {
+            label: 'Processors ASUS lists',
+            value: 'Intel Core i7-1355U, Core i5-1334U and Core i3-1315U',
+          },
+          { label: 'Graphics', value: 'Intel UHD Graphics' },
+          {
+            label: 'Iris Xe note from ASUS',
+            value: 'Only on Core i5, i7 or i9 models with dual-channel memory',
+          },
+          { label: 'Memory', value: '16 GB DDR4 installed, 16 GB maximum' },
+          { label: 'Memory slot', value: 'One DDR4 SO-DIMM slot' },
+          { label: 'Storage', value: '512 GB or 1 TB M.2 NVMe PCIe 3.0 SSD' },
+          { label: 'Expansion', value: 'One M.2 2280 PCIe 4.0 x4 slot' },
+        ],
+      },
+      {
+        group: 'Ports and connectivity',
+        rows: [
+          { label: 'USB-A', value: 'Two USB 3.2 Gen 1 (5 Gbps) and one USB 2.0' },
+          { label: 'USB-C', value: 'One USB 3.2 Gen 1 (5 Gbps), data only' },
+          { label: 'Video out', value: 'One HDMI 1.4' },
+          { label: 'Audio', value: 'One 3.5 mm combo jack' },
+          { label: 'Power', value: 'One DC-in barrel connector' },
+          { label: 'Wi-Fi', value: 'Wi-Fi 6 (802.11ax), dual band, 1x1' },
+          { label: 'Bluetooth', value: 'Bluetooth 5.2' },
+        ],
+      },
+      {
+        group: 'Audio, camera and keyboard',
+        rows: [
+          { label: 'Speakers', value: 'Built-in speakers with SonicMaster tuning' },
+          { label: 'Microphone', value: 'Built-in array microphone' },
+          { label: 'Camera', value: '720p HD camera with a privacy shutter' },
+          { label: 'Keyboard', value: 'Chiclet keyboard, 1.4 mm key travel' },
+          { label: 'Touchpad', value: 'Precision touchpad' },
+        ],
+      },
+      {
+        group: 'Power, size and weight',
+        rows: [
+          { label: 'Battery', value: '42 Wh, 3S1P, 3-cell lithium-ion' },
+          {
+            label: 'Adapter',
+            value: '45 W, 19 V DC at 2.37 A, 100-240 V input',
+          },
+          { label: 'Dimensions', value: '35.97 x 23.25 x 1.79 cm' },
+          { label: 'Weight', value: '1.70 kg (3.75 lb)' },
+          { label: 'Operating system', value: 'Windows 11 Home' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'ASUS lists several X1504VA configurations, so the processor, memory and SSD depend on the exact model that is sold.',
+          'The display is rated at 250 nits and 45% NTSC, which is an everyday panel rather than a colour-accurate one.',
+          'The USB-C port carries data only on this build; ASUS lists no DisplayPort or charging over USB-C.',
+          'ASUS states that whether a power adapter is included varies by country, region and model.',
+          'The X1504VA column does not list a backlit keyboard, although other X1504 models do.',
+        ],
+      },
+    ],
+  },
+
+  'lenovo-ideacentre-aio-27': {
+    slug: 'lenovo-ideacentre-aio-27',
+    displayName: 'Lenovo IdeaCentre AIO 27',
+    status: 'available',
+    product: {
+      name: 'Lenovo IdeaCentre AIO 27-inch (27IRH9)',
+      category: 'Laptops & PCs',
+      categorySlug: 'laptops',
+      brand: 'Lenovo',
+      buyUrl: 'https://amzn.to/4yhHdn7',
+      description:
+        "Lenovo's 27-inch all-in-one desktop in the Intel 27IRH9 family: a 100 Hz full-HD IPS display, 13th Gen Intel Core processors, DDR5 memory, HARMAN stereo speakers and a 5 MP camera with a privacy shutter.",
+      features: [
+        '27-inch FHD IPS display at 100 Hz with 99% sRGB coverage',
+        '13th Gen Intel Core processors, up to a Core i9-13900H',
+        'Up to 32 GB of DDR5 memory in two SO-DIMM slots',
+        'Up to 1 TB of M.2 PCIe 4.0 storage',
+        'HARMAN stereo speakers at 3 W each, with a dual-microphone array',
+        'Wi-Fi 6, Bluetooth 5.2, gigabit Ethernet and HDMI in and out',
+      ],
+    },
+    specSource:
+      "Lenovo's Product Specifications Reference (PSREF) document for the IdeaCentre AIO 27IRH9 on psref.lenovo.com, checked in October 2026",
+    metaDescription:
+      'Lenovo IdeaCentre AIO 27IRH9 spec sheet: a 27-inch FHD IPS display at 100 Hz, 13th Gen Intel Core options, DDR5 memory, HARMAN speakers and Wi-Fi 6.',
+    images: [
+      '/product-images/lenovo-ideacentre-aio-27-light-silver.webp',
+      '/product-images/lenovo-ideacentre-aio-27-light-silver-front.webp',
+      '/product-images/lenovo-ideacentre-aio-27-dark-grey.webp',
+    ],
+    imageAlts: [
+      'Lenovo IdeaCentre AIO 27 all-in-one desktop with a silver-grey frame',
+      'Lenovo IdeaCentre AIO 27 front view with its wireless keyboard and mouse',
+      'Lenovo IdeaCentre AIO 27 all-in-one desktop with a dark grey frame',
+    ],
+    highlights: [
+      { label: 'Display', value: '27-inch FHD IPS' },
+      { label: 'Refresh rate', value: '100 Hz' },
+      { label: 'Processor', value: '13th Gen Core' },
+      { label: 'Memory', value: 'Up to 32 GB DDR5' },
+      { label: 'Weight', value: 'From 7.1 kg' },
+    ],
+    keySpecs: [
+      {
+        label: 'Display',
+        value: '27-inch FHD (1920 x 1080) IPS, 300 nits, 100 Hz, anti-glare',
+      },
+      {
+        label: 'Processor',
+        value: '13th Gen Intel Core i3-1315U up to Core i9-13900H, depending on the model',
+      },
+      { label: 'Memory', value: 'Up to 32 GB DDR5-5200 in two SO-DIMM slots' },
+      { label: 'Storage', value: 'One M.2 2280 PCIe 4.0 x4 SSD, up to 1 TB' },
+      { label: 'Graphics', value: 'Intel UHD Graphics or Intel Iris Xe, integrated' },
+      { label: 'Audio', value: 'Stereo speakers at 3 W each, tuned by HARMAN' },
+      { label: 'Camera', value: '5 MP, with a 5 MP IR camera and a shutter latch' },
+      { label: 'Weight', value: 'Around 7.1 kg for FHD models' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Lenovo' },
+      { label: 'Model family', value: 'IdeaCentre AIO 27IRH9' },
+      { label: 'Operating system', value: 'Windows 11 Home or Windows 11 Pro' },
+      { label: 'Colours', value: 'Cloud grey and Luna grey, per Lenovo' },
+      { label: 'Stand', value: 'Tilt from -5 to +15 degrees' },
+      { label: 'Wired network', value: 'Gigabit Ethernet (RJ-45)' },
+      { label: 'Touchscreen', value: 'Available on some models, 10-point multi-touch' },
+    ],
+    specs: [
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Size', value: '27 inches, 16:9' },
+          { label: 'Resolution', value: 'FHD (1920 x 1080); QHD (2560 x 1440) on some models' },
+          { label: 'Panel', value: 'IPS, anti-glare' },
+          { label: 'Brightness', value: '300 nits on FHD, 350 nits on QHD' },
+          { label: 'Refresh rate', value: '100 Hz' },
+          { label: 'Colour gamut', value: '99% sRGB' },
+          { label: 'Touch', value: '10-point multi-touch on touch models, non-touch otherwise' },
+          { label: 'Certifications', value: 'TUV Rheinland Flicker Free and Low Blue Light' },
+        ],
+      },
+      {
+        group: 'Performance and memory',
+        rows: [
+          {
+            label: 'Processors Lenovo lists',
+            value: 'Core i3-1315U, Core i5-13420H, Core i7-13620H and Core i9-13900H',
+          },
+          { label: 'Chipset', value: 'Intel SoC platform' },
+          { label: 'Memory', value: 'Up to 32 GB DDR5-5200' },
+          { label: 'Memory slots', value: 'Two DDR5 SO-DIMM slots, dual-channel capable' },
+          { label: 'Storage', value: 'One M.2 2280 SSD on PCIe 4.0 x4, up to 1 TB' },
+          { label: 'Graphics', value: 'Integrated Intel UHD Graphics or Iris Xe' },
+          { label: 'Monitor support', value: 'Up to two independent displays with one external monitor' },
+        ],
+      },
+      {
+        group: 'Audio, camera and input',
+        rows: [
+          { label: 'Speakers', value: 'Stereo, 3 W each, Audio by HARMAN' },
+          { label: 'Audio codec', value: 'Realtek ALC233-CG' },
+          { label: 'Microphones', value: 'Dual-microphone array' },
+          { label: 'Camera', value: '5 MP, or 5 MP IR, with a camera shutter latch' },
+          {
+            label: 'Keyboard and mouse',
+            value: 'Wired or wireless sets on some models; Lenovo lists configurations without them',
+          },
+        ],
+      },
+      {
+        group: 'Ports and connectivity',
+        rows: [
+          { label: 'Rear USB-A', value: 'One at 10 Gbps and two at USB 2.0' },
+          { label: 'USB-C', value: 'One at 10 Gbps on the left, data transfer only' },
+          { label: 'HDMI in', value: 'One HDMI 1.4' },
+          { label: 'HDMI out', value: 'One HDMI 2.1 TMDS' },
+          { label: 'Ethernet', value: 'Gigabit RJ-45' },
+          { label: 'Audio port', value: 'One 3.5 mm headphone and microphone combo jack' },
+          { label: 'Wi-Fi', value: 'Wi-Fi 6 (802.11ax), 2x2' },
+          { label: 'Bluetooth', value: 'Bluetooth 5.2' },
+        ],
+      },
+      {
+        group: 'Power, size and weight',
+        rows: [
+          { label: 'Power supply', value: '90 W or 135 W adapter, autosensing' },
+          {
+            label: 'Dimensions, FHD',
+            value: '611.72 x 192 x 473.16 mm (24.08 x 7.55 x 18.62 in)',
+          },
+          {
+            label: 'Dimensions, QHD',
+            value: '613.3 x 192.1 x 472.38 mm (24.15 x 7.56 x 18.59 in)',
+          },
+          { label: 'Weight, FHD', value: 'Around 7.1 kg (15.65 lb)' },
+          { label: 'Weight, QHD', value: 'Around 7.51 kg (16.55 lb)' },
+          { label: 'Operating system', value: 'Windows 11 Home or Windows 11 Pro' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'Lenovo sells 27-inch IdeaCentre AIO desktops in more than one family; this sheet covers the Intel 27IRH9, whose full specifications Lenovo publishes.',
+          'The USB-C port is data transfer only, so it cannot drive a monitor or charge the desktop.',
+          'The base does not tilt backwards past 15 degrees and there is no height adjustment.',
+          'Lenovo lists keyboard and mouse as configuration options, and some models ship without either.',
+          'Display resolution and touch depend on the model: 1920 x 1080 or 2560 x 1440, touch or non-touch.',
+        ],
+      },
+    ],
+  },
+
+  'xiaomi-redmi-watch-5': {
+    slug: 'xiaomi-redmi-watch-5',
+    displayName: 'Xiaomi Redmi Watch 5',
+    status: 'available',
+    product: {
+      name: 'Xiaomi Redmi Watch 5',
+      category: 'Audio & Wearables',
+      categorySlug: 'audio-wearables',
+      brand: 'Xiaomi',
+      buyUrl: 'https://amzn.to/4yOFF4P',
+      description:
+        "Xiaomi's Redmi Watch 5: a 2.07-inch square AMOLED display at 432 x 514, a 550 mAh battery rated at 24 days of typical use, 5ATM water resistance, built-in five-system GNSS and Bluetooth calling.",
+      features: [
+        '2.07-inch square AMOLED display at 432 x 514, 324 ppi and 1500 nits of peak brightness',
+        '550 mAh battery, rated by Xiaomi at up to 24 days of typical use',
+        '5ATM water resistance, rated for 18 water sports',
+        'Built-in five-system GNSS, so outdoor workouts track without a phone',
+        'Bluetooth 5.3 calling with two microphones and wind-noise resistance',
+        '150+ sports modes and 200+ watch faces, running Xiaomi HyperOS',
+      ],
+    },
+    specSource:
+      "Xiaomi's Redmi Watch 5 overview and specifications pages on mi.com/global, checked in October 2026",
+    metaDescription:
+      'Redmi Watch 5 spec sheet: the 2.07-inch AMOLED display, the 550 mAh battery Xiaomi rates at 24 days, 5ATM water resistance and built-in five-system GNSS.',
+    images: [
+      '/product-images/xiaomi-redmi-watch-5-obsidian-black.webp',
+      '/product-images/xiaomi-redmi-watch-5-silver-gray.webp',
+      '/product-images/xiaomi-redmi-watch-5-lavender-purple.webp',
+    ],
+    imageAlts: [
+      'Xiaomi Redmi Watch 5 in Obsidian Black, on a slate stand beside a plant',
+      'Xiaomi Redmi Watch 5 in Silver Gray, angled to show the crown and strap',
+      'Xiaomi Redmi Watch 5 in Lavender Purple, three-quarter view of the display',
+    ],
+    highlights: [
+      { label: 'Display', value: '2.07-inch AMOLED' },
+      { label: 'Brightness', value: '1500 nits' },
+      { label: 'Battery', value: '550 mAh' },
+      { label: 'Battery life', value: '24 days typical' },
+      { label: 'Water resistance', value: '5ATM' },
+    ],
+    keySpecs: [
+      {
+        label: 'Display',
+        value: '2.07-inch square AMOLED, 432 x 514, 324 ppi, 60 Hz, 1500 nits HBM',
+      },
+      { label: 'Battery', value: '550 mAh, 24 days of typical use per Xiaomi' },
+      { label: 'Water resistance', value: '5ATM, rated for 18 water sports' },
+      {
+        label: 'Positioning',
+        value: 'Built-in GNSS: GPS, Galileo, GLONASS, BeiDou and QZSS',
+      },
+      { label: 'Calling', value: 'Bluetooth 5.3, speaker and 2 microphones' },
+      { label: 'Case', value: 'Aluminium alloy frame, 47.5 x 41.1 x 11.3 mm' },
+      { label: 'Weight', value: '33.5 g without the strap' },
+      { label: 'Storage', value: '164 MB available for local use' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Xiaomi' },
+      { label: 'Model', value: 'Redmi Watch 5' },
+      { label: 'Operating system', value: 'Xiaomi HyperOS' },
+      {
+        label: 'Compatibility',
+        value: 'Phones on Android 8.0 and above, or iOS 12.0 and above',
+      },
+      { label: 'Strap', value: 'TPU, 135-205 mm, with a quick-release fitting' },
+      { label: 'Crown', value: 'Stainless-steel rotating crown' },
+      {
+        label: 'In the box',
+        value: 'Watch, magnetic charging cable and user manual including the warranty notice',
+      },
+    ],
+    specs: [
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Size', value: '2.07 inches, square' },
+          { label: 'Panel', value: 'AMOLED' },
+          { label: 'Resolution', value: '432 x 514 pixels' },
+          { label: 'Pixel density', value: '324 ppi' },
+          { label: 'Refresh rate', value: '60 Hz' },
+          { label: 'Brightness', value: '1500 nits HBM' },
+          { label: 'Screen-to-body ratio', value: '82%' },
+          { label: 'Glass', value: '2.5D curved' },
+        ],
+      },
+      {
+        group: 'Design and build',
+        rows: [
+          { label: 'Dimensions', value: '47.5 x 41.1 x 11.3 mm, excluding the strap and protrusions' },
+          { label: 'Weight', value: '33.5 g approx., without the in-box strap' },
+          { label: 'Frame', value: 'Aluminium alloy middle frame' },
+          { label: 'Crown', value: 'Stainless steel, sandblasted and diamond-cut' },
+          { label: 'Strap', value: 'TPU, 135-205 mm approx.' },
+          { label: 'Strap colours', value: 'Obsidian Black, Silver Gray and Lavender Purple' },
+          { label: 'Water resistance', value: '5ATM' },
+        ],
+      },
+      {
+        group: 'Health and sensors',
+        rows: [
+          { label: 'Heart rate', value: 'Heart rate sensor with a blood oxygen sensor' },
+          { label: 'Motion', value: 'Accelerometer and gyroscope' },
+          { label: 'Light', value: 'Ambient light sensor' },
+          { label: 'Compass', value: 'Electronic compass' },
+          { label: 'Tracking Xiaomi lists', value: 'All-day heart rate, blood oxygen, sleep and stress monitoring' },
+          { label: 'Vitality score', value: 'Included, as one of the health readings' },
+        ],
+      },
+      {
+        group: 'Positioning and training',
+        rows: [
+          {
+            label: 'Satellite systems',
+            value: 'GPS, Galileo, GLONASS, BeiDou and QZSS',
+          },
+          { label: 'Sports modes', value: '150+ per Xiaomi' },
+          { label: 'Water sports', value: '18, under the 5ATM rating' },
+          { label: 'Running courses', value: '10 on-wrist courses' },
+          { label: 'Breathing exercises', value: 'Relax, Concentrate, Take a nap and Sleep soundly' },
+        ],
+      },
+      {
+        group: 'Battery, memory and connectivity',
+        rows: [
+          { label: 'Capacity', value: '550 mAh' },
+          { label: 'Battery life', value: '24 days in typical usage mode, per Xiaomi' },
+          { label: 'Charging', value: 'Magnetic charging cable, supplied in the box' },
+          { label: 'Bluetooth', value: 'Bluetooth 5.3' },
+          { label: 'Calling', value: 'Bluetooth calling through the paired phone' },
+          { label: 'Microphones', value: '2, with wind-noise resistance' },
+          { label: 'Speaker', value: 'Built in' },
+          { label: 'Local storage', value: '164 MB available' },
+          { label: 'Operating system', value: 'Xiaomi HyperOS' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'The specification page lists a single 24-day figure for typical usage and no separate heavy-use figure for this model.',
+          'Xiaomi states that the watch must stay connected to the phone over Bluetooth and that voice calls from third-party apps are not supported.',
+          'Xiaomi does not publish a charging time for this model on its specification page.',
+          'No Wi-Fi or cellular connection is listed, so the watch depends on the paired phone for anything online.',
+          'Xiaomi states the product and its features are not designed for medical purposes.',
+        ],
+      },
+    ],
+  },
+
+  'anker-soundcore-r50i': {
+    slug: 'anker-soundcore-r50i',
+    displayName: 'Anker Soundcore R50i',
+    status: 'available',
+    product: {
+      name: 'Anker Soundcore R50i',
+      category: 'Audio & Wearables',
+      categorySlug: 'audio-wearables',
+      brand: 'Anker',
+      buyUrl: 'https://amzn.to/47TXP9y',
+      description:
+        "Anker's soundcore R50i true-wireless earbuds: 10 mm drivers, Bluetooth 5.3, IPX5 water resistance, two microphones for calls, and 10 hours of playback per charge with a case that takes it to 30.",
+      features: [
+        '10 mm drivers with soundcore bass tuning',
+        '10 hours of playback per charge, 30 hours with the charging case',
+        'A 10-minute charge gives 2 hours of playback',
+        'Bluetooth 5.3, with a single-earbud mode',
+        'IPX5 water resistance',
+        'Two microphones with an AI algorithm for calls, and 22 EQ presets in the app',
+      ],
+    },
+    specSource:
+      "Anker's soundcore P20i product page on soundcore.com, plus the official P20i / R50i / P25i (A3949) user guide on service.soundcore.com, checked in October 2026",
+    metaDescription:
+      'Soundcore R50i spec sheet: 10 mm drivers, Bluetooth 5.3, IPX5 water resistance, 10 hours per charge and 30 hours with the charging case, plus 22 EQ presets.',
+    images: [
+      '/product-images/soundcore-r50i-black.webp',
+      '/product-images/soundcore-r50i-navy-blue.webp',
+      '/product-images/soundcore-r50i-white.webp',
+    ],
+    imageAlts: [
+      'Anker Soundcore R50i earbuds above their black charging case, with the lanyard',
+      'Anker Soundcore R50i earbuds and navy blue charging case on a stone surface',
+      'Anker Soundcore R50i earbuds and white charging case, with the lanyard coiled',
+    ],
+    highlights: [
+      { label: 'Drivers', value: '10 mm' },
+      { label: 'Playtime', value: '10 h, 30 h with case' },
+      { label: 'Bluetooth', value: '5.3' },
+      { label: 'Water resistance', value: 'IPX5' },
+      { label: 'Microphones', value: '2, AI calls' },
+    ],
+    keySpecs: [
+      { label: 'Drivers', value: '10 mm dynamic, one per earbud' },
+      { label: 'Playtime', value: '10 hours per charge, 30 hours with the case' },
+      { label: 'Fast charge', value: '10 minutes for 2 hours of playback' },
+      { label: 'Bluetooth', value: 'Bluetooth 5.3' },
+      { label: 'Water resistance', value: 'IPX5' },
+      { label: 'Microphones', value: '2, with an AI algorithm for calls' },
+      { label: 'App', value: '22 EQ presets, tap-control remapping and Find My Earbuds' },
+      { label: 'Design', value: 'In-ear, with a lanyard on the charging case' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Anker' },
+      { label: 'Series', value: 'soundcore' },
+      { label: 'Model', value: 'R50i (A3949), also sold as the soundcore P20i' },
+      { label: 'Type', value: 'True wireless in-ear earbuds' },
+      { label: 'Noise cancellation', value: 'None listed for this model; the R50i NC is a separate product' },
+      { label: 'Colours in the gallery', value: 'Black, navy blue and white' },
+      {
+        label: 'Case',
+        value: 'Charging case with a lanyard attached',
+      },
+    ],
+    specs: [
+      {
+        group: 'Audio',
+        rows: [
+          { label: 'Drivers', value: '10 mm, one per earbud' },
+          { label: 'Tuning', value: 'soundcore bass tuning, with BassUp among the presets' },
+          { label: 'EQ', value: '22 preset equalisers in the soundcore app' },
+          { label: 'Gaming mode', value: 'Available through the app, to lower in-game audio delay' },
+          { label: 'Single earbud mode', value: 'Yes, for one-ear listening or extra playtime' },
+        ],
+      },
+      {
+        group: 'Battery and charging',
+        rows: [
+          { label: 'Playtime, earbuds', value: '10 hours on a single charge' },
+          { label: 'Playtime, with case', value: '30 hours total' },
+          { label: 'Fast charge', value: '10 minutes for 2 hours of playback' },
+        ],
+      },
+      {
+        group: 'Calls and connectivity',
+        rows: [
+          { label: 'Bluetooth', value: 'Bluetooth 5.3' },
+          { label: 'Microphones', value: '2 built-in, with an AI algorithm for voice pickup' },
+          { label: 'Controls', value: 'Tap controls, remappable in the soundcore app' },
+        ],
+      },
+      {
+        group: 'Build',
+        rows: [
+          { label: 'Water resistance', value: 'IPX5' },
+          { label: 'Form', value: 'In-ear, with silicone tips' },
+          { label: 'Case', value: 'Charging case with an attached lanyard' },
+          { label: 'Colours', value: 'Black, navy blue and white' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'soundcore lists no active noise cancellation for the R50i; that feature belongs to the separate R50i NC.',
+          'The 30-hour figure includes the charging case; a single charge is rated at 10 hours.',
+          'The IPX5 rating covers water jets, and soundcore publishes no dust rating for these earbuds.',
+          'soundcore does not publish driver impedance, frequency response or codec support on the product page reviewed.',
+          'The earbuds are not rated for swimming, and no in-box list is published on the product page reviewed.',
+        ],
+      },
+    ],
+  },
 }
 
 /**
