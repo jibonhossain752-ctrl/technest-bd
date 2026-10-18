@@ -21,7 +21,7 @@ import ViewAllButton from '@/components/ViewAllButton'
 export const metadata: Metadata = {
   title: 'Quick Look: Gadget Specs & Reviews',
   description:
-    'Quick Look spec sheets for popular gadgets: grouped specifications, key features explained, who each product suits and a link to check the current Amazon price.',
+    'Quick Look spec sheets for popular gadgets: grouped specifications, key features explained, who each product suits and where the published figures came from.',
   alternates: { canonical: `${SITE_URL}/quick-look` },
   openGraph: {
     title: `Quick Look: Gadget Specs & Reviews | ${SITE.brand}`,

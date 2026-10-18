@@ -2506,8 +2506,14 @@ export function getQuickLookImages(entry: QuickLookEntry): string[] {
  * order: linked and standalone entries alike, each with its resolved product.
  */
 export function getQuickLookCatalog(): QuickLookView[] {
-  return QUICK_LOOK_SLUGS.flatMap((slug) => {
+  const views = QUICK_LOOK_SLUGS.flatMap((slug) => {
     const view = resolveQuickLook(slug)
     return view ? [view] : []
   })
+  // Announced-but-not-yet-released products lead the index: a reader is most
+  // likely to be looking one up, and the sort is stable, so every other entry
+  // keeps its curated order.
+  return views.sort(
+    (a, b) => Number(b.entry.status === 'upcoming') - Number(a.entry.status === 'upcoming'),
+  )
 }
