@@ -360,6 +360,10 @@ export const POSTS: BlogPost[] = [
     // time (UTC+6), so the offset is the real one and not a placeholder.
     videoUploadDate: '2026-10-15T00:00:00+06:00',
     videoTitle: 'Apple HomeView video',
+    // The video's own YouTube frame (the full-height 720x1280 Shorts poster),
+    // saved locally like the other public/images/videos posters so neither the
+    // card nor the VideoObject thumbnail hotlinks i.ytimg.com.
+    videoThumbnail: '/images/videos/v7.webp',
   },
   {
     slug: 'apple-homeview-vs-echo-show-nest-hub',

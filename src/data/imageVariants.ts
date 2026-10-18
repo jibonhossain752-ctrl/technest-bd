@@ -232,6 +232,7 @@ const IMAGE_VARIANTS: Record<string, number[]> = {
   'v3.webp': [480],
   'v5.webp': [480],
   'v6.webp': [480],
+  'v7.webp': [480],
   'vivo-x300-pro-box-and-phone.webp': [260, 360, 520, 720],
   'vivo-x300-pro-box-contents.webp': [260, 360, 520, 720],
   'vivo-x300-pro-camera-module.webp': [260, 360, 520, 720],
