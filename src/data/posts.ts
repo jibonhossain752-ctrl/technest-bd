@@ -241,6 +241,8 @@ export const POSTS: BlogPost[] = [
           'You need specific third-party apps. Apple’s specification page lists built-in apps and says compatible third-party audio and video apps run from the paired iPhone; it lists no App Store on the device.',
         ],
       },
+      'For a side-by-side look at how HomeView compares with the Echo Show 8, Echo Hub and Nest Hub, see our Apple HomeView vs Echo Show comparison.',
+      { link: { href: '/blog/apple-homeview-vs-echo-show-nest-hub', label: 'Apple HomeView vs Echo Show, Echo Hub and Nest Hub' } },
     ],
     metaTitle: 'Apple HomeView: $299 Price, Nov 13 Release & Specs',
     metaDescription:
@@ -358,6 +360,109 @@ export const POSTS: BlogPost[] = [
     // time (UTC+6), so the offset is the real one and not a placeholder.
     videoUploadDate: '2026-10-15T00:00:00+06:00',
     videoTitle: 'Apple HomeView video',
+  },
+  {
+    slug: 'apple-homeview-vs-echo-show-nest-hub',
+    title: 'Apple HomeView vs Echo Show 8, Echo Hub and Nest Hub',
+    excerpt:
+      'Four smart displays, four ecosystems and a $199 gap: how Apple’s first screen compares with the Alexa and Google devices you can buy today.',
+    category: 'Explainer',
+    date: '2026-10-19',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/apple-homeview-hero.webp',
+    emoji: '🆚',
+    readTime: '8 min read',
+    content: [
+      'Apple HomeView is the only screen here built around Siri and an iPhone, and at $299 it costs more than the $179.99 Echo Show 8, the $179.99 Echo Hub and the $99.99 Nest Hub. If your home already runs Apple Home and you want a camera for FaceTime, HomeView is the one to consider; if you want the lowest price or the widest device support, Amazon and Google still win.',
+      'We have not tested any of these four devices. Every figure below comes from the manufacturer’s own product page, specification sheet or announcement, each read on October 19, 2026, and the prices are list prices from those pages rather than live retailer prices.',
+      { heading: 'Apple HomeView vs Echo Show 8 vs Echo Hub vs Nest Hub at a Glance' },
+      {
+        table: {
+          headers: ['', 'Apple HomeView', 'Echo Show 8 (2025)', 'Echo Hub', 'Nest Hub (2nd gen)'],
+          rows: [
+            ['US list price', '$299 (Apple, Oct 13, 2026)', '$179.99 (Amazon, Sept 30, 2025)', '$179.99 (Amazon, checked Oct 19, 2026)', '$99.99 (Google Store, Oct 19, 2026)'],
+            ['Display', '7-inch Liquid Retina, 1088 x 1088 at 220 ppi', '8.7-inch HD touchscreen, 800 x 1340', '8-inch touchscreen, 1280 x 800', '7-inch touchscreen, 1024 x 600'],
+            ['Camera', '12MP Center Stage', '13MP with auto-framing', 'None', 'None'],
+            ['Speakers', 'Two full-range drivers, a down-firing woofer and two passive radiators (tabletop)', 'One 2.8-inch woofer and two full-range drivers', 'Two 1.2-inch stereo speakers', 'One 1.7-inch full-range speaker'],
+            ['Assistant', 'Siri AI, powered by Apple Intelligence', 'Alexa+', 'Alexa+', 'Gemini for Home'],
+            ['Smart-home radios', 'Matter and Thread; no Zigbee', 'Zigbee, Matter and Thread border router', 'Zigbee, Matter, Thread, Sidewalk and Bluetooth', 'Thread border router; Google’s sheet lists no Matter support for this model'],
+            ['Apps', 'Built-in Apple apps plus audio and video apps from a paired iPhone; no App Store', 'Prime Video and Netflix apps; other video via browser', 'No video apps; media controls for connected speakers', 'Netflix and YouTube, plus Chromecast built in'],
+            ['Wall mounting', 'Separate wall-mounted model; mount from $59.95, cable and adapter extra', 'No wall mount listed; adjustable stand sold separately', 'Wall bracket included; PoE adapter extra for one-cable power', 'Sits on a surface; Google lists no wall mount'],
+            ['What it needs', 'Apple Account; iPhone on iOS 27.2 or iPad on iPadOS 27.2 for personal features', 'Amazon account; Alexa app for setup', 'Amazon account; Alexa app for setup', 'Google Account'],
+          ],
+        },
+      },
+      'Two caveats on that table. Google’s Nest Hub Max no longer has a product page at Google’s own store — the address redirects to the store home — so it is left out and the 2nd-generation Nest Hub stands in as the Google option. And “list price” is not a promise: check each maker for what it charges today.',
+      { heading: 'Assistant and Ecosystem: Siri, Alexa and Gemini' },
+      'The assistant decides which devices the screen can talk to, and the four do not overlap. HomeView runs Siri AI on Apple Intelligence and controls accessories through the Home app; Apple says broad world knowledge works on the display itself, while personal context such as messages and calendar needs a paired Apple Intelligence iPhone or iPad. Amazon’s two screens run Alexa+, which Amazon’s product pages say is included with Prime and costs $19.99 a month for non-Prime customers. The Nest Hub runs Gemini for Home, which Google’s specification page lists as its voice assistant.',
+      'None of them is a neutral hub. HomeView controls Works with Apple Home and Matter accessories, so a Matter light can appear in Apple Home, but Amazon’s and Google’s apps do not run on it. The Echo screens are the opposite: Zigbee, Matter and Thread devices join Alexa, and the built-in hub keeps them working when the internet drops. The Nest Hub contributes a Thread border router to Google Home. If your smart home is already built around one assistant, that choice is the real decision; the screen is the accessory.',
+      { heading: 'Apps: Two Screens Run Video Apps, HomeView Runs iPhone Apps' },
+      'Apple’s specification page lists built-in apps — FaceTime, Home, Messages, Music, Podcasts, Safari, Timers, Weather and more — plus a group available from iPhone: Audiobooks, Classical Music, News and TV. It says compatible third-party audio and video apps run from the paired iPhone and lists no App Store on the device. That is a deliberately narrower app story than an Echo Show, which Amazon lists with Prime Video and Netflix apps and other video through a browser.',
+      'The Echo Hub is narrower still: Amazon’s comparison table lists no video apps for it, because it is a control panel rather than a television. The Nest Hub sits in the middle, with Netflix and YouTube named on Google’s page plus Chromecast built in, which lets a phone cast to it.',
+      { heading: 'Camera and Privacy: Two Have One, Two Do Not' },
+      'HomeView and the Echo Show 8 both have a camera and both use it to keep people framed on video calls: Apple fits a 12MP Center Stage camera, Amazon a 13MP auto-framing camera with 3.3x zoom. The Echo Hub and Nest Hub have none, so neither can make a video call — a deliberate trade for a screen that hangs in a hallway. The Nest Hub does carry a Soli sensor for motion, which is not a camera but is still a sensor watching the room.',
+      'Apple’s privacy argument is hardware: the A18 chip contains Secure Exclaves that process camera and microphone data away from the operating system, and content is shown only when a recognized face matches an enrolled user whose paired device is present and recently unlocked. Amazon’s counter is control: a microphone-and-camera disable button, dedicated camera controls on the device and in the app, and the ability to review and delete voice recordings. Google’s sheet lists a microphone off switch and three far-field microphones. Which approach you prefer is a judgement call; none of these claims is something we tested.',
+      { heading: 'Price and Setup: What the Screen Costs Before Accessories' },
+      'The gap is wider than the headline prices suggest once mounting is included. The tabletop HomeView includes its 1.5 m USB-C cable and 30W adapter, so $299 is the whole bill. The wall-mounted HomeView is also $299, but Apple sells it with documentation only: the Schneider Home mount starts at $59.95, and a USB-C cable and a 20W-or-higher adapter are each extra, which makes the cheapest complete wall setup $358.95 plus those two items.',
+      'The Echo Show 8 at $179.99 is the cheapest screen with a camera, and Amazon sells an adjustable stand separately; Amazon’s listing shows no wall mount for this model. The Echo Hub at $179.99 includes its wall bracket, and Amazon says a compatible USB-C to Power-over-Ethernet adapter is needed if you want to avoid a power cable. The Nest Hub at $99.99 is the cheapest of the four and sits on a surface; Google lists no wall mount for it.',
+      'All four prices are before tax and shipping, and each maker charges differently outside the US. None of these figures is a deal price — the retailers move, the announcements do not.',
+      { heading: 'Who Should Choose Which' },
+      'A short version, based only on the differences above:',
+      { list: [
+        'Choose Apple HomeView if the household runs on iPhones and the Home app, you want FaceTime on a shared screen, and you accept $299, no Zigbee and no App Store.',
+        'Choose the Echo Show 8 if you want a camera display for video calls at the lowest price of the two camera models, with Prime Video and Netflix apps and an Alexa home already in place.',
+        'Choose the Echo Hub if the screen is going on a wall as a control panel, you do not need a camera, and your devices use Zigbee, Thread or Matter.',
+        'Choose the Nest Hub if you want the cheapest screen, the smallest footprint and a Google Home setup, and you do not need a camera or a wall mount.',
+      ] },
+      { heading: 'What We Could Not Verify' },
+      'Three gaps are worth naming. Google’s Nest Hub specification page lists no Matter support for the 2nd-generation model, so this comparison does not claim it, even though Google Home as a platform supports Matter. Amazon’s Echo Show 8 price is the figure from its September 30, 2025 announcement rather than a live shelf price. And Google has removed the Nest Hub Max product page from its store, so there is no current Google large-screen display to compare — the Nest Hub is the only Google screen on sale.',
+      { link: { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView price, release date and specs' } },
+      { link: { href: '/quick-look/apple-homeview-smart-display', label: 'full Apple HomeView specs' } },
+    ],
+    metaTitle: 'Apple HomeView vs Echo Show 8, Echo Hub and Nest Hub',
+    metaDescription:
+      'Apple HomeView, Echo Show 8, Echo Hub and Nest Hub compared on screen, camera, apps, privacy and price, using the makers’ own specs read in October 2026.',
+    altText:
+      'Render of Apple HomeView on a tabletop beside its wall-mounted version',
+    faq: [
+      {
+        question: 'Does Apple HomeView work with Alexa?',
+        answer:
+          'No. Apple lists Siri AI and the Home app as the assistants and controls on HomeView, and its third-party app support is limited to compatible audio and video apps from a paired iPhone. A Matter accessory can be controlled from Apple Home, but Alexa routines do not run on the display.',
+      },
+      {
+        question: 'Which of these smart displays has an app store?',
+        answer:
+          'None of the four has a general app store. HomeView has built-in Apple apps plus audio and video apps from a paired iPhone. The Echo Show 8 runs Prime Video and Netflix apps, with other video through a browser. The Nest Hub supports Netflix and YouTube with Chromecast built in. The Echo Hub lists no video apps because it is a control panel.',
+      },
+      {
+        question: 'Which of these is the cheapest?',
+        answer:
+          'The Nest Hub (2nd gen) at $99.99, then the Echo Show 8 and Echo Hub at $179.99 each, then Apple HomeView at $299. Those are the manufacturers’ own list prices from their product pages and announcements; check each maker for the current price before buying.',
+      },
+      {
+        question: 'Which of these smart displays have a camera?',
+        answer:
+          'Apple HomeView has a 12MP Center Stage camera and the Echo Show 8 has a 13MP auto-framing camera. The Echo Hub and the Nest Hub (2nd gen) have no camera, so neither can make video calls. The Nest Hub does have a Soli motion sensor, which is not a camera.',
+      },
+      {
+        question: 'Can these smart displays be wall-mounted?',
+        answer:
+          'Apple sells a separate HomeView (Wall Mounted) model that uses one of three Schneider Home mounts, starting at $59.95, with a USB-C cable and 20W-or-higher adapter sold separately. The Echo Hub includes its wall bracket. Amazon’s listing shows no wall mount for the Echo Show 8, and Google lists none for the Nest Hub.',
+      },
+    ],
+    primaryKeyword: 'Apple HomeView vs Echo Show',
+    secondaryKeywords: [
+      'Apple HomeView vs Nest Hub',
+      'Echo Show 8 vs HomeView',
+      'Echo Hub vs HomeView',
+      'Siri vs Alexa smart display',
+    ],
+    keepBrowsing: [
+      { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView: price, release date and specs' },
+      { href: '/blog/best-smart-speakers-2026', label: '5 best smart speakers for every room (2026)' },
+      { href: '/blog/ios-27', label: 'iOS 27: everything new in Apple’s latest update' },
+    ],
   },
   {
     slug: 'iphone-telephoto-lens-camera-grip-kit',

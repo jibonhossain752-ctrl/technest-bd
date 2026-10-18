@@ -37,6 +37,9 @@ export const POST_PRODUCT_LINKS: Record<string, string[]> = {
   // (The spec sheet is informational: it carries no purchase path, so this
   // mapping never produces a buy link on either page.)
   'apple-homeview-price-release-date-features': ['apple-homeview-smart-display'],
+  // The comparison post sets HomeView against the Alexa and Google screens, so
+  // it covers the same spec sheet from a different angle.
+  'apple-homeview-vs-echo-show-nest-hub': ['apple-homeview-smart-display'],
 }
 
 /** Product slugs a post covers, filtered to ones with a Quick Look page. */
