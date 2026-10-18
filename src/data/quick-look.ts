@@ -189,6 +189,13 @@ export interface QuickLookEntry {
    */
   metaDescription: string
   /**
+   * Optional hand-written meta title, used instead of the generated
+   * "{displayName} Specs & Buying Guide" pattern when the page covers a subject
+   * the pattern misses (for example dimensions on a product people search by
+   * size). Same 60-character ceiling as the generated title.
+   */
+  metaTitle?: string
+  /**
    * Where the spec values came from. Shown on the page as a plain-text note so
    * a reader can check them, and used by the guard script as a reminder that
    * every row needs a source.
@@ -1645,7 +1652,8 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
     // Apple's own pages only. Every row below was read on one of them on
     // October 17, 2026; nothing is carried over from reporting or from memory.
     specSource:
-      "Apple's HomeView newsroom announcement, Apple's HomeView product page, Apple's HomeView technical specifications page and Apple's HomeView buy page on apple.com — all read on October 17, 2026",
+      "Apple's HomeView newsroom announcement, Apple's HomeView product and technical-specifications pages, Apple's US, Canadian, UK, Australian, Indian, New Zealand and Singapore buy pages, and Apple's HomePod mini 2, Apple TV 4K and Home Collection announcements — all read on apple.com on October 19, 2026",
+    metaTitle: 'Apple HomeView Specs, Dimensions & Buying Guide',
     metaDescription:
       'Apple HomeView spec sheet: the 7-inch Liquid Retina display, A18 chip, Siri AI, audio system, colors, both models and what a wall mount needs.',
     // Position-matched to `images` below, and written while looking at each
@@ -1701,6 +1709,7 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       { label: 'Speakers, tabletop', value: 'Two full-range drivers, a down-firing woofer and dual force-cancelling passive radiators' },
       { label: 'Speakers, wall mounted', value: 'Two custom full-range drivers, tuned for on-wall placement' },
       { label: 'Wireless', value: 'Wi-Fi 6E, Bluetooth 6.0 and Thread' },
+      { label: 'Size', value: 'Tabletop: 5.73 in (14.55 cm), then 5.38–6.82 in and 3.78–5.13 in as Apple lists them; wall mounted: 5.73 in, 5.73 in and 0.39 in' },
       { label: 'Setup', value: 'Pairs with an iPhone on iOS 27.2 or an iPad on iPadOS 27.2' },
       { label: 'Power', value: 'Wired; USB-C, with the wall-mounted model requiring a separate adapter of at least 20W' },
     ],
@@ -1712,6 +1721,7 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       { label: 'In the box, tabletop', value: 'HomeView, a 1.5 m USB-C cable, a 30W power adapter and documentation' },
       { label: 'In the box, wall mounted', value: 'HomeView (Wall Mounted) and documentation only' },
       { label: 'Product images', value: 'Illustrations based on Apple\u2019s announced design, not photographs' },
+      { label: 'Last updated', value: 'October 19, 2026' },
     ],
     specs: [
       {
@@ -1790,12 +1800,11 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
         ],
       },
       {
-        group: 'Size and weight, in Apple\u2019s own figures',
+        group: 'Dimensions and weight',
         rows: [
-          { label: 'Tabletop model', value: '5.73 in (14.55 cm), with two figures that move across the hinge\u2019s tilt range: 5.38-6.82 in (13.67-17.32 cm) and 3.78-5.13 in (9.60-13.02 cm)' },
-          { label: 'Tabletop weight', value: '2.1 pounds (952 grams)' },
-          { label: 'Wall-mounted model', value: '5.73 in, 5.73 in and 0.39 in (14.55 cm, 14.55 cm and 0.98 cm)' },
-          { label: 'Wall-mounted weight', value: '0.63 pound (286 grams)' },
+          { label: 'Dimensions', value: 'See “Apple HomeView dimensions and size” in the guide below: both models, in inches and centimetres, in the order Apple lists them' },
+          { label: 'Weight, tabletop', value: '2.1 pounds (952 grams)' },
+          { label: 'Weight, wall mounted', value: '0.63 pound (286 grams)' },
           { label: 'Operating range', value: '32 to 95 degrees F (0 to 35 degrees C), 5% to 90% relative humidity, tested up to 10,000 feet' },
         ],
       },

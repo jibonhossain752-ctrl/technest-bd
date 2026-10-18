@@ -140,6 +140,14 @@ export default function QuickLookGuideSection({ guide, productSlug }: QuickLookG
               ))}
             </dl>
           )}
+
+          {guide.priceSection.link && (
+            <p className="ql-body">
+              <Link className="ql-link-cta" href={guide.priceSection.link.href}>
+                {guide.priceSection.link.label} →
+              </Link>
+            </p>
+          )}
         </div>
 
         {guide.features.length > 0 && (

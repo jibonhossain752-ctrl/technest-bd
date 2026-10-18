@@ -83,13 +83,40 @@ export const POSTS: BlogPost[] = [
     author: 'Gadgeterea Team',
     heroImage: '/images/blog/apple-homeview-hero.webp',
     emoji: '🏠',
-    readTime: '5 min read',
+    readTime: '7 min read',
     content: [
-      'Apple HomeView is Apple\u2019s first dedicated smart home display. It has a 7-inch square screen, starts at $299 and begins arriving on November 13, 2026. It is built around Siri AI and works as a control screen for your home, a video-call screen and a music speaker. Apple announced it on October 13 at its \u201CWelcome Home\u201D event, and pre-orders opened the same day.',
+      'Updated: October 19, 2026. This guide now uses Apple’s own published dimensions and in-box contents, and the country prices listed on Apple’s regional stores.',
+      'Apple HomeView is Apple\u2019s first dedicated smart home display, and it comes in two versions: a tabletop model on a speaker base and a separate wall-mounted panel. Both are $299 in the US, pre-orders opened on October 13, 2026, and Apple lists the first deliveries for Friday, November 13, 2026. The 7-inch square Liquid Retina screen runs Siri AI on the A18 chip, as a control screen for your home, a video-call screen and a music speaker. Apple announced it on October 13 at its \u201CWelcome Home\u201D event.',
       { heading: 'What Is Apple HomeView?' },
-      'HomeView is a smart display with a 7-inch Liquid Retina screen. It comes in two versions: a tabletop version with a built-in speaker base, and a wall-mounted version. Apple presents it as a hub for controlling the home, making FaceTime calls and playing media. It was announced together with a new Apple TV 4K and HomePod mini 2, so it is one part of a wider smart home push. Pricing and dates for those two products are not covered here, so check Apple\u2019s site for them.',
+      'HomeView is a smart display with a 7-inch Liquid Retina screen. It comes in two versions: a tabletop version with a built-in speaker base, and a wall-mounted version. Apple presents it as a hub for controlling the home, making FaceTime calls and playing media. It was announced together with a new Apple TV 4K and HomePod mini 2, so it is one part of a wider smart home push. The prices and dates for those two products are covered in the launched-together table below.',
       { heading: 'Apple HomeView Price and Release Date' },
-      'Both versions start at $299. Pre-orders are open now and the first deliveries begin on November 13. Apple says availability starts in select markets.',
+      'Both versions start at $299 in the US. Pre-orders opened on October 13, 2026, and Apple lists the first deliveries for Friday, November 13, 2026 in every first-wave country.',
+      { subheading: 'Price and what is in the box' },
+      {
+        table: {
+          headers: ['Version', 'US price', 'What is in the box'],
+          rows: [
+            ['HomeView (tabletop)', '$299', 'Display, 1.5 m USB-C cable, 30W power adapter and documentation'],
+            ['HomeView (Wall Mounted)', '$299', 'Display and documentation only; mount, USB-C cable and a 20W-or-higher adapter are sold separately'],
+          ],
+        },
+      },
+      'The tabletop model is ready to use once it is plugged in. The wall-mounted model is not: Apple lists documentation as the only item in its box, and says the compatible mount, the cable and an adapter of at least 20W are each sold separately.',
+      { heading: 'Launched Together: HomePod mini 2, Apple TV 4K and Apple Home Collection' },
+      'Apple also announced HomePod mini 2, Apple TV 4K and the Apple Home Collection on October 13, 2026, and their prices and dates matter if you are building a whole Apple Home setup.',
+      {
+        table: {
+          headers: ['Product', 'US price', 'Availability'],
+          rows: [
+            ['Apple HomeView', '$299', 'November 13, 2026'],
+            ['Apple HomeView (Wall Mounted)', '$299', 'November 13, 2026'],
+            ['Apple TV 4K (4th generation)', '$299', 'November 13, 2026'],
+            ['HomePod mini 2', '$149', 'October 30, 2026'],
+            ['Apple Home Collection', '$39.95 to $399.95', 'From December 2026, with select accessories in early 2027'],
+          ],
+        },
+      },
+      'Every price in this table is Apple’s announced US price, before tax and shipping. The Apple TV 4K figure is for the 4th-generation model Apple announced on October 13, and the HomePod mini 2 figure is the one Apple states in its own announcement.',
       { subheading: 'Wall Mount Cost' },
       'The wall-mounted version needs a separate mount from Schneider Home:',
       {
@@ -99,7 +126,20 @@ export const POSTS: BlogPost[] = [
           'Power Mount PoE Wired: $129.95, arriving in early 2027',
         ],
       },
-      'So the cheapest wall-mounted setup costs $358.95 ($299 plus $59.95), and with the AC Wired mount it is $378.95. The tabletop version does not need a mount. Prices are before tax and shipping. Check Apple\u2019s page for what is included in the box.',
+      'So the cheapest wall-mounted setup starts at $358.95 ($299 plus $59.95), and with the AC Wired mount it is $378.95. The tabletop version does not need a mount. Mount prices are “from” prices in Apple’s wording, and all figures are before tax and shipping.',
+      { subheading: 'Full setup cost' },
+      {
+        table: {
+          headers: ['Setup', 'Total', 'Still to buy'],
+          rows: [
+            ['Tabletop HomeView', '$299', 'Nothing for basic use'],
+            ['Wall mounted + Power Mount USB-C Wall Connector', '$358.95', 'USB-C cable and a 20W+ adapter'],
+            ['Wall mounted + Power Mount AC Wired', '$378.95', 'USB-C cable and a 20W+ adapter'],
+            ['Wall mounted + Power Mount PoE Wired (early 2027)', '$428.95', 'USB-C cable and a 20W+ adapter'],
+          ],
+        },
+      },
+      'Those two “still to buy” items are why the totals are starting points rather than a final bill. Apple lists the cable and a 20W-or-higher adapter as sold separately and its own store pages give no price for either, so neither is included in these totals.',
       {
         image: '/images/blog/apple-homeview-image-4.webp',
         alt: 'Render of the Apple HomeView mounted on a living room wall',
@@ -107,7 +147,7 @@ export const POSTS: BlogPost[] = [
         height: 502,
       },
       { heading: 'Colors' },
-      'The tabletop version comes in silver, starlight, rose pink and space gray. The wall-mounted version comes in space gray and silver only. Apple lists no price difference between colors in the announcement we read, so confirm on the Apple Store page before ordering.',
+      'The tabletop version comes in silver, starlight, rose pink and space gray, each with a matching cable. The wall-mounted version comes in space gray and silver only. Apple’s buy page lists all four tabletop colors and both wall-mounted colors at the same $299, so the color you pick does not change the US price.',
       {
         image: '/images/blog/apple-homeview-image-3.webp',
         alt: 'Render of four Apple HomeView units in silver, starlight, rose pink and space gray',
@@ -115,7 +155,30 @@ export const POSTS: BlogPost[] = [
         height: 502,
       },
       { heading: 'Display, Sound and Camera' },
-      'The screen has True Tone and reaches 500 nits of brightness. It can also dim down to 0.3 nits, which suits a nightstand because it will not light up the room. For sound, Apple describes two full-range drivers in the display, a down-firing woofer and two passive radiators. A Center Stage camera is included for FaceTime calls.',
+      'The screen has True Tone and reaches 500 nits of brightness. It can also dim down to 0.3 nits, which suits a nightstand because it will not light up the room. Apple’s specification page also notes that the screen measures 6.98 inches when measured diagonally, which is why Apple markets it as a 7-inch display. For sound, Apple describes two full-range drivers in the display, a down-firing woofer and two passive radiators. A Center Stage camera is included for FaceTime calls.',
+      { heading: 'Apple HomeView Dimensions and Size' },
+      'Apple lists three dimensions for each model and does not label them as width, height or depth. The table keeps Apple’s order rather than assign labels the specification page does not use.',
+      {
+        table: {
+          headers: ['Model', 'Apple’s 1st figure', '2nd figure', '3rd figure', 'Weight'],
+          rows: [
+            ['HomeView (tabletop)', '5.73 in (14.55 cm)', '5.38–6.82 in (13.67–17.32 cm)', '3.78–5.13 in (9.60–13.02 cm)', '2.1 lb (952 g)'],
+            ['HomeView (Wall Mounted)', '5.73 in (14.55 cm)', '5.73 in (14.55 cm)', '0.39 in (0.98 cm)', '0.63 lb (286 g)'],
+          ],
+        },
+      },
+      'On the tabletop model the second and third figures are ranges rather than single numbers, and its display sits on a stainless steel hinge that lets you tilt it. The wall-mounted model is a flat panel. Apple’s only footnote to these figures says size and weight vary by manufacturing process.',
+      { heading: 'Key Specs at a Glance' },
+      'These are the figures Apple publishes, without the marketing language:',
+      { list: [
+        'Chip: A18, with Secure Exclaves that process camera and microphone data.',
+        'Display: 7-inch Liquid Retina, 1088 x 1088 pixels at 220 ppi, 500 nits maximum and 0.3 nits minimum.',
+        'Camera: 12MP Center Stage with an ƒ/2.4 aperture.',
+        'Wireless: Wi-Fi 6E, Bluetooth 6.0 and Thread.',
+        'Size: 5.73 in on Apple’s first figure, with the tabletop model’s second and third figures ranging from 5.38 to 6.82 in and from 3.78 to 5.13 in.',
+        'Weight: 2.1 lb (952 g) for the tabletop model, 0.63 lb (286 g) for the wall-mounted model.',
+      ] },
+      { link: { href: '/quick-look/apple-homeview-smart-display', label: 'full Apple HomeView specs' } },
       {
         image: '/images/blog/apple-homeview-image-2.webp',
         alt: 'Render of the tabletop Apple HomeView close up on its speaker base',
@@ -140,9 +203,26 @@ export const POSTS: BlogPost[] = [
         height: 502,
       },
       { heading: 'Smart Home Features' },
-      'HomeView supports Matter and AirPlay, and it can sync across rooms. The Home Camera face can show up to nine live video feeds at once. Apple also announced an Apple Home Collection of accessories made with LG and Schneider. Earlier reports said the LG products would take at least a few months to arrive, and we have not confirmed their prices or dates, so check each product before planning a setup around it.',
+      'HomeView supports Matter and AirPlay, and it can sync across rooms. The Home Camera face can show up to nine live video feeds at once. Apple also announced the Apple Home Collection, a line of cameras, thermostats, temperature sensors and a door lock made with LG Electronics and Schneider Electric. Apple puts the US prices between $39.95 for a temperature sensor and $399.95 for the LG Floodlight Cam, with availability starting in December 2026 and select accessories in early 2027.',
+      { heading: 'Apple HomeView Price by Country' },
+      'Apple sells HomeView in seven countries at launch, each with its own price in local currency. These are the starting prices Apple’s regional stores listed when this guide was updated, and they are not conversions of the US price.',
+      {
+        table: {
+          headers: ['Country', 'HomeView starting price', 'Tax treatment on Apple’s page'],
+          rows: [
+            ['United States', '$299', 'Before tax and shipping'],
+            ['Canada', '$429 (CAD)', 'Apple’s Canadian page did not state tax treatment'],
+            ['United Kingdom', '£299', 'Includes VAT'],
+            ['Australia', 'A$449', 'Includes GST'],
+            ['India', '₹39,900', 'Maximum Retail Price, inclusive of all taxes'],
+            ['New Zealand', 'NZ$599', 'Includes GST and delivery charges'],
+            ['Singapore', 'S$399', 'Includes GST'],
+          ],
+        },
+      },
+      'Prices and availability differ by country. Apple does not sell HomeView in the European Union at all.',
       { heading: 'Not Available in the EU' },
-      'HomeView will not launch in the European Union at first, because Siri AI is not available there. Availability elsewhere starts in select markets.',
+      'HomeView will not launch in the European Union because Siri AI is not available in iOS there. Apple says it is working with the EU on a path forward. Elsewhere, Apple lists availability beginning Friday, November 13, 2026 in Australia, Canada, India, New Zealand, the UK and the US, with Singapore pre-orders from October 15 and South Africa selling through Apple Authorized Resellers.',
       { heading: 'Who Should Buy Apple HomeView?' },
       { subheading: 'It suits you if' },
       {
@@ -158,11 +238,11 @@ export const POSTS: BlogPost[] = [
           'You live in the EU.',
           'You want to wall-mount it and have not counted the cost of the mount.',
           'You want the LG accessories, which arrive later.',
-          'You need specific third-party apps. Earlier reports said HomeView would run Apple apps without an App Store, so confirm what it supports on Apple\u2019s page.',
+          'You need specific third-party apps. Apple’s specification page lists built-in apps and says compatible third-party audio and video apps run from the paired iPhone; it lists no App Store on the device.',
         ],
       },
     ],
-    metaTitle: 'Apple HomeView: Price, Release Date, Specs & Features',
+    metaTitle: 'Apple HomeView: $299 Price, Nov 13 Release & Specs',
     metaDescription:
       'Apple HomeView is a $299 smart display with a 7-inch screen and Siri AI, shipping November 13. See specs, colors, wall mounts and who should buy.',
     altText:
@@ -176,12 +256,12 @@ export const POSTS: BlogPost[] = [
       {
         question: 'When does Apple HomeView come out?',
         answer:
-          'Pre-orders are open now and deliveries begin on November 13, 2026.',
+          'Pre-orders opened on October 13, 2026, and deliveries begin on Friday, November 13, 2026.',
       },
       {
         question: 'How big is the Apple HomeView screen?',
         answer:
-          'It has a 7-inch square Liquid Retina display. Some early rumors said 6 inches, but the announced size is 7 inches.',
+          'It has a 7-inch square Liquid Retina display, which Apple lists as 1088 x 1088 pixels at 220 ppi. Apple notes that the measured diagonal is 6.98 inches, so the viewable area is slightly smaller than the 7-inch name suggests.',
       },
       {
         question: 'What colors does Apple HomeView come in?',
@@ -203,8 +283,53 @@ export const POSTS: BlogPost[] = [
         answer:
           'To get personal context you need an iPhone or iPad that supports Apple Intelligence. Without one, Siri AI is limited to world knowledge and music discovery.',
       },
+      {
+        question: 'How big is Apple HomeView?',
+        answer:
+          'Apple lists three dimensions for each model and does not label them as width, height or depth. For the tabletop model it gives 5.73 in (14.55 cm), 5.38–6.82 in (13.67–17.32 cm) and 3.78–5.13 in (9.60–13.02 cm), with a weight of 2.1 lb (952 g). The wall-mounted model is 5.73 in (14.55 cm), 5.73 in (14.55 cm) and 0.39 in (0.98 cm), at 0.63 lb (286 g). The screen measures 6.98 inches diagonally.',
+      },
+      {
+        question: 'What is in the box with Apple HomeView?',
+        answer:
+          'The tabletop model includes HomeView, a 1.5 m USB-C cable, a 30W power adapter and documentation. The wall-mounted model includes the display and documentation only: the mount, the USB-C cable and an adapter of at least 20W are each sold separately.',
+      },
+      {
+        question: 'How much does a wall-mounted HomeView setup cost?',
+        answer:
+          'It starts at $358.95 with the Power Mount USB-C Wall Connector, is $378.95 with Power Mount AC Wired, and reaches $428.95 with the PoE Wired mount due in early 2027. Those totals exclude the USB-C cable and the 20W-or-higher adapter, which Apple sells separately and does not price on the pages read for this guide. All figures are Apple’s US prices, before tax and shipping.',
+      },
+      {
+        question: 'When do HomePod mini 2 and Apple TV 4K come out?',
+        answer:
+          'HomePod mini 2 is $149 and arrives on October 30, 2026. Apple TV 4K (4th generation) is $299 and arrives on November 13, 2026, the same day as HomeView.',
+      },
+      {
+        question: 'Is it called HomeView or Home View?',
+        answer:
+          'Apple’s name is HomeView, one word. Many people search for it as Home View, but Apple uses the single-word form on its product page, its press release and its store listing.',
+      },
+      {
+        question: 'Where can I pre-order Apple HomeView?',
+        answer:
+          'Apple’s own buy page lists apple.com and the Apple Store app, and says the display is also available from select partners, subject to availability. This guide does not link to any retailer and quotes no retailer price.',
+      },
+      {
+        question: 'What chip does Apple HomeView use?',
+        answer:
+          'The A18 chip. Apple says it includes Secure Exclaves that process camera and microphone data in a compartment that neither the operating system nor Apple can access.',
+      },
+      {
+        question: 'How much do Apple Home Collection accessories cost?',
+        answer:
+          'Apple’s announced US prices run from $39.95 for a temperature or room sensor to $399.95 for the LG Floodlight Cam. The LG Video Doorbell Wired starts at $249.95, the LG Outdoor Cam Plug-In at $299.95, the LG Indoor Cam Plug-In at $199.95, the LG Smart Deadbolt Lock at $349.95, and both smart thermostats at $199.95. Availability starts in December 2026, with select accessories in early 2027.',
+      },
+      {
+        question: 'When does Apple HomeView launch in the UK, Canada, Australia and India?',
+        answer:
+          'All four are in Apple’s first wave, with availability beginning Friday, November 13, 2026; pre-orders opened on October 13. Apple lists £299 in the UK, $429 in Canada, A$449 in Australia and ₹39,900 in India as the starting prices.',
+      },
     ],
-    lastUpdated: '2026-10-16',
+    lastUpdated: '2026-10-19',
     primaryKeyword: 'Apple HomeView',
     secondaryKeywords: [
       'Apple HomeView price',

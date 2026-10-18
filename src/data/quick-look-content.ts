@@ -64,8 +64,10 @@ export interface QuickLookGuide {
   /** Direct-answer lead: what it is and who it suits, in two or three sentences. */
   lead: string
   overview: string[]
-  /** Where to buy and what to check — never a number, never a price explanation. */
-  priceSection: { heading: string; paragraphs: string[] }
+  /** Where to buy and what to check — never a number, never a price explanation.
+   *  `link` is an optional inline pointer to the companion blog post, rendered
+   *  at the end of the cost block. */
+  priceSection: { heading: string; paragraphs: string[]; link?: { href: string; label: string } }
   /** Optional verified key facts, rendered as a semantic <dl>. */
   keyFacts?: { term: string; detail: string }[]
   features: { heading: string; title: string; body: string }[]
@@ -2046,7 +2048,9 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         'The tabletop version is the simpler purchase. Apple’s technical-specifications page lists a 1.5 m USB-C cable and a 30W power adapter in the box alongside the display, and states that the tabletop model needs no mount — so nothing else is required to switch it on.',
         'The wall-mounted version is where a budget can move. Apple sells it with documentation only, and its specifications page states plainly that the compatible wall mount, the USB-C cable and a power adapter of at least 20W are each sold separately. Three purpose-built Schneider Home mounts fit it: Power Mount USB-C Wall Connector, Power Mount AC Wired, and Power Mount PoE Wired, which Apple says arrives in early 2027.',
         'Mount prices are “from” prices in Apple’s own wording, which is why the wall-mounted totals below are starting totals rather than a final bill: the cable and the power adapter are not in them. US prices can change, and every other country prices the same products in its own currency.',
+        'Pre-order timing, the first-wave country list and the HomePod mini 2 and Apple TV 4K prices announced alongside HomeView are covered in our Apple HomeView price and release date guide.',
       ],
+      link: { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView price and release date guide' },
     },
     // Rendered by the component as the semantic <dl> inside the price block, so
     // the setup totals sit where a buyer is already reading about cost. Every
@@ -2087,6 +2091,20 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
     ],
     deepDive: [
+      {
+        heading: 'Apple HomeView dimensions and size',
+        paragraphs: [
+          'Apple publishes three dimensions for each model and does not label them as width, height or depth. The table below keeps Apple’s order rather than assign labels the specification page does not use, so check Apple’s own diagram if you need to know which measurement faces which way.',
+          'On the tabletop model the second and third figures are ranges rather than single numbers, and its display sits on a stainless steel hinge that lets you tilt it. The wall-mounted model is a flat panel. Apple’s only footnote to these figures says size and weight vary by manufacturing process.',
+        ],
+        table: {
+          head: ['Model', 'Apple’s 1st figure', '2nd figure', '3rd figure', 'Weight'],
+          rows: [
+            ['HomeView (tabletop)', '5.73 in (14.55 cm)', '5.38–6.82 in (13.67–17.32 cm)', '3.78–5.13 in (9.60–13.02 cm)', '2.1 lb (952 g)'],
+            ['HomeView (Wall Mounted)', '5.73 in (14.55 cm)', '5.73 in (14.55 cm)', '0.39 in (0.98 cm)', '0.63 lb (286 g)'],
+          ],
+        },
+      },
       {
         heading: 'What Siri AI needs from your iPhone, and what it does not',
         paragraphs: [
@@ -2140,7 +2158,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         paragraphs: [
           'HomeView is a hub as much as a screen. The Home app is built in and syncs with your other Apple devices, so the same accessories, scenes and automations are on the display as on an iPhone. Apple also states that thousands of Works with Apple Home accessories are compatible, and that HomeView works with Matter accessories from other brands.',
           'Two Apple features are worth knowing before you buy. The first is HomeKit Secure Video with a supported iCloud+ subscription: Apple says HomeView can recognise people, familiar faces, pets, packages and vehicles on compatible cameras with end-to-end encryption, and describe what happened in a clip so you do not have to watch it. The second is sound recognition — HomeView listens for smoke and carbon monoxide alarm sounds and alerts you on an iPhone, iPad or Apple Watch.',
-          'Apple also announced the Apple Home Collection, a line of cameras, thermostats and a door lock designed with LG Electronics and Schneider Electric. Apple’s product page marks that line as coming later, so a HomeView bought now is a hub for the accessories you already own rather than a bundle. Apple has not published the Home Collection prices, so none appear on this page.',
+          'Apple also announced the Apple Home Collection, a line of cameras, thermostats, temperature sensors and a door lock designed with LG Electronics and Schneider Electric. Apple puts the US prices between $39.95 for a temperature sensor and $399.95 for the LG Floodlight Cam, with availability starting in December 2026 and select accessories in early 2027. A HomeView bought now is a hub for the accessories you already own, with the new line arriving after it.',
         ],
         cards: [
           { title: 'Home Modular face', body: 'A concise grid of the accessories you use most, controlled by tap or voice.' },
@@ -2152,6 +2170,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         heading: 'What Apple has not published, and why it is missing here',
         paragraphs: [
           'A spec sheet is only as useful as the gaps it admits to. These are the figures and details that were not on Apple’s HomeView pages when this page was written, so they are left out rather than filled in from reporting: memory and storage, a water or dust resistance rating, and any Ultra Wideband chip — the published wireless set is Wi-Fi 6E, Bluetooth 6.0 and Thread. Warranty terms are not quoted here either, because a warranty is a region-specific legal document rather than a product spec; check Apple’s own terms for your country.',
+          'Memory is the one gap worth spelling out, because a figure circulates elsewhere: Apple’s specification page lists no RAM figure for either model, while Wikipedia and some pre-launch reports mention 8 GB. Apple has not confirmed that number, so this page does not state it.',
           'Two other limits are Apple’s own words rather than omissions. Siri AI is described as available in beta in HomeView software version 27.2, with usage limits possibly applying, and HomeView is not available for sale in the European Union because Siri AI is currently unavailable in iOS there. If either of those changes, it will change on Apple’s pages first.',
         ],
       },
@@ -2201,7 +2220,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         'Siri AI is in beta in HomeView software version 27.2, and Apple says usage limits may apply',
         'Personal context needs an Apple Intelligence-enabled iPhone or iPad nearby',
         'Apple publishes no memory, storage or water-resistance figures',
-        'Apple has not published prices for the Apple Home Collection accessories it announced alongside HomeView',
+        'No App Store on the device: third-party audio and video apps run from the paired iPhone',
       ],
     },
     buyingTips: {
@@ -2267,6 +2286,26 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         question: 'Why is Apple HomeView not available in the EU?',
         answer:
           'Apple states that Apple HomeView is not available for sale in the European Union because Siri AI is currently unavailable in iOS in the EU, and that it is working with the EU on a path forward. Siri AI on HomeView starts in English in the US, Australia, Canada, India, New Zealand, Singapore, South Africa and the UK, with Canadian French promised later by software update.',
+      },
+      {
+        question: 'How big is Apple HomeView?',
+        answer:
+          'Apple lists three dimensions per model without labelling them. The tabletop model is 5.73 in (14.55 cm), then 5.38–6.82 in (13.67–17.32 cm), then 3.78–5.13 in (9.60–13.02 cm); the wall-mounted model is 5.73 in (14.55 cm), 5.73 in (14.55 cm) and 0.39 in (0.98 cm). The screen measures 6.98 inches diagonally. The product is usually searched for as Home View, but Apple’s own name is the single word HomeView.',
+      },
+      {
+        question: 'How much does Apple HomeView weigh?',
+        answer:
+          'The tabletop model weighs 2.1 pounds (952 grams) and the wall-mounted model weighs 0.63 pound (286 grams), according to Apple’s technical-specifications page. Apple adds that size and weight vary by manufacturing process.',
+      },
+      {
+        question: 'What chip does Apple HomeView have?',
+        answer:
+          'The A18 chip. Apple says it contains Secure Exclaves that process the camera and microphone feeds in a compartment that the software, the apps, the user and Apple cannot access, which is how face and voice recognition work without exposing that audio and video data.',
+      },
+      {
+        question: 'How much RAM does Apple HomeView have?',
+        answer:
+          'Apple does not say. Its technical-specifications page lists no memory or storage figure for either model. Wikipedia and some pre-launch reports mention 8 GB, but Apple has not confirmed that, so treat it as unconfirmed rather than a specification.',
       },
     ],
     links: [
