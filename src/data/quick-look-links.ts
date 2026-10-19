@@ -37,6 +37,13 @@ export const POST_PRODUCT_LINKS: Record<string, string[]> = {
   // (The spec sheet is informational: it carries no purchase path, so this
   // mapping never produces a buy link on either page.)
   'apple-homeview-price-release-date-features': ['apple-homeview-smart-display'],
+  // Batch 4. Each of these posts covers the product with a deal card of its
+  // own, so the spec sheet's "From our blog" block points back at a real
+  // evaluation rather than a passing mention.
+  'usb-c-accessories-under-50': ['ugreen-usb-c-hub-5-in-1'],
+  'how-to-choose-usb-c-hub': ['ugreen-usb-c-hub-5-in-1'],
+  'best-mechanical-keyboards-2026': ['aula-f75-pro-wireless-keyboard'],
+  'foldable-phones-2026': ['samsung-galaxy-z-fold7-256gb'],
   // The comparison post sets HomeView against the Alexa and Google screens, so
   // it covers the same spec sheet from a different angle.
   'apple-homeview-vs-echo-show-nest-hub': ['apple-homeview-smart-display'],

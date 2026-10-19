@@ -3111,6 +3111,674 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
     ],
   },
+
+  'samsung-galaxy-z-fold7-256gb': {
+    productName: 'Samsung Galaxy Z Fold7',
+    heading: 'Samsung Galaxy Z Fold7 specs, features and buying guide',
+    lead: 'The Samsung Galaxy Z Fold7 is a book-style foldable with an 8.0-inch main screen, a 6.5-inch cover screen, a 200 MP main camera and a Snapdragon 8 Elite processor in a 215 g body. It is for someone who wants a phone that becomes a small tablet for reading, editing and split-screen work, and who accepts the price and the hinge that come with that.',
+    overview: [
+      'Samsung builds this model around two screens. The main screen measures 8.0 inches diagonally and the cover screen 6.5 inches at a 21:9 ratio, so the closed phone behaves like a tall, narrow handset and the open one like a small tablet. Both panels are Dynamic AMOLED 2X with a 1–120 Hz adaptive refresh rate and a peak brightness Samsung rates at 2,600 nits.',
+      'Inside, Samsung lists a Snapdragon 8 Elite processor customized for Galaxy, 12 GB or 16 GB of memory and 256 GB, 512 GB or 1 TB of storage. The rear camera system is a 200 MP wide sensor with 2x “optical quality” zoom, a 12 MP ultra wide and a 10 MP telephoto with 3x optical zoom, plus a 10 MP camera on each screen. The battery is 4,400 mAh.',
+      'The body is the part Samsung talks about most: 8.9 mm folded, 4.2 mm unfolded and 215 g, with an Advanced Armor Aluminum frame, an Armor FlexHinge and Gorilla Glass Ceramic 2 on the front. It ships with One UI 8 and IP48 water and dust resistance. Samsung does not publish a display resolution or a charging wattage for this model on the pages reviewed, so neither appears in the table above.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the Galaxy Z Fold7',
+      paragraphs: [
+        'The storage tier is the first decision, because it is the one that changes the hardware you live with. Samsung sells 256 GB, 512 GB and 1 TB versions, and the memory fitted alongside them is 12 GB or 16 GB rather than a single fixed figure. Read the listing for both numbers: two phones with the same name can differ in memory as well as capacity.',
+        'Then check which model and colour you are actually buying. The US listing for this phone is the unlocked version in Blue Shadow, and Samsung also sells Silver Shadow, Jetblack and a Mint colour reserved for Samsung.com. Samsung notes that colour availability and memory or storage options can vary by country and carrier, so a listing that does not name the model is worth questioning before you pay. The S Pen question is settled in the other direction: Samsung states plainly that Galaxy Z Fold7 does not support one.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Main screen', detail: '8.0 inches, Dynamic AMOLED 2X, 1–120 Hz, up to 2,600 nits' },
+      { term: 'Cover screen', detail: '6.5 inches, 21:9, Dynamic AMOLED 2X, 1–120 Hz' },
+      { term: 'Processor', detail: 'Snapdragon 8 Elite, customized for Galaxy' },
+      { term: 'Memory and storage', detail: '12 GB or 16 GB of memory; 256 GB, 512 GB or 1 TB of storage' },
+      { term: 'Rear cameras', detail: '200 MP wide, 12 MP ultra wide, 10 MP telephoto with 3x optical zoom' },
+      { term: 'Front cameras', detail: '10 MP on the cover screen and 10 MP on the main screen' },
+      { term: 'Battery', detail: '4,400 mAh typical, 4,272 mAh rated' },
+      { term: 'Size and weight', detail: '8.9 mm folded, 4.2 mm unfolded, 215 g' },
+      { term: 'Durability', detail: 'IP48 water and dust resistance' },
+      { term: 'Software', detail: 'One UI 8 with Galaxy AI' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Two screens, two jobs',
+        body: 'The 6.5-inch cover screen is the one you use with the phone shut: Samsung gives it a 21:9 ratio, which is close to a normal premium handset, so typing and scrolling feel familiar. Open the phone and the 8.0-inch main screen takes over for split-screen apps, documents and video. Both run at 1–120 Hz, so the panel slows down when the image is still and speeds up when you scroll. What Samsung does not publish on these pages is the resolution of either panel, so this sheet gives the sizes, the panel type and the refresh rate rather than inventing a pixel count.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'A 200 MP camera on a foldable',
+        body: 'Samsung puts a 200 MP wide sensor in the Fold7 and says it is the same camera used in the Galaxy S25 Ultra, supported by the ProVisual Engine in the processor. It is joined by a 12 MP ultra wide and a 10 MP telephoto with 3x optical zoom; Samsung describes a 2x “Optical Quality Zoom” step on the wide camera, which is a crop rather than a second lens. The selfie cameras are 10 MP on the cover screen and 10 MP on the main screen, and Samsung says the inner one now covers a 100-degree field of view, up from 85 degrees on earlier models. How those sensors perform in low light is a claim Samsung makes, not something this page can confirm.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Thin, light and hinge-led',
+        body: 'At 8.9 mm folded and 4.2 mm unfolded, this is the slimmest Z Fold Samsung has shipped; its own comparison page puts the Z Fold6 at 12.1 mm and 239 g against 215 g here. The frame is Advanced Armor Aluminum, the hinge housing is reinforced with what Samsung calls Armor FlexHinge, and the cover glass is Corning Gorilla Glass Ceramic 2 with Gorilla Glass Victus 2 on the back. IP48 is the rating: it covers dust and water, and the 8 in the second digit means it is not rated for immersion in water.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'One UI 8 and the AI features Samsung lists',
+        body: 'The phone runs One UI 8, built for both screens rather than the cover screen alone. Samsung lists Photo Assist for generative edits with a side-by-side original, Audio Eraser for removing background noise from videos, Now Brief for routine summaries and Gemini Live with screen sharing. Some of those tools need a Samsung or Google account and a network connection; Samsung states that AI features can process data on the device or in the cloud, and that choice sits in the settings.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'What Samsung does not publish about this phone',
+        paragraphs: [
+          'Four gaps matter when you are comparing listings. Samsung does not state the display resolution of either screen on the product or comparison pages, so any pixel figure you see elsewhere is not from Samsung. It does not state a charging wattage, only the 4,400 mAh capacity and a claim of up to 24 hours of video playback. It does not list Wi-Fi, Bluetooth, NFC or UWB versions on those pages. And it publishes no US carrier or band table, so if you need a specific network, that has to come from the carrier or from the model number on the box.',
+          'None of that makes the phone a mystery; it means those four items belong to the carrier listing or the full user manual rather than to this sheet. Everything in the table above is something Samsung states, and the gaps are listed so you know where the edges are.',
+        ],
+      },
+      {
+        heading: 'Is a foldable the right shape for you?',
+        paragraphs: [
+          'The case for the Fold7 is the 8.0-inch inner screen. Reading a long document, editing a photo, running two apps side by side or watching video on a flight are all better on a screen that size, and the phone still closes into something that fits a pocket. The case against is everything that comes with a hinge: more moving parts, a heavier body than a bar phone, and a crease that Samsung designs around rather than removes.',
+          'The published numbers help here. At 215 g it is lighter than the 239 g Z Fold6 Samsung compares it with, and at 8.9 mm folded it is thinner than that model’s 12.1 mm. Those are real improvements for pocketability, and they are measured facts rather than impressions. What they cannot tell you is whether the fold feels right in your hand, which is why the shape of the device is worth trying in person before ordering one.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the Galaxy Z Fold7, and who should skip it',
+      should: [
+        'You want a phone that opens into an 8.0-inch screen for reading, split-screen apps and editing.',
+        'You take a lot of photos and want the 200 MP main sensor with a 3x telephoto alongside it.',
+        'You want the lighter, thinner Fold: 215 g and 8.9 mm folded, against 239 g and 12.1 mm on the Z Fold6 Samsung compares it with.',
+        'You keep a phone for years and want 512 GB or 1 TB of storage from the start.',
+      ],
+      skip: [
+        'You need S Pen support: Samsung states this model does not have it.',
+        'You want a phone you can use in the pool or the shower: IP48 is water resistant, not immersible.',
+        'You want the widest possible choice of colours in every retailer: Samsung reserves Mint for its own store.',
+        'You prefer a lighter, simpler device with no hinge to look after.',
+      ],
+    },
+    pros: {
+      heading: 'Samsung Galaxy Z Fold7 pros and cons',
+      pros: [
+        '8.0-inch main screen and a 6.5-inch cover screen, both 1–120 Hz Dynamic AMOLED 2X',
+        '200 MP wide camera with a 12 MP ultra wide and a 10 MP 3x telephoto',
+        'Snapdragon 8 Elite, 12 GB or 16 GB of memory and up to 1 TB of storage',
+        '215 g and 8.9 mm folded, the slimmest and lightest Z Fold Samsung has listed',
+        'IP48 water and dust resistance and Gorilla Glass Ceramic 2 on the cover',
+        'One UI 8 with Samsung’s Photo Assist, Audio Eraser and Now Brief',
+      ],
+      cons: [
+        'Samsung publishes no display resolution for either screen on the pages reviewed',
+        'No charging wattage is stated, only the battery capacity and a playback claim',
+        'The S Pen is not supported on this model',
+        'IP48 does not cover immersion, so it is not a pool or shower phone',
+        'Memory and storage options, and colours, can vary by country and carrier',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the Galaxy Z Fold7 in the US',
+      paragraphs: [
+        'Decide the storage before you compare prices: 256 GB is the entry tier on the record this page follows, and 512 GB or 1 TB versions are different listings with different hardware inside. Check the memory figure too, because Samsung sells the phone with 12 GB or 16 GB and does not tie that choice to a single capacity in the way buyers often assume.',
+        'Then confirm the model and colour. The US unlocked phone is listed in Blue Shadow, and Silver Shadow, Jetblack and the Samsung.com-only Mint sit alongside it. If a listing is vague about whether the phone is carrier-locked, treat that as an open question rather than an assumption, and if you need a specific band or carrier feature, check the carrier page rather than this sheet.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How big are the Galaxy Z Fold7 screens?',
+        answer:
+          'The main screen is 8.0 inches diagonally and the cover screen is 6.5 inches at a 21:9 ratio. Both are Dynamic AMOLED 2X panels with a 1–120 Hz adaptive refresh rate and a peak brightness of 2,600 nits. Samsung does not publish their resolution on the pages reviewed.',
+      },
+      {
+        question: 'Does the Galaxy Z Fold7 support the S Pen?',
+        answer: 'No. Samsung states that Galaxy Z Fold7 does not support S Pen.',
+      },
+      {
+        question: 'What processor and memory does the Galaxy Z Fold7 use?',
+        answer:
+          'A Snapdragon 8 Elite customized for Galaxy, with 12 GB or 16 GB of memory depending on the version. Samsung also offers 256 GB, 512 GB and 1 TB of storage.',
+      },
+      {
+        question: 'Is the Galaxy Z Fold7 water resistant?',
+        answer:
+          'It carries an IP48 rating from Samsung. That covers dust and water splashes, but the second digit is 8 rather than 9, so it is not rated for immersion.',
+      },
+      {
+        question: 'What cameras does the Galaxy Z Fold7 have?',
+        answer:
+          'A 200 MP wide camera, a 12 MP ultra wide and a 10 MP telephoto with 3x optical zoom on the back, plus a 10 MP camera on the cover screen and a 10 MP camera on the main screen. Samsung describes a 2x “Optical Quality Zoom” step on the wide camera.',
+      },
+      {
+        question: 'How thick and heavy is the Galaxy Z Fold7?',
+        answer:
+          'It measures 8.9 mm folded and 4.2 mm unfolded, and weighs 215 g. For comparison, Samsung lists the Galaxy Z Fold6 at 12.1 mm folded and 239 g.',
+      },
+      {
+        question: 'How long does the Galaxy Z Fold7 battery last?',
+        answer:
+          'Samsung fits a 4,400 mAh battery (4,272 mAh rated) and claims up to 24 hours of video playback. Real-world runtime depends on screen brightness, network and app use, and Samsung publishes no charging wattage for this model on the pages reviewed.',
+      },
+      {
+        question: 'What colours does the Galaxy Z Fold7 come in?',
+        answer:
+          'Blue Shadow, Silver Shadow and Jetblack, plus Mint, which Samsung sells only through its own store. Samsung notes that colour availability may vary by country or carrier.',
+      },
+    ],
+    links: [
+      {
+        label: 'Smartphones',
+        href: '/shop/smartphones',
+        description: 'The phones the store carries, foldables included.',
+      },
+      {
+        label: 'Full product listing',
+        href: '/product/samsung-galaxy-z-fold7-256gb',
+        description: 'The shop page for this 256 GB unlocked model, with the current listing details.',
+      },
+      {
+        label: 'Galaxy S26 Ultra spec sheet',
+        href: '/quick-look/samsung-galaxy-s26-ultra',
+        description: 'Samsung’s bar-shaped flagship, if you want the Ultra camera without the hinge.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'playstation-5-disc-console-slim': {
+    productName: 'PlayStation 5 Slim',
+    heading: 'PlayStation 5 Slim specs, features and buying guide',
+    lead: 'The PlayStation 5 Slim with a disc drive is Sony’s smaller PS5: a 1 TB SSD, 16 GB of GDDR6 memory, an AMD RDNA 2 GPU rated at 10.3 TFLOPS and an Ultra HD Blu-ray drive in a 3.2 kg console. It suits anyone who wants the full PS5 feature set, including physical discs and 4K Blu-ray playback, without the original model’s larger shell.',
+    overview: [
+      'Sony’s specification list is the source for everything here. The console runs an eight-core, sixteen-thread AMD Ryzen Zen 2 CPU at a variable frequency up to 3.5 GHz and an RDNA 2 GPU with ray-tracing acceleration up to 2.23 GHz, which Sony rates at 10.3 TFLOPS. Memory is 16 GB of GDDR6 at 448 GB/s, and storage is a 1 TB SSD with a raw read bandwidth of 5.5 GB/s.',
+      'Video output is specified by HDMI 2.1 and covers 4K at 120 Hz, 8K TVs and variable refresh rate. Audio is Sony’s Tempest 3D AudioTech. Networking is Ethernet at 10/100/1000 plus Wi-Fi certified to IEEE 802.11 a/b/g/n/ac/ax, and the console has two USB-C ports on the front and two USB-A ports at 10 Gbps on the back, as Sony’s 2023 specification lists them.',
+      'The disc-drive model measures roughly 358 x 96 x 216 mm (width x height x depth, excluding projecting parts) and weighs about 3.2 kg. Sony also publishes the Digital Edition on the same page at 358 x 80 x 216 mm and 2.6 kg, which is the clearest way to see what the drive adds to the size and the weight.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the PlayStation 5 Slim',
+      paragraphs: [
+        'The first question is disc or digital, and it is not cosmetic. The model on this page has a disc drive that Sony specifies for Ultra HD Blu-ray up to 100 GB per disc, plus BD and DVD. The Digital Edition has the same processor, memory and SSD but no drive and a narrower, lighter body. If you own discs, buy the drive model; if you do not, the Digital Edition is the same console in a smaller shell.',
+        'The second question is the stand. Sony’s own product image for this console carries the note that the vertical stand is sold separately, so plan for it if the console is going upright. Sony also states that console design varies by model, which matters for the front ports: its 2023 specification lists two USB-C ports, while a later Sony USB guide describes one USB-A and one USB-C on the front. Check the revision on the box if that detail matters to you.',
+      ],
+    },
+    keyFacts: [
+      { term: 'CPU', detail: 'AMD Ryzen Zen 2, 8 cores / 16 threads, up to 3.5 GHz' },
+      { term: 'GPU', detail: 'AMD Radeon RDNA 2, up to 2.23 GHz, 10.3 TFLOPS, ray tracing' },
+      { term: 'Memory', detail: '16 GB GDDR6 at 448 GB/s' },
+      { term: 'Storage', detail: '1 TB SSD, 5.5 GB/s raw read' },
+      { term: 'Disc drive', detail: 'Ultra HD Blu-ray up to 100 GB per disc, plus BD and DVD' },
+      { term: 'Video output', detail: '4K 120 Hz, 8K and VRR over HDMI 2.1' },
+      { term: 'Networking', detail: 'Gigabit Ethernet and IEEE 802.11 a/b/g/n/ac/ax Wi-Fi' },
+      { term: 'Size and weight', detail: 'Approx. 358 x 96 x 216 mm, 3.2 kg' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'The SSD is the quiet upgrade',
+        body: 'Sony fits a 1 TB SSD and quotes a raw read bandwidth of 5.5 GB/s. That figure is the reason PS5 games can stream assets while you play rather than waiting behind a loading screen for a spinning drive, and it is the difference between this console and the previous generation on the storage side. It is also the figure to compare when a game lists a required install size: the drive is fast, but 1 TB fills quickly with modern titles, and Sony’s specification does not promise usable capacity beyond the drive itself.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'RDNA 2 graphics, ray tracing and 120 Hz',
+        body: 'The GPU is an AMD Radeon RDNA 2 engine with hardware ray-tracing acceleration, variable frequency up to 2.23 GHz and a peak of 10.3 TFLOPS. On the output side Sony specifies 4K at 120 Hz, 8K TVs and variable refresh rate over HDMI 2.1. Those are capability statements: the frame rate a game reaches depends on the game and the display, and VRR only helps if your TV supports it. What the console guarantees is the interface and the ceiling, not a fixed frame rate for every title.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'A disc drive that plays more than games',
+        body: 'The drive reads Ultra HD Blu-ray discs up to 100 GB each, plus standard Blu-ray and DVD. For a household with a film collection that is a second device in one box, and it is the feature the Digital Edition cannot add later in the same way: Sony sells a disc drive for the Digital Edition separately, but the drive model ships with one fitted. Games on disc also install to the SSD, so the drive is a licence and a film player rather than a place games run from.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Smaller body, same silicon',
+        body: 'Sony reduced the volume of this model by more than 30% and the weight by 18% to 24% against the launch console, and the specification shows the result: 358 x 96 x 216 mm and 3.2 kg. The shell is made of four separate cover panels, glossy on top and matte below, which is also what makes Sony’s replacement covers fit. The silicon inside is unchanged, so the slim model is a smaller PS5 rather than a faster one.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Disc or Digital: the numbers Sony publishes',
+        paragraphs: [
+          'Sony lists both models on the same page, which makes the comparison unusually clean. The disc console is 358 x 96 x 216 mm and 3.2 kg; the Digital Edition is 358 x 80 x 216 mm and 2.6 kg. The 16 mm difference in height and the 0.6 kg difference in weight are the drive and its housing, and everything else in the specification list is identical: the same CPU, GPU, memory, SSD, video output, audio and networking.',
+          'So the decision is about media, not performance. If you buy discs, rent them or watch Ultra HD Blu-ray films, the drive model is the one to get. If every game you play is a download, the Digital Edition is the same console with less to carry.',
+        ],
+      },
+      {
+        heading: 'Ports, networking and the model-revision caveat',
+        paragraphs: [
+          'Sony’s 2023 specification lists two USB-C ports on the front, one at SuperSpeed 10 Gbps and one at Hi-Speed, and two USB-A ports at 10 Gbps on the back. A later Sony support page for PS5 USB ports describes a front USB-A Hi-Speed port plus a front USB-C 10 Gbps port, and notes that the design varies by model. Both are Sony documents; they describe different revisions. If a specific front port matters, check the model number rather than assuming either layout.',
+          'Networking is the part that has not changed: gigabit Ethernet for a wired connection and Wi-Fi certified to 802.11ax for wireless. Sony publishes no Bluetooth version and no power-consumption figure in the list reviewed, so those two numbers are absent from this sheet rather than estimated.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the PlayStation 5 Slim, and who should skip it',
+      should: [
+        'You want a PS5 with a disc drive for physical games, rentals and Ultra HD Blu-ray films.',
+        'You want the 1 TB SSD rather than the 825 GB drive of the launch console.',
+        'You have a 4K 120 Hz TV with VRR and want to use those features.',
+        'You want a smaller, lighter console than the original model: 3.2 kg against the launch console’s larger shell.',
+      ],
+      skip: [
+        'You never use discs: the Digital Edition is the same console at 2.6 kg with no drive.',
+        'You want a vertical stand in the box: Sony sells it separately.',
+        'You need a specific front-port layout: Sony’s own documents describe more than one revision.',
+        'You are looking for a performance upgrade over the launch PS5; the silicon is the same.',
+      ],
+    },
+    pros: {
+      heading: 'PlayStation 5 Slim pros and cons',
+      pros: [
+        '1 TB SSD with 5.5 GB/s raw read bandwidth',
+        '16 GB of GDDR6 memory and a 10.3 TFLOPS RDNA 2 GPU with ray tracing',
+        '4K 120 Hz, 8K and VRR output over HDMI 2.1',
+        'Ultra HD Blu-ray drive that also plays Blu-ray and DVD',
+        'About 3.2 kg and 358 mm wide, smaller than the launch console',
+        'Gigabit Ethernet and 802.11ax Wi-Fi',
+      ],
+      cons: [
+        'Sony publishes no Bluetooth version or power-consumption figure',
+        'The vertical stand is sold separately',
+        'Sony’s own documents disagree on the front-port layout between revisions',
+        'The drive adds 16 mm of height and about 0.6 kg over the Digital Edition',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the PlayStation 5 Slim in the US',
+      paragraphs: [
+        'Start with the model name. “PS5” covers the launch console, this slimmer model and the Digital Edition, and only the last one has no drive. The listing should say disc or digital, and the model number on the box is the definitive answer. If you are buying for a film collection as well as games, check that the drive is described as Ultra HD Blu-ray rather than just Blu-ray.',
+        'Then think about the stand and the display. The console can sit horizontally with the supplied feet; going vertical needs Sony’s separate stand. On the display side, 4K 120 Hz and VRR are only useful with a TV that supports them over HDMI 2.1, so check the TV’s port before paying for the console’s ceiling.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How much storage does the PS5 Slim have?',
+        answer:
+          'Sony specifies a 1 TB SSD with a raw read bandwidth of 5.5 GB/s. That is the drive capacity Sony publishes; the space available for games is lower once system software is installed.',
+      },
+      {
+        question: 'Does the PS5 Slim play discs?',
+        answer:
+          'The disc-drive model does. Sony specifies an Ultra HD Blu-ray drive that reads discs up to 100 GB, plus Blu-ray and DVD. The Digital Edition sold alongside it has no disc drive.',
+      },
+      {
+        question: 'What is the difference between the PS5 Slim and the Digital Edition?',
+        answer:
+          'The drive and the shell. Sony lists the disc model at 358 x 96 x 216 mm and 3.2 kg, and the Digital Edition at 358 x 80 x 216 mm and 2.6 kg. The CPU, GPU, 16 GB of memory, 1 TB SSD, video output and networking are the same on both.',
+      },
+      {
+        question: 'Does the PS5 Slim support 4K at 120 Hz?',
+        answer:
+          'Sony specifies support for 4K 120 Hz TVs, 8K TVs and variable refresh rate over HDMI 2.1. Whether a game runs at 120 fps depends on the game, and VRR needs a compatible display.',
+      },
+      {
+        question: 'Is a vertical stand included with the PS5 Slim?',
+        answer:
+          'No. Sony’s own product image for this console notes that the vertical stand is sold separately. The console can be used horizontally without it.',
+      },
+      {
+        question: 'How much does the PS5 Slim weigh?',
+        answer: 'Approx. 3.2 kg for the disc-drive model, against 2.6 kg for the Digital Edition, according to Sony’s specification list.',
+      },
+      {
+        question: 'What Wi-Fi does the PS5 Slim use?',
+        answer:
+          'Sony lists Wi-Fi certified to IEEE 802.11 a/b/g/n/ac/ax, which includes Wi-Fi 6, plus Ethernet at 10BASE-T, 100BASE-TX and 1000BASE-T.',
+      },
+      {
+        question: 'Does the PS5 Slim have Bluetooth?',
+        answer:
+          'Sony’s specification list reviewed does not state a Bluetooth version or profile support, so this sheet does not claim one. The DualSense controller connects wirelessly to the console, but the version number is not published on that page.',
+      },
+    ],
+    links: [
+      {
+        label: 'Gaming Gear',
+        href: '/shop/gaming',
+        description: 'The consoles, controllers and gaming accessories the store carries.',
+      },
+      {
+        label: 'Full product listing',
+        href: '/product/playstation-5-disc-console-slim',
+        description: 'The shop page for this console, with the current listing details.',
+      },
+      {
+        label: "Today's deals",
+        href: '/deals',
+        description: 'The catalog filtered down to products that are discounted right now.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'ugreen-usb-c-hub-5-in-1': {
+    productName: 'UGREEN USB-C Hub 5-in-1',
+    heading: 'UGREEN USB-C Hub 5-in-1 specs, features and buying guide',
+    lead: 'The UGREEN Revodok 105 is a five-port USB-C hub: one HDMI output at up to 4K 30 Hz, one USB-C power-delivery input rated to 100 W, one 5 Gbps USB-A port and two USB 2.0 USB-A ports, in a 58 g aluminium body with a 20 cm built-in cable. It suits a laptop with too few ports for a monitor, a charger and a few peripherals at the same time.',
+    overview: [
+      'This is a travel hub rather than a dock. The cable is attached, so there is nothing to lose, and the whole thing weighs 58 g. UGREEN builds the housing from aluminium with CNC machining and finishes it in silver. It draws power from the host over USB-C and passes up to 95 W of a 100 W supply through to the laptop, keeping 5 W for its own ports.',
+      'The port split is deliberate: one USB-A 3.0 port at up to 5 Gbps for a drive or a fast peripheral, and two USB-A 2.0 ports at up to 480 Mbps for a keyboard, a mouse or a printer. The HDMI port outputs up to 4K at 30 Hz. UGREEN says the USB-A ports are for data and advises against charging devices through them.',
+      'Compatibility is Windows, macOS and Linux, plug and play, with no driver listed. For HDMI to work, the host USB-C port has to support video output; a data-only USB-C port will charge and pass data but will not drive a screen.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the UGREEN 5-in-1 hub',
+      paragraphs: [
+        'Check the refresh rate you need before anything else. The HDMI port is specified at 4K 30 Hz, which is fine for documents, spreadsheets and video, and not what you want for a 4K 60 Hz monitor or a high-refresh display. A hub advertising 4K without the number is the one to read carefully.',
+        'Then check the host. HDMI output needs a USB-C port with video support, which most recent laptops have and some budget ones do not. Check the charger too: the hub passes through up to 95 W, so a 100 W supply keeps a laptop at full speed while a smaller one will charge more slowly. And count your devices: one fast USB-A port is plenty for a drive, but if you need three fast ports this hub is not the one.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Ports', detail: 'HDMI, USB-C PD, one USB-A 3.0 and two USB-A 2.0' },
+      { term: 'HDMI', detail: 'Up to 4K at 30 Hz' },
+      { term: 'Power delivery', detail: '100 W input, up to 95 W passed through to the laptop' },
+      { term: 'USB-A 3.0', detail: 'One port at up to 5 Gbps, data only' },
+      { term: 'USB-A 2.0', detail: 'Two ports at up to 480 Mbps, data only' },
+      { term: 'Cable', detail: 'Built in, 20 cm' },
+      { term: 'Weight', detail: '58 g' },
+      { term: 'Systems', detail: 'Windows, macOS and Linux' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Five ports, two speeds',
+        body: 'The five ports are not equal, and the difference is the point. One USB-A port runs at USB 3.0 speed, up to 5 Gbps, which is where a portable SSD or a card reader belongs. The other two are USB 2.0 at up to 480 Mbps, which is slow for storage but completely adequate for a keyboard, a mouse, a printer or a dongle. Splitting them this way keeps the hub small and cheap; a hub with three 10 Gbps ports is a different product at a different size.',
+      },
+      {
+        heading: 'Key features explained',
+        title: '100 W in, 95 W through',
+        body: 'The USB-C PD port takes up to 100 W from your charger and passes up to 95 W to the laptop, because UGREEN reserves 5 W for the hub’s other ports. In practice that means a 100 W laptop charger still delivers close to its full rate through the hub, while a 65 W charger delivers about 60 W to the laptop. It is pass-through charging, not a second power supply: the hub has no battery and cannot charge anything on its own.',
+      },
+      {
+        heading: 'Key features explained',
+        title: '4K at 30 Hz, with a host requirement',
+        body: 'The HDMI port supports resolutions up to 4K at 30 Hz. Thirty hertz is a presentation and productivity refresh rate: text and video look fine, and fast motion in a game does not. The other half of the sentence matters as much — UGREEN states that the host’s USB-C port must support video output. A USB-C port that carries power and data only will not send a picture through this hub, whatever the adapter.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Aluminium, 58 g and a cable that stays attached',
+        body: 'The body is aluminium, CNC machined, and weighs 58 g with a 20 cm built-in cable. Attached cables are the right choice for a hub that lives in a laptop bag: there is no second cable to forget, and no small connector to bend. The trade-off is that the cable length is fixed, so the hub sits close to the laptop rather than across a desk.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'What the port speeds mean in daily use',
+        paragraphs: [
+          'A 5 Gbps USB-A port moves roughly 500 MB/s in ideal conditions, which is enough for a portable SSD, a fast flash drive or a camera card reader. The two USB 2.0 ports at 480 Mbps are around 40 MB/s, which is fine for input devices and printers and slow for moving large files. If you plug a hard drive into a USB 2.0 port by mistake, the copy will work — it will just take a lot longer.',
+          'That is why the layout suits a desk rather than a studio: keyboard and mouse on the slow ports, one drive on the fast one, the monitor on HDMI, and the charger on the USB-C input. Four devices plus power from a hub the size of a marker pen.',
+        ],
+      },
+      {
+        heading: 'Where this hub stops',
+        paragraphs: [
+          'There is no Ethernet, no SD or microSD reader and no headphone jack. If you need a wired network or a card reader, this is the wrong hub and UGREEN sells larger models that add them. There is also no DisplayPort output, so a monitor that only accepts DisplayPort needs an adapter on the HDMI end.',
+          'The honest summary is that the hub covers the five connections most laptop users actually run out of: a screen, power, a mouse, a keyboard and one fast device. Everything beyond that belongs to a dock.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the UGREEN 5-in-1 hub, and who should skip it',
+      should: [
+        'You need a monitor, a charger and a couple of peripherals from one USB-C port.',
+        'You want a hub that lives in a bag: 58 g with an attached 20 cm cable.',
+        'You need one fast USB-A port for a drive and slower ports for input devices.',
+        'You want pass-through charging so the laptop keeps its own charger and port.',
+      ],
+      skip: [
+        'You need 4K at 60 Hz: this hub is specified at 30 Hz.',
+        'You want three fast USB-A ports; only one here runs at 5 Gbps.',
+        'You need Ethernet, a card reader or a headphone jack.',
+        'Your laptop’s USB-C port does not support video output.',
+      ],
+    },
+    pros: {
+      heading: 'UGREEN 5-in-1 hub pros and cons',
+      pros: [
+        'Five useful ports in a 58 g aluminium body',
+        '4K HDMI output for a second screen',
+        '100 W power delivery with up to 95 W passed to the laptop',
+        'One 5 Gbps USB-A port for fast storage',
+        'Built-in 20 cm cable, so nothing to lose',
+        'Plug and play on Windows, macOS and Linux',
+      ],
+      cons: [
+        'HDMI is limited to 30 Hz at 4K',
+        'Only one USB-A port runs at 5 Gbps; the other two are USB 2.0',
+        'No Ethernet, card reader or audio jack',
+        'UGREEN does not state the HDMI version',
+        'Requires a host USB-C port with video output for the monitor to work',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying a USB-C hub in the US',
+      paragraphs: [
+        'Read the port list rather than the headline count. “Five in one” can mean five fast ports or, as here, one fast port, two slow ones, a video output and a power input. Match the list to the devices you actually plug in, and check the video specification separately: 4K at 30 Hz and 4K at 60 Hz are different products.',
+        'Then check the two limits that catch people out. The host port must support video output for HDMI to work, and the charger you already own sets the charging speed through the hub. If you have a 100 W laptop and a 65 W charger, the hub will not change that; it will just pass through what it receives.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Does the UGREEN 5-in-1 hub support 4K at 60 Hz?',
+        answer: 'No. UGREEN specifies the HDMI port at up to 4K at 30 Hz, so a 4K 60 Hz monitor will run at 30 Hz through this hub.',
+      },
+      {
+        question: 'How many USB-A ports does the hub have?',
+        answer:
+          'Three: one USB 3.0 port at up to 5 Gbps and two USB 2.0 ports at up to 480 Mbps. UGREEN lists all three as data ports and advises against charging devices through them.',
+      },
+      {
+        question: 'Does the hub charge a laptop?',
+        answer:
+          'It passes power through rather than generating it. The USB-C PD input accepts up to 100 W and delivers up to 95 W to the laptop, with 5 W reserved for the hub’s other ports.',
+      },
+      {
+        question: 'Will the HDMI port work with any USB-C laptop?',
+        answer:
+          'Only if the laptop’s USB-C port supports video output. UGREEN states that requirement explicitly; a data-only USB-C port will not send a picture through the hub.',
+      },
+      {
+        question: 'Does the UGREEN 5-in-1 hub have Ethernet?',
+        answer: 'No. The five ports are HDMI, USB-C power delivery, one USB-A 3.0 and two USB-A 2.0. There is no Ethernet, card reader or audio jack on this model.',
+      },
+      {
+        question: 'Does the hub work with a MacBook?',
+        answer:
+          'UGREEN lists macOS among the supported systems, along with Windows and Linux, and names MacBook Pro, MacBook Air and iMac among compatible devices. The monitor still needs the Mac’s USB-C port to support video output.',
+      },
+      {
+        question: 'What is the cable length on the UGREEN hub?',
+        answer: 'The USB-C cable is built in and measures 20 cm, according to UGREEN. The hub weighs 58 g.',
+      },
+    ],
+    links: [
+      {
+        label: 'Laptops & PCs',
+        href: '/shop/laptops',
+        description: 'The laptops and desktops this hub is built to extend.',
+      },
+      {
+        label: 'Full product listing',
+        href: '/product/ugreen-usb-c-hub-5-in-1',
+        description: 'The shop page for this hub, with the current listing details.',
+      },
+      {
+        label: 'AULA F75 Pro spec sheet',
+        href: '/quick-look/aula-f75-pro-wireless-keyboard',
+        description: 'A 75% mechanical keyboard that pairs with a laptop on a hub like this.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
+
+  'aula-f75-pro-wireless-keyboard': {
+    productName: 'AULA F75 Pro',
+    heading: 'AULA F75 Pro specs, features and buying guide',
+    lead: 'The AULA F75 Pro is a 75% mechanical keyboard with 81 keys, a metal volume knob and three ways to connect: 2.4 GHz wireless, Bluetooth 5.0 and USB-C. It uses a gasket mount, hot-swappable 3- and 5-pin sockets, pre-lubed Reaper switches and an 8,000 mAh battery, which makes it a compact board for someone who wants to change switches later without buying another keyboard.',
+    overview: [
+      'A 75% layout keeps the arrow keys and the function row while dropping the number pad and most of the navigation cluster, which is why it fits a smaller desk without giving up the keys most people use. AULA lists 81 keys for this model, with PBT keycaps that are side printed, so the legends face the front edge rather than the top.',
+      'Under the keys AULA uses a gasket mount with IXPE, Poron and silicone padding. The published switch is a pre-lubed linear Reaper, and the sockets accept both 3-pin and 5-pin switches, so the board can be re-switched without soldering. Stabilisers are pre-lubed as well, according to AULA.',
+      'Connectivity is the other half of the pitch. The keyboard pairs over 2.4 GHz or Bluetooth 5.0 and also runs wired over USB-C, and AULA lists Windows, macOS, Android and iOS as supported systems. The battery is 8,000 mAh, with AULA estimating about 30 hours of use with the backlight on and about 80 hours with it off.',
+    ],
+    priceSection: {
+      heading: 'What to check before you buy the AULA F75 Pro',
+      paragraphs: [
+        'Check which switch is in the keyboard you are ordering. AULA sells this model in several colour and switch variants on its own store, and the listing reviewed carries the pre-lubed linear Reaper. A different variant may use a different switch, and that changes the feel more than any other specification here.',
+        'Then check the layout against your habits. A 75% board has no number pad, so anyone who types figures all day should look at a full-size board instead. On the other side, check the connection you need: 2.4 GHz for a desktop, Bluetooth for a tablet or a laptop, USB-C when the battery is low. AULA publishes no dimensions, weight, polling rate or in-box list for this model, so those details are worth confirming with the seller if they matter to you.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Layout', detail: '75%, 81 keys, no number pad' },
+      { term: 'Mount', detail: 'Gasket structure with IXPE, Poron and silicone padding' },
+      { term: 'Keycaps', detail: 'PBT, side printed' },
+      { term: 'Switches', detail: 'Pre-lubed linear Reaper switches, hot-swappable' },
+      { term: 'Sockets', detail: '3-pin and 5-pin support' },
+      { term: 'Connection', detail: '2.4 GHz, Bluetooth 5.0, USB-C wired' },
+      { term: 'Battery', detail: '8,000 mAh; about 30 hours backlit, about 80 hours unlit per AULA' },
+      { term: 'Lighting', detail: 'South-facing RGB, 16 static and 10 dynamic modes' },
+      { term: 'Software', detail: 'AULA download for remapping and lighting' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'The 75% layout and the knob',
+        body: 'Eighty-one keys is a 75% layout: the function row stays, the arrow keys stay, and the number pad and most of the navigation keys go. That is a good compromise for a gaming or writing desk where the mouse needs room, and it keeps the keys most games and shortcuts rely on. The metal knob at the top right handles volume and lighting without a shortcut, which is one of those details that is easy to dismiss until you use it every day.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Gasket mount, and why it matters',
+        body: 'A gasket mount suspends the plate between soft material instead of screwing it directly to the case. AULA pairs it with IXPE, Poron and silicone padding, which is the standard recipe for a softer bottom-out and a lower-pitched sound. The practical effect is a typing feel that gives a little under a hard keystroke rather than stopping dead, and less case resonance. Sound is subjective, but the construction is a real difference from a tray-mounted board at the same price.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Hot-swap sockets and pre-lubed switches',
+        body: 'The sockets take 3-pin and 5-pin switches, so a switch swap is a puller and a few minutes rather than a soldering iron. AULA ships the board with pre-lubed linear Reaper switches and pre-lubed stabilisers, which reduces the scratchiness and rattle a dry board can have out of the box. It also means the keyboard you unbox is closer to the sound most people are trying to build, without a tub of grease and an afternoon.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Three connections and an 8,000 mAh battery',
+        body: 'The 2.4 GHz link is the one to use at a desk: it is a dedicated connection rather than a shared Bluetooth channel. Bluetooth 5.0 is there for a tablet, a phone or a laptop without a free USB port, and USB-C is the fallback when the battery is flat or when you want the most direct connection. The 8,000 mAh cell is large for a 75% board, and AULA estimates about 30 hours with the RGB on and about 80 with it off — figures to plan around rather than measure against.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'What AULA publishes, and what it leaves out',
+        paragraphs: [
+          'The official listing is strong on construction and light on dimensions. It states the 81-key layout, the gasket structure and its foam layers, PBT side-printed keycaps, the Reaper switch and its pre-lubing, 3- and 5-pin hot-swap support, the three connection modes, Bluetooth 5.0, the 8,000 mAh battery, south-facing RGB with 16 static and 10 dynamic modes, full N-key rollover with anti-ghosting, a Windows-key lock and compatibility with Windows, macOS, Android and iOS.',
+          'It does not state the keyboard’s size or weight, the polling rate, or what is in the box. Those are the questions to ask a seller before ordering. On this page they are left out rather than filled with a guess, which is the same rule applied to every other spec sheet in this section.',
+        ],
+      },
+      {
+        heading: 'Battery life in practice',
+        paragraphs: [
+          'Two numbers are published, and the gap between them is the story: about 30 hours with the backlight on, about 80 with it off. If you work eight hours a day with the RGB on, that is roughly four days between charges; turn the lighting off and it stretches to about two weeks of working days. AULA does not publish a charging time or a charge-port specification beyond USB-C, so the honest answer on a recharge is that it depends on the charger you use.',
+          'The 8,000 mAh capacity is large for this class of keyboard, and it is the reason the wireless modes are practical rather than a novelty. It is also why the board is likely to be heavier than a small wired 75%; AULA does not publish the weight, so that remains an open question.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy the AULA F75 Pro, and who should skip it',
+      should: [
+        'You want a compact 75% board that keeps the arrow keys and function row.',
+        'You want to try different switches later: the sockets take 3-pin and 5-pin types.',
+        'You want one keyboard for a desktop, a laptop and a tablet, over 2.4 GHz, Bluetooth or USB-C.',
+        'You want a gasket-mounted board with PBT keycaps and pre-lubed switches as it ships.',
+      ],
+      skip: [
+        'You need a number pad for spreadsheets or accounting.',
+        'You need published dimensions or weight before ordering; AULA does not list them.',
+        'You want a board with a known polling rate on the spec sheet.',
+        'You want a specific switch and cannot confirm which variant a listing carries.',
+      ],
+    },
+    pros: {
+      heading: 'AULA F75 Pro pros and cons',
+      pros: [
+        '75% layout with 81 keys, arrow keys and a function row',
+        'Gasket mount with IXPE, Poron and silicone padding',
+        'Hot-swappable 3-pin and 5-pin sockets',
+        'Pre-lubed Reaper switches and stabilisers',
+        '2.4 GHz, Bluetooth 5.0 and USB-C in one board',
+        '8,000 mAh battery and south-facing RGB',
+      ],
+      cons: [
+        'No number pad',
+        'AULA publishes no dimensions, weight or polling rate',
+        'Battery figures are manufacturer estimates, not measured runtime',
+        'Several colour and switch variants share the name, so the switch depends on the listing',
+        'No in-box contents are listed on the official page reviewed',
+      ],
+    },
+    buyingTips: {
+      heading: 'Buying the AULA F75 Pro in the US',
+      paragraphs: [
+        'Match the variant, not just the name. AULA’s own store lists the F75 Pro in several colourways and with more than one switch option, and the listing reviewed is the version with pre-lubed linear Reaper switches. If you have a preference for linear or tactile feel, confirm the switch before ordering, because the rest of the board is identical.',
+        'Then decide how you will connect it. The 2.4 GHz receiver is the right choice for a desktop, Bluetooth 5.0 for a tablet or a laptop, and USB-C for charging or the lowest-latency link. Since AULA does not publish a box contents list, check whether the cable and receiver are included in the specific listing rather than assuming they are.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How many keys does the AULA F75 Pro have?',
+        answer: 'AULA lists a 75% layout with 81 keys. That includes the function row and the arrow keys, but no number pad.',
+      },
+      {
+        question: 'Is the AULA F75 Pro hot-swappable?',
+        answer:
+          'Yes. AULA states that the sockets accept both 3-pin and 5-pin switches, so switches can be changed without soldering.',
+      },
+      {
+        question: 'Which switches does the AULA F75 Pro use?',
+        answer:
+          'The listing reviewed specifies pre-lubed linear Reaper switches with pre-lubed stabilisers. AULA sells other variants of the same model with different switches, so check the exact one you order.',
+      },
+      {
+        question: 'What Bluetooth version does the AULA F75 Pro use?',
+        answer: 'Bluetooth 5.0, according to AULA. The keyboard also supports 2.4 GHz wireless and a wired USB-C connection.',
+      },
+      {
+        question: 'How long does the AULA F75 Pro battery last?',
+        answer:
+          'AULA estimates about 30 hours with the backlight on and about 80 hours with it off, from an 8,000 mAh battery. Those are manufacturer figures rather than measured runtime.',
+      },
+      {
+        question: 'Does the AULA F75 Pro work with a Mac?',
+        answer: 'AULA lists Windows, macOS, Android and iOS as supported systems, and provides a software download for remapping keys and controlling the lighting.',
+      },
+      {
+        question: 'Is the AULA F75 Pro a full-size keyboard?',
+        answer: 'No. It is a 75% layout, which is compact: it has no number pad and drops most of the navigation cluster to save desk space.',
+      },
+      {
+        question: 'What are the dimensions and weight of the AULA F75 Pro?',
+        answer:
+          'AULA does not publish either on the official product page reviewed, so this sheet does not state a figure. Ask the seller if you need to know whether it fits a specific desk or tray.',
+      },
+    ],
+    links: [
+      {
+        label: 'Gaming Gear',
+        href: '/shop/gaming',
+        description: 'The keyboards, mice and gaming accessories the store carries.',
+      },
+      {
+        label: 'Full product listing',
+        href: '/product/aula-f75-pro-wireless-keyboard',
+        description: 'The shop page for this keyboard, with the current listing details.',
+      },
+      {
+        label: 'UGREEN USB-C Hub 5-in-1 spec sheet',
+        href: '/quick-look/ugreen-usb-c-hub-5-in-1',
+        description: 'The five-port hub, if your laptop needs more connections than it has.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
 }
 
 export function getQuickLookGuide(slug: string): QuickLookGuide | undefined {

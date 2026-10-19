@@ -2398,6 +2398,410 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       },
     ],
   },
+
+  // ── Batch 4: linked entries ───────────────────────────────────────────────
+  // These four slugs already exist in src/data/products.ts, so they carry no
+  // `product` block: the record supplies the name, category, price, rating and
+  // buy link, and only the spec sheet is added here. Nothing in the catalog was
+  // edited for them.
+  'samsung-galaxy-z-fold7-256gb': {
+    slug: 'samsung-galaxy-z-fold7-256gb',
+    displayName: 'Samsung Galaxy Z Fold7',
+    status: 'available',
+    // Everything below is stated on Samsung's own Galaxy Z Fold7 pages. The
+    // pages reviewed publish no display resolution, no charging wattage and no
+    // Wi-Fi, Bluetooth, NFC or UWB detail, so none of those appears here.
+    specSource:
+      "Samsung's Galaxy Z Fold7 product page and Galaxy Z Fold7 comparison page on samsung.com (US), both checked in October 2026",
+    metaDescription:
+      'Galaxy Z Fold7 spec sheet: an 8.0-inch 120 Hz main screen, a 6.5-inch cover display, a 200 MP camera, Snapdragon 8 Elite and a 4,400 mAh battery.',
+    highlights: [
+      { label: 'Main screen', value: '8.0 inches' },
+      { label: 'Cover screen', value: '6.5 inches' },
+      { label: 'Rear camera', value: '200 MP wide' },
+      { label: 'Processor', value: 'Snapdragon 8 Elite' },
+      { label: 'Weight', value: '215 g' },
+    ],
+    keySpecs: [
+      { label: 'Main display', value: '8.0-inch Dynamic AMOLED 2X, 1–120 Hz, up to 2,600 nits' },
+      { label: 'Cover display', value: '6.5-inch Dynamic AMOLED 2X, 21:9, 1–120 Hz, up to 2,600 nits' },
+      { label: 'Processor', value: 'Snapdragon 8 Elite, customized for Galaxy' },
+      { label: 'Memory', value: '12 GB or 16 GB' },
+      { label: 'Storage', value: '256 GB, 512 GB or 1 TB' },
+      { label: 'Rear cameras', value: '200 MP wide, 12 MP ultra wide, 10 MP telephoto (3x optical)' },
+      { label: 'Battery', value: '4,400 mAh typical (4,272 mAh rated)' },
+      { label: 'Weight', value: '215 g' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Samsung' },
+      { label: 'Series', value: 'Galaxy Z Fold' },
+      { label: 'Form', value: 'Book-style foldable, one main screen and one cover screen' },
+      { label: 'Software', value: 'One UI 8, with Galaxy AI' },
+      { label: 'Durability', value: 'IP48 water and dust resistance' },
+      { label: 'S Pen', value: 'Not supported' },
+      { label: 'Colours', value: 'Blue Shadow, Silver Shadow, Jetblack, plus Mint on Samsung.com' },
+    ],
+    specs: [
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Main screen', value: '8.0 inches, measured diagonally' },
+          { label: 'Cover screen', value: '6.5 inches, measured diagonally, 21:9 aspect ratio' },
+          { label: 'Panel', value: 'Dynamic AMOLED 2X on both screens' },
+          { label: 'Refresh rate', value: '1–120 Hz Adaptive Refresh Rate on both screens' },
+          { label: 'Brightness', value: 'Up to 2,600 nits maximum' },
+        ],
+      },
+      {
+        group: 'Performance and storage',
+        rows: [
+          { label: 'Processor', value: 'Snapdragon 8 Elite for Galaxy' },
+          { label: 'Samsung performance claim', value: '38% faster processing, 26% smoother graphics and 41% quicker AI than Galaxy Z Fold6, according to Samsung' },
+          { label: 'Memory', value: '12 GB or 16 GB' },
+          { label: 'Storage', value: '256 GB, 512 GB or 1 TB' },
+          { label: 'Storage note', value: 'Samsung states memory and storage options may vary by country or carrier' },
+        ],
+      },
+      {
+        group: 'Cameras',
+        rows: [
+          { label: 'Wide', value: '200 MP, with 2x Optical Quality Zoom' },
+          { label: 'Ultra wide', value: '12 MP' },
+          { label: 'Telephoto', value: '10 MP, 3x optical zoom' },
+          { label: 'Cover screen camera', value: '10 MP' },
+          { label: 'Main screen camera', value: '10 MP, 100-degree field of view' },
+        ],
+      },
+      {
+        group: 'Battery and build',
+        rows: [
+          { label: 'Battery capacity', value: '4,400 mAh typical; 4,272 mAh rated' },
+          { label: 'Samsung playback claim', value: 'Up to 24 hours of video playback' },
+          { label: 'Thickness, folded', value: '8.9 mm' },
+          { label: 'Thickness, unfolded', value: '4.2 mm' },
+          { label: 'Weight', value: '215 g' },
+          { label: 'Frame', value: 'Advanced Armor Aluminum, with the Armor FlexHinge' },
+          { label: 'Glass', value: 'Corning Gorilla Glass Ceramic 2 on the front, Gorilla Glass Victus 2 on the rear' },
+          { label: 'Water and dust resistance', value: 'IP48' },
+        ],
+      },
+      {
+        group: 'Software',
+        rows: [
+          { label: 'Interface', value: 'One UI 8' },
+          { label: 'Galaxy AI', value: 'Photo Assist, Audio Eraser, Now Brief and Gemini Live screen sharing' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'Samsung does not publish a display resolution for either screen on the product and comparison pages reviewed, so no pixel figure is given here.',
+          'Samsung does not state a charging wattage for this model on those pages.',
+          'Galaxy Z Fold7 does not support the S Pen, Samsung states.',
+          'The pages reviewed list no Wi-Fi, Bluetooth, NFC or UWB specification.',
+          'Samsung notes that memory and storage options, and colour availability, may vary by country or carrier.',
+        ],
+      },
+    ],
+  },
+
+  'playstation-5-disc-console-slim': {
+    slug: 'playstation-5-disc-console-slim',
+    displayName: 'PlayStation 5 Slim',
+    status: 'available',
+    // Sony's slim-console specification list, published with the new model. The
+    // list covers the disc-drive console; the Digital Edition figures differ and
+    // are noted only where Sony gives them. Sony publishes no Bluetooth version
+    // or power-consumption figure for either model.
+    specSource:
+      "Sony Interactive Entertainment's PlayStation.Blog announcement of the slimmer PS5 (10 October 2023), which carries the console's published specification list, checked in October 2026",
+    metaDescription:
+      'PS5 Slim spec sheet: a 1 TB SSD, 16 GB of GDDR6 memory, a 4K 120 Hz HDMI 2.1 output, an Ultra HD Blu-ray disc drive and a 358 mm-wide chassis.',
+    images: [
+      '/product-images/playstation-5-slim-console-dualsense-front.webp',
+      '/product-images/playstation-5-slim-console-vertical-blue.webp',
+    ],
+    imageAlts: [
+      'PlayStation 5 Slim disc console standing beside a DualSense controller, with a stand note',
+      'PlayStation 5 Slim disc console on its horizontal stand with a DualSense controller',
+      'PlayStation 5 Slim disc console seen at an angle against a blue background',
+    ],
+    highlights: [
+      { label: 'Storage', value: '1 TB SSD' },
+      { label: 'Memory', value: '16 GB GDDR6' },
+      { label: 'Graphics', value: '10.3 TFLOPS' },
+      { label: 'Video out', value: '4K 120 Hz' },
+      { label: 'Weight', value: '3.2 kg' },
+    ],
+    keySpecs: [
+      { label: 'CPU', value: 'AMD Ryzen Zen 2, 8 cores / 16 threads, up to 3.5 GHz' },
+      { label: 'GPU', value: 'AMD Radeon RDNA 2, up to 2.23 GHz, 10.3 TFLOPS' },
+      { label: 'Memory', value: '16 GB GDDR6 at 448 GB/s' },
+      { label: 'Storage', value: '1 TB SSD, 5.5 GB/s raw read' },
+      { label: 'Disc drive', value: 'Ultra HD Blu-ray, up to 100 GB per disc; BD and DVD' },
+      { label: 'Video output', value: '4K 120 Hz, 8K and VRR over HDMI 2.1' },
+      { label: 'Dimensions', value: 'Approx. 358 x 96 x 216 mm (W x H x D)' },
+      { label: 'Weight', value: 'Approx. 3.2 kg' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Sony' },
+      { label: 'Family', value: 'PlayStation 5' },
+      { label: 'Model type', value: 'Slim console with a disc drive' },
+      { label: 'Audio', value: 'Tempest 3D AudioTech' },
+      { label: 'Networking', value: 'Ethernet (10/100/1000) and IEEE 802.11 a/b/g/n/ac/ax Wi-Fi' },
+      { label: 'Stand', value: 'Sony sells the vertical stand separately' },
+      { label: 'Digital Edition difference', value: 'Approx. 358 x 80 x 216 mm and 2.6 kg, with no disc drive' },
+    ],
+    specs: [
+      {
+        group: 'Processing',
+        rows: [
+          { label: 'CPU', value: 'x86-64 AMD Ryzen Zen 2, 8 cores / 16 threads, variable frequency up to 3.5 GHz' },
+          { label: 'GPU', value: 'AMD Radeon RDNA 2-based engine with ray-tracing acceleration, up to 2.23 GHz' },
+          { label: 'GPU compute', value: '10.3 TFLOPS' },
+          { label: 'System memory', value: '16 GB GDDR6, 448 GB/s bandwidth' },
+        ],
+      },
+      {
+        group: 'Storage and media',
+        rows: [
+          { label: 'Internal storage', value: '1 TB SSD' },
+          { label: 'SSD read bandwidth', value: '5.5 GB/s raw' },
+          { label: 'Disc drive', value: 'Disc Drive port equipped with a disc drive' },
+          { label: 'Disc formats', value: 'Ultra HD Blu-ray up to 100 GB per disc, plus BD and DVD' },
+        ],
+      },
+      {
+        group: 'Video and audio',
+        rows: [
+          { label: 'Video out', value: '4K 120 Hz TVs, 8K TVs and VRR, specified by HDMI 2.1' },
+          { label: 'Audio', value: 'Tempest 3D AudioTech' },
+        ],
+      },
+      {
+        group: 'Ports and networking',
+        rows: [
+          { label: 'Front ports', value: 'USB-C SuperSpeed 10 Gbps and USB-C Hi-Speed' },
+          { label: 'Rear ports', value: 'Two USB-A SuperSpeed 10 Gbps' },
+          { label: 'Ethernet', value: '10BASE-T, 100BASE-TX, 1000BASE-T' },
+          { label: 'Wi-Fi', value: 'IEEE 802.11 a/b/g/n/ac/ax' },
+        ],
+      },
+      {
+        group: 'Size, weight and power',
+        rows: [
+          { label: 'Dimensions', value: 'Approx. 358 x 96 x 216 mm (width x height x depth), excluding projecting parts' },
+          { label: 'Weight', value: 'Approx. 3.2 kg' },
+          { label: 'Colour panels', value: 'Four separate cover panels, glossy on top and matte below' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'Sony publishes no Bluetooth version and no power-consumption figure in the specification list reviewed.',
+          'Sony\u2019s console specification and its later USB ports guide describe different front-port layouts, and Sony says the design varies by model, so check the exact revision being sold.',
+          'The vertical stand is sold separately; Sony\u2019s own product image carries that note.',
+          'The disc drive is what separates this model from the Digital Edition, which Sony lists at 80 mm tall and 2.6 kg.',
+        ],
+      },
+    ],
+  },
+
+  'ugreen-usb-c-hub-5-in-1': {
+    slug: 'ugreen-usb-c-hub-5-in-1',
+    displayName: 'UGREEN USB-C Hub 5-in-1',
+    status: 'available',
+    // UGREEN's Revodok 105 page (SKU 15495). The port speeds below are quoted
+    // from UGREEN's own port list, which is more specific than the catalog
+    // record's short description and does not contradict it.
+    specSource:
+      "UGREEN's Revodok 105 5-in-1 USB-C Hub product pages for SKU 15495 on ugreen.com and us.ugreen.com, checked in October 2026",
+    metaDescription:
+      'UGREEN 5-in-1 hub spec sheet: 4K 30 Hz HDMI, 100 W USB-C power delivery, one 5 Gbps USB-A port, two USB 2.0 ports and a 20 cm built-in cable.',
+    images: ['/product-images/ugreen-usb-c-hub-5-in-1-front-ports.webp'],
+    imageAlts: [
+      'UGREEN USB-C hub with its cable and a group of connected adapters',
+      'UGREEN 5-in-1 USB-C hub showing its HDMI, USB-C and USB-A ports',
+    ],
+    highlights: [
+      { label: 'Ports', value: '5' },
+      { label: 'HDMI', value: '4K at 30 Hz' },
+      { label: 'Power delivery', value: 'Up to 100 W' },
+      { label: 'USB-A', value: '1 at 5 Gbps, 2 at 480 Mbps' },
+      { label: 'Weight', value: '58 g' },
+    ],
+    keySpecs: [
+      { label: 'HDMI', value: 'Up to 4K at 30 Hz' },
+      { label: 'USB-C PD', value: 'Up to 100 W, with 95 W passed through to the laptop' },
+      { label: 'USB-A 3.0', value: 'One port at up to 5 Gbps, data only' },
+      { label: 'USB-A 2.0', value: 'Two ports at up to 480 Mbps, data only' },
+      { label: 'Housing', value: 'Aluminium, CNC machined' },
+      { label: 'Cable', value: 'Built-in USB-C cable, 20 cm' },
+      { label: 'Weight', value: '58 g' },
+      { label: 'Systems', value: 'Windows, macOS and Linux' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'UGREEN' },
+      { label: 'Model', value: 'Revodok 105, SKU 15495' },
+      { label: 'Type', value: 'USB-C hub with a built-in cable' },
+      { label: 'Colour', value: 'Silver' },
+      { label: 'Connection', value: 'Plug and play, no driver listed' },
+      { label: 'Host requirement', value: 'The host USB-C port must support video output for HDMI' },
+    ],
+    specs: [
+      {
+        group: 'Ports',
+        rows: [
+          { label: 'HDMI', value: 'One, up to 4K at 30 Hz' },
+          { label: 'USB-C PD', value: 'One, up to 100 W input' },
+          { label: 'USB-A 3.0', value: 'One, up to 5 Gbps' },
+          { label: 'USB-A 2.0', value: 'Two, up to 480 Mbps' },
+        ],
+      },
+      {
+        group: 'Power',
+        rows: [
+          { label: 'Power delivery', value: 'Up to 100 W into the hub' },
+          { label: 'Pass-through to host', value: 'Up to 95 W; UGREEN reserves 5 W for the other ports' },
+          { label: 'Charging over the USB-A ports', value: 'Not recommended by UGREEN' },
+        ],
+      },
+      {
+        group: 'Display',
+        rows: [
+          { label: 'Maximum resolution', value: '4K at 30 Hz through HDMI' },
+          { label: 'Host requirement', value: 'The USB-C port on the host device must support video output' },
+          { label: 'HDMI version', value: 'Not stated by UGREEN' },
+        ],
+      },
+      {
+        group: 'Build',
+        rows: [
+          { label: 'Housing', value: 'Aluminium with CNC machining' },
+          { label: 'Built-in cable', value: '20 cm' },
+          { label: 'Weight', value: '58 g' },
+          { label: 'Colour', value: 'Silver' },
+        ],
+      },
+      {
+        group: 'Compatibility',
+        rows: [
+          { label: 'Operating systems', value: 'Windows, macOS, Linux' },
+          { label: 'Devices UGREEN lists', value: 'MacBook Pro and Air, iMac, iPad Pro, Chromebook, Surface, XPS, ThinkPad, iPhone 15 and 16, Galaxy S24 and S25 Ultra, Pixel 8' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'The HDMI output is capped at 30 Hz, so it is not a high-refresh display connection.',
+          'UGREEN does not state which HDMI version the port uses.',
+          'There is no Ethernet, card reader or audio jack on this hub.',
+          'The USB-A ports are for data only, and UGREEN advises against charging through them.',
+          'UGREEN does not publish the hub\u2019s dimensions on the product pages reviewed.',
+        ],
+      },
+    ],
+  },
+
+  'aula-f75-pro-wireless-keyboard': {
+    slug: 'aula-f75-pro-wireless-keyboard',
+    displayName: 'AULA F75 Pro',
+    status: 'available',
+    // The official AULA F75 Pro listing. It publishes no dimensions, weight,
+    // polling rate or in-box list, so none of those appears here. Battery life
+    // is AULA's own estimate and is labelled as a claim, not a measurement.
+    specSource:
+      "AULA's official F75 Pro product page on aulagaming.com (the 'Knob Side-Printed Mechanical Keyboard' listing), checked in October 2026",
+    metaDescription:
+      'AULA F75 Pro spec sheet: a 75% 81-key gasket-mounted board with hot-swap sockets, tri-mode 2.4 GHz, Bluetooth 5.0 and USB-C, plus an 8,000 mAh battery.',
+    images: ['/product-images/aula-f75-pro-wireless-keyboard-desk.webp'],
+    imageAlts: [
+      'AULA F75 Pro keyboard on a dark studio backdrop with purple backlighting',
+      'AULA F75 Pro keyboard on a wooden desk in front of a laptop, lit in purple',
+    ],
+    highlights: [
+      { label: 'Layout', value: '75%, 81 keys' },
+      { label: 'Mount', value: 'Gasket' },
+      { label: 'Switches', value: 'Hot-swap 3/5-pin' },
+      { label: 'Connection', value: '2.4 GHz, BT 5.0, USB-C' },
+      { label: 'Battery', value: '8,000 mAh' },
+    ],
+    keySpecs: [
+      { label: 'Layout', value: '75%, 81 keys' },
+      { label: 'Mount', value: 'Gasket structure with IXPE, Poron and silicone padding' },
+      { label: 'Keycaps', value: 'PBT, side printed' },
+      { label: 'Switches', value: 'Pre-lubed linear Reaper switches on the listing reviewed' },
+      { label: 'Hot-swap', value: '3-pin and 5-pin switches' },
+      { label: 'Connection', value: '2.4 GHz wireless, Bluetooth 5.0, USB-C wired' },
+      { label: 'Battery', value: '8,000 mAh' },
+      { label: 'Lighting', value: 'South-facing RGB, 16 static and 10 dynamic modes' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'AULA' },
+      { label: 'Model', value: 'F75 Pro' },
+      { label: 'Form factor', value: '75% compact layout' },
+      { label: 'Controls', value: 'Metal multifunction knob for media and lighting' },
+      { label: 'Key rollover', value: 'Full N-key rollover with anti-ghosting' },
+      { label: 'Systems', value: 'Windows, macOS, Android and iOS' },
+      { label: 'Software', value: 'AULA provides a download for key remapping and lighting' },
+    ],
+    specs: [
+      {
+        group: 'Layout and build',
+        rows: [
+          { label: 'Layout', value: '75%, 81 keys' },
+          { label: 'Mount', value: 'Gasket mount' },
+          { label: 'Dampening', value: 'IXPE, Poron and silicone padding' },
+          { label: 'Keycaps', value: 'PBT, side printed' },
+          { label: 'Knob', value: 'Metal multifunction control knob' },
+          { label: 'Kickstand', value: 'Two-stage' },
+        ],
+      },
+      {
+        group: 'Switches',
+        rows: [
+          { label: 'Switch type', value: 'Pre-lubed linear Reaper switches' },
+          { label: 'Stabilisers', value: 'Pre-lubed' },
+          { label: 'Hot-swap', value: 'Yes, for 3-pin and 5-pin switches' },
+        ],
+      },
+      {
+        group: 'Connection',
+        rows: [
+          { label: 'Wireless', value: '2.4 GHz' },
+          { label: 'Bluetooth', value: 'Bluetooth 5.0' },
+          { label: 'Wired', value: 'USB-C' },
+          { label: 'Rollover', value: 'Full N-key rollover with anti-ghosting' },
+          { label: 'Windows key lock', value: 'Yes' },
+        ],
+      },
+      {
+        group: 'Battery and lighting',
+        rows: [
+          { label: 'Battery', value: '8,000 mAh rechargeable' },
+          { label: 'Battery life, backlight on', value: 'About 30 hours, according to AULA' },
+          { label: 'Battery life, backlight off', value: 'About 80 hours, according to AULA' },
+          { label: 'Lighting', value: 'South-facing RGB, 16 static and 10 dynamic modes' },
+        ],
+      },
+      {
+        group: 'Compatibility',
+        rows: [
+          { label: 'Systems', value: 'Windows, macOS, Android and iOS' },
+          { label: 'Software', value: 'AULA download for remapping and lighting' },
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'AULA publishes no dimensions, weight or polling rate for this model.',
+          'The battery figures are AULA\u2019s own estimates: about 30 hours with the backlight on, about 80 with it off.',
+          'The listing sells several colour and switch variants, so check which switch the exact one you order carries.',
+          'The official page reviewed does not list what is in the box.',
+        ],
+      },
+    ],
+  },
 }
 
 /**
