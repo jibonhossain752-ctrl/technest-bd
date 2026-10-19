@@ -332,7 +332,10 @@ async function callGetItems(asinBatch: string[], config: CreatorsConfig): Promis
     }
 
     const result = (body ?? {}) as Record<string, unknown>
-    const itemResults = (result.itemResults ?? {}) as Record<string, unknown>
+    // The reference and the offersV2 page name this `itemResults`; the
+    // using-cURL sample names it `itemsResult`. Accept either spelling rather
+    // than silently returning nothing for every ASIN.
+    const itemResults = (result.itemResults ?? result.itemsResult ?? {}) as Record<string, unknown>
     const rawItems = Array.isArray(itemResults.items) ? (itemResults.items as Record<string, unknown>[]) : []
     const rawErrors = Array.isArray(result.errors) ? (result.errors as Record<string, unknown>[]) : []
 
