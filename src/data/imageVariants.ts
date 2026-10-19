@@ -36,7 +36,6 @@ const IMAGE_VARIANTS: Record<string, number[]> = {
   'asus-vivobook-15-x1504va-cool-silver.webp': [260, 360, 520, 720],
   'asus-vivobook-15-x1504va-quiet-blue.webp': [260, 360, 520, 720],
   'asus-vivobook-15-x1504va-terra-cotta.webp': [260, 360, 520, 720],
-  'aula-f75-pro-wireless-keyboard-desk.webp': [260, 360, 520, 720],
   'aula-f75-pro-wireless-keyboard.webp': [260, 360, 520, 720],
   'auto-stop-charging-adapter-hero.webp': [480, 720],
   'auto-stop-charging-adapter-image-2.webp': [480, 720],

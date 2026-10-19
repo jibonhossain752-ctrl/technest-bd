@@ -2522,8 +2522,8 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       '/product-images/playstation-5-slim-console-vertical-blue.webp',
     ],
     imageAlts: [
-      'PlayStation 5 Slim disc console standing beside a DualSense controller, with a stand note',
-      'PlayStation 5 Slim disc console on its horizontal stand with a DualSense controller',
+      'PlayStation 5 Slim disc console beside a DualSense controller, with the vertical stand note',
+      'PlayStation 5 Slim disc console and a DualSense controller on a plain grey background',
       'PlayStation 5 Slim disc console seen at an angle against a blue background',
     ],
     highlights: [
@@ -2714,11 +2714,10 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       "AULA's official F75 Pro product page on aulagaming.com (the 'Knob Side-Printed Mechanical Keyboard' listing), checked in October 2026",
     metaDescription:
       'AULA F75 Pro spec sheet: a 75% 81-key gasket-mounted board with hot-swap sockets, tri-mode 2.4 GHz, Bluetooth 5.0 and USB-C, plus an 8,000 mAh battery.',
-    images: ['/product-images/aula-f75-pro-wireless-keyboard-desk.webp'],
-    imageAlts: [
-      'AULA F75 Pro keyboard on a dark studio backdrop with purple backlighting',
-      'AULA F75 Pro keyboard on a wooden desk in front of a laptop, lit in purple',
-    ],
+    // No folder image is used here: the only clean-looking shot of the board
+    // turned out to be an AI render whose side-printed legends do not spell real
+    // keys ("P10", "FT1", "DNL", "WIR"), so it is not this exact board. The page
+    // therefore keeps the catalog record's own image alone.
     highlights: [
       { label: 'Layout', value: '75%, 81 keys' },
       { label: 'Mount', value: 'Gasket' },
