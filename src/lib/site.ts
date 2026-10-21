@@ -29,7 +29,7 @@ export const SITE = {
   /** Currency symbol used by display helpers. */
   currencySymbol: '$',
   /** Amazon Associates disclosure. Shown with plain visible text, never hidden. */
-  amazonDisclosure: 'As an Amazon Associate we earn from qualifying purchases.',
+  amazonDisclosure: 'As an Amazon Associate I earn from qualifying purchases.',
 } as const
 
 /** Canonical origin, e.g. `https://www.gadgeterea.com`. */
