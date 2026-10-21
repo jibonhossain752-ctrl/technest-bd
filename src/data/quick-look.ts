@@ -20,9 +20,12 @@ import type { Product } from './products'
  *    and no /product page, only its Quick Look page.
  *
  * An entry may also be INFORMATIONAL (`informational: true`): a page that
- * carries no purchase path at all — no outbound store link, no price, no
- * affiliate disclosure. Only manufacturer announcements that this store does
- * not sell belong here, and such an entry must NOT carry a `buyUrl`.
+ * carries no purchase path at all — no outbound store link, no affiliate
+ * disclosure. It is the one shape that can show a price: its `priceBox` carries
+ * a manufacturer's own announced figure with a source and a date (memory.md
+ * rule 3), which is only allowed because there is no Amazon link beside it.
+ * Only manufacturer announcements that this store does not sell belong here,
+ * and such an entry must NOT carry a `buyUrl`.
  *
  * Both shapes are resolved through `resolveQuickLook()`. Callers that need a
  * product record should use that rather than reaching into PRODUCTS, so a
@@ -33,9 +36,13 @@ import type { Product } from './products'
  *   must come from the product's own listing data or a named manufacturer /
  *   retailer source recorded in `specSource`. Never guess a number, a rating
  *   or a warranty term: a missing value stays out of the table.
- * - No price is stored here. Amazon prices change constantly, so the UI shows
- *   the call to action instead (see src/lib/site.ts). If a price is ever added
- *   it must ship with `priceCheckedOn` and be displayed as "as of <date>".
+ * - One price surface only: `priceBox`, a manually entered manufacturer /
+ *   official price that ships with its `source` and `asOf` date (memory.md rule
+ *   3). A page that carries `priceBox` must carry NO Amazon link — Amazon only
+ *   allows an Amazon-served price (Creators/PA API with a timestamp), so a
+ *   manual figure can never sit beside a buy button. Catalog prices stay off
+ *   this surface: they have no verified date, so the UI shows the call to
+ *   action instead (see src/lib/site.ts).
  * - `metaDescription` is required and hand-written per product: the guard in
  *   scripts/check-quick-look.js fails the build when it is missing, outside
  *   120–160 characters, or mentions a price or a review.
@@ -68,12 +75,48 @@ export interface QuickLookOption {
 
 /**
  * A variant dimension the product really has (model version, colour, bundle).
- * Rendered as the detail page's option chips. It is informational only: this
- * store shows no price, so a selection here never changes a figure.
+ * Rendered as the detail page's option chips. Informational only: a selection
+ * never changes the price box, whose figures are the manufacturer's published
+ * ones.
  */
 export interface QuickLookVariant {
   label: string
   options: QuickLookOption[]
+}
+
+/**
+ * One row of a price box's optional table — a configuration and what it costs
+ * (`label` names the setup, `amount` is the display string, `note` is an
+ * optional short caveat such as "no mount needed").
+ */
+export interface QuickLookPriceRow {
+  label: string
+  amount: string
+  note?: string
+}
+
+/**
+ * A page's one price, typed in by hand from a named, dated source.
+ *
+ * Only a manufacturer or an official store may supply it: Amazon's Associates
+ * terms allow an Amazon price only when Amazon itself serves it with a
+ * timestamp, which this site cannot do yet (no Creators/PA API integration). So
+ * a record that carries a `priceBox` carries no Amazon link at all, and the
+ * guard in scripts/check-quick-look.js fails the build on either rule.
+ */
+export interface QuickLookPriceBox {
+  /** What the amount is, e.g. "Apple's announced US launch price". */
+  label: string
+  /** Display string, e.g. "$299". Never an Amazon price. */
+  amount: string
+  /** ISO date the figure was read from the source. Rendered as "as of <date>". */
+  asOf: string
+  /** Where the figure came from, e.g. "Apple Newsroom, October 13, 2026". */
+  source: string
+  /** Optional caveat under the table (tax, excluded accessories, regions). */
+  note?: string
+  /** Optional table: full-setup costs across configurations. */
+  rows?: QuickLookPriceRow[]
 }
 
 /**
@@ -169,6 +212,14 @@ export interface QuickLookEntry {
    * facts are specifications and an announced price.
    */
   informational?: boolean
+  /**
+   * The page's one price, when the owner has typed one in from a dated
+   * manufacturer / official source. Its presence is what makes the page's
+   * price box show a figure, and it forbids any Amazon link on that page (see
+   * QuickLookPriceBox and memory.md rule 3). Omit it and the box reads "No
+   * price listed".
+   */
+  priceBox?: QuickLookPriceBox
   /**
    * Hand-written alt text, position-matched to `images` (index 0 is the first
    * gallery image, which is also the card and og:image). Written while looking
@@ -1621,16 +1672,39 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
   // deliberate, not oversights:
   // - No rating and no review count: there is no listing to take one from, and
   //   the page must never present Amazon's or anyone else's figures as ours.
-  // - The prices on this page are the ones Apple announced on October 13, 2026
-  //   and they live in the guide's prose (attributed, dated, "before tax and
-  //   shipping"), because the data layer stores no undated price. Nothing here
-  //   is a live or falling price, which is the only kind this store refuses to
-  //   publish.
+  // - The page's one price lives in `priceBox`: Apple's own announced US
+  //   figures, typed in from Apple's pages with a source and an `asOf` date. It
+  //   is a launch price, not a live or falling one, and the guide below quotes
+  //   the same dated figures in prose. A page with a price box may carry no
+  //   Amazon link, and this one has none.
   'apple-homeview-smart-display': {
     slug: 'apple-homeview-smart-display',
     displayName: 'Apple HomeView',
     status: 'upcoming',
     informational: true,
+    // The page's only price surface. Apple's own announced US figures, typed in
+    // from Apple's pages and dated — never an Amazon price, and this entry has
+    // no Amazon link, which the guard enforces in both directions.
+    priceBox: {
+      label: 'Apple’s announced US launch price',
+      amount: '$299',
+      asOf: '2026-10-19',
+      source: 'Apple Newsroom and Apple’s buy page, October 2026',
+      rows: [
+        { label: 'HomeView (tabletop)', amount: '$299', note: 'No mount needed' },
+        {
+          label: 'HomeView (Wall Mounted) + Power Mount USB-C Wall Connector',
+          amount: '$358.95',
+        },
+        { label: 'HomeView (Wall Mounted) + Power Mount AC Wired', amount: '$378.95' },
+        {
+          label: 'HomeView (Wall Mounted) + Power Mount PoE Wired',
+          amount: '$428.95',
+          note: 'Mount arrives early 2027',
+        },
+      ],
+      note: 'Wall-mounted totals exclude the USB-C cable and the power adapter: Apple sells both separately and lists no price for either. Prices differ by country, and every figure is before tax and shipping.',
+    },
     product: {
       name: 'Apple HomeView',
       category: 'Smart Home',

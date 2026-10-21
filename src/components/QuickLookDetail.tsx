@@ -1,10 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import type { Product } from '@/data/products'
 import type { QuickLookEntry } from '@/data/quick-look'
-import { AFFILIATE_CTA, AFFILIATE_LINK_ATTRS, SITE } from '@/lib/site'
+import { AFFILIATE_LINK_ATTRS, SITE } from '@/lib/site'
 import TrackedAffiliateLink from './TrackedAffiliateLink'
 import QuickLookGallery from './QuickLookGallery'
 
@@ -28,6 +27,25 @@ interface QuickLookDetailProps {
  * only. Flip to true to restore the row.
  */
 const SHOW_AVAILABILITY_BADGES = false
+
+/**
+ * The price box's placeholder, shown on every page without a `priceBox`.
+ * One constant on purpose: change the wording here and it changes everywhere.
+ */
+export const NO_PRICE_LABEL = 'No price listed'
+
+/** ISO date (YYYY-MM-DD) → "October 19, 2026". UTC-pinned so the server and
+ *  the browser always render the same string. */
+function formatPriceDate(iso: string): string {
+  const parsed = new Date(`${iso}T00:00:00Z`)
+  if (Number.isNaN(parsed.getTime())) return iso
+  return parsed.toLocaleDateString(SITE.locale, {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
+}
 
 /** Two-column key/value rows — label left, value right, long values wrap in their own column. */
 function KeyValue({ label, value }: { label: string; value: string }) {
@@ -60,14 +78,19 @@ function ItemList({ items }: { items: string[] }) {
  * - The product's full catalog record is the source for every visible fact.
  *   Nothing here is invented, and no spec row is rendered unless the data layer
  *   supplies it.
- * - One purchase call to action only, and no price anywhere on the page. The
- *   cart, checkout and "buy now" paths of the source page are deliberately not
- *   ported: this store sells nothing on site, so every purchase is the single
- *   outbound Amazon link.
+ * - Two separate things live in the right-hand column: a PRICE BOX on every
+ *   page, and (only where the page has an Amazon link) one full-width buy
+ *   button below the key specifications. The cart, checkout and one-tap
+ *   purchase paths of the source page are deliberately not ported: this store
+ *   sells nothing on site, so every purchase is the single outbound Amazon link.
+ * - A price figure renders only through `entry.priceBox` (a manual figure from
+ *   the manufacturer or its own store, with its source and date). A page
+ *   carrying one has no Amazon link — see memory.md rule 3 and the build guard.
  * - The affiliate link carries rel="sponsored nofollow noopener" and opens in a
  *   new tab (TrackedAffiliateLink handles both plus the click event).
- * - Exactly one Amazon Associates disclosure sits beside the buy button, in
- *   plain visible text; the guide below does not repeat it.
+ * - Exactly one Amazon Associates disclosure sits under the buy button, in
+ *   plain visible text; the guide below does not repeat it, and a page with no
+ *   Amazon link renders no disclosure at all.
  * - The Spec Score badge is a completeness indicator, not a rating, and never
  *   reaches the structured data.
  */
@@ -93,6 +116,11 @@ export default function QuickLookDetail({
   const specScore = Math.round((filled / 6) * 100)
 
   const heroAlt = imageAlts[0] ?? product.name
+  const priceBox = entry.priceBox
+  // The buy row exists only on a page that has an Amazon link. An informational
+  // entry never does; the guard fails the build if it gains one, or if a page
+  // with a price box gains a link at all.
+  const buyUrl = entry.informational ? null : product.buyUrl
 
   return (
     <article className="container ql-detail">
@@ -158,9 +186,13 @@ export default function QuickLookDetail({
         </div>
 
         <div className="ql-info">
-          <div className="ql-panels">
-            {/* Variant selector. Informational only: this store shows no price,
-                so choosing an option never changes a figure. */}
+          {/* Variant + price share the row on wide screens, as in the source
+              layout. A page with no variant dimension gives the price box the
+              whole row instead of leaving an empty half-width box. */}
+          <div className={variantGroups.length > 0 ? 'ql-panels' : 'ql-panels single'}>
+            {/* Variant selector. Informational only: choosing an option never
+                changes the price box, whose figures are the manufacturer's own
+                published ones. */}
             {variantGroups.length > 0 && (
               <div className="ql-panel">
                 <h2 className="ql-panel-title">Choose variant</h2>
@@ -204,60 +236,55 @@ export default function QuickLookDetail({
               </div>
             )}
 
-            {/* Purchase panel — the source page's price card is replaced here by
-                the single outbound Amazon button, one plain line explaining why
-                there is no figure, and the one visible disclosure line. No
-                price number, no strike-through price, no store lines.
+            {/* Price box — the page's ONE price surface, on every Quick Look
+                page. A figure appears only when the entry carries `priceBox`:
+                a manually entered figure from the manufacturer or its own
+                store, shipped with its source and `asOf` date. Such a page has
+                NO Amazon link (the guard enforces the pair both ways), so a
+                manual figure can never read as an Amazon price. Amazon only
+                allows an Amazon-served
+                price, and this site has no Creators/PA API integration.
 
-                An INFORMATIONAL entry (see QuickLookEntry.informational) renders
-                no purchase panel at all: no store button, no price note and no
-                affiliate disclosure, because there is nothing to buy and no
-                listing to point at. In its place is a plain note saying so —
-                visible text only, never a link. */}
-            {entry.informational ? (
-              <div className="ql-panel ql-buy-panel">
-                <h2 className="ql-panel-title">A spec sheet, not a store listing</h2>
-                <p className="ql-buy-note">
-                  {entry.displayName} is an Apple product this store does not sell, so there is no
-                  buy button and no shop link on this page. The dollar figures in the guide below are
-                  Apple’s own announced US launch prices, dated to its announcement and marked as
-                  before tax and shipping.
-                </p>
-              </div>
-            ) : (
-              <div className="ql-panel ql-buy-panel">
-                {product.buyUrl ? (
-                  <TrackedAffiliateLink
-                    href={product.buyUrl}
-                    className="btn btn-accent ql-buy-btn"
-                    // Affiliate links must be sponsored and nofollowed, in a new
-                    // tab. Passing them here (rather than relying on the shared
-                    // component's default rel) keeps this rule explicit at the one
-                    // place the Quick Look section sends traffic to Amazon.
-                    target={AFFILIATE_LINK_ATTRS.target}
-                    rel={AFFILIATE_LINK_ATTRS.rel}
-                    meta={{
-                      product_slug: product.slug,
-                      product_name: product.name.slice(0, 200),
-                      location: 'quick-look',
-                    }}
-                  >
-                    {AFFILIATE_CTA} ↗
-                  </TrackedAffiliateLink>
-                ) : (
-                  <Link href={`/product/${product.slug}`} className="btn btn-accent ql-buy-btn">
-                    View the product page
-                  </Link>
-                )}
-                <p className="ql-buy-note">
-                  Amazon prices change often, so check the current price on the listing.
-                </p>
-                {/* The one visible disclosure next to the buy button. The guide
-                    below does NOT repeat it — the site-wide footer carries the
-                    site's other copy of this line. */}
-                <p className="ql-disclosure">{SITE.amazonDisclosure}</p>
-              </div>
-            )}
+                Without `priceBox` the box still renders, with one muted line:
+                the NO_PRICE_LABEL constant above. */}
+            <div className="ql-panel ql-price-panel">
+              <h2 className="ql-panel-title">Price</h2>
+              {priceBox ? (
+                <>
+                  <p className="ql-price-amount">{priceBox.amount}</p>
+                  <p className="ql-price-label">{priceBox.label}</p>
+                  <p className="ql-price-asof">
+                    as of{' '}
+                    <time dateTime={priceBox.asOf}>{formatPriceDate(priceBox.asOf)}</time>
+                  </p>
+                  <p className="ql-price-source">Source: {priceBox.source}</p>
+                  {priceBox.rows && priceBox.rows.length > 0 && (
+                    <ul className="ql-price-rows">
+                      {priceBox.rows.map((row) => (
+                        <li className="ql-price-row" key={row.label}>
+                          <span className="ql-price-row-label">
+                            {row.label}
+                            {row.note && <span className="ql-price-row-note">{row.note}</span>}
+                          </span>
+                          <span className="ql-price-row-amount">{row.amount}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {priceBox.note && <p className="ql-price-note">{priceBox.note}</p>}
+                  {/* The informational page's plain note (memory.md rule 4e):
+                      text only, never a link. It says why there is no button. */}
+                  {entry.informational && (
+                    <p className="ql-price-caption">
+                      This store does not sell {entry.displayName}, so this page has no buy
+                      button.
+                    </p>
+                  )}
+                </>
+              ) : (
+                <p className="ql-price-empty">{NO_PRICE_LABEL}</p>
+              )}
+            </div>
           </div>
 
           {entry.keySpecs.length > 0 && (
@@ -268,6 +295,34 @@ export default function QuickLookDetail({
                   <KeyValue key={row.label} label={row.label} value={row.value} />
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Buy row — only where the page has an Amazon link, and never on a
+              page that shows a manual price (the guard enforces the pair).
+              Full width, one button, the required Associates line beneath it. */}
+          {buyUrl && (
+            <div className="ql-buy-row">
+              <TrackedAffiliateLink
+                href={buyUrl}
+                className="btn btn-accent ql-buy-btn"
+                // Affiliate links must be sponsored and nofollowed, in a new
+                // tab. Passing them here (rather than relying on the shared
+                // component's default rel) keeps this rule explicit at the one
+                // place the Quick Look section sends traffic to Amazon.
+                target={AFFILIATE_LINK_ATTRS.target}
+                rel={AFFILIATE_LINK_ATTRS.rel}
+                meta={{
+                  product_slug: product.slug,
+                  product_name: product.name.slice(0, 200),
+                  location: 'quick-look',
+                }}
+              >
+                Buy from Amazon <span aria-hidden="true">↗</span>
+              </TrackedAffiliateLink>
+              {/* The one visible disclosure on the page. The guide below does
+                  NOT repeat it; a page with no Amazon link renders none. */}
+              <p className="ql-disclosure">{SITE.amazonDisclosure}</p>
             </div>
           )}
 

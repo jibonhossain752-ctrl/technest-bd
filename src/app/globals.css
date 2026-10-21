@@ -7835,7 +7835,8 @@ button {
 }
 
 .ql-buy-btn {
-  align-self: flex-start;
+  width: 100%;
+  gap: 8px;
 }
 
 .ql-disclosure {
@@ -8558,19 +8559,99 @@ button {
   color: var(--muted);
 }
 
-/* Purchase panel — the single outbound link, its one-line note and the one
-   visible disclosure. No price number lives anywhere in here. */
-.ql-buy-panel {
+/* Price box — the page's ONE price surface (memory.md rule 3). Amount, label,
+   "as of" date, source, then the optional full-setup table. It sits in the
+   variant box's row on wide screens and on its own otherwise. */
+.ql-price-panel {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+  gap: 6px;
 }
 
-.ql-buy-note {
+.ql-price-amount {
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--dark);
+  overflow-wrap: anywhere;
+}
+
+.ql-price-label {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.ql-price-asof,
+.ql-price-source {
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.ql-price-rows {
+  display: grid;
+  margin: 10px 0 2px;
+  border-top: 1px solid var(--border);
+}
+
+.ql-price-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 12px;
+  align-items: start;
+  padding: 8px 0;
+}
+
+.ql-price-row + .ql-price-row {
+  border-top: 1px solid var(--border);
+}
+
+.ql-price-row-label {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.ql-price-row-note {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.ql-price-row-amount {
   font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+.ql-price-note,
+.ql-price-caption {
+  margin-top: 8px;
+  font-size: 0.75rem;
   line-height: 1.6;
   color: var(--muted);
+}
+
+.ql-price-caption {
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.ql-price-empty {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+/* Buy row — full width of the info column, under the key specifications card,
+   on pages with an Amazon link only: one button and one disclosure line. */
+.ql-buy-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Key / value rows inside the panels */
@@ -8748,12 +8829,16 @@ button {
   }
 }
 
-/* The variant and purchase panels sit side by side only once the info column
-   is wide enough for them — below that they stack, so the buy button never
-   squeezes into a 180px column. */
+/* The variant and price boxes sit side by side only once the info column is
+   wide enough for both — below that they stack. A page with no variant box
+   gives the price box the whole row. */
 @media (min-width: 1200px) {
   .ql-panels {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .ql-panels.single {
+    grid-template-columns: 1fr;
   }
 }
 

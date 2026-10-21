@@ -24,11 +24,20 @@ from a sister project, rewritten for this store. These rules are standing.
    Limits: **max 5 products per post**, **max 2 posts per Quick Look page**.
    Only genuinely covered products — a passing name-drop does not count. Never
    mirror the mapping anywhere else.
-3. **No hardcoded prices.** Amazon prices change constantly, so no price is
-   written into copy, data or schema. Pages show the "Check current price on
-   Amazon" call to action instead. A price may be displayed *only* when the data
-   stores it together with a verified date (`priceCheckedOn`) and the UI shows
-   "as of <date>" — see `datedPrice()` in `src/lib/site.ts`. A Quick Look page
+3. **Price box — one manual manufacturer price, never an Amazon one.** Every
+   Quick Look page renders a "Price" box. A figure appears in it only through
+   `priceBox` on the entry: a manually entered figure from the manufacturer or
+   its own store, carrying `label`, `amount`, `source` and an ISO `asOf` date,
+   rendered as "as of <date>". Amazon's Associates terms only allow a price that Amazon
+   itself serves, so a page with a `priceBox` must have NO Amazon link at all —
+   the guard fails the build in both directions, which is what stops a typed
+   figure ever reading as an Amazon price. An Amazon-sourced price would be
+   allowed only from the Creators/PA API with a timestamp, and that integration
+   does not exist on this site yet. A page with no `priceBox` shows one muted
+   line, "No price listed" (`NO_PRICE_LABEL` in
+   `src/components/QuickLookDetail.tsx`). Catalog prices stay out of Quick Look
+   copy, data and schema: they carry no verified date, so the UI shows the call
+   to action instead — see `datedPrice()` in `src/lib/site.ts`. A Quick Look page
    carries no Product JSON-LD at all: this store sells nothing on site, so there
    is no offer, price or availability to claim, and Google rejects a Product node
    without `offers`, `review` or `aggregateRating` (see rule 4d).

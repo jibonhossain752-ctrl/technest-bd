@@ -18,9 +18,15 @@
  *      display name, a spec source, a hand-written meta description of 120-160
  *      characters with no price or review wording, the detail-page panels
  *      (highlights, key specs, additional info) and at least one spec group with
- *      either label/value rows or bullet items. Each entry also stores no price
- *      without a `priceCheckedOn` date, and no price at all unless it can be
- *      displayed as dated.
+ *      either label/value rows or bullet items. Each entry also stores no
+ *      catalog price without a `priceCheckedOn` date.
+ *
+ *      A page's one price is `priceBox`, a manually entered manufacturer /
+ *      official figure with `amount`, `label`, `source` and an ISO `asOf` date.
+ *      It must not name Amazon, its amount must carry a digit, and — because
+ *      Amazon only allows a price Amazon itself serves — an entry with a
+ *      `priceBox` must have NO buy link at all. A date older than 30 days is a
+ *      warning, not a failure.
  *
  *      An entry is either LINKED to a catalog record or STANDALONE:
  *      - linked: the slug must be a real product slug in src/data/products.ts.
@@ -46,10 +52,12 @@
  *      were deliberately deleted from the Quick Look surface — the note under
  *      the buy button saying no price is shown, and the line repeating the
  *      listing's warranty term. Neither may come back, the catalog may not
- *      reintroduce a warranty field, the purchase panel must carry its one-line
- *      note about checking the listing, and the Amazon Associates disclosure
- *      must be rendered exactly once across the detail surface (beside the buy
- *      button); the site-wide footer carries the other copy.
+ *      reintroduce a warranty field, and the removed "Amazon prices change
+ *      often…" line may not reappear on any Quick Look page (the price box
+ *      replaced it). The purchase area is now a price box on every page plus,
+ *      only where an Amazon link exists, one full-width "Buy from Amazon" row
+ *      under the key specifications with exactly one disclosure line beneath
+ *      it; the site-wide footer carries the other copy.
  *
  *   5. No breadcrumb on the detail pages, and none marked up. A Quick Look
  *      detail page renders no crumb row and no BreadcrumbList: the visible
@@ -381,6 +389,58 @@ for (const slug of Object.keys(QUICK_LOOK)) {
     }
   }
 
+  // Price box (memory.md rule 3). One price surface per page, typed in by hand
+  // from a dated manufacturer / official source. Amazon's Associates terms only
+  // allow an Amazon price that Amazon itself serves (Creators/PA API with a
+  // timestamp), so a manual figure and an Amazon buy link can never coexist.
+  const priceBox = entry.priceBox
+  if (priceBox) {
+    const storeLink =
+      PRODUCTS.find((item) => item.slug === slug)?.buyUrl ?? entry.product?.buyUrl ?? null
+    if (storeLink) {
+      failures.push(
+        `Quick Look entry "${slug}" carries a priceBox AND a buy link — a manually entered price must never sit beside an Amazon link (memory.md rule 3)`,
+      )
+    }
+    for (const key of ['label', 'amount', 'asOf', 'source']) {
+      if (typeof priceBox[key] !== 'string' || !priceBox[key].trim()) {
+        failures.push(
+          `Quick Look entry "${slug}" priceBox is missing ${key} — label, amount, asOf and source are all required`,
+        )
+      }
+    }
+    if (typeof priceBox.amount === 'string' && !/\d/.test(priceBox.amount)) {
+      failures.push(
+        `Quick Look entry "${slug}" priceBox.amount ("${priceBox.amount}") contains no digit`,
+      )
+    }
+    if (/amazon/i.test(priceBox.source ?? '') || /amazon/i.test(priceBox.label ?? '')) {
+      failures.push(
+        `Quick Look entry "${slug}" priceBox names Amazon in its source or label — Amazon-sourced prices may only come from the Creators/PA API with a timestamp, which this site does not have`,
+      )
+    }
+    const asOf = typeof priceBox.asOf === 'string' ? priceBox.asOf : ''
+    const asOfTime = Date.parse(`${asOf}T00:00:00Z`)
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(asOf) || Number.isNaN(asOfTime)) {
+      failures.push(
+        `Quick Look entry "${slug}" priceBox.asOf ("${asOf}") is not a valid ISO date — the box renders it as "as of <date>"`,
+      )
+    } else if ((Date.now() - asOfTime) / 86400000 > 30) {
+      warnings.push(
+        `Quick Look entry "${slug}" priceBox is dated ${asOf}, more than 30 days ago — re-check the figure or the date`,
+      )
+    }
+    for (const row of priceBox.rows ?? []) {
+      if (!row.label || !row.amount) {
+        failures.push(`Quick Look entry "${slug}" priceBox has a row missing its label or amount`)
+      } else if (!/\d/.test(row.amount)) {
+        failures.push(
+          `Quick Look entry "${slug}" priceBox row "${row.label}" has an amount with no digit`,
+        )
+      }
+    }
+  }
+
   // Meta description: hand-written per product, 120-160 characters, and never
   // about a price (the page shows none) or a review (we do not review).
   const metaDescription = entry.metaDescription
@@ -508,23 +568,34 @@ if (disclosureCount !== 1) {
   )
 }
 
-// The purchase panel is one outbound Amazon button, one plain line saying where
-// the price lives, and the disclosure. That line is the whole "why is there no
-// number here" explanation, so it must survive refactors.
-const PURCHASE_NOTE =
-  'Amazon prices change often, so check the current price on the listing.'
+// The purchase area became a price box plus (where an Amazon link exists) a
+// full-width "Buy from Amazon" row. The old note under the button is gone on
+// purpose: the price box answers "what does it cost" better than a line telling
+// the reader to go and look somewhere else.
+const REMOVED_PRICE_NOTE = 'Amazon prices change often'
+const BUY_ROW_LABEL = 'Buy from Amazon'
+for (const relative of SOURCE_FILES) {
+  const full = path.join(ROOT, relative)
+  if (!fs.existsSync(full)) continue
+  if (fs.readFileSync(full, 'utf8').includes(REMOVED_PRICE_NOTE)) {
+    failures.push(
+      `${relative} carries the removed line "${REMOVED_PRICE_NOTE}…" — no Quick Look page shows it any more (the price box replaced it)`,
+    )
+  }
+}
 const detailPath = path.join(ROOT, 'src/components/QuickLookDetail.tsx')
 if (fs.existsSync(detailPath)) {
   const detailText = fs.readFileSync(detailPath, 'utf8')
-  if (!detailText.includes(PURCHASE_NOTE)) {
+  if (!detailText.includes(BUY_ROW_LABEL)) {
     failures.push(
-      'src/components/QuickLookDetail.tsx no longer carries the purchase-panel note about checking the listing',
+      'src/components/QuickLookDetail.tsx no longer renders the Buy from Amazon row — the page has no call to action without it',
     )
   }
-  // No currency figure may render on this surface: the page shows no price.
+  // No hardcoded currency figure may render on this surface: every number comes
+  // from the entry's priceBox, never from the component.
   if (/\$\d/.test(detailText)) {
     failures.push(
-      'src/components/QuickLookDetail.tsx renders a price figure — the Quick Look page shows no price, only the Amazon call to action',
+      'src/components/QuickLookDetail.tsx hardcodes a price figure — every amount must come from the entry priceBox data',
     )
   }
   // An informational entry must render NO purchase panel — the branch is what
@@ -699,6 +770,28 @@ for (const [slug, guide] of Object.entries(QUICK_LOOK_GUIDES)) {
 for (const slug of Object.keys(QUICK_LOOK)) {
   if (!(slug in QUICK_LOOK_GUIDES)) {
     warnings.push(`Quick Look entry "${slug}" has no guide — the page renders its spec sheet alone`)
+  }
+}
+
+/* ── 7. No Product JSON-LD on any Quick Look page ───────────────────── */
+
+// Nothing is sold on a Quick Look page, so there is no offer, price or
+// availability to claim — and Google rejects a Product node without one of
+// `offers`, `review` or `aggregateRating` (memory.md rule 4d). That still holds
+// for a page with a price box: the figure is visible text from the
+// manufacturer, not an offer this store can serve.
+const SCHEMA_SURFACE = [DETAIL_PAGE, 'src/lib/quick-look-schema.ts']
+for (const relative of SCHEMA_SURFACE) {
+  const full = path.join(ROOT, relative)
+  if (!fs.existsSync(full)) {
+    failures.push(`expected Quick Look schema file is missing: ${relative}`)
+    continue
+  }
+  const text = fs.readFileSync(full, 'utf8')
+  if (/'@type':\s*'Product'|"@type":\s*"Product"/.test(text) || /\boffers\s*:/.test(text)) {
+    failures.push(
+      `${relative} emits a Product node or an offers block — Quick Look keeps FAQPage only, also on a page with a price box, because nothing is sold here`,
+    )
   }
 }
 

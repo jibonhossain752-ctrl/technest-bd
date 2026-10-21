@@ -9,7 +9,8 @@ import type { QuickLookEntry } from '@/data/quick-look'
  * - No Product JSON-LD on a Quick Look page. Google's Product snippet requires
  *   one of `offers`, `review` or `aggregateRating`, and this page truthfully has
  *   none of the three: the store sells nothing on site, so there is no offer and
- *   no availability to claim; the page shows no price; and the site does not
+ *   no availability to claim; a visible price box is a manufacturer's own dated
+ *   figure rather than a price this store can serve; and the site does not
  *   test products, so it has no review or rating of its own to publish. Amazon's
  *   star ratings and review counts belong to Amazon and are never re-published
  *   as ours (memory.md rule 5). A Product node carrying none of the three
@@ -39,8 +40,8 @@ export function quickLookFaqSchema(faqs: { question: string; answer: string }[])
  * search term; the suffix falls back to "Specs & Features" when the name is long
  * enough to push the title over the limit.
  *
- * Deliberately never says "Price" (the page shows none) or "Review" (we do not
- * review the product). Pass the entry's `displayName` (brand + model), not the
+ * Deliberately never says "Price" (a page that carries one keeps it in the price
+ * box, dated to its source) or "Review" (we do not review the product). Pass the entry's `displayName` (brand + model), not the
  * full catalog name — the catalog name is an Amazon listing title and blows the
  * 60-character limit on almost every product.
  */
@@ -55,8 +56,9 @@ export function quickLookMetaTitle(displayName: string): string {
 /**
  * Meta description for a Quick Look page. Hand-written per product and stored
  * on the entry (`metaDescription`); the guard checks the 120–160 character
- * limit, so nothing is trimmed here. Carries no price: the page itself shows
- * none, and a figure that has moved is worse than none at all.
+ * limit, so nothing is trimmed here. Carries no price: a figure that has moved
+ * is worse than none at all, and the price box — not the SERP snippet — is where
+ * a dated manufacturer figure belongs.
  */
 export function quickLookMetaDescription(entry: QuickLookEntry): string {
   return entry.metaDescription
