@@ -9,8 +9,8 @@ import type { QuickLookEntry } from '@/data/quick-look'
  * - No Product JSON-LD on a Quick Look page. Google's Product snippet requires
  *   one of `offers`, `review` or `aggregateRating`, and this page truthfully has
  *   none of the three: the store sells nothing on site, so there is no offer and
- *   no availability to claim; a visible price box is a manufacturer's own dated
- *   figure rather than a price this store can serve; and the site does not
+ *   no availability to claim; a visible price box is a hand-entered figure that
+ *   may be out of date, not an offer this store serves; and the site does not
  *   test products, so it has no review or rating of its own to publish. Amazon's
  *   star ratings and review counts belong to Amazon and are never re-published
  *   as ours (memory.md rule 5). A Product node carrying none of the three

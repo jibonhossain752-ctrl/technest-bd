@@ -96,19 +96,30 @@ export interface QuickLookPriceRow {
 }
 
 /**
- * A page's one price, typed in by hand from a named, dated source.
+ * A page's one price, typed in by hand by the owner.
  *
- * Only a manufacturer or an official store may supply it: Amazon's Associates
- * terms allow an Amazon price only when Amazon itself serves it with a
- * timestamp, which this site cannot do yet (no Creators/PA API integration). So
- * a record that carries a `priceBox` carries no Amazon link at all, and the
- * guard in scripts/check-quick-look.js fails the build on either rule.
+ * The figure is hand-entered and may be out of date; `asOf` says when it was
+ * typed in and `source` says who supplied it. A page may carry a `priceBox`
+ * and an Amazon buy link together — owner decision on 2026-10-21 (see the guard
+ * in scripts/check-quick-look.js), which supersedes the earlier rule that the
+ * two could not coexist.
+ *
+ * Either give one headline `amount`, or leave `amount` out and price each
+ * variant in `rows` (then `label` is the neutral heading, e.g. "Prices by
+ * storage capacity").
  */
 export interface QuickLookPriceBox {
-  /** What the amount is, e.g. "Apple's announced US launch price". */
+  /**
+   * The headline: what the amount is (e.g. "Apple's announced US launch
+   * price"), or, on a page priced per variant, a neutral heading such as
+   * "Prices by storage capacity". Rendered large when `amount` is absent.
+   */
   label: string
-  /** Display string, e.g. "$299". Never an Amazon price. */
-  amount: string
+  /**
+   * The single headline figure, e.g. "$299". Omit it on a page priced per
+   * variant; each variant's price then lives in `rows`.
+   */
+  amount?: string
   /** ISO date the figure was read from the source. Rendered as "as of <date>". */
   asOf: string
   /** Where the figure came from, e.g. "Apple Newsroom, October 13, 2026". */
@@ -267,6 +278,13 @@ export interface QuickLookEntry {
 export const QUICK_LOOK: Record<string, QuickLookEntry> = {
   'sony-wh-1000xm5-headphones': {
     slug: 'sony-wh-1000xm5-headphones',
+    // Prices entered by hand by the owner on 2026-10-21; not fetched from any API.
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$199.99',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'Sony WH-1000XM5',
     status: 'available',
     // Values below come from Sony's own WH-1000XM5 specification sheet and help
@@ -386,6 +404,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
   // render the Amazon button alone — nothing is ever estimated or hardcoded.
   'apple-airpods-pro-3': {
     slug: 'apple-airpods-pro-3',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$126',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'Apple AirPods Pro 3',
     status: 'available',
     product: {
@@ -564,6 +588,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'dji-osmo-action-5-pro': {
     slug: 'dji-osmo-action-5-pro',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$229.00',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'DJI Osmo Action 5 Pro',
     status: 'available',
     product: {
@@ -745,6 +775,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'samsung-galaxy-tab-s10-ultra': {
     slug: 'samsung-galaxy-tab-s10-ultra',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$1,099.99',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'Samsung Galaxy Tab S10 Ultra',
     status: 'available',
     product: {
@@ -885,6 +921,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'samsung-galaxy-s26-ultra': {
     slug: 'samsung-galaxy-s26-ultra',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$1,598.99',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'Samsung Galaxy S26 Ultra',
     status: 'available',
     product: {
@@ -1179,6 +1221,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'apple-iphone-17-pro-max': {
     slug: 'apple-iphone-17-pro-max',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$1,289',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'Apple iPhone 17 Pro Max',
     status: 'available',
     product: {
@@ -1363,6 +1411,19 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'vivo-x300-pro': {
     slug: 'vivo-x300-pro',
+    // Priced per configuration, kept exactly as the owner typed it (approximate
+    // figures with their ranges), with the Amazon US listing as its own row.
+    priceBox: {
+      label: 'Prices by configuration',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+      rows: [
+        { label: '12GB RAM + 256GB', amount: 'around $779 - $869' },
+        { label: '12GB RAM + 256GB (Amazon US listing)', amount: 'around $1,099' },
+        { label: '16GB RAM + 512GB', amount: 'around $899 - $1,018' },
+        { label: '16GB RAM + 1TB', amount: 'around $979' },
+      ],
+    },
     displayName: 'vivo X300 Pro',
     status: 'available',
     product: {
@@ -1512,6 +1573,18 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'apple-ipad-air-11-m3': {
     slug: 'apple-ipad-air-11-m3',
+    // Priced per storage variant, all Wi-Fi models: one row each.
+    priceBox: {
+      label: 'Prices by capacity (Wi-Fi)',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+      rows: [
+        { label: '128GB', amount: '$749' },
+        { label: '256GB', amount: '$849' },
+        { label: '512GB', amount: '$1,049' },
+        { label: '1TB', amount: '$1,349' },
+      ],
+    },
     displayName: 'Apple iPad Air 11 (M3)',
     status: 'available',
     product: {
@@ -1914,6 +1987,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
   // recorded in specSource, and anything they do not publish stays out.
   'asus-vivobook-15-x1504va': {
     slug: 'asus-vivobook-15-x1504va',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$589.21',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'ASUS Vivobook 15 (X1504VA)',
     status: 'available',
     product: {
@@ -2060,6 +2139,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'lenovo-ideacentre-aio-27': {
     slug: 'lenovo-ideacentre-aio-27',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$559.99',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'Lenovo IdeaCentre AIO 27',
     status: 'available',
     product: {
@@ -2212,6 +2297,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'xiaomi-redmi-watch-5': {
     slug: 'xiaomi-redmi-watch-5',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$43.49',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'Xiaomi Redmi Watch 5',
     status: 'available',
     product: {
@@ -2480,6 +2571,17 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
   // edited for them.
   'samsung-galaxy-z-fold7-256gb': {
     slug: 'samsung-galaxy-z-fold7-256gb',
+    // Priced per storage variant: no single headline amount, one row each.
+    priceBox: {
+      label: 'Prices by storage',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+      rows: [
+        { label: '256GB', amount: '$1,999.99' },
+        { label: '512GB', amount: '$2,199.99' },
+        { label: '1TB', amount: '$2,499.99' },
+      ],
+    },
     displayName: 'Samsung Galaxy Z Fold7',
     status: 'available',
     // Everything below is stated on Samsung's own Galaxy Z Fold7 pages. The
@@ -2581,6 +2683,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'playstation-5-disc-console-slim': {
     slug: 'playstation-5-disc-console-slim',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$649.00',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'PlayStation 5 Slim',
     status: 'available',
     // Sony's slim-console specification list, published with the new model. The
@@ -2683,6 +2791,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'ugreen-usb-c-hub-5-in-1': {
     slug: 'ugreen-usb-c-hub-5-in-1',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$13.29',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'UGREEN USB-C Hub 5-in-1',
     status: 'available',
     // UGREEN's Revodok 105 page (SKU 15495). The port speeds below are quoted
@@ -2779,6 +2893,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   'aula-f75-pro-wireless-keyboard': {
     slug: 'aula-f75-pro-wireless-keyboard',
+    priceBox: {
+      label: 'Owner-entered price',
+      amount: '$64.99',
+      asOf: '2026-10-21',
+      source: 'Entered by hand by the site owner, October 21, 2026',
+    },
     displayName: 'AULA F75 Pro',
     status: 'available',
     // The official AULA F75 Pro listing. It publishes no dimensions, weight,

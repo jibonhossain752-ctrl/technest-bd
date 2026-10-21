@@ -28,12 +28,12 @@ from a sister project, rewritten for this store. These rules are standing.
    Quick Look page renders a "Price" box. A figure appears in it only through
    `priceBox` on the entry: a manually entered figure from the manufacturer or
    its own store, carrying `label`, `amount`, `source` and an ISO `asOf` date,
-   rendered as "as of <date>". Amazon's Associates terms only allow a price that Amazon
-   itself serves, so a page with a `priceBox` must have NO Amazon link at all —
-   the guard fails the build in both directions, which is what stops a typed
-   figure ever reading as an Amazon price. An Amazon-sourced price would be
-   allowed only from the Creators/PA API with a timestamp, and that integration
-   does not exist on this site yet. A page with no `priceBox` shows one muted
+   rendered as   "as of <date>". A page may carry a `priceBox` and an Amazon buy link
+   together: price + buy link allowed together by owner decision on 2026-10-21,
+   and the prices are hand-entered and may be out of date. (This replaced the
+   2026-10-20 rule that the two could never coexist.) A page priced per variant
+   leaves `amount` out and puts one row per variant in `rows`; its `label` is
+   then the neutral heading. A page with no `priceBox` shows one muted
    line, "No price listed" (`NO_PRICE_LABEL` in
    `src/components/QuickLookDetail.tsx`). Catalog prices stay out of Quick Look
    copy, data and schema: they carry no verified date, so the UI shows the call

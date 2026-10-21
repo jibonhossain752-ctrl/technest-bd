@@ -21,11 +21,12 @@
  *      either label/value rows or bullet items. Each entry also stores no
  *      catalog price without a `priceCheckedOn` date.
  *
- *      A page's one price is `priceBox`, a manually entered manufacturer /
- *      official figure with `amount`, `label`, `source` and an ISO `asOf` date.
- *      It must not name Amazon, its amount must carry a digit, and — because
- *      Amazon only allows a price Amazon itself serves — an entry with a
- *      `priceBox` must have NO buy link at all. A date older than 30 days is a
+ *      A page's one price is `priceBox`, a hand-entered figure with `label`,
+ *      `source` and an ISO `asOf` date, plus either one headline `amount` or
+ *      one row per variant (`rows`). It must not name Amazon in its source or
+ *      label, and any amount it does carry must contain a digit. Price + buy
+ *      link allowed together by owner decision on 2026-10-21. Prices are
+ *      hand-entered and may be out of date. A date older than 30 days is a
  *      warning, not a failure.
  *
  *      An entry is either LINKED to a catalog record or STANDALONE:
@@ -390,29 +391,30 @@ for (const slug of Object.keys(QUICK_LOOK)) {
   }
 
   // Price box (memory.md rule 3). One price surface per page, typed in by hand
-  // from a dated manufacturer / official source. Amazon's Associates terms only
-  // allow an Amazon price that Amazon itself serves (Creators/PA API with a
-  // timestamp), so a manual figure and an Amazon buy link can never coexist.
+  // by the owner.
+  //
+  // Price + buy link allowed together by owner decision on 2026-10-21. Prices are
+  // hand-entered and may be out of date. (This replaced the earlier rule that a
+  // priceBox and an Amazon link could never coexist, which blocked almost every
+  // page in the catalog.)
   const priceBox = entry.priceBox
   if (priceBox) {
-    const storeLink =
-      PRODUCTS.find((item) => item.slug === slug)?.buyUrl ?? entry.product?.buyUrl ?? null
-    if (storeLink) {
-      failures.push(
-        `Quick Look entry "${slug}" carries a priceBox AND a buy link — a manually entered price must never sit beside an Amazon link (memory.md rule 3)`,
-      )
-    }
-    for (const key of ['label', 'amount', 'asOf', 'source']) {
+    for (const key of ['label', 'asOf', 'source']) {
       if (typeof priceBox[key] !== 'string' || !priceBox[key].trim()) {
         failures.push(
-          `Quick Look entry "${slug}" priceBox is missing ${key} — label, amount, asOf and source are all required`,
+          `Quick Look entry "${slug}" priceBox is missing ${key} — label, asOf and source are all required`,
         )
       }
     }
-    if (typeof priceBox.amount === 'string' && !/\d/.test(priceBox.amount)) {
+    const amount = typeof priceBox.amount === 'string' ? priceBox.amount.trim() : ''
+    const priceRows = Array.isArray(priceBox.rows) ? priceBox.rows : []
+    if (!amount && priceRows.length === 0) {
       failures.push(
-        `Quick Look entry "${slug}" priceBox.amount ("${priceBox.amount}") contains no digit`,
+        `Quick Look entry "${slug}" priceBox has neither an amount nor any rows — the box would show only its heading`,
       )
+    }
+    if (amount && !/\d/.test(amount)) {
+      failures.push(`Quick Look entry "${slug}" priceBox.amount ("${amount}") contains no digit`)
     }
     if (/amazon/i.test(priceBox.source ?? '') || /amazon/i.test(priceBox.label ?? '')) {
       failures.push(
@@ -430,7 +432,7 @@ for (const slug of Object.keys(QUICK_LOOK)) {
         `Quick Look entry "${slug}" priceBox is dated ${asOf}, more than 30 days ago — re-check the figure or the date`,
       )
     }
-    for (const row of priceBox.rows ?? []) {
+    for (const row of priceRows) {
       if (!row.label || !row.amount) {
         failures.push(`Quick Look entry "${slug}" priceBox has a row missing its label or amount`)
       } else if (!/\d/.test(row.amount)) {

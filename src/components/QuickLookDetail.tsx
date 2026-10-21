@@ -238,21 +238,24 @@ export default function QuickLookDetail({
 
             {/* Price box — the page's ONE price surface, on every Quick Look
                 page. A figure appears only when the entry carries `priceBox`:
-                a manually entered figure from the manufacturer or its own
-                store, shipped with its source and `asOf` date. Such a page has
-                NO Amazon link (the guard enforces the pair both ways), so a
-                manual figure can never read as an Amazon price. Amazon only
-                allows an Amazon-served
-                price, and this site has no Creators/PA API integration.
+                a price the owner typed in by hand, shipped with its source and
+                `asOf` date. Price + buy link allowed together by owner
+                decision on 2026-10-21. Prices are hand-entered and may be out
+                of date, which is what the source line says.
 
-                Without `priceBox` the box still renders, with one muted line:
-                the NO_PRICE_LABEL constant above. */}
+                A page priced per variant leaves `amount` out and puts one row
+                per variant in `rows`; its neutral `label` then takes the
+                headline slot. Without `priceBox` the box still renders, with
+                one muted line: the NO_PRICE_LABEL constant above. */}
             <div className="ql-panel ql-price-panel">
               <h2 className="ql-panel-title">Price</h2>
               {priceBox ? (
                 <>
-                  <p className="ql-price-amount">{priceBox.amount}</p>
-                  <p className="ql-price-label">{priceBox.label}</p>
+                  {/* A page priced per variant has no single figure: its
+                      neutral `label` (e.g. "Prices by storage capacity") takes
+                      the headline slot and every variant keeps its own row. */}
+                  <p className="ql-price-amount">{priceBox.amount ?? priceBox.label}</p>
+                  {priceBox.amount && <p className="ql-price-label">{priceBox.label}</p>}
                   <p className="ql-price-asof">
                     as of{' '}
                     <time dateTime={priceBox.asOf}>{formatPriceDate(priceBox.asOf)}</time>
