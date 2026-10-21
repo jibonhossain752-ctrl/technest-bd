@@ -71,6 +71,14 @@ export interface QuickLookOption {
   label: string
   /** Short, factual note about the option — never a price. */
   note?: string
+  /**
+   * Optional: this option is not offered while another dimension is set to one
+   * of `options` (HomeView: Starlight and Rose Pink exist only on the tabletop
+   * model). The chip then renders greyed out, disabled and `aria-disabled`, and
+   * the selector moves the selection to the first option in this group that is
+   * still available. Leave it unset where every combination exists.
+   */
+  disabledWhen?: { group: string; options: string[] }
 }
 
 /**
@@ -82,6 +90,13 @@ export interface QuickLookOption {
 export interface QuickLookVariant {
   label: string
   options: QuickLookOption[]
+  /**
+   * Optional caption under this dimension's chips, used instead of the selected
+   * option's `note`. For a page whose options depend on another dimension
+   * (HomeView's colours), one per-option note cannot describe every combination
+   * truthfully; this one sentence can.
+   */
+  note?: string
 }
 
 /**
@@ -201,6 +216,14 @@ export interface QuickLookEntry {
   highlights: QuickLookSpecRow[]
   /** Variant dimensions with verified option labels. Omit when unverified. */
   variants?: QuickLookVariant[]
+  /**
+   * Optional gallery mapping for a page whose variants really have their own
+   * picture: the key is the selected option label from each dimension in
+   * `variants` order, joined with " + " ("HomeView (Wall Mounted) + Space Gray"),
+   * and the value is an image already listed in `images`. A page that leaves it
+   * out behaves exactly as before — selecting a chip changes nothing.
+   */
+  variantImages?: Record<string, string>
   /** The "Key specifications" panel beside the gallery. */
   keySpecs: QuickLookSpecRow[]
   /** The "Additional info" panel beside the gallery. */
@@ -1807,12 +1830,12 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
     // file. They are renders — Apple has published no photographs these could
     // copy — so the wording says "render" and names only what the picture shows.
     imageAlts: [
-      'Apple HomeView render: silver tabletop model on its speaker base, music playing, render 1 of 6',
-      'Apple HomeView render: starlight tabletop model on its speaker base, render 2 of 6',
-      'Apple HomeView render: rose pink tabletop model on its speaker base with album art, render 3 of 6',
-      'Apple HomeView render: space gray tabletop model on its speaker base, render 4 of 6',
-      'Apple HomeView render: silver wall-mounted model showing home-control tiles, render 5 of 6',
-      'Apple HomeView render: space gray wall-mounted model mounted on a wall, render 6 of 6',
+      'Apple HomeView tabletop in Silver, render',
+      'Apple HomeView tabletop in Starlight, render',
+      'Apple HomeView tabletop in Rose Pink, render',
+      'Apple HomeView tabletop in Space Gray, render',
+      'Apple HomeView wall-mounted in Silver, render',
+      'Apple HomeView wall-mounted in Space Gray, render',
     ],
     images: [
       '/product-images/apple-homeview-silver.webp',
@@ -1829,8 +1852,10 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       { label: 'Wireless', value: 'Wi-Fi 6E, BT 6.0, Thread' },
       { label: 'Availability', value: 'From November 13' },
     ],
-    // Informational chips only. They select nothing and change no figure — the
-    // page has no price to change.
+    // The chips choose which of the six renders above is shown (variantImages
+    // below); they never change a figure, so the price box is untouched.
+    // Wall-mounted availability re-checked on apple.com on October 21, 2026:
+    // the wall-mounted model comes in Silver and Space Gray only.
     variants: [
       {
         label: 'Model',
@@ -1841,14 +1866,36 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       },
       {
         label: 'Color',
+        // One caption for the whole dimension: the old per-option notes
+        // ("Both models") were wrong once the model could be wall-mounted.
+        note: 'Tabletop: 4 colors. Wall mounted: Space Gray and Silver.',
         options: [
-          { label: 'Silver', note: 'Both models' },
-          { label: 'Starlight', note: 'Tabletop only' },
-          { label: 'Rose Pink', note: 'Tabletop only' },
-          { label: 'Space Gray', note: 'Both models' },
+          { label: 'Silver' },
+          {
+            label: 'Starlight',
+            disabledWhen: { group: 'Model', options: ['HomeView (Wall Mounted)'] },
+          },
+          {
+            label: 'Rose Pink',
+            disabledWhen: { group: 'Model', options: ['HomeView (Wall Mounted)'] },
+          },
+          { label: 'Space Gray' },
         ],
       },
     ],
+    // Owner's six files in "Apple HomeView Price, Release Date, Specs & Features",
+    // each already on this page as the render of the same name. Key order follows
+    // `variants`: Model, then Color.
+    variantImages: {
+      'HomeView + Silver': '/product-images/apple-homeview-silver.webp',
+      'HomeView + Starlight': '/product-images/apple-homeview-starlight.webp',
+      'HomeView + Rose Pink': '/product-images/apple-homeview-rose-pink.webp',
+      'HomeView + Space Gray': '/product-images/apple-homeview-space-gray.webp',
+      'HomeView (Wall Mounted) + Silver':
+        '/product-images/apple-homeview-wall-mounted-silver.webp',
+      'HomeView (Wall Mounted) + Space Gray':
+        '/product-images/apple-homeview-wall-mounted-space-gray.webp',
+    },
     keySpecs: [
       { label: 'Display', value: '7-inch (diagonal) Liquid Retina, 1088-by-1088 pixels at 220 ppi' },
       { label: 'Chip', value: 'A18 chip with Secure Exclaves' },

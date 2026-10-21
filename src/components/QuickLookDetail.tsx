@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { Product } from '@/data/products'
-import type { QuickLookEntry } from '@/data/quick-look'
+import type { QuickLookEntry, QuickLookVariant } from '@/data/quick-look'
 import { AFFILIATE_LINK_ATTRS, SITE } from '@/lib/site'
 import TrackedAffiliateLink from './TrackedAffiliateLink'
 import QuickLookGallery from './QuickLookGallery'
@@ -69,6 +69,26 @@ function ItemList({ items }: { items: string[] }) {
 }
 
 /**
+ * Whether one option is unavailable for the current selection: an option may
+ * carry `disabledWhen`, naming another dimension and the options that rule it
+ * out (HomeView's Starlight and Rose Pink under the wall-mounted model).
+ * Pure, so the render and the fallback below always agree.
+ */
+function optionBlocked(
+  groups: QuickLookVariant[],
+  selection: number[],
+  groupIndex: number,
+  optionIndex: number,
+): boolean {
+  const condition = groups[groupIndex]?.options[optionIndex]?.disabledWhen
+  if (!condition) return false
+  const otherIndex = groups.findIndex((group) => group.label === condition.group)
+  if (otherIndex < 0) return false
+  const current = groups[otherIndex]?.options[selection[otherIndex] ?? 0]?.label
+  return typeof current === 'string' && condition.options.includes(current)
+}
+
+/**
  * The spec-sheet half of a Quick Look page, ported from the source project's
  * detail layout: highlight strip, gallery with its thumbnail rail, variant
  * selector, the purchase panel, key specifications, additional info and the
@@ -102,6 +122,31 @@ export default function QuickLookDetail({
 }: QuickLookDetailProps) {
   const variantGroups = entry.variants ?? []
   const [selected, setSelected] = useState<number[]>(() => variantGroups.map(() => 0))
+
+  /**
+   * Select an option, then repair any other dimension the choice just made
+   * unavailable: it falls to the first option that is still offered (HomeView's
+   * colour falls back to Silver when the wall-mounted model is chosen).
+   */
+  const selectOption = (groupIndex: number, optionIndex: number) =>
+    setSelected((current) => {
+      const next = current.map((value, index) => (index === groupIndex ? optionIndex : value))
+      return next.map((value, index) => {
+        if (!optionBlocked(variantGroups, next, index, value)) return value
+        const fallback = variantGroups[index].options.findIndex(
+          (_, candidate) => !optionBlocked(variantGroups, next, index, candidate),
+        )
+        return fallback >= 0 ? fallback : value
+      })
+    })
+
+  // A page whose variants have their own picture maps the current combination
+  // to a gallery image already on the page (entry.variantImages). A page without
+  // the map resolves to undefined, and the gallery behaves as it always has.
+  const selectionKey = variantGroups
+    .map((group, index) => group.options[selected[index] ?? 0]?.label ?? '')
+    .join(' + ')
+  const selectedVariantImage = entry.variantImages?.[selectionKey]
 
   // Deterministic Spec Score: the share of this entry's spec fields that are
   // actually filled in, not a rating and not invented data.
@@ -173,6 +218,7 @@ export default function QuickLookDetail({
             fallbackEmoji={product.image}
             altFallback={heroAlt}
             specScore={specScore}
+            selectedImage={selectedVariantImage}
           />
           {/* An informational page shows renders rather than the manufacturer's
               photographs, so the gallery says so under the image. Text only —
@@ -190,7 +236,8 @@ export default function QuickLookDetail({
               layout. A page with no variant dimension gives the price box the
               whole row instead of leaving an empty half-width box. */}
           <div className={variantGroups.length > 0 ? 'ql-panels' : 'ql-panels single'}>
-            {/* Variant selector. Informational only: choosing an option never
+            {/* Variant selector. It can change the gallery image on a page whose
+                entry maps the combination (entry.variantImages); it never
                 changes the price box, whose figures are the manufacturer's own
                 published ones. */}
             {variantGroups.length > 0 && (
@@ -205,30 +252,36 @@ export default function QuickLookDetail({
                       </span>
                     </div>
                     <div className="ql-variant-chips">
-                      {group.options.map((option, optionIndex) => (
-                        <button
-                          key={option.label}
-                          type="button"
-                          className={
-                            (selected[groupIndex] ?? 0) === optionIndex
-                              ? 'ql-chip active'
-                              : 'ql-chip'
-                          }
-                          onClick={() =>
-                            setSelected((current) =>
-                              current.map((value, index) =>
-                                index === groupIndex ? optionIndex : value,
-                              ),
-                            )
-                          }
-                        >
-                          {option.label}
-                        </button>
-                      ))}
+                      {group.options.map((option, optionIndex) => {
+                        const blocked = optionBlocked(
+                          variantGroups,
+                          selected,
+                          groupIndex,
+                          optionIndex,
+                        )
+                        return (
+                          <button
+                            key={option.label}
+                            type="button"
+                            className={
+                              (selected[groupIndex] ?? 0) === optionIndex
+                                ? 'ql-chip active'
+                                : 'ql-chip'
+                            }
+                            onClick={() => selectOption(groupIndex, optionIndex)}
+                            disabled={blocked}
+                            aria-disabled={blocked || undefined}
+                          >
+                            {option.label}
+                          </button>
+                        )
+                      })}
                     </div>
-                    {group.options[selected[groupIndex] ?? 0]?.note && (
+                    {/* One caption for the whole dimension when the data gives
+                        one, otherwise the selected option's own note. */}
+                    {(group.note ?? group.options[selected[groupIndex] ?? 0]?.note) && (
                       <p className="ql-variant-note">
-                        {group.options[selected[groupIndex] ?? 0]?.note}
+                        {group.note ?? group.options[selected[groupIndex] ?? 0]?.note}
                       </p>
                     )}
                   </div>

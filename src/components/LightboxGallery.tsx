@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { responsiveSrcset } from '@/lib/images'
 
 interface LightboxGalleryProps {
@@ -18,6 +19,14 @@ interface LightboxGalleryProps {
  * keyboard navigation (←/→/Esc), a single-row thumbnail strip and a close
  * button. Behaviours mirror the site's product galleries; styling uses only
  * the site's own custom properties (see the .ql-lightbox block in globals.css).
+ *
+ * Rendered in a PORTAL on document.body: the gallery sits inside `.ql-hero` and
+ * the page's own stacking contexts, so in-tree it could only ever paint as high
+ * as they allow. `.ql-lightbox` carries a z-index above the sticky site header
+ * (1020) and the mobile bottom nav (1005); the portal removes the other half of
+ * the problem, an ancestor context capping that z-index. Its size is expressed
+ * in dvh with safe-area padding, so the counter line, the close button and the
+ * thumbnails stay inside the visible viewport.
  */
 export default function LightboxGallery({
   images,
@@ -50,8 +59,10 @@ export default function LightboxGallery({
 
   const current = images[index]
   if (!current) return null
+  // The lightbox only opens from a click, but keep the server render harmless.
+  if (typeof document === 'undefined') return null
 
-  return (
+  return createPortal(
     <div
       className="ql-lightbox"
       role="dialog"
@@ -114,6 +125,7 @@ export default function LightboxGallery({
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { responsiveSrcset } from '@/lib/images'
 import LightboxGallery from './LightboxGallery'
 
@@ -18,6 +18,13 @@ interface QuickLookGalleryProps {
    * it is deliberately never emitted as schema.
    */
   specScore?: number
+  /**
+   * Image the variant selector picked, when the page has such a mapping. It
+   * only moves the main image; the visitor's own thumbnail/arrow navigation
+   * still wins afterwards. Absent on pages without variants or without a map,
+   * which then behave exactly as before.
+   */
+  selectedImage?: string
 }
 
 /** Thumbnails shown inline before the "+N" tile takes over. */
@@ -45,9 +52,19 @@ export default function QuickLookGallery({
   fallbackEmoji,
   altFallback,
   specScore,
+  selectedImage,
 }: QuickLookGalleryProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [active, setActive] = useState(0)
+
+  // A variant choice moves the main image to its mapped render and lights the
+  // matching thumbnail. Keyed on the selected image, so a visitor clicking a
+  // thumbnail afterwards is not overridden.
+  useEffect(() => {
+    if (!selectedImage) return
+    const position = images.indexOf(selectedImage)
+    if (position >= 0) setActive(position)
+  }, [selectedImage, images])
 
   if (images.length === 0) {
     return (
@@ -92,7 +109,11 @@ export default function QuickLookGallery({
           {showSeeAll && (
             <button
               type="button"
-              className="ql-gallery-thumb ql-gallery-seeall"
+              className={
+                activeIdx >= MAX_THUMBS
+                  ? 'ql-gallery-thumb ql-gallery-seeall active'
+                  : 'ql-gallery-thumb ql-gallery-seeall'
+              }
               onClick={() => setOpenIndex(activeIdx)}
               aria-label={`See all ${images.length} images`}
             >

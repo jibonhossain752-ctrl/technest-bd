@@ -21,6 +21,12 @@
  *      either label/value rows or bullet items. Each entry also stores no
  *      catalog price without a `priceCheckedOn` date.
  *
+ *      Variant data is checked wherever a page maps it: a `variantImages` key
+ *      must be one real option label per dimension joined with " + " and must
+ *      point at one of the page's own gallery images (otherwise a chip would
+ *      silently change nothing), and a `disabledWhen` condition must name a
+ *      real dimension and real option labels.
+ *
  *      A page's one price is `priceBox`, a hand-entered figure with `label`,
  *      `source` and an ISO `asOf` date, plus either one headline `amount` or
  *      one row per variant (`rows`). It must not name Amazon in its source or
@@ -386,6 +392,55 @@ for (const slug of Object.keys(QUICK_LOOK)) {
       }
       if (option.note && /\$|৳|\bBDT\b/i.test(option.note)) {
         failures.push(`Quick Look entry "${slug}" variant note "${option.note}" contains a price`)
+      }
+      // A disabledWhen that names a dimension or an option that does not exist
+      // would simply never disable anything, so it is checked here.
+      const condition = option.disabledWhen
+      if (condition) {
+        const other = (entry.variants ?? []).find((group) => group.label === condition.group)
+        if (!other) {
+          failures.push(
+            `Quick Look entry "${slug}" option "${option.label}" is disabled by a dimension "${condition.group}" that does not exist`,
+          )
+        } else {
+          for (const otherLabel of condition.options ?? []) {
+            if (!other.options.some((candidate) => candidate.label === otherLabel)) {
+              failures.push(
+                `Quick Look entry "${slug}" option "${option.label}" is disabled by "${otherLabel}", which is not an option of "${condition.group}"`,
+              )
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // A variant → gallery image map (entry.variantImages) fails silently when a
+  // key or a path is wrong — the chip would simply change nothing — so both are
+  // checked against the variant labels and the gallery the page renders.
+  if (entry.variantImages) {
+    const groups = entry.variants ?? []
+    const gallery = [
+      PRODUCTS.find((product) => product.slug === slug)?.imageUrl,
+      ...(Array.isArray(entry.images) ? entry.images : []),
+    ].filter((image) => typeof image === 'string' && image.startsWith('/product-images/'))
+    for (const [key, image] of Object.entries(entry.variantImages)) {
+      const combination = key.split(' + ')
+      const isRealCombination =
+        groups.length > 0 &&
+        combination.length === groups.length &&
+        groups.every((group, index) =>
+          group.options.some((option) => option.label === combination[index]),
+        )
+      if (!isRealCombination) {
+        failures.push(
+          `Quick Look entry "${slug}" variantImages key "${key}" is not one option label per dimension joined with " + "`,
+        )
+      }
+      if (!gallery.includes(image)) {
+        failures.push(
+          `Quick Look entry "${slug}" variantImages key "${key}" points at "${image}", which is not one of the page's gallery images`,
+        )
       }
     }
   }

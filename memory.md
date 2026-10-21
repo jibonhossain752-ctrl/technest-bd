@@ -102,6 +102,24 @@ from a sister project, rewritten for this store. These rules are standing.
    entry carries a buy link, when an informational entry is a catalog product,
    or when `QuickLookDetail.tsx` stops branching on the flag. The guide's price
    rule exception is described at the top of `src/data/quick-look-content.ts`.
+4f. **Gallery and variants (2026-10-21).** The lightbox is rendered in a PORTAL
+   on `<body>` and `.ql-lightbox` sits at z-index 1200, above the sticky header
+   (1020) and the mobile bottom nav (1005). At its old z-index of 200, in-tree,
+   the header covered its counter line and close button. Its panel is capped in
+   `dvh` with safe-area padding and a flexible image stage, so the counter, the
+   close button and the thumbnails all stay inside the viewport. Variants can
+   drive the gallery through three OPTIONAL fields, currently filled only by
+   the Apple HomeView entry: `variantImages` maps one option label per dimension
+   (joined with " + ", in `variants` order) to an image already in `images`;
+   `QuickLookOption.disabledWhen` marks an option unavailable under another
+   dimension's option (the chip greys out, gets `disabled` + `aria-disabled`, and
+   the selection falls back to the first available option); and
+   `QuickLookVariant.note` replaces the per-option caption when one sentence has
+   to cover every combination. A page without them behaves exactly as before.
+   `scripts/check-quick-look.js` fails the build when a `variantImages` key, a
+   path or a `disabledWhen` target is not real. Selecting a chip never changes a
+   price figure; it only moves the main image, and a thumbnail click still shows
+   that image without changing the selection.
 5. **No aggregateRating from Amazon data.** Amazon star ratings and review
    counts are Amazon's data, not ours. Never copy them into JSON-LD, schema or
    written text as our own rating, and never emit `review` markup for a product
