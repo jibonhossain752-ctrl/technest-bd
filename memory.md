@@ -96,9 +96,14 @@ from a sister project, rewritten for this store. These rules are standing.
    NO purchase panel: no store button, no price note, no affiliate disclosure.
    The site-wide footer line still appears, as it does on every page. In the
    panel's place the detail page renders a plain visible note saying the store
-   does not sell it — text only, never a link — and, because the gallery shows
+   does   not sell it — text only, never a link — and, because the gallery shows
    renders rather than the manufacturer's photographs, one line under the
-   gallery saying so. `scripts/check-quick-look.js` fails the build when such an
+   gallery saying so. That one line is DATA, not copy: `illustrationNote` on the
+   entry carries it, because it has to name the right manufacturer and
+   announcement date — the sentence used to be hardcoded in the component with
+   Apple's text, which would have been false on a second informational page
+   (Nintendo Switch 2, added 2026-10-27). An informational entry without it
+   renders no note. `scripts/check-quick-look.js` fails the build when such an
    entry carries a buy link, when an informational entry is a catalog product,
    or when `QuickLookDetail.tsx` stops branching on the flag. The guide's price
    rule exception is described at the top of `src/data/quick-look-content.ts`.
@@ -148,7 +153,11 @@ from a sister project, rewritten for this store. These rules are standing.
    price, a review or testing. Quick Look URLs are registered in
    `src/lib/sitemap-routes.ts` (both `STATIC_PAGES` and
    `DYNAMIC_ROUTE_SOURCES`), so `assertSitemapCoverage()` fails the build if a
-   new Quick Look page is not in the sitemap.
+   new Quick Look page is not in the sitemap. A STANDALONE entry supplies its own
+   `addedAt` (on `QuickLookProductFields`): `resolveQuickLook()` passes it
+   through and the sitemap reads it as the page's `lastmod`, because a standalone
+   product has no catalog record to date it. Without it the URL ships with no
+   date.
 
 ### Adding a Quick Look page
 

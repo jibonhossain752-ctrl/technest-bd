@@ -220,14 +220,14 @@ export default function QuickLookDetail({
             specScore={specScore}
             selectedImage={selectedVariantImage}
           />
-          {/* An informational page shows renders rather than the manufacturer's
-              photographs, so the gallery says so under the image. Text only —
-              no badge, no banner. */}
-          {entry.informational && (
-            <p className="ql-spec-source">
-              The images above are illustrations based on the design Apple announced on
-              October 13, 2026, not photographs of a shipping unit.
-            </p>
+          {/* An informational page shows illustrations rather than the
+              manufacturer's photographs, so the gallery says so under the image.
+              Text only — no badge, no banner. The sentence comes from the entry
+              (entry.illustrationNote) because it has to name the right
+              manufacturer and announcement date; an informational page without
+              one renders no note. */}
+          {entry.informational && entry.illustrationNote && (
+            <p className="ql-spec-source">{entry.illustrationNote}</p>
           )}
         </div>
 

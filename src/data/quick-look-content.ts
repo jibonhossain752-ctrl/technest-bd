@@ -3779,6 +3779,293 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
     ],
   },
+
+  'nintendo-switch-2-console': {
+    productName: 'Nintendo Switch 2',
+    heading: 'Nintendo Switch 2 specs, features and buying guide',
+    lead: 'Nintendo Switch 2 is Nintendo’s current console: a handheld with a 7.9-inch 1080p LCD touch screen that drops into an included dock for up to 4K output on a TV, with 256 GB of internal storage, magnetically attached Joy-Con 2 controllers and GameChat built into the hardware. It launched on June 5, 2025, and the console is the same in every bundle — what changes is the game download that ships with it. This page collects the figures Nintendo publishes, what each current system and bundle contains, and the specifications Nintendo has not released.',
+    overview: [
+      'Switch 2 keeps the three play modes the Nintendo Switch family is built around, and the differences between them are the first thing to understand. Handheld mode is the console with Joy-Con 2 attached on either side, using the touch screen. Tabletop mode stands the console up on its own kickstand, which Nintendo says opens through 150 degrees so you can set the viewing angle, and the controllers come off for two-player use. TV mode puts the console in the dock and outputs through HDMI to a television. Nintendo’s store listing for the system describes all three, and the dock is in the box with the console rather than sold separately.',
+      'The screen is the headline change from the original Switch: Nintendo’s technical specifications list a 7.9-inch wide color gamut LCD with capacitive touch running at 1920 × 1080, with HDR10 support and variable refresh rate up to 120 Hz. Nintendo states that supported games can reach 120 fps at 1920 × 1080 or 2560 × 1440, and that TV mode outputs a maximum of 3840 × 2160 — 4K — at 60 fps. In handheld and tabletop modes, Nintendo’s footnote is explicit that the resolution tops out at 1920 × 1080, following the screen.',
+      'The controllers are the other half of the design. Joy-Con 2 attach magnetically rather than sliding onto a rail, and Nintendo’s support documentation notes they are larger than the original Joy-Con and that a release button on the back disengages the magnets. Each controller carries an accelerometer, a gyroscope, HD rumble 2 and a mouse sensor, which Nintendo describes as letting you use a table or your lap as a mouse pad — and both controllers can be used that way at once in compatible games. The right controller adds the C button for GameChat and carries NFC, while the left one is Bluetooth only. Nintendo rates each controller at about 20 hours of battery life.',
+      'Storage is 256 GB of UFS internal memory, which Nintendo describes as eight times the capacity of the original Nintendo Switch, with the standard caveat that a portion is reserved for system use. Expansion is deliberately narrow: Nintendo states the slot accepts microSD Express cards only, up to 2 TB, and that older microSD cards can be used solely to copy screenshots and videos from a Nintendo Switch. Nintendo also explains game-key cards in its FAQ: a game-key card holds no game data, only the key that starts the game, so the first launch downloads the game over the internet into internal storage and the card must stay inserted to play.',
+      'GameChat is the feature Nintendo leads with, and it is hardware rather than an app. Pressing the C button on the right Joy-Con 2 opens a session, and the console’s built-in monaural microphone uses noise cancellation, echo cancellation and automatic gain control. Nintendo’s FAQ is specific about the requirements: a Nintendo Switch Online membership and a Nintendo Account, text-message verification against the phone number on that account, and sessions that can only involve people on your Friend List. Audio-only sessions support up to 12 people; video needs a compatible USB camera, which Nintendo sells separately, and supports up to four people on screen.',
+      'Everything on this page comes from Nintendo’s own pages, read on October 27, 2026: the Switch 2 technical-specifications page, the product and features pages, the Nintendo Store listings for the system and each current bundle, the Switch 2 FAQ, and Nintendo Support articles on console differences and the console layout. We do not test products, so what follows is what Nintendo documents rather than a hands-on verdict, and anything Nintendo does not publish is listed as missing instead of estimated. This store does not sell Nintendo Switch 2, so there is no buy button on this page and no price figure anywhere on it — for what a system or bundle costs today, check Nintendo’s store or a participating retailer.',
+    ],
+    priceSection: {
+      heading: 'Choosing a Nintendo Switch 2: one console, several bundles',
+      paragraphs: [
+        'The console is identical in every bundle on Nintendo’s store, and so is the accessory list: Nintendo repeats the same “What’s included” block on the system page and on each bundle page, listing the console, Joy-Con 2 (L) in Light Blue, Joy-Con 2 (R) in Light Red, the AC adapter, a USB-C charging cable, the dock, the Joy-Con 2 grip, two Joy-Con 2 straps and an Ultra High Speed HDMI cable. What a bundle adds is a game download, and in some cases a code for three months of Nintendo Switch Online.',
+        'That makes the decision straightforward. If you already own Switch 2 games on card or have a library you want to play, the system on its own is the simplest purchase. If you want a game in the box, Nintendo’s current bundles pair the console with Mario Kart World, with Nintendo Switch Sports Resort, or with a “Choose Your Game” download code insert that redeems for one of several games Nintendo names on its own store listing. Nintendo lists each bundle as a saving against buying the parts separately, and its footnotes state that an included Nintendo Switch Online membership renews automatically after the initial term at the then-current rate unless it is cancelled.',
+        'Nintendo also sells a themed system rather than a bundle: the Nintendo Switch 2 – The Legend of Zelda – 40th Anniversary Edition, which Nintendo lists as releasing on October 29, 2026. It carries a black and gold dock with the Triforce symbol on the front, patterns inspired by the series on the back of the system and the dock, and Joy-Con 2 controllers in green and gold. Nintendo states plainly that no game is included with it.',
+        'Two accessories are worth deciding on at the same time. Storage expansion runs through microSD Express cards only, so if you plan to download a large library, budget for one of those rather than assuming a spare microSD card will work — Nintendo’s own FAQ points out that the older cards can only be used to copy screenshots and videos across. And online play, GameChat and cloud saves all run through Nintendo Switch Online, which is a subscription rather than a one-off purchase.',
+        'Finally, check the retailer’s own page before ordering. Nintendo’s bundle showroom names participating retailers alongside its own store, and stock, packaging and any regional difference belong to whoever is selling it. This page deliberately carries no figures: the console is not something this store stocks, so there is no verified price to publish and nothing here to buy.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Screen', detail: '7.9-inch wide color gamut LCD, capacitive touch, 1920 × 1080, HDR10, VRR up to 120 Hz' },
+      { term: 'TV output', detail: 'Up to 3840 × 2160 (4K) at 60 fps through the included dock; 120 fps at 1920 × 1080 or 2560 × 1440' },
+      { term: 'Storage', detail: '256 GB (UFS), part reserved for system use, expandable only with microSD Express cards up to 2 TB' },
+      { term: 'Battery', detail: '5220 mAh lithium-ion; approximately 2–6.5 hours of play, about 3 hours to charge in sleep mode' },
+      { term: 'In the box', detail: 'Console, Joy-Con 2 (L) in Light Blue, Joy-Con 2 (R) in Light Red, Joy-Con 2 Grip, two Joy-Con 2 Straps, dock, AC adapter, USB-C charging cable, Ultra High Speed HDMI cable' },
+      { term: 'Released', detail: 'June 5, 2025, according to the Nintendo Store listing for the system' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'A 1080p screen indoors, 4K on a TV',
+        body: 'Nintendo’s technical specifications describe a 7.9-inch wide color gamut LCD at 1920 × 1080 with HDR10 support and variable refresh rate up to 120 Hz. In TV mode the dock outputs through HDMI at a maximum of 3840 × 2160 (4K) at 60 fps, and Nintendo states that 120 fps is available when 1920 × 1080 or 2560 × 1440 is selected. The caveats are Nintendo’s own and they matter: 4K, HDR and VRR in TV mode need a supported game and a compatible display, frame rate is fixed to a maximum of 60 fps at 4K output, and Nintendo notes that VRR support in TV mode was added by a system update released on September 10, 2026. Handheld and tabletop play stay at 1920 × 1080.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Joy-Con 2 attach with magnets and work as mice',
+        body: 'The controllers attach without a rail. Nintendo’s support article on the differences between the two generations says Joy-Con 2 uses a magnetic connector where Joy-Con slides on, that pressing the release button on the back breaks the magnetic lock, and that Joy-Con 2 are larger than the originals. Each controller has a mouse sensor on its side, and Nintendo states that both can be used for mouse controls at the same time in compatible games, which is unusual enough to be worth knowing before you buy. Battery life is rated at about 20 hours per controller, with a 500 mAh cell that charges while attached to the console or in the Joy-Con 2 charging grip.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'GameChat runs from a dedicated button',
+        body: 'GameChat is voice chat, screen sharing and video chat built into the system rather than an app you install. Nintendo’s product page says the C button on the right Joy-Con 2 starts a session, and that the built-in microphone auto-adjusts volume and filters noise. The requirements are laid out in Nintendo’s FAQ: a Nintendo Switch Online membership, a Nintendo Account, text-message verification for setup, and sessions that can only include people on your Friend List. Audio-only sessions support up to 12 people; video chat and screen sharing with up to four people needs a compatible USB camera, which Nintendo lists as a separate purchase. Nintendo’s privacy answers add that the microphone only becomes active when a user enables it, and that the system has no always-listening voice commands.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The dock brings TV mode, a LAN port and two USB ports',
+        body: 'The dock is included with the console, and Nintendo’s specifications list its ports: two USB ports (USB 2.0 compatible) on the side, the system connector, an AC adapter port, an HDMI port and a LAN port. That LAN port is how Nintendo says a wired internet connection is made in TV mode, which is worth knowing if your wireless setup struggles with online play. The dock itself weighs about 0.84 lb and measures roughly 4.5 inches tall, 7.9 inches wide and 2 inches thick, with the feet adding 0.08 inch to the height. Nothing else is needed for TV mode: Nintendo states that the console outputs video through the HDMI connector when docked, and the Ultra High Speed HDMI cable is in the box.',
+      },
+      {
+        heading: 'Key features explained',
+        title: '256 GB that cannot be expanded with any old card',
+        body: 'Internal storage is 256 GB of UFS memory, and Nintendo notes that part of it is reserved for system use — so the figure you can fill is smaller than the number on the box. Expansion is the part that catches people out. Nintendo states that the microSD Express card slot is compatible with microSD Express cards only, up to 2 TB, and that microSD cards which are not Express-compatible can only be used to copy screenshots and videos from a Nintendo Switch. The support article on console differences notes that Express cards are marked “EX” or “Express” on the card itself, which is the quickest way to check what you already own.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Nintendo Switch 2 dimensions and weight',
+        paragraphs: [
+          'Nintendo publishes a size and a weight for the console and for every accessory that comes in the box, and — unlike some manufacturers — labels each figure as tall, wide or thick instead of leaving the order for you to guess. The table below keeps those labels, so every entry reads width, height and depth in Nintendo’s own terms.',
+          'Nintendo gives these figures in inches and in pounds or ounces, and the centimetre and gram values here are converted from them rather than published by Nintendo. The console’s thickness is one figure with a caveat attached: Nintendo footnotes the maximum thickness from the tip of the control sticks to the protruding parts of the ZL/ZR buttons as 1.2 inches, which is what you would measure if you were checking whether a case has room.',
+          'Two weights describe the console: Nintendo lists approximately 0.88 lb on its own and approximately 1.18 lb with both Joy-Con 2 controllers attached. The dock is nearly as heavy as the console at approximately 0.84 lb, which is worth factoring in when you are deciding between a hard case and a sleeve for travel.',
+        ],
+        table: {
+          head: ['Model', 'Width', 'Height', 'Depth', 'Weight'],
+          rows: [
+            ['Nintendo Switch 2 (with Joy-Con 2 attached)', '10.7 in (27.18 cm)', '4.5 in (11.43 cm)', '0.55 in (1.40 cm)', '1.18 lb (535 g)'],
+            ['Nintendo Switch 2 Dock', '7.9 in (20.07 cm)', '4.5 in (11.43 cm)', '2 in (5.08 cm)', '0.84 lb (381 g)'],
+            ['Joy-Con 2 controller', '0.56 in (1.42 cm)', '4.57 in (11.61 cm)', '1.2 in (3.05 cm)', '2.3 oz / 2.4 oz (65 g / 68 g)'],
+            ['Joy-Con 2 Grip', '5.67 in (14.40 cm)', '4.57 in (11.61 cm)', '1.58 in (4.01 cm)', '3.35 oz (95 g)'],
+            ['Joy-Con 2 Strap', '0.65 in (1.65 cm)', '4.6 in (11.68 cm)', '0.28 in (0.71 cm)', '0.25 oz (7 g)'],
+          ],
+        },
+      },
+      {
+        heading: 'The current systems and bundles, and what each one adds',
+        paragraphs: [
+          'Nintendo’s store lists the console on its own, three system-and-game bundles and one themed system, and the hardware block is the same in all of them. The table below is the accessory list Nintendo repeats on every one of those pages, plus whatever the specific package adds on top.',
+          'The practical difference between the two game bundles that include a Nintendo Switch Online code (Mario Kart World and Nintendo Switch Sports Resort) and the “Choose Your Game” bundle is how the game is chosen. The first two name the game and include a full download of it; the third ships a “Choose One” download code insert that Nintendo says can be redeemed for a digital version of one of several Switch 2 games, with the games named on Nintendo’s own store page for the bundle. If you are buying for a specific game, check that page before you order rather than assuming the list is fixed.',
+          'The 40th Anniversary Edition is a different proposition because Nintendo states that no game is included. What you are paying for there is the design: the dock, the back of the system and the controllers carry artwork inspired by the series, and the Joy-Con 2 pair is green and gold rather than the standard light blue and light red. Everything else in the box is the same list.',
+        ],
+        table: {
+          head: ['System or bundle', 'Game included', 'What it adds to the standard box contents', 'Listed by Nintendo'],
+          rows: [
+            ['Nintendo Switch 2', 'None', 'Nothing — console and accessories only', 'On sale since June 5, 2025'],
+            ['Nintendo Switch 2 + Mario Kart World Bundle', 'Mario Kart World, full digital download', 'A code for three months of Nintendo Switch Online (Individual)', 'Bundle release date September 18, 2026'],
+            ['Nintendo Switch 2: Choose Your Game Bundle', 'One game, chosen with the included download code insert', 'The “Choose One” download code insert', 'On Nintendo Store under SKU 128060'],
+            ['Nintendo Switch 2 + Nintendo Switch Sports Resort Bundle', 'Nintendo Switch Sports Resort, full download', 'A code for three months of Nintendo Switch Online (Individual)', 'Bundle release date October 22, 2026'],
+            ['Nintendo Switch 2 – The Legend of Zelda – 40th Anniversary Edition', 'None — Nintendo states no game is included', 'Themed dock, system back panel and green and gold Joy-Con 2', 'Releases October 29, 2026'],
+          ],
+        },
+      },
+      {
+        heading: 'TV mode, 4K and 120 fps: the footnotes decide',
+        paragraphs: [
+          'The numbers on the box are real, but Nintendo attaches conditions to every one of them, and reading those conditions is the difference between a system that does what you expect and one that does not.',
+        ],
+        subsections: [
+          {
+            heading: '4K needs the right game and the right television',
+            paragraphs: [
+              'Nintendo states that 3840 × 2160 output is available in supported games and requires a compatible display, and that the frame rate is fixed to a maximum of 60 fps when 4K is selected. So a 4K television on its own is not enough: the game has to support it. HDR10 comes with the same condition, and Nintendo’s FAQ adds that HDR requires a compatible screen when playing in TV mode.',
+              'Nintendo’s explanation of what 4K means is worth quoting because it sets expectations: 4K is four times the resolution of 1080p, and it only applies to the image sent to the television. The console’s own screen is a 1080p panel, so handheld play is unaffected.',
+            ],
+          },
+          {
+            heading: 'Variable refresh rate arrived by update',
+            paragraphs: [
+              'The technical-specifications page lists VRR up to 120 Hz, and Nintendo notes in two places — the features page and the FAQ — that VRR support in TV mode was added by a system update released on September 10, 2026. In handheld and tabletop modes VRR is available on the console’s own screen. In TV mode it needs a compatible television, and VRR support varies by game.',
+              'The 120 fps figure follows the same rule. Nintendo states that the highest frame rate is 120 fps in compatible games, that frame rate differs from game to game, and that the ceiling is 60 fps at 4K. Nintendo Switch 2 Edition games and some Nintendo Switch games can take advantage of the extra performance, but Nintendo’s own wording is that improvements vary depending on the software.',
+            ],
+          },
+          {
+            heading: 'Ports, thermals and the second USB-C connector',
+            paragraphs: [
+              'The console has two USB-C connectors, and Nintendo’s specifications are explicit about the split: the bottom port charges the console and connects it to the dock, while the top port is for accessories or for charging. Nintendo’s features page adds the detail that matters for tabletop play — the included AC adapter can be plugged into the top port so you can keep playing while the console charges in that mode.',
+              'Nintendo’s console diagram also locates the parts you might need to find in a hurry: the game card slot and its cover, the microSD Express card slot, the stand, the magnetic connectors, the brightness sensor, the air vent and air intake, the audio jack and the speakers. Nintendo lists the operating environment as 41–95 °F at 20–80% humidity, and the audio jack as a 3.5 mm four-contact stereo mini-plug on the CTIA standard — with the plain note that Nintendo cannot guarantee functionality with every product.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Storage, game cards and what carries over from Nintendo Switch',
+        paragraphs: [
+          'The game card slot is backward compatible in one direction and not the other. Nintendo states that both Nintendo Switch 2 and Nintendo Switch game cards can be inserted, and its FAQ explains what happens when you get it wrong: a game card for a Switch 2 exclusive will not run in a Nintendo Switch at all, while a Switch 2 Edition card in a Nintendo Switch plays the original Switch version of the game without the enhancements.',
+          'Nintendo’s support article adds a quick visual way to tell them apart. Switch 2 game cartridges are red and carry the Switch 2 logo; game-key cartridges look the same but print a key symbol on them; Nintendo Switch cartridges are grey with the Switch logo. Game-key cards are the ones to watch for if you buy physical: Nintendo’s FAQ says the card contains only the key, the game downloads on first launch, an internet connection and enough free space are required, and the card must stay inserted to play. Save data lives in the console’s internal storage, not on the card.',
+          'Accessories are a mixed bag by design. Nintendo states that select Nintendo Switch accessories can continue to be used with Switch 2, but that Joy-Con 2 and the Nintendo Switch 2 Pro Controller cannot be used with a Nintendo Switch — and while Joy-Con can be paired wirelessly to Switch 2, the reverse is not possible. The AC adapters are the clearest example of the nuance: the Switch 2 adapter works with both systems, but Nintendo notes that the older Switch adapter, while able to charge the console directly, cannot be used with the Switch 2 dock because of the difference in power output.',
+        ],
+        subsections: [
+          {
+            heading: 'Which memory card to buy',
+            paragraphs: [
+              'Only microSD Express. Nintendo states the slot accepts microSD Express cards up to 2 TB, that non-Express microSD cards can only be used to copy screenshots and videos from a Nintendo Switch, and that officially licensed products are recommended. The support article notes Express cards are marked “EX” or “Express” on the card, which is the fastest way to sort what you have from what you need.',
+            ],
+          },
+          {
+            heading: 'What comes across from an existing Switch',
+            paragraphs: [
+              'Nintendo Switch Online members can continue to use the service on Switch 2, and Nintendo states that the console plays both physical and digital Nintendo Switch games — with the caveat printed on the same page that some Nintendo Switch games may not be supported or fully compatible. Nintendo’s FAQ confirms that selected Nintendo Switch accessories remain usable, and that save data handled through the existing transfer tools carries over. If your library is mostly physical Switch cards, the new console will run them; if it is a mix, check Nintendo’s compatibility information before assuming a specific title behaves identically.',
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'What Nintendo has not published, and why it is missing here',
+        paragraphs: [
+          'A specification sheet is only as useful as the gaps it admits to. Nintendo’s technical-specifications page is unusually detailed on the physical side — screen, ports, sensors, battery, weights and the size of every accessory — but it stops short on the silicon. Where those divisions are, the page says only this: “Custom processor made by NVIDIA.” There are no CPU or GPU clock speeds, no core counts and no memory capacity figure, so this page states none. Reporting and teardowns elsewhere carry estimates of their own, but Nintendo has not confirmed any of them and they are deliberately left out here rather than presented as specifications.',
+          'A few other things are absent on purpose. Nintendo publishes no water or dust resistance rating for the console, so treat it as an indoor device and keep it away from sinks and spills. There is no storage read or write speed figure, only the capacity and the UFS standard. Battery capacity is published for the console and each Joy-Con 2, but runtime is a range because Nintendo says it depends on the games you play. And Nintendo’s product pages carry no warranty term: warranty support is handled region by region through Nintendo Support rather than stated as a product specification.',
+          'One omission is worth calling out because it is easy to miss. Nintendo’s pages describe Joy-Con 2 colours in detail — the standard pair in Light Blue and Light Red, plus the sets Nintendo sells separately in Light Purple and Light Green and in Blue and Light Yellow — but nowhere on the pages read for this sheet does Nintendo state the colour of the console body itself. That leaves the console colour unverified here rather than repeated from a secondary source.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who should buy Nintendo Switch 2, and who should skip it',
+      should: [
+        'Households that play on a television and on the move: the dock is in the box, so the same console covers both without a second purchase.',
+        'Anyone with a Nintendo Switch library, since Nintendo states the game card slot takes both generations of card and that compatible Switch games play on Switch 2.',
+        'Groups who play together regularly: up to 12 people can join a GameChat session with audio only, and tabletop mode turns one console into a two-player screen.',
+        'Buyers who want 120 fps or HDR in the living room and own a compatible television, because that is where the extra output modes live.',
+        'People who prefer physical games: the console reads Switch 2 and Switch cards, and Nintendo explains exactly how game-key cards behave before you buy one.',
+      ],
+      skip: [
+        'Anyone who wants the biggest possible install library without buying a card: expansion is microSD Express only, and older microSD cards cannot store games on this system.',
+        'Households without Nintendo Switch Online: online play, GameChat and cloud saves all run through the subscription.',
+        'Buyers expecting published chip or memory figures to compare against a PC or a phone — Nintendo does not release them.',
+        'Anyone hoping to reuse Joy-Con 2 on an older system: Nintendo states they cannot be used with a Nintendo Switch, and the Switch 2 Pro Controller cannot either.',
+        'People who need video chat in the box — Nintendo lists a compatible USB camera as a separate purchase.',
+      ],
+    },
+    useCases: [
+      {
+        heading: 'What each setup looks like in practice',
+        cards: [
+          { title: 'The living-room console', body: 'Docked, output over HDMI at up to 4K at 60 fps in supported games, with the dock’s LAN port available if wireless struggles with online matches.' },
+          { title: 'Commuting and travel', body: 'Joy-Con 2 attached, up to 2–6.5 hours of play on Nintendo’s figures, and the top USB-C port free for the included AC adapter.' },
+          { title: 'Tabletop with a friend', body: 'Kickstand out to an angle that suits the table, controllers detached, and one console acting as the screen for two players.' },
+          { title: 'Playing with people further away', body: 'GameChat from the C button, with up to 12 on audio and a compatible USB camera added for video with up to four.' },
+          { title: 'Already own a Nintendo Switch', body: 'Switch cards still fit and compatible Switch games play, while Joy-Con 2 and the new Pro Controller stay on the new system.' },
+        ],
+      },
+    ],
+    pros: {
+      heading: 'Nintendo Switch 2 pros and cons',
+      pros: [
+        '7.9-inch 1920 × 1080 wide color gamut LCD with HDR10 support and VRR up to 120 Hz',
+        'Dock included, with HDMI output up to 4K at 60 fps and a LAN port for wired internet in TV mode',
+        'Joy-Con 2 attach magnetically and work as mice, with both controllers usable as mice at once in compatible games',
+        'The game card slot reads both Nintendo Switch 2 and Nintendo Switch cards, so an existing physical library still works',
+        'Exactly the same accessory list — dock, grip, straps, AC adapter, USB-C and HDMI cables — ships with every system and bundle',
+        'Publishes concrete, labelled dimensions and weights for the console and every accessory in the box',
+      ],
+      cons: [
+        'Storage expansion is microSD Express only; older microSD cards cannot be used to store games',
+        'Nintendo publishes no chip, clock speed or memory capacity figures beyond “Custom processor made by NVIDIA”',
+        '4K, HDR and VRR in TV mode all need a supported game and a compatible display, and 4K is capped at 60 fps',
+        'GameChat needs a Nintendo Switch Online membership, a Nintendo Account and telephone verification before it works',
+        'Video chat and screen sharing need a compatible USB camera, which is sold separately',
+        'No water or dust resistance rating is published, and Nintendo’s product pages state no warranty term',
+      ],
+    },
+    buyingTips: {
+      heading: 'Before you order a Nintendo Switch 2',
+      paragraphs: [
+        'Start with the bundle question, because it is the only real choice. The console and the accessory list are identical in every option Nintendo lists, so the price difference buys a game or a different design rather than different hardware. If the game you want is one Nintendo ships inside a bundle, that is the version to take. If no bundle names a game you want, buy the system on its own rather than paying for a download you will not use.',
+        'Then plan the two things that are not in the box. A microSD Express card is the only card that can hold games, so decide on capacity now if you download rather than buy on card. Nintendo’s own figures put a 256 GB internal drive against modern game sizes, and its footnote that part of that storage is reserved for the system means the usable figure is lower than the printed number. A Nintendo Switch Online membership is the second: it is what makes online play, GameChat and cloud saves work, and Nintendo states that any membership included with a bundle renews automatically after the initial term unless it is cancelled.',
+        'Check your television before expecting the headline output. 4K at 60 fps needs a compatible display and a supported game, HDR is the same, and VRR in TV mode needs both a compatible television and a system update that Nintendo released on September 10, 2026 — so keep the console’s firmware current. If your screen does not support any of that, the console still plays in TV mode at 1080p, and the handheld experience is unchanged either way.',
+        'Finally, treat the silicon as unknown. There is no published RAM, storage speed or clock speed to compare here, and figures you see quoted elsewhere are estimates rather than Nintendo specifications. Judge this console on what Nintendo does publish — the screen, the storage, the ports, the dimensions, the battery and the game compatibility — and on the games you actually want to play.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How big is the Nintendo Switch 2 screen?',
+        answer:
+          'Nintendo lists a 7.9-inch wide color gamut LCD with capacitive touch, running at 1920 × 1080, with HDR10 support and variable refresh rate up to 120 Hz. Handheld and tabletop play top out at that 1920 × 1080 resolution, which follows the screen.',
+      },
+      {
+        question: 'How much storage does Nintendo Switch 2 have?',
+        answer:
+          '256 GB of internal UFS storage. Nintendo notes that a portion is reserved for system use, so the space you can fill is smaller than that figure. Expansion is with microSD Express cards only, up to 2 TB; non-Express microSD cards can only be used to copy screenshots and videos from a Nintendo Switch.',
+      },
+      {
+        question: 'What is in the box with Nintendo Switch 2?',
+        answer:
+          'Nintendo lists the same contents on the system page and on every bundle page: the Nintendo Switch 2 console, Joy-Con 2 (L) in Light Blue, Joy-Con 2 (R) in Light Red, the Nintendo Switch 2 AC adapter, a USB-C charging cable, the Nintendo Switch 2 dock, the Joy-Con 2 grip, two Joy-Con 2 straps and an Ultra High Speed HDMI cable. Games are sold separately unless the bundle names one.',
+      },
+      {
+        question: 'Do the Nintendo Switch 2 bundles differ in hardware?',
+        answer:
+          'No. The console and the accessory list are identical in every system and bundle Nintendo lists; they differ by the game download that comes with them, and in two cases by a code for three months of Nintendo Switch Online. The one exception is the Legend of Zelda 40th Anniversary Edition, which is a themed system — a black and gold dock with the Triforce symbol and green and gold Joy-Con 2 — and which Nintendo states includes no game.',
+      },
+      {
+        question: 'Does Nintendo Switch 2 play Nintendo Switch games?',
+        answer:
+          'Yes, for compatible titles. Nintendo states that the console plays both physical and digital Nintendo Switch games and that the game card slot takes both generations of card, with the printed caveat that some Nintendo Switch games may not be supported or fully compatible. A Switch 2 exclusive game card will not run in a Nintendo Switch, and a Switch 2 Edition card in an older system plays the original Switch version without the enhancements.',
+      },
+      {
+        question: 'Does Nintendo Switch 2 need a dock to play on a TV?',
+        answer:
+          'Yes. Nintendo states that video is output through the HDMI connector when the console is in TV mode, and the dock that provides that connector is included with the system. Its ports are two side USB ports, the system connector, the AC adapter port, an HDMI port and a LAN port. Handheld and tabletop modes need no dock at all.',
+      },
+      {
+        question: 'How much does Nintendo Switch 2 weigh?',
+        answer:
+          'Nintendo lists approximately 0.88 lb for the console on its own and approximately 1.18 lb with both Joy-Con 2 controllers attached — about 399 g and 535 g. Each Joy-Con 2 is 2.3 oz (the left) or 2.4 oz (the right), the grip is approximately 3.35 oz, a strap is approximately 0.25 oz, and the dock is approximately 0.84 lb.',
+      },
+      {
+        question: 'When did Nintendo Switch 2 release?',
+        answer:
+          'June 5, 2025, according to the Nintendo Store listing for the system. The current system-and-game bundles carry their own later release dates on Nintendo’s store — September 18, 2026 for the Mario Kart World bundle and October 22, 2026 for the Nintendo Switch Sports Resort bundle — and the Legend of Zelda 40th Anniversary Edition is listed for October 29, 2026.',
+      },
+      {
+        question: 'How long does the Nintendo Switch 2 battery last?',
+        answer:
+          'Nintendo lists a 5220 mAh lithium-ion battery and a battery life of approximately 2 to 6.5 hours, adding that these are rough estimates that depend on the games you play. Charging takes approximately three hours while the system is in sleep mode. Each Joy-Con 2 has a 500 mAh battery rated at about 20 hours, and charges while attached to the console or in the Joy-Con 2 charging grip.',
+      },
+      {
+        question: 'What are the dimensions of Nintendo Switch 2?',
+        answer:
+          'Nintendo gives labelled figures in inches: the console is approximately 4.5 inches tall, 10.7 inches wide and 0.55 inches thick with Joy-Con 2 attached, which converts to about 11.43 cm, 27.18 cm and 1.40 cm. The maximum thickness from the tip of the control sticks to the protruding parts of the ZL/ZR buttons is 1.2 inches. The dock is approximately 4.5 inches tall, 7.9 inches wide and 2 inches thick, and each Joy-Con 2 is approximately 4.57 inches tall, 0.56 inches wide and 1.2 inches thick.',
+      },
+      {
+        question: 'Does Nintendo Switch 2 have 4K?',
+        answer:
+          'It outputs up to 3840 × 2160 — 4K — at a maximum of 60 fps when docked, in supported games and with a compatible display. Nintendo states that 120 fps is available when 1920 × 1080 or 2560 × 1440 is selected, and that HDR10 and VRR up to 120 Hz also depend on the game and, in TV mode, on a compatible television. VRR support in TV mode was added by a system update released on September 10, 2026.',
+      },
+    ],
+    links: [
+      {
+        label: 'PlayStation 5 (Slim) spec sheet',
+        href: '/quick-look/playstation-5-disc-console-slim',
+        description: 'The other current home console in the Quick Look section, with its own verified specifications.',
+      },
+      {
+        label: 'Gaming Gear',
+        href: '/shop/gaming',
+        description: 'The controllers, keyboards and gaming accessories this store carries.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse the rest of the Quick Look section.',
+      },
+    ],
+  },
 }
 
 export function getQuickLookGuide(slug: string): QuickLookGuide | undefined {

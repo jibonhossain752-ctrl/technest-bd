@@ -170,6 +170,12 @@ export interface QuickLookProductFields {
   features: string[]
   /** Manufacturer brand for the Product schema. Falls back to the name's first word. */
   brand?: string
+  /**
+   * ISO date this page's content was written. A standalone entry has no catalog
+   * record to carry one, so it supplies its own; `resolveQuickLook` passes it
+   * through and the sitemap reads it as the page's `lastmod`.
+   */
+  addedAt?: string
   /** Emoji stand-in, used only when the entry has no images at all. */
   image?: string
   /** Alt text for the first gallery image. Falls back to the product name. */
@@ -246,6 +252,14 @@ export interface QuickLookEntry {
    * facts are specifications and an announced price.
    */
   informational?: boolean
+  /**
+   * The one line under the gallery on an informational page, saying the images
+   * are illustrations rather than photographs. It lives in the data because the
+   * sentence has to name the right manufacturer and date: HomeView's runs from
+   * Apple's announcement, which would be false on any other page. An
+   * informational entry without it renders no note at all.
+   */
+  illustrationNote?: string
   /**
    * The page's one price, when the owner has typed one in from a dated
    * manufacturer / official source. Its presence is what makes the page's
@@ -1778,6 +1792,10 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
     displayName: 'Apple HomeView',
     status: 'upcoming',
     informational: true,
+    // The gallery note. Its wording names Apple and its announcement date, which
+    // is why it lives here rather than in the shared component.
+    illustrationNote:
+      'The images above are illustrations based on the design Apple announced on October 13, 2026, not photographs of a shipping unit.',
     // The page's only price surface. Apple's own announced US figures, typed in
     // from Apple's pages and dated — never an Amazon price, and this entry has
     // no Amazon link, which the guard enforces in both directions.
@@ -2938,6 +2956,345 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
     ],
   },
 
+  'nintendo-switch-2-console': {
+    slug: 'nintendo-switch-2-console',
+    displayName: 'Nintendo Switch 2',
+    status: 'available',
+    // INFORMATIONAL (memory.md rule 4e): this store does not stock the console,
+    // has no catalog record for it and sits on no verified price, so the page
+    // renders a spec sheet and a guide with no purchase panel at all — no store
+    // button, no price note, no affiliate disclosure. The owner's supplied
+    // Amazon short link was verified before use on 2026-10-27 and resolved to a
+    // third-party Switch 2 controller rather than the console, so no buy button
+    // ships on this page until a console or bundle listing is confirmed.
+    informational: true,
+    product: {
+      name: 'Nintendo Switch 2',
+      category: 'Gaming Gear',
+      categorySlug: 'gaming',
+      brand: 'Nintendo',
+      // The page's own content date: a standalone entry has no catalog record to
+      // carry `addedAt`, and the sitemap reads it from here for its `lastmod`.
+      addedAt: '2026-10-27',
+      description:
+        'Nintendo’s current console: a 7.9-inch 1080p LCD handheld that drops into an included dock for up to 4K output on a TV, with 256 GB of internal storage, magnetically attached Joy-Con 2 controllers and GameChat on the C button. It released on June 5, 2025 and is sold as a system on its own, as system-and-game bundles and as a themed 40th Anniversary Edition, all with the same hardware.',
+      features: [
+        '7.9-inch wide color gamut LCD at 1920 × 1080, with HDR10 and VRR up to 120 Hz',
+        'Docks for TV output up to 3840 × 2160 (4K) at 60 fps, with a LAN port and two USB ports',
+        'Joy-Con 2 controllers attach magnetically and work as mice in compatible games',
+        '256 GB of internal UFS storage, expandable with microSD Express cards up to 2 TB',
+        'GameChat from the C button, with audio for up to 12 people and video for up to four',
+        'The game card slot takes both Nintendo Switch 2 and Nintendo Switch game cards',
+      ],
+      altText:
+        'Nintendo Switch 2 console in its dock with Joy-Con 2 controllers attached, render',
+    },
+    // The gallery note under the hero image. It lives on the entry rather than
+    // in the component so a second informational page cannot inherit Apple’s
+    // announcement date by accident.
+    illustrationNote:
+      'The images above are illustrations of the Nintendo Switch 2 system, not photographs of a retail unit.',
+    metaTitle: 'Nintendo Switch 2 Specs, Bundles & Buying Guide',
+    metaDescription:
+      'Nintendo Switch 2 specs, screen, storage, Joy-Con 2, dock and what each bundle includes, checked against Nintendo’s own pages.',
+    // Position-matched to `images` below and written while looking at each file.
+    // They are illustrations rather than Nintendo photographs, so the wording
+    // says “render” and names only what each picture shows.
+    imageAlts: [
+      'Nintendo Switch 2 in its dock with Joy-Con 2 controllers attached, render',
+      'Nintendo Switch 2 retail box showing the console, the dock and its controllers, render',
+      'Nintendo Switch 2 in tabletop mode on its kickstand, both Joy-Con 2 detached, render',
+      'Nintendo Switch 2 box, dock, Joy-Con 2 grip and cables laid out below a TV, render',
+    ],
+    images: [
+      '/product-images/nintendo-switch-2-docked-console.webp',
+      '/product-images/nintendo-switch-2-retail-box.webp',
+      '/product-images/nintendo-switch-2-tabletop-mode.webp',
+      '/product-images/nintendo-switch-2-box-contents.webp',
+    ],
+    highlights: [
+      { label: 'Screen', value: '7.9-inch 1080p LCD' },
+      { label: 'TV output', value: 'Up to 4K at 60 fps' },
+      { label: 'Storage', value: '256 GB (UFS)' },
+      { label: 'Battery', value: '2 – 6.5 hours' },
+      { label: 'Controllers', value: 'Joy-Con 2' },
+      { label: 'Released', value: 'June 5, 2025' },
+    ],
+    // The chips describe the current systems and bundles Nintendo lists, and they
+    // are informational only: this entry carries no variantImages map, so
+    // selecting one leaves the gallery exactly as it is.
+    variants: [
+      {
+        label: 'Model',
+        // One caption for the whole dimension, because every option is the same
+        // console: the choice is the game download or the design, not hardware.
+        note: 'Same console and the same accessories in every option. The bundles differ by the game download they include, and the 40th Anniversary Edition is a themed system with no game.',
+        options: [
+          {
+            label: 'Nintendo Switch 2',
+            note: 'System only: the console and the standard accessory list',
+          },
+          {
+            label: 'Switch 2 + Mario Kart World Bundle',
+            note: 'Adds a full Mario Kart World download and a code for three months of Nintendo Switch Online',
+          },
+          {
+            label: 'Switch 2: Choose Your Game Bundle',
+            note: 'Adds a “Choose One” download code insert, redeemed for one game from Nintendo’s list',
+          },
+          {
+            label: 'Switch 2 + Nintendo Switch Sports Resort Bundle',
+            note: 'Adds a Nintendo Switch Sports Resort download and a code for three months of Nintendo Switch Online',
+          },
+          {
+            label: 'Switch 2 – Zelda 40th Anniversary Edition',
+            note: 'Themed black and gold dock with green and gold Joy-Con 2; Nintendo states no game is included',
+          },
+        ],
+      },
+    ],
+    // Nintendo's own pages only. Every row below was read on one of them on
+    // October 27, 2026; nothing is carried over from reporting or from memory.
+    specSource:
+      "Nintendo's Switch 2 technical-specifications, product and features pages, the Nintendo Store listings for the system and for the Mario Kart World, Choose Your Game, Nintendo Switch Sports Resort and Legend of Zelda 40th Anniversary Edition releases, Nintendo's Switch 2 FAQ, and Nintendo Support articles on the differences between Switch 2 and Switch and on the console diagram — all read on nintendo.com and en-americas-support.nintendo.com on October 27, 2026",
+    keySpecs: [
+      { label: 'Screen', value: '7.9-inch wide color gamut LCD, 1920 × 1080, capacitive touch' },
+      { label: 'HDR and VRR', value: 'HDR10 support, VRR up to 120 Hz' },
+      { label: 'TV output', value: 'Up to 3840 × 2160 (4K) at 60 fps through the included dock' },
+      { label: 'Storage', value: '256 GB (UFS), part of it reserved for system use' },
+      { label: 'Expansion', value: 'microSD Express cards only, up to 2 TB' },
+      { label: 'Wireless', value: 'Wi-Fi 6 and Bluetooth, plus a wired LAN port on the dock' },
+      { label: 'Battery', value: '5220 mAh, approximately 2 – 6.5 hours of play' },
+      { label: 'Charging', value: 'About 3 hours in sleep mode; USB-C connectors on the bottom and the top' },
+      { label: 'Game media', value: 'Reads both Nintendo Switch 2 and Nintendo Switch game cards' },
+    ],
+    additionalInfo: [
+      { label: 'Brand', value: 'Nintendo' },
+      { label: 'Model', value: 'Nintendo Switch 2' },
+      { label: 'Release date', value: 'June 5, 2025, according to the Nintendo Store listing' },
+      {
+        label: 'In the box',
+        value:
+          'Console, Joy-Con 2 (L) in Light Blue, Joy-Con 2 (R) in Light Red, Joy-Con 2 Grip, two Joy-Con 2 Straps, the dock, the AC adapter, a USB-C charging cable and an Ultra High Speed HDMI cable',
+      },
+      {
+        label: 'Joy-Con 2 pairs Nintendo sells separately',
+        value: 'Light Blue and Light Red, Light Purple and Light Green, Blue and Light Yellow',
+      },
+      {
+        label: 'Memory cards',
+        value: 'Nintendo recommends officially licensed microSD Express cards',
+      },
+    ],
+    specs: [
+      {
+        group: 'Console',
+        rows: [
+          {
+            label: 'Size, with Joy-Con 2 attached',
+            value: 'Approximately 4.5 in tall × 10.7 in wide × 0.55 in thick (about 11.43 × 27.18 × 1.40 cm)',
+          },
+          {
+            label: 'Maximum thickness',
+            value: '1.2 in from the tip of the control sticks to the protruding parts of the ZL/ZR buttons',
+          },
+          {
+            label: 'Weight',
+            value:
+              'Approximately 0.88 lb (about 399 g) on its own, or approximately 1.18 lb (about 535 g) with Joy-Con 2 attached',
+          },
+          { label: 'Screen', value: '7.9-inch wide color gamut LCD with capacitive touch' },
+          { label: 'Screen resolution', value: '1920 × 1080' },
+          { label: 'HDR', value: 'HDR10 support' },
+          { label: 'Variable refresh rate', value: 'VRR up to 120 Hz' },
+          {
+            label: 'CPU/GPU',
+            value:
+              '“Custom processor made by NVIDIA.” Nintendo publishes no clock speeds, core counts or memory capacity.',
+          },
+          { label: 'Internal storage', value: '256 GB (UFS), part of it reserved for system use' },
+          { label: 'Operating environment', value: '41–95 °F, 20–80% humidity' },
+        ],
+      },
+      {
+        group: 'Display and video output',
+        rows: [
+          {
+            label: 'Handheld and tabletop resolution',
+            value: 'Up to 1920 × 1080, following the console’s own screen resolution',
+          },
+          { label: 'TV mode output', value: 'Up to 3840 × 2160 (4K) at 60 fps' },
+          {
+            label: 'Higher frame rates',
+            value: '120 fps when 1920 × 1080 or 2560 × 1440 is selected',
+          },
+          {
+            label: 'Conditions',
+            value:
+              '4K, HDR and VRR in TV mode need a supported game and a compatible display, and frame rate is fixed to a maximum of 60 fps at 4K output',
+          },
+          {
+            label: 'VRR in TV mode',
+            value: 'Added by a system update released on September 10, 2026',
+          },
+          { label: 'Video output', value: 'Through the HDMI connector on the dock, in TV mode' },
+        ],
+      },
+      {
+        group: 'Joy-Con 2 controllers',
+        rows: [
+          {
+            label: 'Included controllers',
+            value: 'Joy-Con 2 (L) in Light Blue and Joy-Con 2 (R) in Light Red',
+          },
+          { label: 'Attachment', value: 'Magnetic, with a release button on the back to detach' },
+          {
+            label: 'Size, each controller',
+            value: 'Approximately 4.57 in tall × 0.56 in wide × 1.2 in thick (about 11.61 × 1.42 × 3.05 cm)',
+          },
+          {
+            label: 'Weight, each controller',
+            value: 'Joy-Con 2 (L) approximately 2.3 oz (about 65 g); Joy-Con 2 (R) approximately 2.4 oz (about 68 g)',
+          },
+          { label: 'Wireless', value: 'Joy-Con 2 (L): Bluetooth. Joy-Con 2 (R): Bluetooth and NFC.' },
+          { label: 'Sensors', value: 'Accelerometer, gyroscope and mouse sensor in each controller' },
+          { label: 'Vibration', value: 'HD rumble 2' },
+          {
+            label: 'Battery',
+            value:
+              '500 mAh per controller, approximately 20 hours of use and about 3 hours 30 minutes to charge, when attached to the console or to the Joy-Con 2 charging grip',
+          },
+          {
+            label: 'Buttons, left controller',
+            value: 'Left Stick (pressable), Up/Down/Left/Right/L/ZL/SL/SR/-, Capture, Release and Sync',
+          },
+          {
+            label: 'Buttons, right controller',
+            value: 'Right Stick (pressable), A/B/X/Y/R/ZR/SL/SR/+, HOME, C, Release and Sync',
+          },
+        ],
+      },
+      {
+        group: 'Dock',
+        rows: [
+          {
+            label: 'Size',
+            value:
+              'Approximately 4.5 in tall × 7.9 in wide × 2 in thick (about 11.43 × 20.07 × 5.08 cm); the height includes the 0.08 in added by the feet',
+          },
+          { label: 'Weight', value: 'Approximately 0.84 lb (about 381 g)' },
+          {
+            label: 'Ports',
+            value:
+              'Two USB ports (USB 2.0 compatible) on the side, system connector, AC adapter port, HDMI port and LAN port',
+          },
+        ],
+      },
+      {
+        group: 'Joy-Con 2 Grip and Strap',
+        rows: [
+          {
+            label: 'Grip size',
+            value: 'Approximately 4.57 in tall × 5.67 in wide × 1.58 in thick (about 11.61 × 14.40 × 4.01 cm)',
+          },
+          { label: 'Grip weight', value: 'Approximately 3.35 oz (about 95 g)' },
+          {
+            label: 'Strap size',
+            value:
+              'Approximately 4.6 in tall × 0.65 in wide × 0.28 in thick (about 11.68 × 1.65 × 0.71 cm), excluding the cord',
+          },
+          { label: 'Strap weight', value: 'Approximately 0.25 oz (about 7 g), excluding the cord' },
+        ],
+      },
+      {
+        group: 'Battery and power',
+        rows: [
+          { label: 'Internal battery', value: 'Lithium-ion, 5220 mAh' },
+          {
+            label: 'Battery life',
+            value:
+              'Approximately 2 – 6.5 hours; Nintendo describes these as rough estimates that depend on the games played',
+          },
+          { label: 'Charging time', value: 'Approximately 3 hours while the system is in sleep mode' },
+          {
+            label: 'USB-C connectors',
+            value:
+              'Two: the bottom connector charges the console and connects it to the dock, the top one is for accessories or for charging',
+          },
+        ],
+      },
+      {
+        group: 'Storage and media',
+        rows: [
+          {
+            label: 'Internal storage',
+            value:
+              '256 GB (UFS), with a portion reserved for system use; Nintendo describes it as eight times the capacity of the original Nintendo Switch',
+          },
+          {
+            label: 'Memory card slot',
+            value:
+              'Compatible with microSD Express cards only, up to 2 TB; microSD cards that are not Express-compatible can only copy screenshots and videos from a Nintendo Switch',
+          },
+          {
+            label: 'Game card slot',
+            value: 'Accepts both Nintendo Switch 2 and Nintendo Switch game cards',
+          },
+          {
+            label: 'Game-key cards',
+            value:
+              'A game card that holds no game data, only the key to start the game: the first launch downloads the game, and the card must stay inserted to play',
+          },
+        ],
+      },
+      {
+        group: 'Audio and communication',
+        rows: [
+          {
+            label: 'Audio output',
+            value: 'Linear PCM 5.1ch, output through the HDMI connector in TV mode',
+          },
+          { label: 'Speakers', value: 'Stereo, in an independent enclosure' },
+          {
+            label: 'Microphone',
+            value:
+              'Built-in monaural microphone with noise cancellation, echo cancellation and automatic gain control',
+          },
+          { label: 'Wireless LAN', value: 'Wi-Fi 6' },
+          {
+            label: 'Wired internet',
+            value: 'Through the LAN port on the dock, in TV mode',
+          },
+          { label: 'Audio jack', value: '3.5 mm four-contact stereo mini-plug (CTIA standard)' },
+        ],
+      },
+      {
+        group: 'Built-in features',
+        items: [
+          'Three play modes: TV, tabletop and handheld',
+          'Kickstand with 150 degrees of freedom for tabletop play',
+          'Joy-Con 2 can be used as mice, and both at once in compatible games',
+          'C button on the right Joy-Con 2 opens GameChat',
+          'GameChat needs a Nintendo Switch Online membership, a Nintendo Account and text-message verification; up to 12 people can join with audio, and up to four with a compatible USB camera',
+          'Brightness sensor in the console and a mouse sensor in each controller',
+          'NFC on the right Joy-Con 2 only',
+        ],
+      },
+      {
+        group: 'Notable limitations',
+        items: [
+          'Nintendo publishes no RAM capacity, core count or clock speed: its technical-specifications page says only “Custom processor made by NVIDIA.”',
+          'No storage read or write speed is published, only the 256 GB capacity and the UFS standard.',
+          'No water or dust resistance rating is published for the console.',
+          'Nintendo’s product pages state no warranty term; warranty support is handled region by region through Nintendo Support.',
+          'The pages read for this sheet do not state a colour for the console body, so none is given here, although the Joy-Con 2 colours are listed in detail.',
+          'Battery life is a range rather than a figure, because Nintendo says it depends on the games played.',
+          'Beyond “stereo”, Nintendo publishes no figures for the built-in speakers.',
+        ],
+      },
+    ],
+  },
+
   'aula-f75-pro-wireless-keyboard': {
     slug: 'aula-f75-pro-wireless-keyboard',
     priceBox: {
@@ -3113,6 +3470,9 @@ export function resolveQuickLook(slug: string): QuickLookView | undefined {
       // Absent on an informational entry: the page renders no purchase panel,
       // so there is no link for a button to use.
       ...(own.buyUrl ? { buyUrl: own.buyUrl } : {}),
+      // The page's own content date, so a standalone Quick Look page still gets
+      // a real `lastmod` in the sitemap (productDate reads `addedAt`).
+      ...(own.addedAt ? { addedAt: own.addedAt } : {}),
       ...(own.altText ? { altText: own.altText } : {}),
       ...(own.metaTitle ? { metaTitle: own.metaTitle } : {}),
       ...(own.metaDescription ? { metaDescription: own.metaDescription } : {}),
