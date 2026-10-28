@@ -47,6 +47,14 @@ export const POST_PRODUCT_LINKS: Record<string, string[]> = {
   // The comparison post sets HomeView against the Alexa and Google screens, so
   // it covers the same spec sheet from a different angle.
   'apple-homeview-vs-echo-show-nest-hub': ['apple-homeview-smart-display'],
+  // The Switch 2 vs PS5 comparison reads both spec sheets directly: Nintendo's
+  // prices per model and Sony's console, storage and in-box list. One post, two
+  // products, so both Quick Look pages show it under "From our blog" (each
+  // sheet is well inside its MAX_POSTS_PER_QUICK_LOOK limit).
+  'nintendo-switch-2-vs-ps5-which-to-buy': [
+    'nintendo-switch-2-console',
+    'playstation-5-disc-console-slim',
+  ],
 }
 
 /** Product slugs a post covers, filtered to ones with a Quick Look page. */

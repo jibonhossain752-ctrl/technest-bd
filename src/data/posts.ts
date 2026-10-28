@@ -74,6 +74,222 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: 'nintendo-switch-2-vs-ps5-which-to-buy',
+    title: 'Nintendo Switch 2 vs PS5: Which to Buy in 2026?',
+    excerpt:
+      'One is a handheld that docks to a TV for $499.99, the other a $649 disc console with a 1 TB SSD: what each costs at the makers’ own prices, and which one led US sales each month of 2026 that we could confirm.',
+    category: 'Gaming Gear',
+    date: '2026-10-28',
+    lastUpdated: '2026-10-28',
+    author: 'Gadgeterea Team',
+    heroImage: '/images/blog/nintendo-switch-2-vs-ps5-hero.webp',
+    emoji: '🎮',
+    readTime: '9 min read',
+    content: [
+      // The hero's own caption, first in the body so it sits directly under the
+      // image (the template has no figcaption slot and the post must not change
+      // the shared page component).
+      'Illustration, not a photograph of a retail unit.',
+      'At the makers’ own US prices the Nintendo Switch 2 is the cheaper system — $499.99 against $649 for the PlayStation 5 with a disc drive — and it is the only one of the two that works as a handheld as well as on a television. The PS5 is a TV-only console with a 1 TB SSD, a disc drive on that $649 model and backwards compatibility with more than 8,500 PS4 games, so the choice comes down to whether portability or that library matters more to you.',
+      '**Updated October 28, 2026.** We have not tested either console: everything below comes from Nintendo’s and Sony’s own US pages and from Circana’s monthly US hardware reports, each read on the date named, and every price is the maker’s own suggested retail price before tax and shipping rather than a live retailer price.',
+      { heading: 'Nintendo Switch 2 vs PS5 at a Glance' },
+      {
+        table: {
+          headers: ['', 'Nintendo Switch 2', 'PlayStation 5 (disc, 1 TB)'],
+          rows: [
+            [
+              'US price, console only',
+              '$499.99 (Nintendo US store, read Oct 28, 2026)',
+              '$649.00 (PlayStation Direct, read Oct 28, 2026)',
+            ],
+            [
+              'What is in the box',
+              'Console, Joy-Con 2 (L) and (R), Joy-Con 2 grip, two straps, dock, AC adapter, USB-C cable, Ultra High Speed HDMI cable; no game',
+              'Console, one DualSense controller, two stand feet, HDMI cable, AC power cord, USB cable, manual, ASTRO’s PLAYROOM pre-installed; no stand',
+            ],
+            [
+              'Storage',
+              '256 GB (UFS), part reserved for the system; microSD Express cards only, up to 2 TB',
+              '1 TB SSD, part reserved for system software',
+            ],
+            [
+              'Display and TV connection',
+              '7.9-inch 1920 × 1080 LCD touch screen with HDR10 and VRR up to 120 Hz; TV mode up to 3840 × 2160 at 60 fps through the included dock',
+              'No screen: HDMI output to a 4K TV with HDR and up to 120 fps at 120 Hz',
+            ],
+            [
+              'Portability',
+              'Handheld and tabletop modes, on its own battery, with the controllers attached',
+              'None: needs a television and mains power',
+            ],
+            [
+              'Controllers in the box',
+              'Two Joy-Con 2, magnetic, with a mouse sensor and HD rumble 2; the C button opens GameChat',
+              'One DualSense, with haptic feedback and adaptive triggers',
+            ],
+            [
+              'Backward compatibility',
+              'Game card slot takes both Nintendo Switch 2 and Nintendo Switch game cards',
+              'Plays more than 8,500 PS4 games, with Game Boost on select titles',
+            ],
+          ],
+        },
+      },
+      'Two notes on that table. The PS5 Digital Edition is the same console without a disc drive at $599, and on that model Sony sells the disc drive separately. And “backward compatibility” follows each maker’s own wording: Sony puts the PS4 library at more than 8,500 games, while Nintendo’s technical specifications say only that the game card slot takes both generations of card.',
+      { link: { href: '/quick-look/nintendo-switch-2-console', label: 'full Nintendo Switch 2 specs' } },
+      { heading: 'Price and What You Really Pay' },
+      'Nintendo’s US store listed the Switch 2 at $499.99 on October 28, 2026, with the dock, both controllers, the grip, two straps and both cables in the box, so a TV setup costs nothing extra. The bundles it sells add a game rather than different hardware: the Mario Kart World bundle at $549.99 and the Nintendo Switch Sports Resort bundle at $529.99, both shown as MSRP on Nintendo’s Switch 2 page, a Choose Your Game bundle at $499.99 that Nintendo offers as a limited-time bundle, and a Legend of Zelda 40th Anniversary Edition at $519.99 with a themed dock and green and gold Joy-Con 2. Nintendo states that no game is included in that edition, and it is a limited run, so its store listing is the only reliable place to check availability.',
+      'That $499.99 is not the price the console launched at. Circana’s Mat Piscatella, in the July 2026 US sales report published on August 20, 2026, noted a Nintendo Switch 2 hardware price increase taking effect on September 1, 2026. Nintendo’s store does not publish a price history, so this page quotes only the figure it listed on the day we read it, and we have not stated an earlier price because we could not confirm one on Nintendo’s own pages.',
+      'Sony’s own store, PlayStation Direct, listed the PS5 with a 1 TB SSD and a disc drive at $649 and the Digital Edition with 825 GB at $599 on October 28, 2026; a PS5 Pro appears in the same listing at $899. The vertical stand is sold separately at $29, and on the Digital Edition so is the disc drive. Neither PS5 price includes a game.',
+      'Online play is a subscription on both sides. Nintendo lists Nintendo Switch Online at $19.99 a year for an individual account and $34.99 for a family membership covering up to eight accounts, with an Expansion Pack tier above it. Sony sells PlayStation Plus in Essential, Extra and Premium plans, but its page did not display prices in the text we read, so none are quoted here. Storage is the other recurring cost if you download: the Switch 2 takes microSD Express cards only and Nintendo recommends officially licensed ones, while Sony lists extra storage among the PS5 accessories.',
+      {
+        image: '/images/blog/nintendo-switch-2-vs-ps5-image-3.webp',
+        alt: 'Two PlayStation 5 Slim consoles with DualSense controllers, one with a disc drive',
+        width: 900,
+        height: 502,
+      },
+      'PlayStation 5 Slim, disc and digital models.',
+      { heading: 'Handheld Versus TV Console' },
+      'This is the difference that decides most purchases. Nintendo’s console plays three ways: handheld with the Joy-Con 2 clipped to either side, tabletop standing on its 150-degree kickstand with the controllers off, and TV mode through the included dock, which outputs up to 3840 × 2160 at 60 fps. Nintendo’s technical specifications put the screen at 7.9 inches and 1920 × 1080 with HDR10 and VRR up to 120 Hz, and note that handheld and tabletop play top out at the screen’s own resolution.',
+      'The PS5 has no screen and no battery. It is a box that connects to a television over HDMI, and Sony’s product page leads with 4K gaming, HDR and frame rates up to 120 fps at 120 Hz output. That is not a disadvantage if your gaming happens in one room in front of one screen — it is the reason the PS5 can be a 1 TB machine with a disc drive for $649 — but it does rule the console out for a commute.',
+      'Nintendo’s figures also make the trade explicit: the console is approximately 0.88 lb on its own and 1.18 lb with both controllers attached, and its 5220 mAh battery is rated at approximately 2 to 6.5 hours of play, a range Nintendo says depends on the games you play. The PS5 has no equivalent figure because it never runs on a battery.',
+      {
+        image: '/images/blog/nintendo-switch-2-vs-ps5-image-2.webp',
+        alt: 'Render of a handheld console in handheld, docked and tabletop play modes',
+        width: 900,
+        height: 502,
+      },
+      'Illustration of the three play modes. It does not show the exact Switch 2 hardware or Switch 2 games.',
+      { heading: 'Games and Backward Compatibility' },
+      'The libraries overlap less than the hardware prices suggest. Nintendo positions the Switch 2 around its own games — Nintendo’s store page calls it “the home of Mario & Friends” — while Sony’s PS5 page leads with PlayStation Studios exclusives and then the big multiplatform titles. If the games you want are Nintendo’s, no PS5 will play them; if they are Sony’s, the Switch 2 will not either.',
+      'Both consoles do play the previous generation. Nintendo’s technical specifications state that the game card slot accepts both Nintendo Switch 2 and Nintendo Switch game cards, and Nintendo keeps a separate game-compatibility page for individual titles. Sony is more specific about scale: its PS5 page says the console plays more than 8,500 PS4 games, with Game Boost giving select PS4 titles faster and smoother frame rates.',
+      'One Sony detail is worth knowing before you choose the disc model. Sony’s PS5 pages carry a notice that, from January 2028, newly released games on PlayStation will be available for purchase on PlayStation Store and at retailers in digital format only, while discs for games released before that date can continue to be played on the console. A disc drive still buys you the existing library and the second-hand market; it does not guarantee new releases on disc after that date.',
+      { heading: 'Controllers' },
+      'Nintendo ships two controllers in the box. The Joy-Con 2 attach magnetically and come off with a release button on the back, and Nintendo’s specifications list a mouse sensor, an accelerometer and a gyroscope in each, HD rumble 2, roughly 20 hours of battery per controller, Bluetooth on both and NFC on the right one only. The C button on the right controller opens GameChat, which Nintendo says needs a Nintendo Switch Online membership and a Nintendo Account.',
+      'Sony ships one. The DualSense’s pitch is haptic feedback and adaptive triggers, which Sony describes as changing resistance in supported games — a tighter bowstring, brakes under your finger. Two Joy-Con 2 mean local two-player works out of the box on the Switch 2, where a second DualSense for the PS5 is a separate purchase.',
+      {
+        image: '/images/blog/nintendo-switch-2-vs-ps5-image-5.webp',
+        alt: 'Render of detachable Joy-Con style controllers beside a DualSense controller',
+        width: 900,
+        height: 502,
+      },
+      'Illustration. The controllers shown are not the exact Joy-Con 2 design.',
+      { heading: '2026 US Sales: Who Led Each Month' },
+      'Circana tracks US retail sales and ranks hardware twice, once by units sold and once by dollar sales; the two can disagree when the consoles cost different amounts. These are the 2026 months we could confirm in Circana-sourced reporting, read on October 28, 2026:',
+      {
+        table: {
+          headers: ['Month', 'Leader', 'Note'],
+          rows: [
+            [
+              'March 2026',
+              'Nintendo Switch 2',
+              'First in units and dollars; PS5 second in both (Circana period March 1 to April 4)',
+            ],
+            ['May 2026', 'Nintendo Switch 2', 'First in units and dollars; PS5 second in both'],
+            [
+              'June 2026',
+              'Nintendo Switch 2',
+              'First in units and dollars, measured against its own record June 2025 launch month',
+            ],
+            [
+              'July 2026',
+              'Nintendo Switch 2 on units',
+              'PS5 led the month on dollar sales and was second on units',
+            ],
+            [
+              'August 2026',
+              'Nintendo Switch 2',
+              'First in units and dollars; Circana put total console sales at the lowest for any August since 2013',
+            ],
+            [
+              'September 2026',
+              'PlayStation 5',
+              'First in units and dollars; PS5 units up 22% year on year while Switch 2 units fell 14%',
+            ],
+          ],
+        },
+      },
+      'That is not a clean sweep for either console. Nintendo’s led five of the six months we could confirm and Circana’s August report also had it as the best-selling console of 2026 so far, but the PS5 took September in both measures and led July on dollars. The market itself is contracting: Circana reported the average price paid for a new console in August at $541, a record for the month, which is why dollar rankings and unit rankings can point in different directions.',
+      'To be clear about what the table is not: it carries no unit totals for either console, only which one Circana ranked first and on which measure, and a single month says nothing about lifetime sales. Months we could not confirm from Circana-sourced reporting, April among them, are left out rather than estimated.',
+      { heading: 'Who Should Choose Which' },
+      'A short version, based only on the differences above:',
+      {
+        list: [
+          'Choose the Nintendo Switch 2 if you want one device for the train and the television, you play Nintendo’s games, and $499.99 including the dock, both controllers and both cables is the budget you had in mind.',
+          'Choose the PlayStation 5 if your gaming happens on a TV, you want a 1 TB SSD and a disc drive, and the PS4 and PS5 library is the draw — Sony puts backwards compatibility at more than 8,500 PS4 games.',
+          'Choose the PS5 Digital Edition if you have stopped buying discs: it is $50 less than the disc model, and Sony sells the drive separately if that changes.',
+          'Skip both if you mostly play on a PC or a phone and neither console’s exclusives interest you. Neither price includes a game, and online play needs a subscription on both.',
+        ],
+      },
+      {
+        deal: {
+          name: 'PlayStation 5 Disc Edition Console (Slim)',
+          productSlug: 'playstation-5-disc-console-slim',
+          affiliateUrl: 'https://amzn.to/3UkGz9P',
+          ctaLabel: 'Check Price on Amazon',
+        },
+      },
+      'There is no Switch 2 buy button on this page: the Amazon listing we could verify for it is a third-party controller rather than the console. For the system itself, Nintendo’s US store is the only place that lists the prices and bundles quoted above.',
+      { heading: 'What We Could Not Verify' },
+      'Four gaps are worth naming. Nintendo publishes no RAM capacity, core count or clock speed — its technical specifications say only “Custom processor made by NVIDIA” — so this comparison makes no performance claim in either direction. Nintendo’s store does not publish a price history, so the Switch 2’s original launch price cannot be confirmed from Nintendo’s own pages and is not stated here. Sony’s PlayStation Plus page lists its three plans without showing prices, so no subscription figure is quoted for the PS5. And the Legend of Zelda 40th Anniversary Edition carries no release date here because the dates we read for it did not agree; check Nintendo’s listing.',
+      { link: { href: '/quick-look/playstation-5-disc-console-slim', label: 'full PS5 Slim specs' } },
+    ],
+    metaTitle: 'Nintendo Switch 2 vs PS5: Which to Buy in 2026?',
+    metaDescription:
+      'Nintendo Switch 2 vs PS5 in 2026: price, portability, games and US sales compared, using Circana data and each maker’s own specs.',
+    altText:
+      'Render of a handheld console and a PlayStation 5 with DualSense controller',
+    faq: [
+      {
+        question: 'Which costs less, the Nintendo Switch 2 or the PS5?',
+        answer:
+          'The Switch 2, at Nintendo’s own US price of $499.99 on October 28, 2026, against $649 for the PS5 with a disc drive and 1 TB of storage and $599 for the PS5 Digital Edition with 825 GB at PlayStation Direct on the same date. None of those prices includes a game, and tax and shipping are extra.',
+      },
+      {
+        question: 'Does the Nintendo Switch 2 play Nintendo Switch games?',
+        answer:
+          'Nintendo’s technical specifications state that the game card slot accepts both Nintendo Switch 2 and Nintendo Switch game cards, so physical Switch games fit. Nintendo keeps a separate game-compatibility page for individual titles, which is the place to check a specific game before you buy.',
+      },
+      {
+        question: 'Does the PS5 play PS4 games?',
+        answer:
+          'Yes. Sony states on its PS5 page that the console plays more than 8,500 PS4 games, and that select PS4 games run with faster and smoother frame rates through Game Boost.',
+      },
+      {
+        question: 'Do I need a TV to use either console?',
+        answer:
+          'The PS5 needs one: it has no screen and no battery, and it outputs over HDMI to a television. The Switch 2 does not — it plays handheld and in tabletop mode on its own 7.9-inch screen and only uses a TV when you put it in the included dock.',
+      },
+      {
+        question: 'Which console sold more in the US in 2026?',
+        answer:
+          'On Circana’s monthly figures, the Switch 2 led five of the six months we could confirm — March, May, June, July on units with the PS5 ahead on dollars, and August — while the PS5 led September in both units and dollars. Circana’s August report also had the Switch 2 as the best-selling console of 2026 so far. The table above lists only the months we could confirm in Circana-sourced reporting.',
+      },
+      {
+        question: 'What bundles does the Nintendo Switch 2 come in?',
+        answer:
+          'Nintendo’s US store listed a Mario Kart World bundle at $549.99 and a Nintendo Switch Sports Resort bundle at $529.99, both shown as MSRP on Nintendo’s Switch 2 page, a Choose Your Game bundle at $499.99 that Nintendo offers as a limited-time bundle, and a Legend of Zelda 40th Anniversary Edition at $519.99 with a themed dock and green and gold Joy-Con 2. The console and the in-box accessories are the same in every one of them; only the game download or the design changes.',
+      },
+      {
+        question: 'Is the Zelda 40th Anniversary Edition a different console?',
+        answer:
+          'No. It is the same Nintendo Switch 2 with a themed dock and green and gold Joy-Con 2, and Nintendo states that no game is included. It is a limited edition, so Nintendo’s store listing is the only reliable place to check availability, and this page does not state a release date for it because the dates we read did not agree.',
+      },
+    ],
+    primaryKeyword: 'Nintendo Switch 2 vs PS5',
+    secondaryKeywords: [
+      'Switch 2 vs PS5 which to buy',
+      'Nintendo Switch 2 price US',
+      'PS5 price 2026',
+      'Switch 2 vs PS5 sales 2026',
+    ],
+    keepBrowsing: [
+      { href: '/quick-look/playstation-5-disc-console-slim', label: 'PlayStation 5 Slim spec sheet' },
+      { href: '/quick-look/nintendo-switch-2-console', label: 'Nintendo Switch 2 spec sheet' },
+      { href: '/blog/ps5-spider-man-edition-and-game', label: 'PS5 Spider-Man Edition and game: what’s worth buying' },
+    ],
+  },
+  {
     slug: 'apple-homeview-price-release-date-features',
     title: 'Apple HomeView: Price, Release Date, Specs and Features',
     excerpt:
