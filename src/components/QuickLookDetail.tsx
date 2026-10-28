@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { Product } from '@/data/products'
-import type { QuickLookEntry, QuickLookVariant } from '@/data/quick-look'
+import type { QuickLookEntry, QuickLookModelPrice, QuickLookVariant } from '@/data/quick-look'
 import { AFFILIATE_LINK_ATTRS, SITE } from '@/lib/site'
 import TrackedAffiliateLink from './TrackedAffiliateLink'
 import QuickLookGallery from './QuickLookGallery'
@@ -104,8 +104,10 @@ function optionBlocked(
  *   purchase paths of the source page are deliberately not ported: this store
  *   sells nothing on site, so every purchase is the single outbound Amazon link.
  * - A price figure renders only through `entry.priceBox` (a manual figure from
- *   the manufacturer or its own store, with its source and date). A page
- *   carrying one has no Amazon link — see memory.md rule 3 and the build guard.
+ *   the manufacturer or its own store, with its source and date). Price and
+ *   Amazon link may sit on the same page (owner decision, 2026-10-21; memory.md
+ *   rule 3), and a box may price each model separately through `modelPrices`,
+ *   in which case the chip selection picks the figure.
  * - The affiliate link carries rel="sponsored nofollow noopener" and opens in a
  *   new tab (TrackedAffiliateLink handles both plus the click event).
  * - Exactly one Amazon Associates disclosure sits under the buy button, in
@@ -162,9 +164,33 @@ export default function QuickLookDetail({
 
   const heroAlt = imageAlts[0] ?? product.name
   const priceBox = entry.priceBox
+
+  /**
+   * Per-model pricing (entry.priceBox.modelPrices). The key is the selected
+   * option's label in the FIRST variant dimension, which is the only dimension a
+   * priced page may use: a second one would make "the selected model" ambiguous.
+   * A page without the map resolves to undefined everywhere below and renders
+   * exactly as it did before.
+   */
+  const modelPrices = priceBox?.modelPrices
+  const selectedModel = variantGroups[0]?.options[selected[0] ?? 0]?.label
+  const selectedModelPrice =
+    modelPrices && selectedModel ? modelPrices[selectedModel] : undefined
+  // The table's rows follow the chip order, so the two always agree. Only models
+  // the data actually prices get a row — a model without an entry has no figure
+  // and shows "No price listed" in the box instead.
+  const modelPriceRows = modelPrices
+    ? (variantGroups[0]?.options ?? [])
+        .map((option) => ({ label: option.label, price: modelPrices[option.label] }))
+        .filter((row): row is { label: string; price: QuickLookModelPrice } =>
+          Boolean(row.price),
+        )
+    : []
   // The buy row exists only on a page that has an Amazon link. An informational
-  // entry never does; the guard fails the build if it gains one, or if a page
-  // with a price box gains a link at all.
+  // entry never does (the guard fails the build if it gains one), and neither
+  // does a per-model priced page, whose figures would sit in front of a second,
+  // live price surface. A normal priced page may carry both — owner decision,
+  // 2026-10-21.
   const buyUrl = entry.informational ? null : product.buyUrl
 
   return (
@@ -291,10 +317,10 @@ export default function QuickLookDetail({
 
             {/* Price box — the page's ONE price surface, on every Quick Look
                 page. A figure appears only when the entry carries `priceBox`:
-                a price the owner typed in by hand, shipped with its source and
-                `asOf` date. Price + buy link allowed together by owner
-                decision on 2026-10-21. Prices are hand-entered and may be out
-                of date, which is what the source line says.
+                a price entered by hand, shipped with its source and `asOf`
+                date. Price + buy link allowed together by owner decision on
+                2026-10-21. Prices are hand-entered and may be out of date,
+                which is what the source line says.
 
                 A page priced per variant leaves `amount` out and puts one row
                 per variant in `rows`; its neutral `label` then takes the
@@ -304,16 +330,48 @@ export default function QuickLookDetail({
               <h2 className="ql-panel-title">Price</h2>
               {priceBox ? (
                 <>
-                  {/* A page priced per variant has no single figure: its
-                      neutral `label` (e.g. "Prices by storage capacity") takes
-                      the headline slot and every variant keeps its own row. */}
-                  <p className="ql-price-amount">{priceBox.amount ?? priceBox.label}</p>
-                  {priceBox.amount && <p className="ql-price-label">{priceBox.label}</p>}
-                  <p className="ql-price-asof">
-                    as of{' '}
-                    <time dateTime={priceBox.asOf}>{formatPriceDate(priceBox.asOf)}</time>
-                  </p>
-                  <p className="ql-price-source">Source: {priceBox.source}</p>
+                  {/* A page priced PER MODEL shows the selected model's own
+                      figure through the same slots a single-price page uses
+                      (big amount, label, "as of", source, short note), so the
+                      box reads identically apart from the number. The default
+                      selection is the first chip, so that figure is what the
+                      server renders. A model with no entry gets the same
+                      "No price listed" line as an unpriced page rather than
+                      another model's number. */}
+                  {modelPrices ? (
+                    selectedModelPrice ? (
+                      <>
+                        <p className="ql-price-amount">{selectedModelPrice.amount}</p>
+                        <p className="ql-price-label">{selectedModelPrice.label}</p>
+                        <p className="ql-price-asof">
+                          as of{' '}
+                          <time dateTime={selectedModelPrice.asOf}>
+                            {formatPriceDate(selectedModelPrice.asOf)}
+                          </time>
+                        </p>
+                        <p className="ql-price-source">Source: {selectedModelPrice.source}</p>
+                        {selectedModelPrice.note && (
+                          <p className="ql-price-note">{selectedModelPrice.note}</p>
+                        )}
+                      </>
+                    ) : (
+                      <p className="ql-price-empty">{NO_PRICE_LABEL}</p>
+                    )
+                  ) : (
+                    <>
+                      {/* A page priced per variant has no single figure: its
+                          neutral `label` (e.g. "Prices by storage capacity")
+                          takes the headline slot and every variant keeps its
+                          own row. */}
+                      <p className="ql-price-amount">{priceBox.amount ?? priceBox.label}</p>
+                      {priceBox.amount && <p className="ql-price-label">{priceBox.label}</p>}
+                      <p className="ql-price-asof">
+                        as of{' '}
+                        <time dateTime={priceBox.asOf}>{formatPriceDate(priceBox.asOf)}</time>
+                      </p>
+                      <p className="ql-price-source">Source: {priceBox.source}</p>
+                    </>
+                  )}
                   {priceBox.rows && priceBox.rows.length > 0 && (
                     <ul className="ql-price-rows">
                       {priceBox.rows.map((row) => (
@@ -327,7 +385,13 @@ export default function QuickLookDetail({
                       ))}
                     </ul>
                   )}
-                  {priceBox.note && <p className="ql-price-note">{priceBox.note}</p>}
+                  {/* The shared note belongs to the table on a per-model page,
+                      where it reads as the footnote under every row; in the
+                      box itself it would sit right under the selected model's
+                      own note as a second muted paragraph. */}
+                  {!modelPrices && priceBox.note && (
+                    <p className="ql-price-note">{priceBox.note}</p>
+                  )}
                   {/* The informational page's plain note (memory.md rule 4e):
                       text only, never a link. It says why there is no button. */}
                   {entry.informational && (
@@ -354,9 +418,8 @@ export default function QuickLookDetail({
             </div>
           )}
 
-          {/* Buy row — only where the page has an Amazon link, and never on a
-              page that shows a manual price (the guard enforces the pair).
-              Full width, one button, the required Associates line beneath it. */}
+          {/* Buy row — only where the page has an Amazon link. Full width, one
+              button, the required Associates line beneath it. */}
           {buyUrl && (
             <div className="ql-buy-row">
               <TrackedAffiliateLink
@@ -394,6 +457,51 @@ export default function QuickLookDetail({
           )}
         </div>
       </div>
+
+      {/* Prices by model — the static half of a per-model price box. It is
+          plain server-rendered HTML with the default model highlighted, so the
+          whole price list is readable with JavaScript off; a chip click then
+          moves the highlight (and the figure above) from the same `selected`
+          state the chips write to. Rows follow the chip order, so the two
+          controls never disagree. A page without modelPrices renders nothing
+          here. */}
+      {modelPriceRows.length > 0 && (
+        <section className="ql-price-table-panel" aria-labelledby="ql-price-table-heading">
+          <h2 id="ql-price-table-heading" className="ql-panel-title">
+            Prices by model
+          </h2>
+          <table className="ql-price-table">
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {modelPriceRows.map((row) => {
+                const isActive = row.label === selectedModel
+                return (
+                  <tr
+                    key={row.label}
+                    className={isActive ? 'active' : undefined}
+                    aria-current={isActive || undefined}
+                  >
+                    <th scope="row">
+                      {row.label}
+                      {row.price.note && (
+                        <span className="ql-price-row-note">{row.price.note}</span>
+                      )}
+                    </th>
+                    <td>{row.price.amount}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+          {priceBox && <p className="ql-price-source">Source: {priceBox.source}</p>}
+          {priceBox?.note && <p className="ql-price-note">{priceBox.note}</p>}
+        </section>
+      )}
 
       <section className="ql-specs" aria-labelledby="ql-specs-heading">
         <h2 id="ql-specs-heading">{entry.displayName} specifications</h2>

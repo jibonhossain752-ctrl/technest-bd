@@ -8668,6 +8668,79 @@ button {
   white-space: nowrap;
 }
 
+/* Prices by model — the static table under a per-model price box. Full width
+   below the hero row (the price panel is half a column wide, too narrow for
+   five model names), same panel shell as the boxes above it, and the selected
+   model's row tinted the way the active chip is. */
+.ql-price-table-panel {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.ql-price-table-panel .ql-panel-title {
+  margin-bottom: 8px;
+}
+
+.ql-price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.ql-price-table thead th {
+  padding: 6px 0 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--muted);
+}
+
+.ql-price-table thead th:last-child {
+  text-align: right;
+}
+
+.ql-price-table tbody th,
+.ql-price-table tbody td {
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.ql-price-table tbody th {
+  padding-right: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text);
+  text-align: left;
+}
+
+.ql-price-table tbody td {
+  font-weight: 700;
+  color: var(--dark);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ql-price-table tbody tr.active th,
+.ql-price-table tbody tr.active td {
+  color: var(--accent-dark);
+}
+
+.ql-price-table tbody tr.active th {
+  box-shadow: inset 3px 0 0 var(--accent);
+  padding-left: 10px;
+}
+
+.ql-price-table-panel .ql-price-source {
+  margin-top: 10px;
+}
+
 .ql-price-note,
 .ql-price-caption {
   margin-top: 8px;

@@ -31,9 +31,19 @@ from a sister project, rewritten for this store. These rules are standing.
    rendered as   "as of <date>". A page may carry a `priceBox` and an Amazon buy link
    together: price + buy link allowed together by owner decision on 2026-10-21,
    and the prices are hand-entered and may be out of date. (This replaced the
-   2026-10-20 rule that the two could never coexist.) A page priced per variant
+   2026-10-20 rule that the two could never coexist.)   A page priced per variant
    leaves `amount` out and puts one row per variant in `rows`; its `label` is
-   then the neutral heading. A page with no `priceBox` shows one muted
+   then the neutral heading. **Per-model pricing (2026-10-28, first use:
+   Nintendo Switch 2):** `modelPrices` maps an option label of the page's single
+   variant dimension to its own `{ label, amount, asOf, source, note }`. The
+   variant chip then chooses the figure in the box, and a static server-rendered
+   table under the hero lists every priced model with the selected row
+   highlighted (readable with JavaScript off; no `rows` duplication, so a figure
+   cannot appear twice and drift). A model with no entry shows
+   `NO_PRICE_LABEL`, never another model's number. The guard validates each
+   entry like a page-wide figure, refuses a second variant dimension, refuses
+   any Amazon button or link in the built page, and requires the default model's
+   figure to be in the server HTML. A page with no `priceBox` shows one muted
    line, "No price listed" (`NO_PRICE_LABEL` in
    `src/components/QuickLookDetail.tsx`). Catalog prices stay out of Quick Look
    copy, data and schema: they carry no verified date, so the UI shows the call

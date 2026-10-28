@@ -35,6 +35,13 @@
  *      hand-entered and may be out of date. A date older than 30 days is a
  *      warning, not a failure.
  *
+ *      A box may also price each model separately (`modelPrices`, keyed by an
+ *      option label of the entry's single variant dimension). Each entry is
+ *      checked like a page-wide figure, and the built page must then carry the
+ *      default model's figure — and no Amazon button or link at all (section
+ *      8), because a second, live price surface beside our dated one would
+ *      contradict it.
+ *
  *      An entry is either LINKED to a catalog record or STANDALONE:
  *      - linked: the slug must be a real product slug in src/data/products.ts.
  *      - standalone: it must carry its OWN product block (name, category,
@@ -463,7 +470,12 @@ for (const slug of Object.keys(QUICK_LOOK)) {
     }
     const amount = typeof priceBox.amount === 'string' ? priceBox.amount.trim() : ''
     const priceRows = Array.isArray(priceBox.rows) ? priceBox.rows : []
-    if (!amount && priceRows.length === 0) {
+    const modelPrices = priceBox.modelPrices
+    const modelPriceCount =
+      modelPrices && typeof modelPrices === 'object' && !Array.isArray(modelPrices)
+        ? Object.keys(modelPrices).length
+        : 0
+    if (!amount && priceRows.length === 0 && modelPriceCount === 0) {
       failures.push(
         `Quick Look entry "${slug}" priceBox has neither an amount nor any rows — the box would show only its heading`,
       )
@@ -494,6 +506,81 @@ for (const slug of Object.keys(QUICK_LOOK)) {
         failures.push(
           `Quick Look entry "${slug}" priceBox row "${row.label}" has an amount with no digit`,
         )
+      }
+    }
+
+    // Per-model pricing (2026-10-28): a box may price each chip separately.
+    // Every entry is checked exactly like a page-wide figure — a digit in the
+    // amount, a real ISO `asOf`, a non-empty `label` and `source`, no Amazon in
+    // either — and its KEY must be an option label of the page's FIRST variant
+    // dimension, because that is the only one the selector reads. A second
+    // dimension would make "the selected model" ambiguous, so it is refused.
+    if (modelPrices != null) {
+      if (typeof modelPrices !== 'object' || Array.isArray(modelPrices)) {
+        failures.push(
+          `Quick Look entry "${slug}" priceBox.modelPrices must be an object keyed by variant option label`,
+        )
+      } else {
+        const keys = Object.keys(modelPrices)
+        const dimensions = Array.isArray(entry.variants) ? entry.variants : []
+        const firstDimension = dimensions[0]
+        const optionLabels = new Set(
+          (firstDimension && Array.isArray(firstDimension.options) ? firstDimension.options : []).map(
+            (option) => option.label,
+          ),
+        )
+        if (keys.length === 0) {
+          failures.push(
+            `Quick Look entry "${slug}" priceBox.modelPrices is empty — the box and its table would show no figure`,
+          )
+        }
+        if (optionLabels.size === 0) {
+          failures.push(
+            `Quick Look entry "${slug}" priceBox.modelPrices needs a variant dimension to key into, and this entry has no options`,
+          )
+        }
+        if (dimensions.length > 1) {
+          failures.push(
+            `Quick Look entry "${slug}" priceBox.modelPrices prices one dimension, but the entry has ${dimensions.length} — the selected model would be ambiguous`,
+          )
+        }
+        for (const key of keys) {
+          const model = modelPrices[key] ?? {}
+          if (optionLabels.size > 0 && !optionLabels.has(key)) {
+            failures.push(
+              `Quick Look entry "${slug}" priceBox.modelPrices key "${key}" is not an option label in the first variant dimension — no chip could ever show this figure`,
+            )
+          }
+          for (const field of ['label', 'amount', 'asOf', 'source']) {
+            if (typeof model[field] !== 'string' || !model[field].trim()) {
+              failures.push(
+                `Quick Look entry "${slug}" priceBox.modelPrices["${key}"] is missing ${field} — label, amount, asOf and source are all required`,
+              )
+            }
+          }
+          const modelAmount = typeof model.amount === 'string' ? model.amount.trim() : ''
+          if (modelAmount && !/\d/.test(modelAmount)) {
+            failures.push(
+              `Quick Look entry "${slug}" priceBox.modelPrices["${key}"].amount ("${modelAmount}") contains no digit`,
+            )
+          }
+          if (/amazon/i.test(model.label ?? '') || /amazon/i.test(model.source ?? '')) {
+            failures.push(
+              `Quick Look entry "${slug}" priceBox.modelPrices["${key}"] names Amazon in its label or source — Amazon-sourced prices may only come from the Creators/PA API with a timestamp, which this site does not have`,
+            )
+          }
+          const modelAsOf = typeof model.asOf === 'string' ? model.asOf : ''
+          const modelAsOfTime = Date.parse(`${modelAsOf}T00:00:00Z`)
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(modelAsOf) || Number.isNaN(modelAsOfTime)) {
+            failures.push(
+              `Quick Look entry "${slug}" priceBox.modelPrices["${key}"].asOf ("${modelAsOf}") is not a valid ISO date — the box renders it as "as of <date>"`,
+            )
+          } else if ((Date.now() - modelAsOfTime) / 86400000 > 30) {
+            warnings.push(
+              `Quick Look entry "${slug}" priceBox.modelPrices["${key}"] is dated ${modelAsOf}, more than 30 days ago — re-check the figure or the date`,
+            )
+          }
+        }
       }
     }
   }
@@ -848,6 +935,56 @@ for (const relative of SCHEMA_SURFACE) {
   if (/'@type':\s*'Product'|"@type":\s*"Product"/.test(text) || /\boffers\s*:/.test(text)) {
     failures.push(
       `${relative} emits a Product node or an offers block — Quick Look keeps FAQPage only, also on a page with a price box, because nothing is sold here`,
+    )
+  }
+}
+
+/* ── 8. A per-model priced page carries no Amazon row (built HTML) ───── */
+
+// The rule the release check cares about: a page whose price box shows figures
+// per model must not also send the reader to Amazon, because the two price
+// surfaces (ours and Amazon's live one) would sit on the same screen.
+//
+// `npm run build` runs this guard from `prebuild`, so on a clean tree there is
+// no HTML yet. The check therefore judges only HTML newer than the sources that
+// produce it and says so when it has to skip; run this guard again after a
+// build (which is what the release check does) and it reads the real pages.
+const HTML_SOURCE_FILES = ['src/data/quick-look.ts', 'src/components/QuickLookDetail.tsx']
+const newestHtmlSource = Math.max(
+  0,
+  ...HTML_SOURCE_FILES.map((relative) => path.join(ROOT, relative))
+    .filter((full) => fs.existsSync(full))
+    .map((full) => fs.statSync(full).mtimeMs),
+)
+
+for (const [slug, entry] of Object.entries(QUICK_LOOK)) {
+  if (!entry.priceBox || !entry.priceBox.modelPrices) continue
+  const htmlPath = path.join(ROOT, '.next', 'server', 'app', 'quick-look', `${slug}.html`)
+  if (!fs.existsSync(htmlPath)) {
+    warnings.push(
+      `.next/server/app/quick-look/${slug}.html does not exist yet — the price-versus-Amazon check on that page's markup runs after a build`,
+    )
+    continue
+  }
+  if (fs.statSync(htmlPath).mtimeMs < newestHtmlSource) {
+    warnings.push(
+      `the built HTML for "${slug}" is older than its data — rebuild, then re-run this guard to check its markup`,
+    )
+    continue
+  }
+  const markup = fs.readFileSync(htmlPath, 'utf8')
+  const hasPrice = /\$\d/.test(markup)
+  const hasAmazonCta = /Buy from Amazon|ql-buy-btn|amazon\.com\/|amzn\.to|link\.amazon/.test(markup)
+  if (hasPrice && hasAmazonCta) {
+    failures.push(
+      `the built page /quick-look/${slug} carries both a price and an Amazon button or link — a per-model priced page shows Nintendo's figures and no Amazon call to action`,
+    )
+  }
+  const defaultLabel = entry.variants?.[0]?.options?.[0]?.label
+  const defaultAmount = defaultLabel ? entry.priceBox.modelPrices[defaultLabel]?.amount : undefined
+  if (defaultAmount && !markup.includes(defaultAmount)) {
+    failures.push(
+      `the built page /quick-look/${slug} does not contain its default model's figure (${defaultAmount}) — the price box must be server-rendered, not filled in on click`,
     )
   }
 }

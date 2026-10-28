@@ -111,6 +111,29 @@ export interface QuickLookPriceRow {
 }
 
 /**
+ * One model's price on a page whose variant chips change the figure.
+ *
+ * Same four fields as the page-wide box (`label`, `amount`, `asOf`, `source`),
+ * because the box shows whichever model is selected with the same layout it
+ * uses for a single price, plus one short `note` about that model. Every field
+ * is checked by the guard exactly like a page-wide figure: the amount needs a
+ * digit, `asOf` must be a real ISO date, `source` may not be empty, and neither
+ * `label` nor `source` may name Amazon.
+ */
+export interface QuickLookModelPrice {
+  /** What the amount is, e.g. "Nintendo Switch 2 system, system only". */
+  label: string
+  /** The figure itself, e.g. "$499.99". */
+  amount: string
+  /** ISO date the figure was read from the source. Rendered as "as of <date>". */
+  asOf: string
+  /** Where the figure came from, e.g. "Nintendo US store, read October 28, 2026". */
+  source: string
+  /** One short line about this model only — never another model's figure. */
+  note?: string
+}
+
+/**
  * A page's one price, typed in by hand by the owner.
  *
  * The figure is hand-entered and may be out of date; `asOf` says when it was
@@ -143,6 +166,16 @@ export interface QuickLookPriceBox {
   note?: string
   /** Optional table: full-setup costs across configurations. */
   rows?: QuickLookPriceRow[]
+  /**
+   * Optional per-model figures, keyed by a variant option label from the page's
+   * `variants` (first dimension — the only one a priced page may use, because a
+   * second dimension would make "the selected model" ambiguous). The box then
+   * shows the selected model's figure instead of `amount`, and the table under
+   * it lists every priced model with the selected row highlighted. A model with
+   * no entry shows "No price listed" rather than falling back to another
+   * model's figure. Only the Nintendo Switch 2 page fills this in (2026-10-28).
+   */
+  modelPrices?: Record<string, QuickLookModelPrice>
 }
 
 /**
@@ -2967,7 +3000,68 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
     // Amazon short link was verified before use on 2026-10-27 and resolved to a
     // third-party Switch 2 controller rather than the console, so no buy button
     // ships on this page until a console or bundle listing is confirmed.
+    //
+    // OWNER-SUPPLIED AMAZON LINK — kept here, not rendered, so the button can
+    // come back if the prices are ever removed again:
+    //   https://link.amazon/B0cHhUMjE
+    // Re-verify it before reinstating: on 2026-10-27 it landed on a third-party
+    // "Switch 2 controller" result, not on the console or on a bundle.
     informational: true,
+    // The page's ONE price surface, priced PER MODEL (2026-10-28): selecting a
+    // chip in "Choose variant" swaps the figure in the box and highlights that
+    // model's row in the table underneath. Every amount is the US suggested
+    // retail price Nintendo's own store lists for that product, read on
+    // 2026-10-28 from the store pages' own product data — no retailer, resale or
+    // Amazon figure appears here. The console and its accessories are identical
+    // in every option, so what the difference buys is the bundled game or the
+    // themed shell, never different hardware.
+    priceBox: {
+      label: 'Nintendo Switch 2 prices by model',
+      asOf: '2026-10-28',
+      source: 'Nintendo US store, read October 28, 2026',
+      note: 'US suggested retail prices, before tax and shipping. Nintendo sets them and retailers may price differently. The console and the accessories in the box are the same in every option.',
+      modelPrices: {
+        'Nintendo Switch 2': {
+          label: 'Nintendo Switch 2 system, system only',
+          amount: '$499.99',
+          asOf: '2026-10-28',
+          source: 'Nintendo US store, read October 28, 2026',
+          note: 'Console, Joy-Con 2 pair, grip, two straps, dock, AC adapter, USB-C cable and HDMI cable. No game.',
+        },
+        'Switch 2 + Mario Kart World Bundle': {
+          label: 'Switch 2 + Mario Kart World Bundle',
+          amount: '$549.99',
+          asOf: '2026-10-28',
+          source: 'Nintendo US store, read October 28, 2026',
+          note: 'Adds a full Mario Kart World download and a code for three months of Nintendo Switch Online.',
+        },
+        'Switch 2: Choose Your Game Bundle': {
+          // The label is the owner's wording: Nintendo announced this bundle at
+          // its May 12, 2026 press-release price before the console price moved,
+          // and called it a limited-time offer. Nintendo's store still showed
+          // the same $499.99 on October 28, 2026, so the figure did not change.
+          label: 'Launch price (Nintendo press release, May 12, 2026), limited-time bundle',
+          amount: '$499.99',
+          asOf: '2026-10-28',
+          source: 'Nintendo US store, read October 28, 2026',
+          note: 'Launch price from Nintendo’s May 12, 2026 press release, still $499.99 on the store on October 28, 2026; limited-time bundle while supplies last.',
+        },
+        'Switch 2 + Nintendo Switch Sports Resort Bundle': {
+          label: 'Switch 2 + Nintendo Switch Sports Resort Bundle',
+          amount: '$529.99',
+          asOf: '2026-10-28',
+          source: 'Nintendo US store, read October 28, 2026',
+          note: 'Adds a Nintendo Switch Sports Resort download and a code for three months of Nintendo Switch Online.',
+        },
+        'Switch 2 – Zelda 40th Anniversary Edition': {
+          label: 'Switch 2 – The Legend of Zelda – 40th Anniversary Edition',
+          amount: '$519.99',
+          asOf: '2026-10-28',
+          source: 'Nintendo US store, read October 28, 2026',
+          note: 'Limited edition: themed dock and Joy-Con 2, with no game included. Check Nintendo’s store listing for availability.',
+        },
+      },
+    },
     product: {
       name: 'Nintendo Switch 2',
       category: 'Gaming Gear',
@@ -2975,7 +3069,8 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       brand: 'Nintendo',
       // The page's own content date: a standalone entry has no catalog record to
       // carry `addedAt`, and the sitemap reads it from here for its `lastmod`.
-      addedAt: '2026-10-27',
+      // Bumped to 2026-10-28 when the per-model price box was added.
+      addedAt: '2026-10-28',
       description:
         'Nintendo’s current console: a 7.9-inch 1080p LCD handheld that drops into an included dock for up to 4K output on a TV, with 256 GB of internal storage, magnetically attached Joy-Con 2 controllers and GameChat on the C button. It released on June 5, 2025 and is sold as a system on its own, as system-and-game bundles and as a themed 40th Anniversary Edition, all with the same hardware.',
       features: [

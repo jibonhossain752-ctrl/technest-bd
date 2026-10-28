@@ -3993,6 +3993,16 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
     },
     faqs: [
       {
+        question: 'How much does the Nintendo Switch 2 cost?',
+        answer:
+          'Nintendo’s US store listed the system on its own at $499.99 when it was checked for this page on October 28, 2026, and the current bundles run from $499.99 to $549.99. Nintendo sets those suggested retail prices, a retailer may charge something else, and none of them includes tax or shipping. The console and the box contents are identical in every option: the extra money buys a game download, or the themed shell of the 40th Anniversary Edition.',
+      },
+      {
+        question: 'How much do the Nintendo Switch 2 bundles cost?',
+        answer:
+          'Nintendo’s US store listed them on October 28, 2026: the Mario Kart World bundle at $549.99, the Nintendo Switch Sports Resort bundle at $529.99 and the Legend of Zelda 40th Anniversary Edition at $519.99. The Choose Your Game bundle is $499.99 — its launch price, unchanged on Nintendo’s store when this page was checked — and Nintendo calls it a limited-time bundle while supplies last. None of them is different hardware; they differ by the game download, and the Zelda Edition includes no game at all.',
+      },
+      {
         question: 'How big is the Nintendo Switch 2 screen?',
         answer:
           'Nintendo lists a 7.9-inch wide color gamut LCD with capacitive touch, running at 1920 × 1080, with HDR10 support and variable refresh rate up to 120 Hz. Handheld and tabletop play top out at that 1920 × 1080 resolution, which follows the screen.',
