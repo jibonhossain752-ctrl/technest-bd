@@ -19,6 +19,12 @@ export interface BlogPost {
     | BlogPostImage
     | { heading: string }
     | { subheading: string }
+    | {
+        /** A product pick in a roundup: an H3, its description, and an optional
+         *  buy link. `buyUrl` is left empty when there is no affiliate link; an
+         *  empty value renders nothing, so a link can be added later from data. */
+        pick: { name: string; body: string; buyUrl?: string }
+      }
     | { link: { href: string; label: string } }
     | { list: string[] }
     | {
@@ -36,12 +42,6 @@ export interface BlogPost {
   >
   metaTitle?: string
   metaDescription?: string
-  /**
-   * Optional affiliate URL for a pick in a roundup post. Left empty on posts
-   * with no affiliate links: nothing renders for an empty value, so a link can
-   * be added later without touching the page component.
-   */
-  buyUrl?: string
   heroImage?: string
   altText?: string
   dealCard?: {
@@ -91,7 +91,6 @@ export const POSTS: BlogPost[] = [
     heroImage: '/images/blog/gaming-headset-under-100-ps5-switch-2-hero.webp',
     emoji: '🎧',
     readTime: '9 min read',
-    buyUrl: '',
     content: [
       // Hero caption, first in the body so it sits under the image (the shared
       // template has no figcaption slot and this post must not change it).
@@ -183,20 +182,50 @@ export const POSTS: BlogPost[] = [
       'Compatibility lists are not permanent, so check the maker’s page for the exact model before you buy — including the lists in this article.',
       { heading: 'Five Headsets Under $100' },
       'Five headsets, described only from what each maker publishes for the US model, read in November 2026. We have not used any of them, and none of these is a ranking.',
-      { subheading: 'Logitech G325 LIGHTSPEED' },
-      'The only headset here whose maker names both consoles: Logitech’s product page lists the G325 as compatible with PS5, PC and Nintendo Switch / Switch 2. It connects over LIGHTSPEED 2.4GHz through a USB-A receiver, with Bluetooth for handhelds and phones, and Logitech rates the battery at 24+ hours and the weight at 212 g, with 24-bit audio for games. The microphone is built in rather than mounted on a boom, and Logitech says it uses AI-powered noise reduction to cut keyboard and fan noise. It suits someone who wants one headset for a PlayStation and a Switch 2 without a mic arm in front of their face. Skip it if you want a boom you can position, or if you would rather not manage a battery at all.',
+      {
+        pick: {
+          name: 'Logitech G325 LIGHTSPEED',
+          buyUrl: '',
+          body:
+            'The only headset here whose maker names both consoles: Logitech’s product page lists the G325 as compatible with PS5, PC and Nintendo Switch / Switch 2. It connects over LIGHTSPEED 2.4GHz through a USB-A receiver, with Bluetooth for handhelds and phones, and Logitech rates the battery at 24+ hours and the weight at 212 g, with 24-bit audio for games. The microphone is built in rather than mounted on a boom, and Logitech says it uses AI-powered noise reduction to cut keyboard and fan noise. It suits someone who wants one headset for a PlayStation and a Switch 2 without a mic arm in front of their face. Skip it if you want a boom you can position, or if you would rather not manage a battery at all.',
+        },
+      },
       { link: { href: 'https://www.logitech.com/en-us/shop/p/g325-lightspeed-headset', label: 'Official product page' } },
-      { subheading: 'PowerA LucidSound LS500' },
-      'The PlayStation-first option: PowerA’s page says the LS500 works with PlayStation 5, PlayStation 4, PC and mobile devices, with no Xbox or Switch 2 claim. It connects by the included USB adapter for wireless on a PlayStation or a PC, or over Bluetooth for a phone, and PowerA rates it at up to 50 hours in wireless mode and up to 70 hours over Bluetooth. Audio comes from 50 mm drivers with three EQ modes, including an FPS setting, and the flip-to-mute boom mic has built-in noise reduction plus mic monitoring so you can hear your own voice. It suits a PS5 owner who also wants one headset for calls and music on a phone. Skip it if you need Xbox support, or if the Switch 2 is your main console.',
+      {
+        pick: {
+          name: 'PowerA LucidSound LS500',
+          buyUrl: '',
+          body:
+            'The PlayStation-first option: PowerA’s page says the LS500 works with PlayStation 5, PlayStation 4, PC and mobile devices, with no Xbox or Switch 2 claim. It connects by the included USB adapter for wireless on a PlayStation or a PC, or over Bluetooth for a phone, and PowerA rates it at up to 50 hours in wireless mode and up to 70 hours over Bluetooth. Audio comes from 50 mm drivers with three EQ modes, including an FPS setting, and the flip-to-mute boom mic has built-in noise reduction plus mic monitoring so you can hear your own voice. It suits a PS5 owner who also wants one headset for calls and music on a phone. Skip it if you need Xbox support, or if the Switch 2 is your main console.',
+        },
+      },
       { link: { href: 'https://www.powera.com/p/lucidsound/gaming-headsets/multiplatform/wireless/lucidsound-ls500-wireless-gaming-headset', label: 'Official product page' } },
-      { subheading: 'Turtle Beach Stealth 500 for Nintendo Switch 2' },
-      'Turtle Beach sells this as the first officially licensed wireless headset for the Switch 2, and the page is built around that claim. It connects through a USB-C transmitter for low-latency 2.4GHz audio on the console, with Bluetooth for mobile devices, and a QuickSwitch button moves between the two. Turtle Beach lists 40 mm drivers, an omni-directional microphone that flips up to mute, an ultra-light floating headband with memory foam cushions, and up to 40 hours of battery; the Swarm II app adds EQ presets, mic settings and firmware updates. It is the pick for a docked Switch 2 where you want wireless chat as well as game audio, since Bluetooth alone cannot carry a microphone on the console. Skip it if your main console is a PS5 — Turtle Beach makes no PS5 claim for this version.',
+      {
+        pick: {
+          name: 'Turtle Beach Stealth 500 for Nintendo Switch 2',
+          buyUrl: '',
+          body:
+            'Turtle Beach sells this as the first officially licensed wireless headset for the Switch 2, and the page is built around that claim. It connects through a USB-C transmitter for low-latency 2.4GHz audio on the console, with Bluetooth for mobile devices, and a QuickSwitch button moves between the two. Turtle Beach lists 40 mm drivers, an omni-directional microphone that flips up to mute, an ultra-light floating headband with memory foam cushions, and up to 40 hours of battery; the Swarm II app adds EQ presets, mic settings and firmware updates. It is the pick for a docked Switch 2 where you want wireless chat as well as game audio, since Bluetooth alone cannot carry a microphone on the console. Skip it if your main console is a PS5 — Turtle Beach makes no PS5 claim for this version.',
+        },
+      },
       { link: { href: 'https://www.turtlebeach.com/products/stealth-500-headset-nintendo-switch-2', label: 'Official product page' } },
-      { subheading: 'Razer BlackShark V2 X' },
-      'The simplest thing here: a 3.5 mm headset with no battery, no dongle and no app to install. Razer lists it for PC, Mac, PS5, Xbox, Nintendo Switch, Steam Deck and mobile, with TriForce 50 mm drivers, a bendable HyperClear cardioid microphone, closed earcups for passive noise isolation and a weight of 240 g. The 7.1 surround feature is Windows 11 only, so on a console you get stereo, and Razer’s page says so rather than leaving it implied. It suits someone who wants to plug into a DualSense and a Switch controller and never think about charging. Skip it if you want wireless, or if you need a compatibility statement for the Switch 2 — Razer’s list says Switch.',
+      {
+        pick: {
+          name: 'Razer BlackShark V2 X',
+          buyUrl: '',
+          body:
+            'The simplest thing here: a 3.5 mm headset with no battery, no dongle and no app to install. Razer lists it for PC, Mac, PS5, Xbox, Nintendo Switch, Steam Deck and mobile, with TriForce 50 mm drivers, a bendable HyperClear cardioid microphone, closed earcups for passive noise isolation and a weight of 240 g. The 7.1 surround feature is Windows 11 only, so on a console you get stereo, and Razer’s page says so rather than leaving it implied. It suits someone who wants to plug into a DualSense and a Switch controller and never think about charging. Skip it if you want wireless, or if you need a compatibility statement for the Switch 2 — Razer’s list says Switch.',
+        },
+      },
       { link: { href: 'https://www.razer.com/gaming-headsets/Razer-BlackShark-V2-X', label: 'Official product page' } },
-      { subheading: 'SteelSeries Arctis Nova 1' },
-      'The wired set with the most platform claims: SteelSeries lists the Arctis Nova 1 for PS4 and PS5, Xbox, PC, Mac, Chromebook, handheld and Switch, mobile and VR through the 3.5 mm jack, and says it is fully compatible with Tempest 3D Audio on PS5. The ClearCast Gen 2 microphone is bidirectional, noise-cancelling and retracts into the earcup, and the controls are a volume dial and a mute button on the headset. SteelSeries lists 40 mm neodymium drivers, 36 ohm impedance and a four-point adjustable ComfortMAX band, and does not publish a weight on the US page. It suits a player who wants a light wired headset with a mic that disappears when it is not in use, on either console. Skip it if you want wireless, or if you need SteelSeries to say Switch 2 — its list says Switch.',
+      {
+        pick: {
+          name: 'SteelSeries Arctis Nova 1',
+          buyUrl: '',
+          body:
+            'The wired set with the most platform claims: SteelSeries lists the Arctis Nova 1 for PS4 and PS5, Xbox, PC, Mac, Chromebook, handheld and Switch, mobile and VR through the 3.5 mm jack, and says it is fully compatible with Tempest 3D Audio on PS5. The ClearCast Gen 2 microphone is bidirectional, noise-cancelling and retracts into the earcup, and the controls are a volume dial and a mute button on the headset. SteelSeries lists 40 mm neodymium drivers, 36 ohm impedance and a four-point adjustable ComfortMAX band, and does not publish a weight on the US page. It suits a player who wants a light wired headset with a mic that disappears when it is not in use, on either console. Skip it if you want wireless, or if you need SteelSeries to say Switch 2 — its list says Switch.',
+        },
+      },
       { link: { href: 'https://steelseries.com/gaming-headsets/arctis-nova-1', label: 'Official product page' } },
       { heading: 'Which One Fits You' },
       'A short version, from the differences above and nothing else:',

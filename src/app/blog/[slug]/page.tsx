@@ -424,6 +424,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <h3 key={`sh-${i}`} className="blog-post-h3">
                 {block.subheading}
               </h3>
+            ) : 'pick' in block ? (
+              <Fragment key={`pick-${i}`}>
+                <h3 className="blog-post-h3">{block.pick.name}</h3>
+                <p>{renderInline(block.pick.body)}</p>
+                {block.pick.buyUrl ? (
+                  <p className="blog-cta-wrap">
+                    <a
+                      href={block.pick.buyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-accent blog-cta"
+                    >
+                      Buy this headset
+                    </a>
+                  </p>
+                ) : null}
+              </Fragment>
             ) : 'link' in block ? (
               <p key={`l-${i}`} className="blog-cta-wrap">
                 <a
