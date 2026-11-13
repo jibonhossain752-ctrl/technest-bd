@@ -42,6 +42,11 @@ export interface BlogPost {
   >
   metaTitle?: string
   metaDescription?: string
+  /**
+   * Optional BlogPosting `headline` when it should differ from the H1, e.g. a
+   * title that states the price while the H1 does not. Defaults to `title`.
+   */
+  schemaHeadline?: string
   heroImage?: string
   altText?: string
   dealCard?: {
@@ -760,7 +765,7 @@ export const POSTS: BlogPost[] = [
   },
   {
     slug: 'apple-homeview-price-release-date-features',
-    title: 'Apple HomeView: Price, Release Date, Specs and Features',
+    title: 'Apple HomeView: Price, Specs and Features',
     excerpt:
       'Apple\u2019s first smart home display: a 7-inch screen from $299, Siri AI, and availability listed from November 13 \u2014 plus what a wall mount adds to the cost.',
     category: 'Explainer',
@@ -771,11 +776,11 @@ export const POSTS: BlogPost[] = [
     readTime: '7 min read',
     content: [
       'Updated: November 13, 2026. This guide uses Apple’s own published dimensions and in-box contents, the country prices listed on Apple’s regional stores, and Apple’s US buy page for the current ordering status.',
-      'Apple HomeView is Apple\u2019s first dedicated smart home display, and it comes in two versions: a tabletop model on a speaker base and a separate wall-mounted panel. Both are $299 in the US. Apple opened pre-orders on October 13, 2026, and its buy page lists availability starting Friday, November 13, 2026. The 7-inch square Liquid Retina screen runs Siri AI on the A18 chip, as a control screen for your home, a video-call screen and a music speaker. Apple announced it on October 13 at its \u201CWelcome Home\u201D event.',
+      'Apple HomeView is Apple\u2019s first dedicated smart home display, and it comes in two versions: a tabletop model on a speaker base and a separate wall-mounted panel. Both are $299 in the US. Apple opened pre-orders on October 13, 2026, and HomeView went on sale on Friday, November 13, 2026. The 7-inch square Liquid Retina screen runs Siri AI on the A18 chip, as a control screen for your home, a video-call screen and a music speaker. Apple announced it on October 13 at its \u201CWelcome Home\u201D event.',
       { heading: 'What Is Apple HomeView?' },
       'HomeView is a smart display with a 7-inch Liquid Retina screen. It comes in two versions: a tabletop version with a built-in speaker base, and a wall-mounted version. Apple presents it as a hub for controlling the home, making FaceTime calls and playing media. It was announced together with a new Apple TV 4K and HomePod mini 2, so it is one part of a wider smart home push. The prices and dates for those two products are covered in the launched-together table below.',
-      { heading: 'Apple HomeView Price and Release Date' },
-      'Both versions start at $299 in the US. Apple opened pre-orders on October 13, 2026, and its buy page lists availability starting Friday, November 13, 2026 in every first-wave country.',
+      { heading: 'Apple HomeView Price' },
+      'Both versions start at $299 in the US. Apple opened pre-orders on October 13, 2026, and HomeView went on sale on Friday, November 13, 2026 in every first-wave country.',
       // Plain outbound link to Apple's own store: not an affiliate link, so no
       // Associates disclosure sits near it and no price is printed in the label.
       {
@@ -915,7 +920,9 @@ export const POSTS: BlogPost[] = [
       },
       'Prices and availability differ by country. Apple does not sell HomeView in the European Union at all.',
       { heading: 'Not Available in the EU' },
-      'HomeView will not launch in the European Union because Siri AI is not available in iOS there. Apple says it is working with the EU on a path forward. Elsewhere, Apple lists availability beginning Friday, November 13, 2026 in Australia, Canada, India, New Zealand, the UK and the US, with Singapore pre-orders from October 15 and South Africa selling through Apple Authorized Resellers.',
+      'Apple does not sell HomeView in the European Union because Siri AI is not available in iOS there. Apple says it is working with the EU on a path forward.',
+      { heading: 'When was Apple HomeView released?' },
+      'Apple announced HomeView on October 13, 2026 and opened pre-orders the same day. It went on sale on Friday, November 13, 2026 in Australia, Canada, India, New Zealand, the UK and the US, with Singapore pre-orders opened on October 15, 2026 and South Africa selling through Apple Authorized Resellers.',
       { heading: 'Who Should Buy Apple HomeView?' },
       { subheading: 'It suits you if' },
       {
@@ -944,9 +951,12 @@ export const POSTS: BlogPost[] = [
         },
       },
     ],
-    metaTitle: 'Apple HomeView: $299 Price, Nov 13 Release & Specs',
+    metaTitle: 'Apple HomeView: $299 Price, Specs & Features',
     metaDescription:
-      'Apple HomeView is a $299 smart display with a 7-inch screen and Siri AI, available from November 13. See specs, colors, wall mounts and who should buy.',
+      'Apple HomeView is a $299 smart display with a 7-inch screen and Siri AI, available since November 13. See specs, colors, wall mounts and who should buy.',
+    // The markup headline states the price, which the H1 deliberately leaves
+    // out; every other post keeps the H1 as its headline.
+    schemaHeadline: 'Apple HomeView: $299 Price, Specs & Features',
     altText:
       'Render of Apple HomeView tabletop and wall-mounted versions side by side',
     faq: [
@@ -956,9 +966,9 @@ export const POSTS: BlogPost[] = [
           'It starts at $299 for both the tabletop and wall-mounted versions. Wall mounts are sold separately, from $59.95.',
       },
       {
-        question: 'When does Apple HomeView come out?',
+        question: 'When was Apple HomeView released?',
         answer:
-          'Apple opened pre-orders on October 13, 2026, and its buy page lists availability starting Friday, November 13, 2026.',
+          'Apple announced HomeView on October 13, 2026 and opened pre-orders that day. It went on sale on Friday, November 13, 2026 in the US, Canada, the UK, Australia, India and New Zealand.',
       },
       {
         question: 'How big is the Apple HomeView screen?',
@@ -973,7 +983,7 @@ export const POSTS: BlogPost[] = [
       {
         question: 'Is Apple HomeView available in Europe?',
         answer:
-          'Not at launch, because Siri AI is not available in the EU.',
+          'No. Apple does not sell HomeView in the European Union, because Siri AI is not available in iOS there.',
       },
       {
         question: 'Does HomeView work with Matter devices?',
@@ -1001,9 +1011,9 @@ export const POSTS: BlogPost[] = [
           'It starts at $358.95 with the Power Mount USB-C Wall Connector, is $378.95 with Power Mount AC Wired, and reaches $428.95 with the PoE Wired mount due in early 2027. Those totals exclude the USB-C cable and the 20W-or-higher adapter, which Apple sells separately and does not price on the pages read for this guide. All figures are Apple’s US prices, before tax and shipping.',
       },
       {
-        question: 'When do HomePod mini 2 and Apple TV 4K come out?',
+        question: 'When are HomePod mini 2 and Apple TV 4K available?',
         answer:
-          'HomePod mini 2 is $149 and arrives on October 30, 2026. Apple TV 4K (4th generation) is $299 and arrives on November 13, 2026, the same day as HomeView.',
+          'HomePod mini 2 is $149 and went on sale on October 30, 2026. Apple TV 4K (4th generation) is $299 and went on sale on November 13, 2026, the same day as HomeView.',
       },
       {
         question: 'Is it called HomeView or Home View?',
@@ -1011,9 +1021,9 @@ export const POSTS: BlogPost[] = [
           'Apple’s name is HomeView, one word. Many people search for it as Home View, but Apple uses the single-word form on its product page, its press release and its store listing.',
       },
       {
-        question: 'Where can I pre-order Apple HomeView?',
+        question: 'Where can I buy Apple HomeView?',
         answer:
-          'Orders are placed on Apple’s own store, which is where the Buy on Apple.com buttons in this guide go. Apple’s buy page currently takes pre-orders and lists availability starting November 13, 2026. This guide quotes no retailer price.',
+          'Orders are placed on Apple’s own store, which is where the Buy on Apple.com buttons in this guide go. Apple says HomeView is available for purchase at Apple Store locations, on the Apple Store online and in the Apple Store app. This guide quotes no retailer price.',
         link: {
           href: 'https://www.apple.com/shop/buy-home/apple-homeview',
           label: 'Apple’s HomeView buy page',
@@ -1030,9 +1040,9 @@ export const POSTS: BlogPost[] = [
           'Apple’s announced US prices run from $39.95 for a temperature or room sensor to $399.95 for the LG Floodlight Cam. The LG Video Doorbell Wired starts at $249.95, the LG Outdoor Cam Plug-In at $299.95, the LG Indoor Cam Plug-In at $199.95, the LG Smart Deadbolt Lock at $349.95, and both smart thermostats at $199.95. Availability starts in December 2026, with select accessories in early 2027.',
       },
       {
-        question: 'When does Apple HomeView launch in the UK, Canada, Australia and India?',
+        question: 'When is Apple HomeView available in the UK, Canada, Australia and India?',
         answer:
-          'All four are in Apple’s first wave, with availability beginning Friday, November 13, 2026; pre-orders opened on October 13. Apple lists £299 in the UK, $429 in Canada, A$449 in Australia and ₹39,900 in India as the starting prices.',
+          'All four are in Apple’s first wave and went on sale on Friday, November 13, 2026; pre-orders opened on October 13. Apple lists £299 in the UK, $429 in Canada, A$449 in Australia and ₹39,900 in India as the starting prices.',
       },
     ],
     lastUpdated: '2026-11-13',
@@ -1124,7 +1134,7 @@ export const POSTS: BlogPost[] = [
       ] },
       { heading: 'What We Could Not Verify' },
       'Three gaps are worth naming. Google’s Nest Hub specification page lists no Matter support for the 2nd-generation model, so this comparison does not claim it, even though Google Home as a platform supports Matter. Amazon’s Echo Show 8 price is the figure from its September 30, 2025 announcement rather than a live shelf price. And Google has removed the Nest Hub Max product page from its store, so there is no current Google large-screen display to compare — the Nest Hub is the only Google screen on sale.',
-      { link: { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView price, release date and specs' } },
+      { link: { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView price and specs guide' } },
       { link: { href: '/quick-look/apple-homeview-smart-display', label: 'full Apple HomeView specs' } },
     ],
     metaTitle: 'Apple HomeView vs Echo Show 8, Echo Hub and Nest Hub',
@@ -1167,7 +1177,7 @@ export const POSTS: BlogPost[] = [
       'Siri vs Alexa smart display',
     ],
     keepBrowsing: [
-      { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView: price, release date and specs' },
+      { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView: price and specs' },
       { href: '/blog/best-smart-speakers-2026', label: '5 best smart speakers for every room (2026)' },
       { href: '/blog/ios-27', label: 'iOS 27: everything new in Apple’s latest update' },
     ],

@@ -201,7 +201,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const blogPostingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    headline: post.title,
+    headline: post.schemaHeadline ?? post.title,
     description: post.metaDescription ?? post.excerpt,
     image: post.heroImage ? `https://www.gadgeterea.com${post.heroImage}` : undefined,
     datePublished: post.date,

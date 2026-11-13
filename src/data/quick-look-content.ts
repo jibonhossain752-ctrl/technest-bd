@@ -2058,9 +2058,9 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         'The tabletop version is the simpler purchase. Apple’s technical-specifications page lists a 1.5 m USB-C cable and a 30W power adapter in the box alongside the display, and states that the tabletop model needs no mount — so nothing else is required to switch it on.',
         'The wall-mounted version is where a budget can move. Apple sells it with documentation only, and its specifications page states plainly that the compatible wall mount, the USB-C cable and a power adapter of at least 20W are each sold separately. Three purpose-built Schneider Home mounts fit it: Power Mount USB-C Wall Connector, Power Mount AC Wired, and Power Mount PoE Wired, which Apple says arrives in early 2027.',
         'Mount prices are “from” prices in Apple’s own wording, which is why the wall-mounted totals below are starting totals rather than a final bill: the cable and the power adapter are not in them. US prices can change, and every other country prices the same products in its own currency.',
-        'Pre-order timing, the first-wave country list and the HomePod mini 2 and Apple TV 4K prices announced alongside HomeView are covered in our Apple HomeView price and release date guide.',
+        'Order timing, the first-wave country list and the HomePod mini 2 and Apple TV 4K prices announced alongside HomeView are covered in our Apple HomeView price and specs guide.',
       ],
-      link: { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView price and release date guide' },
+      link: { href: '/blog/apple-homeview-price-release-date-features', label: 'Apple HomeView price and specs guide' },
     },
     // Rendered by the component as the semantic <dl> inside the price block, so
     // the setup totals sit where a buyer is already reading about cost. Every
