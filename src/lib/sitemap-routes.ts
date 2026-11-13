@@ -60,11 +60,12 @@ export const STATIC_PAGES: {
  * update the date when the page changes.
  */
 const STATIC_CONTENT_DATES: Record<string, string> = {
-  // Quick Look section created 2026-10-14; bump when the listing copy changes.
-  '/quick-look': '2026-10-14',
-  '/about': '2026-10-05',
-  '/contact': '2026-10-05',
-  '/faq': '2026-08-11',
+  // Each date is the last real edit of that page's own file (git log), not the
+  // date the copy was first written: a recorded date older than the file made
+  // the sitemap understate the page's freshness. Bump on the next edit.
+  '/about': '2026-10-17',
+  '/contact': '2026-10-17',
+  '/faq': '2026-10-14',
 }
 
 /**
@@ -106,11 +107,18 @@ const LATEST_DEAL_DATE = latest(PRODUCTS.filter(isDiscounted).map(productDate))
  * Index pages change when the content they list changes, so their dates come
  * from the data; the rest use a recorded copy date.
  */
+const LATEST_QUICK_LOOK_DATE = latest(
+  QUICK_LOOK_SLUGS.map((slug) => toDate(getQuickLookProduct(slug)?.addedAt)),
+)
+
 const STATIC_LAST_MODIFIED: Record<string, Date | undefined> = {
   '/': latest([LATEST_POST_DATE, LATEST_PRODUCT_DATE]),
   '/shop': LATEST_PRODUCT_DATE,
   '/deals': LATEST_DEAL_DATE ?? LATEST_PRODUCT_DATE,
   '/blog': LATEST_POST_DATE,
+  // The listing renders one card per Quick Look page, so it is as fresh as the
+  // newest of them — derived, never a typed-in date.
+  '/quick-look': LATEST_QUICK_LOOK_DATE,
 }
 
 const staticLastModified = (pagePath: string): Date | undefined =>
@@ -175,7 +183,12 @@ const blogEntries = (): SitemapEntry[] =>
     const inlineImages = post.content
       .filter((block): block is BlogPostImage => typeof block === 'object' && 'image' in block && 'alt' in block)
       .map((block) => block.image)
-    const images = [...(post.heroImage ? [post.heroImage] : []), ...inlineImages]
+    // A post may reuse its hero file as an in-body image; the sitemap lists an
+    // image once per URL, so the union is de-duplicated rather than shipping the
+    // same <image:loc> twice for one page.
+    const images = [
+      ...new Set([...(post.heroImage ? [post.heroImage] : []), ...inlineImages]),
+    ]
     return {
       path: `/blog/${post.slug}`,
       lastModified: postDate(post),

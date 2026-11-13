@@ -46,7 +46,9 @@ export async function generateMetadata({ params }: QuickLookPageProps): Promise<
     openGraph: {
       title,
       description,
-      type: 'article',
+      // A spec sheet, not an article: no author, no publish date, so the
+      // Open Graph type is the plain page type rather than `article`.
+      type: 'website',
       url,
       siteName: SITE.brand,
       ...(product.imageUrl

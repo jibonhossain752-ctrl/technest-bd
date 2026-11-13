@@ -81,6 +81,10 @@ export async function generateMetadata({
       type: 'article',
       url: `/blog/${post.slug}`,
       siteName: 'GadgetErea',
+      // Article freshness, from the same dates the page prints and the
+      // BlogPosting markup publishes: the visible "Updated" date wins.
+      publishedTime: post.date,
+      modifiedTime: post.lastUpdated ?? post.date,
       ...(heroImage
         ? {
             images: [
