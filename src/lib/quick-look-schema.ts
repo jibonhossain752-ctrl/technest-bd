@@ -22,14 +22,21 @@ import type { QuickLookEntry } from '@/data/quick-look'
  */
 
 /** FAQPage schema — pass the EXACT array the page renders. */
-export function quickLookFaqSchema(faqs: { question: string; answer: string }[]) {
+export function quickLookFaqSchema(
+  faqs: { question: string; answer: string; link?: { href: string; label: string } }[],
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      // The visible answer is the answer text plus, where the data supplies
+      // one, the link's label, so the marked-up text includes it too.
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.link ? `${faq.answer} ${faq.link.label}` : faq.answer,
+      },
     })),
   }
 }

@@ -7846,6 +7846,15 @@ button {
   color: var(--muted);
 }
 
+/* The one muted line under a manufacturer store button ("Opens Apple's US
+   store in a new tab."). Not the Associates line: that stays .ql-disclosure and
+   renders only beside an Amazon button. */
+.ql-buy-note {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 /* Gallery */
 .ql-gallery {
   display: grid;

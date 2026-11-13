@@ -19,13 +19,16 @@ import type { Product } from './products'
  *    deliberately NEVER added to `src/data/products.ts`: it gets no shop card
  *    and no /product page, only its Quick Look page.
  *
- * An entry may also be INFORMATIONAL (`informational: true`): a page that
- * carries no purchase path at all — no outbound store link, no affiliate
- * disclosure. It is the one shape that can show a price: its `priceBox` carries
- * a manufacturer's own announced figure with a source and a date (memory.md
- * rule 3), which is only allowed because there is no Amazon link beside it.
- * Only manufacturer announcements that this store does not sell belong here,
- * and such an entry must NOT carry a `buyUrl`.
+ * An entry may also be INFORMATIONAL (`informational: true`): a page this store
+ * does not sell, so it carries no Amazon buy link and no affiliate disclosure.
+ * It is the one shape that can show a price: its `priceBox` carries a
+ * manufacturer's own announced figure with a source and a date (memory.md rule
+ * 3), which is only allowed because there is no Amazon link beside it. Only
+ * manufacturer announcements that this store does not sell belong here, and
+ * such an entry must NOT carry a `buyUrl`. An informational entry may carry
+ * `officialBuy` — a plain link to the MANUFACTURER's own store, not an
+ * affiliate link (first use: Apple HomeView, 2026-11-13) — which is how the
+ * page tells a reader where the product is actually sold.
  *
  * Both shapes are resolved through `resolveQuickLook()`. Callers that need a
  * product record should use that rather than reaching into PRODUCTS, so a
@@ -179,6 +182,31 @@ export interface QuickLookPriceBox {
 }
 
 /**
+ * A manufacturer's own store link for a Quick Look page — the product's page on
+ * the maker's store, where the maker sells it directly.
+ *
+ * This is NOT an affiliate link and not an Amazon link: it is a plain outbound
+ * link to the manufacturer, so the page renders it with rel="noopener" and
+ * target="_blank" only (never `sponsored`/`nofollow`, which would claim a paid
+ * relationship that does not exist) and renders NO Amazon Associates
+ * disclosure, because nothing is earned on the click. It is stored separately
+ * from `buyUrl` so the Amazon button logic is untouched: a page carries either
+ * this link or an Amazon link, never both (the guard fails the build if both
+ * are present on one page). A page may carry it beside a `priceBox` — the box
+ * shows the maker's own figure and the button goes to the maker's own store.
+ *
+ * First (and currently only) use: Apple HomeView (2026-11-13).
+ */
+export interface QuickLookOfficialBuy {
+  /** Button text, e.g. "Buy on Apple.com". */
+  label: string
+  /** The manufacturer's own https store URL. Never an Amazon or affiliate URL. */
+  url: string
+  /** One short muted line under the button, e.g. where the link opens. */
+  note?: string
+}
+
+/**
  * The product facts a STANDALONE entry carries itself, because it has no record
  * in src/data/products.ts. Only what the page actually renders is here — and
  * never a price without `priceCheckedOn`, never a rating or review count that
@@ -293,6 +321,14 @@ export interface QuickLookEntry {
    * informational entry without it renders no note at all.
    */
   illustrationNote?: string
+  /**
+   * The manufacturer's own store link, rendered as one primary button below the
+   * key-specifications panel (see QuickLookOfficialBuy). Separate from the
+   * Amazon `buyUrl`: no affiliate attributes, no disclosure, and never on the
+   * same page as an Amazon link. Absent on every page that has none, so those
+   * pages render exactly as before.
+   */
+  officialBuy?: QuickLookOfficialBuy
   /**
    * The page's one price, when the owner has typed one in from a dated
    * manufacturer / official source. Its presence is what makes the page's
@@ -1810,9 +1846,10 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
 
   // ── Announcement-only entry ───────────────────────────────────────────────
   // Apple HomeView is not sold by this store and Apple does not sell it through
-  // Amazon, so this entry is INFORMATIONAL: no buy link, no purchase panel and
-  // no affiliate disclosure on the page. Two things follow from that and are
-  // deliberate, not oversights:
+  // Amazon, so this entry is INFORMATIONAL: no Amazon buy link and no affiliate
+  // disclosure on the page. Its `officialBuy` link goes to Apple's own US store
+  // instead — a plain outbound link, not an affiliate one (owner decision,
+  // 2026-11-13). Two things follow from that and are deliberate, not oversights:
   // - No rating and no review count: there is no listing to take one from, and
   //   the page must never present Amazon's or anyone else's figures as ours.
   // - The page's one price lives in `priceBox`: Apple's own announced US
@@ -1857,23 +1894,39 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       category: 'Smart Home',
       categorySlug: 'smart-home',
       brand: 'Apple',
+      // The ordering status is worded exactly as Apple's own buy page states it
+      // on November 13, 2026: orders are taken there, with availability listed
+      // as starting that day.
       description:
-        'Apple\u2019s first smart display: a 7-inch Liquid Retina screen on a domed speaker base, or a flat wall-mounted panel, both powered by the A18 chip with Siri AI. Pre-orders opened on October 13, 2026 and availability begins on November 13.',
+        'Apple\u2019s first smart display: a 7-inch Liquid Retina screen on a domed speaker base, or a flat wall-mounted panel, both powered by the A18 chip with Siri AI. Apple\u2019s buy page takes orders now and lists availability starting November 13, 2026.',
+      // A standalone entry dates its own page: the sitemap reads this as the
+      // page's `lastmod`. Bumped to 2026-11-13 when the Apple store button and
+      // the current ordering status were added.
+      addedAt: '2026-11-13',
       features: [
         '7-inch Liquid Retina display, 1088-by-1088 pixels at 220 ppi',
         'A18 chip with Secure Exclaves for camera and microphone data',
         'Siri AI, powered by Apple Intelligence',
         'Two models: a tabletop version on a domed base, or a wall-mounted panel',
         'Tabletop version in four colors, the wall-mounted version in two',
-        'Pre-orders open now, with availability beginning November 13',
+        'Available from Apple, with availability listed as starting November 13, 2026',
       ],
       altText:
         'Apple HomeView render: silver tabletop model with music playing on screen',
     },
-    // Apple's own pages only. Every row below was read on one of them on
-    // October 17, 2026; nothing is carried over from reporting or from memory.
+    // Apple's own pages only. Every row below was read on one of them; nothing
+    // is carried over from reporting or from memory. The US buy page was re-read
+    // on November 13, 2026 for the current ordering status and colour list.
     specSource:
-      "Apple's HomeView newsroom announcement, Apple's HomeView product and technical-specifications pages, Apple's US, Canadian, UK, Australian, Indian, New Zealand and Singapore buy pages, and Apple's HomePod mini 2, Apple TV 4K and Home Collection announcements — all read on apple.com on October 19, 2026",
+      "Apple's HomeView newsroom announcement, Apple's HomeView product and technical-specifications pages, Apple's US, Canadian, UK, Australian, Indian, New Zealand and Singapore buy pages, Apple's US HomeView buy page (re-read on November 13, 2026), and Apple's HomePod mini 2, Apple TV 4K and Home Collection announcements — all read on apple.com, most recently on November 13, 2026",
+    // Apple's own US store. A plain outbound link, NOT an affiliate link: the
+    // page renders it with rel="noopener" and no Associates disclosure, and the
+    // Amazon button logic never sees it (see QuickLookOfficialBuy).
+    officialBuy: {
+      label: 'Buy on Apple.com',
+      url: 'https://www.apple.com/shop/buy-home/apple-homeview',
+      note: 'Opens Apple’s US store in a new tab.',
+    },
     metaTitle: 'Apple HomeView Specs, Dimensions & Buying Guide',
     metaDescription:
       'Apple HomeView spec sheet: the 7-inch Liquid Retina display, A18 chip, Siri AI, audio system, colors, both models and what a wall mount needs.',
@@ -1966,7 +2019,7 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       { label: 'In the box, tabletop', value: 'HomeView, a 1.5 m USB-C cable, a 30W power adapter and documentation' },
       { label: 'In the box, wall mounted', value: 'HomeView (Wall Mounted) and documentation only' },
       { label: 'Product images', value: 'Illustrations based on Apple\u2019s announced design, not photographs' },
-      { label: 'Last updated', value: 'October 19, 2026' },
+      { label: 'Last updated', value: 'November 13, 2026' },
     ],
     specs: [
       {

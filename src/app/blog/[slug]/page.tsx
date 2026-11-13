@@ -286,7 +286,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           mainEntity: post.faq.map((item) => ({
             '@type': 'Question',
             name: item.question,
-            acceptedAnswer: { '@type': 'Answer', text: item.answer },
+            // The visible answer includes the optional link's label, so the
+            // marked-up answer text does too.
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.link ? `${item.answer} ${item.link.label}` : item.answer,
+            },
           })),
         }
       : null

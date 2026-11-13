@@ -4,7 +4,12 @@ import { useState } from 'react'
 import { track } from '@/lib/tracking'
 
 interface PostFaqProps {
-  faq: { question: string; answer: string }[]
+  faq: {
+    question: string
+    answer: string
+    /** Optional plain outbound link under the answer (a manufacturer's store). */
+    link?: { href: string; label: string }
+  }[]
   postSlug: string
 }
 
@@ -43,6 +48,16 @@ export default function PostFaq({ faq, postSlug }: PostFaqProps) {
           {open === item.question && (
             <div className="post-faq-answer">
               <p>{item.answer}</p>
+              {/* Optional plain outbound link. The FAQPage markup appends the
+                  same label to the answer text, so the marked-up words still
+                  match what a reader sees. */}
+              {item.link && (
+                <p>
+                  <a href={item.link.href} target="_blank" rel="noopener">
+                    {item.link.label}
+                  </a>
+                </p>
+              )}
             </div>
           )}
         </div>

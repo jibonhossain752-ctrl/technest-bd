@@ -98,15 +98,24 @@ from a sister project, rewritten for this store. These rules are standing.
    from `src/lib/quick-look-schema.ts`. `BreadcrumbList` (never present here)
    and `FAQPage` are untouched. Do not re-add a Product node to this surface
    without a real, visible offer, review or rating to put in it.
-4e. **Informational entries — the one page with no purchase path (2026-10-17).**
+4e. **Informational entries — the page with no Amazon purchase path
+   (2026-10-17; manufacturer store link added 2026-11-13).**
    `informational: true` marks a spec sheet for a product this store does not
-   sell and cannot link to a store for (first use: Apple HomeView). Such an
-   entry is STANDALONE, carries no `buyUrl`, is never added to
-   `src/data/products.ts` (no shop card, no /product page), and its page renders
-   NO purchase panel: no store button, no price note, no affiliate disclosure.
-   The site-wide footer line still appears, as it does on every page. In the
-   panel's place the detail page renders a plain visible note saying the store
-   does   not sell it — text only, never a link — and, because the gallery shows
+   sell (first use: Apple HomeView). Such an entry is STANDALONE, carries no
+   `buyUrl`, is never added to `src/data/products.ts` (no shop card, no /product
+   page), and its page renders NO Amazon button, no price note and no affiliate
+   disclosure. **`officialBuy` (2026-11-13)** is the one purchase path such a
+   page may carry: `{ label, url, note }`, a plain outbound link to the
+   MANUFACTURER's own store (HomeView → Apple's US buy page). It renders one
+   primary button in the same slot as the Amazon row, with `rel="noopener"` and
+   `target="_blank"` only (never `sponsored`/`nofollow` — nothing is paid for the
+   click), NO Associates line, no price, and one muted note under it
+   (`.ql-buy-note`). It never coexists with an Amazon link on the same page, and
+   HomeView's URL must stay on `https://www.apple.com/`; both are enforced in
+   `scripts/check-quick-look.js`. The price-box caption above it now says the
+   product is sold by the manufacturer, not by this store.
+   The site-wide footer line still appears, as it does on every page. In the   panel's place the detail page renders a plain visible note saying the store does
+   not sell it — text only, never a link — and, because the gallery shows
    renders rather than the manufacturer's photographs, one line under the
    gallery saying so. That one line is DATA, not copy: `illustrationNote` on the
    entry carries it, because it has to name the right manufacturer and

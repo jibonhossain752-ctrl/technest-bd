@@ -164,6 +164,10 @@ export default function QuickLookDetail({
 
   const heroAlt = imageAlts[0] ?? product.name
   const priceBox = entry.priceBox
+  // Who makes it, for the one caption that has to name the seller of a product
+  // this store does not sell. From the entry's own data, never hardcoded, so a
+  // second manufacturer's page cannot inherit the wrong brand.
+  const brand = entry.product?.brand ?? entry.displayName.split(' ')[0]
 
   /**
    * Per-model pricing (entry.priceBox.modelPrices). The key is the selected
@@ -393,11 +397,14 @@ export default function QuickLookDetail({
                     <p className="ql-price-note">{priceBox.note}</p>
                   )}
                   {/* The informational page's plain note (memory.md rule 4e):
-                      text only, never a link. It says why there is no button. */}
+                      text only, never a link. It says where the product is
+                      actually sold, so it stays true whether or not the page
+                      carries the manufacturer's store button below. */}
                   {entry.informational && (
                     <p className="ql-price-caption">
-                      This store does not sell {entry.displayName}, so this page has no buy
-                      button.
+                      {entry.officialBuy
+                        ? `Sold by ${brand}, not by this store — the button below opens ${brand}’s own store.`
+                        : `This store does not sell ${entry.displayName}, so this page has no buy button.`}
                     </p>
                   )}
                 </>
@@ -415,6 +422,29 @@ export default function QuickLookDetail({
                   <KeyValue key={row.label} label={row.label} value={row.value} />
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Manufacturer store row — a plain outbound link to the maker's own
+              store (entry.officialBuy), NOT an affiliate link: rel is
+              "noopener" only (never sponsored/nofollow, nothing is paid for the
+              click) and no Associates disclosure renders here. It sits in the
+              same slot, with the same button, as the Amazon row below, so a
+              page with either one looks the same. The two never coexist: the
+              guard fails the build if a page carries both. */}
+          {entry.officialBuy && (
+            <div className="ql-buy-row">
+              <a
+                href={entry.officialBuy.url}
+                target="_blank"
+                rel="noopener"
+                className="btn btn-accent ql-buy-btn"
+              >
+                {entry.officialBuy.label} <span aria-hidden="true">↗</span>
+              </a>
+              {entry.officialBuy.note && (
+                <p className="ql-buy-note">{entry.officialBuy.note}</p>
+              )}
             </div>
           )}
 

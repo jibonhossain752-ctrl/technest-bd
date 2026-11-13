@@ -74,7 +74,17 @@ export interface QuickLookGuide {
   buyers: { heading: string; should: string[]; skip: string[] }
   pros: { heading: string; pros: string[]; cons: string[] }
   buyingTips: { heading: string; paragraphs: string[] }
-  faqs: { question: string; answer: string }[]
+  /**
+   * Visible FAQ cards, which also drive the page's FAQPage JSON-LD. `link` is an
+   * optional plain outbound link (the manufacturer's own store or support page)
+   * rendered directly under the answer; the schema's answer text includes the
+   * link label, so the marked-up answer still matches the visible words.
+   */
+  faqs: {
+    question: string
+    answer: string
+    link?: { href: string; label: string }
+  }[]
   /** Extra sections rendered after the key features and before "who should buy".
    *  Use for the deep answers a buyer arrives with: daily use, the app,
    *  comparisons, documented fixes, care. */
@@ -2034,7 +2044,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
   'apple-homeview-smart-display': {
     productName: 'Apple HomeView',
     heading: 'Apple HomeView specs, features and buying guide',
-    lead: 'Apple HomeView is Apple’s first smart display: a 7-inch Liquid Retina screen running Siri AI on the A18 chip, either on a domed speaker base for a tabletop or as a flat panel on a wall. Apple’s announced US price is $299 for both models, pre-orders opened on October 13, 2026, and the first units arrive on November 13. This page covers both versions, what each one really costs to set up, and the facts Apple has not published yet.',
+    lead: 'Apple HomeView is Apple’s first smart display: a 7-inch Liquid Retina screen running Siri AI on the A18 chip, either on a domed speaker base for a tabletop or as a flat panel on a wall. Apple’s announced US price is $299 for both models, Apple opened pre-orders on October 13, 2026, and its buy page lists availability starting November 13, 2026. This page covers both versions, what each one really costs to set up, and the facts Apple has not published yet.',
     overview: [
       'HomeView is the screen part of Apple’s smart home push. The tabletop version puts the display on a domed speaker base with a stainless steel hinge, so it can be tilted for a counter, a nightstand or a side table, and it comes in four colors — silver, starlight, rose pink and space gray, each with a matching cable. The wall-mounted version is a separate model, offered in space gray and silver, that attaches to a wall through a purpose-built mount from Schneider Home.',
       'Both run Siri AI, an entirely new version of Siri powered by Apple Intelligence. Apple’s own framing is that Siri AI brings broad world knowledge to a shared screen, and that a paired iPhone or iPad adds personal context — calendar, messages, playlists and the like — for the person the display recognizes. HomeView can recognize up to six people, and each of them gets their own Home Screen with their own apps and widgets. Guests and unrecognized users can still control accessories, check the weather, set timers and play music without touching anyone’s personal content.',
@@ -2044,7 +2054,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
     priceSection: {
       heading: 'Apple HomeView price and the full setup cost',
       paragraphs: [
-        'Apple announced a US price of $299 for Apple HomeView and $299 for Apple HomeView (Wall Mounted) on October 13, 2026. Those are Apple’s announced US launch prices, before tax and shipping, and they are the figures this page uses: this store does not sell HomeView, so there is no live price to watch here and no affiliate link on this page.',
+        'Apple announced a US price of $299 for Apple HomeView and $299 for Apple HomeView (Wall Mounted) on October 13, 2026. Those are Apple’s announced US launch prices, before tax and shipping, and they are the figures this page uses: this store does not sell HomeView, so there is no live price to watch here and no affiliate link on this page. Orders are placed on Apple’s own store, which is where the button above the specifications points.',
         'The tabletop version is the simpler purchase. Apple’s technical-specifications page lists a 1.5 m USB-C cable and a 30W power adapter in the box alongside the display, and states that the tabletop model needs no mount — so nothing else is required to switch it on.',
         'The wall-mounted version is where a budget can move. Apple sells it with documentation only, and its specifications page states plainly that the compatible wall mount, the USB-C cable and a power adapter of at least 20W are each sold separately. Three purpose-built Schneider Home mounts fit it: Power Mount USB-C Wall Connector, Power Mount AC Wired, and Power Mount PoE Wired, which Apple says arrives in early 2027.',
         'Mount prices are “from” prices in Apple’s own wording, which is why the wall-mounted totals below are starting totals rather than a final bill: the cable and the power adapter are not in them. US prices can change, and every other country prices the same products in its own currency.',
@@ -2226,7 +2236,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
     buyingTips: {
       heading: 'Before you order an Apple HomeView',
       paragraphs: [
-        'Pre-orders opened on October 13, 2026 and Apple lists availability beginning Friday, November 13 in the first-wave countries: Australia, Canada, India, New Zealand, the UK and the US, with Singapore pre-orders from October 15 and South Africa buying through Apple Authorized Resellers. Ordering from outside those markets means buying a display whose assistant language support has not started there yet — and in the EU Apple is not selling it at all, because Siri AI is currently unavailable in iOS in the EU.',
+        'Apple opened pre-orders on October 13, 2026 and lists availability starting Friday, November 13, 2026 in the first-wave countries: Australia, Canada, India, New Zealand, the UK and the US, with Singapore pre-orders from October 15 and South Africa buying through Apple Authorized Resellers. Ordering from outside those markets means buying a display whose assistant language support has not started there yet — and in the EU Apple is not selling it at all, because Siri AI is currently unavailable in iOS in the EU.',
         'Decide on the model before the mount. If the screen is going on a wall, budget for the mount, a USB-C cable and a power adapter of at least 20W on top of the display, and check which of the three Schneider Home mounts suits your wiring: the USB-C and AC Wired mounts can be ordered now, while Apple says PoE Wired arrives in early 2027. If it is going on furniture, the tabletop version needs nothing else — the cable and 30W adapter are in the box.',
         'Finally, set expectations for Siri AI. Apple describes it as available in beta in HomeView software version 27.2 with usage limits possibly applying, and the personalised half of it depends on an Apple Intelligence-enabled iPhone or iPad being paired and nearby. If your household is on that hardware, the display is the point: a shared, always-on screen for Siri, the Home app and FaceTime. If it is not, the smart home hub and the audio still work, but the personal assistant is not what you are buying yet.',
         'Before ordering, it is worth reading how HomeView compares with the Alexa and Google screens it will sit next to: our Apple HomeView vs Echo Show comparison sets the four devices side by side on the same manufacturer figures.',
@@ -2246,7 +2256,11 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       {
         question: 'When does Apple HomeView go on sale?',
         answer:
-          'Pre-orders opened on October 13, 2026, and Apple lists availability beginning Friday, November 13, 2026 in the first-wave countries. Singapore pre-orders started on October 15, and South Africa buys through Apple Authorized Resellers.',
+          'Apple opened pre-orders on October 13, 2026, and its buy page lists availability starting Friday, November 13, 2026 in the first-wave countries. Singapore pre-orders started on October 15, and South Africa buys through Apple Authorized Resellers.',
+        link: {
+          href: 'https://www.apple.com/shop/buy-home/apple-homeview',
+          label: 'Check Apple’s HomeView buy page',
+        },
       },
       {
         question: 'Does Apple HomeView work without an iPhone?',

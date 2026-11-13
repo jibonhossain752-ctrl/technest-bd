@@ -62,6 +62,16 @@
  *   3. Market language: the Quick Look source files must not mention the sister
  *      project's country, currency or brand. TARGET is a US store in USD.
  *
+ *   3b. Manufacturer store link (`officialBuy`). A page may point at the
+ *      MAKER's own store: a plain outbound https link, never an Amazon or
+ *      affiliate URL, carrying a label and (optionally) one short note. It is
+ *      kept apart from the Amazon `buyUrl` on purpose, and the two may never
+ *      coexist on one page — the guard fails the build if they do, so a page
+ *      can never send a reader to two different stores at once. Apple
+ *      HomeView's link must stay on https://www.apple.com/, the maker's own
+ *      store. Nothing about this link triggers the Amazon price/link rules: it
+ *      is not an Amazon link and the price box rule does not read it.
+ *
  *   4. Removed copy stays removed, and the disclosure stays single. Two strings
  *      were deliberately deleted from the Quick Look surface — the note under
  *      the buy button saying no price is shown, and the line repeating the
@@ -914,6 +924,56 @@ for (const [slug, guide] of Object.entries(QUICK_LOOK_GUIDES)) {
 for (const slug of Object.keys(QUICK_LOOK)) {
   if (!(slug in QUICK_LOOK_GUIDES)) {
     warnings.push(`Quick Look entry "${slug}" has no guide — the page renders its spec sheet alone`)
+  }
+}
+
+/* ── 6b. Manufacturer store link (officialBuy) ──────────────────────── */
+
+// A plain link to the MAKER's own store — the one purchase path an
+// informational page may carry (owner decision, 2026-11-13). It is NOT an
+// affiliate link, so it must never be an Amazon URL and must never sit on a
+// page that also has an Amazon buy link: two stores on one page is exactly what
+// this field exists to avoid. The Amazon rules above and below do not read it.
+const APPLE_STORE_ORIGIN = 'https://www.apple.com/'
+const APPLE_STORE_SLUG = 'apple-homeview-smart-display'
+const LOOKS_AMAZON = /(^|\.)amazon\.|amzn\.to|link\.amazon/i
+
+for (const [slug, entry] of Object.entries(QUICK_LOOK)) {
+  const official = entry.officialBuy
+  if (!official) continue
+
+  if (typeof official.label !== 'string' || !official.label.trim()) {
+    failures.push(`Quick Look entry "${slug}" has an officialBuy link with no button label`)
+  }
+  if (official.note != null && typeof official.note !== 'string') {
+    failures.push(`Quick Look entry "${slug}" has an officialBuy note that is not text`)
+  }
+  if (typeof official.url !== 'string' || !/^https:\/\//.test(official.url)) {
+    failures.push(
+      `Quick Look entry "${slug}" has an officialBuy url that is not an https link — a manufacturer store link must be absolute and secure`,
+    )
+  } else if (LOOKS_AMAZON.test(official.url)) {
+    failures.push(
+      `Quick Look entry "${slug}" has an officialBuy url pointing at Amazon — the manufacturer store link is not an affiliate link; an Amazon URL belongs in buyUrl`,
+    )
+  }
+
+  const amazonBuy = buyLinkFor(slug)
+  if (amazonBuy) {
+    failures.push(
+      `Quick Look entry "${slug}" carries both an officialBuy link and an Amazon buy link — one page may send a reader to one store only`,
+    )
+  }
+}
+
+// HomeView's link is Apple's own store, per the owner's instruction. A future
+// manufacturer page adds its own origin here rather than loosening this one.
+if (QUICK_LOOK[APPLE_STORE_SLUG]?.officialBuy) {
+  const url = QUICK_LOOK[APPLE_STORE_SLUG].officialBuy.url ?? ''
+  if (typeof url !== 'string' || !url.startsWith(APPLE_STORE_ORIGIN)) {
+    failures.push(
+      `Quick Look entry "${APPLE_STORE_SLUG}" must link to Apple's own store (${APPLE_STORE_ORIGIN}…) — got "${url}"`,
+    )
   }
 }
 

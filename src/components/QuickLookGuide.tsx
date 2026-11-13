@@ -232,6 +232,16 @@ export default function QuickLookGuideSection({ guide, productSlug }: QuickLookG
               <div className="ql-faq" key={faq.question}>
                 <h4>{faq.question}</h4>
                 <p>{faq.answer}</p>
+                {/* Optional plain outbound link, rendered under the answer. The
+                    FAQPage markup appends the same label to the answer text,
+                    so the marked-up words still match what a reader sees. */}
+                {faq.link && (
+                  <p>
+                    <a href={faq.link.href} target="_blank" rel="noopener">
+                      {faq.link.label}
+                    </a>
+                  </p>
+                )}
               </div>
             ))}
           </div>
