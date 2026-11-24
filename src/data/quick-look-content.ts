@@ -4166,6 +4166,24 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
           'Tesla lists a basic warranty of four years or 50,000 miles and eight years or 100,000 miles on the battery and drive unit. Read the current terms on tesla.com rather than relying on either figure: Tesla has changed them before.',
         ],
       },
+      {
+        heading: 'Which of the six configurations to order',
+        paragraphs: [
+          'Six configurations is more choice than Tesla used to offer, and the steps between them are not the same size. The rear-wheel-drive car at $39,990 is the range-and-value pick: 321 miles on 18-inch wheels, 6.8 seconds to 60 mph and the lowest price in the range. The all-wheel-drive car at $41,990 adds a second motor and takes that to 4.3 seconds for $2,000, which is the cheapest performance step Tesla sells on this car and the one to take if you drive in snow or want the extra traction.',
+          'The Premium pair moves the equipment rather than the drivetrain: 19-inch Crossflow wheels and a microsuede-and-textile interior in place of the standard textile. The Premium rear-wheel drive is $45,990 and the Premium all-wheel drive $49,990, and the all-wheel-drive version carries the highest range rating in the range at 327 miles.',
+          'The Performance at $57,990 is a different proposition: 306 miles of range, 3.3 seconds to 60 mph and a 155 mph top speed, which makes it the quickest and the least efficient car in the range. The L Premium at $61,990 is the only six-seater, on the longer wheelbase, and the most expensive.',
+          'The short answer for most buyers is the base all-wheel drive, the Premium all-wheel drive if the wheels and interior matter, and the L Premium only if six seats are actually needed. The rear-wheel-drive Premium is the one configuration that is hard to justify on paper: it costs $4,000 more than the standard all-wheel-drive car while giving up the second motor, so it is a choice about wheels and interior material rather than about capability.',
+        ],
+      },
+      {
+        heading: 'Servicing a Model Y: what Tesla actually schedules',
+        paragraphs: [
+          'Tesla publishes no oil-change interval because there is no oil to change, but it does publish a service schedule, and it is shorter than most owners expect. Tesla’s Model Y service pages list three routine items: tyre rotation every 6,250 miles, or sooner if the tread-depth difference between tyres reaches 2/32 inch; a brake-fluid health check every four years, with replacement only if that check calls for it; and a cabin air filter every two years.',
+          'The tyre item is the one that costs money. An electric SUV is heavy and puts its torque down immediately, so tyres wear faster than on a petrol car of the same size, and rotating them on schedule is what keeps a set lasting. Check the tread yourself between services rather than waiting for a warning.',
+          'The brake item runs the other way. Regenerative braking does most of the slowing, so the friction brakes are used far less than on a petrol car and typically last much longer, which is why Tesla checks the fluid instead of replacing pads on a mileage schedule. The A/C desiccant bag is the other service item with a published figure — four years on heat-pump cars — and it is replaced as part of refrigerant service rather than scheduled by the owner.',
+          'None of that makes a Model Y free to run. Tyres, cabin filters and the occasional brake fluid change are the whole routine bill, and they are cheaper than the oil changes, plugs and belts a petrol SUV of this size would need over the same miles. Keep the four-year brake check on the calendar even though the car will not remind you loudly.',
+        ],
+      },
     ],
     buyers: {
       heading: 'Who the 2026 Model Y suits',
@@ -4235,6 +4253,14 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       {
         question: 'What is the difference between the Model Y and the Model Y L Premium?',
         answer: 'The L Premium has a longer wheelbase and six seats instead of five, and it is the most expensive configuration at $61,990 before Tesla’s Destination and Order fees. Tesla’s own footnote puts it at $63,630 with those fees included.',
+      },
+      {
+        question: 'How often does a Tesla Model Y need servicing?',
+        answer: 'Tesla’s service schedule lists tyre rotation every 6,250 miles, a brake-fluid health check every four years and a cabin air filter every two years. There is no oil change. The A/C desiccant bag is replaced during refrigerant service, on a four-year figure for heat-pump cars.',
+      },
+      {
+        question: 'Which Model Y configuration has the longest range?',
+        answer: 'The Premium all-wheel drive, at 327 miles on Tesla’s EPA rating. The rear-wheel-drive car is rated 321 miles and the Performance 306, so the quickest version is also the shortest-legged one.',
       },
     ],
     links: [
@@ -4339,6 +4365,24 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
           'The hybrid side does not mirror that ladder exactly. The Hybrid SE has the sport trim and the bigger wheels but not the heated seats or the bigger screens, while the Hybrid XLE has the screens, the moonroof and the heated seats but keeps 16-inch alloys. If you want both the sport look and the comfort kit, no single grade gives you both.',
         ],
       },
+      {
+        heading: 'Grade by grade: what each step up actually buys',
+        paragraphs: [
+          'The petrol ladder is the simpler of the two. The LE at $23,125 is the value car and it is not a stripped one: 16-inch steel wheels, an 8-inch touchscreen, a 7-inch digital cluster, wireless Apple CarPlay and Android Auto, and the full Toyota Safety Sense 3.0 suite with blind spot monitoring. The SE at $25,565 is $2,440 more and the money goes on looks and feel rather than equipment: 18-inch alloys, a rear spoiler, sport seats with fabric inserts, drive modes and the option of the two-tone roof. The XSE at $28,840 is $3,275 above the SE and is the first grade with the comfort kit — the 10.5-inch screen, the 12.3-inch cluster, the moonroof, heated SofTex seats with an eight-way power driver’s seat and wireless charging.',
+          'The hybrid ladder follows the same order but the value sits differently. The Hybrid LE is $24,975, which is $1,850 more than the petrol LE, and it gives up the big wheels and the sport trim to keep the 50 mpg rating and the 16-inch steel wheels. The Hybrid SE at $27,415 adds the sport trim and 18-inch alloys but loses three mpg combined, down to 47. The Hybrid XLE at $29,340 is the hybrid with the 10.5-inch screen, the moonroof and the heated seats, and it keeps the 50 mpg figure because it stays on 16-inch alloys.',
+          'That is the single most useful thing to understand about this range: the equipment ladder and the economy ladder pull in opposite directions. Every step up in wheel size costs fuel economy, and the grade that keeps the best mpg is not the cheapest one — it is the Hybrid XLE, which pairs the small wheels with the comfort equipment.',
+          'All-wheel drive sits outside that ladder. Toyota offers it on the Hybrid LE at $26,375 and on the Hybrid SE at $28,815, which is $1,400 above the front-wheel-drive version of each. It is not offered on the Hybrid XLE, so the grade with the best economy cannot be ordered with the winter drivetrain, and that is the one real gap in the line-up.',
+        ],
+      },
+      {
+        heading: 'Living with a Corolla: warranty, servicing and the fuel tank',
+        paragraphs: [
+          'Toyota’s warranty terms are the same across the range and worth knowing before you compare a Corolla with a rival’s longer offer. The basic warranty runs 36 months or 36,000 miles, the powertrain 60 months or 60,000 miles, and rust-through coverage 60 months with no mileage limit. The hybrid side is the part that matters here: the hybrid battery is covered for 10 years or 150,000 miles, and the hybrid components for 8 years or 100,000 miles. Both are transferable, which helps resale.',
+          'ToyotaCare adds two years or 25,000 miles of factory-scheduled maintenance on a 2026 model year car, plus roadside assistance for two years with no mileage limit. That covers the scheduled visits of the first two years rather than the whole ownership, so budget for servicing from year three onward.',
+          'The service interval Toyota publishes is every 5,000 miles or six months, whichever comes first, and that is an inspection visit rather than an oil change every time. Toyota’s own guidance puts the oil change for 0W-20 synthetic oil at 10,000 miles or 12 months in normal use, and at 5,000 miles or six months under the special operating conditions listed in the owner’s manual. Follow the shorter figure if most of your driving is short urban trips, which is exactly the pattern a Corolla is often bought for.',
+          'The hybrid’s tank is 11.3 gallons, and at the 50 mpg combined rating that works out to roughly 565 miles between fills on paper — a figure that assumes the rated economy and a full tank, so treat it as arithmetic rather than a promise. What it does show is that the hybrid turns a small tank into a long interval between petrol stations, which is the practical benefit of the economy figure.',
+        ],
+      },
     ],
     buyers: {
       heading: 'Who the 2026 Corolla suits',
@@ -4376,7 +4420,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       heading: 'Choosing between the six grades',
       paragraphs: [
         'Start with the powertrain, not the trim. Work out your annual mileage, then compare the Hybrid LE with the petrol LE on total cost over the years you plan to keep the car. The hybrid wins on fuel and loses on purchase price; the more you drive, the sooner it wins outright.',
-        'Then decide whether you need all-wheel drive. If you do, the Hybrid LE AWD is the value pick because it keeps the 16-inch wheels, the 48 mpg rating and the lowest hybrid price. The Hybrid SE with all-wheel drive is not priced on the toyota.com pages used here, so ask a dealer for that build rather than assuming it sits $1,400 above the front-wheel-drive SE.',
+        'Then decide whether you need all-wheel drive. If you do, the Hybrid LE AWD is the value pick because it keeps the 16-inch wheels, the 48 mpg rating and the lowest hybrid price. The Hybrid SE AWD is $28,815 on Toyota’s own comparison summary, which is $1,400 above the front-wheel-drive SE, and it is the only way to get the sport trim and the winter drivetrain together.',
         'If comfort matters more than looks, the Hybrid XLE is the grade with heated seats, the moonroof and the bigger screens. If looks matter more, the SE or XSE gives you the 18-inch wheels and the two-tone option. No grade gives you both, which is the single most useful thing to know before you sit in one.',
       ],
     },
@@ -4408,6 +4452,14 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       {
         question: 'How much cargo space does the Corolla have?',
         answer: 'Toyota does not publish a boot volume for the 2026 Corolla on the pages used here, so this page does not quote one. The rear seat splits 60/40, and the boot is a conventional sedan shape rather than a hatchback.',
+      },
+      {
+        question: 'What warranty does the 2026 Corolla come with?',
+        answer: 'Toyota’s basic warranty is 36 months or 36,000 miles and the powertrain warranty 60 months or 60,000 miles, with rust-through coverage for 60 months and no mileage limit. On the hybrid, the battery is covered for 10 years or 150,000 miles and the hybrid components for 8 years or 100,000 miles.',
+      },
+      {
+        question: 'How often does a Corolla need servicing?',
+        answer: 'Toyota recommends a service visit every 5,000 miles or six months, whichever comes first. Toyota’s guidance for 0W-20 synthetic oil is a change at 10,000 miles or 12 months in normal use, and at 5,000 miles or six months under severe conditions. ToyotaCare covers two years or 25,000 miles of scheduled maintenance on a 2026 car.',
       },
     ],
     links: [
@@ -4513,6 +4565,23 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
           'The transfer cases differ too: electronic shift-on-the-fly on the XL, STX and XLT, and a torque-on-demand two-speed unit on the Lariat and above. That is a comfort and traction difference rather than a capability one, but it is part of why the upper trims feel different to drive.',
         ],
       },
+      {
+        heading: 'Trim by trim: where each F-150 sits',
+        paragraphs: [
+          'The XL at $39,585 is a working truck and is priced like one: the 2.7-litre EcoBoost V6, a vinyl floor, cloth seats and a urethane steering wheel. It is also the trim where the options list does the most work, because four-wheel drive, the 5.0-litre V8 and the tow packages can all be added to it. If you want a truck for a job rather than a driveway, this is the one that leaves money for the equipment that does the job.',
+          'The STX at $41,855 is a $2,270 step that buys sport cloth and 20-inch wheels — an appearance package rather than a capability one. The XLT at $44,695 is the volume trim and the one most private buyers end up in: it keeps the 2.7-litre V6 and adds chrome or black appearance packages, and it is still available as 4x2 or 4x4.',
+          'The Lariat at $59,560 is where the truck changes character. It brings leather, heated and ventilated front seats, the 12-inch centre screen and the 12-inch digital cluster, and it makes the 3.5-litre EcoBoost V6 the standard engine — the one behind Ford’s 13,500 lb towing claim. If you tow regularly and want the comfort kit, this is the trim to price first.',
+          'Above it the ladder splits by purpose rather than by price. The Tremor at $64,915 is four-wheel drive only, with skid plates, off-road suspension and orange stitching, and it cannot be ordered with the hybrid. The King Ranch at $65,825 and the Platinum at $68,800 are the luxury pair, with distinct leather and trim treatments; all three of the Lariat, King Ranch and Platinum gained a 4x2 option with the 5.5-foot box for 2026. The Raptor at $79,005 is the outlier: the high-output V6, long-travel suspension and a 4x4-only drivetrain, priced against performance trucks rather than work trucks.',
+        ],
+      },
+      {
+        heading: 'Warranty, servicing and the fuel tank',
+        paragraphs: [
+          'Ford’s warranty on the 2026 F-150 runs 3 years or 36,000 miles bumper to bumper and 5 years or 60,000 miles on the powertrain. Hybrid-specific components are covered for 8 years or 100,000 miles, which only matters if you order the PowerBoost, and both corrosion perforation and the aluminium body panels are covered for 5 years with no mileage limit. Roadside assistance lasts 5 years or 60,000 miles and includes towing, a flat-tyre change, a jump start, fuel delivery and lockout help, which matters if you tow far from home.',
+          'Servicing is where Ford differs from Toyota and Honda. Ford does not publish a fixed oil-change mileage for the F-150; it uses the Intelligent Oil-Life Monitor, which counts engine starts, idling, temperature and load, and asks for a change when the oil’s calculated life falls to about five per cent. Ford’s general published guidance for its vehicles is 7,500 miles or six months, but the monitor is the authority for this truck, and a truck that idles a lot or tows will ask sooner than one that cruises. Take the itemised schedule for everything else from the owner’s manual for the exact model year.',
+          'The fuel tank depends on the configuration. Ford lists 23 gallons for the 122.5-inch wheelbase Regular Cab and 36 gallons for the other 2.7-litre and 5.0-litre trucks, with the 3.5-litre EcoBoost also at 36. The PowerBoost hybrid is the exception at 30.6 gallons. That matters more than it sounds for a towing truck: a 36-gallon tank is what makes long legs between fuel stops possible with a trailer behind, and the hybrid’s smaller tank is one of the quiet trade-offs of choosing the generator-equipped version.',
+        ],
+      },
     ],
     buyers: {
       heading: 'Who the 2026 F-150 suits',
@@ -4582,6 +4651,18 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       {
         question: 'What colours does the 2026 F-150 come in?',
         answer: 'Ford lists ten paints for the 2026 truck, including Agate Black Metallic, Avalanche, Marsh Gray and Ruby Red Metallic Tinted Clearcoat. Availability varies by trim — the XL, for example, does not offer Ruby Red or Star White.',
+      },
+      {
+        question: 'What warranty does the 2026 F-150 come with?',
+        answer: 'Ford covers the F-150 for 3 years or 36,000 miles bumper to bumper and 5 years or 60,000 miles on the powertrain, with hybrid components covered for 8 years or 100,000 miles. Corrosion perforation and the aluminium body panels are covered for 5 years with no mileage limit, and roadside assistance runs 5 years or 60,000 miles.',
+      },
+      {
+        question: 'How often does an F-150 need an oil change?',
+        answer: 'Ford does not publish a fixed interval for the F-150. The truck’s Intelligent Oil-Life Monitor calculates oil life from use and asks for a change when it reaches about five per cent; Ford’s general guidance across its vehicles is 7,500 miles or six months. Heavy idling and towing shorten the interval.',
+      },
+      {
+        question: 'How big is the F-150 fuel tank?',
+        answer: 'Ford lists 23 gallons for the 122.5-inch wheelbase Regular Cab and 36 gallons for other 2.7-litre and 5.0-litre trucks and for the 3.5-litre EcoBoost. The 3.5-litre PowerBoost hybrid uses a 30.6-gallon tank.',
       },
     ],
     links: [
@@ -4687,6 +4768,24 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
           'The XLE Premium is the comfort step, with 18-inch wheels, a power liftgate, heated SofTex seats, a power driver’s seat and a wireless charger. The Limited is the only way to get the panoramic roof, the 12.9-inch screen and the JBL audio. If you can charge at home and your daily drive is under 40 miles, the plug-in SE is the one that turns most of your driving electric for the smallest premium.',
         ],
       },
+      {
+        heading: 'What each hybrid grade adds, and who it suits',
+        paragraphs: [
+          'The SE at $34,700 is $2,800 above the front-wheel-drive LE and the money buys the sport trim rather than equipment. It keeps the 10.5-inch multimedia screen and the 12.3-inch digital cluster that every grade gets, adds 18-inch wheels where the LE rides on 16-inch steel, and it is rated the same 43 mpg combined, because Toyota’s front-wheel-drive hybrid rating covers the LE, SE and XLE Premium alike. Toyota does not publish an all-wheel-drive price for the SE on the pages used here, so an all-wheel-drive SE has to be priced by a dealer.',
+          'The XLE Premium at $36,100, or $37,500 with all-wheel drive, is where the range’s value sits: $4,200 above the equivalent LE and the cheapest way to get the comfort equipment — the power liftgate, heated SofTex seats with an eight-way power driver’s seat and the wireless charger — with 43 mpg combined front-drive or 41 with all-wheel drive. Against the SE it costs $1,400 more and buys the comfort kit, which is the trade the middle of the range is built around.',
+          'Above that the grades specialise. The Woodland at $39,900 is all-wheel drive only and the only grade built to leave the tarmac: all-terrain tyres, 8.5 inches of ground clearance against 8.1, Multi-Terrain Select and a 3,500 lb tow hitch, at the cost of 38 mpg combined. The XSE at $41,300 is the sport-trimmed all-wheel-drive car at 42 mpg. The Limited at $43,300 is the only grade with the panoramic glass roof, the 12.9-inch screen and the nine-speaker JBL audio, and it is the one to order if the cabin matters more than the badge.',
+          'One gap is worth knowing before you set your heart on a look: the SE gives you the sport trim and the XLE Premium gives you the comfort kit, and no single hybrid grade gives you both. Decide which of the two matters more, or price the plug-in range before committing.',
+        ],
+      },
+      {
+        heading: 'Living with the plug-in: charging, warranty and servicing',
+        paragraphs: [
+          'The plug-in grades split into two charging setups, and the split decides how the car fits into a week. The SE and the GR SPORT use a 7 kW onboard charger on a J1772 connector, and Toyota quotes a 10 to 80 per cent charge in about four hours on a 240-volt Level 2 supply. The XSE and the Woodland get an 11 kW onboard charger with a CCS1 port and DC fast charging, which Toyota says takes the battery from 10 to 80 per cent in around 30 minutes. Toyota’s launch release for the car says a dual-voltage 120/240-volt cable comes with it, so a standard household outlet will charge it overnight.',
+          'The practical consequence is that the SE is a car you charge at home and treat as an electric car for the commute, while the XSE and Woodland are the ones that can also take a fast charge on a longer trip. If you regularly drive further than the 52-mile electric range in a day and want to top up en route, that difference is worth the price step; if the car charges in your driveway every night, it is not.',
+          'Servicing follows Toyota’s standard schedule: a visit every 5,000 miles or six months, whichever comes first, with the oil change interval set by the owner’s manual and the hybrid system needing no separate routine. ToyotaCare covers factory-scheduled maintenance for two years or 25,000 miles on 2026 models according to Toyota’s ToyotaCare page, though Toyota’s own 2026 RAV4 release text says one year or 10,000 miles — Toyota’s pages disagree, so confirm which applies to your car at the dealer. Roadside assistance runs two years with no mileage limit, and the hybrid battery is warranted for 10 years or 150,000 miles, with the hybrid components covered for 8 years or 100,000 miles.',
+          'What none of that covers is the charger itself. If you want a faster home setup than the supplied cable, that is a separate purchase and an electrician’s visit, and it is worth pricing before you decide between the plug-in and the hybrid rather than after.',
+        ],
+      },
     ],
     buyers: {
       heading: 'Who the 2026 RAV4 suits',
@@ -4756,6 +4855,14 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       {
         question: 'How much cargo space does the RAV4 have?',
         answer: 'Toyota does not publish a cargo volume for the 2026 RAV4 on the pages used here, so this page does not quote one. Check the figure in the brochure or at a dealer before you rely on it.',
+      },
+      {
+        question: 'How long does it take to charge the 2026 RAV4 plug-in hybrid?',
+        answer: 'The plug-in SE and GR SPORT use a 7 kW onboard charger and Toyota quotes about four hours for a 10 to 80 per cent charge on 240-volt Level 2 power. The XSE and Woodland have an 11 kW charger with CCS1 and DC fast charging, which Toyota says takes 10 to 80 per cent in around 30 minutes. A dual-voltage 120/240-volt cable is included.',
+      },
+      {
+        question: 'What warranty does the RAV4 hybrid battery have?',
+        answer: 'Toyota covers the hybrid battery for 10 years or 150,000 miles and the hybrid components for 8 years or 100,000 miles, both from the date of first use and both transferable. The basic warranty is 36 months or 36,000 miles and the powertrain 60 months or 60,000 miles.',
       },
     ],
     links: [
@@ -4869,6 +4976,23 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
           'Remember too that the CR-V’s hybrid system is not a plug-in: it charges itself and never needs a cable. If you want electric range, the RAV4 plug-in or a Tesla Model Y is the relevant comparison, not this.',
         ],
       },
+      {
+        heading: 'Trim by trim: what each step up buys',
+        paragraphs: [
+          'The petrol ladder is three trims and it is unusually easy to read. The LX at $30,920 front-wheel drive or $32,420 all-wheel drive is the entry car, with the touchscreen, dual-zone climate and the full driver-aid set. The EX at $33,150 or $34,650 adds the moonroof and heated front seats, which is the equipment most buyers in a cold state actually want. The EX-L at $35,400 or $36,900 adds leather-trimmed seats and a power tailgate, and it is the roomiest CR-V you can buy at 39.3 cubic feet behind the second row.',
+          'The hybrid ladder is four trims and starts where the petrol EX-L ends. The Sport Hybrid at $35,630 front-wheel drive or $37,130 all-wheel drive is the value hybrid and the one that returns 40 mpg combined with front-wheel drive. The Sport-L Hybrid at $38,725 or $40,225 adds leather-trimmed seats to the hybrid, which is the combination the Sport Hybrid cannot offer. The TrailSport Hybrid at $38,800 is the off-road-styled one, all-wheel drive only, with all-terrain tyres and 35 mpg combined. The Sport Touring Hybrid at $42,550 is the top of the range and the only way to get the 12-speaker Bose audio and Google built-in, and it is also the smallest-boot CR-V at 34.7 cubic feet.',
+          'The pattern to notice is that each hybrid trim is priced against a petrol trim one rung up rather than against its own equivalent. A front-wheel-drive Sport Hybrid at $35,630 sits within a few hundred dollars of a front-wheel-drive EX-L at $35,400, so the choice at that point is leather and a power tailgate against 10 mpg and 14 more horsepower. That is the decision the range is built around, and there is no wrong answer — only a different priority.',
+        ],
+      },
+      {
+        heading: 'Servicing, towing and what the tank means for a week',
+        paragraphs: [
+          'Honda’s 2026 CR-V specification sheet lists a maintenance program of one year or 12,000 miles on every trim, and states that the car needs no scheduled tune-ups for 100,000 miles. The itemised schedule — oil and filter, tyre rotation, brake inspection, cabin and engine filters — lives in the owner’s manual, which this page does not quote from, so no single service interval is given here. What the specification sheet does establish is that the first year of routine servicing is included and that there is no tune-up to budget for in the first 100,000 miles.',
+          'Towing is modest and worth knowing before you plan around it. Honda rates the petrol CR-V at a maximum of 1,500 lb and the hybrid at 1,000 lb, and both figures require Honda’s accessory towing equipment. That is enough for a small utility trailer, a pair of jet skis or a light boat, and not enough for a car trailer or a large camper. If towing is on your list, a petrol trim is the version with the higher rating; if it is not, the hybrid’s lower figure costs you nothing.',
+          'The fuel tank is 14 gallons on both the petrol and the hybrid, according to Honda’s specifications. With the front-wheel-drive hybrid rated at 40 mpg combined, that works out to roughly 560 miles between fills on paper — arithmetic on the rated figure rather than a measured range, but it explains why the hybrid covers about a third more distance between fills than a 30 mpg petrol car on the same tank.',
+          'One ownership point that does not appear on a spec sheet: the hybrid’s smaller cargo volume is the price of the battery under the boot floor, and it is the only place in this comparison where the more expensive car is also the less practical one. If you regularly carry a large pram, a dog crate or a week of luggage for four, sit the petrol and hybrid boots side by side before you decide.',
+        ],
+      },
     ],
     buyers: {
       heading: 'Who the 2026 CR-V suits',
@@ -4938,6 +5062,14 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       {
         question: 'How big is the CR-V inside?',
         answer: 'Honda lists 106.0 cubic feet of passenger volume for the LX and 103.5 for the other trims, a 184.8-inch overall length, a 73.5-inch width and a 106.3-inch wheelbase. Height is 66.2 inches with front-wheel drive and 66.5 with all-wheel drive.',
+      },
+      {
+        question: 'How much can the 2026 CR-V tow?',
+        answer: 'Honda rates the petrol CR-V at a maximum of 1,500 lb and the hybrid at 1,000 lb, both with Honda’s accessory towing equipment fitted. That covers a small utility trailer or light watercraft, not a car trailer.',
+      },
+      {
+        question: 'How big is the CR-V fuel tank?',
+        answer: 'Honda lists a 14-gallon tank for both the petrol and the hybrid CR-V. At the front-wheel-drive hybrid’s 40 mpg combined rating that is roughly 560 miles between fills on paper, which is arithmetic on the rated figure rather than a measured range.',
       },
     ],
     links: [
@@ -5145,7 +5277,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
     overview: [
       'The biggest change to understand before anything else: there is no petrol-only Camry for 2026 in the US. Every grade uses the same 2.5-litre four-cylinder hybrid system with two electric motors, a continuously variable transmission and a rating of 225 hp net combined with front-wheel drive, or 232 hp when all-wheel drive is fitted. The difference between the five grades is equipment and finish, not the drivetrain.',
       'That makes the Camry easy to shop and slightly odd to compare. There is no engine upgrade to agonise over — only how much cabin you want — and the economy gap between grades comes from wheels and weight rather than from the hybrid system. Toyota rates the LE at 52 city, 49 highway and 51 combined mpg, and the SE, Nightshade, XLE and XSE at 46 combined.',
-      'The other decision is all-wheel drive. Toyota offers electronic on-demand all-wheel drive on every grade, and it is the same system across the range: the rear axle is driven by a separate electric motor with no mechanical link to the front, which is why it can be added to a hybrid without redesigning the car. It costs fuel economy — Toyota publishes a separate, lower rating for the all-wheel-drive versions — and, on the pages used here, it does not publish a grade-by-grade all-wheel-drive figure, so this page prices the front-wheel-drive cars only.',
+      'The other decision is all-wheel drive. Toyota offers electronic on-demand all-wheel drive on every grade, and it is the same system across the range: the rear axle is driven by a separate electric motor with no mechanical link to the front, which is why it can be added to a hybrid without redesigning the car. It costs $1,525 on every grade and it costs fuel economy — Toyota publishes a separate, lower rating for the all-wheel-drive versions, from 50 mpg combined in the LE down to 43 in the XSE — and Toyota’s own BuyAToyota model list prices each of the five all-wheel-drive grades, so both sets of figures appear on this page.',
       'Every number here comes from Toyota’s own trim, performance and comparison pages, read on November 24, 2026. Nothing has been measured by us, and where Toyota does not publish a figure it is missing from this page rather than estimated.',
     ],
     priceSection: {
@@ -5153,7 +5285,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       paragraphs: [
         'Toyota lists the LE at $29,600, the SE at $32,100, the Nightshade at $33,100, the XLE at $34,800 and the XSE at $36,000. Those are starting MSRPs for the front-wheel-drive cars, and the steps between them are small: $2,500 from LE to SE, $1,000 from SE to Nightshade, $1,700 from Nightshade to XLE and $1,200 from XLE to XSE.',
         'All five exclude Toyota’s delivery, processing and handling fee, which the company lists at $1,295. Add tax, title, licence and dealer fees, and the gap between the cheapest and dearest Camry is still under $8,000 before options — a narrow spread for a car that changes character as much as this one does between the LE and the XSE.',
-        'All-wheel drive is the one option that moves the price in a way this page cannot price. Toyota offers it on every grade but does not publish the all-wheel-drive figure per grade on the trim page used here, so no all-wheel-drive number appears in the table. Ask a dealer for the all-wheel-drive price of the specific grade rather than assuming it is a fixed adder: Toyota has priced the option differently across grades in the past.',
+        'All-wheel drive is a flat $1,525 on every grade, which makes it unusually easy to price: the LE goes from $29,600 to $31,125, the SE from $32,100 to $33,625, the Nightshade from $33,100 to $34,625, the XLE from $34,800 to $36,325 and the XSE from $36,000 to $37,525. Toyota publishes those all-wheel-drive base MSRPs on its own BuyAToyota model list rather than on the trim page, which is why a buyer comparing only the trim table can come away thinking no such figure exists.',
         'As always with a Toyota, dealer stock and factory incentives move the real transaction price well away from the sticker. The numbers here are the manufacturer’s, dated, and useful for comparing grades — not a prediction of what you will pay.',
       ],
     },
@@ -5202,11 +5334,11 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         table: {
           head: ['Grade', 'Starting MSRP', 'Combined mpg', 'Character'],
           rows: [
-            ['LE', '$29,600', '51 (FWD), 50 (AWD)', 'Value grade, best economy'],
-            ['SE', '$32,100', '46', 'Sport suspension, SofTex seats'],
-            ['Nightshade', '$33,100', '46', 'SE with blackout trim'],
-            ['XLE', '$34,800', '46', 'Leather, 12.3-inch screen, ventilated seats'],
-            ['XSE', '$36,000', '46', 'XLE equipment, two-tone roof option'],
+            ['LE', '$29,600 ($31,125 AWD)', '51 (FWD), 50 (AWD)', 'Value grade, best economy'],
+            ['SE', '$32,100 ($33,625 AWD)', '46', 'Sport suspension, SofTex seats'],
+            ['Nightshade', '$33,100 ($34,625 AWD)', '46', 'SE with blackout trim'],
+            ['XLE', '$34,800 ($36,325 AWD)', '46', 'Leather, 12.3-inch screen, ventilated seats'],
+            ['XSE', '$36,000 ($37,525 AWD)', '43 with AWD', 'XLE equipment, two-tone roof option'],
           ],
         },
       },
@@ -5215,7 +5347,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         paragraphs: [
           'All-wheel drive costs money and about one mpg combined on the LE, and Toyota’s own ratings for the all-wheel-drive versions of the other grades are lower still. In exchange you get a car that does not spin its front wheels on a wet junction and that will climb a snowy driveway with the right tyres. If you live somewhere with real winters, that is worth paying for on a sedan this size.',
           'If you do not, the front-wheel-drive car is the better buy on every measure: cheaper, lighter, more economical and simpler. The Camry is a front-engined, front-driven sedan at heart, and the hybrid system’s low-end torque already makes it easy to drive in traffic without needing drive to the rear axle.',
-          'One thing to settle with a dealer before you commit: the all-wheel-drive price for the specific grade. Toyota does not publish it per grade on the pages used here, and the difference between grades can be larger than buyers expect.',
+          'The price of the decision is $1,525 whatever grade you pick, so it is one of the few options on a new car that can be budgeted exactly. The economy cost is not uniform, though: the LE loses one mpg combined, the SE, Nightshade and XLE lose none on Toyota’s ratings, and the XSE drops from 46 to 43. That makes all-wheel drive easiest to justify on the LE and hardest on the XSE.',
         ],
       },
       {
@@ -5256,7 +5388,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       cons: [
         'No petrol-only option for 2026 in the US',
         'Bigger wheels cost the SE, Nightshade, XLE and XSE five mpg combined',
-        'Toyota does not publish an all-wheel-drive price per grade on its trim page',
+        'The XSE loses three mpg combined with all-wheel drive, where the other grades lose one or none',
         'The two-tone roof is XSE-only and limited to four colours',
       ],
     },
@@ -5279,11 +5411,11 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
       {
         question: 'What mpg does the 2026 Camry get?',
-        answer: 'The LE is rated 52 city, 49 highway and 51 combined mpg with front-wheel drive, and 50 combined with all-wheel drive. The SE, Nightshade, XLE and XSE are rated 46 mpg combined.',
+        answer: 'The LE is rated 52 city, 49 highway and 51 combined mpg with front-wheel drive, and 50 combined with all-wheel drive. The SE, Nightshade and XLE are rated 46 mpg combined, and the XSE 46 with front-wheel drive or 43 with all-wheel drive.',
       },
       {
         question: 'Does the Camry come with all-wheel drive?',
-        answer: 'Yes, Toyota offers electronic on-demand all-wheel drive on every grade. A separate electric motor drives the rear axle, with no mechanical link to the front, and Toyota publishes a lower fuel economy rating for those versions.',
+        answer: 'Yes, Toyota offers electronic on-demand all-wheel drive on every grade for $1,525 above the front-wheel-drive price. A separate electric motor drives the rear axle, with no mechanical link to the front, and the all-wheel-drive grades are rated lower on fuel economy — 50 mpg combined in the LE, 46 in the SE, Nightshade and XLE and 43 in the XSE.',
       },
       {
         question: 'How much is the delivery fee on a Camry?',
@@ -5325,14 +5457,15 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       'The Tucson is effectively two ranges in one body. The petrol cars use a 2.5-litre four-cylinder with 187 hp and 178 lb-ft through an eight-speed automatic. The hybrids use a 1.6-litre turbo four with an electric motor for 231 hp and 271 lb-ft, through a six-speed automatic rather than a continuously variable transmission. That last detail matters: the hybrid changes gear like a conventional car, which is the single biggest difference you will notice on a test drive against most hybrid rivals.',
       'The two ranges also have different trim names, and this is where buyers get confused. The petrol range runs SE, SEL, SEL Plus, XRT, SEL Premium and Limited. The hybrid range runs SE, SEL, SEL Convenience, Limited and Night. “SEL Plus” is a petrol trim and “SEL Convenience” is a hybrid trim; they are not the same car and they are not priced as equivalents.',
       'Economy splits the decision cleanly. The front-wheel-drive petrol Tucson is rated 28 mpg combined, the all-wheel-drive petrol 26. The hybrid SE and SEL with front-wheel drive are rated 38 combined, the hybrid SE with all-wheel drive 38, and the three all-wheel-drive hybrids from SEL Convenience up 36. So the hybrid is worth roughly ten mpg combined over the petrol car — a real saving, but not the kind of number that pays back a large price gap quickly.',
-      'Everything here comes from Hyundai’s own 2026 Tucson and Tucson Hybrid pages and comparison tables plus fueleconomy.gov’s records for the same model year, read on November 24, 2026. Where Hyundai does not publish a figure — the exact freight charge and the all-wheel-drive price adder, for instance — it is missing rather than estimated.',
+      'Everything here comes from Hyundai’s own 2026 Tucson and Tucson Hybrid pages and comparison tables plus fueleconomy.gov’s records for the same model year, read on November 24, 2026. Where Hyundai does not publish a figure — the exact freight charge, for instance — it is missing rather than estimated, and the all-wheel-drive prices that Hyundai’s own 2026 pricing sheet does publish are all on this page.',
     ],
     priceSection: {
-      heading: '2026 Tucson prices, and the two figures Hyundai does not publish',
+      heading: '2026 Tucson prices, front- and all-wheel drive',
       paragraphs: [
         'Hyundai lists the petrol SE at $29,700, the SEL at $31,050, the SEL Plus at $31,550, the XRT at $33,725, the SEL Premium at $34,050 and the Limited at $39,675. The hybrid SE is $31,300, the hybrid SEL $32,750, the hybrid SEL Convenience $35,250, the hybrid Limited $42,425 and the hybrid Night $42,925.',
         'The striking number in that list is the hybrid SE at $31,300 against the petrol SE at $29,700: $1,600 buys the more powerful, much more economical powertrain. That is one of the smallest hybrid premiums in the class, and it is the reason the hybrid SE is the trim most buyers should be looking at rather than the petrol SEL.',
-        'Two figures are missing, and they are the two you will be asked for at a dealer. Hyundai states that its MSRPs exclude freight, tax, title and licence fees but does not publish an exact freight amount on the pages used here; it says freight varies by dealer. And although HTRAC all-wheel drive is optional on the petrol trims and on the hybrid SE and SEL, Hyundai does not publish those all-wheel-drive totals on those pages either. Both numbers are real and both are negotiable at the dealer level, which is exactly why they are left out here instead of guessed.',
+        'Those are the front-wheel-drive figures. Hyundai’s 2026 Tucson pricing sheet, effective July 29, 2026, prices HTRAC all-wheel drive at $1,500 on every trim that offers it: the petrol SE at $31,200, SEL at $32,550, SEL Plus at $33,050, XRT at $35,225, SEL Premium at $35,550 and Limited at $41,175, and the hybrid SE at $32,800 and hybrid SEL at $34,250. The three top hybrids are all-wheel drive only, so their prices already include it.',
+        'One figure is still missing, and it is the one you will be asked for at a dealer: freight. Hyundai states that its MSRPs exclude freight, tax, title and licence fees but does not publish an exact freight amount on the pages used here; it says freight varies by dealer. That number is real and negotiable at the dealer level, which is exactly why it is left out here instead of guessed.',
         'What is published is which hybrids are all-wheel drive only. The SEL Convenience, Limited and Night come with all-wheel drive as standard, which is why their starting prices look high against the front-wheel-drive hybrid SEL. A hybrid SEL Convenience is not simply a better-equipped SEL; it is a different drivetrain as well, and that is most of the $2,500 gap.',
       ],
     },
@@ -5368,7 +5501,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       {
         heading: 'Key features explained',
         title: 'HTRAC all-wheel drive, and when it is standard',
-        body: 'Hyundai’s HTRAC all-wheel drive is optional on the petrol trims and on the hybrid SE and SEL, and standard on the hybrid SEL Convenience, Limited and Night. Hyundai does not publish the all-wheel-drive adder on the pages used here, so the only figure that matters is the one the dealer quotes. The economy cost is published: all-wheel drive drops the petrol car from 28 to 26 mpg combined and takes the hybrid from 38 to 36 on the trims where both are offered.',
+        body: 'Hyundai’s HTRAC all-wheel drive is optional on the petrol trims and on the hybrid SE and SEL, and standard on the hybrid SEL Convenience, Limited and Night. Hyundai’s 2026 pricing sheet puts it at $1,500 on every trim that offers it, so the petrol SEL moves from $31,050 to $32,550 and the hybrid SEL from $32,750 to $34,250. The economy cost is published too: all-wheel drive drops the petrol car from 28 to 26 mpg combined, while the hybrid SE is rated 38 mpg combined with all-wheel drive — the same figure as the front-wheel-drive car, which is unusual in this class.',
       },
     ],
     deepDive: [
@@ -5438,7 +5571,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         '38.7 cu ft of cargo behind the rear seats',
       ],
       cons: [
-        'Hyundai does not publish the freight charge or the all-wheel-drive adder on its US pages',
+        'Hyundai does not publish an exact freight figure; it says the amount varies by dealer',
         'The petrol and hybrid ranges use confusingly similar trim names',
         'The three top hybrids are all-wheel drive only, which pushes their prices up',
         'No plug-in hybrid option in this range',
@@ -5448,7 +5581,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       heading: 'Picking a Tucson trim',
       paragraphs: [
         'Compare the hybrid SE with the petrol SEL first. They are $250 apart, and for that the hybrid SE gives you 44 more horsepower, ten mpg combined and the same body. Unless you specifically want the SEL’s extra equipment and are willing to pay more for it, the hybrid SE is the value pick in the entire range and the one to test drive first.',
-        'If you want all-wheel drive, the arithmetic changes. All-wheel drive is optional on the hybrid SE and SEL but standard on the SEL Convenience, so the real comparison is a hybrid SE with all-wheel drive against the SEL Convenience — and since Hyundai does not publish the all-wheel-drive adder, you have to get both numbers from a dealer before that comparison means anything. It is the one place in this range where the sticker alone cannot tell you which car is better value.',
+        'If you want all-wheel drive, the arithmetic changes but the answer does not. A hybrid SE with all-wheel drive is $32,800 and the SEL Convenience is $35,250, so the step up is $2,450 for the extra equipment that trim carries, on the same all-wheel-drive system but with a 36 mpg combined rating against the SE’s 38. The SE with all-wheel drive is still the value pick; the SEL Convenience is the one to choose if you want the equipment and would have added all-wheel drive anyway.',
         'Finally, check the trim name on the window sticker rather than the advert. A listing that says “SEL Convenience” and a listing that says “SEL Plus” are selling different cars at different prices, and the mistake is common enough that it is worth reading the sticker twice.',
       ],
     },
@@ -5509,22 +5642,22 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       'The Sportage line-up is refreshingly simple to understand. One engine — a 2.5-litre four-cylinder rated at 187 hp — one gearbox, an eight-speed automatic, and six trims. Four of them can be ordered with front- or all-wheel drive; the X-Line and X-Pro Prestige come only with all-wheel drive. There is no hybrid, no plug-in and no engine upgrade to weigh up on this page.',
       'That simplicity has a cost, and it is fuel. The front-wheel-drive Sportage is rated 28 mpg combined, all-wheel drive drops it to 26, and the two all-wheel-drive-only trims drop further: the X-Line to 26 and the X-Pro Prestige to 24. If economy is high on your list, the front-wheel-drive LX, EX, SX or SX Prestige is the car to have, and the X-Pro Prestige is the one to avoid.',
       'The trim ladder is also easy to read because it maps almost directly onto price. The LX starts the range, the EX is the mid trim, the SX and SX Prestige are the upper trims, and the X-Line and X-Pro Prestige are the all-wheel-drive off-road-styled pair that sit at different points on the ladder rather than at the top of it. An X-Line at $33,090 is cheaper than an SX at $34,390, so the off-road trim is not automatically the expensive one.',
-      'Everything here comes from Kia’s own 2026 Sportage comparison and trim specification pages, read on November 24, 2026. Where Kia does not publish a figure on those pages — the exact destination charge, the all-wheel-drive prices for four trims, and a consolidated paint list — it is left out rather than estimated.',
+      'Everything here comes from Kia’s own 2026 Sportage comparison, trim specification and model-year pricing pages, read on November 24 and 25, 2026. Where Kia does not publish a figure — a consolidated paint list and a cargo volume, for instance — it is left out rather than estimated.',
     ],
     priceSection: {
-      heading: '2026 Sportage prices, and the figures Kia leaves off its comparison page',
+      heading: '2026 Sportage prices, front- and all-wheel drive',
       paragraphs: [
         'Kia lists the LX at $28,790, the EX at $30,590, the X-Line at $33,090, the SX at $34,390, the SX Prestige at $36,390 and the X-Pro Prestige at $39,690. Those are starting MSRPs, and the order is not the order you would guess: the X-Line slots between the EX and the SX on price even though it is the off-road-styled trim.',
-        'The destination and handling charge is not published as an exact amount on the comparison page used here, and Kia states that its starting MSRP excludes it. That is unusual — most manufacturers publish a flat destination figure — and it means the only way to know the delivered price of a specific Sportage is to ask a dealer or check the window sticker. Do not assume it is zero, and do not assume it matches another Kia model.',
-        'All-wheel drive is the second missing figure. Kia builds the LX, EX, SX and SX Prestige with front- or all-wheel drive, but the comparison page used here publishes a price only for the front-wheel-drive versions. The X-Line and X-Pro Prestige are priced because they come only with all-wheel drive. So the all-wheel-drive premium for the four volume trims is a dealer question, not a published number.',
-        'What the published figures do show is that the step into all-wheel drive is bundled with equipment on the two off-road trims. An X-Line at $33,090 is $2,500 more than an EX at $30,590, and for that you get all-wheel drive as standard plus the off-road styling. Whether that is better value than an EX with all-wheel drive added depends on the all-wheel-drive price Kia’s dealer quotes you for the EX.',
+        'The destination and handling charge is $1,495, according to Kia’s 2026 Sportage model-year pricing table. Kia states that the starting MSRP excludes it, so add it to every figure on this page before you compare a Sportage with a rival whose price already includes delivery.',
+        'All-wheel drive is $1,800 on the trims that offer it. Kia’s pricing table lists the LX at $30,590 with all-wheel drive, the EX at $32,390 and the SX Prestige at $38,190, and all three appear here alongside their front-wheel-drive versions. What the table does not list is an all-wheel-drive SX, so for 2026 the SX is front-wheel drive only — a gap in the middle of the range that matters if you wanted the upper-spec trim and the winter drivetrain together.',
+        'The published figures also show how the off-road trims are priced. An X-Line at $33,090 is $700 above an all-wheel-drive EX at $32,390, and for that $700 you get the off-road styling and the equipment that comes with it, with the same all-wheel-drive system underneath. That is a much smaller gap than comparing the X-Line with the front-wheel-drive EX makes it look.',
       ],
     },
     keyFacts: [
       { term: 'Trims', detail: 'Six: LX, EX, SX, SX Prestige, X-Line and X-Pro Prestige' },
       { term: 'Engine', detail: '2.5L four-cylinder, 187 hp, with an eight-speed automatic' },
       { term: 'Economy', detail: '28 mpg combined with front-wheel drive, 26 with all-wheel drive, 24 in the X-Pro Prestige' },
-      { term: 'All-wheel drive', detail: 'Optional on LX, EX, SX and SX Prestige; standard on X-Line and X-Pro Prestige' },
+      { term: 'All-wheel drive', detail: 'Optional at $1,800 on the LX, EX and SX Prestige; standard on the X-Line and X-Pro Prestige; the SX is front-wheel drive only' },
       { term: 'Seats', detail: 'Five' },
       { term: 'Cheapest trim', detail: 'LX at $28,790; the dearest is the X-Pro Prestige at $39,690' },
     ],
@@ -5537,7 +5670,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       {
         heading: 'Key features explained',
         title: 'The all-wheel-drive ladder',
-        body: 'Kia’s arrangement is simple but has a trap in it. The LX, EX, SX and SX Prestige can be ordered with front- or all-wheel drive, which means an all-wheel-drive SX Prestige is possible. The X-Line and X-Pro Prestige cannot be ordered with front-wheel drive at all. Buyers who want an off-road-styled Sportage therefore pay for all-wheel drive whether they need it or not, and buyers who want maximum economy must stay on the four volume trims. There is no front-wheel-drive off-road trim and no all-wheel-drive base car.',
+        body: 'Kia’s arrangement is simple but has a gap in it. The LX, EX and SX Prestige can be ordered with front- or all-wheel drive. The SX cannot: Kia’s 2026 pricing table lists an all-wheel-drive LX, EX, X-Line, SX Prestige and X-Pro Prestige, and no all-wheel-drive SX. The X-Line and X-Pro Prestige cannot be ordered with front-wheel drive at all. Buyers who want an off-road-styled Sportage therefore pay for all-wheel drive whether they need it or not, and a buyer who wants the SX trim and all-wheel drive has to move up to the SX Prestige.',
       },
       {
         heading: 'Key features explained',
@@ -5564,11 +5697,11 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         table: {
           head: ['Trim', 'Starting MSRP', 'Drivetrain', 'Combined mpg'],
           rows: [
-            ['LX', '$28,790', 'FWD, AWD optional', '28'],
-            ['EX', '$30,590', 'FWD, AWD optional', '28'],
+            ['LX', '$28,790 (AWD $30,590)', 'FWD or AWD', '28 / 26'],
+            ['EX', '$30,590 (AWD $32,390)', 'FWD or AWD', '28 / 26'],
             ['X-Line', '$33,090', 'AWD only', '26'],
-            ['SX', '$34,390', 'FWD, AWD optional', '28'],
-            ['SX Prestige', '$36,390', 'FWD, AWD optional', '28'],
+            ['SX', '$34,390', 'FWD only', '28'],
+            ['SX Prestige', '$36,390 (AWD $38,190)', 'FWD or AWD', '28 / 26'],
             ['X-Pro Prestige', '$39,690', 'AWD only', '24'],
           ],
         },
@@ -5613,13 +5746,13 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         'Low entry price at $28,790 for the LX',
         'One simple engine and gearbox across the range',
         '28 mpg combined with front-wheel drive',
-        'All-wheel drive available on four of the six trims',
+        'All-wheel drive at $1,800 on the three trims that offer it',
         'An off-road-styled trim at $33,090 that undercuts the SX',
       ],
       cons: [
         'No hybrid or plug-in option in this range',
         '187 hp in every trim, including the $39,690 one',
-        'Kia does not publish the destination charge or the all-wheel-drive prices on its comparison page',
+        'The SX cannot be ordered with all-wheel drive, so the upper trim and the winter drivetrain do not combine',
         'The X-Pro Prestige is rated 24 mpg combined',
       ],
     },
@@ -5627,7 +5760,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       heading: 'Choosing a Sportage trim',
       paragraphs: [
         'The EX is the sensible centre of the range. It is $1,800 above the LX and $2,500 below the X-Line, and it can be ordered with front-wheel drive, which keeps both the price and the fuel bill down. If you do not need all-wheel drive or off-road styling, the EX is where the value is, and the SX and SX Prestige above it buy equipment rather than capability.',
-        'If you want all-wheel drive, compare a dealer-quoted all-wheel-drive EX with the X-Line rather than comparing the front-wheel-drive EX price with the X-Line price. The X-Line bundles all-wheel drive and the off-road styling for $33,090, and once the all-wheel-drive premium is added to an EX the gap is much smaller than the sticker makes it look. That comparison is the one that decides between the two.',
+        'If you want all-wheel drive, compare the all-wheel-drive EX at $32,390 with the X-Line at $33,090 rather than comparing the front-wheel-drive EX with the X-Line. The gap is $700, and it buys the off-road styling on top of the same all-wheel-drive system, which makes the X-Line the easier of the two to justify than the headline prices suggest. If you want the SX’s equipment and all-wheel drive together, the SX Prestige at $38,190 is the only version that offers both.',
         'Finally, be honest about your mileage before choosing a trim. The X-Pro Prestige at 24 mpg combined is a fine car for someone who drives 6,000 miles a year and wants the top trim; for someone driving 18,000 miles a year it is an expensive choice for two mpg less than an X-Line. Work out the annual fuel cost of both before you sit in either.',
       ],
     },
@@ -5646,7 +5779,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
       {
         question: 'Which Sportage trims are all-wheel drive only?',
-        answer: 'The X-Line and the X-Pro Prestige. The LX, EX, SX and SX Prestige can be ordered with either front- or all-wheel drive.',
+        answer: 'The X-Line and the X-Pro Prestige. The LX, EX and SX Prestige can be ordered with either front- or all-wheel drive, and Kia’s pricing table lists no all-wheel-drive SX, so the SX is front-wheel drive only.',
       },
       {
         question: 'How much horsepower does the Sportage have?',
@@ -5654,7 +5787,7 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
       {
         question: 'How much is the destination charge on a Sportage?',
-        answer: 'Kia’s comparison page used here does not publish an exact destination and handling figure, and states that its starting MSRP excludes it. Ask a dealer for the delivered figure on the specific car.',
+        answer: 'Kia’s 2026 Sportage pricing table lists a destination and handling charge of $1,495, which is excluded from every starting MSRP on this page. Tax, title and licence fees come on top of that.',
       },
       {
         question: 'Is the Sportage good value?',
