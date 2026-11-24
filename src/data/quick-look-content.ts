@@ -4249,6 +4249,11 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         description: 'Toyota’s hybrid and plug-in hybrid compact SUV, with up to 52 miles of electric range.',
       },
       {
+        label: 'Hyundai Tucson spec sheet',
+        href: '/quick-look/hyundai-tucson-2026',
+        description: 'The hybrid compact SUV with a conventional automatic, if you are weighing electric against hybrid.',
+      },
+      {
         label: 'All Quick Look spec sheets',
         href: '/quick-look',
         description: 'Browse every car and gadget spec sheet in the Quick Look section.',
@@ -4415,6 +4420,11 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         label: 'Tesla Model Y spec sheet',
         href: '/quick-look/tesla-model-y-2026',
         description: 'What the jump to electric looks like: range, charging and the six configurations Tesla sells.',
+      },
+      {
+        label: 'Toyota Camry spec sheet',
+        href: '/quick-look/toyota-camry-2026',
+        description: 'The next sedan up in the same family, hybrid-only and rated up to 51 mpg combined.',
       },
       {
         label: 'All Quick Look spec sheets',
@@ -4586,6 +4596,11 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         description: 'A compact hybrid SUV for the days the truck stays at home.',
       },
       {
+        label: 'Chevrolet Silverado 1500 spec sheet',
+        href: '/quick-look/chevrolet-silverado-1500-2026',
+        description: 'The direct rival: nine trims, four engines and up to 13,300 lb of trailering.',
+      },
+      {
         label: 'All Quick Look spec sheets',
         href: '/quick-look',
         description: 'Browse every car and gadget spec sheet in the Quick Look section.',
@@ -4755,6 +4770,16 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         description: 'The same company’s compact sedan, if you do not need the extra height and space.',
       },
       {
+        label: 'Hyundai Tucson spec sheet',
+        href: '/quick-look/hyundai-tucson-2026',
+        description: 'The hybrid compact SUV with 231 hp and a conventional six-speed automatic.',
+      },
+      {
+        label: 'Kia Sportage spec sheet',
+        href: '/quick-look/kia-sportage-2026',
+        description: 'The petrol-only alternative: one engine, six trims and a lower entry price.',
+      },
+      {
         label: 'All Quick Look spec sheets',
         href: '/quick-look',
         description: 'Browse every car and gadget spec sheet in the Quick Look section.',
@@ -4922,9 +4947,911 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
         description: 'The direct rival, and the one that offers a plug-in hybrid with 52 miles of electric range.',
       },
       {
+        label: 'Kia Sportage spec sheet',
+        href: '/quick-look/kia-sportage-2026',
+        description: 'The petrol-only alternative at a lower entry price, with no hybrid in its range.',
+      },
+      {
+        label: 'Volkswagen Tiguan spec sheet',
+        href: '/quick-look/volkswagen-tiguan-2026',
+        description: 'The other non-hybrid option in this class, with a 268 hp top trim.',
+      },
+      {
         label: 'Tesla Model Y spec sheet',
         href: '/quick-look/tesla-model-y-2026',
         description: 'The electric alternative if you can charge at home and want to skip petrol entirely.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'chevrolet-silverado-1500-2026': {
+    productName: 'Chevrolet Silverado 1500',
+    heading: '2026 Chevrolet Silverado 1500: trims, engines and buying guide',
+    lead: 'The 2026 Chevrolet Silverado 1500 is a full-size pickup sold in the US in nine trims, from the WT work truck to the off-road ZR2, with four engines and the choice of rear- or four-wheel drive. It suits buyers who tow, haul or fill a bed regularly and want a truck that can be ordered as basic or as plush as they like.',
+    overview: [
+      'Chevrolet does not sell one Silverado with a long options list. It sells nine named trims, and each one moves the truck’s purpose: the WT is a work truck, the Custom and LT are the volume sellers, the two Trail Boss trims add off-road hardware, the LTZ and High Country add leather and comfort, and the ZR2 is the low-volume off-road flagship. Choosing a Silverado is mostly choosing where on that ladder you stop.',
+      'The engine list is the other half of the decision. Chevrolet offers a 2.7L turbo four, a 5.3L V8, a 6.2L V8 and a 3.0L Duramax diesel, and the transmission changes with them: an eight-speed automatic behind the 2.7L and a ten-speed behind the V8s and the diesel. The 2.7L is not a penalty box — Chevrolet rates it at 310 hp and 430 lb-ft, which is more torque than the 5.3L V8’s 383 lb-ft — but it is the four-cylinder, and buyers who tow heavy trailers still gravitate to the diesel for its 495 lb-ft.',
+      'The capability figures are the ones to hold on to. Chevrolet quotes up to 13,300 lb of trailering and up to 2,260 lb of payload, both on properly equipped trucks rather than on every Silverado on the lot, and 89.1 cubic feet of Durabed volume. Those three numbers are what separate this truck from a mid-size pickup, and they vary by cab, bed, drivetrain and package — so the only figure that matters is the one printed on the window sticker of the truck you are actually buying.',
+      'Everything on this page comes from Chevrolet’s own model, trim and destination-freight pages, read on November 24, 2026. There is no road test here and no measurement of our own; where Chevrolet does not publish a figure, it is left out rather than estimated.',
+    ],
+    priceSection: {
+      heading: '2026 Silverado 1500 prices, and the fee Chevrolet adds afterwards',
+      paragraphs: [
+        'Chevrolet’s consumer Silverado page lists starting MSRPs of $36,900 for the WT, $42,400 for the Custom, $47,900 for the LT, $51,300 for the RST, $52,900 for the Custom Trail Boss, $58,000 for the LTZ, $59,700 for the LT Trail Boss, $62,900 for the High Country and $71,800 for the ZR2. Those are starting figures before options, and a four-wheel-drive truck or a Crew cab will sit above them.',
+        'Every one of those numbers leaves out Chevrolet’s destination freight charge, which the company lists at $2,795. That is not a rounding error on a $36,900 truck: it is roughly eight per cent of the WT’s starting figure, and it applies whether you buy the work truck or the ZR2. Tax, title, licence and dealer fees come on top of that again, so the drive-away number is always higher than the number in the advert.',
+        'One inconsistency is worth knowing about because it will confuse your own research. Chevrolet’s consumer Silverado page shows the WT at $36,900, while its commercial Silverado page shows $37,200 for the same model year. Both are Chevrolet pages, published at the same time. Treat the consumer figure as the one to quote at a dealer and expect the difference to be explained as a fleet or commercial listing, but do not be surprised if a sales sheet shows the higher number.',
+        'Chevrolet has repriced the Silverado repeatedly through recent model years, so a figure from a review, a video or an earlier listing is not a figure you can hold a dealer to. Check the current window sticker for the exact truck, because the trim price and the truck price are rarely the same thing once cab, bed and drivetrain are chosen.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Trims', detail: 'Nine: WT, Custom, LT, RST, Custom Trail Boss, LTZ, LT Trail Boss, High Country and ZR2' },
+      { term: 'Engines', detail: '2.7L turbo four (310 hp, 430 lb-ft), 5.3L V8 (355 hp, 383 lb-ft), 6.2L V8 (420 hp, 460 lb-ft), 3.0L Duramax diesel (305 hp, 495 lb-ft)' },
+      { term: 'Transmissions', detail: 'Eight-speed automatic with the 2.7L; ten-speed automatic with the V8s and the diesel' },
+      { term: 'Max trailering', detail: '13,300 lb on properly equipped models' },
+      { term: 'Max payload', detail: '2,260 lb' },
+      { term: 'Durabed volume', detail: '89.1 cu ft, with 5 ft 10 in and 6 ft 6 in bed lengths' },
+      { term: 'Destination freight', detail: '$2,795, excluded from every starting MSRP above' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Four engines, two very different characters',
+        body: 'The 2.7L turbo is the standard engine on the WT, Custom, LT and RST, and Chevrolet rates it at 310 hp and 430 lb-ft. That torque figure is higher than the 5.3L V8’s 383 lb-ft, which is why the four-cylinder does not feel like the cheap option in normal driving: turbo torque arrives early, and the eight-speed automatic keeps it there. The V8s are for buyers who want the sound and the simpler long-term ownership story, and the 6.2L is the one to have if you want the most power Chevrolet puts in a Silverado at 420 hp and 460 lb-ft. The diesel is the towing pick: 305 hp but 495 lb-ft, through the same ten-speed as the V8s.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'What 13,300 lb of trailering actually requires',
+        body: 'That is Chevrolet’s maximum, and it is not the rating of a base WT. It depends on the Max Trailering package, the cab and bed combination, the drivetrain, the axle ratio and the engine. A four-wheel-drive Crew cab with a short bed will not automatically tow 13,300 lb, and a two-wheel-drive truck with the right package may tow more than a four-wheel-drive one. The number to use is the one on the door jamb and in the trailering guide for the exact configuration, and the payload figure matters just as much: a 2,260 lb maximum is reduced by passengers, tools and anything else in the cab or bed before you add tongue weight.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The Durabed and the two bed lengths',
+        body: 'Chevrolet quotes 89.1 cubic feet of Durabed volume, which is the figure that makes this a full-size truck rather than a lifestyle pickup. The bed comes in 5 ft 10 in and 6 ft 6 in lengths, and the shorter bed is the one that keeps the truck usable in a normal garage. If you carry sheets of plywood or a quad, the longer bed is the one to order; if the truck is a daily driver that occasionally hauls, the short bed with a Crew cab is the combination most buyers end up in.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'From work truck to High Country',
+        body: 'The WT is the vinyl-and-hard-plastic truck that fleets buy: the 2.7L turbo, a functional cabin and nothing decorative. The Custom and LT are where most private buyers start, and the LT is the first trim that opens up the 5.3L V8. The RST is the street-styled version. The Custom Trail Boss and LT Trail Boss add the lifted off-road package, with the LT Trail Boss bringing the 5.3L V8 as standard. The LTZ adds leather, and the High Country is the most comfortable of the mainstream trims, with leather and open-pore wood trim. The ZR2 sits above all of it as the off-road flagship with the 6.2L V8.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Paint is published per configuration, not as one list',
+        body: 'Chevrolet does not publish a single Silverado colour chart on the pages used here; its build tool lists paint against each configuration instead. For the Custom, that list reads White Sands, Summit White, Red Hot, Black, Sterling Gray Metallic and Riptide Blue Metallic. Other trims show a different set. That matters if you have a colour in mind, because the paint you want may only be offered on a trim you had not considered, and the only reliable way to check is to build the exact truck on chevrolet.com rather than trusting a brochure palette.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Every 2026 Silverado 1500 trim, side by side',
+        paragraphs: [
+          'The nine trims fall into four groups: work trucks, volume trims, off-road trims and the luxury and flagship pair. The table below puts the starting figures next to each other so the gaps are visible. Every figure is a starting MSRP before the $2,795 destination freight charge.',
+        ],
+        table: {
+          head: ['Trim', 'Starting MSRP', 'Standard engine', 'Position in the range'],
+          rows: [
+            ['WT', '$36,900', '2.7L turbo', 'Work truck'],
+            ['Custom', '$42,400', '2.7L turbo', 'Volume trim'],
+            ['LT', '$47,900', '2.7L turbo', 'Volume trim, V8 available'],
+            ['RST', '$51,300', '2.7L turbo', 'Street-styled trim'],
+            ['Custom Trail Boss', '$52,900', '2.7L turbo', 'Off-road trim'],
+            ['LTZ', '$58,000', '5.3L V8', 'Leather trim'],
+            ['LT Trail Boss', '$59,700', '5.3L V8', 'Off-road trim'],
+            ['High Country', '$62,900', '5.3L V8', 'Luxury trim, 6.2L available'],
+            ['ZR2', '$71,800', '6.2L V8', 'Off-road flagship'],
+          ],
+        },
+      },
+      {
+        heading: 'Which engine to pick, and why the answer is usually the V8 or the diesel',
+        paragraphs: [
+          'If the truck is a daily driver that occasionally tows a trailer under 7,000 lb, the 2.7L turbo is the rational choice. It makes more torque than the 5.3L V8, it is the cheapest way into the truck, and the eight-speed automatic is well matched to it. The trade is refinement and the long-term resale story: a V8 badge still carries weight in the used market, and the 5.3L is the engine most buyers expect.',
+          'If you tow regularly, the diesel is the one to test. Its 495 lb-ft is the highest torque figure in the range, it arrives at low revs, and it returns better fuel economy on a long highway run than either V8. The 6.2L V8 is the choice for the buyer who wants the most power and does not care about the fuel bill; it is standard on the ZR2 and available on the High Country, which is also the only way to get it on a comfortable truck.',
+          'What none of that changes is the paperwork. Trailering and payload ratings are configuration-specific, so the engine you choose only sets the ceiling. The window sticker sets the number.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 Silverado 1500 suits',
+      should: [
+        'You tow a trailer, boat or car regularly and need a rating above 10,000 lb.',
+        'You use the bed for work and want the 89.1 cu ft Durabed rather than a mid-size box.',
+        'You want a truck you can order as basic as a WT or as finished as a High Country.',
+        'You want a diesel option, which several rivals in this class do not offer.',
+        'You want the V8 sound and the simpler servicing story of a large petrol engine.',
+      ],
+      skip: [
+        'You mostly drive in town and park in a garage: a mid-size pickup is easier to live with.',
+        'You want the lowest possible running costs: the diesel helps, but a hybrid SUV will beat any Silverado.',
+        'You need a third row of seats. The Silverado seats up to six across two rows.',
+        'You want the 13,300 lb figure on the cheapest truck: it needs the right package and configuration.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        'Nine trims covering work truck to off-road flagship',
+        'Four engines, including a diesel with 495 lb-ft',
+        'Up to 13,300 lb of trailering and 2,260 lb of payload',
+        '89.1 cu ft Durabed with two bed lengths',
+        'The 2.7L turbo makes more torque than the base V8',
+      ],
+      cons: [
+        'Every starting figure excludes a $2,795 destination freight charge',
+        'Chevrolet’s own consumer and commercial pages disagree on the WT starting figure',
+        'No single published paint list: colours depend on the configuration',
+        'The 6.2L V8 and the ZR2 hardware sit at the top of the range only',
+      ],
+    },
+    buyingTips: {
+      heading: 'Ordering a Silverado without overpaying for the wrong option',
+      paragraphs: [
+        'Start with the trailer, not the trim. Work out the loaded weight of what you tow, add a margin, and then look for the configuration whose door-jamb rating covers it. That single step decides the cab, the bed, the drivetrain and often the engine, and it stops you paying for a High Country you did not need or settling for a WT that cannot do the job.',
+        'Then decide between the LT and the LTZ. The LT is the value point in the range: it opens up the 5.3L V8 and it is $10,100 below the LTZ. The LTZ buys leather and a more finished cabin for that step, and the High Country adds the top trim finish and the 6.2L option for another $4,900. If leather is not a priority, the LT with the V8 is the sensible truck.',
+        'Finally, check three things on the sticker before you sign: the destination charge, the trailering package code and the payload rating on the door jamb. The first is the fee most often left out of online comparisons, the second decides whether the truck can tow what you need, and the third is the number that runs out first once you load the bed and the cab.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How many trims does the 2026 Silverado 1500 come in?',
+        answer: 'Nine: WT, Custom, LT, RST, Custom Trail Boss, LTZ, LT Trail Boss, High Country and ZR2. Starting MSRPs run from $36,900 for the WT to $71,800 for the ZR2, before Chevrolet’s $2,795 destination freight charge.',
+      },
+      {
+        question: 'What is the towing capacity of the 2026 Silverado 1500?',
+        answer: 'Chevrolet quotes a maximum of 13,300 lb on properly equipped models, which means the right engine, axle ratio, cab and bed combination and the Max Trailering package. The rating for a specific truck is on its door jamb, not in the headline figure.',
+      },
+      {
+        question: 'Which engines are available in the 2026 Silverado 1500?',
+        answer: 'A 2.7L turbo four with 310 hp and 430 lb-ft, a 5.3L V8 with 355 hp and 383 lb-ft, a 6.2L V8 with 420 hp and 460 lb-ft and a 3.0L Duramax diesel with 305 hp and 495 lb-ft. The 2.7L uses an eight-speed automatic and the others a ten-speed.',
+      },
+      {
+        question: 'How much is the destination charge on a Silverado?',
+        answer: 'Chevrolet lists a destination freight charge of $2,795, which is not included in any of its starting MSRPs. Tax, title, licence and dealer fees are additional.',
+      },
+      {
+        question: 'Is the 2.7L turbo weaker than the V8?',
+        answer: 'It makes less power — 310 hp against the 5.3L V8’s 355 hp — but more torque, 430 lb-ft against 383 lb-ft. In normal driving it pulls strongly because that torque arrives early; the V8 is the choice for buyers who want the larger engine for towing or resale.',
+      },
+      {
+        question: 'Which Silverado trim has the 6.2L V8?',
+        answer: 'The 6.2L V8 is standard on the ZR2 and available on the High Country. It is not offered on the cheaper trims.',
+      },
+      {
+        question: 'Why do two Chevrolet pages show different Silverado prices?',
+        answer: 'Chevrolet’s consumer Silverado page lists the WT at $36,900 while its commercial page lists $37,200 for the same model year. That is a difference on Chevrolet’s own site, and it is why the figure on the exact truck matters more than any published starting number.',
+      },
+    ],
+    links: [
+      {
+        label: 'Ford F-150 spec sheet',
+        href: '/quick-look/ford-f-150-2026',
+        description: 'The direct rival: same job, a different engine list and a different trim ladder.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'toyota-camry-2026': {
+    productName: 'Toyota Camry',
+    heading: '2026 Toyota Camry: grades, hybrid specs and buying guide',
+    lead: 'The 2026 Toyota Camry is a mid-size four-door sedan sold in the US as a hybrid only, in five grades from the LE to the XSE, with front-wheel drive or electronic on-demand all-wheel drive. It suits buyers who want a comfortable sedan that returns up to 51 mpg combined without ever plugging in.',
+    overview: [
+      'The biggest change to understand before anything else: there is no petrol-only Camry for 2026 in the US. Every grade uses the same 2.5-litre four-cylinder hybrid system with two electric motors, a continuously variable transmission and a rating of 225 hp net combined with front-wheel drive, or 232 hp when all-wheel drive is fitted. The difference between the five grades is equipment and finish, not the drivetrain.',
+      'That makes the Camry easy to shop and slightly odd to compare. There is no engine upgrade to agonise over — only how much cabin you want — and the economy gap between grades comes from wheels and weight rather than from the hybrid system. Toyota rates the LE at 52 city, 49 highway and 51 combined mpg, and the SE, Nightshade, XLE and XSE at 46 combined.',
+      'The other decision is all-wheel drive. Toyota offers electronic on-demand all-wheel drive on every grade, and it is the same system across the range: the rear axle is driven by a separate electric motor with no mechanical link to the front, which is why it can be added to a hybrid without redesigning the car. It costs fuel economy — Toyota publishes a separate, lower rating for the all-wheel-drive versions — and, on the pages used here, it does not publish a grade-by-grade all-wheel-drive figure, so this page prices the front-wheel-drive cars only.',
+      'Every number here comes from Toyota’s own trim, performance and comparison pages, read on November 24, 2026. Nothing has been measured by us, and where Toyota does not publish a figure it is missing from this page rather than estimated.',
+    ],
+    priceSection: {
+      heading: '2026 Camry prices by grade, before Toyota’s delivery fee',
+      paragraphs: [
+        'Toyota lists the LE at $29,600, the SE at $32,100, the Nightshade at $33,100, the XLE at $34,800 and the XSE at $36,000. Those are starting MSRPs for the front-wheel-drive cars, and the steps between them are small: $2,500 from LE to SE, $1,000 from SE to Nightshade, $1,700 from Nightshade to XLE and $1,200 from XLE to XSE.',
+        'All five exclude Toyota’s delivery, processing and handling fee, which the company lists at $1,295. Add tax, title, licence and dealer fees, and the gap between the cheapest and dearest Camry is still under $8,000 before options — a narrow spread for a car that changes character as much as this one does between the LE and the XSE.',
+        'All-wheel drive is the one option that moves the price in a way this page cannot price. Toyota offers it on every grade but does not publish the all-wheel-drive figure per grade on the trim page used here, so no all-wheel-drive number appears in the table. Ask a dealer for the all-wheel-drive price of the specific grade rather than assuming it is a fixed adder: Toyota has priced the option differently across grades in the past.',
+        'As always with a Toyota, dealer stock and factory incentives move the real transaction price well away from the sticker. The numbers here are the manufacturer’s, dated, and useful for comparing grades — not a prediction of what you will pay.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Grades', detail: 'Five: LE, SE, Nightshade, XLE and XSE' },
+      { term: 'Powertrain', detail: '2.5L four-cylinder hybrid with two electric motors, hybrid-only across the range' },
+      { term: 'Output', detail: '225 hp net combined with front-wheel drive, 232 hp with all-wheel drive' },
+      { term: 'Best economy', detail: '51 mpg combined in the LE with front-wheel drive, 50 with all-wheel drive' },
+      { term: 'Other grades', detail: '46 mpg combined for the SE, Nightshade, XLE and XSE' },
+      { term: 'All-wheel drive', detail: 'Electronic on-demand, available on every grade, no mechanical link to the rear axle' },
+      { term: 'Delivery fee', detail: '$1,295, excluded from every starting MSRP above' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'One hybrid system, two power figures',
+        body: 'Toyota quotes 225 hp net combined for the front-wheel-drive Camry and 232 hp for the all-wheel-drive version. The extra power comes from the rear electric motor that drives the back axle, not from a different engine: the 2.5-litre four-cylinder and the front motor assembly are the same in every car. That is why the all-wheel-drive system can be added to any grade without changing the transmission tunnel, and why the car still returns hybrid economy rather than dropping to a conventional all-wheel-drive penalty.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Why the LE is nine mpg better than the XSE',
+        body: 'The 51 mpg combined figure belongs to the LE, and the 46 mpg figure to the SE, Nightshade, XLE and XSE. Nothing in the hybrid system changes between them. The difference is the wheels and the weight that comes with the bigger ones: the LE rides on the smallest wheels in the range, and the sport and premium grades step up to larger, wider, heavier wheels with more grip. If economy is the reason you are buying the Camry, the LE is not just the cheapest grade — it is the most efficient one, and the gap is real rather than a rounding difference.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'All-wheel drive without a driveshaft',
+        body: 'Toyota’s electronic on-demand all-wheel drive uses a separate electric motor on the rear axle. There is no propshaft running the length of the car and no transfer case, so the floor stays flat and the weight penalty is small. The system sends torque to the rear when the front wheels lose grip, which is exactly what you want on a wet or snowy commute. It is not a system for off-road driving and it does not turn the Camry into a winter vehicle on its own — tyres still do most of that work — but it is the cheapest way into an all-wheel-drive hybrid sedan in this class.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'What the grades actually buy you',
+        body: 'The LE is the value grade: cloth seats, the smaller touchscreen and the best economy in the range. The SE adds a sport-tuned suspension, SofTex seats and larger wheels, and it is the grade to pick if you want the car to feel tighter without paying for leather. The Nightshade is an SE with blacked-out exterior trim and wheels, which is a styling decision rather than a dynamic one. The XLE is the comfort grade, with leather-trimmed seats, a 12.3-inch touchscreen and heated and ventilated front seats. The XSE is the XLE’s equipment with a sport finish, and it is the only grade that offers the two-tone roof.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Ten colours, and one two-tone option',
+        body: 'Toyota lists ten exterior colours for the 2026 Camry, including Ocean Gem, Wind Chill Pearl, Heavy Metal and Supersonic Red. The two-tone option — a black roof over a body colour — is offered on the XSE only, and only with Ocean Gem, Wind Chill Pearl, Heavy Metal or Supersonic Red. If you have seen a two-tone Camry in a photograph and want that exact car, it is an XSE, and it is one of four colours. Every other combination on the range is a single colour.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Every 2026 Camry grade, side by side',
+        paragraphs: [
+          'The table puts the five grades next to each other with the figures Toyota publishes. The economy column is the one that changes most between them, and it changes for reasons that have nothing to do with the engine.',
+        ],
+        table: {
+          head: ['Grade', 'Starting MSRP', 'Combined mpg', 'Character'],
+          rows: [
+            ['LE', '$29,600', '51 (FWD), 50 (AWD)', 'Value grade, best economy'],
+            ['SE', '$32,100', '46', 'Sport suspension, SofTex seats'],
+            ['Nightshade', '$33,100', '46', 'SE with blackout trim'],
+            ['XLE', '$34,800', '46', 'Leather, 12.3-inch screen, ventilated seats'],
+            ['XSE', '$36,000', '46', 'XLE equipment, two-tone roof option'],
+          ],
+        },
+      },
+      {
+        heading: 'Front-wheel drive or all-wheel drive: the honest calculation',
+        paragraphs: [
+          'All-wheel drive costs money and about one mpg combined on the LE, and Toyota’s own ratings for the all-wheel-drive versions of the other grades are lower still. In exchange you get a car that does not spin its front wheels on a wet junction and that will climb a snowy driveway with the right tyres. If you live somewhere with real winters, that is worth paying for on a sedan this size.',
+          'If you do not, the front-wheel-drive car is the better buy on every measure: cheaper, lighter, more economical and simpler. The Camry is a front-engined, front-driven sedan at heart, and the hybrid system’s low-end torque already makes it easy to drive in traffic without needing drive to the rear axle.',
+          'One thing to settle with a dealer before you commit: the all-wheel-drive price for the specific grade. Toyota does not publish it per grade on the pages used here, and the difference between grades can be larger than buyers expect.',
+        ],
+      },
+      {
+        heading: 'Living with a self-charging hybrid: what ownership actually looks like',
+        paragraphs: [
+          'The Camry never needs a cable. Its battery is small and its job is to buffer the engine rather than to drive the car any real distance on its own, so there is no charging routine to learn and no home charger to install. In town the engine shuts down at low speed and the car creeps on the electric motor; on the motorway the engine does the work and the electric side helps under acceleration and during coasting.',
+          'Two habits make a measurable difference to the figure on the trip computer. The first is braking smoothly: the car recovers energy whenever you lift off or brake gently, and a late, hard stop throws away energy that a longer, earlier application would have captured. The second is anticipation — a hybrid rewards a steady throttle more than a conventional petrol car does, because every moment of unnecessary acceleration is fuel the system has to replace.',
+          'The transmission is a continuously variable unit, and it is the thing most buyers notice first on a test drive: the engine note rises and falls with demand rather than with road speed. That is normal for this kind of hybrid and it is smooth in steady driving, but if you dislike the effect, drive the car before you commit rather than reading about it. Toyota has tuned this generation to feel less elastic than earlier hybrids, but it is still a CVT at heart.',
+          'What the hybrid does not change is the shape of the car. The Camry is a four-door sedan with a sedan’s boot and a sedan’s ride height; if your reason for shopping is cargo space or a high seating position, no amount of hybrid engineering will fix it, and an SUV is the honest answer. The hybrid’s value is in the fuel bill and the refinement, not in versatility.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 Camry suits',
+      should: [
+        'You want a mid-size sedan that returns around 50 mpg without a charging cable.',
+        'You want all-wheel drive available on every grade rather than on one special trim.',
+        'You drive long highway distances and value a quiet, comfortable cabin.',
+        'You want the reliability and resale of a mainstream Toyota sedan.',
+        'You want a car that is cheap to run and does not need a home charger.',
+      ],
+      skip: [
+        'You want a manual gearbox or a petrol-only engine: neither exists in the 2026 US range.',
+        'You need a hatchback or a wagon body. The Camry is a four-door sedan only.',
+        'You want maximum boot space: an SUV will beat any sedan in this class.',
+        'You want a plug-in hybrid with electric-only range. The Camry is a self-charging hybrid.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        '51 mpg combined in the LE without plugging in',
+        '225 hp net combined, or 232 hp with all-wheel drive',
+        'All-wheel drive offered on every grade',
+        'Toyota Safety Sense 3.0 standard across the range',
+        'A narrow spread of prices between the base and top grades',
+      ],
+      cons: [
+        'No petrol-only option for 2026 in the US',
+        'Bigger wheels cost the SE, Nightshade, XLE and XSE five mpg combined',
+        'Toyota does not publish an all-wheel-drive price per grade on its trim page',
+        'The two-tone roof is XSE-only and limited to four colours',
+      ],
+    },
+    buyingTips: {
+      heading: 'Choosing a Camry grade',
+      paragraphs: [
+        'Start with the LE unless you specifically want the sportier feel. It is the cheapest grade, it is the most economical, and it has the same hybrid system, the same safety equipment and the same cabin space as the rest. The $2,500 step to the SE buys a firmer suspension and better seats, which is worth it if you drive enthusiastically; if you do not, that money buys nothing you will notice on a commute.',
+        'The real decision is between the SE and the XLE, not between the LE and the XSE. The SE is the sporty value car and the XLE is the comfort car, and they are $2,700 apart. Sit in both: the XLE’s leather seats, larger screen and ventilated front seats are the difference between a good mid-size sedan and a comfortable one, and ventilated seats matter more than horsepower in a hot state.',
+        'Then decide on all-wheel drive before you fall in love with a colour. Toyota publishes paint and all-wheel-drive availability by grade, so the combination you want may only exist on one grade — and the two-tone roof narrows it further. Build the exact car on toyota.com and take the printout to the dealer rather than negotiating from photographs.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Is the 2026 Camry a hybrid only?',
+        answer: 'Yes. In the US the 2026 Camry is sold only as a hybrid, with a 2.5-litre four-cylinder engine and two electric motors in every grade. There is no petrol-only version.',
+      },
+      {
+        question: 'How much horsepower does the 2026 Camry have?',
+        answer: 'Toyota quotes 225 hp net combined with front-wheel drive and 232 hp with all-wheel drive. The extra power in the all-wheel-drive car comes from the rear electric motor rather than a different engine.',
+      },
+      {
+        question: 'What mpg does the 2026 Camry get?',
+        answer: 'The LE is rated 52 city, 49 highway and 51 combined mpg with front-wheel drive, and 50 combined with all-wheel drive. The SE, Nightshade, XLE and XSE are rated 46 mpg combined.',
+      },
+      {
+        question: 'Does the Camry come with all-wheel drive?',
+        answer: 'Yes, Toyota offers electronic on-demand all-wheel drive on every grade. A separate electric motor drives the rear axle, with no mechanical link to the front, and Toyota publishes a lower fuel economy rating for those versions.',
+      },
+      {
+        question: 'How much is the delivery fee on a Camry?',
+        answer: 'Toyota lists a delivery, processing and handling fee of $1,295, which is not included in the starting MSRPs. Tax, title, licence and dealer fees are additional.',
+      },
+      {
+        question: 'Which Camry grade has the two-tone roof?',
+        answer: 'Only the XSE, and only with Ocean Gem, Wind Chill Pearl, Heavy Metal or Supersonic Red. The rest of the range is single-colour.',
+      },
+      {
+        question: 'What is the difference between the Camry XLE and XSE?',
+        answer: 'They share the comfort equipment, including leather-trimmed seats and the 12.3-inch touchscreen. The XSE adds a sport finish and is the only grade with the two-tone roof option; it is $1,200 more than the XLE.',
+      },
+    ],
+    links: [
+      {
+        label: 'Toyota Corolla spec sheet',
+        href: '/quick-look/toyota-corolla-2026',
+        description: 'The smaller sedan in the same family, for buyers who do not need Camry space.',
+      },
+      {
+        label: 'Honda CR-V spec sheet',
+        href: '/quick-look/honda-crv-2026',
+        description: 'The SUV alternative: more cargo space, but it gives up the sedan’s economy.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'hyundai-tucson-2026': {
+    productName: 'Hyundai Tucson',
+    heading: '2026 Hyundai Tucson: trims, hybrid specs and buying guide',
+    lead: 'The 2026 Hyundai Tucson is a five-seat compact SUV sold in the US with a 187 hp 2.5L petrol engine or a 231 hp turbo hybrid, in front- or all-wheel drive, across six petrol trims and five hybrid trims. It suits buyers who want a hybrid with real power and a straightforward trim ladder rather than a plug-in.',
+    overview: [
+      'The Tucson is effectively two ranges in one body. The petrol cars use a 2.5-litre four-cylinder with 187 hp and 178 lb-ft through an eight-speed automatic. The hybrids use a 1.6-litre turbo four with an electric motor for 231 hp and 271 lb-ft, through a six-speed automatic rather than a continuously variable transmission. That last detail matters: the hybrid changes gear like a conventional car, which is the single biggest difference you will notice on a test drive against most hybrid rivals.',
+      'The two ranges also have different trim names, and this is where buyers get confused. The petrol range runs SE, SEL, SEL Plus, XRT, SEL Premium and Limited. The hybrid range runs SE, SEL, SEL Convenience, Limited and Night. “SEL Plus” is a petrol trim and “SEL Convenience” is a hybrid trim; they are not the same car and they are not priced as equivalents.',
+      'Economy splits the decision cleanly. The front-wheel-drive petrol Tucson is rated 28 mpg combined, the all-wheel-drive petrol 26. The hybrid SE and SEL with front-wheel drive are rated 38 combined, the hybrid SE with all-wheel drive 38, and the three all-wheel-drive hybrids from SEL Convenience up 36. So the hybrid is worth roughly ten mpg combined over the petrol car — a real saving, but not the kind of number that pays back a large price gap quickly.',
+      'Everything here comes from Hyundai’s own 2026 Tucson and Tucson Hybrid pages and comparison tables plus fueleconomy.gov’s records for the same model year, read on November 24, 2026. Where Hyundai does not publish a figure — the exact freight charge and the all-wheel-drive price adder, for instance — it is missing rather than estimated.',
+    ],
+    priceSection: {
+      heading: '2026 Tucson prices, and the two figures Hyundai does not publish',
+      paragraphs: [
+        'Hyundai lists the petrol SE at $29,700, the SEL at $31,050, the SEL Plus at $31,550, the XRT at $33,725, the SEL Premium at $34,050 and the Limited at $39,675. The hybrid SE is $31,300, the hybrid SEL $32,750, the hybrid SEL Convenience $35,250, the hybrid Limited $42,425 and the hybrid Night $42,925.',
+        'The striking number in that list is the hybrid SE at $31,300 against the petrol SE at $29,700: $1,600 buys the more powerful, much more economical powertrain. That is one of the smallest hybrid premiums in the class, and it is the reason the hybrid SE is the trim most buyers should be looking at rather than the petrol SEL.',
+        'Two figures are missing, and they are the two you will be asked for at a dealer. Hyundai states that its MSRPs exclude freight, tax, title and licence fees but does not publish an exact freight amount on the pages used here; it says freight varies by dealer. And although HTRAC all-wheel drive is optional on the petrol trims and on the hybrid SE and SEL, Hyundai does not publish those all-wheel-drive totals on those pages either. Both numbers are real and both are negotiable at the dealer level, which is exactly why they are left out here instead of guessed.',
+        'What is published is which hybrids are all-wheel drive only. The SEL Convenience, Limited and Night come with all-wheel drive as standard, which is why their starting prices look high against the front-wheel-drive hybrid SEL. A hybrid SEL Convenience is not simply a better-equipped SEL; it is a different drivetrain as well, and that is most of the $2,500 gap.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Trims', detail: 'Eleven: six petrol (SE, SEL, SEL Plus, XRT, SEL Premium, Limited) and five hybrid (SE, SEL, SEL Convenience, Limited, Night)' },
+      { term: 'Petrol engine', detail: '2.5L four-cylinder, 187 hp and 178 lb-ft, eight-speed automatic' },
+      { term: 'Hybrid engine', detail: '1.6L turbo four plus an electric motor, 231 hp and 271 lb-ft, six-speed automatic' },
+      { term: 'Economy', detail: '28 mpg combined petrol FWD, 26 petrol AWD, 38 hybrid SE and SEL FWD, 36 other hybrids' },
+      { term: 'Cargo', detail: '38.7 cu ft behind the rear seats, 74.8 cu ft with them folded, in petrol models' },
+      { term: 'All-wheel drive', detail: 'Optional on petrol and on hybrid SE and SEL; standard on SEL Convenience, Limited and Night' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'A hybrid that shifts like a normal car',
+        body: 'Hyundai uses a conventional six-speed automatic in the Tucson hybrid instead of the continuously variable transmission most hybrids rely on. The result is a car that holds a gear, drops a gear under acceleration and sounds like a petrol car rather than a motorboat. It also has paddle shifters, with regenerative braking adjustable through them. The system output is 231 hp and 271 lb-ft from a 1.6-litre turbo four and a 64 kW electric motor, fed by a 1.49 kWh battery — small, because this is a self-charging hybrid rather than a plug-in.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The ten mpg question',
+        body: 'The petrol Tucson is rated 28 mpg combined with front-wheel drive; the hybrid SE and SEL are rated 38. Over 12,000 miles a year at $3.50 a gallon, that gap is roughly $440 a year in fuel. The hybrid SE costs $1,600 more than the petrol SE, so on fuel alone the payback is under four years — before counting the extra power, which is the bigger part of the argument. If you keep the car five years or more, the hybrid is the cheaper car to own as well as the quicker one.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'SEL Plus and SEL Convenience are not the same trim',
+        body: 'This is the mistake buyers make when they compare a petrol Tucson with a hybrid one. The petrol SEL Plus is the third petrol trim, priced at $31,550. The hybrid SEL Convenience is the third hybrid trim, priced at $35,250, and it comes with all-wheel drive as standard where the SEL Plus is front-wheel drive. They are different cars at different price points with similar-sounding names, and no comparison that lines them up as equivalents is telling you anything useful.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Cargo space that stays the same',
+        body: 'Hyundai quotes 38.7 cubic feet behind the rear seats and 74.8 cubic feet with them folded in the petrol Tucson. That is a usefully large boot for the class — more than some rivals that look bigger from outside — and the hybrid keeps the same body, so the shape does not change. What the hybrid does not offer is a plug: it charges itself from the engine and from braking, so there is no electric-only range figure and no cable to plug in.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'HTRAC all-wheel drive, and when it is standard',
+        body: 'Hyundai’s HTRAC all-wheel drive is optional on the petrol trims and on the hybrid SE and SEL, and standard on the hybrid SEL Convenience, Limited and Night. Hyundai does not publish the all-wheel-drive adder on the pages used here, so the only figure that matters is the one the dealer quotes. The economy cost is published: all-wheel drive drops the petrol car from 28 to 26 mpg combined and takes the hybrid from 38 to 36 on the trims where both are offered.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Every 2026 Tucson trim, side by side',
+        paragraphs: [
+          'The petrol and hybrid ladders are listed separately because they are priced separately. The economy column shows why the hybrid is the default recommendation for most buyers.',
+        ],
+        table: {
+          head: ['Trim', 'Starting MSRP', 'Drivetrain', 'Combined mpg'],
+          rows: [
+            ['SE (petrol)', '$29,700', 'FWD, AWD optional', '28'],
+            ['SEL (petrol)', '$31,050', 'FWD, AWD optional', '28'],
+            ['SEL Plus (petrol)', '$31,550', 'FWD, AWD optional', '28'],
+            ['XRT (petrol)', '$33,725', 'FWD, AWD optional', '28'],
+            ['SEL Premium (petrol)', '$34,050', 'FWD, AWD optional', '28'],
+            ['Limited (petrol)', '$39,675', 'FWD, AWD optional', '28'],
+            ['Hybrid SE', '$31,300', 'FWD, AWD optional', '38'],
+            ['Hybrid SEL', '$32,750', 'FWD, AWD optional', '38'],
+            ['Hybrid SEL Convenience', '$35,250', 'AWD standard', '36'],
+            ['Hybrid Limited', '$42,425', 'AWD standard', '36'],
+            ['Hybrid Night', '$42,925', 'AWD standard', '36'],
+          ],
+        },
+      },
+      {
+        heading: 'Tucson against the compact SUV class',
+        paragraphs: [
+          'The comparison buyers actually make is the Tucson hybrid against the Honda CR-V hybrid and the Toyota RAV4 hybrid. The CR-V hybrid makes 204 hp and is rated 40 mpg combined with front-wheel drive; the Tucson hybrid makes 231 hp and is rated 38. The Tucson is the more powerful car and the CR-V is the more economical one, and the CR-V is also the roomier of the two behind the second row on Honda’s own figures. The RAV4 spec sheet is the other side of that argument, with a plug-in option the Tucson does not offer.',
+          'Where the Tucson wins is price at the bottom of the hybrid range and the conventional automatic. A hybrid SE at $31,300 with 231 hp is a lot of car for the money, and the six-speed makes it feel more ordinary — in a good way — than a CVT hybrid. If you dislike the way CVT hybrids sound under acceleration, that is reason enough to test the Tucson first.',
+          'What the Tucson does not offer is a plug-in hybrid in this US range on the pages used here. If electric-only commuting matters, the Tucson is not the car; if you want a hybrid that never needs a cable, it is one of the strongest value picks in the class.',
+        ],
+      },
+      {
+        heading: 'How to read a Tucson window sticker',
+        paragraphs: [
+          'The Tucson is one of the few cars where the trim name on the sticker tells you less than you would expect. Start with the powertrain: the petrol car has a 2.5L engine and an eight-speed automatic, the hybrid a 1.6L turbo and a six-speed. If the listing does not say which, the drivetrain and the gearbox are the fastest way to tell.',
+          'Then read the drivetrain line. On a petrol Tucson, front-wheel drive is the default and HTRAC all-wheel drive is an option, so an all-wheel-drive car should be identifiable from the sticker or the badging. On a hybrid, the SE and SEL can be front- or all-wheel drive while the SEL Convenience, Limited and Night are all-wheel drive only — which means an all-wheel-drive hybrid SE is a real and quite rare combination worth checking for if that is what you want.',
+          'Then check the trim name letter by letter. SEL Plus is petrol; SEL Convenience is hybrid. An advert that mixes them up is not necessarily dishonest, but it does mean the price you were quoted may belong to a different car. Ask for the VIN and the window sticker rather than the advert headline, and compare the trim name against Hyundai’s own list.',
+          'Finally, ask for the freight charge in writing. Hyundai states that its MSRPs exclude it and says the amount varies by dealer, so it is the one line on the invoice that no published figure on this page can predict. Getting it in writing before you discuss the trade-in keeps it from being absorbed into the monthly payment where you cannot see it.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 Tucson suits',
+      should: [
+        'You want a hybrid compact SUV with more power than the class norm.',
+        'You dislike the sound of a CVT hybrid and want a conventional automatic.',
+        'You want the option of front-wheel drive on a hybrid, which several rivals do not offer.',
+        'You want a five-seat family SUV with a large boot and no charging cable.',
+        'You want the hybrid premium to be small enough to pay back in a few years.',
+      ],
+      skip: [
+        'You want a plug-in hybrid with electric-only range: the Tucson range here is a self-charging hybrid.',
+        'You need the lowest possible fuel bill: the CR-V hybrid is rated higher on combined mpg.',
+        'You want more boot space above all else: compare the CR-V before deciding.',
+        'You want maximum off-road ability: the Tucson is a road-biased SUV with all-wheel drive, not a trail vehicle.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        '231 hp from the hybrid, more than most rivals',
+        '38 mpg combined in the hybrid SE and SEL',
+        'A conventional six-speed automatic instead of a CVT',
+        'Small $1,600 hybrid premium over the petrol SE',
+        '38.7 cu ft of cargo behind the rear seats',
+      ],
+      cons: [
+        'Hyundai does not publish the freight charge or the all-wheel-drive adder on its US pages',
+        'The petrol and hybrid ranges use confusingly similar trim names',
+        'The three top hybrids are all-wheel drive only, which pushes their prices up',
+        'No plug-in hybrid option in this range',
+      ],
+    },
+    buyingTips: {
+      heading: 'Picking a Tucson trim',
+      paragraphs: [
+        'Compare the hybrid SE with the petrol SEL first. They are $250 apart, and for that the hybrid SE gives you 44 more horsepower, ten mpg combined and the same body. Unless you specifically want the SEL’s extra equipment and are willing to pay more for it, the hybrid SE is the value pick in the entire range and the one to test drive first.',
+        'If you want all-wheel drive, the arithmetic changes. All-wheel drive is optional on the hybrid SE and SEL but standard on the SEL Convenience, so the real comparison is a hybrid SE with all-wheel drive against the SEL Convenience — and since Hyundai does not publish the all-wheel-drive adder, you have to get both numbers from a dealer before that comparison means anything. It is the one place in this range where the sticker alone cannot tell you which car is better value.',
+        'Finally, check the trim name on the window sticker rather than the advert. A listing that says “SEL Convenience” and a listing that says “SEL Plus” are selling different cars at different prices, and the mistake is common enough that it is worth reading the sticker twice.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Is the 2026 Tucson hybrid all-wheel drive?',
+        answer: 'It depends on the trim. All-wheel drive is optional on the hybrid SE and SEL and standard on the hybrid SEL Convenience, Limited and Night. The SE and SEL can be ordered with front-wheel drive.',
+      },
+      {
+        question: 'How much horsepower does the 2026 Tucson hybrid have?',
+        answer: 'Hyundai rates the hybrid system at 231 hp and 271 lb-ft, from a 1.6-litre turbo four-cylinder and a 64 kW electric motor, through a six-speed automatic.',
+      },
+      {
+        question: 'What mpg does the 2026 Tucson get?',
+        answer: 'The petrol Tucson is rated 28 mpg combined with front-wheel drive and 26 with all-wheel drive. The hybrid SE and SEL with front-wheel drive are rated 38 combined, the hybrid SE with all-wheel drive 38, and the other all-wheel-drive hybrids 36.',
+      },
+      {
+        question: 'Does the Tucson have a plug-in hybrid?',
+        answer: 'The range described here is the petrol and self-charging hybrid Tucson. There is no plug-in version in the trims and prices on this page, so no electric-only range figure is given.',
+      },
+      {
+        question: 'What is the difference between the Tucson SEL Plus and SEL Convenience?',
+        answer: 'The SEL Plus is a petrol trim priced at $31,550 with front-wheel drive standard. The SEL Convenience is a hybrid trim priced at $35,250 with all-wheel drive standard. They are different cars with similar names.',
+      },
+      {
+        question: 'How big is the Tucson boot?',
+        answer: 'Hyundai quotes 38.7 cubic feet behind the rear seats and 74.8 cubic feet with the rear seats folded in petrol models.',
+      },
+      {
+        question: 'Is the Tucson hybrid worth the extra cost?',
+        answer: 'The hybrid SE costs $1,600 more than the petrol SE and is rated 38 mpg combined against 28. It also makes 231 hp against 187. On fuel alone the gap pays back in under four years at 12,000 miles a year, before counting the extra power.',
+      },
+    ],
+    links: [
+      {
+        label: 'Honda CR-V spec sheet',
+        href: '/quick-look/honda-crv-2026',
+        description: 'The roomier hybrid alternative, rated 40 mpg combined with front-wheel drive.',
+      },
+      {
+        label: 'Toyota RAV4 spec sheet',
+        href: '/quick-look/toyota-rav4-2026',
+        description: 'The rival that offers a plug-in hybrid, which the Tucson range does not.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'kia-sportage-2026': {
+    productName: 'Kia Sportage',
+    heading: '2026 Kia Sportage: trims, specs and buying guide',
+    lead: 'The 2026 Kia Sportage is a five-seat compact SUV sold in the US in six trims on a 187 hp 2.5L petrol engine, with front- or all-wheel drive and two trims that come only with all-wheel drive. It suits buyers who want a simple petrol SUV with a wide trim choice and no hybrid complexity.',
+    overview: [
+      'The Sportage line-up is refreshingly simple to understand. One engine — a 2.5-litre four-cylinder rated at 187 hp — one gearbox, an eight-speed automatic, and six trims. Four of them can be ordered with front- or all-wheel drive; the X-Line and X-Pro Prestige come only with all-wheel drive. There is no hybrid, no plug-in and no engine upgrade to weigh up on this page.',
+      'That simplicity has a cost, and it is fuel. The front-wheel-drive Sportage is rated 28 mpg combined, all-wheel drive drops it to 26, and the two all-wheel-drive-only trims drop further: the X-Line to 26 and the X-Pro Prestige to 24. If economy is high on your list, the front-wheel-drive LX, EX, SX or SX Prestige is the car to have, and the X-Pro Prestige is the one to avoid.',
+      'The trim ladder is also easy to read because it maps almost directly onto price. The LX starts the range, the EX is the mid trim, the SX and SX Prestige are the upper trims, and the X-Line and X-Pro Prestige are the all-wheel-drive off-road-styled pair that sit at different points on the ladder rather than at the top of it. An X-Line at $33,090 is cheaper than an SX at $34,390, so the off-road trim is not automatically the expensive one.',
+      'Everything here comes from Kia’s own 2026 Sportage comparison and trim specification pages, read on November 24, 2026. Where Kia does not publish a figure on those pages — the exact destination charge, the all-wheel-drive prices for four trims, and a consolidated paint list — it is left out rather than estimated.',
+    ],
+    priceSection: {
+      heading: '2026 Sportage prices, and the figures Kia leaves off its comparison page',
+      paragraphs: [
+        'Kia lists the LX at $28,790, the EX at $30,590, the X-Line at $33,090, the SX at $34,390, the SX Prestige at $36,390 and the X-Pro Prestige at $39,690. Those are starting MSRPs, and the order is not the order you would guess: the X-Line slots between the EX and the SX on price even though it is the off-road-styled trim.',
+        'The destination and handling charge is not published as an exact amount on the comparison page used here, and Kia states that its starting MSRP excludes it. That is unusual — most manufacturers publish a flat destination figure — and it means the only way to know the delivered price of a specific Sportage is to ask a dealer or check the window sticker. Do not assume it is zero, and do not assume it matches another Kia model.',
+        'All-wheel drive is the second missing figure. Kia builds the LX, EX, SX and SX Prestige with front- or all-wheel drive, but the comparison page used here publishes a price only for the front-wheel-drive versions. The X-Line and X-Pro Prestige are priced because they come only with all-wheel drive. So the all-wheel-drive premium for the four volume trims is a dealer question, not a published number.',
+        'What the published figures do show is that the step into all-wheel drive is bundled with equipment on the two off-road trims. An X-Line at $33,090 is $2,500 more than an EX at $30,590, and for that you get all-wheel drive as standard plus the off-road styling. Whether that is better value than an EX with all-wheel drive added depends on the all-wheel-drive price Kia’s dealer quotes you for the EX.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Trims', detail: 'Six: LX, EX, SX, SX Prestige, X-Line and X-Pro Prestige' },
+      { term: 'Engine', detail: '2.5L four-cylinder, 187 hp, with an eight-speed automatic' },
+      { term: 'Economy', detail: '28 mpg combined with front-wheel drive, 26 with all-wheel drive, 24 in the X-Pro Prestige' },
+      { term: 'All-wheel drive', detail: 'Optional on LX, EX, SX and SX Prestige; standard on X-Line and X-Pro Prestige' },
+      { term: 'Seats', detail: 'Five' },
+      { term: 'Cheapest trim', detail: 'LX at $28,790; the dearest is the X-Pro Prestige at $39,690' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'One engine, and what 187 hp means here',
+        body: 'Every Sportage on this page uses the same 2.5-litre four-cylinder, rated at 187 hp, with an eight-speed automatic and regular unleaded. There is no turbo, no hybrid and no optional V6. That makes the car easy to shop but it also sets a ceiling: a fully loaded X-Pro Prestige has exactly the same power as a base LX, and the extra weight of all-wheel drive and equipment is working against the same 187 hp. If you want a quicker compact SUV, the Tucson hybrid on the same class with 231 hp is the obvious alternative, and its spec sheet is linked below.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The all-wheel-drive ladder',
+        body: 'Kia’s arrangement is simple but has a trap in it. The LX, EX, SX and SX Prestige can be ordered with front- or all-wheel drive, which means an all-wheel-drive SX Prestige is possible. The X-Line and X-Pro Prestige cannot be ordered with front-wheel drive at all. Buyers who want an off-road-styled Sportage therefore pay for all-wheel drive whether they need it or not, and buyers who want maximum economy must stay on the four volume trims. There is no front-wheel-drive off-road trim and no all-wheel-drive base car.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'What the off-road trims cost at the pump',
+        body: 'The economy figures follow the drivetrain almost exactly: 28 mpg combined with front-wheel drive, 26 with all-wheel drive in the volume trims and in the X-Line, and 24 in the X-Pro Prestige. The X-Pro Prestige’s extra two mpg penalty over the X-Line is the largest single economy drop in the range, and it is the trim to avoid if you do a high annual mileage in mixed driving. Over 15,000 miles a year the difference between 28 and 24 mpg combined is around 90 gallons, which is a real annual cost on top of the higher purchase figure.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'What this page can and cannot tell you',
+        body: 'Kia’s comparison page publishes starting prices, the engine, the drivetrain options and the EPA combined figures by drivetrain. It does not publish a consolidated paint palette, a cargo volume, or an equipment matrix in the text used here. Rather than filling those gaps with numbers from another source or from a different model year, this page leaves them out. The practical consequence is that the Sportage spec sheet answers the price, engine, drivetrain and economy questions — the four that decide most purchases — and leaves trim equipment, colours and boot volume to the dealer or to Kia’s own build tool.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Where the Sportage sits in the class',
+        body: 'The Sportage is a mainstream compact SUV with a mainstream petrol engine, and it is priced to match: $28,790 for the LX undercuts most of the class at the bottom and the X-Pro Prestige at $39,690 is where the premium compact SUVs start. Its closest rival on this site is the Hyundai Tucson, which shares the class and offers both petrol and hybrid powertrains, and the Honda CR-V, which is the roomier and more economical hybrid option. The Sportage’s argument is price and simplicity: one engine, six trims, no decisions about batteries or charging.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Every 2026 Sportage trim, side by side',
+        paragraphs: [
+          'The six trims in price order, with the drivetrain each one can be ordered with and the economy figure that follows from it.',
+        ],
+        table: {
+          head: ['Trim', 'Starting MSRP', 'Drivetrain', 'Combined mpg'],
+          rows: [
+            ['LX', '$28,790', 'FWD, AWD optional', '28'],
+            ['EX', '$30,590', 'FWD, AWD optional', '28'],
+            ['X-Line', '$33,090', 'AWD only', '26'],
+            ['SX', '$34,390', 'FWD, AWD optional', '28'],
+            ['SX Prestige', '$36,390', 'FWD, AWD optional', '28'],
+            ['X-Pro Prestige', '$39,690', 'AWD only', '24'],
+          ],
+        },
+      },
+      {
+        heading: 'How the Sportage compares with the Tucson and the CR-V',
+        paragraphs: [
+          'Against the Tucson, the Sportage gives up power and choice. The Tucson offers a 231 hp hybrid alongside its 187 hp petrol car and an equivalent spread of trims, and its hybrid is rated 38 mpg combined against the Sportage’s best of 28. The Sportage counters with a lower entry price — $28,790 against the Tucson’s $29,700 — and a simpler line-up. Buyers who want the cheapest compact SUV in this group will find the Sportage; buyers who want the lowest running costs will not.',
+          'Against the CR-V, the gap is bigger. The CR-V’s hybrid is rated 40 mpg combined with front-wheel drive, and Honda quotes more cargo space behind the second row than most of the class. The Sportage has no hybrid answer to that at all. Where the Sportage makes sense is for a buyer who wants a petrol compact SUV, does around 10,000 miles a year, and would rather spend the difference on trim than on a hybrid system.',
+          'None of that makes the Sportage a bad car — it makes it a traditional one. If your annual mileage is modest and you keep cars a long time, the simplicity of one engine and no battery pack has real value in servicing and resale terms, even if the fuel bills are higher month to month.',
+        ],
+      },
+      {
+        heading: 'What five years of fuel actually costs across the range',
+        paragraphs: [
+          'The gap between 28 and 24 mpg combined looks small on a spec sheet and is not small in a bank account. At 12,000 miles a year and $3.50 a gallon, a front-wheel-drive Sportage at 28 mpg uses about 429 gallons, or roughly $1,500 of fuel. An all-wheel-drive volume trim at 26 mpg uses about 462 gallons, or $1,615. The X-Pro Prestige at 24 mpg uses 500 gallons, or $1,750.',
+          'Over five years that is $7,500 for the front-wheel-drive car, $8,075 for the all-wheel-drive volume trim and $8,750 for the X-Pro Prestige — before any change in fuel prices, which would widen every one of those figures proportionally. A $1,250 difference between the cheapest and thirstiest versions of the same car is worth knowing about when the trim you want happens to be the thirsty one.',
+          'The arithmetic also shows why the front-wheel-drive volume trims are the value picks. The LX, EX, SX and SX Prestige at 28 mpg combined are cheaper to buy than the two off-road trims and cheaper to run, and the all-wheel-drive versions of those four trims cost only two mpg — around $115 a year at 12,000 miles — which is a far smaller penalty than the X-Pro Prestige’s four mpg against the front-wheel-drive cars.',
+          'None of this is an argument against all-wheel drive. It is an argument for knowing what it costs. If you need traction on snow or a steep gravel driveway, the $1,600-odd over five years is money well spent. If you do not, the front-wheel-drive EX is both the cheaper car and the cheaper one to keep.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 Sportage suits',
+      should: [
+        'You want a petrol compact SUV and are not shopping for a hybrid.',
+        'You want a low entry price in the class: the LX starts at $28,790.',
+        'You want a simple line-up with one engine and no battery decisions.',
+        'You want all-wheel drive bundled with off-road styling in the X-Line.',
+        'You do modest annual mileage, so the fuel economy gap matters less.',
+      ],
+      skip: [
+        'You want the lowest running costs in the class: the CR-V and Tucson hybrids beat it clearly.',
+        'You want more than 187 hp. Every Sportage has the same engine.',
+        'You need a plug-in hybrid with electric-only range. There is none here.',
+        'You want maximum economy in an off-road-styled car: both such trims are all-wheel drive only and the X-Pro Prestige is the thirstiest in the range.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        'Low entry price at $28,790 for the LX',
+        'One simple engine and gearbox across the range',
+        '28 mpg combined with front-wheel drive',
+        'All-wheel drive available on four of the six trims',
+        'An off-road-styled trim at $33,090 that undercuts the SX',
+      ],
+      cons: [
+        'No hybrid or plug-in option in this range',
+        '187 hp in every trim, including the $39,690 one',
+        'Kia does not publish the destination charge or the all-wheel-drive prices on its comparison page',
+        'The X-Pro Prestige is rated 24 mpg combined',
+      ],
+    },
+    buyingTips: {
+      heading: 'Choosing a Sportage trim',
+      paragraphs: [
+        'The EX is the sensible centre of the range. It is $1,800 above the LX and $2,500 below the X-Line, and it can be ordered with front-wheel drive, which keeps both the price and the fuel bill down. If you do not need all-wheel drive or off-road styling, the EX is where the value is, and the SX and SX Prestige above it buy equipment rather than capability.',
+        'If you want all-wheel drive, compare a dealer-quoted all-wheel-drive EX with the X-Line rather than comparing the front-wheel-drive EX price with the X-Line price. The X-Line bundles all-wheel drive and the off-road styling for $33,090, and once the all-wheel-drive premium is added to an EX the gap is much smaller than the sticker makes it look. That comparison is the one that decides between the two.',
+        'Finally, be honest about your mileage before choosing a trim. The X-Pro Prestige at 24 mpg combined is a fine car for someone who drives 6,000 miles a year and wants the top trim; for someone driving 18,000 miles a year it is an expensive choice for two mpg less than an X-Line. Work out the annual fuel cost of both before you sit in either.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How many trims does the 2026 Kia Sportage come in?',
+        answer: 'Six: LX, EX, SX, SX Prestige, X-Line and X-Pro Prestige. Starting MSRPs run from $28,790 for the LX to $39,690 for the X-Pro Prestige.',
+      },
+      {
+        question: 'Does the 2026 Sportage have a hybrid option?',
+        answer: 'Not in the six trims and prices described on this page, which are all 2.5L petrol. This page does not list a hybrid Sportage, and no hybrid figures are given.',
+      },
+      {
+        question: 'What mpg does the 2026 Sportage get?',
+        answer: 'Kia rates the front-wheel-drive LX, EX, SX and SX Prestige at 28 mpg combined and the all-wheel-drive versions at 26. The X-Line is rated 26 and the X-Pro Prestige 24, both being all-wheel drive only.',
+      },
+      {
+        question: 'Which Sportage trims are all-wheel drive only?',
+        answer: 'The X-Line and the X-Pro Prestige. The LX, EX, SX and SX Prestige can be ordered with either front- or all-wheel drive.',
+      },
+      {
+        question: 'How much horsepower does the Sportage have?',
+        answer: 'Every 2026 Sportage on this page uses a 2.5-litre four-cylinder rated at 187 hp with an eight-speed automatic. There is no more powerful engine option in the range.',
+      },
+      {
+        question: 'How much is the destination charge on a Sportage?',
+        answer: 'Kia’s comparison page used here does not publish an exact destination and handling figure, and states that its starting MSRP excludes it. Ask a dealer for the delivered figure on the specific car.',
+      },
+      {
+        question: 'Is the Sportage good value?',
+        answer: 'At the bottom of the range, yes: the LX at $28,790 is one of the cheapest ways into a new compact SUV. At the top, the X-Pro Prestige at $39,690 is priced against premium compact SUVs while carrying the same 187 hp engine as the LX, so the value argument weakens considerably.',
+      },
+    ],
+    links: [
+      {
+        label: 'Hyundai Tucson spec sheet',
+        href: '/quick-look/hyundai-tucson-2026',
+        description: 'The closest rival, with a 231 hp hybrid and a much lower fuel bill.',
+      },
+      {
+        label: 'Honda CR-V spec sheet',
+        href: '/quick-look/honda-crv-2026',
+        description: 'The roomier hybrid option, rated 40 mpg combined with front-wheel drive.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'volkswagen-tiguan-2026': {
+    productName: 'Volkswagen Tiguan',
+    heading: '2026 Volkswagen Tiguan: trims, specs and buying guide',
+    lead: 'The 2026 Volkswagen Tiguan is a five-seat compact SUV sold in the US in four trims on a 2.0L turbo engine, with front-wheel drive or 4MOTION all-wheel drive. It suits buyers who want a European-feeling compact SUV with a simple trim ladder and a choice of two power outputs.',
+    overview: [
+      'The Tiguan range is short: four trims, one engine family, and a drivetrain choice that changes with trim and with power. The S, SE and SE R-Line Black use the 2.0L turbo at 201 hp and can be ordered with front-wheel drive or 4MOTION all-wheel drive. The SEL R-Line Turbo uses the same engine at 268 hp and comes only with 4MOTION. That is the whole decision tree, and it is the reason this is one of the easiest compact SUVs to shop.',
+      'Economy follows the drivetrain closely. The front-wheel-drive S is rated 29 mpg combined, the front-wheel-drive SE and SE R-Line Black 28, and every 4MOTION version 25, including the SEL R-Line Turbo. So the 4MOTION premium is not just a purchase-price premium: it costs three to four mpg combined for as long as you own the car.',
+      'Prices are published in an unusually clean way. Volkswagen’s own 2026 Tiguan pricing sheet lists a figure for each trim in both drivetrains, so this page can price all seven configurations rather than a headline number and a note. The destination charge is published too, at $1,475.',
+      'Everything here comes from Volkswagen of America’s 2026 Tiguan pricing sheet and press kit, read on November 24, 2026. What those two documents do not publish — a consolidated paint palette, for instance — is left out rather than filled in from a dealer site or a previous model year.',
+    ],
+    priceSection: {
+      heading: '2026 Tiguan prices by trim and drivetrain',
+      paragraphs: [
+        'Volkswagen lists the S at $30,805 with front-wheel drive and $32,305 with 4MOTION; the SE at $33,605 and $35,105; the SE R-Line Black at $37,245 and $38,745; and the SEL R-Line Turbo at $43,085 with 4MOTION only. The 4MOTION premium is exactly $1,500 on each of the three trims that offer both drivetrains, which makes the comparison across the range unusually straightforward.',
+        'The destination charge is $1,475 on top of every one of those figures, so a front-wheel-drive S is $32,280 before tax, title and dealer fees. That is worth remembering when you compare the Tiguan with a rival whose headline price already includes delivery: on this car the gap between the advertised and delivered figure is a fixed, published $1,475.',
+        'The jump from the SE R-Line Black 4MOTION at $38,745 to the SEL R-Line Turbo at $43,085 is $4,340, and it buys two things at once: 67 more horsepower and the top trim’s equipment. It is the only place in the range where the engine changes, and it is the largest single step. Whether it is worth it depends entirely on whether you want 268 hp in a compact SUV.',
+        'As with any Volkswagen, the transaction price at a dealer is not the sticker price. Manufacturer incentives, stock levels and finance offers move the real number, and the figures here are the published starting points rather than a prediction of what you will pay.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Trims', detail: 'Four: S, SE, SE R-Line Black and SEL R-Line Turbo' },
+      { term: 'Power', detail: '201 hp in the S, SE and SE R-Line Black; 268 hp in the SEL R-Line Turbo' },
+      { term: 'Transmission', detail: 'Eight-speed automatic across the range' },
+      { term: 'Drive', detail: 'Front-wheel drive or 4MOTION all-wheel drive on three trims; 4MOTION only on the SEL R-Line Turbo' },
+      { term: 'Economy', detail: '29 mpg combined (S FWD), 28 (SE and SE R-Line Black FWD), 25 (all 4MOTION versions)' },
+      { term: 'Destination charge', detail: '$1,475, on top of every starting MSRP' },
+      { term: 'Seats', detail: 'Five' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Same engine, two outputs',
+        body: 'The 2.0L turbo four is fitted to every Tiguan, but Volkswagen tunes it to 201 hp in the S, SE and SE R-Line Black and to 268 hp in the SEL R-Line Turbo. That is a large gap for the same displacement — 67 hp, or a third more — and it is the difference between a competent family SUV and a quick one. Volkswagen pairs the engine with an eight-speed automatic in every trim, and because the high-output engine is 4MOTION only, the quickest Tiguan is also the one with the lowest economy rating in the range at 25 mpg combined.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The $1,500 all-wheel-drive decision',
+        body: 'Volkswagen prices 4MOTION at exactly $1,500 on the S, SE and SE R-Line Black, which is one of the cleanest all-wheel-drive premiums in the class. It costs that money once and three to four mpg combined forever: a front-wheel-drive S is rated 29 mpg combined and a 4MOTION S 25. At 12,000 miles a year that is roughly 66 gallons a year, so the fuel cost of all-wheel drive is a few hundred dollars annually on top of the purchase premium. If you live where winter tyres and all-wheel drive make a real difference, that is easy to justify; if you do not, the front-wheel-drive car is cheaper to buy and cheaper to run.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Where the R-Line Black sits',
+        body: 'The SE R-Line Black is not the top of the range and it is not an off-road trim. It sits between the SE and the SEL R-Line Turbo in both price and equipment, at $37,245 with front-wheel drive and $38,745 with 4MOTION, and it keeps the 201 hp engine. Buyers who want the R-Line look without paying for 268 hp are the audience for this trim, and it is the last point in the range where you can still choose front-wheel drive.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'What the published documents do not tell you',
+        body: 'Volkswagen’s pricing sheet does the pricing job well, but it does not list a consolidated paint palette, and neither does the press kit used here. Rather than borrow a colour list from a dealer site or an earlier model year, this page gives none. The same applies to trim-by-trim equipment detail: the pricing sheet names the trims and the outputs, not the full feature matrix. For colours and the exact equipment list, build the car on vw.com or read the window sticker — those are the two sources that are guaranteed to match the car in front of you.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'How the Tiguan compares in the class',
+        body: 'The Tiguan’s most direct rivals on this site are the Honda CR-V and the Hyundai Tucson. Both offer hybrids; the Tiguan does not, so its argument has to be made on price, the two-output engine range and the way it drives. A front-wheel-drive S at $30,805 undercuts the CR-V’s front-wheel-drive LX at $30,920 by a small margin and the Tucson SE at $29,700 is cheaper still. What the Tiguan offers that neither does on these pages is a 268 hp option in a compact SUV, and that is a narrow but real advantage for buyers who want performance without moving up a class.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Every 2026 Tiguan configuration, side by side',
+        paragraphs: [
+          'Seven configurations, because Volkswagen publishes both the front-wheel-drive and 4MOTION price for three of the four trims. The economy column follows the drivetrain rather than the trim.',
+        ],
+        table: {
+          head: ['Trim', 'Starting MSRP', 'Drivetrain', 'Power', 'Combined mpg'],
+          rows: [
+            ['S', '$30,805', 'FWD', '201 hp', '29'],
+            ['S 4MOTION', '$32,305', 'AWD', '201 hp', '25'],
+            ['SE', '$33,605', 'FWD', '201 hp', '28'],
+            ['SE 4MOTION', '$35,105', 'AWD', '201 hp', '25'],
+            ['SE R-Line Black', '$37,245', 'FWD', '201 hp', '28'],
+            ['SE R-Line Black 4MOTION', '$38,745', 'AWD', '201 hp', '25'],
+            ['SEL R-Line Turbo', '$43,085', 'AWD', '268 hp', '25'],
+          ],
+        },
+      },
+      {
+        heading: 'Is the SEL R-Line Turbo worth $4,340 more than the SE R-Line Black 4MOTION?',
+        paragraphs: [
+          'On paper, yes, if you want the power. The SEL R-Line Turbo is the only Tiguan with 268 hp, and it is the only way to get that engine at all. The SE R-Line Black 4MOTION at $38,745 and the SEL R-Line Turbo at $43,085 are otherwise both all-wheel-drive cars with the same eight-speed automatic and the same 25 mpg combined rating, so the extra money is buying the engine and the top trim’s equipment rather than any capability.',
+          'If you do not need 268 hp, the front-wheel-drive SE R-Line Black at $37,245 is the better value in the upper half of the range: same look, same 201 hp engine as the cheaper trims, and 28 mpg combined instead of 25. The SEL R-Line Turbo only makes sense for a buyer who specifically wants the quickest Tiguan and is willing to pay the fuel penalty that comes with it.',
+          'One caution on the numbers: Volkswagen’s published figures are the manufacturer’s own, and this page has not measured acceleration, fuel economy or anything else. Treat the power and mpg columns as the specification they are, not as a road test result.',
+        ],
+      },
+      {
+        heading: 'What to check on a Tiguan test drive',
+        paragraphs: [
+          'Drive the 201 hp car first. Most buyers will find it adequate for a five-seat family SUV, and if you never drive the 268 hp version you will not spend the rest of the ownership wondering whether you should have. If you do drive the SEL R-Line Turbo, drive the 201 hp car immediately afterwards on the same route: the difference is real, but so is the $4,340 and the three mpg, and only you can decide whether the 67 hp is worth both.',
+          'Second, drive the drivetrain you are actually going to buy. A front-wheel-drive Tiguan and a 4MOTION one do not feel identical, and the difference in steering weight and grip is something you notice in a car park as much as on a wet road. Dealers rarely have both in the same trim, so ask to drive one of each rather than assuming they behave the same.',
+          'Third, check the gearbox at low speed. The eight-speed automatic is used across the range, and the thing to test is how it behaves in stop-start traffic and on a light throttle, which is where most owners spend most of their time. A dual-clutch it is not, so it should be smooth — but test it in the conditions you drive in, not on a dealer’s dual carriageway route.',
+          'Finally, take the window sticker with you. The published $1,475 destination charge applies to every Tiguan, but the equipment list and the paint choice do not appear in one published place, so the sticker is the only document that tells you what the car in front of you actually has. Compare it with the build printout from vw.com line by line before you discuss a number.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 Tiguan suits',
+      should: [
+        'You want a compact SUV with a simple four-trim line-up and published prices for both drivetrains.',
+        'You want front-wheel drive available on most of the range, not just the base car.',
+        'You want a 268 hp option in this class, which most rivals do not offer.',
+        'You want an all-wheel-drive premium that is a clean, published $1,500.',
+        'You want a five-seat SUV and do not need a hybrid.',
+      ],
+      skip: [
+        'You want a hybrid: there is none in the 2026 Tiguan range on this page.',
+        'You want the lowest running costs in the class: a hybrid CR-V or Tucson will beat it.',
+        'You want maximum cargo space: compare the CR-V before deciding.',
+        'You need a third row of seats. The Tiguan seats five.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        'Published prices for every trim in both drivetrains',
+        'A clean $1,500 4MOTION premium across three trims',
+        '29 mpg combined in the front-wheel-drive S',
+        '268 hp available in the SEL R-Line Turbo',
+        'A short, easy-to-understand four-trim range',
+      ],
+      cons: [
+        'No hybrid option anywhere in the range',
+        '4MOTION costs three to four mpg combined',
+        'The 268 hp engine is tied to the most expensive trim and to all-wheel drive',
+        'Volkswagen’s published documents used here list no consolidated paint palette',
+      ],
+    },
+    buyingTips: {
+      heading: 'Choosing a Tiguan trim',
+      paragraphs: [
+        'Decide on the drivetrain first, because it is the only decision that changes both the price and the running cost. If you do not need all-wheel drive, the front-wheel-drive SE at $33,605 is the value pick: it is $2,800 above the S and $3,640 below the front-wheel-drive SE R-Line Black, and it keeps the 28 mpg combined rating. If you do need all-wheel drive, the same logic gives you the SE 4MOTION at $35,105.',
+        'Then decide whether you want the engine or the look. The SE R-Line Black buys styling at 201 hp; the SEL R-Line Turbo buys 268 hp and the top trim. There is no trim that gives you both cheaply, and the $4,340 between them is the single biggest decision in the range. Test drive the 201 hp car first: if it feels adequate, the SEL R-Line Turbo’s premium is hard to justify for a family SUV.',
+        'Finally, check the destination charge and the equipment list on the actual car. The $1,475 destination figure applies to every Tiguan, but equipment varies by trim in ways Volkswagen’s pricing sheet does not spell out, and the paint choices are not published in one place. Build the exact car on vw.com and compare that printout with the window sticker before you agree a number.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How many trims does the 2026 Volkswagen Tiguan come in?',
+        answer: 'Four: S, SE, SE R-Line Black and SEL R-Line Turbo. With front- and all-wheel drive that makes seven priced configurations, from $30,805 for the front-wheel-drive S to $43,085 for the SEL R-Line Turbo.',
+      },
+      {
+        question: 'How much horsepower does the 2026 Tiguan have?',
+        answer: '201 hp in the S, SE and SE R-Line Black, and 268 hp in the SEL R-Line Turbo. Every version uses a 2.0L turbo four-cylinder and an eight-speed automatic.',
+      },
+      {
+        question: 'What mpg does the 2026 Tiguan get?',
+        answer: 'The front-wheel-drive S is rated 29 mpg combined, the front-wheel-drive SE and SE R-Line Black 28, and every 4MOTION version 25, including the SEL R-Line Turbo.',
+      },
+      {
+        question: 'How much does 4MOTION all-wheel drive cost on a Tiguan?',
+        answer: 'Volkswagen lists a $1,500 premium on each of the three trims that offer both drivetrains: S, SE and SE R-Line Black. The SEL R-Line Turbo comes only with 4MOTION.',
+      },
+      {
+        question: 'Is the Tiguan available as a hybrid?',
+        answer: 'Not in the 2026 range described on this page, which is 2.0L turbo petrol only. No hybrid figures are given here.',
+      },
+      {
+        question: 'How much is the destination charge on a Tiguan?',
+        answer: 'Volkswagen lists a $1,475 destination charge, which is not included in its starting MSRPs. Tax, title and dealer fees are additional.',
+      },
+      {
+        question: 'Which Tiguan trim is the best value?',
+        answer: 'For most buyers the front-wheel-drive SE at $33,605 is the sensible point: it keeps the 28 mpg combined rating and sits between the base S and the more expensive R-Line trims. The SEL R-Line Turbo is only worth its $4,340 premium if you specifically want 268 hp.',
+      },
+    ],
+    links: [
+      {
+        label: 'Honda CR-V spec sheet',
+        href: '/quick-look/honda-crv-2026',
+        description: 'The hybrid alternative with more cargo space, if running costs matter more than power.',
+      },
+      {
+        label: 'Hyundai Tucson spec sheet',
+        href: '/quick-look/hyundai-tucson-2026',
+        description: 'The other hybrid compact SUV in this class, with 231 hp and 38 mpg combined.',
       },
       {
         label: 'All Quick Look spec sheets',
