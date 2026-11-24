@@ -3596,28 +3596,29 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
     metaTitle: '2026 Tesla Model Y Specs, Range and Configurations',
     metaDescription:
       '2026 Tesla Model Y specs by configuration: range, 0–60 mph, wheels, seating and cargo, plus what separates the Premium, Performance and L versions.',
+    // Every file in the owner's Tesla Model Y folder is published (2026-11-24):
+    // eight source files, eight gallery images. 1.jfif is a byte-for-byte copy
+    // of Pearl White Multi-Coat.jfif, so it sits at the end, away from its twin.
+    // 4.jfif is a front-cabin photo despite its file name, so it sits with the
+    // other interior shots, and Diamond Black.jfif is a Model 3 in a matte wrap.
     images: [
       '/product-images/2026-tesla-model-y-pearl-white-front-three-quarter.webp',
-      '/product-images/2026-tesla-model-y-stealth-grey-front-three-quarter.webp',
+      '/product-images/2026-tesla-model-y-stealth-grey-front-three-quarter-2.webp',
       '/product-images/2026-tesla-model-y-stealth-grey-rear-three-quarter.webp',
+      '/product-images/2026-tesla-model-y-stealth-grey-front-three-quarter.webp',
       '/product-images/2026-tesla-model-y-white-interior-overhead.webp',
       '/product-images/2026-tesla-model-y-white-rear-seats.webp',
       '/product-images/2026-tesla-model-y-pearl-white-front-three-quarter-2.webp',
-      '/product-images/2026-tesla-model-y-stealth-grey-front-three-quarter-2.webp',
       '/product-images/2026-tesla-model-y-diamond-black-garage.webp',
     ],
-    // Every file in the owner's Tesla Model Y folder is published (2026-11-24).
-    // The two "-2" files are separate copies of the first and second photos, so
-    // they sit away from their twins and say what they are in the alt text. The
-    // last image is a Model 3 in a matte wrap, so its alt names a Model 3.
     imageAlts: [
       'Tesla Model Y in Pearl White Multi-Coat, front three-quarter studio view',
-      'Tesla Model Y in Stealth Grey, front three-quarter studio view with dark wheels',
+      'Tesla Model Y in Stealth Grey, front three-quarter studio view',
       'Tesla Model Y in Stealth Grey from the rear, light bar across the tailgate',
+      'Tesla Model Y front cabin with white seats and the centre screen showing the car',
       'Tesla Model Y cabin seen from above, white seats and a black dashboard',
       'Tesla Model Y rear seats in white upholstery under a glass roof',
       'Second Pearl White Tesla Model Y studio photo, front three-quarter view',
-      'Second Stealth Grey Tesla Model Y studio photo, front three-quarter view',
       'Tesla Model 3 in a matte black wrap, parked in a lit underground car park',
     ],
     highlights: [
