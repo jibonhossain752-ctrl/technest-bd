@@ -68,6 +68,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        {/* Google AdSense site verification.
+            React 19 hoists an async script with a src into the document head and
+            de-duplicates it, so this is the exact AdSense snippet Google supplies
+            (async, with its client id) rendered once in <head> on every page.
+            `async` keeps it off the critical path, as the site's third-party
+            script rule requires; no ad units are created by this tag. */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8171069652108687"
+          crossOrigin="anonymous"
+        />
         <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//connect.facebook.net" />
         <AuthProvider>
