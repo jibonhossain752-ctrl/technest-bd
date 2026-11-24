@@ -147,7 +147,7 @@ function loadQuickLookData() {
 }
 
 const { links, quickLook, products, posts, categories, content } = loadQuickLookData()
-const { CATEGORIES } = categories
+const { CATEGORIES, QUICK_LOOK_CATEGORIES } = categories
 const { QUICK_LOOK_GUIDES } = content
 
 const {
@@ -164,6 +164,15 @@ const postSlugs = new Set(POSTS.map((post) => post.slug))
 
 // Shop categories, for validating every entry's aisle link and category name.
 const categoryBySlug = new Map(CATEGORIES.map((category) => [category.slug, category]))
+
+// Categories that exist for Quick Look only (Cars). They give an entry a real
+// category name and slug but have NO shop aisle behind them, so they are kept
+// in a separate map: an entry may use one, but a guide may never link
+// /shop/<its slug> (that route does not exist) and the aisle-card rule below
+// does not apply to it.
+const quickLookCategoryBySlug = new Map(
+  (QUICK_LOOK_CATEGORIES ?? []).map((category) => [category.slug, category]),
+)
 
 /* ── 1. Cross-links ─────────────────────────────────────────────────── */
 
@@ -253,10 +262,11 @@ for (const slug of Object.keys(QUICK_LOOK)) {
       if (typeof own.buyUrl === 'string' && own.buyUrl.trim() && !/^https:\/\//.test(own.buyUrl)) {
         failures.push(`standalone entry "${slug}" has a buyUrl that is not an https link`)
       }
-      const category = categoryBySlug.get(own.categorySlug)
+      const category =
+        categoryBySlug.get(own.categorySlug) ?? quickLookCategoryBySlug.get(own.categorySlug)
       if (!category) {
         failures.push(
-          `standalone entry "${slug}" uses categorySlug "${own.categorySlug}", which is not a shop category (the aisle link would 404)`,
+          `standalone entry "${slug}" uses categorySlug "${own.categorySlug}", which is neither a shop category nor a Quick Look-only category (src/data/categories.ts)`,
         )
       } else if (own.category !== category.name) {
         failures.push(
@@ -914,7 +924,15 @@ for (const [slug, guide] of Object.entries(QUICK_LOOK_GUIDES)) {
     failures.push(`guide "${slug}" has no card back to /quick-look`)
   }
   const categorySlug = categoryFor(slug)
-  if (categorySlug && !links.some((link) => link.href === `/shop/${categorySlug}`)) {
+  // The aisle card exists so a reader can reach the shop grid the page belongs
+  // to. A Quick Look-only category (Cars) has no shop grid, so there is no
+  // aisle to link and the card is not required — the /quick-look card already
+  // required above is its way back into the section.
+  if (
+    categorySlug &&
+    categoryBySlug.has(categorySlug) &&
+    !links.some((link) => link.href === `/shop/${categorySlug}`)
+  ) {
     failures.push(`guide "${slug}" has no card for its own aisle (/shop/${categorySlug})`)
   }
 }

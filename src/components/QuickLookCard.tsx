@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Product } from '@/data/products'
 import type { QuickLookEntry } from '@/data/quick-look'
+import { isShopCategory } from '@/data/categories'
 import { productImageAlt } from '@/lib/imageAlt'
 import { responsiveSrcset } from '@/lib/images'
 
@@ -48,9 +49,16 @@ export default function QuickLookCard({ product, entry }: QuickLookCardProps) {
       </Link>
 
       <div className="product-info">
-        <Link href={`/shop/${product.categorySlug}`} className="product-cat">
-          {product.category}
-        </Link>
+        {/* A Quick Look-only category (Cars) has no shop aisle behind it, so it
+            is plain text here rather than a link to a /shop page that does not
+            exist. Every real shop category still links to its aisle. */}
+        {isShopCategory(product.categorySlug) ? (
+          <Link href={`/shop/${product.categorySlug}`} className="product-cat">
+            {product.category}
+          </Link>
+        ) : (
+          <span className="product-cat">{product.category}</span>
+        )}
         <Link href={`/quick-look/${product.slug}`} prefetch={false} className="product-name">
           {entry.displayName}
         </Link>

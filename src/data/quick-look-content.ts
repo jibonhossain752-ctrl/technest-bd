@@ -4090,6 +4090,849 @@ export const QUICK_LOOK_GUIDES: Record<string, QuickLookGuide> = {
       },
     ],
   },
+
+  // ── Cars (2026 US model year) ─────────────────────────────────────────────
+  // Ten guides for the car spec sheets, added 2026-11-24. Each one is written
+  // for a US buyer from the manufacturer's own pages, and each quotes prices
+  // ONLY under the informational-entry exception at the top of this file: an
+  // attributed, dated starting MSRP from the maker's own site, with the fees it
+  // excludes named in the same breath. Nothing here is a road test — no car page
+  // claims the site drove the vehicle.
+  'tesla-model-y-2026': {
+    productName: 'Tesla Model Y',
+    heading: '2026 Tesla Model Y: configurations, range and buying guide',
+    lead: 'The 2026 Tesla Model Y is a five-seat electric SUV sold in the US in six configurations, from a rear-wheel-drive car rated at 321 miles of EPA range to a six-seat long-wheelbase L Premium. It suits drivers who can charge where they park and who want a quiet, quick family car rather than a petrol SUV.',
+    overview: [
+      'Tesla no longer sells one Model Y with options bolted on. Its US configurator lists six separate configurations: the standard car with one motor or two, two Premium versions with the longer equipment list, the Performance, and the L Premium with a longer wheelbase and six seats. This page describes and prices all six, and every figure comes from tesla.com rather than from a test drive.',
+      'The three numbers that decide most of the choice are range, charging and size. Tesla quotes 321 miles for the rear-wheel-drive car on its 18-inch wheels, 327 miles for the Premium all-wheel drive and 306 miles for the Performance, which trades range for a 3.3-second 0–60 mph time. Cargo space is 74 cubic feet behind the first row, and the car is 188.7 inches long — roughly the footprint of a mid-size petrol SUV.',
+      'The one thing to fix in your head before reading any Model Y price: Tesla publishes vehicle prices before its Destination and Order fees. Tesla’s own footnote shows the gap on the most expensive version — $61,990 on the configurator, $63,630 once those fees are added — so the number on the screen is not the number you sign for.',
+    ],
+    priceSection: {
+      heading: '2026 Model Y prices and the fees Tesla adds afterwards',
+      paragraphs: [
+        'Read on November 24, 2026, Tesla’s US configurator listed the rear-wheel-drive Model Y at $39,990, the all-wheel drive at $41,990, the Premium rear-wheel drive at $45,990, the Premium all-wheel drive at $49,990, the Performance at $57,990 and the L Premium at $61,990. All six are vehicle prices, before tax and before Tesla’s Destination and Order fees.',
+        'Those fees are not trivial. Tesla does not split them on the pages used here; the only worked example it publishes is the L Premium at $63,630 including Destination and Order fees, which is $1,640 above the vehicle price. Expect a similar gap on the other configurations rather than treating the listed figure as drive-away. Extra-cost paint, the Black and White interior, a tow hitch and the Full Self-Driving (Supervised) software can all push it higher again.',
+        'Tesla has repriced the Model Y several times during 2026, so treat any figure on any page, including this one, as a snapshot with a date on it. Check the configurator on the day you order.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Configurations', detail: 'Six: rear-wheel drive, all-wheel drive, Premium rear-wheel drive, Premium all-wheel drive, Performance and L Premium' },
+      { term: 'EPA range', detail: '321 mi (rear-wheel drive), 327 mi (Premium all-wheel drive), 306 mi (Performance)' },
+      { term: 'Seats', detail: 'Five, or six in the L Premium' },
+      { term: 'Cargo', detail: '74 cu ft behind the first row' },
+      { term: 'Peak charging', detail: '225 kW on a Supercharger; Tesla claims up to 170 miles added in 15 minutes on some versions' },
+      { term: 'Global sales ranking', detail: 'First worldwide on Focus2Move’s January–September 2026 count, up 8.3 per cent year on year — a nine-month tally rather than a final-year result' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Range that depends on the wheels',
+        body: 'The 321-mile figure belongs to the rear-wheel-drive car on 18-inch Aperture wheels. Move up to the 19-inch Crossflow wheels that the Premium versions include and the rating changes for the same reason it does on any electric car: a bigger, heavier wheel with more grip costs range. Tesla rates the Premium all-wheel drive at 327 miles even with the larger wheels, and the Performance at 306. If range is your priority, the base rear-wheel-drive car is the efficient one.',
+      },
+      {
+        heading: 'Key features explained',
+        title: '225 kW charging, and what that number means',
+        body: 'Peak charging power is 225 kW on a Supercharger, and Tesla quotes up to 170 miles added in 15 minutes on some versions. A peak is exactly that: you will not see 225 kW for the whole session, and a cold battery, a full battery or a shared charger will all pull it down. The practical point is that the car is fast enough on a road trip to make 200-mile legs easy, provided you plan around Tesla’s network rather than a random public charger.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'One screen where the dashboard used to be',
+        body: 'There is no instrument cluster behind the wheel. Speed, navigation, climate, media and the gear selector all live on the landscape centre screen, with a second screen for rear passengers on the L Premium. Tesla’s own pages have quoted that centre display as both 15.4 inches and 16 inches at different points in 2026, so treat the exact size as unsettled and judge it in the car. The layout is the thing to try before you buy: it is fast and uncluttered, and it is also the only place the climate controls exist.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Space: 74 cubic feet and a glass roof',
+        body: 'With the rear seats folded, Tesla lists 74 cubic feet behind the first row, plus a front trunk under the bonnet. The roof is glass across both rows, which makes the cabin feel larger than its 63.8-inch height suggests and makes a sunshade worth having in a hot state. Width is 78 inches with the mirrors folded, so it fits a standard US garage bay but not a narrow one.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Driver assistance is hardware-standard, software-paid',
+        body: 'The cameras and compute for Autopilot come with the car; Full Self-Driving (Supervised) is a paid software option, as is Premium Connectivity after any included period. That split matters when you compare it with a petrol SUV whose adaptive cruise and lane centring are simply part of a trim. Budget for the software if you want the full feature set, and check what is currently included rather than assuming.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'What the Premium versions actually add',
+        paragraphs: [
+          'Tesla does not publish a full side-by-side equipment table on the pages used here, so this section sticks to what the configurator does show. The Premium versions include 19-inch Crossflow wheels and a microsuede-and-textile interior where the standard car lists 18-inch Aperture wheels and plain textile. The Premium all-wheel drive is rated at 327 miles, the highest figure in the range.',
+          'What the Premium badge does not do is change the body, the seats or the number of doors. If you want the bigger wheels and the nicer cabin material, the Premium is the trim that has them; if you want the longest range per dollar and do not care about wheels, the standard rear-wheel-drive car is the cheaper way into the same shape.',
+        ],
+      },
+      {
+        heading: 'Charging at home, and what Tesla includes',
+        paragraphs: [
+          'Tesla includes a Mobile Connector, which it says adds up to 30 miles of range per hour; the Wall Connector is sold separately and Tesla quotes it at $535 to $635 depending on the version, installation not included. For most owners the home setup is the decision that matters more than the car’s peak charging rate, since a 30-mile-per-hour trickle overnight covers a normal commute comfortably.',
+          'On the road, Tesla says its network has more than 80,000 Superchargers worldwide. That is the strongest argument for the car in the US: you do not have to research a charging app for every trip. Non-Tesla chargers work too, but the network is the reason the Model Y is easy to live with.',
+          'Tesla lists a basic warranty of four years or 50,000 miles and eight years or 100,000 miles on the battery and drive unit. Read the current terms on tesla.com rather than relying on either figure: Tesla has changed them before.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 Model Y suits',
+      should: [
+        'You can charge at home, at work or at a cheap public charger, so the car starts most weeks full.',
+        'You want a quiet, quick family SUV and mostly drive short and medium distances.',
+        'You need five seats and a lot of cargo space rather than a third row.',
+        'You are happy with one screen and over-the-air updates changing how the car works.',
+        'You want the lowest running costs in the class rather than the lowest purchase price.',
+      ],
+      skip: [
+        'You cannot charge where you park — a hybrid SUV will be less hassle every week.',
+        'You want physical climate buttons and a conventional instrument cluster.',
+        'You need six seats at the base price: that layout is the L Premium only.',
+        'You tow a heavy trailer regularly; check the hitch option and the rating for your exact configuration first.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        'Range figures that still lead most of the electric SUV class',
+        '3.3-second 0–60 mph in the Performance, with a 155 mph top speed',
+        '74 cubic feet of cargo and a front trunk as well',
+        'The Supercharger network makes long trips simple',
+        'Software updates keep adding features after purchase',
+      ],
+      cons: [
+        'Prices exclude Destination and Order fees, so the listed figure is not the total',
+        'No instrument cluster: nearly everything is on the centre touchscreen',
+        'The six-seat layout costs a big step up to the L Premium',
+        'Tesla publishes no battery capacity, so pack size cannot be compared on paper',
+      ],
+    },
+    buyingTips: {
+      heading: 'Before you order a Model Y',
+      paragraphs: [
+        'Settle the charging question first, because it decides whether an electric SUV is right for you at all. A home charger, a workplace charger or a reliable overnight option changes the ownership experience far more than the difference between 321 and 327 miles of range. If the answer is a public charger you have to queue for, buy something else.',
+        'Then compare the standard all-wheel drive with the Premium all-wheel drive rather than comparing the cheapest car with the most expensive one. The jump from the base rear-wheel-drive Model Y to the Premium all-wheel drive is the biggest single step in the range, and it buys wheels, interior material, a second motor and the highest range figure — decide whether you want that or whether the base car’s 321 miles is enough.',
+        'Finally, check Tesla’s inventory and the current fee disclosure on the day you order. Prices and included equipment have both moved during 2026, and a figure from a review or a video from earlier in the year is not a figure you can hold Tesla to.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'What is the range of the 2026 Tesla Model Y?',
+        answer: 'Tesla quotes 321 miles for the rear-wheel-drive Model Y on 18-inch wheels, 327 miles for the Premium all-wheel drive and 306 miles for the Performance. Those are Tesla’s own EPA figures for the 2026 model year, and they change with wheel size and configuration.',
+      },
+      {
+        question: 'How many seats does the Model Y have?',
+        answer: 'Five in every configuration except the L Premium, which is a long-wheelbase six-seater. Tesla does not offer a seven-seat option on the 2026 US Model Y pages used here.',
+      },
+      {
+        question: 'Does the Model Y come with a home charger?',
+        answer: 'A Mobile Connector is included, and Tesla says it adds up to 30 miles of range per hour. The faster Wall Connector is sold separately, at $535 to $635 depending on the version, with installation extra.',
+      },
+      {
+        question: 'How fast does the 2026 Model Y charge?',
+        answer: 'Peak Supercharging is 225 kW, and Tesla claims up to 170 miles added in 15 minutes on some versions. The peak only applies in good conditions, so plan on less in cold weather or on a shared charger.',
+      },
+      {
+        question: 'Is the Model Y all-wheel drive?',
+        answer: 'Two of the six configurations are rear-wheel drive — the standard car and the Premium rear-wheel drive. The other four, including the Performance and the L Premium, are all-wheel drive with two motors.',
+      },
+      {
+        question: 'What warranty does Tesla give on the Model Y?',
+        answer: 'Tesla lists a basic warranty of four years or 50,000 miles and eight years or 100,000 miles on the battery and drive unit. Check the current terms on tesla.com before you order, because Tesla has adjusted them before.',
+      },
+      {
+        question: 'What is the difference between the Model Y and the Model Y L Premium?',
+        answer: 'The L Premium has a longer wheelbase and six seats instead of five, and it is the most expensive configuration at $61,990 before Tesla’s Destination and Order fees. Tesla’s own footnote puts it at $63,630 with those fees included.',
+      },
+    ],
+    links: [
+      {
+        label: 'Honda CR-V spec sheet',
+        href: '/quick-look/honda-crv-2026',
+        description: 'The petrol and hybrid alternative: same footprint, no charging, 40 mpg in hybrid form.',
+      },
+      {
+        label: 'Toyota RAV4 spec sheet',
+        href: '/quick-look/toyota-rav4-2026',
+        description: 'Toyota’s hybrid and plug-in hybrid compact SUV, with up to 52 miles of electric range.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'toyota-corolla-2026': {
+    productName: 'Toyota Corolla',
+    heading: '2026 Toyota Corolla: grades, engines and buying guide',
+    lead: 'The 2026 Toyota Corolla is a five-seat compact sedan sold in the US in six grades across two powertrains: a 169 hp 2.0-litre petrol engine and a 1.8-litre hybrid rated at 50 mpg combined in its most efficient form. It suits buyers who want a small sedan with low running costs and a full set of standard safety kit rather than power or a premium badge.',
+    overview: [
+      'Toyota splits the Corolla into six grades: LE, SE and XSE on the petrol side, and Hybrid LE, Hybrid SE and Hybrid XLE. All-wheel drive is not a separate grade — it is an option on the Hybrid LE and the Hybrid SE, and Toyota publishes its price as a distinct configuration on the Hybrid LE, which is why this page lists it as its own row.',
+      'The petrol car is the quicker of the two, with 169 hp and 151 lb-ft from a 2.0-litre four-cylinder, and it returns 35 mpg combined in LE form. The hybrid makes 138 hp net and up to 50 mpg combined in the LE and XLE. Neither is fast; the difference between them is roughly 15 mpg and about $1,850 at the bottom of the range, where the Hybrid LE costs slightly more than the petrol LE.',
+      'Toyota also made blind spot monitoring with rear cross-traffic alert standard across the range for 2026, which used to be a higher-grade feature. Everything else follows the usual Toyota ladder: wheels, screens and seat material step up as you climb.',
+    ],
+    priceSection: {
+      heading: '2026 Corolla prices, grade by grade',
+      paragraphs: [
+        'Read on November 24, 2026, Toyota listed the petrol LE at $23,125, the SE at $25,565 and the XSE at $28,840. The hybrids run from $24,975 for the Hybrid LE and $26,375 for the Hybrid LE with all-wheel drive, through $27,415 for the Hybrid SE, to $29,340 for the Hybrid XLE.',
+        'All of those are MSRPs before Toyota’s delivery, processing and handling charge, which toyota.com lists as $1,295 for the 2026 Corolla, and before tax and dealer fees. Toyota’s own launch release quoted lower figures — $400 less across the board — so the numbers above are the current ones on the grade selector, not the launch pricing.',
+        'Toyota prices the two-tone paint and the all-wheel-drive option on top of the grade price, and the exact charge depends on the grade. Ask the dealer for the itemised build sheet rather than working from the headline number.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Grades', detail: 'Six: LE, SE, XSE, Hybrid LE, Hybrid SE and Hybrid XLE, with all-wheel drive as an option on two hybrids' },
+      { term: 'Petrol engine', detail: '2.0-litre four-cylinder, 169 hp and 151 lb-ft, front-wheel drive' },
+      { term: 'Hybrid system', detail: '1.8-litre four-cylinder with Toyota’s hybrid system, 138 hp net combined' },
+      { term: 'Best combined economy', detail: '50 mpg in the Hybrid LE and Hybrid XLE, on Toyota’s own estimates' },
+      { term: 'Standard safety', detail: 'Toyota Safety Sense 3.0 and blind spot monitoring with rear cross-traffic alert on every grade' },
+      { term: 'Global sales ranking', detail: 'Second worldwide on Focus2Move’s January–September 2026 count, down 3.5 per cent year on year — a nine-month tally, not a full-year result' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Two engines with very different priorities',
+        body: 'The 2.0-litre petrol engine is the enthusiast’s choice only in relative terms: 169 hp moves a Corolla briskly enough, and the Dynamic-Shift CVT has a fixed-ratio first gear that makes standing starts feel more direct than a belt CVT. The hybrid makes 138 hp net, which is slower, and returns up to 50 mpg combined. Pick by annual mileage: at 12,000 miles a year the hybrid’s fuel saving is real but not dramatic, and it grows quickly if you drive more.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'All-wheel drive, hybrid only',
+        body: 'The electronic all-wheel-drive system adds a rear motor that drives the back wheels when it detects slip. It is not a rock-crawling system and Toyota does not fit it to any petrol grade. It costs about $1,400 on the Hybrid LE, where Toyota publishes the price as a separate configuration, and it drops the combined rating from 50 to 48 mpg. If you live somewhere with real winters, that trade is usually worth it.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Screens and instruments step up with the grade',
+        body: 'The LE and SE get an 8-inch touchscreen and a 7-inch digital cluster. The XSE and Hybrid XLE move to a 10.5-inch touchscreen and a 12.3-inch digital cluster, which is the single most noticeable interior difference in the range. All grades carry wireless Apple CarPlay and Android Auto, so the screen size matters less than it used to for navigation — but it matters for the reversing camera and for the settings menus.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Comfort kit arrives late in the range',
+        body: 'Heated front seats with an eight-way power driver’s seat and SofTex upholstery arrive on the XSE and the Hybrid XLE; below that you get manual seats in fabric. The moonroof follows the same pattern — it is standard on the XSE and the Hybrid XLE and not offered on the LE. If heated seats matter to you, the SE is not the grade that has them, which is worth knowing before you compare a discounted SE with a Hybrid XLE.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Safety kit is the same on every grade',
+        body: 'Toyota Safety Sense 3.0 is standard across the range: pre-collision warning with pedestrian detection, adaptive cruise control, lane departure alert with steering assist, lane tracing and automatic high beams. Blind spot monitoring with rear cross-traffic alert joined the standard list for 2026 on every grade. It is unusual to get the full suite on the cheapest car in a range, and it is the strongest argument for the LE over a similarly priced rival.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Corolla or Corolla Hybrid: the numbers side by side',
+        paragraphs: [
+          'These are Toyota’s own published figures for each grade, read on November 24, 2026. The comparison that matters is at the bottom of the range, where the LE and the Hybrid LE are closest in price and furthest apart in economy.',
+        ],
+        table: {
+          head: ['Grade', 'Engine', 'Drive', 'Est. combined mpg', 'Wheels'],
+          rows: [
+            ['LE', '2.0L petrol, 169 hp', 'Front-wheel drive', '35', '16-inch steel'],
+            ['SE', '2.0L petrol, 169 hp', 'Front-wheel drive', '34', '18-inch alloy'],
+            ['XSE', '2.0L petrol, 169 hp', 'Front-wheel drive', '34', '18-inch alloy'],
+            ['Hybrid LE', '1.8L hybrid, 138 hp net', 'Front-wheel drive', '50', '16-inch steel'],
+            ['Hybrid LE AWD', '1.8L hybrid, 138 hp net', 'All-wheel drive', '48', '16-inch steel'],
+            ['Hybrid SE', '1.8L hybrid, 138 hp net', 'Front-wheel drive', '47', '18-inch alloy'],
+            ['Hybrid XLE', '1.8L hybrid, 138 hp net', 'Front-wheel drive', '50', '16-inch alloy'],
+          ],
+        },
+      },
+      {
+        heading: 'What the SE and XSE add over the LE',
+        paragraphs: [
+          'The SE brings 18-inch alloys, a rear spoiler, sport seats with fabric inserts and drive modes, and it is the cheapest way into the two-tone paint, which pairs a body colour with a Midnight Black Metallic roof. The XSE adds the 10.5-inch screen, the 12.3-inch cluster, the moonroof, heated SofTex seats with an eight-way power driver’s seat and wireless charging.',
+          'The hybrid side does not mirror that ladder exactly. The Hybrid SE has the sport trim and the bigger wheels but not the heated seats or the bigger screens, while the Hybrid XLE has the screens, the moonroof and the heated seats but keeps 16-inch alloys. If you want both the sport look and the comfort kit, no single grade gives you both.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 Corolla suits',
+      should: [
+        'You want a small sedan with the lowest running costs in its class and a long ownership horizon.',
+        'You drive enough miles that 50 mpg in the Hybrid LE pays back the price difference quickly.',
+        'You want the full safety suite on the cheapest grade rather than as an option pack.',
+        'You need all-wheel drive for winter but do not want an SUV.',
+        'You are buying a first car or a commuter and value predictable costs over power.',
+      ],
+      skip: [
+        'You want quick acceleration: the petrol car is adequate and the hybrid is not quick.',
+        'You regularly carry tall adults in the back or need a large boot — an SUV suits better.',
+        'You want heated seats and a moonroof without paying for the top two grades.',
+        'You want all-wheel drive with the petrol engine: Toyota does not offer that combination.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        'Up to 50 mpg combined from the hybrid without plugging in',
+        'Full Toyota Safety Sense 3.0 and blind spot monitoring on every grade',
+        'Six grades with clear steps between them',
+        'All-wheel drive available on two hybrid grades',
+        'Cheapest grade is genuinely well equipped',
+      ],
+      cons: [
+        'All-wheel drive is hybrid-only, and the Hybrid XLE is front-wheel drive only',
+        'Heated seats and the moonroof sit at the top of the range',
+        'The hybrid is slower than the petrol car',
+        'The two-tone roof is limited to the SE and XSE',
+      ],
+    },
+    buyingTips: {
+      heading: 'Choosing between the six grades',
+      paragraphs: [
+        'Start with the powertrain, not the trim. Work out your annual mileage, then compare the Hybrid LE with the petrol LE on total cost over the years you plan to keep the car. The hybrid wins on fuel and loses on purchase price; the more you drive, the sooner it wins outright.',
+        'Then decide whether you need all-wheel drive. If you do, the Hybrid LE AWD is the value pick because it keeps the 16-inch wheels, the 48 mpg rating and the lowest hybrid price. The Hybrid SE with all-wheel drive is not priced on the toyota.com pages used here, so ask a dealer for that build rather than assuming it sits $1,400 above the front-wheel-drive SE.',
+        'If comfort matters more than looks, the Hybrid XLE is the grade with heated seats, the moonroof and the bigger screens. If looks matter more, the SE or XSE gives you the 18-inch wheels and the two-tone option. No grade gives you both, which is the single most useful thing to know before you sit in one.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How many grades does the 2026 Corolla come in?',
+        answer: 'Six: LE, SE, XSE, Hybrid LE, Hybrid SE and Hybrid XLE. Toyota also sells all-wheel drive as an option on the Hybrid LE and the Hybrid SE rather than as a separate grade.',
+      },
+      {
+        question: 'Which 2026 Corolla gets the best fuel economy?',
+        answer: 'The Hybrid LE and the Hybrid XLE, both rated at 53 mpg city, 46 highway and 50 combined on Toyota’s estimates. The all-wheel-drive Hybrid LE drops to 48 combined, and the Hybrid SE to 47.',
+      },
+      {
+        question: 'Does the Corolla have all-wheel drive?',
+        answer: 'Yes, but only on the hybrid: Toyota offers electronic all-wheel drive on the Hybrid LE and the Hybrid SE. No petrol grade offers it, and the Hybrid XLE is front-wheel drive only.',
+      },
+      {
+        question: 'What is the difference between the Corolla LE and SE?',
+        answer: 'The SE adds 18-inch alloy wheels instead of 16-inch steel, a rear spoiler, sport seats with fabric inserts, drive modes and the option of two-tone paint. Both use the same 169 hp 2.0-litre engine and front-wheel drive.',
+      },
+      {
+        question: 'Does the 2026 Corolla have a moonroof?',
+        answer: 'A moonroof is standard on the XSE and the Hybrid XLE. Toyota does not offer one on the LE, and the SE does not list it as standard either.',
+      },
+      {
+        question: 'Is blind spot monitoring standard on the Corolla?',
+        answer: 'Yes. Toyota made blind spot monitoring with rear cross-traffic alert standard on every 2026 Corolla grade, alongside Toyota Safety Sense 3.0.',
+      },
+      {
+        question: 'How much cargo space does the Corolla have?',
+        answer: 'Toyota does not publish a boot volume for the 2026 Corolla on the pages used here, so this page does not quote one. The rear seat splits 60/40, and the boot is a conventional sedan shape rather than a hatchback.',
+      },
+    ],
+    links: [
+      {
+        label: 'Toyota RAV4 spec sheet',
+        href: '/quick-look/toyota-rav4-2026',
+        description: 'The same company’s compact SUV, hybrid-only for 2026, if you need more space than a sedan.',
+      },
+      {
+        label: 'Tesla Model Y spec sheet',
+        href: '/quick-look/tesla-model-y-2026',
+        description: 'What the jump to electric looks like: range, charging and the six configurations Tesla sells.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'ford-f-150-2026': {
+    productName: 'Ford F-150',
+    heading: '2026 Ford F-150: trims, engines and buying guide',
+    lead: 'The 2026 Ford F-150 is a full-size pickup sold in the US in eight trims, from the work-grade XL to the 450 hp Raptor, with four mainstream engines, a full hybrid option and rear- or four-wheel drive. It suits buyers who need a real bed and a real towing figure rather than an SUV that looks like a truck.',
+    overview: [
+      'Ford builds the F-150 in eight trims for 2026: XL, STX, XLT, Lariat, Tremor, King Ranch, Platinum and Raptor. The first three are the working trucks with the 2.7-litre EcoBoost V6, the next four step up to the 3.5-litre EcoBoost V6 and much more equipment, and the Raptor gets a high-output version of that engine with long-travel suspension and a 4x4-only drivetrain.',
+      'Two engines carry most of the range and one carries the bragging rights. The 2.7-litre V6 makes 325 hp and 400 lb-ft; the 3.5-litre V6 makes 400 hp and 500 lb-ft and is the engine behind Ford’s 13,500 lb maximum towing claim; the 5.0-litre V8 makes 400 hp and 410 lb-ft and is the one to order if you want eight cylinders. The 3.5-litre PowerBoost hybrid makes 430 hp and doubles as a generator through Pro Power Onboard.',
+      'This page quotes Ford’s own figures, read on November 24, 2026, from ford.com and Ford’s technical specification sheet. It is a spec sheet, not a road test: nothing here was measured by us.',
+    ],
+    priceSection: {
+      heading: '2026 F-150 prices by trim',
+      paragraphs: [
+        'Ford’s published starting MSRPs on November 24, 2026 run from $39,585 for the XL, through $41,855 for the STX and $44,695 for the XLT, to $59,560 for the Lariat, $64,915 for the Tremor, $65,825 for the King Ranch, $68,800 for the Platinum and $79,005 for the Raptor.',
+        'All of those exclude destination and delivery, which ford.com lists as $2,795 for the 2026 F-150, as well as taxes, dealer fees and any extra-cost paint. On the XL that means roughly $42,380 before options, and the gap is the same $2,795 on every trim above it.',
+        'Options move these numbers a long way. Packages such as FX4 Off-Road, Tow/Haul, the bed utility package, BlueCruise hardware and the various appearance packages are all priced on top of the trim, and the PowerBoost hybrid, the 5.0-litre V8 and four-wheel drive each carry their own charge on the trims where they are optional.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Trims', detail: 'Eight: XL, STX, XLT, Lariat, Tremor, King Ranch, Platinum and Raptor' },
+      { term: 'Engines', detail: '2.7-litre EcoBoost V6, 3.5-litre EcoBoost V6, 5.0-litre V8 and 3.5-litre PowerBoost hybrid, plus the Raptor’s high-output V6' },
+      { term: 'Maximum towing', detail: '13,500 lb with the 3.5-litre EcoBoost V6, per Ford' },
+      { term: 'Maximum payload', detail: '2,440 lb with the 3.5-litre EcoBoost V6, per Ford' },
+      { term: 'Generator', detail: 'Pro Power Onboard at 2.0 kW, 2.4 kW or 7.2 kW depending on configuration' },
+      { term: 'Global sales ranking', detail: 'Third worldwide on Focus2Move’s January–September 2026 count, down 4.9 per cent year on year — a nine-month tally that covers the whole F-Series line, not the F-150 alone' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Four engines, and who each one is for',
+        body: 'The 2.7-litre EcoBoost V6 is the sensible one: 325 hp, 400 lb-ft and the standard engine on the XL, STX and XLT. The 3.5-litre EcoBoost V6 adds 75 hp and 100 lb-ft and unlocks Ford’s highest towing rating, which is why it is standard from the Lariat up. The 5.0-litre V8 is the one to choose for the noise and the simpler layout, and Ford offers it as an option as low as the XL. The PowerBoost hybrid sits above all three on power and is the only one that can run power tools from the bed.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The hybrid doubles as a generator',
+        body: 'Pro Power Onboard turns the truck into a mobile power supply, with 2.0 kW, 2.4 kW or 7.2 kW depending on the configuration. The 7.2 kW version is enough to run a job site or a house during an outage, which is the argument for the PowerBoost hybrid that has nothing to do with fuel economy. Ford does not offer the hybrid on the Tremor or the Raptor, so the off-road trims give that up.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Towing and payload are not the same number',
+        body: 'Ford’s headline figures are 13,500 lb of maximum towing and 2,440 lb of maximum payload, both with the 3.5-litre EcoBoost V6. They are maxima for the lightest, best-configured truck, not for the one you will actually buy: a heavy trim, four-wheel drive, a longer cab and options all eat into both. Work out the trailer weight and the tongue weight first, then look up the rating for the exact configuration rather than the range headline.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Screens, BlueCruise and the office on wheels',
+        body: 'Higher trims carry a 12-inch centre touchscreen and a 12-inch digital cluster running SYNC 4 with wireless Apple CarPlay and Android Auto. BlueCruise hands-on-the-wheel-free highway driving is standard for a period on the Lariat and above and available further down the range, with subscription pricing published separately. A mobile office package, a twin-panel moonroof, a head-up display and a tailgate work surface round out the options list on the upper trims.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The trim ladder, from XL to Raptor',
+        body: 'The XL is a vinyl-floored work truck with cloth seats and a urethane wheel. The STX adds sport cloth and 20-inch wheels. The XLT is the volume trim, with chrome or black appearance packages. The Lariat brings leather, heated and ventilated seats and the big screens. The Tremor is the off-road trim, four-wheel drive only, with skid plates and orange stitching. The King Ranch and Platinum are the luxury pair, with Del Rio and multicontour leather. The Raptor is a different animal: high-output V6, long-travel suspension and a 4x4-only drivetrain.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'What each trim gets as its standard engine',
+        paragraphs: [
+          'Ford’s own model pages and order guide give this split. It is the fastest way to work out which truck you are actually pricing, because the engine drives both the towing figure and the fuel bill.',
+        ],
+        table: {
+          head: ['Trim', 'Standard engine', 'Drive', 'Position in the range'],
+          rows: [
+            ['XL', '2.7L EcoBoost V6, 325 hp', '4x2 or 4x4', 'Work truck'],
+            ['STX', '2.7L EcoBoost V6, 325 hp', '4x2 or 4x4', 'Sport appearance'],
+            ['XLT', '2.7L EcoBoost V6, 325 hp', '4x2 or 4x4', 'Volume trim'],
+            ['Lariat', '3.5L EcoBoost V6, 400 hp', '4x2 or 4x4', 'Leather and screens'],
+            ['Tremor', '3.5L EcoBoost V6, 400 hp', '4x4 only', 'Off-road'],
+            ['King Ranch', '3.5L EcoBoost V6, 400 hp', '4x2 or 4x4', 'Western luxury'],
+            ['Platinum', '3.5L EcoBoost V6, 400 hp', '4x2 or 4x4', 'Range-topping luxury'],
+            ['Raptor', '3.5L high-output EcoBoost V6, 450 hp', '4x4 only', 'Performance off-road'],
+          ],
+        },
+      },
+      {
+        heading: 'Four-wheel drive or 4x2, and when it matters',
+        paragraphs: [
+          'Ford offers 4x2 on the XL, STX, XLT, Lariat, King Ranch and Platinum, and it added 4x2 to the Lariat, King Ranch and Platinum for 2026 with the 5.5-foot box. The Tremor and the Raptor are four-wheel drive only. If you tow on tarmac and live somewhere without snow, 4x2 buys payload and fuel; if you leave the road at all, four-wheel drive is the option you will not regret.',
+          'The transfer cases differ too: electronic shift-on-the-fly on the XL, STX and XLT, and a torque-on-demand two-speed unit on the Lariat and above. That is a comfort and traction difference rather than a capability one, but it is part of why the upper trims feel different to drive.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 F-150 suits',
+      should: [
+        'You need a bed and a towing figure, not an SUV with a hatch.',
+        'You tow a trailer, a boat or plant regularly and want a published rating to work from.',
+        'You want a mobile power supply — the Pro Power Onboard hybrid is the reason to pick this truck.',
+        'You drive long distances and want the quieter, roomier cab of a full-size truck.',
+        'You want the Raptor’s off-road hardware with a factory warranty behind it.',
+      ],
+      skip: [
+        'You mostly drive in a city and park in garages: a full-size truck is a nuisance there.',
+        'You want 40 mpg. Even the PowerBoost hybrid is a truck, and Ford does not quote a car-like figure for it.',
+        'You want the off-road trims and the hybrid together: Ford does not build that combination.',
+        'You need the 5.0-litre V8 in a King Ranch or Platinum — it is not offered on either.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        '13,500 lb maximum towing and 2,440 lb maximum payload, per Ford',
+        'Four engine choices plus a full hybrid that can power a job site',
+        'Eight trims from a basic work truck to the Raptor',
+        '12-inch screens and BlueCruise available on the upper trims',
+        '4x2 is available across most of the range, not just the bottom',
+      ],
+      cons: [
+        'Ford’s own documents disagree on the PowerBoost hybrid’s torque figure',
+        'The Raptor’s page header has quoted the XL’s price on ford.com, so check the body text',
+        'Destination adds $2,795 to every trim',
+        'The off-road trims are four-wheel drive only and cannot be ordered with the hybrid',
+      ],
+    },
+    buyingTips: {
+      heading: 'Specifying an F-150 without overpaying',
+      paragraphs: [
+        'Start from the trailer and the payload, not the trim. Ford publishes maxima for the whole range; the rating for the truck you configure will be lower, and it is printed on the door jamb sticker when the truck is built. Decide the trailer weight, the tongue weight and the people and cargo you carry, then choose the engine and the axle ratio that meet it.',
+        'Then decide whether you want the hybrid for the generator or the V8 for the noise. Those two are the only engines whose appeal is not purely about capability, and they pull in opposite directions on the options list. If neither matters, the 2.7-litre V6 on an XLT is the value configuration and the 3.5-litre V6 on a Lariat is the towing one.',
+        'Finally, price the packages rather than the trim name. FX4, Tow/Haul, the bed utility package, the tailgate and BlueCruise all change what the truck does, and several of them are cheaper to order on a lower trim than to buy as part of a higher one.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How many trims does the 2026 F-150 come in?',
+        answer: 'Eight: XL, STX, XLT, Lariat, Tremor, King Ranch, Platinum and Raptor. Ford lists the Lobo and Platinum Plus as packages rather than trims.',
+      },
+      {
+        question: 'What is the towing capacity of the 2026 F-150?',
+        answer: 'Ford’s maximum is 13,500 lb with the 3.5-litre EcoBoost V6, and maximum payload is 2,440 lb with the same engine. Those are range maxima; the rating for a specific truck depends on its cab, box, drivetrain, axle ratio and options, so check the door jamb sticker on the truck you buy.',
+      },
+      {
+        question: 'Does the F-150 still offer a V8?',
+        answer: 'Yes. The 5.0-litre V8 makes 400 hp and 410 lb-ft and is optional on the XL, STX, XLT, Lariat and Tremor. Ford does not offer it on the King Ranch or the Platinum.',
+      },
+      {
+        question: 'Is the F-150 hybrid a plug-in?',
+        answer: 'No. The 3.5-litre PowerBoost is a full hybrid that charges itself; you do not plug it in. Its party trick is Pro Power Onboard, which can supply up to 7.2 kW to tools or a house.',
+      },
+      {
+        question: 'Which F-150 trims are four-wheel drive only?',
+        answer: 'The Tremor and the Raptor. Every other trim can be ordered as 4x2 or 4x4, and Ford added 4x2 to the Lariat, King Ranch and Platinum for 2026.',
+      },
+      {
+        question: 'Does the 2026 F-150 have a 12-inch screen?',
+        answer: 'Higher trims get a 12-inch centre touchscreen and a 12-inch digital cluster. Ford lists SYNC 4 with wireless Apple CarPlay and Android Auto across the range, and BlueCruise is available on several trims.',
+      },
+      {
+        question: 'What colours does the 2026 F-150 come in?',
+        answer: 'Ford lists ten paints for the 2026 truck, including Agate Black Metallic, Avalanche, Marsh Gray and Ruby Red Metallic Tinted Clearcoat. Availability varies by trim — the XL, for example, does not offer Ruby Red or Star White.',
+      },
+    ],
+    links: [
+      {
+        label: 'Honda CR-V spec sheet',
+        href: '/quick-look/honda-crv-2026',
+        description: 'If you need space and all-wheel drive but the bed is not actually needed.',
+      },
+      {
+        label: 'Toyota RAV4 spec sheet',
+        href: '/quick-look/toyota-rav4-2026',
+        description: 'A compact hybrid SUV for the days the truck stays at home.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'toyota-rav4-2026': {
+    productName: 'Toyota RAV4',
+    heading: '2026 Toyota RAV4: hybrid and plug-in grades explained',
+    lead: 'The 2026 Toyota RAV4 is a five-seat compact SUV sold in the US only as a hybrid or a plug-in hybrid, in ten grades from the front-wheel-drive Hybrid LE to the 324 hp GR SPORT. It suits buyers who want the space and ride height of an SUV with hybrid fuel economy, and who may be ready to plug in.',
+    overview: [
+      'This is the new-generation RAV4, and the biggest change is that Toyota dropped the petrol-only version: every 2026 grade is a hybrid or a plug-in hybrid. The hybrid uses a 2.5-litre four-cylinder with two motor-generators and makes 226 hp with front-wheel drive or 236 hp with all-wheel drive. The plug-in adds a more powerful rear motor and a bigger battery, and makes 324 hp with all-wheel drive as standard.',
+      'There are ten grades in total. Six are hybrids: LE, SE, XLE Premium, Woodland, XSE and Limited. Four are plug-in hybrids: SE, Woodland, XSE and GR SPORT. Toyota dropped the plain XLE grade for 2026, which is why the ladder jumps from SE to XLE Premium.',
+      'The figures that matter vary a lot by grade. A front-wheel-drive hybrid LE is rated at 43 mpg combined; a Woodland drops to 38 because of its all-terrain tyres and taller suspension; a plug-in SE can cover 52 miles on electricity alone before the engine starts. This page sets out which grade gives you which, from Toyota’s own published numbers.',
+    ],
+    priceSection: {
+      heading: '2026 RAV4 prices, hybrid and plug-in',
+      paragraphs: [
+        'Toyota’s published starting MSRPs on November 24, 2026 begin at $31,900 for the front-wheel-drive hybrid LE and $33,300 for the all-wheel-drive LE. The hybrid SE is $34,700, the XLE Premium $36,100 with front-wheel drive or $37,500 with all-wheel drive, the Woodland $39,900, the XSE $41,300 and the Limited $43,300. The plug-in range starts at $41,500 for the SE, then $45,300 for the Woodland, $47,200 for the XSE and $48,500 for the GR SPORT.',
+        'Those figures exclude Toyota’s delivery, processing and handling charge, which toyota.com lists as $1,595 for the RAV4 family, as well as taxes and dealer fees. They also exclude packages: on the XLE Premium, Toyota lists a panoramic moonroof package, a weather package and a driver assist package, each priced separately.',
+        'The plug-in grades qualify for the federal clean vehicle credit only if they meet the current rules on final assembly and battery sourcing, and those rules change. Check the current position before you count a credit into the budget.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Grades', detail: 'Ten: six hybrids (LE, SE, XLE Premium, Woodland, XSE, Limited) and four plug-in hybrids (SE, Woodland, XSE, GR SPORT)' },
+      { term: 'Hybrid output', detail: '226 hp with front-wheel drive, 236 hp with all-wheel drive' },
+      { term: 'Plug-in output', detail: '324 hp with all-wheel drive, 0–60 mph in 5.4 seconds' },
+      { term: 'Electric range', detail: 'Up to 52 miles in the plug-in SE, 48 in the GR SPORT' },
+      { term: 'Best combined economy', detail: '43 mpg in the front-wheel-drive hybrid, per Toyota' },
+      { term: 'Global sales ranking', detail: 'Fourth worldwide on Focus2Move’s January–September 2026 count, down 22.2 per cent year on year — a nine-month tally that spans the model changeover' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'The hybrid system, and why all-wheel drive adds power',
+        body: 'Toyota’s hybrid uses a 2.5-litre engine, two motor-generators and a small battery under the rear seat. With front-wheel drive it makes 226 hp; adding the rear motor for all-wheel drive takes it to 236 hp and gives the back wheels their own drive, with no propshaft. That is why the all-wheel-drive hybrid is both more powerful and slightly thirstier: 42 mpg combined against 43 for the front-drive LE.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The plug-in grades and their two charging speeds',
+        body: 'The plug-in SE and GR SPORT use a 7 kW onboard charger on a J1772 connector, while the XSE and Woodland get an 11 kW charger with CCS1 and DC fast charging, which Toyota says takes the battery from 10 to 80 per cent in around 30 minutes. That is the single biggest practical difference inside the plug-in range: if you want fast charging on a road trip, you need the XSE or the Woodland.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Woodland: the off-road grade',
+        body: 'The Woodland — available as a hybrid and as a plug-in — is the one that leaves the tarmac. Toyota gives it standard all-wheel drive, 18-inch wheels with all-terrain tyres, 8.5 inches of ground clearance against 8.1 for the rest, Multi-Terrain Select, a 3D Multi-Terrain Monitor and a 2-inch tow hitch receiver rated to 3,500 lb. It costs fuel economy: 38 mpg combined in hybrid form against 43 for the front-drive LE.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'GR SPORT: the fast one',
+        body: 'The GR SPORT is plug-in only and sits at the top of the range. Toyota gives it 20-inch wheels with summer tyres, GR-tuned suspension and steering, extra bracing, a front lip and a rear wing, and red GR brake calipers. All-electric range drops to 48 miles and the petrol-only combined figure to 37 mpg, because bigger wheels and stickier tyres cost both. It is the RAV4 for someone who wants the hybrid system for its torque rather than its economy.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'What every grade gets',
+        body: 'The standard equipment list is unusually long for this class: a 12.3-inch digital instrument cluster, a 10.5-inch multimedia screen with wireless Apple CarPlay and Android Auto, Toyota Safety Sense 4.0, blind spot monitoring with rear cross-traffic alert and safe exit alert, eight airbags and a dash camera. The 12.9-inch screen, the nine-speaker JBL audio and the panoramic glass roof are reserved for the Limited.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Hybrid or plug-in: the numbers side by side',
+        paragraphs: [
+          'Both are Toyota’s own published figures. The plug-in costs roughly $7,000 to $8,000 more than a comparable hybrid grade, and the question is whether 48 to 52 miles of electric range covers your week.',
+        ],
+        table: {
+          head: ['Version', 'System output', 'Drive', 'Electric range', 'Combined economy'],
+          rows: [
+            ['Hybrid LE, SE, XLE Premium (front-wheel drive)', '226 hp', 'Front-wheel drive', 'None', '43 mpg'],
+            ['Hybrid LE, SE (all-wheel drive)', '236 hp', 'All-wheel drive', 'None', '42 mpg'],
+            ['Hybrid XLE Premium (all-wheel drive)', '236 hp', 'All-wheel drive', 'None', '41 mpg'],
+            ['Hybrid Woodland', '236 hp', 'All-wheel drive', 'None', '38 mpg'],
+            ['Hybrid XSE, Limited', '236 hp', 'All-wheel drive', 'None', '42 mpg'],
+            ['Plug-in SE, XSE', '324 hp', 'All-wheel drive', '52 miles', '40 mpg'],
+            ['Plug-in Woodland', '324 hp', 'All-wheel drive', '49 miles', '38 mpg'],
+            ['GR SPORT', '324 hp', 'All-wheel drive', '48 miles', '37 mpg'],
+          ],
+        },
+      },
+      {
+        heading: 'Which RAV4 grade to actually order',
+        paragraphs: [
+          'For most buyers the front-wheel-drive hybrid LE is the value pick: 43 mpg, the full safety suite, the 12.3-inch cluster and a 10.5-inch screen, with the lowest starting price in the range. Add all-wheel drive if you need it for $1,400.',
+          'The XLE Premium is the comfort step, with 18-inch wheels, a power liftgate, heated SofTex seats, a power driver’s seat and a wireless charger. The Limited is the only way to get the panoramic roof, the 12.9-inch screen and the JBL audio. If you can charge at home and your daily drive is under 40 miles, the plug-in SE is the one that turns most of your driving electric for the smallest premium.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 RAV4 suits',
+      should: [
+        'You want SUV space and ride height with hybrid fuel economy rather than a petrol-only SUV.',
+        'You can charge at home, which makes the plug-in grades genuinely cheap to run.',
+        'You want all-wheel drive without a propshaft and without a big economy penalty.',
+        'You occasionally leave the tarmac and want the Woodland’s tyres, clearance and tow hitch.',
+        'You want a long standard equipment list without moving up the range.',
+      ],
+      skip: [
+        'You want a petrol-only RAV4: Toyota does not build one for 2026.',
+        'You need a third row — the RAV4 seats five.',
+        'You want maximum towing: 3,500 lb on the Woodland is the top of the range.',
+        'You want the fastest charging and the lowest price together: fast charging is XSE and Woodland only.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        'Up to 43 mpg combined from a compact SUV without plugging in',
+        '324 hp and 52 miles of electric range in the plug-in',
+        '12.3-inch cluster, Toyota Safety Sense 4.0 and blind spot monitoring on every grade',
+        'Woodland adds real off-road hardware with a factory warranty',
+        'Ten grades, so the ladder covers most budgets',
+      ],
+      cons: [
+        'No petrol-only version, so the entry price is higher than a rival’s base model',
+        'All-wheel drive costs economy, and the Woodland costs more of it',
+        'DC fast charging only on the plug-in XSE and Woodland',
+        'The GR SPORT’s bigger wheels cut both electric range and economy',
+      ],
+    },
+    buyingTips: {
+      heading: 'Choosing a RAV4 grade',
+      paragraphs: [
+        'Decide first whether you can plug in. If you can, compare the plug-in SE with the hybrid XLE Premium: they are close in price, and the plug-in gives you 52 miles of electric range while the XLE Premium gives you a power liftgate, heated seats and bigger wheels. If you cannot charge at home, the plug-in premium buys you very little.',
+        'If you are staying with the hybrid, the choice comes down to the LE, the XLE Premium and the Woodland. The LE is the value pick, the XLE Premium is the comfort pick, and the Woodland is the one to order if you actually leave the road. The XSE and Limited add equipment and cost economy without adding capability.',
+        'Finally, check the packages rather than the grade name. The panoramic moonroof, the driver assist package and the weather package are all priced separately on the XLE Premium, and ordering them can close the gap to the Limited faster than you expect.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'Is the 2026 RAV4 hybrid only?',
+        answer: 'Yes. Every 2026 RAV4 grade is either a hybrid or a plug-in hybrid; Toyota does not offer a petrol-only version. The hybrid makes 226 hp with front-wheel drive and 236 hp with all-wheel drive.',
+      },
+      {
+        question: 'How far can the RAV4 plug-in go on electricity?',
+        answer: 'Toyota rates the plug-in SE and XSE at 52 miles of all-electric range, the Woodland at 49 and the GR SPORT at 48. Those are Toyota’s own figures and they depend on temperature, speed and how much of the battery you use.',
+      },
+      {
+        question: 'What is the difference between the RAV4 hybrid and the plug-in hybrid?',
+        answer: 'The plug-in adds a larger battery, a more powerful rear motor and a charging port. It makes 324 hp against 226 or 236, and it can cover 48 to 52 miles on electricity alone. It also costs several thousand dollars more.',
+      },
+      {
+        question: 'Does the RAV4 have a third row?',
+        answer: 'No. The 2026 RAV4 seats five. Toyota sells larger SUVs with a third row, but the RAV4 is not one of them.',
+      },
+      {
+        question: 'Which RAV4 grades have all-wheel drive?',
+        answer: 'The hybrid LE and SE offer it as an option, the XLE Premium offers it as an option, and the Woodland, XSE and Limited are all-wheel drive only. Every plug-in grade is all-wheel drive.',
+      },
+      {
+        question: 'What is the towing capacity of the RAV4?',
+        answer: 'Toyota lists a 3,500 lb rating for the Woodland, which comes with a 2-inch tow hitch receiver and wiring. The other grades are not rated for that on the pages used here.',
+      },
+      {
+        question: 'How much cargo space does the RAV4 have?',
+        answer: 'Toyota does not publish a cargo volume for the 2026 RAV4 on the pages used here, so this page does not quote one. Check the figure in the brochure or at a dealer before you rely on it.',
+      },
+    ],
+    links: [
+      {
+        label: 'Honda CR-V spec sheet',
+        href: '/quick-look/honda-crv-2026',
+        description: 'The closest rival: petrol or hybrid, with published cargo volumes and a TrailSport grade.',
+      },
+      {
+        label: 'Toyota Corolla spec sheet',
+        href: '/quick-look/toyota-corolla-2026',
+        description: 'The same company’s compact sedan, if you do not need the extra height and space.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
+
+  'honda-crv-2026': {
+    productName: 'Honda CR-V',
+    heading: '2026 Honda CR-V: trims, engines and buying guide',
+    lead: 'The 2026 Honda CR-V is a five-seat compact SUV sold in the US with a 190 hp 1.5-litre turbo petrol engine or a 204 hp two-motor hybrid, in front- or all-wheel drive and seven trims. It suits buyers who want the most space and the easiest cabin in the class rather than the quickest one.',
+    overview: [
+      'Honda splits the CR-V into seven trims, and the split that matters is petrol versus hybrid. LX, EX and EX-L use the 1.5-litre turbo with 190 hp and 179 lb-ft. Sport Hybrid, TrailSport Hybrid, Sport-L Hybrid and Sport Touring Hybrid use a 2.0-litre Atkinson-cycle engine with two motors for 204 hp and 247 lb-ft. Both are available with front-wheel drive (which Honda calls 2WD) or all-wheel drive, except the TrailSport and Sport Touring, which are all-wheel drive only.',
+      'The hybrid is both more powerful and much more efficient: 40 mpg combined in front-wheel-drive form against 30 for the petrol car. What it gives up is cargo space, because the battery sits under the boot floor. Honda quotes 39.3 cubic feet behind the second row for the petrol car and 36.3 for the hybrids, dropping to 34.7 in the Sport Touring.',
+      'New for 2026 is the TrailSport Hybrid, which is the one grade with all-terrain tyres, a lifted-looking stance and an interior you will either love or find loud. Everything on this page is Honda’s own published data, read on November 24, 2026.',
+    ],
+    priceSection: {
+      heading: '2026 CR-V prices by trim',
+      paragraphs: [
+        'Honda’s published starting MSRPs on November 24, 2026 begin at $30,920 for the front-wheel-drive LX and $32,420 for the all-wheel-drive LX. The EX is $33,150 or $34,650, the EX-L $35,400 or $36,900, and the hybrids start at $35,630 for the front-wheel-drive Sport Hybrid and $37,130 for the all-wheel-drive version. The TrailSport Hybrid is $38,800, the Sport-L Hybrid $38,725 or $40,225, and the Sport Touring Hybrid $42,550.',
+        'Those figures exclude Honda’s destination charge, which Honda lists as $1,450 for the 2026 CR-V, as well as taxes, registration and any options. Honda’s own release quotes both the figure without destination and the figure with it, which makes it easy to compare the two on the same page.',
+        'The all-wheel-drive premium is $1,500 on every trim that offers both drivetrains, which is unusual consistency in this class and makes the decision simple.',
+      ],
+    },
+    keyFacts: [
+      { term: 'Trims', detail: 'Seven: LX, EX, EX-L, Sport Hybrid, TrailSport Hybrid, Sport-L Hybrid and Sport Touring Hybrid' },
+      { term: 'Turbo petrol', detail: '1.5-litre four-cylinder, 190 hp and 179 lb-ft' },
+      { term: 'Hybrid', detail: '2.0-litre Atkinson-cycle engine with two motors, 204 hp total and 247 lb-ft' },
+      { term: 'Best combined economy', detail: '40 mpg in the front-wheel-drive Sport Hybrid and Sport-L Hybrid' },
+      { term: 'Cargo', detail: '39.3 cu ft behind the second row in petrol models, 36.3 in hybrids, 34.7 in the Sport Touring Hybrid' },
+      { term: 'Global sales ranking', detail: 'Fifth worldwide on Focus2Move’s January–September 2026 count, down 0.9 per cent year on year — a nine-month tally, not a full-year result' },
+    ],
+    features: [
+      {
+        heading: 'Key features explained',
+        title: 'Two very different powertrains',
+        body: 'The 1.5-litre turbo is the simpler choice: 190 hp, a CVT and 30 mpg combined in front-wheel-drive form. The hybrid makes 204 hp through two motors, one of which drives the wheels while the other generates, and it returns 40 mpg. The hybrid also feels quicker from a standstill because the traction motor delivers its torque immediately. If you do a lot of highway miles the gap narrows; if you do a lot of town miles it widens.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The hybrid costs you cargo space',
+        body: 'This is the trade nobody mentions in the brochure. Honda quotes 39.3 cubic feet behind the second row and 76.5 behind the first row for the petrol CR-V. The hybrids drop to 36.3 and 71.8, and the Sport Touring Hybrid to 34.7 behind the second row. Three cubic feet is a large suitcase. If the boot is the reason you are buying a compact SUV, the petrol EX-L is roomier than the more expensive hybrid.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'TrailSport: the one with all-terrain tyres',
+        body: 'The TrailSport Hybrid is new for 2026 and it is the only CR-V with Continental CrossContact ATR all-terrain tyres on unique 18-inch wheels, plus TrailSport styling, amber ambient lighting, heated front seats and a heated steering wheel, a 10.2-inch digital instrument display, a power tailgate and a moonroof. It is all-wheel drive only and rated at 35 mpg combined, five below the Sport Hybrid. Honda also says all-wheel-drive CR-Vs get enhanced traction management for low-speed off-road use.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'The cabin, from LX to Sport Touring',
+        body: 'Every CR-V gets a freestanding touchscreen, dual-zone climate control and a full set of driver aids. The EX adds the moonroof and heated front seats, the EX-L adds leather-trimmed seats and a power tailgate, and the Sport Touring Hybrid is the only grade with the 12-speaker Bose audio system and Google built-in. The Sport Touring also gets a hands-free power tailgate, which is genuinely useful when you are carrying things.',
+      },
+      {
+        heading: 'Key features explained',
+        title: 'Paint and interior choices',
+        body: 'Honda lists eight paints: four standard (Solar Silver Metallic, Crystal Black Pearl, Meteorite Gray Metallic and Canyon River Blue Metallic) and four premium (Platinum White Pearl, Ash Green Metallic, Urban Gray Pearl and Radiant Red Metallic). Ash Green is listed for the TrailSport Hybrid only. Interiors come in Black, Gray, Sport Black and Sport Gray, paired to the exterior colour rather than freely chosen.',
+      },
+    ],
+    deepDive: [
+      {
+        heading: 'Every CR-V configuration, side by side',
+        paragraphs: [
+          'Honda publishes one price and one economy figure per drivetrain, which makes this the simplest comparison in the class. The all-wheel-drive premium is $1,500 throughout.',
+        ],
+        table: {
+          head: ['Trim', 'Drivetrain', 'Engine', 'Combined mpg', 'Cargo behind row two'],
+          rows: [
+            ['LX', '2WD', '1.5L turbo, 190 hp', '30', '39.3 cu ft'],
+            ['EX', '2WD', '1.5L turbo, 190 hp', '30', '39.3 cu ft'],
+            ['EX-L', '2WD', '1.5L turbo, 190 hp', '30', '39.3 cu ft'],
+            ['LX, EX, EX-L', 'All-wheel drive', '1.5L turbo, 190 hp', '29', '39.3 cu ft'],
+            ['Sport Hybrid', '2WD', '2.0L hybrid, 204 hp', '40', '36.3 cu ft'],
+            ['Sport Hybrid', 'All-wheel drive', '2.0L hybrid, 204 hp', '37', '36.3 cu ft'],
+            ['TrailSport Hybrid', 'All-wheel drive', '2.0L hybrid, 204 hp', '35', '36.3 cu ft'],
+            ['Sport-L Hybrid', '2WD', '2.0L hybrid, 204 hp', '40', '36.3 cu ft'],
+            ['Sport-L Hybrid', 'All-wheel drive', '2.0L hybrid, 204 hp', '37', '36.3 cu ft'],
+            ['Sport Touring Hybrid', 'All-wheel drive', '2.0L hybrid, 204 hp', '37', '34.7 cu ft'],
+          ],
+        },
+      },
+      {
+        heading: 'Petrol or hybrid: the honest comparison',
+        paragraphs: [
+          'The hybrid premium is small at the middle of the range: an all-wheel-drive EX-L is $36,900 and an all-wheel-drive Sport Hybrid is $37,130, so the two are within a few hundred dollars of each other. For that, the hybrid gives you 37 mpg against 29, 14 more horsepower, and it gives up three cubic feet of boot space.',
+          'At the bottom of the range the calculation is different. A front-wheel-drive LX at $30,920 is $4,710 cheaper than a front-wheel-drive Sport Hybrid, and at 12,000 miles a year the fuel saving takes years to close that gap. The hybrid makes most sense when you are comparing it with a mid-range petrol trim rather than the base car.',
+          'Remember too that the CR-V’s hybrid system is not a plug-in: it charges itself and never needs a cable. If you want electric range, the RAV4 plug-in or a Tesla Model Y is the relevant comparison, not this.',
+        ],
+      },
+    ],
+    buyers: {
+      heading: 'Who the 2026 CR-V suits',
+      should: [
+        'You want the roomiest boot and the most usable cabin in the compact SUV class.',
+        'You want 40 mpg without plugging in, and you are happy to give up a little cargo space for it.',
+        'You want all-wheel drive for $1,500 rather than a big jump in trim.',
+        'You want a simple, comfortable family car with physical controls for the climate.',
+        'You occasionally leave the tarmac and want the TrailSport’s tyres and traction management.',
+      ],
+      skip: [
+        'You want a plug-in hybrid with electric range — the CR-V does not offer one.',
+        'You need maximum boot space and maximum economy at the same time: the hybrid gives up cargo.',
+        'You want three rows of seats. The CR-V seats five.',
+        'You want a sporty drive: the hybrid is quick enough but this is a comfort-first SUV.',
+      ],
+    },
+    pros: {
+      heading: 'Pros and cons',
+      pros: [
+        '40 mpg combined in the front-wheel-drive hybrid',
+        'More cargo space than most rivals in petrol form',
+        'All-wheel drive costs the same $1,500 on every trim',
+        'Google built-in and Bose audio on the Sport Touring Hybrid',
+        'New TrailSport Hybrid with all-terrain tyres and standard all-wheel drive',
+      ],
+      cons: [
+        'The hybrid loses three cubic feet of cargo space, and the Sport Touring loses more',
+        'Ash Green Metallic is TrailSport-only',
+        'No plug-in version, so no electric-only running',
+        'The TrailSport’s all-terrain tyres cost 5 mpg against the Sport Hybrid',
+      ],
+    },
+    buyingTips: {
+      heading: 'Picking a CR-V trim',
+      paragraphs: [
+        'Compare the all-wheel-drive EX-L with the all-wheel-drive Sport Hybrid first. They are within a few hundred dollars, one gives you leather and the other gives you 37 mpg and more power. That single comparison decides the car for most buyers, and the answer depends on whether you value the trim or the fuel bill.',
+        'If you are shopping at the bottom of the range, the front-wheel-drive LX is the value pick and the all-wheel-drive EX is the sensible family one, because it adds the moonroof and heated seats for a modest step. The Sport Touring Hybrid is the only way to get the Bose system and Google built-in, and it is also the smallest-boot CR-V.',
+        'Check the colour availability before you settle on a trim. Honda pairs interiors to exteriors and limits some paints to one grade, so the combination you want may only exist on a different trim.',
+      ],
+    },
+    faqs: [
+      {
+        question: 'How many trims does the 2026 CR-V come in?',
+        answer: 'Seven: LX, EX, EX-L, Sport Hybrid, TrailSport Hybrid, Sport-L Hybrid and Sport Touring Hybrid. With front- and all-wheel drive that makes twelve separate configurations.',
+      },
+      {
+        question: 'Which 2026 CR-V gets the best fuel economy?',
+        answer: 'The front-wheel-drive Sport Hybrid and Sport-L Hybrid, both rated at 40 mpg combined. All-wheel drive drops them to 37, the TrailSport Hybrid to 35, and the petrol models are rated at 30 with front-wheel drive and 29 with all-wheel drive.',
+      },
+      {
+        question: 'Does the CR-V hybrid lose cargo space?',
+        answer: 'Yes. Honda quotes 39.3 cubic feet behind the second row for the petrol car and 36.3 for the hybrids, with the Sport Touring Hybrid at 34.7. Behind the first row the figures are 76.5 and 71.8.',
+      },
+      {
+        question: 'Is the CR-V a plug-in hybrid?',
+        answer: 'No. The CR-V hybrid charges itself from the engine and from regenerative braking; there is no charging port and no electric-only range figure. Toyota’s RAV4 is the rival that offers a plug-in.',
+      },
+      {
+        question: 'What is the CR-V TrailSport?',
+        answer: 'A new hybrid grade for 2026 with standard all-wheel drive, all-terrain tyres on unique 18-inch wheels, TrailSport styling, heated seats and steering wheel, a 10.2-inch digital display and a power tailgate. It is rated at 35 mpg combined.',
+      },
+      {
+        question: 'How much is all-wheel drive on the CR-V?',
+        answer: 'Honda prices it at $1,500 on every trim that offers both drivetrains, which in this case is every trim except the TrailSport Hybrid and the Sport Touring Hybrid, which are all-wheel drive only.',
+      },
+      {
+        question: 'How big is the CR-V inside?',
+        answer: 'Honda lists 106.0 cubic feet of passenger volume for the LX and 103.5 for the other trims, a 184.8-inch overall length, a 73.5-inch width and a 106.3-inch wheelbase. Height is 66.2 inches with front-wheel drive and 66.5 with all-wheel drive.',
+      },
+    ],
+    links: [
+      {
+        label: 'Toyota RAV4 spec sheet',
+        href: '/quick-look/toyota-rav4-2026',
+        description: 'The direct rival, and the one that offers a plug-in hybrid with 52 miles of electric range.',
+      },
+      {
+        label: 'Tesla Model Y spec sheet',
+        href: '/quick-look/tesla-model-y-2026',
+        description: 'The electric alternative if you can charge at home and want to skip petrol entirely.',
+      },
+      {
+        label: 'All Quick Look spec sheets',
+        href: '/quick-look',
+        description: 'Browse every car and gadget spec sheet in the Quick Look section.',
+      },
+    ],
+  },
 }
 
 export function getQuickLookGuide(slug: string): QuickLookGuide | undefined {
