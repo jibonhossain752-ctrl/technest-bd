@@ -3602,13 +3602,23 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       '/product-images/2026-tesla-model-y-stealth-grey-rear-three-quarter.webp',
       '/product-images/2026-tesla-model-y-white-interior-overhead.webp',
       '/product-images/2026-tesla-model-y-white-rear-seats.webp',
+      '/product-images/2026-tesla-model-y-pearl-white-front-three-quarter-2.webp',
+      '/product-images/2026-tesla-model-y-stealth-grey-front-three-quarter-2.webp',
+      '/product-images/2026-tesla-model-y-diamond-black-garage.webp',
     ],
+    // Every file in the owner's Tesla Model Y folder is published (2026-11-24).
+    // The two "-2" files are separate copies of the first and second photos, so
+    // they sit away from their twins and say what they are in the alt text. The
+    // last image is a Model 3 in a matte wrap, so its alt names a Model 3.
     imageAlts: [
       'Tesla Model Y in Pearl White Multi-Coat, front three-quarter studio view',
       'Tesla Model Y in Stealth Grey, front three-quarter studio view with dark wheels',
       'Tesla Model Y in Stealth Grey from the rear, light bar across the tailgate',
       'Tesla Model Y cabin seen from above, white seats and a black dashboard',
       'Tesla Model Y rear seats in white upholstery under a glass roof',
+      'Second Pearl White Tesla Model Y studio photo, front three-quarter view',
+      'Second Stealth Grey Tesla Model Y studio photo, front three-quarter view',
+      'Tesla Model 3 in a matte black wrap, parked in a lit underground car park',
     ],
     highlights: [
       { label: 'Drive', value: 'RWD or AWD' },
@@ -4044,13 +4054,19 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       '/product-images/2026-ford-f-150-grey-leather-interior.webp',
       '/product-images/2026-ford-f-150-raptor-tailgate-exhaust.webp',
       '/product-images/2026-ford-f-150-classic-grille-close-up.webp',
+      '/product-images/2026-ford-f-series-ranger-dealer-lot.webp',
+      '/product-images/2026-ford-f-series-ranger-roof-tent.webp',
     ],
+    // Every file in the owner's F-150 folder is published (2026-11-24). The last
+    // two are Ford Rangers rather than F-150s, so their alt text names a Ranger.
     imageAlts: [
       'Black Ford F-150 pickup parked on a snowy forest track, front view',
       'Grey Ford F-150 Raptor with off-road lights and RAPTOR bedside graphics',
       'Ford F-150 cabin with grey leather seats and a large centre touchscreen',
       'Ford F-150 Raptor tailgate with FORD lettering and a side exhaust outlet',
       'Grille and round headlights of a classic orange Ford F-Series pickup',
+      'Three Ford Ranger pickups parked outside a Ford dealership building',
+      'Ford Ranger with a roof tent and a tray rack on a steep off-road track',
     ],
     highlights: [
       { label: 'Trims', value: '8' },
@@ -4264,12 +4280,18 @@ export const QUICK_LOOK: Record<string, QuickLookEntry> = {
       '/product-images/2026-toyota-rav4-desert-front-three-quarter.webp',
       '/product-images/2026-toyota-rav4-white-rear-three-quarter.webp',
       '/product-images/2026-toyota-rav4-black-interior-dashboard.webp',
+      '/product-images/2026-toyota-rav4-earlier-generation-interior.webp',
+      '/product-images/2026-toyota-rav4-black-tan-seats-glass-roof.webp',
     ],
+    // Every file in the owner's RAV4 folder is published (2026-11-24). The fifth
+    // image is an earlier-generation RAV4 cabin, and its alt says so.
     imageAlts: [
       'Toyota RAV4 in silver, front three-quarter studio view with black wheels',
       'Toyota RAV4 with roof rails parked on desert dirt, front three-quarter view',
       'Toyota RAV4 in white, rear three-quarter view with black lower cladding',
       'Toyota RAV4 dashboard with a wide touchscreen and black upholstery',
+      'Interior of an earlier-generation Toyota RAV4 with the older dashboard layout',
+      'Black and tan leather seats under a glass roof in the rear cabin',
     ],
     highlights: [
       { label: 'Grades', value: '10' },
